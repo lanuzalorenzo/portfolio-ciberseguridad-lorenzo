@@ -1,0 +1,46 @@
+# Binaries and object files
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.sln.docstates
+
+# Visual Studio cache/options
+.vscode/
+.vscode-test/
+.idea/
+
+# Build outputs
+*.dll
+*.exe
+*.pdb
+*.nuget.props
+*.nuget.targets
+
+# NuGet
+packages/
+*.nupkg
+*.snupkg
+
+# Application settings - Development
+appsettings.Development.json
+
+# Launch settings
+/Properties/launchSettings.json
+/EcommerceApi/EcommerceApi.csproj.user
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+*.swp
+*.swo
+*~
+
+# Local environment files
+.env
+.env.local
