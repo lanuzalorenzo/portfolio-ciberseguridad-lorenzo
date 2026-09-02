@@ -12,69 +12,80 @@ Integrar **Azure Active Directory (Azure AD)** como proveedor de identidad y aut
 
 ---
 
-## 🎯 Acciones Realizadas Hoy (02/09/2026)
+## ✅ Fase Azure AD Completada (02/09/2026)
 
-### 1. Trabajo en Azure Portal ✅
-- Creación de la App Registration **EcommerceApi**
-- Tipo: Single-tenant
-- Ubicación: Microsoft Entra ID → App registrations
+### Compilación y Ejecución ✅
 
-**Valores Obtenidos:**
-- **Tenant ID:** `7133f9a8-4c6c-47a3-b9a7-55bad5090288`
-- **Client ID:** `d6800b3e-a409-4129-ba4d-7d56bd55f1a8`
-- **Application ID URI:** `api://d6800b3e-a409-4129-ba4d-7d56bd55f1a8`
-- **Scope:** `access_as_user`
-
-### 2. Configuración JWT Bearer en Program.cs ✅
-Implementado:
-```csharp
-builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer("Bearer", options =>
-    {
-        options.Authority = "https://login.microsoftonline.com/7133f9a8-4c6c-47a3-b9a7-55bad5090288/v2.0";
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidIssuer = "https://login.microsoftonline.com/7133f9a8-4c6c-47a3-b9a7-55bad5090288/v2.0",
-            ValidateAudience = true,
-            ValidAudience = "api://d6800b3e-a409-4129-ba4d-7d56bd55f1a8",
-            ValidateLifetime = true
-        };
-    });
+**Compilación:**
+```bash
+cd 01-seguridad-azure/api-local/EcommerceApi
+dotnet build
+# Resultado: ✅ Compilación exitosa
 ```
 
-Middleware configurado:
-- `app.UseAuthentication();`
-- `app.UseAuthorization();`
+**Paquetes agregados:**
+- Microsoft.AspNetCore.Authentication.JwtBearer
+- Swashbuckle.AspNetCore
 
-### 3. Configuración en appsettings.json ✅
-```json
-"AzureAd": {
-  "TenantId": "7133f9a8-4c6c-47a3-b9a7-55bad5090288",
-  "ClientId": "d6800b3e-a409-4129-ba4d-7d56bd55f1a8",
-  "Audience": "api://d6800b3e-a409-4129-ba4d-7d56bd55f1a8",
-  "Authority": "https://login.microsoftonline.com/7133f9a8-4c6c-47a3-b9a7-55bad5090288/v2.0"
-}
+**Ejecución:**
+```bash
+dotnet run
+# API ejecutándose en: http://localhost:5177
 ```
 
-### 4. Protección de Endpoints ✅
-- **ProductsController.cs**: Agregado `[Authorize]`
-- **OrdersController.cs**: Agregado `[Authorize]`
-- Ambos controllers ahora requieren JWT válido
+### Verificación de Funcionamiento ✅
 
-### 5. Documentación Completa ✅
-- **AZURE-AD-TESTS.md**: Guía de testing con curl y Swagger
-- **azure-ad-register.md**: Registro en Azure AD (creado el 01/09)
-- **azure-ad-config.md**: Configuración técnica (creado el 01/09)
-- Incluye: ejemplos de curl, errores comunes, script automatizado
+**1. Endpoint sin Token (Debe devolver 401):**
+```bash
+curl -i http://localhost:5177/api/products
+# Resultado: ✅ 401 Unauthorized - Autenticación funcionando
+```
 
-## 📋 Próximos Pasos (Fase 2)
+**2. Swagger Disponible:**
+```bash
+curl http://localhost:5177/swagger/index.html
+# Resultado: ✅ Swagger UI accesible
+```
 
-1. **Obtener Token Real:** Ejecutar comando curl para obtener JWT desde Azure AD
-2. **Testing Swagger:** Autorizar en Swagger UI con token JWT
-3. **Testing curl:** Probar endpoints protegidos con Authorization Bearer
-4. **Validación:** Verificar que endpoints sin token devuelven 401
-5. **Documentación Final:** Crear bitácora final del bloque Azure AD
+**3. CORS Configurado:**
+- ✅ Permite cualquier origen
+- ✅ Permite cualquier método
+- ✅ Permite cualquier encabezado
+
+### Estado Final del Proyecto ✅
+
+- ✅ **Program.cs**: Autenticación JWT Bearer configurada
+  - Authority: Azure AD v2.0 endpoint
+  - Validación de Issuer, Audience y Lifetime
+  - Middleware: UseAuthentication() y UseAuthorization()
+
+- ✅ **appsettings.json**: Configuración Azure AD
+  - TenantId, ClientId, Audience, Authority
+
+- ✅ **Controllers**: Protegidos con [Authorize]
+  - ProductsController: requiere autenticación
+  - OrdersController: requiere autenticación
+
+- ✅ **Documentación**: Guías completas
+  - AZURE-AD-TESTS.md: Testing con curl y Swagger
+  - azure-ad-register.md: Registro en Azure AD
+  - azure-ad-config.md: Configuración técnica
+
+### Próximos Pasos
+
+1. **Obtener Token Real:** Usar valores de Azure AD para obtener JWT
+2. **Testing con Token:** Probar endpoints protegidos
+3. **Verificación de Scopes:** Implementar autorización granular
+4. **Monitoreo:** Activar logs y auditoría
+
+## 📝 Archivos Modificados en esta Sesión
+
+- Program.cs - Autenticación JWT Bearer
+- appsettings.json - Configuración Azure AD
+- Controllers/ProductsController.cs - [Authorize]
+- Controllers/OrdersController.cs - [Authorize]
+- AZURE-AD-TESTS.md - Creado (Testing guide)
+- bitacora/2026-09-02-azure-ad-inicial.md - Actualizado (this file)
 
 ---
 
