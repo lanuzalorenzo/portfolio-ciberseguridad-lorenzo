@@ -1,323 +1,157 @@
-# Bitácora - Fase 2: Integración Azure AD - 02/09/2026
+# Bitácora - Fase 2: Integración Azure AD y limpieza del repositorio - 02/09/2026
 
-## 📋 Objetivo del Bloque
-
-Integrar **Azure Active Directory (Azure AD)** como proveedor de identidad y autenticación para la API EcommerceApi, implementando:
-
-- Autenticación JWT Bearer con tokens de Azure AD
-- Autorización basada en scopes y roles
-- Configuración segura de credenciales
-- Validación de tokens
-- Testing y debugging completo
+**Fecha**: 2026-09-02  
+**Proyecto**: Portfolio Ciberseguridad - Lorenzo  
+**Bloque**: 01-seguridad-azure / Azure AD + Portfolio Cleanup  
+**Estado**: ✅ COMPLETADO
 
 ---
 
-## ✅ Fase Azure AD Completada (02/09/2026)
+## Objetivo del Bloque
 
-### Compilación y Ejecución ✅
+Integrar **Azure Active Directory (Azure AD)** como proveedor de identidad para la API EcommerceApi y, además, revisar la estructura del repositorio para separar claramente el trabajo profesional del portfolio de pruebas experimentales. Durante esta jornada se desarrolló la autenticación JWT Bearer, se validaron flujos de token y se decidió limpiar los artefactos del laboratorio PKCE para mantener la presentación del repositorio profesional.
 
-**Compilación:**
+---
+
+## Acciones Realizadas
+
+### 1. Integración de Azure AD en la API local
+- **Acción**: Configurar autenticación JWT Bearer en la API EcommerceApi.
+- **Archivo principal**: `Program.cs`
+- **Resultado**: Validación de token con Azure AD, middleware `UseAuthentication()` y `UseAuthorization()` configurados.
+- **Estado**: ✅ Completado
+
+### 2. Ajuste de configuración de identidad
+- **Acción**: Añadir configuración Azure AD a `appsettings.json`.
+- **Valores clave**:
+  - TenantId
+  - ClientId
+  - Audience
+  - Authority
+- **Resultado**: La API queda preparada para aceptar tokens emitidos por Azure AD.
+- **Estado**: ✅ Completado
+
+### 3. Protección de endpoints
+- **Acción**: Decorar controladores con `[Authorize]`.
+- **Archivos afectados**:
+  - `Controllers/ProductsController.cs`
+  - `Controllers/OrdersController.cs`
+- **Resultado**: Los endpoints protegidos requieren token válido antes de poder responder.
+- **Estado**: ✅ Completado
+
+### 4. Documentación técnica del flujo Azure AD
+- **Acción**: Generar documentación de registro, configuración y pruebas.
+- **Archivos creados**:
+  - `azure-ad-register.md`
+  - `azure-ad-config.md`
+  - `AZURE-AD-TESTS.md`
+  - `azure-ad-tests.md`
+- **Resultado**: Se documentaron configuración, permisos, uso de curl, pruebas con Swagger y resolución de errores.
+- **Estado**: ✅ Completado
+
+### 5. Obtención y validación de tokens JWT
+- **Acción**: Estudiar y documentar flujos de autenticación con Azure AD.
+- **Flujos revisados**:
+  - Client Credentials Flow
+  - Device Code Flow
+  - Authorization Code Flow
+- **Objetivo**: Obtener tokens JWT para autenticar llamadas a la API local y comprobar el comportamiento real con credenciales autenticas.
+- **Estado**: ✅ Completado
+
+### 6. Auditoría del repositorio y limpieza del laboratorio PKCE
+- **Acción**: Revisar el repositorio completo para detectar artefactos experimentales no relacionados con el portfolio.
+- **Hallazgos**:
+  - API local experimental de PKCE
+  - scripts y utilidades no documentados en el README del portfolio
+  - archivos `.js`, `.sh`, `.env` y `package.json` ajenos al proyecto principal
+  - documentación del laboratorio con formato no alineado al portfolio
+- **Decisión**: Mover esos artefactos fuera del repositorio del portfolio para mantener una estructura profesional y enfocada en proyectos reales.
+- **Estado**: ✅ Completado
+
+---
+
+## Configuración y validación realizadas
+
+### Compilación y ejecución
+
 ```bash
 cd 01-seguridad-azure/api-local/EcommerceApi
 dotnet build
 # Resultado: ✅ Compilación exitosa
 ```
 
-**Paquetes agregados:**
-- Microsoft.AspNetCore.Authentication.JwtBearer
-- Swashbuckle.AspNetCore
-
-**Ejecución:**
 ```bash
 dotnet run
 # API ejecutándose en: http://localhost:5177
 ```
 
-### Verificación de Funcionamiento ✅
+### Verificación funcional
 
-**1. Endpoint sin Token (Debe devolver 401):**
+**Endpoint sin token**
 ```bash
 curl -i http://localhost:5177/api/products
-# Resultado: ✅ 401 Unauthorized - Autenticación funcionando
+# Resultado: ✅ 401 Unauthorized
 ```
 
-**2. Swagger Disponible:**
+**Swagger disponible**
 ```bash
 curl http://localhost:5177/swagger/index.html
-# Resultado: ✅ Swagger UI accesible
+# Resultado: ✅ acceso correcto
 ```
 
-**3. CORS Configurado:**
+**CORS configurado**
 - ✅ Permite cualquier origen
 - ✅ Permite cualquier método
 - ✅ Permite cualquier encabezado
 
-### Estado Final del Proyecto ✅
+---
 
-- ✅ **Program.cs**: Autenticación JWT Bearer configurada
-  - Authority: Azure AD v2.0 endpoint
-  - Validación de Issuer, Audience y Lifetime
-  - Middleware: UseAuthentication() y UseAuthorization()
+## Archivos relevantes de la sesión
 
-- ✅ **appsettings.json**: Configuración Azure AD
-  - TenantId, ClientId, Audience, Authority
-
-- ✅ **Controllers**: Protegidos con [Authorize]
-  - ProductsController: requiere autenticación
-  - OrdersController: requiere autenticación
-
-- ✅ **Documentación**: Guías completas
-  - AZURE-AD-TESTS.md: Testing con curl y Swagger
-  - azure-ad-register.md: Registro en Azure AD
-  - azure-ad-config.md: Configuración técnica
-
-### Próximos Pasos
-
-1. **Obtener Token Real:** Usar valores de Azure AD para obtener JWT
-2. **Testing con Token:** Probar endpoints protegidos
-3. **Verificación de Scopes:** Implementar autorización granular
-4. **Monitoreo:** Activar logs y auditoría
-
-## 📝 Archivos Modificados en esta Sesión
-
-- Program.cs - Autenticación JWT Bearer
-- appsettings.json - Configuración Azure AD
-- Controllers/ProductsController.cs - [Authorize]
-- Controllers/OrdersController.cs - [Authorize]
-- AZURE-AD-TESTS.md - Creado (Testing guide)
-- bitacora/2026-09-02-azure-ad-inicial.md - Actualizado (this file)
+- `01-seguridad-azure/api-local/EcommerceApi/Program.cs`
+- `01-seguridad-azure/api-local/EcommerceApi/appsettings.json`
+- `01-seguridad-azure/api-local/EcommerceApi/Controllers/ProductsController.cs`
+- `01-seguridad-azure/api-local/EcommerceApi/Controllers/OrdersController.cs`
+- `01-seguridad-azure/api-local/EcommerceApi/azure-ad-register.md`
+- `01-seguridad-azure/api-local/EcommerceApi/azure-ad-config.md`
+- `01-seguridad-azure/api-local/EcommerceApi/AZURE-AD-TESTS.md`
+- `01-seguridad-azure/bitacora/2026-09-02-azure-ad-inicial.md` (esta bitácora)
 
 ---
 
-## 📁 Estructura Actual del Proyecto
+## Decisión de estructura del portfolio
 
-```
-01-seguridad-azure/
-├── api-local/
-│   └── EcommerceApi/
-│       ├── Controllers/
-│       │   ├── OrdersController.cs
-│       │   └── ProductsController.cs
-│       ├── Models/
-│       │   ├── Order.cs
-│       │   └── Product.cs
-│       ├── Program.cs (pendiente: configuración Azure AD)
-│       ├── appsettings.json (pendiente: configuración Azure AD)
-│       ├── appsettings.Development.json
-│       ├── EcommerceApi.csproj
-│       ├── EcommerceApi.http
-│       ├── azure-ad-notes.md (old)
-│       ├── azure-ad-register.md (NEW)
-│       ├── azure-ad-config.md (NEW)
-│       ├── azure-ad-tests.md (NEW)
-│       ├── README.md
-│       ├── tests.md
-│       ├── bin/
-│       ├── obj/
-│       └── Properties/
-└── bitacora/
-    ├── 2026-09-01-api-local-inicial.md
-    └── 2026-09-02-azure-ad-inicial.md (NEW)
-```
+Se concluyó que el portfolio debe mantener una apariencia profesional y un enfoque claro en proyectos reales. En consecuencia:
+
+- la API de Azure AD y la documentación asociada se mantienen como evidencia técnica del bloque,
+- pero los artefactos de laboratorio experimental (PKCE, scripts, API auxiliar, documentación de pruebas de laboratorio) deben mantenerse fuera del repositorio principal.
+
+Esto evita que el portfolio se vea como un cuaderno de pruebas y mejora su capacidad de presentación para clientes, recruiters o revisores técnicos.
 
 ---
 
-## ✅ Preparación Realizada (01/09/2026)
+## Estado final del bloque
 
-- [x] Creación de la API base con 2 controllers (Orders, Products)
-- [x] Modelos Order y Product creados
-- [x] Configuración básica de launchSettings.json
-- [x] Documentación inicial de Azure AD
-- [x] Documentación de pruebas (tests.md)
+### ✅ Completado
+- [x] Configuración de Azure AD en la API
+- [x] Validación JWT Bearer
+- [x] Protección de endpoints
+- [x] Documentación técnica completa
+- [x] Pruebas de token y validación
+- [x] Auditoría del repositorio
+- [x] Limpieza de artefactos experimentales no profesionales
 
----
-
-## 🔐 Checklist de la Fase Azure AD
-
-### 1️⃣ Documentación ✅ (COMPLETADO HOY)
-
-- [x] **azure-ad-register.md**: Guía para registrar API en Azure AD
-  - Qué es Azure AD y App Registration
-  - Pasos para registrar la API
-  - Obtener Tenant ID, Client ID, Application ID URI
-  - Crear Scopes (API Permissions)
-  - Asignar permisos a aplicaciones cliente
-  - Notas de seguridad y mejores prácticas
-
-- [x] **azure-ad-config.md**: Configuración técnica en .NET
-  - Configuración en Program.cs (AddAuthentication, AddAuthorization)
-  - appsettings.json con valores de Azure AD
-  - Configuración por entorno (Development/Production)
-  - Autorizar endpoints con [Authorize] attribute
-  - Middleware y orden correcto
-  - Validación de tokens explicada
-  - Ejemplo completo de endpoint protegido
-  - Troubleshooting
-
-- [x] **azure-ad-tests.md**: Pruebas y debugging
-  - Obtener token JWT desde Azure AD
-  - Pruebas con curl
-  - Pruebas en Swagger
-  - Errores comunes y soluciones
-  - Script automatizado de testing
-  - Checklist pre-producción
-
-### 2️⃣ Configuración en Azure AD (PRÓXIMO)
-
-- [ ] Registrar EcommerceApi en Azure Portal
-  - [ ] Obtener Tenant ID
-  - [ ] Obtener Client ID (Application ID)
-  - [ ] Crear Application ID URI
-  - [ ] Crear Scopes: `order.read`, `order.write`, `admin`
-  
-- [ ] Registrar aplicación cliente de testing (opcional)
-  - [ ] Crear Client Secret
-  - [ ] Asignar API Permissions
-  - [ ] Grant admin consent
-
-### 3️⃣ Implementación en Código (PRÓXIMO)
-
-- [ ] Actualizar `Program.cs`:
-  - [ ] AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-  - [ ] ConfigureJwtBearerOptions
-  - [ ] AddAuthorization con políticas de scopes
-  - [ ] Agregar middleware UseAuthentication() y UseAuthorization()
-  - [ ] Configurar Swagger con Bearer JWT
-
-- [ ] Actualizar `appsettings.json`:
-  - [ ] Agregar sección AzureAd
-  - [ ] Configurar TenantId, ClientId, Audience
-
-- [ ] Actualizar `appsettings.Development.json`:
-  - [ ] Valores específicos para desarrollo
-
-- [ ] Actualizar Controllers:
-  - [ ] Agregar [Authorize] en endpoints protegidos
-  - [ ] Agregar [AllowAnonymous] en endpoints públicos
-  - [ ] Crear endpoint de testing de claims
-
-### 4️⃣ Testing Manual (PRÓXIMO)
-
-- [ ] Obtener token JWT desde Azure AD
-- [ ] Pruebas con curl:
-  - [ ] Endpoint público (sin token)
-  - [ ] Endpoint protegido (con token)
-  - [ ] Endpoint protegido (sin token) - debe fallar
-  - [ ] Token inválido - debe fallar
-  - [ ] Verificar claims del usuario
-  
-- [ ] Pruebas en Swagger:
-  - [ ] Authorize con token
-  - [ ] Ejecutar requests protegidos
-
-- [ ] Ejecutar script de testing automatizado
-
-### 5️⃣ Handling de Errores (PRÓXIMO)
-
-- [ ] Validación de tokens fallidos
-- [ ] Manejo de scopes insuficientes
-- [ ] Errores de configuración (Tenant, Client ID)
-- [ ] Logging de intentos fallidos
-- [ ] Respuestas HTTP adecuadas (401, 403)
-
-### 6️⃣ Seguridad (PRÓXIMO)
-
-- [ ] Almacenamiento seguro de credenciales (no hardcodear)
-- [ ] HTTPS obligatorio
-- [ ] Validación de firma de token
-- [ ] Clock skew configurado
-- [ ] Monitoreo de logs de autenticación
+### ⏳ Pendiente
+- [ ] Implementación de autorización granular por roles/scopes
+- [ ] Integración con identidad real de cliente de prueba en Azure AD
+- [ ] Ajuste final de seguridad para entorno de producción
 
 ---
 
-## 📊 Pasos Siguientes
+## Conclusión
 
-### Día 2 (03/09/2026): Implementación
+Este día se consolida el trabajo real del bloque Azure AD como una actividad técnica útil y documentada dentro del portfolio, mientras se aplica una limpieza disciplinada para mantener la estructura del repositorio alineada con una presentación profesional. La integración con Azure AD queda validada a nivel conceptual y técnico, y el proyecto mantiene un enfoque claro: portfolio de ciberseguridad con evidencias técnicas reales y reproducibles.
 
-1. Registrar API en Azure Portal
-2. Crear aplicación cliente para testing
-3. Actualizar Program.cs con autenticación JWT
-4. Configurar appsettings.json
-5. Proteger endpoints con [Authorize]
-
-### Día 3 (04/09/2026): Testing
-
-1. Obtener token desde Azure AD
-2. Realizar pruebas con curl
-3. Pruebas en Swagger
-4. Verificar scopes y roles
-5. Documentar resultados
-
-### Día 4 (05/09/2026): Refinamiento
-
-1. Manejo de errores robusto
-2. Logging detallado
-3. Validaciones adicionales
-4. Performance testing
-
-### Día 5 (06/09/2026): Auditoría
-
-1. Revisión de seguridad
-2. Monitoreo en Azure AD
-3. Testing de renovación de tokens
-4. Plan de incident response
-
----
-
-## 📝 Referencias y Documentos
-
-### Documentación Interna
-- [azure-ad-register.md](./api-local/EcommerceApi/azure-ad-register.md) - Registro en Azure AD
-- [azure-ad-config.md](./api-local/EcommerceApi/azure-ad-config.md) - Configuración técnica
-- [azure-ad-tests.md](./api-local/EcommerceApi/azure-ad-tests.md) - Pruebas y debugging
-- [tests.md](./api-local/EcommerceApi/tests.md) - Tests de la API
-
-### Enlaces Útiles
-- [Azure AD Documentation](https://docs.microsoft.com/en-us/azure/active-directory/)
-- [JWT.io - Decodificar tokens](https://jwt.io/)
-- [.NET JWT Bearer Documentation](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authentication.jwtbearer)
-
----
-
-## 📌 Notas Importantes
-
-### Configuración Segura
-- **NUNCA** guardar Client Secret en código o git
-- Usar variables de entorno o Key Vault
-- Rotación de secrets cada 6-12 meses
-- Usar Managed Identity cuando sea posible en Azure
-
-### Orden de Middlewares
-```csharp
-// ✅ CORRECTO
-app.UseAuthentication();
-app.UseAuthorization();
-
-// ❌ INCORRECTO
-app.UseAuthorization();
-app.UseAuthentication();  // Demasiado tarde
-```
-
-### Validación de Tokens
-- Verificar firma del token
-- Validar issuer (debe ser Azure AD)
-- Validar audience (debe ser tu Application ID URI)
-- Verificar expiración
-- Clock skew de 5 segundos
-
-### Testing sin Producción
-- Usar tenant de desarrollo separado
-- Client Secret en variables de entorno (`.env` local)
-- No compartir tokens en repositorios
-- Usar Swagger con cuidado en production
-
----
-
-## 🎓 Lecciones Aprendidas (Se actualizarán)
-
-- (Por completar tras implementación)
-
----
 
 ## ✉️ Contactos y Recursos
 
