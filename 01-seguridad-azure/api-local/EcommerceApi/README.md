@@ -1,24 +1,29 @@
 # EcommerceApi (.NET 10)
 
-## Descripción del Proyecto
+## Descripción del proyecto
 
-**EcommerceApi** es una API REST desarrollada en **.NET 10** que proporciona funcionalidades básicas de un sistema de comercio electrónico. La API gestiona productos y pedidos, almacenando datos en memoria (sin base de datos externa).
+**EcommerceApi** es una API REST desarrollada en **.NET 10** para demostrar un caso real de integración de autenticación empresarial con **Microsoft Entra ID / Azure AD**. La API gestiona productos y pedidos en memoria y está protegida con **JWT Bearer** para validar tokens emitidos por Azure AD.
 
-Este proyecto es parte del portfolio de ciberseguridad y está diseñado para ser integrado con **Azure Active Directory (Azure AD)** para autenticación y autorización empresarial.
+El objetivo del proyecto dentro del portfolio es evidenciar una implementación práctica de:
+- autenticación con Azure AD,
+- validación de tokens JWT,
+- protección de endpoints con `Authorize`,
+- seguridad aplicada en APIs modernas.
 
 ## Requisitos
 
 - **.NET 10 SDK** instalado
   - Descarga desde: https://dotnet.microsoft.com/download
+- acceso a un tenant Azure AD / Microsoft Entra ID configurado para pruebas
 
-## Cómo Ejecutar la API
+## Cómo ejecutar la API
 
 1. Navega a la carpeta del proyecto:
    ```bash
-   cd EcommerceApi
+   cd 01-seguridad-azure/api-local/EcommerceApi
    ```
 
-2. Restaura las dependencias (si las hay):
+2. Restaura dependencias:
    ```bash
    dotnet restore
    ```
@@ -29,10 +34,10 @@ Este proyecto es parte del portfolio de ciberseguridad y está diseñado para se
    ```
 
 4. La API estará disponible en:
-   - **URL base**: `http://localhost:5000` o `https://localhost:5001`
-   - **Swagger UI**: `http://localhost:5000/swagger`
+   - **Swagger UI**: `http://localhost:5177/swagger`
+   - **URL base**: `http://localhost:5177`
 
-## Endpoints Disponibles
+## Endpoints disponibles
 
 ### Productos
 
@@ -48,51 +53,60 @@ Este proyecto es parte del portfolio de ciberseguridad y está diseñado para se
 - **POST** `/api/orders` - Crear un nuevo pedido
   - Body: `{ "productIds": [number, ...] }`
 
-## Estructura del Proyecto
+> Los endpoints están protegidos con autenticación y requieren un token JWT válido emitido por Azure AD.
+
+## Estructura del proyecto
 
 ```
 EcommerceApi/
 ├── Models/
-│   ├── Product.cs         # Modelo de Producto
-│   └── Order.cs           # Modelo de Pedido
+│   ├── Product.cs
+│   └── Order.cs
 ├── Controllers/
-│   ├── ProductsController.cs  # Controlador de Productos
-│   └── OrdersController.cs    # Controlador de Pedidos
-├── Program.cs             # Configuración de la aplicación
-├── appsettings.json       # Configuración
-├── EcommerceApi.csproj    # Archivo del proyecto
-├── .gitignore            # Archivos a ignorar en Git
-├── README.md             # Este archivo
-└── tests.md              # Ejemplos de pruebas con curl
+│   ├── ProductsController.cs
+│   └── OrdersController.cs
+├── Program.cs
+├── appsettings.json
+├── EcommerceApi.csproj
+├── README.md
+├── azure-ad-config.md
+├── azure-ad-register.md
+├── azure-ad-tests.md
+├── AZURE-AD-TESTS.md
+├── azure-ad-notes.md
+├── tests.md
+└── .gitignore
 ```
 
-## Notas sobre Seguridad
+## Estado actual de seguridad
 
-⚠️ **Estado Actual**: Esta API está en desarrollo sin autenticación implementada.
+✅ **La API ya está protegida con Azure AD mediante JWT Bearer**.
 
-🔒 **Próximos Pasos**:
-- Integración con **Azure Active Directory (Azure AD)**
-- Validación de **JWT tokens**
-- Control de acceso basado en roles (**RBAC**)
-- Cifrado de datos sensibles
-- HTTPS obligatorio
+Esto incluye:
+- autenticación con `AddAuthentication("Bearer")`,
+- validación del issuer y del audience,
+- uso de `UseAuthentication()` y `UseAuthorization()`,
+- protección de controladores con `[Authorize]`.
 
-Consulta [azure-ad-notes.md](./azure-ad-notes.md) para más detalles sobre la integración con Azure AD.
+## Documentación asociada
 
-## Próximos Pasos
+- [azure-ad-register.md](./azure-ad-register.md) - registro de la aplicación en Azure AD
+- [azure-ad-config.md](./azure-ad-config.md) - configuración del tenant y audiencia
+- [AZURE-AD-TESTS.md](./AZURE-AD-TESTS.md) - pruebas con tokens y llamadas a la API
+- [azure-ad-notes.md](./azure-ad-notes.md) - notas técnicas del flujo de autenticación
+- [tests.md](./tests.md) - ejemplos de pruebas con curl
 
-1. **Autenticación Azure AD**: Integrar con Microsoft Entra ID (Azure AD)
-2. **Base de datos**: Migrar de almacenamiento en memoria a una base de datos persistente
-3. **Logging**: Implementar logging centralizado
-4. **Validación**: Añadir validaciones más robustas en modelos
-5. **Testing**: Crear unit tests y integration tests
+## Siguientes pasos
 
-## Para Desarrolladores
+1. **Autorización granular**: scopes y roles por endpoint
+2. **Persistencia**: sustituir almacenamiento en memoria por base de datos
+3. **Observabilidad**: logging centralizado y trazabilidad
+4. **Seguridad adicional**: validación más estricta y hardening del entorno
 
-Para más información sobre las pruebas de los endpoints, consulta [tests.md](./tests.md).
+## Para desarrolladores y reclutadores
 
-Para detalles sobre la preparación para Azure AD, consulta [azure-ad-notes.md](./azure-ad-notes.md).
+El proyecto demuestra una API moderna con identidad empresarial integrada, un diseño orientado a seguridad y documentación técnica clara, útil tanto para revisión técnica como para presentación profesional en un portfolio público.
 
 ---
 
-**Última actualización**: 2024
+**Última actualización**: 2026-09-02
