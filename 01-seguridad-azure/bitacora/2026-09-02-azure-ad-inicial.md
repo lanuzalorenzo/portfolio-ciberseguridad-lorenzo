@@ -130,6 +130,41 @@ Esto evita que el portfolio se vea como un cuaderno de pruebas y mejora su capac
 
 ---
 
+## Laboratorio PKCE en repositorio independiente
+
+**Fecha**: 2026-09-02  
+**Actividad**: Finalización del laboratorio OAuth2 Authorization Code Flow con PKCE para Azure AD  
+**Estado**: ✅ SEPARADO EN REPOSITORIO EXTERNO
+
+Durante esta jornada se completó el laboratorio PKCE con Azure AD, incluyendo la implementación de la API local, el flujo de autorización con `code_challenge` y `code_verifier`, la generación de scripts de automatización y la validación end-to-end de la autenticación con Microsoft Entra ID.
+
+### Trabajo realizado
+- Desarrollo y validación del flujo PKCE con Azure AD.
+- Preparación de scripts para generación de `code_verifier` y `code_challenge`.
+- Configuración de la API local para aceptar tokens emitidos por Azure AD.
+- Documentación de pruebas para flujos OAuth2 y validación de accesos.
+- Verificación de errores de autenticación y resolución de configuración.
+
+### Errores encontrados
+- `501481`: Error asociado a la configuración del cliente/registro de aplicación en Azure AD, relacionado con permisos y flujo de autorización.
+- `90013`: Error de audiencia/tenant o de solicitud de autorización no válida durante la ejecución del flujo PKCE.
+
+### Soluciones aplicadas
+- Revisado el registro de la aplicación en Azure AD y corregida su configuración.
+- Confirmado el uso correcto del `client_id`, `redirect_uri`, `scope` y del flujo Authorization Code con PKCE.
+- Validado el formato del token JWT y la audiencia esperada por la API local.
+- Ajustado el enfoque de pruebas para diferenciar correctamente errores de autorización de errores del cliente.
+
+### Decisión final
+Se concluyó que el laboratorio, por su volumen y naturaleza experimental, debía mantenerse en un repositorio independiente para no contaminar el portfolio principal. Esta decisión permite mantener una presentación profesional, libre de artefactos de prueba y más alineada con proyectos de cartera técnica real.
+
+### Enlace del laboratorio
+- https://github.com/lanuzalorenzo/lab-azuread-oauth2-pkce-api
+
+Este repositorio del portfolio queda como referencia técnica y de documentación del trabajo realizado, mientras que el laboratorio completo continúa disponible como proyecto separado con scripts, API, pruebas y documentación de soporte.
+
+---
+
 ## Estado final del bloque
 
 ### ✅ Completado
@@ -140,6 +175,7 @@ Esto evita que el portfolio se vea como un cuaderno de pruebas y mejora su capac
 - [x] Pruebas de token y validación
 - [x] Auditoría del repositorio
 - [x] Limpieza de artefactos experimentales no profesionales
+- [x] Referencia del laboratorio PKCE en repositorio independiente
 
 ### ⏳ Pendiente
 - [ ] Implementación de autorización granular por roles/scopes
