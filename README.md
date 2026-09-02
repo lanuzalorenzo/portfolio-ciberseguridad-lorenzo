@@ -42,6 +42,22 @@ aprendizaje y demostración práctica de mis capacidades en seguridad aplicada.
 
 ---
 
+## 🧪 Laboratorios externos
+
+El laboratorio PKCE con Azure AD ya está completado y se ha movido a un
+repositorio independiente para mantener el portfolio limpio y enfocado en
+proyectos de presentación profesional. Este laboratorio incluye scripts,
+configuración de la API local, documentación detallada y pruebas end-to-end
+realizadas con Microsoft Entra ID y OAuth 2.0 Authorization Code Flow con PKCE.
+
+- Repositorio del laboratorio: https://github.com/lanuzalorenzo/lab-azuread-oauth2-pkce-api
+
+La intención es conservar aquí únicamente la evidencia técnica del portfolio
+principal y dejar el material experimental y de aprendizaje en un repositorio
+dedicado, con mejor organización y trazabilidad.
+
+---
+
 ## 📬 Contacto
 
 - Email: **lanuzalorenzo@gmail.com**
