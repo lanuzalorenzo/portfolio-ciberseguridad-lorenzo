@@ -7,19 +7,24 @@ Está diseñado como portfolio técnico para demostrar competencias reales en en
 
 ## 📘 Contenido del repositorio
 
-### **01-seguridad-azure**  
+### **01-seguridad-azure**
 Auditorías cloud, Azure AD, Defender for Cloud, Key Vault, Azure Policies, monitorización centralizada y buenas prácticas de identidad.
 
-### **02-contenedores-microservicios**  
+### **02-contenedores-microservicios**
 Hardening de Docker, escaneo de imágenes, seguridad en Kubernetes, RBAC, network policies y análisis de vulnerabilidades en entornos distribuidos.
 
-### **03-appsec-dotnet**  
+### **03-appsec-dotnet**
 OWASP API Top 10 aplicado a APIs .NET, SAST, DAST, validación de entradas, autenticación, autorización y mitigación de vulnerabilidades comunes.
 
-### **04-devsecops**  
+### **04-devsecops**
 Pipelines CI/CD seguros, SAST, DAST, IaC scanning, firma de artefactos, automatización de controles de seguridad y despliegues confiables.
 
-### **05-security-sre**  
+#### ➕ **Nueva práctica incluida**
+**01-proteccion-rama-main**  
+Buenas prácticas de control de versiones y seguridad en repositorios:  
+protección de la rama `main`, reglas de aprobación, PR obligatorio, historial lineal y uso de plantillas de repositorio para garantizar seguridad desde el origen.
+
+### **05-security-sre**
 Dashboards de seguridad, análisis de logs, correlación de eventos, detección de anomalías, simulación de incidentes y creación de runbooks de respuesta.
 
 ---
@@ -38,49 +43,26 @@ Este repositorio sirve como:
 
 ## 🧪 Laboratorios externos
 
-### **Laboratorio PKCE con Azure AD**  
-Este laboratorio ya está completado y se ha movido a un repositorio independiente para mantener el portfolio limpio y enfocado en proyectos de presentación profesional.
+### **Laboratorio PKCE con Azure AD**
+Repositorio: https://github.com/lanuzalorenzo/lab-azuread-oauth2-pkce-api
 
-Incluye scripts, configuración de la API local, documentación detallada y pruebas end‑to‑end realizadas con Microsoft Entra ID y OAuth 2.0 Authorization Code Flow con PKCE.
-
-Repositorio del laboratorio:  
-**[https://github.com/lanuzalorenzo/lab-azuread-oauth2-pkce-api](https://github.com/lanuzalorenzo/lab-azuread-oauth2-pkce-api)**
-
-La intención es conservar aquí únicamente la evidencia técnica del portfolio principal y dejar el material experimental y de aprendizaje en un repositorio dedicado, con mejor organización y trazabilidad.
-
----
-
-### **Laboratorio: AI Agent Local Lab (Ollama + GPU + VS Code Continue)**  
-Este laboratorio demuestra cómo ejecutar un agente de IA local utilizando **Ollama**, **GPU NVIDIA** y **VS Code (Continue)**.  
-Incluye scripts de instalación, verificación, servicio systemd, documentación técnica y ejemplos reales de sesiones del agente.
-
-Se ha movido a un repositorio independiente para mantener este portfolio limpio y centrado en proyectos de presentación profesional, dejando el material experimental y de aprendizaje en un espacio dedicado y mejor organizado.
-
-Repositorio del laboratorio:  
-**[https://github.com/lanuzalorenzo/ai-agent-local-lab](https://github.com/lanuzalorenzo/ai-agent-local-lab)**
+### **Laboratorio: AI Agent Local Lab (Ollama + GPU + VS Code Continue)**
+Repositorio: https://github.com/lanuzalorenzo/ai-agent-local-lab
 
 ---
 
 ## 📬 Contacto
-
-Email: **lanuzalorenzo@gmail.com**  
-LinkedIn: **[https://linkedin.com/in/lanuzalorenzo](https://linkedin.com/in/lanuzalorenzo)**
+Email: lanuzalorenzo@gmail.com  
+LinkedIn: https://linkedin.com/in/lanuzalorenzo
 
 ---
 
 ## ⚖️ Aviso Legal
-
 Este repositorio tiene fines educativos y de portfolio profesional.  
 No contiene información sensible, confidencial ni perteneciente a ninguna empresa.
-
-Las configuraciones, scripts y ejemplos incluidos son demostraciones técnicas y no representan sistemas reales de producción.  
-El uso del contenido se realiza bajo la responsabilidad del usuario.
 
 ---
 
 ## 🔐 Licencia
-
-Este proyecto está bajo licencia **MIT**.  
-Consulta el archivo `LICENSE` para más información.
-
----
+Este proyecto está bajo licencia MIT.  
+Consulta el archivo LICENSE para más información.
