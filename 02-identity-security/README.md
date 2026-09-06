@@ -31,7 +31,7 @@ Módulo dedicado a la **seguridad de identidad**: MFA, Conditional Access, audit
 - [ ] Informe final y conclusiones
 
 ## ✍️ Autor
-Lorenzo Lanuzalorenzo
+Lorenzo Lanuza
 
 ## 📜 Licencia
 MIT
