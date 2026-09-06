@@ -19,11 +19,6 @@ OWASP API Top 10 aplicado a APIs .NET, SAST, DAST, validación de entradas, aute
 ### **04-devsecops**
 Pipelines CI/CD seguros, SAST, DAST, IaC scanning, firma de artefactos, automatización de controles de seguridad y despliegues confiables.
 
-#### ➕ **Nueva práctica incluida**
-**01-proteccion-rama-main**  
-Buenas prácticas de control de versiones y seguridad en repositorios:  
-protección de la rama `main`, reglas de aprobación, PR obligatorio, historial lineal y uso de plantillas de repositorio para garantizar seguridad desde el origen.
-
 ### **05-security-sre**
 Dashboards de seguridad, análisis de logs, correlación de eventos, detección de anomalías, simulación de incidentes y creación de runbooks de respuesta.
 
