@@ -1,63 +1,92 @@
 # 🛡️ Portfolio de Ciberseguridad — Lorenzo Lanuza Arellano
 
-Este repositorio contiene mi trabajo práctico en seguridad cloud, DevSecOps, AppSec y Security SRE.  
-Está diseñado como portfolio técnico para demostrar competencias reales en entornos de producción, automatización y seguridad aplicada.
+Este repositorio contiene mi trabajo práctico en **seguridad cloud**, **identidad**, **seguridad avanzada**, **DevSecOps** y **AppSec general**.  
+Incluye laboratorios, documentación profesional, bitácoras y proyectos aplicados, organizados en módulos independientes.
 
 ---
 
 ## 📘 Contenido del repositorio
 
 ### **01-seguridad-azure**
-Auditorías cloud, Azure AD, Defender for Cloud, Key Vault, Azure Policies, monitorización centralizada y buenas prácticas de identidad.
+Seguridad inicial en Azure y Entra ID:
+- Laboratorio PKCE (documentado dentro del módulo)
+- Auditorías cloud
+- Defender for Cloud
+- Azure Policies
+- Key Vault
+- Buenas prácticas de identidad
 
-### **02-contenedores-microservicios**
-Hardening de Docker, escaneo de imágenes, seguridad en Kubernetes, RBAC, network policies y análisis de vulnerabilidades en entornos distribuidos.
+---
 
-### **03-appsec-dotnet**
-OWASP API Top 10 aplicado a APIs .NET, SAST, DAST, validación de entradas, autenticación, autorización y mitigación de vulnerabilidades comunes.
+### **02-identidad-azure**
+Gestión y seguridad de identidad en Azure:
+- Usuarios y grupos
+- Roles y permisos
+- MFA y acceso condicional
+- PIM (Privileged Identity Management)
+- Buenas prácticas de identidad
+- Scripts de automatización
+
+---
+
+### **03-seguridad-avanzada**
+Seguridad defensiva y análisis técnico:
+- Vulnerabilidades y CVEs
+- Hardening Linux y Windows
+- SOC y análisis de logs
+- Detección de anomalías
+- Simulación de incidentes
+- Informes profesionales
+
+---
 
 ### **04-devsecops**
-Pipelines CI/CD seguros, SAST, DAST, IaC scanning, firma de artefactos, automatización de controles de seguridad y despliegues confiables.
+Automatización y seguridad en CI/CD:
+- Protección de la rama `main`
+- Pipelines seguros (SAST, DAST, dependencias, contenedores)
+- Scripting Bash y Python
+- Integración de controles automáticos
 
-### **05-security-sre**
-Dashboards de seguridad, análisis de logs, correlación de eventos, detección de anomalías, simulación de incidentes y creación de runbooks de respuesta.
+---
+
+### **05-appsec-general** *(módulo opcional futuro)*
+Seguridad de aplicaciones:
+- OWASP Top 10
+- Juice Shop
+- Validación de entradas
+- Autenticación y autorización
+- API Security
 
 ---
 
 ## 🎯 Objetivo del portfolio
 
-Posicionarme en roles de **Cloud Security**, **DevSecOps**, **AppSec** o **Security SRE**, aprovechando mi experiencia previa como Senior Software Engineer, SRE y arquitecto de microservicios en Azure.
+Este portfolio está diseñado para demostrar competencias aplicadas en roles como:
 
-Este repositorio sirve como:
-
-- carta de presentación técnica  
-- bitácora de aprendizaje  
-- demostración práctica de mis capacidades en seguridad aplicada  
-
----
-
-## 🧪 Laboratorios externos
-
-### **Laboratorio PKCE con Azure AD**
-Repositorio: https://github.com/lanuzalorenzo/lab-azuread-oauth2-pkce-api
-
-### **Laboratorio: AI Agent Local Lab (Ollama + GPU + VS Code Continue)**
-Repositorio: https://github.com/lanuzalorenzo/ai-agent-local-lab
+- Cloud Security  
+- Identity & Access Technician  
+- Security Analyst / SOC L1-L2  
+- DevSecOps Junior  
+- AppSec Junior  
 
 ---
 
 ## 📬 Contacto
-Email: lanuzalorenzo@gmail.com  
-LinkedIn: https://linkedin.com/in/lanuzalorenzo
+Email: **lanuzalorenzo@gmail.com**  
+LinkedIn: **https://linkedin.com/in/lanuzalorenzo**
 
 ---
 
 ## ⚖️ Aviso Legal
+
 Este repositorio tiene fines educativos y de portfolio profesional.  
-No contiene información sensible, confidencial ni perteneciente a ninguna empresa.
+No contiene información sensible, confidencial ni perteneciente a ninguna empresa.  
+Las configuraciones, scripts y ejemplos incluidos son demostraciones técnicas y no representan sistemas reales de producción.  
+El uso del contenido se realiza bajo la responsabilidad del usuario.
 
 ---
 
 ## 🔐 Licencia
-Este proyecto está bajo licencia MIT.  
-Consulta el archivo LICENSE para más información.
+
+Este proyecto está bajo licencia **MIT**.  
+Consulta el archivo `LICENSE` para más información.
