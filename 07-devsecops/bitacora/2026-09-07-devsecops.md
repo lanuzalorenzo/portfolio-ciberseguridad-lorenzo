@@ -1,15 +1,15 @@
-# Bitácora — DevSecOps módulo 4
+# Bitácora — DevSecOps
 
 ## 📘 Proyecto
-Portfolio de Ciberseguridad — Módulo 04: DevSecOps
+Portfolio de Ciberseguridad — Módulo 07: DevSecOps
 
 ## 🎯 Objetivo del día
-Definir la estructura del módulo 4, revisar la práctica de protección de la rama main, establecer la política DevSecOps mínima y reorganizar el contenido para que siga la nomenclatura oficial del portfolio.
+Definir la estructura del módulo 07, revisar la práctica de protección de la rama main, establecer la política DevSecOps mínima y reorganizar el contenido para que siga la nomenclatura oficial del portfolio.
 
 ---
 
 ## 🛠 Trabajo realizado
-- Revisión del contenido existente del módulo 4 y detección de que solo incluía la práctica de protección de la rama main.
+- Revisión del contenido existente del módulo 07 y detección de que solo incluía la práctica de protección de la rama main.
 - Decisión de ampliar el módulo para incluir una política DevSecOps mínima y obligatoria.
 - Revisión completa del documento `branch-protection.md` y reescritura siguiendo el formato oficial del portfolio.
 - Eliminación de narrativa temporal y contenido no técnico en la práctica.
@@ -20,7 +20,7 @@ Definir la estructura del módulo 4, revisar la práctica de protección de la r
   - `docs/`
 - Confirmación de que no se utilizarán evidencias en este módulo.
 - Renombrado conceptual de la aceleradora a `devsecops-policy` para seguir la nomenclatura técnica del repositorio.
-- Revisión y actualización del README del módulo 4 para reflejar la estructura final.
+- Revisión y actualización del README del módulo 07 para reflejar la estructura final.
 - Establecimiento de la norma definitiva para las bitácoras: **una bitácora por día**, con fecha en el nombre del fichero.
 
 ---
@@ -42,7 +42,7 @@ Definir la estructura del módulo 4, revisar la práctica de protección de la r
 ---
 
 ## 🛠 Soluciones aplicadas
-- Reestructuración completa del módulo 4.
+- Reestructuración completa del módulo 07.
 - Reescritura del documento de protección de la rama main.
 - Eliminación de carpetas conceptuales y evidencias innecesarias.
 - Definición de la política DevSecOps como práctica técnica.
