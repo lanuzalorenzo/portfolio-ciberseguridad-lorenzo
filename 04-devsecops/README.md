@@ -1,37 +1,79 @@
 # 🛡️ 04-devsecops
 
-**Estado:** 🟢 Finalizado
-
 ## 🧾 Descripción
-Este módulo introduce prácticas DevSecOps orientadas a mejorar la seguridad, trazabilidad y control del ciclo de vida del código en los repositorios del portfolio.  
-El enfoque principal es aplicar medidas que garanticen integridad en la rama `main`, evitando cambios no revisados y asegurando que todo el código pasa por procesos de validación.
+Este módulo implementa una aceleradora DevSecOps orientada a garantizar la integridad, trazabilidad y seguridad del ciclo de vida del código en todos los repositorios del portfolio.  
+Incluye la protección de la rama `main`, la obligatoriedad de Pull Requests, la revisión de cambios y la aplicación de reglas de seguridad que evitan modificaciones no controladas.
+
+---
 
 ## 🎯 Objetivos del módulo
-- Implementar controles de seguridad en el flujo de trabajo Git.  
-- Proteger la rama `main` en todos los repositorios.  
-- Garantizar trazabilidad y aprobación en cada cambio.  
-- Unificar la política de seguridad en el portfolio.  
-- Documentar la práctica siguiendo el formato del portfolio.
+- Establecer una política DevSecOps mínima y obligatoria para todos los repositorios del portfolio.
+- Proteger la rama `main` mediante reglas de seguridad.
+- Garantizar que todo cambio pasa por Pull Request y revisión.
+- Evitar push directo y force‑push en ramas protegidas.
+- Documentar la aceleradora DevSecOps de forma clara y reutilizable.
 
-## 🗂️ Práctica incluida
-- **branch-protection.md**  
-  Práctica donde se configuran reglas de protección de la rama `main` en GitHub para asegurar integridad y control de versiones.
+---
 
-## 🧩 Resumen del trabajo realizado
-Durante este módulo se ha aplicado una política de protección de la rama `main` en todos los repositorios del portfolio.  
-Esta medida DevSecOps garantiza que:
+## 🗂️ Estructura del módulo
+- `branch-protection.md`  
+  Documento técnico donde se describe la configuración de protección de la rama `main`, incluyendo reglas, validaciones y comportamiento esperado.
 
-- ningún cambio llega a `main` sin revisión,  
-- todo el código pasa por Pull Request,  
-- existe trazabilidad y aprobación,  
-- se evita el push directo y el force‑push,  
-- la rama principal queda protegida frente a errores humanos.
+- `aceleradora-devsecops.md`  
+  Documento que recoge la aceleradora DevSecOps aplicada al portfolio: políticas, requisitos, flujo de trabajo y controles de seguridad.
 
-La práctica se ha documentado en el archivo correspondiente y el módulo queda cerrado.
+- `bitacora/`  
+  Registros técnicos del trabajo realizado durante la implementación de la aceleradora.
 
-## 🏁 Conclusiones
-El módulo 4 establece una base DevSecOps sólida para el portfolio, asegurando que el código evoluciona con controles de seguridad y revisión obligatoria.  
-Con la protección de la rama `main` aplicada y documentada, el módulo queda oficialmente finalizado.
+- `README.md`  
+  Documento principal del módulo.
+
+---
+
+## ⚙️ Requisitos
+- Cuenta de GitHub con permisos administrativos sobre los repositorios del portfolio.
+- Conocimiento básico de:
+  - Pull Requests  
+  - Branch protection rules  
+  - Code review  
+  - GitHub Actions (opcional)
+
+---
+
+## 🧪 Alcance del módulo
+Este módulo cubre:
+
+- Protección de la rama `main`.  
+- Reglas de seguridad aplicadas a repositorios del portfolio.  
+- Flujo obligatorio de Pull Requests.  
+- Revisión y aprobación de cambios.  
+- Trazabilidad completa del código.  
+- Política DevSecOps mínima y unificada.
+
+No se abordan aquí temas de CI/CD, pipelines, análisis de código, ni automatización avanzada.
+
+---
+
+## 🧩 Prácticas incluidas
+### `branch-protection.md`
+Configuración de reglas de protección de la rama `main`.
+
+### `aceleradora-devsecops.md`
+Política DevSecOps aplicada a todos los repositorios del portfolio.
+
+---
+
+## ✍️ Autor
+Lorenzo Lanuza
+
+---
+
+## ⚖️ Aviso Legal
+Este módulo contiene prácticas educativas y de laboratorio realizadas en repositorios personales.  
+No incluye información sensible ni perteneciente a ninguna organización real.  
+Las configuraciones y ejemplos son demostraciones técnicas con fines formativos.
+
+---
 
 ## 📜 Licencia
 MIT
