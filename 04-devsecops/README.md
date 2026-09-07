@@ -1,29 +1,32 @@
 # 🛡️ 04-devsecops
 
 ## 🧾 Descripción
-Este módulo implementa una aceleradora DevSecOps orientada a garantizar la integridad, trazabilidad y seguridad del ciclo de vida del código en todos los repositorios del portfolio.  
-Incluye la protección de la rama `main`, la obligatoriedad de Pull Requests, la revisión de cambios y la aplicación de reglas de seguridad que evitan modificaciones no controladas.
+Este módulo implementa una política DevSecOps mínima y obligatoria para todos los repositorios del portfolio.  
+Incluye la protección de la rama `main`, la definición de reglas de seguridad, la obligatoriedad de Pull Requests y la documentación de un flujo de trabajo seguro y trazable.
 
 ---
 
 ## 🎯 Objetivos del módulo
-- Establecer una política DevSecOps mínima y obligatoria para todos los repositorios del portfolio.
+- Establecer una política DevSecOps unificada para todos los repositorios.
 - Proteger la rama `main` mediante reglas de seguridad.
 - Garantizar que todo cambio pasa por Pull Request y revisión.
 - Evitar push directo y force‑push en ramas protegidas.
-- Documentar la aceleradora DevSecOps de forma clara y reutilizable.
+- Documentar la política DevSecOps de forma clara, técnica y reutilizable.
 
 ---
 
 ## 🗂️ Estructura del módulo
-- `branch-protection.md`  
-  Documento técnico donde se describe la configuración de protección de la rama `main`, incluyendo reglas, validaciones y comportamiento esperado.
+- `branch-protection/`  
+  Práctica técnica donde se documenta la configuración de protección de la rama `main`.
 
-- `aceleradora-devsecops.md`  
-  Documento que recoge la aceleradora DevSecOps aplicada al portfolio: políticas, requisitos, flujo de trabajo y controles de seguridad.
+- `devsecops-policy/`  
+  Política DevSecOps aplicada al portfolio: reglas, flujo de PR y controles de seguridad.
 
 - `bitacora/`  
-  Registros técnicos del trabajo realizado durante la implementación de la aceleradora.
+  Registros técnicos del trabajo realizado durante la implementación del módulo.
+
+- `docs/`  
+  Documentación conceptual, buenas prácticas y referencias relacionadas con DevSecOps.
 
 - `README.md`  
   Documento principal del módulo.
@@ -50,15 +53,15 @@ Este módulo cubre:
 - Trazabilidad completa del código.  
 - Política DevSecOps mínima y unificada.
 
-No se abordan aquí temas de CI/CD, pipelines, análisis de código, ni automatización avanzada.
+No se abordan aquí temas de CI/CD, pipelines, análisis de código ni automatización avanzada.
 
 ---
 
 ## 🧩 Prácticas incluidas
-### `branch-protection.md`
+### `branch-protection/branch-protection.md`
 Configuración de reglas de protección de la rama `main`.
 
-### `aceleradora-devsecops.md`
+### `devsecops-policy/devsecops-policy.md`
 Política DevSecOps aplicada a todos los repositorios del portfolio.
 
 ---
