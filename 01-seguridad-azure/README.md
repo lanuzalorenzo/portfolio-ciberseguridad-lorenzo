@@ -40,5 +40,13 @@ El código se encuentra en un repositorio independiente, pero la actividad forma
 El módulo 1 queda oficialmente cerrado.  
 El entorno está preparado para continuar con seguridad de identidad, auditoría y políticas avanzadas en módulos posteriores.
 
-## 📜 Licencia
-MIT
+## ⚖️ Aviso Legal
+
+Este módulo contiene prácticas educativas y de laboratorio.  
+No incluye información sensible ni perteneciente a ninguna empresa.  
+Las configuraciones y ejemplos son demostraciones técnicas en entorno controlado.
+
+## 🔐 Licencia
+
+Este módulo se distribuye bajo licencia **MIT**.  
+Consulta el archivo `LICENSE` en la raíz del repositorio para más información.
