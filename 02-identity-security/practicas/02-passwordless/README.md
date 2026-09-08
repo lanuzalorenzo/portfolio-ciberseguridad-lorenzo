@@ -1,27 +1,46 @@
-# 🔐 Práctica 02 — Autenticación Passwordless (FIDO2 / Authenticator / Windows Hello)
+# Ejercicio 02 – Passwordless Authentication en Microsoft Entra ID
 
-## 🎯 Objetivo
-Configurar métodos de autenticación sin contraseña en Microsoft Entra ID para mejorar la seguridad y reducir la dependencia de credenciales tradicionales.
-
-## 🛠 Métodos configurados
+## Objetivo
+Configurar y validar métodos de autenticación passwordless en Microsoft Entra ID:
 - Microsoft Authenticator (passwordless)
+- Passkey / FIDO2
 - Windows Hello for Business
-- Llaves de seguridad FIDO2
+- Usuario nativo del tenant para pruebas
 
-## 🧭 Procedimiento
-1. Acceder a Microsoft Entra ID.
-2. Ir a **Protection → Authentication methods**.
-3. Habilitar:
-   - Microsoft Authenticator (modo passwordless)
-   - FIDO2 Security Keys
-   - Windows Hello for Business
-4. Registrar los métodos desde **My Sign-Ins**.
-5. Validar inicio de sesión sin contraseña.
+## Configuración aplicada
+### Microsoft Authenticator
+- Enable: On
+- Target: All users
+- Passwordless: Enabled
 
-## 🔍 Validaciones
-- Inicio de sesión passwordless con Authenticator.
-- Registro y uso de llave FIDO2.
-- Inicio de sesión con Windows Hello.
+### Passkey (FIDO2)
+- Enable: On
+- Include: All users
+- Allow self-service: Yes
+- Enforce attestation: No
 
-## 🧩 Conclusiones
-Passwordless elimina la contraseña como vector de ataque y mejora la experiencia del usuario.
+### Windows Hello for Business
+- Enable: On
+- Include: All users
+
+## Usuario de prueba
+Se crea un usuario nativo del tenant:
+- UPN: test@lanuzalorenzooutlook.onmicrosoft.com
+- Tipo: Member
+- Contraseña temporal
+
+## Registro de métodos
+El usuario accede a https://mysignins.microsoft.com/security-info y registra:
+- MFA (Microsoft Authenticator)
+- Passwordless en Authenticator
+- Windows Hello (opcional)
+- Llave FIDO2 (opcional)
+
+## Validación
+El usuario puede iniciar sesión sin contraseña usando:
+- Authenticator passwordless
+- Windows Hello
+- FIDO2 (si aplica)
+
+## Resultado
+Ejercicio completado con éxito. Passwordless funcional en usuario nativo del tenant.
