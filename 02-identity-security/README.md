@@ -1,95 +1,142 @@
-# 🔐 02 — Identity Security en Azure Entra ID
+# 🛡️ Módulo 02 — Identity Security en Azure Entra ID
 
-Este módulo recoge el trabajo práctico dedicado a la **seguridad de identidad en Azure Entra ID**, incluyendo la implementación de **MFA**, el diseño y prueba de **Conditional Access**, la **auditoría de actividad** y los procedimientos de **recuperación** en un tenant de laboratorio.
-
-El objetivo es establecer una base sólida de control de acceso y protección de identidad aplicable a entornos reales, documentada de forma técnica, clara y atemporal.
-
----
-
-## 🧭 Objetivos del módulo
-
-- Implementar y validar **MFA** para cuentas de laboratorio.  
-- Diseñar y probar políticas de **Conditional Access**.  
-- Auditar inicios de sesión y actividad administrativa.  
-- Documentar **playbooks de recuperación** y rollback.  
-- Organizar evidencias y documentación técnica por áreas (MFA, CA, auditoría, recuperación).
+Este módulo aborda la seguridad de identidad en Azure Entra ID, cubriendo autenticación, recuperación de cuentas, gestión de privilegios, control de acceso y eliminación de secretos en claro.  
+Forma parte del portfolio de ciberseguridad y se integra con los módulos de seguridad cloud y automatización.
 
 ---
 
-## 🧩 Áreas del módulo
-
-Este módulo se estructura en cuatro áreas principales, cada una con su documentación y evidencias:
-
-### **1. MFA (Multi-Factor Authentication)**  
-- Configuración de MFA en Entra ID.  
-- Métodos de autenticación.  
-- Pruebas de acceso y bloqueo.  
-- Documentación técnica y evidencias.
-
-### **2. Conditional Access**  
-- Diseño de políticas basadas en condiciones.  
-- Ubicación, riesgo, dispositivo, aplicación, sesión.  
-- Pruebas controladas en tenant de laboratorio.  
-- Plantillas y resultados de las pruebas.
-
-### **3. Auditoría de Identidad**  
-- Revisión de inicios de sesión.  
-- Análisis de actividad administrativa.  
-- Consultas y logs relevantes.  
-- Evidencias y análisis técnico.
-
-### **4. Recovery / Rollback**  
-- Procedimientos de recuperación ante bloqueos.  
-- Playbooks para revertir configuraciones.  
-- Buenas prácticas de seguridad y control.
+## 📘 Descripción del módulo
+El módulo se centra en proteger identidades, controlar accesos y asegurar credenciales dentro de Azure Entra ID.  
+Incluye prácticas reales aplicadas en entornos cloud y documentadas de forma técnica y atemporal.
 
 ---
 
-## 🗂️ Estructura del módulo
-
-Este módulo contiene:
-
-- `bitacora/` — entradas técnicas y resúmenes del trabajo realizado.  
-- `mfa/` — documentación y evidencias de MFA.  
-- `conditional-access/` — pruebas y plantillas de políticas CA.  
-- `auditoria/` — consultas, logs y análisis de actividad.  
-- `recovery/` — procedimientos y playbooks de rollback.  
-- `README.md` — documento principal del módulo.
+## 🎯 Objetivos del módulo
+- Implementar autenticación segura (MFA, Passwordless).  
+- Configurar recuperación de cuentas (SSPR).  
+- Gestionar privilegios elevados con PIM.  
+- Diseñar roles y permisos con RBAC.  
+- Proteger secretos y claves con Key Vault.  
+- Eliminar secretos en aplicaciones mediante Managed Identities.  
+- Documentar cada ejercicio siguiendo el flujo estándar del portfolio.
 
 ---
 
-## ⚙️ Requisitos
+## 📚 Contenido del módulo
+Bloques conceptuales y prácticos según GUION.md:
 
-- Tenant de laboratorio en Azure Entra ID.  
-- Permisos administrativos adecuados (Global Administrator o equivalente).  
-- Herramientas recomendadas:  
-  - Azure Portal (entra.microsoft.com)  
-  - Microsoft Graph PowerShell  
-  - Azure CLI  
+- Autenticación multifactor (MFA)  
+- Métodos Passwordless  
+- Recuperación de cuentas (SSPR)  
+- Privileged Identity Management (PIM)  
+- Roles y permisos (RBAC)  
+- Key Vault y gestión de secretos  
+- Managed Identities  
+- Auditoría de identidad  
+- Buenas prácticas de acceso  
+- Ciclo de vida de identidades  
 
 ---
 
-## 🧪 Alcance del módulo
+## 🧪 Ejercicios del módulo
 
-Este módulo se centra en:
+```
+02-identity-security/
+    practicas/
+        01-mfa/
+            README.md
+            docs/
+                mfa-documento-tecnico.md
+        02-passwordless/
+            README.md
+            docs/
+                passwordless-documento-tecnico.md
+        03-sspr/
+            README.md
+            docs/
+                sspr-documento-tecnico.md
+        04-pim/
+            README.md
+            docs/
+                pim-documento-tecnico.md
+        05-rbac/
+            README.md
+            docs/
+                rbac-documento-tecnico.md
+        06-key-vault/
+            README.md
+            docs/
+                key-vault-documento-tecnico.md
+        07-managed-identities/
+            README.md
+            docs/
+                managed-identities-documento-tecnico.md
+```
 
-- Protección de identidad mediante MFA y políticas de acceso.  
-- Control de acceso basado en condiciones.  
-- Visibilidad y trazabilidad de actividad administrativa.  
-- Capacidad de recuperación ante configuraciones erróneas.
+### ✔ Estructura de cada ejercicio
+- `README.md` → resumen del ejercicio  
+- `docs/ejercicio-configuracion.md` → documento técnico siguiendo `technical-doc-template.md`
 
-No se abordan aquí temas de seguridad de red, hardening de sistemas ni protección de datos.
+---
+
+## 📝 Bitácoras del módulo
+
+```
+02-identity-security/
+    bitacora/
+        YYYY-MM-DD-titulo-del-dia.md
+```
+
+Formato del archivo:
+
+```
+YYYY-MM-DD-titulo-del-dia.md
+```
+
+Contenido según `bitacora-template.md`.
+
+---
+
+## 🗂️ Arquitectura del módulo
+
+```
+02-identity-security/
+    README.md
+    bitacora/
+    practicas/
+```
+
+❗ No se crean carpetas `lab/`  
+❗ No se crean carpetas `evidencias/`  
+❗ No se incluyen capturas en el módulo  
+❗ No se incluyen capturas en los ejercicios  
+
+---
+
+## 🔧 Flujo de trabajo del módulo
+1. Crear ejercicios según GUION.md  
+2. Para cada ejercicio:
+   - Crear script de estructura  
+   - Crear documento técnico  
+   - Crear README del ejercicio  
+   - Crear mensaje de commit  
+3. Al final del día:
+   - Crear bitácora del día  
+   - Crear mensaje de commit  
 
 ---
 
 ## ⚖️ Aviso Legal
-
-Este módulo contiene prácticas educativas y de laboratorio realizadas en un entorno controlado.  
-No incluye información sensible ni perteneciente a ninguna organización real.  
-Las configuraciones y ejemplos son demostraciones técnicas diseñadas exclusivamente para fines formativos.
+Este módulo contiene prácticas educativas y de laboratorio.  
+No incluye información sensible ni perteneciente a ninguna empresa.  
+Las configuraciones y ejemplos son demostraciones técnicas en entorno controlado.
 
 ---
 
-## 📜 Licencia
+## 🔐 Licencia
+Este módulo se distribuye bajo licencia MIT.  
+Consulta el archivo LICENSE en la raíz del repositorio para más información.
 
-MIT
+y te lo convierto en el **Set-Content** listo para pegar en PowerShell y sobrescribir tu README del módulo 02.
+
+Después de eso, hacemos el **post de LinkedIn**.
