@@ -136,7 +136,3 @@ Las configuraciones y ejemplos son demostraciones técnicas en entorno controlad
 ## 🔐 Licencia
 Este módulo se distribuye bajo licencia MIT.  
 Consulta el archivo LICENSE en la raíz del repositorio para más información.
-
-y te lo convierto en el **Set-Content** listo para pegar en PowerShell y sobrescribir tu README del módulo 02.
-
-Después de eso, hacemos el **post de LinkedIn**.
