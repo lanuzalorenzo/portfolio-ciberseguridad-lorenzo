@@ -1,100 +1,74 @@
-# ??? Módulo 03 — Auditorías Cloud
+# ğŸ›¡ï¸ MÃ³dulo 03 â€” AuditorÃ­as Cloud
 
-Este módulo aborda la auditoría de suscripciones y recursos en entornos cloud, revisando configuraciones, permisos, políticas y controles de seguridad.
-Forma parte del portfolio de ciberseguridad y se integra con los módulos de seguridad de identidad y gobernanza cloud.
+## ğŸ“˜ DescripciÃ³n del mÃ³dulo  
+Este mÃ³dulo aborda la auditorÃ­a de suscripciones y recursos en entornos cloud, revisando configuraciones, permisos, polÃ­ticas y controles de seguridad. Forma parte del portfolio de ciberseguridad y se integra con los mÃ³dulos de seguridad de identidad y gobernanza cloud.
 
----
+## ğŸ¯ Objetivos del mÃ³dulo  
+- Auditar suscripciones cloud.  
+- Identificar riesgos y configuraciones inseguras.  
+- Revisar roles, permisos y accesos crÃ­ticos.  
+- Evaluar recursos sensibles y su configuraciÃ³n.  
+- Documentar hallazgos y proponer mejoras.  
+- Aplicar buenas prÃ¡cticas de seguridad cloud.
 
-## ?? Descripción del módulo
-El módulo se centra en evaluar el estado de seguridad de una suscripción cloud, identificar configuraciones inseguras, revisar accesos críticos y documentar hallazgos de forma técnica y atemporal.
+## ğŸ“š Contenido del mÃ³dulo  
+- AuditorÃ­a de suscripciones  
+- AuditorÃ­a de recursos crÃ­ticos  
+- EvaluaciÃ³n de configuraciones inseguras  
+- Hardening cloud  
+- Informes de auditorÃ­a  
+- Buenas prÃ¡cticas de seguridad cloud
 
----
-
-## ?? Objetivos del módulo
-- Auditar suscripciones cloud.
-- Identificar riesgos y configuraciones inseguras.
-- Revisar roles, permisos y accesos críticos.
-- Evaluar recursos sensibles y su configuración.
-- Documentar hallazgos y proponer mejoras.
-- Aplicar buenas prácticas de seguridad cloud.
-
----
-
-## ?? Contenido del módulo
-Bloques conceptuales y prácticos según GUION.md:
-
-- Auditoría de suscripciones
-- Auditoría de recursos críticos
-- Evaluación de configuraciones inseguras
-- Hardening cloud
-- Informes de auditoría
-- Buenas prácticas de seguridad cloud
-
----
-
-## ?? Ejercicios del módulo
-
+## ğŸ§ª Ejercicios del mÃ³dulo  
+```
 03-cloud-audits/
     practicas/
         01-auditoria-suscripciones/
             README.md
             docs/
                 auditoria-suscripciones-documento-tecnico.md
+```
 
-### ? Estructura de cada ejercicio
-- README.md ? resumen del ejercicio
-- docs/documento-tecnico.md ? documento técnico siguiendo technical-doc-template.md
-
----
-
-## ?? Bitácoras del módulo
-
+## ğŸ“ BitÃ¡coras del mÃ³dulo  
+```
 03-cloud-audits/
     bitacora/
         YYYY-MM-DD-titulo-del-dia.md
+```
 
-Formato del archivo:
+Formato del archivo:  
+`YYYY-MM-DD-titulo-del-dia.md`  
+Contenido segÃºn `bitacora-template.md`.
 
-YYYY-MM-DD-titulo-del-dia.md
-
-Contenido según bitacora-template.md.
-
----
-
-## ??? Arquitectura del módulo
-
+## ğŸ—‚ï¸ Arquitectura del mÃ³dulo  
+```
 03-cloud-audits/
     README.md
     bitacora/
     practicas/
+```
 
-? No se crean carpetas lab/
-? No se crean carpetas evidencias/
-? No se incluyen capturas en el módulo
-? No se incluyen capturas en los ejercicios
+- No se crean carpetas `lab/`  
+- No se crean carpetas `evidencias/`  
+- No se incluyen capturas en el mÃ³dulo  
+- No se incluyen capturas en los ejercicios  
 
----
+## ğŸ”§ Flujo de trabajo del mÃ³dulo  
+1. Crear ejercicios segÃºn GUION.md  
+2. Para cada ejercicio:  
+   - Crear script de estructura  
+   - Crear documento tÃ©cnico  
+   - Crear README del ejercicio  
+   - Crear mensaje de commit  
+3. Al final del dÃ­a:  
+   - Crear bitÃ¡cora del dÃ­a  
+   - Crear mensaje de commit  
 
-## ?? Flujo de trabajo del módulo
-1. Crear ejercicios según GUION.md
-2. Para cada ejercicio:
-   - Crear script de estructura
-   - Crear documento técnico
-   - Crear README del ejercicio
-   - Crear mensaje de commit
-3. Al final del día:
-   - Crear bitácora del día
-   - Crear mensaje de commit
+## âš–ï¸ Aviso Legal  
+Este mÃ³dulo contiene prÃ¡cticas educativas y de laboratorio.  
+No incluye informaciÃ³n sensible ni perteneciente a ninguna empresa.  
+Las configuraciones y ejemplos son demostraciones tÃ©cnicas en entorno controlado.
 
----
-
-## ?? Aviso Legal
-Este módulo contiene prácticas educativas y de laboratorio.
-No incluye información sensible ni perteneciente a ninguna empresa.
-Las configuraciones y ejemplos son demostraciones técnicas en entorno controlado.
-
----
-
-## ?? Licencia
-Este módulo se distribuye bajo licencia MIT.
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+## ğŸ” Licencia  
+Este documento se distribuye bajo licencia MIT.  
+Consulta el archivo LICENSE en la raÃ­z del repositorio para mÃ¡s informaciÃ³n.
