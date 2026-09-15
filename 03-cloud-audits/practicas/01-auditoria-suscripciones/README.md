@@ -1,32 +1,25 @@
-# ?? Práctica 01 — Auditoría de suscripciones
+# ğŸ§ª PrÃ¡ctica 01 â€” AuditorÃ­a de suscripciones
 
-Esta práctica consiste en realizar una auditoría completa de una suscripción cloud, revisando configuraciones, permisos, roles, recursos críticos y políticas de seguridad.  
-El objetivo es identificar riesgos, configuraciones inseguras y oportunidades de mejora.
+## ğŸ¯ Objetivo  
+Realizar una auditorÃ­a inicial de suscripciones cloud, identificando configuraciones relevantes, permisos, roles asignados y posibles riesgos de seguridad asociados a la gestiÃ³n de la suscripciÃ³n.
 
----
+## ğŸ”§ Pasos  
+1. Revisar la suscripciÃ³n y sus propiedades principales.  
+2. Identificar roles asignados y permisos crÃ­ticos.  
+3. Analizar configuraciones de seguridad relevantes.  
+4. Documentar hallazgos en el informe tÃ©cnico.  
 
-## ?? Objetivo de la práctica
-- Evaluar el estado de seguridad de una suscripción cloud.
-- Identificar configuraciones inseguras.
-- Revisar roles, permisos y accesos críticos.
-- Documentar hallazgos y proponer mejoras.
+## ğŸ“ Evidencias  
+DocumentaciÃ³n tÃ©cnica generada en `docs/` con los hallazgos, validaciones y configuraciones revisadas durante la auditorÃ­a.
 
----
+## ğŸ“˜ Conclusiones  
+Resumen de los hallazgos principales, riesgos detectados y recomendaciones iniciales para mejorar la seguridad de la suscripciÃ³n.
 
-## ?? Pasos de la práctica
-1. Revisar configuración general de la suscripción.
-2. Analizar roles y permisos asignados.
-3. Identificar accesos privilegiados.
-4. Evaluar recursos críticos y su configuración.
-5. Detectar configuraciones inseguras.
-6. Documentar hallazgos en el documento técnico.
+## âš–ï¸ Aviso Legal  
+Este documento describe prÃ¡cticas realizadas en un entorno de laboratorio.  
+No contiene informaciÃ³n sensible ni perteneciente a ninguna organizaciÃ³n real.  
+Las configuraciones y ejemplos son demostraciones tÃ©cnicas con fines educativos.
 
----
-
-## ?? Evidencias
-Las evidencias se documentan exclusivamente en el archivo técnico dentro de docs/.
-
----
-
-## ?? Conclusiones
-Resumen final del estado de la suscripción, riesgos detectados y recomendaciones de mejora.
+## ğŸ” Licencia  
+Este documento se distribuye bajo licencia MIT.  
+Consulta el archivo LICENSE en la raÃ­z del repositorio para mÃ¡s informaciÃ³n.
