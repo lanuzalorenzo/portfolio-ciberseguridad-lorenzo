@@ -1,90 +1,89 @@
-# ?? Informe técnico — Auditoría de suscripciones
+# ğŸ” Informe tÃ©cnico â€” AuditorÃ­a de suscripciones
 
-## ?? Contexto
-Suscripción cloud de laboratorio.  
-Se requiere realizar una auditoría completa de configuración, permisos, roles, recursos críticos y políticas de seguridad.
-
----
-
-## ?? Objetivo
-Evaluar el estado de seguridad de la suscripción, identificar configuraciones inseguras, revisar accesos críticos y documentar hallazgos de forma técnica y atemporal.
+## ğŸ“˜ Proyecto  
+AuditorÃ­a de suscripciÃ³n cloud de laboratorio.  
+Se requiere revisar configuraciÃ³n, permisos, roles, recursos crÃ­ticos y polÃ­ticas de seguridad.
 
 ---
 
-## ?? Trabajo realizado
+## ğŸ¯ Objetivo  
+Evaluar el estado de seguridad de la suscripciÃ³n, identificar configuraciones inseguras, revisar accesos crÃ­ticos y documentar hallazgos de forma tÃ©cnica y atemporal.
 
-1. **Revisión de configuración general de la suscripción**  
-   - Análisis de propiedades globales.  
-   - Identificación de configuraciones por defecto y parámetros críticos.
+---
 
-2. **Análisis de roles y permisos asignados**  
-   - Revisión de roles RBAC.  
-   - Identificación de asignaciones con privilegios elevados.  
-   - Validación de accesos heredados.
+## ğŸ›  Trabajo realizado
 
-3. **Identificación de accesos privilegiados**  
-   - Detección de cuentas con permisos administrativos.  
-   - Revisión de grupos con roles críticos.
+1. **RevisiÃ³n de configuraciÃ³n general de la suscripciÃ³n**  
+   - AnÃ¡lisis de propiedades globales.  
+   - IdentificaciÃ³n de configuraciones por defecto y parÃ¡metros crÃ­ticos.
 
-4. **Evaluación de recursos críticos**  
-   - Análisis de recursos sensibles (almacenamiento, claves, identidades, redes).  
-   - Revisión de configuraciones de seguridad aplicadas.
+2. **AnÃ¡lisis de roles y permisos asignados**  
+   - RevisiÃ³n de roles RBAC.  
+   - IdentificaciÃ³n de asignaciones con privilegios elevados.  
+   - ValidaciÃ³n de accesos heredados.
 
-5. **Detección de configuraciones inseguras**  
-   - Identificación de parámetros débiles o no recomendados.  
-   - Revisión de políticas aplicadas y su cumplimiento.
+3. **IdentificaciÃ³n de accesos privilegiados**  
+   - DetecciÃ³n de cuentas con permisos administrativos.  
+   - RevisiÃ³n de grupos con roles crÃ­ticos.
 
-6. **Documentación de hallazgos**  
-   - Registro técnico de cada hallazgo.  
-   - Clasificación por criticidad.  
+4. **EvaluaciÃ³n de recursos crÃ­ticos**  
+   - AnÃ¡lisis de recursos sensibles (almacenamiento, claves, identidades, redes).  
+   - RevisiÃ³n de configuraciones de seguridad aplicadas.
+
+5. **DetecciÃ³n de configuraciones inseguras**  
+   - IdentificaciÃ³n de parÃ¡metros dÃ©biles o no recomendados.  
+   - RevisiÃ³n de polÃ­ticas aplicadas y su cumplimiento.
+
+6. **DocumentaciÃ³n de hallazgos**  
+   - Registro tÃ©cnico de cada hallazgo.  
+   - ClasificaciÃ³n por criticidad.  
    - Propuesta de mejoras.
 
 ---
 
-## ?? Validaciones realizadas
+## ğŸ” Validaciones realizadas  
 - Roles y permisos revisados.  
 - Accesos privilegiados identificados.  
-- Recursos críticos evaluados.  
+- Recursos crÃ­ticos evaluados.  
 - Configuraciones inseguras detectadas.  
 - Hallazgos documentados correctamente.
 
 ---
 
-## ?? Problemas encontrados
+## âš ï¸ Problemas encontrados  
 - Roles con privilegios excesivos.  
 - Recursos sin configuraciones de seguridad recomendadas.  
-- Falta de políticas de cumplimiento en algunos servicios.
+- Falta de polÃ­ticas de cumplimiento en algunos servicios.
 
 ---
 
-## ?? Soluciones aplicadas
-- Recomendación de ajuste de roles.  
-- Propuesta de endurecimiento de recursos críticos.  
-- Sugerencia de aplicación de políticas de seguridad.
+## ğŸ›  Soluciones aplicadas  
+- RecomendaciÃ³n de ajuste de roles.  
+- Propuesta de endurecimiento de recursos crÃ­ticos.  
+- Sugerencia de aplicaciÃ³n de polÃ­ticas de seguridad.
 
 ---
 
-## ?? Implicaciones de seguridad
-- Reducción de superficie de ataque.  
-- Mejora del control de accesos.  
-- Alineación con buenas prácticas de seguridad cloud.  
-- Identificación de riesgos que requieren mitigación.
+## ğŸ§  Aprendizajes clave  
+- Importancia de revisar roles heredados.  
+- Necesidad de aplicar polÃ­ticas de seguridad consistentes.  
+- Riesgos asociados a configuraciones por defecto.
 
 ---
 
-## ?? Recursos útiles
-- Documentación oficial del proveedor cloud.  
-- Guías de buenas prácticas de seguridad.  
-- Referencias de auditoría cloud.
+## ğŸ“ Recursos Ãºtiles  
+- DocumentaciÃ³n oficial del proveedor cloud.  
+- GuÃ­as de buenas prÃ¡cticas de seguridad.  
+- Referencias de auditorÃ­a cloud.
 
 ---
 
-## ?? Comandos utilizados (opcional)
-N/A — Auditoría realizada desde consola y paneles de administración.
+## âš™ï¸ Comandos utilizados  
+N/A â€” AuditorÃ­a realizada desde consola y paneles de administraciÃ³n.
 
 ---
 
-## ?? Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.  
-No contiene información sensible ni perteneciente a ninguna organización real.  
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+## âš–ï¸ Aviso Legal  
+Este documento describe prÃ¡cticas realizadas en un entorno de laboratorio.  
+No contiene informaciÃ³n sensible ni perteneciente a ninguna organizaciÃ³n real.  
+Las configuraciones y ejemplos son demostraciones tÃ©cnicas con fines educativos.
