@@ -1,64 +1,61 @@
-# ?? Bitácora — Inicio del módulo 03: Auditorías Cloud
+# ğŸ“„ BitÃ¡cora â€” Inicio del mÃ³dulo 03: AuditorÃ­as Cloud
 
-## ?? Proyecto
-Portfolio de Ciberseguridad — Módulo 03: Auditorías Cloud
+## ğŸ“˜ Proyecto  
+Portfolio de Ciberseguridad â€” MÃ³dulo 03: AuditorÃ­as Cloud.
 
-## ?? Objetivo
-Reiniciar el módulo 03 desde cero, crear la estructura oficial del módulo y generar la documentación base para comenzar la auditoría de suscripciones cloud.
+## ğŸ¯ Objetivo  
+Reiniciar el mÃ³dulo 03 desde cero, crear la estructura oficial del mÃ³dulo y generar la documentaciÃ³n base para comenzar la auditorÃ­a de suscripciones cloud.
 
----
+## ğŸ›  Trabajo realizado  
 
-## ?? Trabajo realizado
+1. **Reinicio del mÃ³dulo**  
+   - ConfirmaciÃ³n del estÃ¡ndar real del portfolio.  
+   - EliminaciÃ³n conceptual de cualquier estructura previa.
 
-### 1. Reinicio del módulo
-- Confirmación del estándar real del portfolio.
-- Eliminación conceptual de cualquier estructura previa.
+2. **CreaciÃ³n de la estructura oficial**  
+   - Carpeta del mÃ³dulo.  
+   - Carpeta de prÃ¡cticas.  
+   - Carpeta de bitÃ¡coras.  
+   - Carpeta `docs/` dentro de la prÃ¡ctica 01.
 
-### 2. Creación de la estructura oficial
-- Carpeta del módulo.
-- Carpeta de prácticas.
-- Carpeta de bitácoras.
-- Carpeta docs/ dentro de la práctica 01.
+3. **GeneraciÃ³n de documentaciÃ³n base**  
+   - README del mÃ³dulo siguiendo el estÃ¡ndar del mÃ³dulo 02.  
+   - README de la prÃ¡ctica 01.  
+   - Documento tÃ©cnico inicial de la prÃ¡ctica 01.
 
-### 3. Generación de documentación base
-- README del módulo siguiendo el estándar del módulo 02.
-- README de la práctica 01.
-- Documento técnico inicial de la práctica 01.
+4. **ValidaciÃ³n de coherencia**  
+   - RevisiÃ³n de la estructura final del mÃ³dulo.  
+   - ConfirmaciÃ³n del formato de bitÃ¡coras segÃºn el mÃ³dulo 02.
 
-### 4. Validación de coherencia
-- Revisión de la estructura final del módulo.
-- Confirmación del formato de bitácoras según el módulo 02.
+## ğŸ” Validaciones realizadas  
+- Estructura del mÃ³dulo creada correctamente.  
+- DocumentaciÃ³n base generada segÃºn estÃ¡ndar real.  
+- BitÃ¡cora alineada con el estilo del mÃ³dulo 02.  
+- Flujo de trabajo del mÃ³dulo definido.
 
----
+## âš ï¸ Problemas encontrados  
+- El primer intento de bitÃ¡cora no seguÃ­a el estÃ¡ndar real del mÃ³dulo 02.
 
-## ?? Validaciones realizadas
-- Estructura del módulo creada correctamente.
-- Documentación base generada según estándar real.
-- Bitácora alineada con el estilo del módulo 02.
-- Flujo de trabajo del módulo definido.
+## ğŸ›  Soluciones aplicadas  
+- RevisiÃ³n del archivo real del mÃ³dulo 02.  
+- CorrecciÃ³n del formato de la bitÃ¡cora del mÃ³dulo 03.  
+- AlineaciÃ³n completa con el estilo del portfolio.
 
----
+## ğŸ§  Aprendizajes clave  
+- Las bitÃ¡coras deben seguir el estilo del mÃ³dulo 02.  
+- El estÃ¡ndar real del portfolio es la referencia principal.  
+- La estructura del mÃ³dulo 03 ya estÃ¡ lista para auditorÃ­as reales.
 
-## ?? Problemas encontrados
-- El primer intento de bitácora no seguía el estándar real del módulo 02.
+## ğŸ“ Recursos Ãºtiles  
+- BitÃ¡cora MFA (referencia de estilo).  
+- DocumentaciÃ³n oficial de auditorÃ­as cloud.  
+- GUION.md del mÃ³dulo 03.
 
----
+## âš–ï¸ Aviso Legal  
+Este documento describe prÃ¡cticas realizadas en un entorno de laboratorio.  
+No contiene informaciÃ³n sensible ni perteneciente a ninguna organizaciÃ³n real.  
+Las configuraciones y ejemplos son demostraciones tÃ©cnicas con fines educativos.
 
-## ?? Soluciones aplicadas
-- Revisión del archivo real del módulo 02.
-- Corrección del formato de la bitácora del módulo 03.
-- Alineación completa con el estilo del portfolio.
-
----
-
-## ?? Aprendizajes clave
-- Las bitácoras deben seguir el estilo del módulo 02.
-- El estándar real del portfolio es la referencia principal.
-- La estructura del módulo 03 ya está lista para auditorías reales.
-
----
-
-## ?? Recursos útiles
-- Bitácora MFA (referencia de estilo).
-- Documentación oficial de auditorías cloud.
-- GUION.md del módulo 03.
+## ğŸ” Licencia  
+Este documento se distribuye bajo licencia MIT.  
+Consulta el archivo LICENSE en la raÃ­z del repositorio para mÃ¡s informaciÃ³n.
