@@ -1,66 +1,41 @@
-# 🔐 Informe técnico — Validación JWT y JWKS
+# Informe técnico — Validación JWT y JWKS en Entra ID
 
-## 📘 Proyecto
-Módulo 01 — Seguridad en Azure (Autenticación, Autorización y Protección de APIs).
+**Proyecto:** Módulo 01 — Seguridad en Azure (Autenticación, Autorización y Protección de APIs).
 
-## 🎯 Objetivo
-Documentar cómo se valida un token JWT emitido por Azure AD utilizando JWKS y firma RS256, asegurando que la API comprueba la autenticidad y validez del token antes de permitir el acceso.
+## Objetivo
+Documentar el mecanismo por el cual una API valida un token JWT de acceso emitido por Azure AD (v2.0). Se centra en la verificación criptográfica mediante JWKS y la inspección crítica de *claims* específicos de Microsoft Entra ID.
 
-## 🛠 Trabajo realizado
-1. Análisis de la estructura del JWT:
-   - **Header**: algoritmo y tipo de token.
-   - **Payload**: claims relevantes para la API.
-   - **Signature**: firma RS256 generada por Azure AD.
+## Estructura y Validación del Token
 
-2. Identificación de claims críticos:
-   - `iss` (issuer)
-   - `aud` (audience)
-   - `exp` (expiración)
-   - `nbf` / `iat`
-   - `scp` / `roles`
+Un JWT consta de tres partes:
+- **Header**: Especifica el algoritmo (`RS256`) y el identificador de la clave (`kid`) utilizada por Azure AD para firmar el token.
+- **Payload**: Contiene los *claims* de identidad y autorización.
+- **Signature**: La firma asimétrica generada por Azure AD usando su clave privada.
 
-3. Revisión del algoritmo **RS256** utilizado por Azure AD.
+## Proceso de Verificación Criptográfica (JWKS)
 
-4. Documentación del endpoint **JWKS** y su función en la validación de firmas.
+Para evitar la validación con claves estáticas, la API consulta el endpoint oficial Discovery de Azure AD:
+`https://login.microsoftonline.com/<tenant-id>/discovery/v2.0/keys`
 
-5. Explicación del proceso de validación en la API:
-   - Obtención de claves públicas desde JWKS.
-   - Selección de la clave correcta mediante `kid`.
-   - Verificación de la firma RS256.
-   - Validación de claims.
-   - Rechazo de tokens inválidos o caducados.
+1. **Obtención de claves públicas:** La API descarga el JSON Web Key Set (JWKS).
+2. **Selección de la clave:** Se localiza la clave pública que coincide con el claim `kid` del header del JWT.
+3. **Verificación:** Se comprueba que la firma RS256 es válida y que el token no ha sido alterado.
 
-6. Revisión de la rotación automática de claves y su impacto en la API.
+## Validación de Claims Específicos de Azure AD v2.0
 
-## 🔍 Validaciones realizadas
-- Validación correcta de issuer, audiencia, expiración y firma.
-- Confirmación de que la API utiliza JWKS para verificar la firma RS256.
-- Revisión de que el documento es conceptual y atemporal.
-- Verificación de que la API maneja la rotación de claves sin errores.
+La verificación de la firma es solo el primer paso. Para garantizar la seguridad del endpoint, la API debe validar obligatoriamente los siguientes claims:
 
-## ⚠️ Problemas encontrados
-Ninguno. Documento conceptual.
+| Claim | Propósito | Validación Requerida en Azure AD |
+| :--- | :--- | :--- |
+| **`iss`** (Issuer) | Identifica al emisor del token. | Debe coincidir exactamente con el tenant: `https://login.microsoftonline.com/<tenant-id>/v2.0`. |
+| **`aud`** (Audience) | Identifica el destinatario esperado. | Debe ser el Client ID de la API (o su Application ID URI). Rechaza tokens de otras APIs (ej. Microsoft Graph). |
+| **`exp` / `nbf`** | Control de tiempos. | El token no debe haber caducado y su tiempo de "not before" debe ser válido. |
+| **`scp`** (Scopes) | Permisos delegados (cuando hay un usuario). | Verificar que contiene los scopes necesarios (ej. `access_as_user`). |
+| **`roles`** (App Roles) | Permisos de aplicación (daemon/M2M). | En flujos de *Client Credentials*, se validan los roles asignados en lugar de scopes. |
 
-## 🛠 Soluciones aplicadas
-No aplica.
+## Gestión del Ciclo de Vida de Claves
+Microsoft Entra ID rota sus claves de firma de forma periódica y automática por seguridad. La API implementa una estrategia de caché para las respuestas JWKS, pero fuerza una recarga contra el endpoint `/keys` si recibe un token firmado con un `kid` desconocido, garantizando cero interrupciones durante la rotación.
 
-## 🧠 Aprendizajes clave
-- Validar claims es tan importante como validar la firma.
-- JWKS garantiza que la API utiliza claves públicas oficiales.
-- La rotación automática de claves exige consultar JWKS periódicamente.
-- Tokens sin firma válida deben ser rechazados inmediatamente.
-- La API debe validar siempre issuer, audiencia y expiración.
-
-## 📎 Recursos útiles
-- https://learn.microsoft.com/azure/active-directory/develop
-- https://jwt.io
-- https://datatracker.ietf.org/doc/html/rfc7517
-
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.  
-No contiene información sensible ni perteneciente a ninguna organización real.  
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
-
-## 🔐 Licencia
-Este documento se distribuye bajo licencia MIT.  
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+## Recursos de referencia
+- [Microsoft Entra ID - Tokens de acceso de la plataforma de identidad](https://learn.microsoft.com/azure/active-directory/develop/access-tokens)
+- [RFC 7517 - JSON Web Key (JWK)](https://datatracker.ietf.org/doc/html/rfc7517)

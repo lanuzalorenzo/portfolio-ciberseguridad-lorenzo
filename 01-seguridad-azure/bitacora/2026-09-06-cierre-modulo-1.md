@@ -1,63 +1,9 @@
-# 📄 Bitácora — Cierre del módulo 01: Seguridad Azure
+# Bitácora — 2026-09-06: Cierre del Módulo 01
 
-## 📘 Proyecto
-Portfolio de Ciberseguridad — Módulo 01: Seguridad Azure
+**Objetivo:** Consolidar el módulo, organizar el trabajo y dar por cerrado el bloque inicial de identidad.
 
-## 🎯 Objetivo
-Documentar el cierre del módulo tras completar la configuración inicial de seguridad en Azure y la práctica de autenticación con API local.
+Hoy me he dedicado a tareas de organización y reflexión. He vuelto a entrar al tenant de Entra ID para revisar que el App Registration quedó limpio, asegurándome de que los redirect URIs y scopes estaban correctamente definidos y no había basura de mis primeras pruebas fallidas.
 
----
+Tomé una decisión importante de arquitectura para el portfolio: el código de la API (.NET) y los scripts de prueba del laboratorio "ensuciaban" este repositorio, cuyo objetivo es ser un portfolio de alto nivel y arquitectura cloud. Por tanto, he empaquetado todo el código práctico en un nuevo repositorio externo (`lab-api-local-azure`) y he dejado este repositorio exclusivamente para la documentación técnica, los diagramas y el registro de bitácoras.
 
-## 🛠 Trabajo realizado
-
-### 1. Revisión del tenant de Entra ID
-- Comprobación de propiedades básicas.
-- Validación de configuración inicial.
-- Revisión de opciones de seguridad y acceso.
-
-### 2. Práctica con API local
-- Creación de una API REST básica en .NET.
-- Integración inicial con Azure AD.
-- Validación de autenticación y protección de endpoints.
-
-### 3. Organización del módulo
-- Estructuración de carpetas (`bitacora/`, `lab/`, `src/`).
-- Limpieza de artefactos no necesarios.
-- Documentación de evidencias y notas técnicas.
-
----
-
-## 🔍 Validaciones realizadas
-- Tenant configurado correctamente.
-- API local funcional y protegida.
-- Documentación del módulo completa y coherente.
-- Bitácoras revisadas y organizadas.
-
----
-
-## ⚠️ Problemas encontrados
-- Ajustes iniciales necesarios en la configuración del tenant.
-- Correcciones menores en la API local durante la integración.
-
----
-
-## 🛠 Soluciones aplicadas
-- Revisión de parámetros de identidad en Azure AD.
-- Corrección de configuración de autenticación en la API.
-- Ajustes en la estructura del módulo para mayor claridad.
-
----
-
-## 🧠 Aprendizajes clave
-- Flujo básico de configuración de seguridad en Azure.
-- Integración de autenticación con API local.
-- Importancia de mantener documentación clara y modular.
-
----
-
-## 📎 Recursos útiles
-- Azure Portal  
-- Documentación oficial de Entra ID  
-- Swagger / OpenAPI  
-- JWT.io
-
+El módulo 1 queda cerrado. He logrado el objetivo: comprender y probar un flujo completo y seguro de identidad en Azure. Listo para avanzar.

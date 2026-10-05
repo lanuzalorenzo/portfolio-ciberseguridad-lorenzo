@@ -1,47 +1,25 @@
-# 🔐 Informe técnico — Conceptos del Módulo 01
+# Informe técnico — Conceptos del Módulo 01
 
-## 📘 Proyecto
-Módulo 01 — Seguridad en Azure (Autenticación, Autorización y Protección de APIs).
+**Proyecto:** Módulo 01 — Seguridad en Azure (Autenticación, Autorización y Protección de APIs).
 
-## 🎯 Objetivo
+## Objetivo del documento
 Definir y explicar los conceptos fundamentales necesarios para comprender el flujo de autenticación y autorización implementado en el módulo, incluyendo OAuth2, PKCE, JWT y Azure AD como proveedor de identidad.
 
-## 🛠 Trabajo realizado
-1. Revisión de los conceptos base de autenticación y autorización.
-2. Identificación de los elementos principales del estándar OAuth2.
-3. Análisis del rol de PKCE en clientes públicos.
-4. Desglose de la estructura de un JWT.
-5. Revisión del funcionamiento de JWKS y firma RS256.
-6. Contextualización de Azure AD como proveedor de identidad.
+## Conceptos fundamentales
 
-## 🔍 Validaciones realizadas
-- Confirmación de que los conceptos se alinean con el flujo implementado.
-- Validación de que la terminología coincide con la usada por Azure AD.
-- Revisión de que los conceptos son atemporales y no dependen del laboratorio.
+1. **Autenticación y Autorización**: Bases teóricas del control de acceso.
+2. **OAuth2**: Estándar de autorización utilizado para delegar acceso mediante tokens.
+3. **PKCE (Proof Key for Code Exchange)**: Extensión de OAuth2 esencial en clientes públicos para proteger el intercambio del código de autorización.
+4. **JWT (JSON Web Token)**: Formato de token utilizado para transmitir claims estructurados.
+5. **JWKS (JSON Web Key Set) y RS256**: Conjunto de claves públicas y algoritmo asimétrico empleados para verificar la firma de los tokens emitidos.
+6. **Azure AD (Microsoft Entra ID)**: Actúa como proveedor de identidad (IdP) encargado de autenticar usuarios y emitir tokens.
 
-## ⚠️ Problemas encontrados
-- Ninguno. Este documento es conceptual.
+## Conclusiones teóricas clave
+- PKCE es imprescindible para proteger el `authorization_code` en escenarios donde el cliente no puede custodiar un secreto (clientes públicos).
+- La seguridad de la API depende enteramente de la correcta validación de los JWT emitidos por Azure AD, lo que incluye comprobar las firmas mediante JWKS para el algoritmo RS256.
+- Es necesario validar sistemáticamente en cada petición el issuer (emisor), la audiencia (destinatario) y la fecha de expiración del token.
 
-## 🛠 Soluciones aplicadas
-- No aplica.
-
-## 🧠 Aprendizajes clave
-- Importancia de PKCE para proteger el authorization_code.
-- Relevancia de validar correctamente los JWT emitidos por Azure AD.
-- Comprensión del uso de JWKS para verificar firmas RS256.
-- Necesidad de validar issuer, audiencia y expiración en cada token.
-- Relación entre OAuth2, PKCE y Azure AD en flujos modernos de autenticación.
-
-## 📎 Recursos útiles
-- https://learn.microsoft.com/azure/active-directory
-- https://datatracker.ietf.org/doc/html/rfc7636
-- https://jwt.io
-
-## ⚖️ Aviso Legal
-Este documento describe conceptos utilizados en un entorno de laboratorio.
-No contiene información sensible ni perteneciente a ninguna organización real.
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
-
-## 🔐 Licencia
-Este documento se distribuye bajo licencia MIT.
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+## Recursos de referencia
+- [Microsoft Entra ID / Azure AD Documentation](https://learn.microsoft.com/azure/active-directory)
+- [RFC 7636 - Proof Key for Code Exchange by OAuth Public Clients](https://datatracker.ietf.org/doc/html/rfc7636)
+- [JWT.io - JSON Web Tokens](https://jwt.io)
