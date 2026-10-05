@@ -1,9 +1,9 @@
-# 🧪 Práctica 12 — Defender CSPM (Cloud Security Posture Management)
+# Práctica 12 | Defender CSPM (Cloud Security Posture Management)
 
-## 🎯 Objetivo
+## Objetivo
 Evaluar y mejorar la postura de seguridad cloud mediante Defender CSPM, revisando configuraciones inseguras, cumplimiento, riesgos, exposición y recomendaciones automatizadas.
 
-## 🔧 Pasos
+## Recorrido de la práctica
 1. Activar CSPM en la suscripción del laboratorio.
 2. Revisar el panel de postura de seguridad.
 3. Validar configuraciones inseguras detectadas automáticamente.
@@ -12,7 +12,7 @@ Evaluar y mejorar la postura de seguridad cloud mediante Defender CSPM, revisand
 6. Revisar recomendaciones de seguridad priorizadas.
 7. Documentar resultados en el informe técnico.
 
-## 📘 Notas técnicas
+## Contexto técnico
 Defender CSPM proporciona:
 - Evaluación continua de postura de seguridad.
 - Recomendaciones basadas en Azure Security Benchmark.
@@ -21,11 +21,6 @@ Defender CSPM proporciona:
 - Exposición basada en riesgo.
 - Integración con Defender XDR.
 
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.
-No contiene información sensible ni perteneciente a ninguna organización real.
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+## Informe técnico
 
-## 🔐 Licencia
-Este documento se distribuye bajo licencia MIT.
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+[Evaluación de postura de seguridad cloud](docs/informe-tecnico.md)

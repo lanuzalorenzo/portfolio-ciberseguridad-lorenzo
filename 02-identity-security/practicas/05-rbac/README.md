@@ -1,39 +1,24 @@
-# ?? Ejercicio 05 ó RBAC  
-## MÛdulo 2 ó Identity Security
-
-## ?? DescripciÛn del ejercicio
-Este ejercicio consiste en diseÒar y validar un modelo RBAC aplicando buenas pr·cticas de seguridad.
-
-## ??? Arquitectura del caso pr·ctico
-05-rbac/
-    README.md
-    docs/
-        rbac-documento-tecnico.md
-
-## ?? Trabajo realizado
-- DiseÒo del modelo RBAC.
-- ValidaciÛn del principio de mÌnimo privilegio.
-- RevisiÛn de separaciÛn de funciones.
-- CorrecciÛn de permisos excesivos en roles operativos.
-- Ajuste del rol auditor.
-
-## ?? Validaciones
-- Roles con permisos definidos.
-- Sin permisos directos a usuarios.
-- Sin permisos huÈrfanos.
-- Sin roles contradictorios.
-- Cumplimiento de mÌnimo privilegio.
-
-## ?? Caso pr·ctico final
-- admin: read, write, delete  
-- auditor: read, audit  
-- operador: read, write  
-
-## ?? DocumentaciÛn completa
 docs/rbac-documento-tecnico.md
+# RBAC | Ejercicio 05
 
-## ?? Implicaciones de seguridad
-- Evitar escalada de privilegios.
-- Mantener separaciÛn de funciones.
-- Revisar roles periÛdicamente.
-- Asignar permisos solo vÌa roles.
+Dise√±o y revisi√≥n de un modelo de control de acceso basado en roles, con atenci√≥n al m√≠nimo privilegio y la separaci√≥n de funciones.
+
+## Procedimiento
+
+- Definir roles funcionales y permisos asociados.
+- Revisar las asignaciones y detectar privilegios excesivos.
+- Ajustar los roles de operador y auditor.
+
+## Modelo revisado
+
+- `admin`: lectura, escritura y eliminaci√≥n.
+- `auditor`: lectura y auditor√≠a.
+- `operador`: lectura y escritura.
+
+## Validaci√≥n
+
+El documento t√©cnico registra la revisi√≥n de permisos directos, roles hu√©rfanos o contradictorios y el principio de m√≠nimo privilegio.
+
+## Informe t√©cnico
+
+[Dise√±o y validaci√≥n del modelo RBAC](docs/rbac-documento-tecnico.md)

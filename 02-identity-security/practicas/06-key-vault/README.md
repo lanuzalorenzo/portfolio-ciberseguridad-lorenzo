@@ -1,39 +1,19 @@
-# ?? Ejercicio 06 — Key Vault  
-## Módulo 2 — Identity Security
-
-## ?? Descripción del ejercicio
-Este ejercicio consiste en desplegar y validar un Key Vault aplicando buenas prácticas de seguridad en la gestión de secretos, claves y certificados.
-
-## ??? Arquitectura del caso práctico
-06-key-vault/
-    README.md
-    docs/
-        key-vault-documento-tecnico.md
-
-## ?? Trabajo realizado
-- Creación del Key Vault.
-- Almacenamiento de secretos de prueba.
-- Configuración de permisos mediante RBAC y políticas de acceso.
-- Validación de accesos permitidos y denegados.
-- Revisión de auditoría y logs.
-
-## ?? Validaciones
-- Key Vault desplegado correctamente.
-- Secretos almacenados de forma segura.
-- Permisos ajustados a mínimo privilegio.
-- Sin accesos directos innecesarios.
-- Auditoría funcional.
-
-## ?? Caso práctico final
-- Secretos creados y protegidos.
-- Roles ajustados para evitar exposición.
-- Accesos validados con éxito.
-
-## ?? Documentación completa
 docs/key-vault-documento-tecnico.md
+# Key Vault | Ejercicio 06
 
-## ?? Implicaciones de seguridad
-- Un Key Vault mal configurado puede exponer secretos críticos.
-- El listado de secretos es tan sensible como leerlos.
-- Los accesos deben revisarse periódicamente.
-- Los secretos deben rotarse según buenas prácticas.
+Despliegue de un Azure Key Vault de laboratorio y revisiÃ³n de los controles que limitan el acceso a secretos.
+
+## Procedimiento
+
+- Crear el vault y almacenar secretos de prueba.
+- Configurar permisos mediante RBAC y revisar las asignaciones existentes.
+- Validar accesos permitidos y denegados.
+- Revisar los registros de auditorÃ­a.
+
+## ValidaciÃ³n
+
+El informe tÃ©cnico documenta el estado del vault, los permisos y las comprobaciones de acceso.
+
+## Informe tÃ©cnico
+
+[ConfiguraciÃ³n y controles de Key Vault](docs/key-vault-documento-tecnico.md)

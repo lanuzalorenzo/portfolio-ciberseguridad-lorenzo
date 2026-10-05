@@ -1,56 +1,51 @@
-# ?? Ejercicio 06 — Key Vault  
-## Documento técnico  
-## Módulo 2 — Identity Security
+# Key Vault | Informe tÃ©cnico
 
-## ?? Contexto (atemporal)
-Este ejercicio se centra en la gestión segura de secretos, claves y certificados mediante Azure Key Vault.  
-El objetivo es comprender cómo se almacenan, protegen y acceden estos elementos críticos dentro de un entorno cloud seguro.
+## Contexto
+Este ejercicio se centra en la gestiÃ³n segura de secretos, claves y certificados mediante Azure Key Vault.
+El objetivo es comprender cÃ³mo se almacenan, protegen y acceden estos elementos crÃ­ticos dentro de un entorno cloud seguro.
 
-## ?? Objetivo
-Implementar un Key Vault y aplicar buenas prácticas de seguridad:
+## Objetivo
+Implementar un Key Vault y aplicar buenas prÃ¡cticas de seguridad:
 - Crear un Key Vault.
 - Almacenar secretos.
 - Configurar permisos.
 - Validar accesos.
 - Revisar implicaciones de seguridad.
 
-## ?? Trabajo realizado (cronológico y técnico)
-1. Revisión del GUION del módulo para identificar requisitos del ejercicio.
-2. Creación del Key Vault en el entorno de práctica.
+## Trabajo realizado
+1. RevisiÃ³n de los requisitos de seguridad del ejercicio.
+2. CreaciÃ³n del Key Vault en el entorno de prÃ¡ctica.
 3. Almacenamiento de secretos de prueba.
-4. Configuración de permisos mediante RBAC y políticas de acceso.
-5. Validación de accesos permitidos y denegados.
-6. Revisión de auditoría y logs de acceso.
+4. ConfiguraciÃ³n de permisos mediante RBAC y polÃ­ticas de acceso.
+5. ValidaciÃ³n de accesos permitidos y denegados.
+6. RevisiÃ³n de auditorÃ­a y logs de acceso.
 
-## ?? Validaciones realizadas
-- El Key Vault está correctamente desplegado.
+## Validaciones realizadas
+- El Key Vault estÃ¡ correctamente desplegado.
 - Los secretos se almacenan de forma segura.
-- Los permisos cumplen mínimo privilegio.
+- Los permisos cumplen mÃ­nimo privilegio.
 - No existen accesos directos innecesarios.
-- Las auditorías registran accesos correctamente.
+- Las auditorÃ­as registran accesos correctamente.
 
-## ?? Problemas encontrados
-- Un rol tenía permisos excesivos sobre secretos.
-- Un usuario podía listar claves sin necesidad operativa.
+## Problemas encontrados
+- Un rol tenÃ­a permisos excesivos sobre secretos.
+- Un usuario podÃ­a listar claves sin necesidad operativa.
 
-## ??? Soluciones aplicadas
-- Ajuste de roles para cumplir mínimo privilegio.
-- Eliminación de permisos de listado innecesarios.
-- Revisión completa de asignaciones.
+## Soluciones aplicadas
+- Ajuste de roles para cumplir mÃ­nimo privilegio.
+- EliminaciÃ³n de permisos de listado innecesarios.
+- RevisiÃ³n completa de asignaciones.
 
-## ?? Implicaciones de seguridad
-- Un Key Vault mal configurado puede exponer secretos críticos.
+## Implicaciones de seguridad
+- Un Key Vault mal configurado puede exponer secretos crÃ­ticos.
 - El listado de secretos es tan sensible como leerlos.
-- Los accesos deben revisarse periódicamente.
-- Los secretos deben rotarse según buenas prácticas.
+- Los accesos deben revisarse periÃ³dicamente.
+- Los secretos deben rotarse segÃºn buenas prÃ¡cticas.
 
-## ?? Recursos útiles (opcionales)
-- Microsoft Learn — Key Vault Overview
+## Recursos Ãºtiles
+- Microsoft Learn â€” Key Vault Overview
 - OWASP Secrets Management
 - Azure RBAC Documentation
 
-## ?? Comandos utilizados (opcionales)
-_No aplica._
-
-## ?? Comandos pendientes (opcionales)
+## Comandos utilizados
 _No aplica._

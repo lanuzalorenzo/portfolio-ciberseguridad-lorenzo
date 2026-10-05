@@ -1,37 +1,15 @@
-# 🧪 Práctica 03 — Auditoría de identidades y accesos
+# Auditoría de identidades y accesos
 
-## 🎯 Objetivo  
-Auditar identidades, roles, permisos y accesos dentro de la suscripción cloud, identificando configuraciones débiles, accesos excesivos, identidades huérfanas y riesgos derivados de una mala gestión de privilegios.
+Revisión de identidades, roles y permisos para localizar accesos privilegiados y evaluar cómo se aplican los controles de acceso.
 
----
+## Procedimiento
 
-## 🔧 Pasos  
-1. Inventariar identidades y cuentas dentro de la suscripción.  
-2. Revisar roles asignados y permisos efectivos.  
-3. Detectar accesos privilegiados innecesarios.  
-4. Identificar identidades huérfanas o inactivas.  
-5. Validar políticas de acceso y autenticación.  
-6. Documentar hallazgos en el informe técnico.
+1. Inventariar las identidades incluidas en el alcance.
+2. Revisar roles asignados y permisos efectivos.
+3. Examinar accesos privilegiados e identidades inactivas.
+4. Revisar controles de acceso y autenticación.
+5. Registrar el alcance y los hallazgos en el informe.
 
----
+## Documentación técnica
 
-## 📁 Evidencias  
-Documentación técnica generada en `docs/` con los hallazgos, validaciones y configuraciones revisadas durante la auditoría de identidades y accesos.
-
----
-
-## 📘 Conclusiones  
-Resumen del estado de las identidades, accesos y permisos dentro de la suscripción, riesgos detectados y recomendaciones para mejorar la seguridad y el control de privilegios.
-
----
-
-## ⚖️ Aviso Legal  
-Este documento describe prácticas realizadas en un entorno de laboratorio.  
-No contiene información sensible ni perteneciente a ninguna organización real.  
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
-
----
-
-## 🔐 Licencia  
-Este documento se distribuye bajo licencia MIT.  
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+[Informe de auditoría](docs/auditoria-identidades-y-accesos-documento-tecnico.md)

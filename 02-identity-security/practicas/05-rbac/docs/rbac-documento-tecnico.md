@@ -1,51 +1,46 @@
-# ?? Ejercicio 05 — RBAC  
-## Documento técnico  
-## Módulo 2 — Identity Security
+# RBAC | Informe tÃ©cnico
 
-## ?? Contexto (atemporal)
-Este ejercicio forma parte del Módulo 2 de Identity Security y se centra en el diseño y aplicación del modelo RBAC (Role-Based Access Control).  
-El objetivo es comprender cómo se definen roles, permisos y asignaciones dentro de un sistema de identidad, aplicando buenas prácticas de seguridad y evitando configuraciones inseguras.
+## Contexto
+Este ejercicio forma parte del MÃ³dulo 2 de Identity Security y se centra en el diseÃ±o y aplicaciÃ³n del modelo RBAC (Role-Based Access Control).
+El objetivo es comprender cÃ³mo se definen roles, permisos y asignaciones dentro de un sistema de identidad, aplicando buenas prÃ¡cticas de seguridad y evitando configuraciones inseguras.
 
-## ?? Objetivo
-Implementar un modelo RBAC básico que permita:
-- Definir roles funcionales.  
-- Asociar permisos a cada rol.  
-- Asignar roles a usuarios.  
-- Validar que los permisos se aplican correctamente.  
+## Objetivo
+Implementar un modelo RBAC bÃ¡sico que permita:
+- Definir roles funcionales.
+- Asociar permisos a cada rol.
+- Asignar roles a usuarios.
+- Validar que los permisos se aplican correctamente.
 - Detectar configuraciones inseguras o inconsistentes.
 
-## ?? Trabajo realizado (cronológico y técnico)
-1. Revisión del GUION del módulo.  
-2. Diseño del modelo RBAC.  
-3. Validación del modelo.  
-4. Revisión de implicaciones de seguridad.
+## Trabajo realizado
+1. DefiniciÃ³n del alcance del ejercicio.
+2. DiseÃ±o del modelo RBAC.
+3. ValidaciÃ³n del modelo.
+4. RevisiÃ³n de implicaciones de seguridad.
 
-## ?? Validaciones realizadas
-- Verificación de roles y permisos.  
-- Validación de mínimo privilegio.  
-- Comprobación de permisos no asignados directamente a usuarios.
+## Validaciones realizadas
+- VerificaciÃ³n de roles y permisos.
+- ValidaciÃ³n de mÃ­nimo privilegio.
+- ComprobaciÃ³n de permisos no asignados directamente a usuarios.
 
-## ?? Problemas encontrados
-- Permisos excesivos en roles operativos.  
-- Falta de separación de funciones.
+## Problemas encontrados
+- Permisos excesivos en roles operativos.
+- Falta de separaciÃ³n de funciones.
 
-## ??? Soluciones aplicadas
-- Ajuste de permisos del rol operador.  
-- Corrección del rol auditor.  
-- Revisión completa de asignaciones.
+## Soluciones aplicadas
+- Ajuste de permisos del rol operador.
+- CorrecciÃ³n del rol auditor.
+- RevisiÃ³n completa de asignaciones.
 
-## ?? Implicaciones de seguridad
-- Riesgo de escalada de privilegios.  
-- Necesidad de separación de funciones.  
-- Revisión periódica de roles.
+## Implicaciones de seguridad
+- Riesgo de escalada de privilegios.
+- Necesidad de separaciÃ³n de funciones.
+- RevisiÃ³n periÃ³dica de roles.
 
-## ?? Recursos útiles (opcionales)
-- NIST RBAC Standard  
-- OWASP ASVS  
+## Recursos Ãºtiles
+- NIST RBAC Standard
+- OWASP ASVS
 - Microsoft Entra ID RBAC
 
-## ?? Comandos utilizados (opcionales)
-_No aplica._
-
-## ?? Comandos pendientes (opcionales)
+## Comandos utilizados
 _No aplica._

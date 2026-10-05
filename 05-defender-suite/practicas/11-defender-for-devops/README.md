@@ -1,9 +1,9 @@
-# 🧪 Práctica 11 — Defender for DevOps
+# Práctica 11 | Defender for DevOps
 
-## 🎯 Objetivo
+## Objetivo
 Integrar repositorios, pipelines y artefactos con Microsoft Defender for DevOps para habilitar análisis de seguridad, detección de secretos, evaluación de IaC y protección de la cadena de suministro.
 
-## 🔧 Pasos
+## Recorrido de la práctica
 1. Conectar GitHub o Azure DevOps con Defender for DevOps.
 2. Revisar repositorios integrados y estado de seguridad.
 3. Validar escaneos de IaC (Terraform, Bicep, ARM).
@@ -12,7 +12,7 @@ Integrar repositorios, pipelines y artefactos con Microsoft Defender for DevOps 
 6. Revisar alertas generadas por repositorios o pipelines.
 7. Documentar resultados en el informe técnico.
 
-## 📘 Notas técnicas
+## Contexto técnico
 Defender for DevOps proporciona:
 - Escaneo de IaC (Terraform, Bicep, ARM).
 - Detección de secretos expuestos.
@@ -21,11 +21,6 @@ Defender for DevOps proporciona:
 - Integración con GitHub Advanced Security.
 - Correlación con Defender XDR.
 
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.
-No contiene información sensible ni perteneciente a ninguna organización real.
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+## Informe técnico
 
-## 🔐 Licencia
-Este documento se distribuye bajo licencia MIT.
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+[Integración de Defender for DevOps](docs/informe-tecnico.md)

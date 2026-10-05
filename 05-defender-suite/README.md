@@ -1,52 +1,25 @@
-# 🛡️ Módulo 05 — Microsoft Defender Suite
+# 05 | Microsoft Defender
 
-## 📘 Descripción del módulo
-Este módulo aborda la suite completa de Microsoft Defender: Identity, Endpoint, Office 365 y XDR. Se profundiza en sensores, onboarding, políticas, protección de identidades, protección de dispositivos, seguridad del correo y análisis avanzado de amenazas.
+Este módulo reúne prácticas sobre protección y detección en el ecosistema Microsoft Defender. El recorrido va desde productos individuales hasta la revisión de señales e incidentes correlacionados en XDR.
 
-## 🎯 Objetivos del módulo
-- Configurar sensores de Defender for Identity.
-- Realizar onboarding de dispositivos en Defender for Endpoint.
-- Aplicar políticas de seguridad en Microsoft 365 (correo y colaboración).
-- Analizar incidentes y correlaciones en Defender XDR.
-- Documentar procesos técnicos y validar configuraciones de seguridad.
+## Prácticas
 
-## 📚 Contenido del módulo
-- Parte 1 — Defender for Identity
-- Parte 2 — Defender for Endpoint
-- Parte 3 — Defender for Office 365
-- Parte 4 — Defender XDR
+- [Defender for Identity](practicas/01-defender-identity/README.md)
+- [Defender for Endpoint](practicas/02-defender-endpoint/README.md)
+- [Defender for Office 365](practicas/03-defender-office365/README.md)
+- [Defender XDR](practicas/04-defender-xdr/README.md)
+- [Defender EASM](practicas/08-defender-easm/README.md)
+- [Vulnerability Management](practicas/09-defender-vulnerability-management/README.md)
+- [App Governance](practicas/10-defender-app-governance/README.md)
+- [Defender for DevOps](practicas/11-defender-for-devops/README.md)
+- [Defender CSPM](practicas/12-defender-cspm/README.md)
+- [Defender CNAPP](practicas/13-defender-cnapp/README.md)
+- [Simulación de ataque y correlación XDR](practicas/14-ataque-simulado-xdr/README.md)
 
-## 🧪 Ejercicios del módulo
-05-defender-suite/
-    practicas/
-        01-defender-identity/
-        02-defender-endpoint/
-        03-defender-office365/
-        04-defender-xdr/
+## Registro del trabajo
 
-## 📝 Bitácoras del módulo
-05-defender-suite/
-    bitacora/
-        YYYY-MM-DD-titulo.md
+Las [bitácoras del módulo](bitacora/) mantienen el registro cronológico de las prácticas documentadas.
 
-## 🗂️ Arquitectura del módulo
-05-defender-suite/
-    README.md
-    practicas/
-    bitacora/
+## Alcance
 
-## 🔧 Flujo de trabajo del módulo
-1. Crear prácticas según GUION.md.
-2. Elaborar documentación técnica en docs/.
-3. Redactar conclusiones por práctica.
-4. Registrar bitácoras de trabajo.
-5. Realizar commit final del módulo.
-
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.
-No contiene información sensible ni perteneciente a ninguna organización real.
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
-
-## 🔐 Licencia
-Este documento se distribuye bajo licencia MIT.
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+El módulo refleja únicamente las prácticas presentes en el repositorio. Los números de práctica conservan sus identificadores actuales.

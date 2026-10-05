@@ -1,17 +1,20 @@
-# ??? Bitácora — 2026-09-11
-## Proyecto: Portfolio de Ciberseguridad
-## Módulo: 02 — Identity Security
-## Objetivo del día
-Completar el ejercicio 05 (RBAC) siguiendo el flujo obligatorio del módulo.
+# BitÃ¡cora | Ejercicio 05: RBAC
+
+**Fecha:** 2026-09-11
+
+**MÃ³dulo:** 02 â€” Identity Security
+
+## Objetivo
+
+Documentar el diseÃ±o del modelo RBAC y revisar sus permisos y roles.
 
 ## Trabajo realizado
-- Creación de la estructura del ejercicio.
-- Desarrollo del documento técnico siguiendo el template oficial.
-- Creación del README del ejercicio con la arquitectura y validaciones.
-- Revisión del modelo RBAC final.
 
-## Validaciones realizadas
-- Estructura del ejercicio conforme al GUION.
-- Documento técnico completo y coherente.
-- README siguiendo el estilo del módulo 2.
-- Modelo RBAC validado con mínimo privilegio y separación de funciones.
+- CreaciÃ³n de la estructura del ejercicio.
+- RedacciÃ³n del informe tÃ©cnico y del README.
+- RevisiÃ³n del modelo RBAC y de la separaciÃ³n de funciones.
+
+## Validaciones registradas
+
+- RevisiÃ³n de roles y permisos conforme al mÃ­nimo privilegio.
+- RevisiÃ³n de la separaciÃ³n de funciones.

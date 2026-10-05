@@ -1,17 +1,20 @@
-# ??? Bitácora — 2026-09-11
-## Proyecto: Portfolio de Ciberseguridad
-## Módulo: 02 — Identity Security
-## Objetivo del día
-Completar el ejercicio 06 (Key Vault) siguiendo el flujo obligatorio del módulo.
+# BitÃ¡cora | Ejercicio 06: Key Vault
+
+**Fecha:** 2026-09-11
+
+**MÃ³dulo:** 02 â€” Identity Security
+
+## Objetivo
+
+Documentar la gestiÃ³n de secretos en Key Vault y revisar los controles de acceso.
 
 ## Trabajo realizado
-- Creación de la estructura del ejercicio.
-- Desarrollo del documento técnico siguiendo el template oficial.
-- Creación del README del ejercicio con arquitectura y validaciones.
-- Revisión del modelo de permisos y accesos del Key Vault.
 
-## Validaciones realizadas
-- Estructura del ejercicio conforme al GUION.
-- Documento técnico completo y coherente.
-- README siguiendo el estilo del módulo 2.
-- Permisos del Key Vault ajustados a mínimo privilegio.
+- CreaciÃ³n de la estructura del ejercicio.
+- RedacciÃ³n del informe tÃ©cnico y del README.
+- RevisiÃ³n de permisos y accesos del Key Vault.
+
+## Validaciones registradas
+
+- RevisiÃ³n de las asignaciones de acceso.
+- ComprobaciÃ³n del principio de mÃ­nimo privilegio.

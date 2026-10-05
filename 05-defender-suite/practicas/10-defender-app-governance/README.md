@@ -1,9 +1,9 @@
-# 🧪 Práctica 10 — Defender App Governance
+# Práctica 10 | Defender App Governance
 
-## 🎯 Objetivo
+## Objetivo
 Evaluar y controlar permisos, comportamientos y riesgos de aplicaciones OAuth y aplicaciones con acceso a datos en Microsoft 365 mediante Defender App Governance.
 
-## 🔧 Pasos
+## Recorrido de la práctica
 1. Activar App Governance en el tenant del laboratorio.
 2. Revisar aplicaciones OAuth registradas y permisos concedidos.
 3. Analizar comportamientos anómalos de aplicaciones.
@@ -12,7 +12,7 @@ Evaluar y controlar permisos, comportamientos y riesgos de aplicaciones OAuth y 
 6. Revisar recomendaciones de seguridad.
 7. Documentar resultados en el informe técnico.
 
-## 📘 Notas técnicas
+## Contexto técnico
 App Governance proporciona:
 - Visibilidad sobre aplicaciones OAuth.
 - Análisis de permisos y accesos.
@@ -20,11 +20,6 @@ App Governance proporciona:
 - Alertas de riesgo.
 - Integración con Defender XDR.
 
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.
-No contiene información sensible ni perteneciente a ninguna organización real.
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+## Informe técnico
 
-## 🔐 Licencia
-Este documento se distribuye bajo licencia MIT.
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+[Gobernanza de aplicaciones y permisos OAuth](docs/informe-tecnico.md)

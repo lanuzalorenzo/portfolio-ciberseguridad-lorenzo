@@ -1,20 +1,15 @@
-# 🧪 Práctica 04 — Policies + Hardening
+# Policies y hardening
 
-## 🎯 Objetivo
-Aplicar políticas de seguridad y configuraciones de hardening para reforzar la postura de seguridad de la suscripción.
+La práctica aborda el uso de políticas para definir controles y revisar el cumplimiento de seguridad de la suscripción.
 
-## 🔧 Pasos
-1. Revisar políticas disponibles.
-2. Aplicar políticas recomendadas.
-3. Validar cumplimiento.
-4. Registrar evidencias.
+## Procedimiento
 
-## 📁 Evidencias
-- Políticas aplicadas.
-- Estado de cumplimiento.
+1. Revisar las políticas disponibles para el alcance.
+2. Seleccionar y aplicar las políticas pertinentes.
+3. Comprobar el estado de cumplimiento.
+4. Documentar las observaciones y los cambios realizados.
 
-## 📘 Conclusiones
-Las políticas y el hardening permiten establecer controles de seguridad consistentes.
+## Documentación técnica
 
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.
+- [Informe técnico](docs/informe-tecnico.md)
+- [Conclusiones](docs/conclusiones.md)

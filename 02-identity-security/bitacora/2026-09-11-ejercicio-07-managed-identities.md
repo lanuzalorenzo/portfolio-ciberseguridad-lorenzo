@@ -1,17 +1,20 @@
-# ??? Bitácora — 2026-09-11
-## Proyecto: Portfolio de Ciberseguridad
-## Módulo: 02 — Identity Security
-## Objetivo del día
-Completar el ejercicio 07 (Managed Identities) siguiendo el flujo obligatorio del módulo.
+# BitÃ¡cora | Ejercicio 07: Managed Identities
+
+**Fecha:** 2026-09-11
+
+**MÃ³dulo:** 02 â€” Identity Security
+
+## Objetivo
+
+Documentar el uso de una identidad administrada y revisar sus asignaciones de permisos.
 
 ## Trabajo realizado
-- Creación de la estructura del ejercicio.
-- Desarrollo del documento técnico siguiendo el template oficial.
-- Creación del README del ejercicio con arquitectura y validaciones.
-- Revisión de permisos y roles asignados a la Managed Identity.
 
-## Validaciones realizadas
-- Estructura del ejercicio conforme al GUION.
-- Documento técnico completo y coherente.
-- README siguiendo el estilo del módulo 2.
-- Permisos de la Managed Identity ajustados a mínimo privilegio.
+- CreaciÃ³n de la estructura del ejercicio.
+- RedacciÃ³n del informe tÃ©cnico y del README.
+- RevisiÃ³n de roles y permisos de la identidad administrada.
+
+## Validaciones registradas
+
+- RevisiÃ³n de las asignaciones RBAC.
+- ComprobaciÃ³n del principio de mÃ­nimo privilegio.

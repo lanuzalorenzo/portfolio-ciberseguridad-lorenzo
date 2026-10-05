@@ -1,20 +1,15 @@
-# 🧪 Práctica 03 — Workloads
+# Protección de workloads
 
-## 🎯 Objetivo
-Configurar la protección de workloads en Defender for Cloud y validar que las cargas de trabajo quedan correctamente monitorizadas.
+La práctica revisa las capacidades de protección de workloads disponibles en Defender for Cloud y el estado que presenta el entorno de laboratorio.
 
-## 🔧 Pasos
-1. Revisar workloads disponibles.
-2. Activar protección en workloads críticos.
-3. Validar estado de protección.
-4. Registrar evidencias.
+## Procedimiento
 
-## 📁 Evidencias
-- Workloads protegidos.
-- Estado de protección.
+1. Revisar los workloads disponibles.
+2. Seleccionar las capacidades de protección dentro del alcance.
+3. Comprobar el estado de protección.
+4. Registrar las observaciones en la documentación técnica.
 
-## 📘 Conclusiones
-La protección de workloads permite detectar amenazas y vulnerabilidades en tiempo real.
+## Documentación técnica
 
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.
+- [Informe técnico](docs/informe-tecnico.md)
+- [Conclusiones](docs/conclusiones.md)

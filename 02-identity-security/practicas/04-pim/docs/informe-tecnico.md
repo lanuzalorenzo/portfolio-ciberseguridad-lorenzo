@@ -88,11 +88,6 @@ _No se utilizaron comandos en esta práctica._
 
 ---
 
-## ⚙️ Comandos pendientes de validar (opcional)
-_No aplica._
-
----
-
 ## ⚖️ Aviso Legal
 Este documento describe prácticas realizadas en un entorno de laboratorio.  
 No contiene información sensible ni perteneciente a ninguna organización real.  

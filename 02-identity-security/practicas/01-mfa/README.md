@@ -1,19 +1,17 @@
-# 🔐 Práctica 03 — MFA en Azure Entra ID
+# MFA en Microsoft Entra ID
 
-## 🎯 Objetivo
-Implementar y documentar la configuración de MFA en un tenant de laboratorio.
+La práctica documenta la habilitación de MFA en un tenant de laboratorio, el registro de un método TOTP y la comprobación del inicio de sesión.
 
-## 🧭 Contexto
-Esta práctica forma parte del módulo 02 — Identity Security en Azure Entra ID.
+## Enfoque técnico
 
-## 🛠 Procedimiento
-(Se completará con los pasos reales que ya tienes en el informe técnico)
+- Activación de Security Defaults.
+- Revisión de la configuración de MFA por usuario en el portal.
+- Registro de un autenticador TOTP externo.
 
-## 🔍 Validaciones
-(Se completará con las comprobaciones que ya realizaste)
+## Validación
 
-## 🧩 Conclusiones
-(Se completará al final)
+El informe técnico registra la activación de MFA y la validación del flujo de inicio de sesión con el método TOTP.
 
-## ⚖️ Aviso Legal
-Práctica realizada en un entorno de laboratorio sin datos reales.
+## Documentación
+
+[Informe técnico de configuración](docs/mfa-configuracion.md)
