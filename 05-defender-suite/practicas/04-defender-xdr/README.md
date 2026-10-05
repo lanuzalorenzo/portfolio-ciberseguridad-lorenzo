@@ -1,9 +1,9 @@
-# 🧪 Práctica 04 — Defender XDR
+# Práctica 04 | Defender XDR
 
-## 🎯 Objetivo
+## Objetivo
 Analizar incidentes y correlaciones en Microsoft Defender XDR, comprendiendo cómo se unifican señales de identidad, endpoint, correo y aplicaciones para construir una visión completa del ataque y facilitar la respuesta.
 
-## 🔧 Pasos
+## Recorrido de la práctica
 1. Revisar incidentes activos en el portal de Microsoft Defender XDR.
 2. Analizar la correlación entre señales de Identity, Endpoint y Office 365.
 3. Examinar la cronología del ataque (Attack Timeline).
@@ -12,7 +12,7 @@ Analizar incidentes y correlaciones en Microsoft Defender XDR, comprendiendo có
 6. Explorar acciones de respuesta disponibles.
 7. Documentar resultados en el informe técnico.
 
-## 📘 Notas técnicas
+## Contexto técnico
 Defender XDR proporciona:
 - Correlación automática de señales entre productos.
 - Cronología completa del ataque.
@@ -20,11 +20,6 @@ Defender XDR proporciona:
 - Clasificación de incidentes basada en MITRE ATT&CK.
 - Capacidades de respuesta centralizada.
 
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.
-No contiene información sensible ni perteneciente a ninguna organización real.
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+## Informe técnico
 
-## 🔐 Licencia
-Este documento se distribuye bajo licencia MIT.
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+[Análisis de incidentes y correlación XDR](docs/informe-tecnico.md)

@@ -1,36 +1,14 @@
-# 🧪 Práctica 02 — Auditoría de recursos críticos
+# Auditoría de recursos críticos
 
-## 🎯 Objetivo  
-Auditar los recursos críticos de la suscripción cloud, revisando configuraciones sensibles, accesos asociados, políticas aplicadas y posibles riesgos derivados de parámetros débiles o incorrectos.
+Revisión de los recursos seleccionados por su impacto potencial, con atención a sus configuraciones, accesos y controles asociados.
 
----
+## Procedimiento
 
-## 🔧 Pasos  
-1. Identificar los recursos críticos dentro de la suscripción.  
-2. Revisar configuraciones de seguridad de cada recurso.  
-3. Validar accesos, claves, redes, identidades y permisos asociados.  
-4. Detectar configuraciones inseguras o parámetros débiles.  
-5. Documentar hallazgos en el informe técnico.  
+1. Identificar los recursos críticos dentro del alcance.
+2. Revisar sus configuraciones de seguridad.
+3. Examinar accesos, redes, identidades y permisos.
+4. Registrar el alcance y los hallazgos en el informe.
 
----
+## Documentación técnica
 
-## 📁 Evidencias  
-Documentación técnica generada en `docs/` con los hallazgos, validaciones y configuraciones revisadas durante la auditoría de recursos críticos.
-
----
-
-## 📘 Conclusiones  
-Resumen de los recursos críticos analizados, riesgos detectados y recomendaciones iniciales para mejorar la seguridad de los recursos auditados.
-
----
-
-## ⚖️ Aviso Legal  
-Este documento describe prácticas realizadas en un entorno de laboratorio.  
-No contiene información sensible ni perteneciente a ninguna organización real.  
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
-
----
-
-## 🔐 Licencia  
-Este documento se distribuye bajo licencia MIT.  
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+[Informe de auditoría](docs/auditoria-recursos-criticos-documento-tecnico.md)

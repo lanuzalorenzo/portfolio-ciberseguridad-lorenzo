@@ -49,7 +49,7 @@ Reiniciar el módulo 03 desde cero, crear la estructura oficial del módulo y ge
 ## 📎 Recursos útiles  
 - Bitácora MFA (referencia de estilo).  
 - Documentación oficial de auditorías cloud.  
-- GUION.md del módulo 03.
+- Plan de trabajo de las prácticas del módulo 03.
 
 ## ⚖️ Aviso Legal  
 Este documento describe prácticas realizadas en un entorno de laboratorio.  

@@ -1,9 +1,9 @@
-# 🧪 Práctica 14 — Ataque Simulado + Correlación en Microsoft Defender XDR
+# Práctica 14 | Simulación controlada y correlación en Defender XDR
 
-## 🎯 Objetivo
+## Objetivo
 Ejecutar un ataque controlado en el entorno del laboratorio y validar la detección, correlación, análisis y respuesta mediante Microsoft Defender XDR y toda la suite Defender.
 
-## 🔧 Pasos
+## Recorrido de la práctica
 1. Preparar el entorno para el ataque simulado.
 2. Ejecutar un ataque controlado (phishing, token theft, lateral movement, malware).
 3. Validar detección en Defender for Endpoint.
@@ -13,7 +13,7 @@ Ejecutar un ataque controlado en el entorno del laboratorio y validar la detecci
 7. Analizar el incidente completo (MITRE ATT&CK).
 8. Documentar resultados en el informe técnico.
 
-## 📘 Notas técnicas
+## Contexto técnico
 El ataque simulado permite validar:
 - Detección en múltiples productos Defender.
 - Correlación automática en XDR.
@@ -22,9 +22,10 @@ El ataque simulado permite validar:
 - Impacto en identidades, endpoints, aplicaciones y cloud.
 - Respuesta automatizada y manual.
 
-## ⚖️ Aviso Legal
-Este laboratorio es 100% controlado y educativo.
-No contiene actividad real maliciosa ni afecta a sistemas externos.
+## Informe técnico
 
-## 🔐 Licencia
-Este documento se distribuye bajo licencia MIT.
+[Análisis de la simulación y correlación XDR](docs/informe-tecnico.md)
+
+## Alcance
+
+El escenario se plantea como una práctica controlada de laboratorio y no como actividad contra sistemas externos.

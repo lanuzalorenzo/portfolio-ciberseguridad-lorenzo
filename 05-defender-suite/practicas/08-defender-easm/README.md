@@ -1,9 +1,9 @@
-# 🧪 Práctica 08 — Defender External Attack Surface Management (EASM)
+# Práctica 08 | Defender External Attack Surface Management (EASM)
 
-## 🎯 Objetivo
+## Objetivo
 Descubrir, mapear y analizar activos expuestos en Internet mediante Defender EASM, identificando dominios, subdominios, servicios, tecnologías, vulnerabilidades y riesgos asociados a la superficie de ataque externa.
 
-## 🔧 Pasos
+## Recorrido de la práctica
 1. Crear un proyecto de EASM para el laboratorio.
 2. Configurar los dominios raíz y rangos de descubrimiento.
 3. Ejecutar un escaneo inicial de superficie de ataque.
@@ -13,7 +13,7 @@ Descubrir, mapear y analizar activos expuestos en Internet mediante Defender EAS
 7. Validar alertas generadas por exposición o mala configuración.
 8. Documentar resultados en el informe técnico.
 
-## 📘 Notas técnicas
+## Contexto técnico
 Defender EASM proporciona:
 - Descubrimiento automático de activos expuestos en Internet.
 - Mapeo de dominios, subdominios y servicios.
@@ -22,11 +22,6 @@ Defender EASM proporciona:
 - Visibilidad sobre Shadow IT y activos no gestionados.
 - Integración con Defender XDR para correlación de señales.
 
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.
-No contiene información sensible ni perteneciente a ninguna organización real.
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+## Informe técnico
 
-## 🔐 Licencia
-Este documento se distribuye bajo licencia MIT.
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+[Descubrimiento y análisis de superficie externa](docs/informe-tecnico.md)

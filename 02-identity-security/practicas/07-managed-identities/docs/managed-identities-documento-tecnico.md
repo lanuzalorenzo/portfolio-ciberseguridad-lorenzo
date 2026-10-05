@@ -1,54 +1,49 @@
-# ?? Ejercicio 07 — Managed Identities  
-## Documento técnico  
-## Módulo 2 — Identity Security
+# Managed Identities | Informe tÃ©cnico
 
-## ?? Contexto (atemporal)
-Este ejercicio aborda el uso de Managed Identities en Azure para eliminar secretos y credenciales en aplicaciones y automatizaciones.  
-El objetivo es comprender cómo funcionan, cómo se asignan permisos y cómo interactúan con servicios como Key Vault.
+## Contexto
+Este ejercicio aborda el uso de Managed Identities en Azure para eliminar secretos y credenciales en aplicaciones y automatizaciones.
+El objetivo es comprender cÃ³mo funcionan, cÃ³mo se asignan permisos y cÃ³mo interactÃºan con servicios como Key Vault.
 
-## ?? Objetivo
-Implementar Managed Identities y aplicar buenas prácticas:
+## Objetivo
+Implementar Managed Identities y aplicar buenas prÃ¡cticas:
 - Crear una Managed Identity.
 - Asignar permisos mediante RBAC.
 - Validar accesos a Key Vault u otros recursos.
 - Revisar implicaciones de seguridad.
 
-## ?? Trabajo realizado (cronológico y técnico)
-1. Revisión del GUION del módulo para identificar requisitos del ejercicio.
-2. Creación de una Managed Identity (System-assigned).
-3. Asignación de roles RBAC sobre recursos específicos.
-4. Validación de accesos desde scripts o servicios.
-5. Revisión de auditoría y logs de acceso.
-6. Eliminación de permisos innecesarios.
+## Trabajo realizado
+1. RevisiÃ³n de los requisitos de seguridad del ejercicio.
+2. CreaciÃ³n de una Managed Identity (System-assigned).
+3. AsignaciÃ³n de roles RBAC sobre recursos especÃ­ficos.
+4. ValidaciÃ³n de accesos desde scripts o servicios.
+5. RevisiÃ³n de auditorÃ­a y logs de acceso.
+6. EliminaciÃ³n de permisos innecesarios.
 
-## ?? Validaciones realizadas
-- La Managed Identity está correctamente creada.
-- Los permisos cumplen mínimo privilegio.
-- No existen roles excesivos ni permisos huérfanos.
+## Validaciones realizadas
+- La Managed Identity estÃ¡ correctamente creada.
+- Los permisos cumplen mÃ­nimo privilegio.
+- No existen roles excesivos ni permisos huÃ©rfanos.
 - Accesos validados correctamente.
-- Auditoría funcional.
+- AuditorÃ­a funcional.
 
-## ?? Problemas encontrados
-- Un rol permitía acceso de escritura sin necesidad operativa.
-- Un recurso tenía permisos heredados no deseados.
+## Problemas encontrados
+- Un rol permitÃ­a acceso de escritura sin necesidad operativa.
+- Un recurso tenÃ­a permisos heredados no deseados.
 
-## ??? Soluciones aplicadas
-- Ajuste de roles para cumplir mínimo privilegio.
-- Eliminación de permisos heredados innecesarios.
-- Revisión completa de asignaciones RBAC.
+## Soluciones aplicadas
+- Ajuste de roles para cumplir mÃ­nimo privilegio.
+- EliminaciÃ³n de permisos heredados innecesarios.
+- RevisiÃ³n completa de asignaciones RBAC.
 
-## ?? Implicaciones de seguridad
+## Implicaciones de seguridad
 - Las Managed Identities eliminan la necesidad de secretos.
-- Un rol mal asignado puede exponer recursos críticos.
-- Los accesos deben revisarse periódicamente.
-- Las identidades deben limitarse a recursos específicos.
+- Un rol mal asignado puede exponer recursos crÃ­ticos.
+- Los accesos deben revisarse periÃ³dicamente.
+- Las identidades deben limitarse a recursos especÃ­ficos.
 
-## ?? Recursos útiles (opcionales)
-- Microsoft Learn — Managed Identities Overview
+## Recursos Ãºtiles
+- Microsoft Learn â€” Managed Identities Overview
 - Azure RBAC Documentation
 
-## ?? Comandos utilizados (opcionales)
-_No aplica._
-
-## ?? Comandos pendientes (opcionales)
+## Comandos utilizados
 _No aplica._

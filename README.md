@@ -1,133 +1,38 @@
-# 📘 Portfolio de Ciberseguridad — Lorenzo Lanuza Arellano
+# Lorenzo Lanuza | Portfolio de ciberseguridad
 
-Este repositorio recoge mi trabajo práctico en Cloud Security, Identidad en Azure, Auditorías Cloud, Defender for Cloud, Azure Policies, Key Vault, DevSecOps y AppSec.  
-Incluye laboratorios reales, documentación técnica, bitácoras y proyectos aplicados, organizados en módulos independientes y coherentes.
+Este repositorio documenta laboratorios y proyectos de seguridad cloud centrados en identidad, control de acceso, auditoría y protección de entornos Azure y Microsoft. El hilo conductor es técnico: partir de una configuración o riesgo, explicar las decisiones tomadas y dejar constancia de cómo se validó el resultado.
 
-El objetivo es demostrar competencias prácticas en seguridad cloud y desarrollo seguro, siguiendo un enfoque progresivo, técnico y orientado a la experiencia real.
+El portfolio evoluciona junto con el trabajo. El contenido publicado describe prácticas de laboratorio y documentación técnica; no representa despliegues de producción.
 
----
+## Proyectos destacados
 
-# 🧭 Estructura del Portfolio
+- [Autenticación con OAuth 2.0 y PKCE](01-seguridad-azure/README.md): flujo de autorización y validación de tokens JWT mediante JWKS.
+- [Seguridad de identidades en Entra ID](02-identity-security/README.md): MFA, Passwordless, SSPR, PIM, RBAC, Key Vault y Managed Identities.
+- [Auditoría de entornos cloud](03-cloud-audits/README.md): revisión de suscripciones, recursos críticos e identidades.
+- [Postura de seguridad con Defender for Cloud](04-defender-for-cloud/README.md): planes, recomendaciones, workloads y hardening con políticas.
+- [Operación de Microsoft Defender](05-defender-suite/README.md): prácticas sobre identidad, endpoints, correo, XDR y otros componentes de la suite.
+- [Controles DevSecOps para repositorios](07-devsecops/README.md): protección de ramas y revisión de cambios.
 
-El portfolio está organizado en módulos temáticos.  
-Cada módulo contiene:
+## Recorrido técnico
 
-- Laboratorios prácticos  
-- Documentación técnica  
-- Bitácoras  
-- Scripts y automatizaciones  
-- Buenas prácticas  
-- Ejemplos aplicados  
+Algunos documentos de entrada:
 
----
+- [Validación de JWT y JWKS](01-seguridad-azure/docs/03-validacion-jwt-jwks.md)
+- [Práctica de PIM](02-identity-security/practicas/04-pim/README.md)
+- [Auditoría de recursos críticos](03-cloud-audits/practicas/02-auditoria-recursos-criticos/README.md)
+- [Policies y hardening en Defender for Cloud](04-defender-for-cloud/practicas/04-policies-hardening/README.md)
+- [Análisis de incidentes en Defender XDR](05-defender-suite/practicas/04-defender-xdr/README.md)
+- [Protección de la rama principal](07-devsecops/branch-protection.md)
 
-# 🧩 Módulos del Portfolio
+## Cómo leer los proyectos
 
-## 01 — Autenticación y Autorización en Azure (PKCE + OAuth2 + JWT)
-Fundamentos de identidad moderna y autenticación segura:
-- OAuth2 Authorization Code PKCE  
-- Azure AD / Entra ID  
-- Validación de JWT  
-- Seguridad del flujo OAuth2  
-- Documentación técnica y bitácora del laboratorio PKCE  
+Los README de entrada ofrecen contexto y enlazan al trabajo disponible. Los informes técnicos describen procedimientos y validaciones; las bitácoras, cuando existen, registran la evolución cronológica. La documentación se amplía a medida que avanzan los laboratorios.
 
-## 02 — Identidad y Accesos en Azure (IAM / Entra ID)
-Gestión completa de identidades y accesos:
-- Usuarios y grupos  
-- RBAC  
-- MFA  
-- PIM  
-- Acceso condicional  
-- Auditoría de identidad  
-- Automatización  
+## Contacto
 
-## 03 — Auditorías Cloud y Seguridad de Suscripciones
-Evaluación y análisis de seguridad cloud:
-- Auditoría de suscripciones  
-- Hardening  
-- Seguridad de recursos críticos  
-- Informes de auditoría  
+- Email: [lanuzalorenzo@gmail.com](mailto:lanuzalorenzo@gmail.com)
+- [LinkedIn](https://linkedin.com/in/lanuzalorenzo)
 
-## 04 — Defender for Cloud (Seguridad Cloud Automatizada)
-Plataforma nativa de seguridad en Azure:
-- Activación de planes  
-- Recomendaciones  
-- Alertas  
-- Protección de workloads  
-- Integración con Azure Policies  
+## Aviso y licencia
 
-## 05 — **Defender Suite (XDR + MDE + MDI + MDO + MCAS + CSPM + CNAPP)**
-Suite completa de seguridad Microsoft Defender:
-- Defender for Endpoint  
-- Defender for Identity  
-- Defender for Office 365  
-- Defender XDR  
-- Defender for Cloud Apps  
-- Defender for Cloud  
-- Defender CSPM  
-- Defender CNAPP  
-- App Governance  
-- DevOps Security  
-- Ataques simulados y correlación XDR  
-
-## 06 — Azure Policies (Gobernanza y Cumplimiento)
-Gobernanza cloud y control de recursos:
-- Asignación de políticas  
-- Cumplimiento  
-- Efectos  
-- Políticas personalizadas  
-- Iniciativas  
-
-## 07 — Key Vault (Gestión de Secretos, Claves y Certificados)
-Protección de secretos y claves:
-- Secretos, claves y certificados  
-- Permisos  
-- Rotación  
-- Auditoría  
-- Integración con aplicaciones  
-
-## 08 — DevSecOps
-Seguridad integrada en CI/CD:
-- Pipelines seguros  
-- SAST, SCA, DAST  
-- Contenedores  
-- Secret scanning  
-- Firmado de artefactos  
-
-## 09 — AppSec General
-Seguridad de aplicaciones:
-- OWASP Top 10  
-- Seguridad en APIs  
-- Validación de entradas  
-- Gestión de sesiones  
-- Microservicios  
-- Contenedores  
-
----
-
-# 🎯 Objetivo del Portfolio
-Este portfolio está diseñado para demostrar competencias aplicadas en roles como:
-- Cloud Security  
-- Identity & Access Technician  
-- Security Analyst / SOC  
-- DevSecOps  
-- AppSec  
-
----
-
-# 📬 Contacto
-Email: lanuzalorenzo@gmail.com  
-LinkedIn: https://linkedin.com/in/lanuzalorenzo
-
----
-
-# ⚖️ Aviso Legal
-Este repositorio tiene fines educativos y de portfolio profesional.  
-No contiene información sensible, confidencial ni perteneciente a ninguna empresa.  
-Las configuraciones, scripts y ejemplos incluidos son demostraciones técnicas y no representan sistemas reales de producción.
-
----
-
-# 🔐 Licencia
-Este proyecto está bajo licencia MIT.  
-Consulta el archivo LICENSE para más información.
+El contenido tiene fines educativos y describe entornos de laboratorio. No incluye información confidencial ni acredita configuraciones de producción. El repositorio se distribuye bajo licencia [MIT](LICENSE).

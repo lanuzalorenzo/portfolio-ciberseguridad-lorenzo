@@ -3,7 +3,7 @@
 ## 📐 Arquitectura del caso práctico
 Para validar SSPR en un entorno realista dentro del laboratorio de identidad, se define el siguiente escenario:
 
-- **Usuario de pruebas:** `test@lanuzalorenzooutlook.onmicrosoft.com`
+- **Identidad:** cuenta nativa del tenant de laboratorio (identificador omitido)
 - **Tipo de usuario:** nativo del tenant (ideal para MFA, SSPR y Passwordless)
 - **Métodos de recuperación configurados:**
   - Email alternativo
@@ -39,7 +39,7 @@ Métodos habilitados:
 - Microsoft Authenticator (si ya está registrado)
 
 ### Asignación del usuario de pruebas
-- **Usuario:** `test@lanuzalorenzooutlook.onmicrosoft.com`
+- **Identidad:** cuenta nativa del tenant de laboratorio (identificador omitido)
 - **Motivo:** usuario nativo compatible con MFA, SSPR y Passwordless.
 
 ---
