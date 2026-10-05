@@ -1,51 +1,42 @@
-# Key Vault | Informe técnico
+# Informe técnico — Seguridad y Control de Acceso en Azure Key Vault
 
-## Contexto
-Este ejercicio se centra en la gestión segura de secretos, claves y certificados mediante Azure Key Vault.
-El objetivo es comprender cómo se almacenan, protegen y acceden estos elementos críticos dentro de un entorno cloud seguro.
+**Módulo:** 02 — Identity Security  
+**Práctica:** 06 — Azure Key Vault & Secrets Management
 
-## Objetivo
-Implementar un Key Vault y aplicar buenas prácticas de seguridad:
-- Crear un Key Vault.
-- Almacenar secretos.
-- Configurar permisos.
-- Validar accesos.
-- Revisar implicaciones de seguridad.
+## Contexto y Objetivo
+El almacenamiento de credenciales, cadenas de conexión y certificados directamente en código o variables de entorno desprotegidas constituye una de las principales causas de brechas de seguridad. 
 
-## Trabajo realizado
-1. Revisión de los requisitos de seguridad del ejercicio.
-2. Creación del Key Vault en el entorno de práctica.
-3. Almacenamiento de secretos de prueba.
-4. Configuración de permisos mediante RBAC y políticas de acceso.
-5. Validación de accesos permitidos y denegados.
-6. Revisión de auditoría y logs de acceso.
+Esta práctica documenta la configuración segura de un **Azure Key Vault** de laboratorio, la comparativa entre los modelos de autorización (*Azure RBAC* vs. *Vault Access Policies*), y la implementación de controles de seguridad en reposo y tránsito.
 
-## Validaciones realizadas
-- El Key Vault está correctamente desplegado.
-- Los secretos se almacenan de forma segura.
-- Los permisos cumplen mínimo privilegio.
-- No existen accesos directos innecesarios.
-- Las auditorías registran accesos correctamente.
+## Configuración y Decisiones de Arquitectura
 
-## Problemas encontrados
-- Un rol tenía permisos excesivos sobre secretos.
-- Un usuario podía listar claves sin necesidad operativa.
+Para este laboratorio se aplicaron las recomendaciones del Microsoft Cloud Security Benchmark (MCSB):
 
-## Soluciones aplicadas
-- Ajuste de roles para cumplir mínimo privilegio.
-- Eliminación de permisos de listado innecesarios.
-- Revisión completa de asignaciones.
+1. **Modelo de Autorización: Azure RBAC (Recomendado):**  
+   Se seleccionó el modelo de permisos **Azure role-based access control (Azure RBAC)** frente al modelo heredado de *Access Policies*. Esto permite:
+   - Integración nativa con Privileged Identity Management (PIM).
+   - Asignación de permisos a nivel de secreto individual o a nivel de vault.
+   - Auditoría unificada bajo el mismo registro de actividad de Azure.
 
-## Implicaciones de seguridad
-- Un Key Vault mal configurado puede exponer secretos críticos.
-- El listado de secretos es tan sensible como leerlos.
-- Los accesos deben revisarse periódicamente.
-- Los secretos deben rotarse según buenas prácticas.
+2. **Roles de Plano de Datos Utilizados:**  
+   Se definieron asignaciones estrictas con roles predefinidos:
+   - **Key Vault Secrets Officer:** Asignado únicamente al equipo de administración/SecOps para crear, rotar y gestionar el ciclo de vida de los secretos.
+   - **Key Vault Secrets User:** Asignado al servicio consumidor únicamente para lectura (`get`) del valor del secreto en tiempo de ejecución, sin permisos de listado (`list`) indiscriminado.
+   - **Key Vault Reader:** Para auditoría (inspección de metadatos y configuración sin acceso al contenido de los secretos).
 
-## Recursos útiles
-- Microsoft Learn — Key Vault Overview
-- OWASP Secrets Management
-- Azure RBAC Documentation
+3. **Protección contra Eliminación Accidental:**
+   - **Soft Delete:** Habilitado por defecto con retención de 90 días para proteger contra borrados accidentales o maliciosos.
+   - **Purge Protection:** Activado para garantizar que un secreto no pueda ser eliminado definitivamente antes de que expire el periodo de retención.
 
-## Comandos utilizados
-_No aplica._
+## Validaciones y Pruebas de Seguridad
+
+| Control / Prueba | Método | Comportamiento Esperado | Resultado Observado |
+| :--- | :--- | :--- | :--- |
+| Lectura de secreto con rol *Secrets User* | Petición con identidad autorizada | Lectura exitosa del valor del secreto | PASS: Valor recuperado correctamente |
+| Listado de secretos sin rol de listado | Intento de listar catálogo de secretos | Error 403 Forbidden | PASS: Acceso denegado (requiere `Microsoft.KeyVault/vaults/secrets/readMetadata/action`) |
+| Intento de lectura con rol de plano de control (*Reader*) | Usuario con rol *Reader* de Azure en el RG | Acceso denegado al contenido del secreto | PASS: El rol de plano de control no otorga acceso al plano de datos |
+| Prueba de Purge con Purge Protection activo | Intento de purgado forzado de secreto borrado | Error de operación no permitida | PASS: Bloqueado por directiva de retención inmutable |
+
+## Lecciones Aprendidas
+- Migrar del modelo de *Access Policies* a *Azure RBAC* simplifica la gobernanza y reduce drásticamente el riesgo de asignaciones de permisos globales accidentales.
+- El permiso de listado (`list`) en Key Vault debe tratarse con el mismo celo que el de lectura (`get`), ya que permite el descubrimiento de nombres y estructura de secretos sensibles.

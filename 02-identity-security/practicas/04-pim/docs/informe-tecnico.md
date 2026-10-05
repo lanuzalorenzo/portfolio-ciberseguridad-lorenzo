@@ -1,94 +1,45 @@
-# 🔐 Informe técnico — Privileged Identity Management (PIM)
+# Informe técnico — Privileged Identity Management (PIM) en Microsoft Entra ID
 
-## 🧾 Contexto
-Práctica realizada dentro del laboratorio del módulo **02 — Identity Security**, enfocada en la gestión de roles privilegiados mediante activaciones temporales en Microsoft Entra ID.
+**Módulo:** 02 — Identity Security  
+**Práctica:** 04 — Privileged Identity Management (PIM)
 
----
+## Contexto y Alcance
+El modelo tradicional de administración basado en privilegios permanentes (*Standing Access*) implica que un atacante que comprometa las credenciales de un administrador obtiene control inmediato y sostenido sobre el tenant o los recursos cloud.
 
-## 🎯 Objetivo
-Configurar y validar el uso de **Privileged Identity Management (PIM)** para:
-- Asignar roles como *Eligible*.
-- Activar roles de forma temporal.
-- Aplicar controles de seguridad como MFA y justificación.
-- Verificar auditoría y trazabilidad.
+Esta práctica documenta la aplicación del principio de privilegios permanentes cero (*Zero Standing Privileges* o ZSP) mediante **Microsoft Entra Privileged Identity Management (PIM)**, implementando elevaciones temporales *Just-in-Time* (JIT), requerimiento de factores de autenticación adicionales, justificación operativa y auditoría de eventos.
 
----
+## Configuración y Decisiones de Arquitectura
 
-## 🛠 Trabajo realizado
+### 1. Modelo de Asignaciones en PIM
+En *Identity Governance* → *Privileged Identity Management* → *Microsoft Entra roles*, se diferencian dos tipos de asignación:
+- **Active (Activa):** Permiso asignado de manera continua. Su uso debe limitarse estrictamente a cuentas de emergencia (*Break-Glass*).
+- **Eligible (Elegible):** El usuario no dispone de los privilegios en su estado base, pero tiene derecho a solicitarlos temporalmente cuando exista una necesidad técnica justificada.
 
-### 1. Acceso a PIM
-Ruta utilizada:
-**Identity Governance → Privileged Identity Management → Microsoft Entra roles**
+Para este laboratorio se configuró al usuario de prueba con asignación **Eligible** sobre el rol **Global Reader**.
 
-### 2. Revisión de roles asignados
-- Verificación de roles existentes.
-- Confirmación de que el usuario de pruebas tiene asignación *Eligible*.
+### 2. Políticas del Rol (*Role Settings*)
+Se revisaron y aplicaron las directivas que gobiernan la activación del rol:
+- **Duración máxima de activación:** Limitada a 2 horas (reduciendo la ventana de exposición a lo estrictamente necesario).
+- **Requisito de MFA:** Obligatorio validar un segundo factor de autenticación antes de autorizar la elevación.
+- **Justificación de negocio:** Campo de texto obligatorio donde el operador debe indicar el motivo o ticket de soporte asociado.
+- **Aprobación:** Deshabilitada en el laboratorio para autoservicio, pero evaluada para escenarios de producción que requieran autorización explícita de un responsable.
 
-### 3. Activación del rol
-Acciones realizadas:
-- Navegar a **My roles**.
-- Seleccionar el rol **Global Reader**.
-- Activar el rol proporcionando:
-  - Justificación.
-  - Duración.
-  - Verificación MFA.
+### 3. Procedimiento de Elevación JIT
+1. El usuario accede a *PIM* → *My roles*.
+2. El rol figura en estado *Eligible*. Se pulsa en **Activate**.
+3. El sistema solicita verificación MFA previa.
+4. Se introduce la justificación técnica y se define el periodo de tiempo.
+5. El rol pasa a estado **Active** de forma inmediata.
 
-### 4. Validación de estado
-- Confirmación de que el rol pasa a estado **Active**.
-- Verificación de permisos disponibles durante la activación.
+## Validaciones y Pruebas Realizadas
 
-### 5. Desactivación del rol
-- Desactivación manual desde **My roles**.
-- Confirmación de retorno al estado **Eligible**.
+| Control / Prueba | Método | Comportamiento Esperado | Resultado Observado |
+| :--- | :--- | :--- | :--- |
+| Comprobación de permisos antes de activación | Navegación en portal como usuario base | Sin visibilidad ni capacidades administrativas | PASS: Sin privilegios concedidos en reposo |
+| Activación sin justificación o sin MFA | Intento de elevación omitiendo datos requeridos | Bloqueo del asistente de activación | PASS: Campos obligatorios impuestos por directiva |
+| Verificación de elevación temporal | Inspección de estado en *Active assignments* | El rol permanece activo durante la ventana definida | PASS: Permisos operativos concedidos temporalmente |
+| Trazabilidad y auditoría de elevación | Consulta de *Resource audit* en PIM | Registro completo con timestamp, identidad y justificación | PASS: Trazabilidad inmutable comprobada |
 
----
-
-## 🔍 Validaciones realizadas
-- El rol aparece correctamente como **Eligible** antes de la activación.
-- La activación requiere MFA.
-- La activación exige justificación.
-- El rol queda en estado **Active** durante el tiempo configurado.
-- La auditoría registra:
-  - Activación.
-  - Desactivación.
-  - Justificación.
-  - Duración.
-
----
-
-## ⚠️ Problemas encontrados
-- La interfaz moderna oculta algunas rutas clásicas documentadas en guías antiguas.
-- El usuario debe tener métodos MFA configurados para activar roles.
-
----
-
-## 🛠 Soluciones aplicadas
-- Documentación de rutas reales de la UI moderna.
-- Registro previo de métodos MFA en **My Sign-Ins**.
-- Validación del flujo completo con usuario nativo del tenant.
-
----
-
-## 🔐 Implicaciones de seguridad
-- PIM reduce el riesgo de permisos permanentes.
-- Obliga a usar MFA para roles sensibles.
-- Aporta trazabilidad completa mediante auditoría.
-- Permite aplicar el principio de privilegios mínimos.
-
----
-
-## 📎 Recursos útiles
-- https://learn.microsoft.com/entra/id-governance/privileged-identity-management/pim-configure
-- https://learn.microsoft.com/entra/identity/
-
----
-
-## ⚙️ Comandos utilizados (opcional)
-_No se utilizaron comandos en esta práctica._
-
----
-
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.  
-No contiene información sensible ni perteneciente a ninguna organización real.  
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+## Lecciones de Troubleshooting y Seguridad
+- **Cuentas de emergencia (Break-Glass):** Un error grave al implementar PIM es aplicarlo al 100% de los administradores. Siempre deben mantenerse al menos 2 cuentas de acceso de emergencia excluidas de PIM y de directivas de Conditional Access, con contraseñas complejas almacenadas en caja fuerte física y monitorizadas mediante alertas de Sentinel o Defender.
+- **Requisito de licenciamiento:** En Azure, PIM sobre roles de Entra ID y recursos de Azure requiere licencia Microsoft Entra ID P2 o Microsoft Entra ID Governance para cada usuario elegible.
