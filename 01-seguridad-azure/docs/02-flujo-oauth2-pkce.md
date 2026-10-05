@@ -1,48 +1,40 @@
-# 🔐 Informe técnico — Flujo OAuth2 PKCE
+# Informe técnico — Flujo OAuth2 PKCE en Azure AD
 
-## 📘 Proyecto
-Módulo 01 — Seguridad en Azure (Autenticación, Autorización y Protección de APIs).
+**Proyecto:** Módulo 01 — Seguridad en Azure (Autenticación, Autorización y Protección de APIs).
 
-## 🎯 Objetivo
-Documentar el flujo OAuth2 Authorization Code con PKCE utilizado para obtener tokens emitidos por Azure AD y validar el acceso a una API protegida. El documento debe ser técnico, claro y atemporal.
+## Objetivo
+Documentar la implementación técnica del flujo OAuth2 Authorization Code con PKCE frente a Microsoft Entra ID (Azure AD), detallando las configuraciones necesarias en el portal, las particularidades del proveedor y la resolución de problemas frecuentes.
 
-## 🛠 Trabajo realizado
-1. Desglose del rol del `code_verifier`.
-2. Explicación del `code_challenge` y su derivación mediante SHA256.
-3. Descripción del Authorization Request enviado a Azure AD.
-4. Revisión del proceso de autenticación del usuario.
-5. Análisis del `authorization_code` emitido por Azure AD.
-6. Documentación del intercambio del código por tokens.
-7. Explicación del token de acceso (JWT) emitido por Azure AD.
-8. Revisión de la validación del token en la API.
+## Funcionamiento del flujo con PKCE
 
-## 🔍 Validaciones realizadas
-- Confirmación de que el flujo descrito coincide con el implementado en el módulo.
-- Validación de que los pasos siguen el estándar OAuth2 + PKCE.
-- Revisión de que no se incluyen rutas de UI ni comandos operativos.
+1. **Generación del reto criptográfico:** El cliente genera un `code_verifier` (cadena aleatoria) y un `code_challenge` (hash SHA256 del verifier).
+2. **Authorization Request:** El cliente redirige al usuario a la URL de autorización de Azure AD (`https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/authorize`). La petición incluye `client_id`, `redirect_uri`, `scope`, `state`, `code_challenge` y `code_challenge_method=S256`.
+3. **Autenticación y Consentimiento:** El usuario se autentica contra el tenant. Si la aplicación lo requiere, se le solicita consentimiento para los permisos solicitados.
+4. **Emisión del Authorization Code:** Azure AD redirige al cliente entregando un `authorization_code` temporal.
+5. **Intercambio por Tokens:** El cliente hace una petición POST al endpoint de token enviando el `authorization_code` y el `code_verifier` original.
+6. **Validación y Entrega:** Azure AD aplica SHA256 al `code_verifier` y lo compara con el `code_challenge`. Si coinciden, emite el token de acceso (JWT).
 
-## ⚠️ Problemas encontrados
-Ninguno. El documento es conceptual.
+## Implementación en Azure AD (App Registration)
 
-## 🛠 Soluciones aplicadas
-No aplica.
+Para que el flujo funcione correctamente, la aplicación debe estar configurada de manera precisa en Entra ID:
 
-## 🧠 Aprendizajes clave
-- PKCE protege el `authorization_code` frente a ataques de interceptación.
-- El uso de HTTPS es obligatorio para garantizar la seguridad del flujo.
-- El token de acceso debe validarse siempre en la API.
-- La API debe rechazar tokens sin firma válida o con claims incorrectos.
-- La validación correcta del JWT es esencial para evitar accesos indebidos.
+- **Plataforma del cliente:** Debe registrarse como aplicación de tipo *Single-page application (SPA)* o *Mobile and desktop applications* (Public Client). Esto habilita implícitamente el soporte para PKCE sin requerir un Client Secret.
+- **Exposición de la API:** En la sección *Expose an API*, se configura el Application ID URI (habitualmente `api://<client-id>`) y se define un scope personalizado, típicamente `access_as_user`, para permitir la delegación de identidad.
+- **Configuración de Scopes en el cliente:** Durante el *Authorization Request*, el cliente debe solicitar explícitamente este scope configurado (ej. `api://<api-client-id>/access_as_user`).
 
-## 📎 Recursos útiles
-- https://datatracker.ietf.org/doc/html/rfc7636  
-- https://learn.microsoft.com/azure/active-directory/develop  
+## Lecciones de Troubleshooting
 
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.  
-No contiene información sensible ni perteneciente a ninguna organización real.  
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+Durante la integración y pruebas de laboratorio se identificaron y resolvieron los siguientes escenarios de error comunes en Entra ID:
 
-## 🔐 Licencia
-Este documento se distribuye bajo licencia MIT.  
-Consulta el archivo LICENSE en la raíz del repositorio para más información.
+| Código de Error Azure | Causas Comunes identificadas | Solución Aplicada |
+| :--- | :--- | :--- |
+| **AADSTS501481** | El `redirect_uri` no coincide, el cliente no está marcado como público, o PKCE no está bien formado. | Verificar que la URI de redirección coincide exactamente y que la plataforma en el App Registration es compatible con flujos públicos (SPA/Mobile). |
+| **AADSTS90013** | Solicitud de `scope` incorrecto, falta de consentimiento del administrador, o permisos no aceptados por el usuario. | Validar que el scope solicitado tiene el formato `api://...` y que la API ha sido autorizada para delegar acceso (Admin Consent). |
+
+## Consideraciones de Seguridad
+- PKCE protege el `authorization_code` frente a ataques de interceptación durante la redirección al navegador.
+- Al actuar como *Public Client*, no se almacena ningún secreto en el cliente, mitigando el riesgo de fuga de credenciales estáticas.
+
+## Recursos de referencia
+- [RFC 7636 - Proof Key for Code Exchange](https://datatracker.ietf.org/doc/html/rfc7636)
+- [Microsoft Entra ID - Flujo de código de autorización OAuth 2.0](https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
