@@ -1,6 +1,6 @@
-# 🗒️ Bitácora — 2026-09-08 — Identity Security
+# Bitácora — 2026-09-08 — Identity Security
 
-## 🧩 Actividades realizadas
+## Actividades realizadas
 - Revisión completa de la estructura del módulo `02-identity-security` para asegurar coherencia entre todas las prácticas.
 - Limpieza y regeneración de la documentación del ejercicio de Passwordless, aplicando el formato estándar del portfolio.
 - Reorganización de bitácoras:
@@ -16,14 +16,14 @@
   - Homogeneización del estilo entre MFA, Passwordless, SSPR y PIM.
 - Revisión de nombres de archivo para cumplir el estándar del portfolio.
 
-## 📌 Observaciones
+## Observaciones
 - La estructura del módulo queda ahora unificada y más fácil de mantener.
 - Cada ejercicio contiene únicamente `docs/` y `README.md`, evitando duplicidades.
 - Todas las bitácoras están centralizadas y ordenadas cronológicamente.
-- El estilo narrativo con emojis facilita la lectura y mantiene coherencia entre prácticas.
+- El estilo narrativo sobrio y profesional facilita la lectura y mantiene coherencia técnica entre prácticas.
 - La documentación generada hoy (Passwordless y SSPR) ya sigue el estilo real del portfolio.
 
-## 📚 Conocimientos adquiridos
+## Conocimientos adquiridos
 - Importancia de mantener bitácoras por día en lugar de por ejercicio.
 - Estructuración profesional de módulos de seguridad en portfolios técnicos.
 - Flujo completo de documentación de prácticas de identidad: MFA → Passwordless → SSPR → PIM.

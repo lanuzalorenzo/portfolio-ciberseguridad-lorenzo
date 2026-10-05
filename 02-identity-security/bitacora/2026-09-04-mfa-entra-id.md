@@ -1,80 +1,14 @@
-# 📄 Bitácora — MFA en Microsoft Entra ID
+# Bitácora — 2026-09-04: Habilitación de MFA y Verificación con Proton Pass
 
-## 📘 Proyecto
-Portfolio de Ciberseguridad — Módulo 02: Identity Security
+**Módulo:** 02 — Identity Security  
+**Práctica:** 01 — MFA en Microsoft Entra ID
 
-## 🎯 Objetivo
-Habilitar y validar MFA en el tenant de laboratorio de Microsoft Entra ID, localizar el panel real de configuración, registrar un método TOTP externo y comprobar el flujo completo de autenticación.
+Hoy inicié las prácticas del bloque de seguridad de identidades centrándome en la línea base de autenticación multifactor en Entra ID.
 
----
+Comencé activando **Security Defaults** desde las propiedades del tenant para forzar la protección en cuentas administrativas y bloquear de raíz protocolos de autenticación básica heredada (*legacy auth*). 
 
-## 🛠 Trabajo realizado
+Al intentar configurar la directiva granular por usuario, me encontré con la primera dificultad práctica en el portal: la consola moderna de Entra ID ha absorbido el panel clásico de MFA de una forma poco intuitiva (oculto en una tarjeta dentro de la pestaña de métodos de autenticación del usuario). Además, confirmé que la opción histórica *Enforce* ya no se utiliza en la interfaz moderna; ahora el estado funcional es *Enabled*, y el portal fuerza el registro en el siguiente inicio de sesión.
 
-### 1. Activación de Security Defaults
-- Activación de Security Defaults desde la interfaz moderna de Entra.
-- MFA pasa a ser obligatorio para administradores y usuarios en riesgo.
-- El control aparece como lista desplegable (Enabled/Disabled).
+Para validar el flujo, utilicé una cuenta de prueba del laboratorio y decidí probar un método alternativo a la app de Microsoft: vinculé **Proton Pass** mediante el estándar OATH-TOTP escaneando el código QR. La verificación temporal de 6 dígitos se sincronizó al primer intento. Cerré la sesión, probé el login y verifiqué que el acceso queda completamente detenido hasta introducir el código del gestor TOTP.
 
-### 2. Localización del panel real de MFA por usuario
-- Identificación del panel clásico de MFA dentro de la UI moderna.
-- Ruta efectiva:
-  - Identidad → Usuarios  
-  - Pestañas superiores → Métodos de autenticación  
-  - Tarjeta → Autenticación multifactor por usuario
-- El panel clásico aparece incrustado en la interfaz moderna.
-
-### 3. Habilitación de MFA por usuario
-- Selección del usuario en el panel clásico.
-- Activación de “Habilitar MFA”.
-- La opción “Enforce” ya no existe en la UI moderna.
-- Con Security Defaults habilitado, el usuario debe registrar MFA en el siguiente inicio de sesión.
-
-### 4. Registro del método TOTP externo (Proton Pass)
-- Inicio de sesión del usuario para completar el registro MFA.
-- Selección de “Aplicación de autenticación”.
-- Escaneo del código QR con Proton Pass.
-- Verificación del código TOTP.
-- Confirmación de funcionamiento correcto del método TOTP.
-
-### 5. Validación del flujo MFA
-- Prueba de inicio de sesión con MFA activo.
-- Introducción del código TOTP generado por Proton Pass.
-- Autenticación completada correctamente.
-
----
-
-## 🔍 Validaciones realizadas
-- Security Defaults activado y funcional.
-- Panel de MFA localizado correctamente en la UI moderna.
-- MFA habilitado para el usuario del laboratorio.
-- Método TOTP externo registrado y operativo.
-- Flujo de autenticación validado de extremo a extremo.
-
----
-
-## ⚠️ Problemas encontrados
-- La ruta hacia el panel clásico de MFA está más oculta que en la documentación oficial.
-- La desaparición de “Enforce” puede generar confusión en documentación antigua.
-
----
-
-## 🛠 Soluciones aplicadas
-- Documentación de la ruta real hacia el panel de MFA.
-- Ajuste del procedimiento para la nueva interfaz moderna.
-- Validación del comportamiento de Security Defaults como reemplazo de “Enforce”.
-
----
-
-## 🧠 Aprendizajes clave
-- Security Defaults simplifica MFA pero limita personalización avanzada.
-- Proton Pass funciona perfectamente como método TOTP para Entra ID.
-- La UI moderna de Entra integra paneles clásicos de forma no evidente.
-- La autenticación multifactor es obligatoria en escenarios de riesgo.
-
----
-
-## 📎 Recursos útiles
-- Documentación oficial de Microsoft Entra ID  
-- Guía de MFA  
-- Proton Pass (TOTP)  
-- Conceptos básicos de identidad en Azure
+Práctica inicial completada con éxito.
