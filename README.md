@@ -11,7 +11,8 @@ El portfolio evoluciona junto con el trabajo. El contenido publicado describe pr
 - [Auditoría de entornos cloud](03-cloud-audits/README.md): revisión de suscripciones, recursos críticos e identidades.
 - [Postura de seguridad con Defender for Cloud](04-defender-for-cloud/README.md): planes, recomendaciones, workloads y hardening con políticas.
 - [Operación de Microsoft Defender](05-defender-suite/README.md): prácticas sobre identidad, endpoints, correo, XDR y otros componentes de la suite.
-- [Controles DevSecOps para repositorios](07-devsecops/README.md): protección de ramas y revisión de cambios.
+- [Privileged Access & Identity Governance](06-identity-protection/README.md): acceso privilegiado, Conditional Access, PIM, RBAC y Identity Protection.
+- [Controles DevSecOps para repositorios](07-devsecops/README.md): protección de ramas, secretos, seguridad del pipeline y validación de entregas.
 
 ## Recorrido técnico
 
