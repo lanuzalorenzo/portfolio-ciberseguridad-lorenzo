@@ -1,27 +1,38 @@
-# Práctica 13 | Defender CNAPP (Cloud-Native Application Protection Platform)
+# 13 | Defender CNAPP (Cloud-Native Application Protection Platform)
 
-## Objetivo
-Evaluar y proteger aplicaciones cloud-native mediante Defender CNAPP, incluyendo análisis de IaC, seguridad de contenedores, protección de workloads, exposición, riesgos y correlación con XDR.
+## Descripción del escenario y objetivo de seguridad
 
-## Recorrido de la práctica
-1. Activar CNAPP en la suscripción del laboratorio.
-2. Revisar el panel de seguridad de aplicaciones cloud-native.
-3. Validar escaneos de IaC (Terraform, Bicep, ARM).
-4. Revisar seguridad de contenedores e imágenes.
-5. Validar protección de workloads cloud-native.
-6. Revisar exposición y riesgos.
-7. Revisar recomendaciones de seguridad.
-8. Documentar resultados en el informe técnico.
+**Escenario:** Aplicaciones cloud-native con riesgo de exposición en el ciclo de desarrollo y ejecución, incluyendo arquitectura basada en contenedores, IaC e infraestructura temporal.
+**Objetivo de seguridad:** Evaluar la protección de workloads cloud-native mediante Defender CNAPP, analizando IaC, contenedores, exposiciones y riesgo asociado en la plataforma.
+**Alcance:** Infraestructura cloud-native del laboratorio, análisis de seguridad en IaC, contenedores, workloads y recomendaciones priorizadas.
 
-## Contexto técnico
-Defender CNAPP proporciona:
-- Seguridad de IaC.
-- Seguridad de contenedores.
-- Protección de workloads cloud-native.
-- Exposición basada en riesgo.
-- Integración con DevOps.
-- Correlación con Defender XDR.
+> [!NOTE]
+> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
+> secretos ni datos sensibles.
 
-## Informe técnico
+## Arquitectura y componentes de Microsoft Defender utilizados
 
-[Seguridad de aplicaciones cloud-native](docs/informe-tecnico.md)
+| Componente | Función | Configuración relevante |
+|---|---|---|
+| **Defender CNAPP** | Protección de workloads cloud-native | Visibilidad en IaC y runtime. |
+| **Seguridad de contenedores** | Revisión de imágenes y vulnerabilidades | Detección de riesgos de ejecución. |
+| **Protección de workloads** | Evaluación del riesgo por aplicación | Exposición y configuración. |
+| **Correlación con XDR** | Relación con incidentes y alertas | Contexto extremo para respuesta. |
+
+## Implementación de controles DevSecOps / Seguridad
+
+| Control | Implementación | Automatización o política | Referencia |
+|---|---|---|---|
+| Seguridad de IaC | Análisis de configuración con plantillas | Análisis en pipeline y despliegue | MCSB DS-1 |
+| Seguridad de contenedores | Revisión de imágenes, capas y vulnerabilidades | Escaneo y alertas | MCSB PV-2 |
+| Protección de workloads | Evaluación de exposición y riesgo | Directrices de hardening | MCSB EP-1 |
+
+**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+
+## Validación o pruebas de seguridad realizadas
+
+| Prueba | Método | Resultado esperado | Resultado observado |
+|---|---|---|---|
+| Escaneo de IaC | Revisión del panel de CNAPP | Riesgos detectados y priorizados | Correcto |
+| Evaluación de contenedores | Análisis de imágenes y capas | Vulnerabilidades o riesgos visibles | Correcto |
+| Protección de workloads | Verificación de riesgos y exposición | Evidencia con impacto identificado | Sí |

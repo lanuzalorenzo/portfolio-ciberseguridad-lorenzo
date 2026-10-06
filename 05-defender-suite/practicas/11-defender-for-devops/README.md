@@ -1,26 +1,38 @@
-# Práctica 11 | Defender for DevOps
+# 11 | Defender for DevOps
 
-## Objetivo
-Integrar repositorios, pipelines y artefactos con Microsoft Defender for DevOps para habilitar análisis de seguridad, detección de secretos, evaluación de IaC y protección de la cadena de suministro.
+## Descripción del escenario y objetivo de seguridad
 
-## Recorrido de la práctica
-1. Conectar GitHub o Azure DevOps con Defender for DevOps.
-2. Revisar repositorios integrados y estado de seguridad.
-3. Validar escaneos de IaC (Terraform, Bicep, ARM).
-4. Revisar detección de secretos y credenciales expuestas.
-5. Validar análisis de dependencias y vulnerabilidades.
-6. Revisar alertas generadas por repositorios o pipelines.
-7. Documentar resultados en el informe técnico.
+**Escenario:** Ciclo de vida de software con repositorios y pipelines conectados sin análisis continuo de IaC, secretos o dependencias, incrementando el riesgo de fuga de credenciales y componentes vulnerables.
+**Objetivo de seguridad:** Integrar repositorios y pipelines en Defender for DevOps para evaluar IaC, secretos expuestos y vulnerabilidades del software antes de la entrega continua.
+**Alcance:** Repositorios de laboratorio, pipelines, plantillas de infraestructura y análisis de seguridad sobre componentes y artefactos generados.
 
-## Contexto técnico
-Defender for DevOps proporciona:
-- Escaneo de IaC (Terraform, Bicep, ARM).
-- Detección de secretos expuestos.
-- Análisis de dependencias vulnerables.
-- Protección de la cadena de suministro.
-- Integración con GitHub Advanced Security.
-- Correlación con Defender XDR.
+> [!NOTE]
+> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
+> secretos ni datos sensibles.
 
-## Informe técnico
+## Arquitectura y componentes de Microsoft Defender utilizados
 
-[Integración de Defender for DevOps](docs/informe-tecnico.md)
+| Componente | Función | Configuración relevante |
+|---|---|---|
+| **Defender for DevOps** | Seguridad en repositorios y pipelines | Integración con GitHub/Azure DevOps. |
+| **Análisis de IaC** | Escaneo de Terraform, Bicep o ARM | Detección de configuración insegura. |
+| **Detección de secretos** | Identificación de tokens y credenciales | Escaneo del repositorio. |
+| **Dependencias y artefactos** | Revisión de vulnerabilidades y librerías | Análisis de cadena de suministro. |
+
+## Implementación de controles DevSecOps / Seguridad
+
+| Control | Implementación | Automatización o política | Referencia |
+|---|---|---|---|
+| Análisis de IaC | Revisar plantillas de infraestructura | Escaneo de seguridad en CI/CD | MCSB DS-1 |
+| Detección de secretos | Búsqueda de credenciales expuestas | Validación previa a commit o despliegue | MCSB IM-1 |
+| Seguridad de dependencias | Revisión de paquetes vulnerables | Alertas de riesgo y remediación | MCSB PV-2 |
+
+**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+
+## Validación o pruebas de seguridad realizadas
+
+| Prueba | Método | Resultado esperado | Resultado observado |
+|---|---|---|---|
+| Escaneo de IaC | Revisión de plantillas de infraestructura | Hallazgos de riesgo visibles | Correcto |
+| Secret scanning | Validación de credenciales en repositorio | Alertas de riesgo si existen secretos | Sí |
+| Evaluación de dependencias | Análisis de paquetes y librerías | Vulnerabilidades priorizadas | Sí |

@@ -1,24 +1,38 @@
-# Práctica 03 | Defender for Office 365
+# 03 | Defender for Office 365
 
-## Objetivo
-Configurar y validar políticas de protección de correo electrónico en Microsoft Defender for Office 365, incluyendo SafeLinks, SafeAttachments y análisis de amenazas en contenido y URLs.
+## Descripción del escenario y objetivo de seguridad
 
-## Recorrido de la práctica
-1. Revisar el estado actual de las políticas de seguridad en Office 365.
-2. Crear o ajustar políticas de SafeLinks para protección de URLs.
-3. Crear o ajustar políticas de SafeAttachments para análisis de archivos.
-4. Validar el comportamiento de las políticas aplicadas.
-5. Revisar alertas y eventos generados por Defender for Office 365.
-6. Documentar resultados en el informe técnico y bitácora final del módulo.
+**Escenario:** Entorno de Microsoft 365 con políticas de correo no reforzadas, que incrementa el riesgo de phishing, malware y acceso a enlaces maliciosos a través del bandeja de entrada.
+**Objetivo de seguridad:** Evaluar y activar políticas de correo seguro, validando SafeLinks, SafeAttachments y detección de amenazas a través de Defender for Office 365.
+**Alcance:** Tenant de laboratorio, buzones de correo, políticas de correo electrónico y revisión de alertas asociadas a amenazas de correo.
 
-## Contexto técnico
-Defender for Office 365 proporciona:
-- Protección contra phishing y malware.
-- Análisis dinámico de URLs (SafeLinks).
-- Análisis detonación de archivos (SafeAttachments).
-- Detección de campañas de phishing.
-- Alertas automáticas basadas en comportamiento y reputación.
+> [!NOTE]
+> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
+> secretos ni datos sensibles.
 
-## Informe técnico
+## Arquitectura y componentes de Microsoft Defender utilizados
 
-[Políticas de protección de correo](docs/informe-tecnico.md)
+| Componente | Función | Configuración relevante |
+|---|---|---|
+| **Defender for Office 365** | Protección del correo y colaboración | Políticas de seguridad y análisis de mensajes. |
+| **SafeLinks** | Reescritura y validación de URLs maliciosas | Bloqueo y análisis de enlaces sospechosos. |
+| **SafeAttachments** | Análisis dinámico de adjuntos | Sustitución del archivo por una versión escaneada. |
+| **Threat Explorer** | Revisión de campañas y mensajes maliciosos | Análisis de indicadores y patrones. |
+
+## Implementación de controles DevSecOps / Seguridad
+
+| Control | Implementación | Automatización o política | Referencia |
+|---|---|---|---|
+| Protección de enlaces | SafeLinks con políticas de bloqueo y seguimiento | Reglas de seguridad del tenant | MCSB AM-1 |
+| Protección de adjuntos | SafeAttachments para análisis en sandbox | Filtrado previo a entrega | MCSB AM-2 |
+| Detección de campañas | Revisión de amenazas y campañas de phishing | Alertas automatizadas | MCSB IR-2 |
+
+**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+
+## Validación o pruebas de seguridad realizadas
+
+| Prueba | Método | Resultado esperado | Resultado observado |
+|---|---|---|---|
+| Validación de SafeLinks | Simulación de URL sospechosa | Bloqueo o análisis de la URL | Correcto |
+| Validación de SafeAttachments | Envío de archivo sintético malicioso | Escaneo y bloqueo previo | Correcto |
+| Revisión de alertas | Consulta del portal de correo y alertas | Indicadores y tendencia visibles | Sí |

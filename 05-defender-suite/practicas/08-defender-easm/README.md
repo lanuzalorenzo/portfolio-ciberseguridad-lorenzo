@@ -1,27 +1,38 @@
-# Práctica 08 | Defender External Attack Surface Management (EASM)
+# 08 | Defender External Attack Surface Management (EASM)
 
-## Objetivo
-Descubrir, mapear y analizar activos expuestos en Internet mediante Defender EASM, identificando dominios, subdominios, servicios, tecnologías, vulnerabilidades y riesgos asociados a la superficie de ataque externa.
+## Descripción del escenario y objetivo de seguridad
 
-## Recorrido de la práctica
-1. Crear un proyecto de EASM para el laboratorio.
-2. Configurar los dominios raíz y rangos de descubrimiento.
-3. Ejecutar un escaneo inicial de superficie de ataque.
-4. Revisar activos descubiertos: dominios, subdominios, IPs, servicios.
-5. Analizar tecnologías detectadas y configuraciones expuestas.
-6. Revisar vulnerabilidades y riesgos asociados a los activos.
-7. Validar alertas generadas por exposición o mala configuración.
-8. Documentar resultados en el informe técnico.
+**Escenario:** Organización con activos externos no gestionados o parcialmente conocidos, incluyendo dominios, subdominios, servicios públicos y tecnologías expuestas sin visibilidad centralizada.
+**Objetivo de seguridad:** Descubrir, mapear y priorizar la superficie de ataque externa para detectar exposiciones, configuraciones inseguras y riesgos asociados a activos públicos.
+**Alcance:** Dominios del laboratorio, servicios web y entidades públicas visibles en Internet, así como riesgos de exposición y oportunidades de remediación.
 
-## Contexto técnico
-Defender EASM proporciona:
-- Descubrimiento automático de activos expuestos en Internet.
-- Mapeo de dominios, subdominios y servicios.
-- Identificación de tecnologías y versiones.
-- Detección de vulnerabilidades y configuraciones inseguras.
-- Visibilidad sobre Shadow IT y activos no gestionados.
-- Integración con Defender XDR para correlación de señales.
+> [!NOTE]
+> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
+> secretos ni datos sensibles.
 
-## Informe técnico
+## Arquitectura y componentes de Microsoft Defender utilizados
 
-[Descubrimiento y análisis de superficie externa](docs/informe-tecnico.md)
+| Componente | Función | Configuración relevante |
+|---|---|---|
+| **Defender EASM** | Descubrimiento de activos expuestos | Mapado de dominios, subdominios e IPs. |
+| **Superficie de ataque externa** | Inventario de activos públicos | Evaluación continua del entorno visible. |
+| **Tecnologías detectadas** | Identificación de stacks y versiones | Riesgo asociado a mantenimiento. |
+| **Exposición y vulnerabilidades** | Riesgo y hallazgos asociados | Priorización de remediación. |
+
+## Implementación de controles DevSecOps / Seguridad
+
+| Control | Implementación | Automatización o política | Referencia |
+|---|---|---|---|
+| Descubrimiento de activos externos | Escaneo inicial de superficie y dominios | Recolección continua de activos | MCSB GS-1 |
+| Priorización de exposiciones | Clasificación por riesgo y exposición | Base de urgencia para remediación | MCSB RM-1 |
+| Evaluación de configuración | Detección de servicios y tecnologías públicas | Riesgos derivados de versiones y servicios | MCSB PV-1 |
+
+**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+
+## Validación o pruebas de seguridad realizadas
+
+| Prueba | Método | Resultado esperado | Resultado observado |
+|---|---|---|---|
+| Descubrimiento de activos | Escaneo inicial de EASM | Lista de dominios y servicios visibles | Correcto |
+| Análisis de riesgos | Revisión de tecnologías y vulnerabilidades | Riesgos identificados por prioridad | Correcto |
+| Validación de exposición | Comprobación de activos externos | Mayor visibilidad del perímetro | Sí |

@@ -1,24 +1,38 @@
-# Práctica 02 | Defender for Endpoint
+# 02 | Defender for Endpoint
 
-## Objetivo
-Realizar el onboarding de dispositivos en Microsoft Defender for Endpoint, validar la ingestión de telemetría, revisar el estado de protección EDR y analizar las primeras señales generadas por el motor de comportamiento.
+## Descripción del escenario y objetivo de seguridad
 
-## Recorrido de la práctica
-1. Revisar requisitos del dispositivo para onboarding.
-2. Descargar el paquete de onboarding desde el portal de Microsoft Defender for Endpoint.
-3. Ejecutar el script de incorporación en el endpoint.
-4. Validar que el dispositivo aparece en estado "Active" en el portal.
-5. Confirmar que la telemetría del endpoint se está enviando correctamente.
-6. Revisar alertas EDR iniciales generadas por el motor de análisis.
-7. Documentar resultados en el informe técnico y bitácora.
+**Escenario:** Dispositivos del laboratorio sin onboarding activo en Microsoft Defender for Endpoint, con telemetría incompleta y riesgo de exposición no detectada ante malware, ejecución remota y movimiento lateral.
+**Objetivo de seguridad:** Habilitar el onboarding de endpoints, validar la ingestión de telemetría y confirmar la detección temprana de comportamiento sospechoso mediante EDR.
+**Alcance:** Equipos Windows/Linux del laboratorio, registros de actividad del endpoint y validación de alertas de seguridad generadas por el motor de detección.
 
-## Contexto técnico
-Defender for Endpoint habilita capacidades avanzadas de detección y respuesta (EDR), incluyendo:
-- Análisis de comportamiento.
-- Detección de técnicas MITRE ATT&CK.
-- Supervisión de procesos, conexiones y actividad del sistema.
-- Alertas automáticas basadas en anomalías y patrones de ataque.
+> [!NOTE]
+> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
+> secretos ni datos sensibles.
 
-## Informe técnico
+## Arquitectura y componentes de Microsoft Defender utilizados
 
-[Onboarding y validación de Defender for Endpoint](docs/informe-tecnico.md)
+| Componente | Función | Configuración relevante |
+|---|---|---|
+| **Defender for Endpoint** | EDR y protección de endpoints | Onboarding del dispositivo y validación del estado activo. |
+| **Agente de seguridad** | Recolección de eventos y procesos | Instalado en el endpoint del laboratorio. |
+| **Threat analytics / alertas** | Detección y respuesta ante comportamientos anómalos | Revisado desde el portal de Microsoft Defender. |
+| **Attack surface reduction** | Reducción de superficie de ataque | Evaluación de controles de seguridad del endpoint. |
+
+## Implementación de controles DevSecOps / Seguridad
+
+| Control | Implementación | Automatización o política | Referencia |
+|---|---|---|---|
+| Onboarding de endpoints | Instalación del agente y validación del estado "Active" | Script de incorporación del portal | MCSB EP-1 |
+| Telemetría y visibilidad | Supervisión de procesos, conexiones y actividad | Monitorización continua del motor EDR | MCSB EP-2 |
+| Detección de comportamiento | Alertas de actividad sospechosa y técnicas ATT&CK | Motores de análisis del EDR | MCSB IR-2 |
+
+**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+
+## Validación o pruebas de seguridad realizadas
+
+| Prueba | Método | Resultado esperado | Resultado observado |
+|---|---|---|---|
+| Estado del dispositivo | Consulta del portal de Defender for Endpoint | Dispositivo visible y operativo | Correcto |
+| Ingestión de telemetría | Revisar actividad y eventos del endpoint | Datos actualizados y consistentes | Correcto |
+| Análisis de alertas | Revisión de incidentes activos | Incidentes con contexto y severidad | Sí |
