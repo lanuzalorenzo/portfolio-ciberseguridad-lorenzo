@@ -1,88 +1,32 @@
-# 🔐 Informe técnico — Auditoría de recursos críticos
+# Informe técnico — Auditoría de Seguridad en Recursos Críticos (PaaS y Storage)
 
-## 📘 Contexto  
-Suscripción cloud de laboratorio.  
-Se requiere auditar recursos críticos para validar configuraciones de seguridad, accesos asociados y cumplimiento de buenas prácticas.
+**Módulo:** 03 — Auditorías Cloud  
+**Práctica:** 02 — Auditoría de Recursos Críticos
 
----
+## Contexto y Alcance
+Los servicios PaaS y de almacenamiento en Azure (como Azure Storage Accounts, Azure SQL y Key Vault) albergan habitualmente los activos de datos más valiosos de una organización. A menudo, las configuraciones por defecto facilitan el despliegue rápido pero descuidan controles de acceso perimetral, cifrado y autenticación.
 
-## 🎯 Objetivo  
-Evaluar el estado de seguridad de los recursos críticos de la suscripción, identificar configuraciones débiles, revisar accesos sensibles y documentar hallazgos de forma técnica y atemporal.
+Esta práctica documenta la auditoría técnica sobre los recursos críticos de la suscripción de laboratorio, evaluando el cumplimiento frente a los dominios de protección de datos (DP) y seguridad de red (NS) del Microsoft Cloud Security Benchmark.
 
----
+## Metodología de Inspección
+Se inspeccionaron los planos de configuración y acceso de tres tipos de recursos clave:
+1. **Cuentas de Almacenamiento (Azure Storage):** Parámetros de acceso anónimo, versión mínima de TLS y métodos de autorización habilitados.
+2. **Azure SQL Database:** Reglas de firewall a nivel de servidor, forzado de cifrado y autenticación con Microsoft Entra ID.
+3. **Azure Key Vault:** Configuración de cortafuegos de red, modelo de autorización (RBAC vs. Access Policies) y directivas de protección contra borrado.
 
-## 🛠 Trabajo realizado
+## Matriz de Hallazgos de Seguridad
 
-1. **Identificación de recursos críticos**  
-   - Inventario de recursos sensibles.  
-   - Clasificación por nivel de impacto y exposición.
+| ID Hallazgo | Severidad | Recurso Auditado | Descripción del Hallazgo | Riesgo Asociado | Recomendación de Remediación |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **SEC-RES-01** | **Crítica** | Azure Storage Account | `allowBlobPublicAccess = true` habilitado a nivel de cuenta de almacenamiento. | Exposición accidental de datos sensibles a Internet si un operador crea un contenedor en modo público. | Deshabilitar el acceso público a blobs (`allowBlobPublicAccess = false`) y forzar directiva de Azure Policy que bloquee el parámetro a nivel de suscripción. |
+| **SEC-RES-02** | **Alta** | Azure Storage Account | Versión mínima de TLS establecida en TLS 1.0 por defecto (`minimumTlsVersion = TLS1_0`). | Susceptibilidad a ataques de degradación criptográfica y descifrado de tráfico sensible en tránsito. | Actualizar el parámetro a `minimumTlsVersion = TLS1_2` o TLS 1.3 de forma obligatoria. |
+| **SEC-RES-03** | **Alta** | Azure SQL Server | Regla de firewall activa permitiendo acceso a todos los servicios de Azure (`0.0.0.0/0` en *Allow Azure services*). | Cualquier recurso desplegado en cualquier suscripción de Azure de terceros podría alcanzar el endpoint del servidor si compromete credenciales. | Deshabilitar la opción global de Azure services, implementar reglas de firewall por IP estrictas o desplegar Private Endpoints (Azure Private Link). |
+| **SEC-RES-04** | **Media** | Azure Key Vault | Key Vault desplegado sin activación de *Purge Protection*. | Riesgo de destrucción maliciosa permanente de secretos y certificados por parte de un atacante con permisos de borrado. | Habilitar *Purge Protection* para garantizar la inmutabilidad y recuperación obligatoria mediante *Soft Delete* durante el periodo de retención (90 días). |
 
-2. **Revisión de configuraciones de seguridad**  
-   - Validación de parámetros de seguridad aplicados.  
-   - Revisión de configuraciones por defecto.  
-   - Identificación de configuraciones débiles o no recomendadas.
+## Verificación de Remediación
+- Se aplicó la remediación inmediata sobre el hallazgo crítico **SEC-RES-01**, desactivando el acceso anónimo a blobs y comprobando mediante una solicitud curl directa que la API de Azure devuelve el error `409 PublicAccessNotPermitted`.
+- Se verificó que tras imponer `minimumTlsVersion = TLS1_2`, los clientes que no negocian al menos TLS 1.2 ven rechazado el *handshake* criptográfico.
 
-3. **Análisis de accesos y permisos asociados**  
-   - Revisión de identidades vinculadas a recursos críticos.  
-   - Validación de permisos asignados.  
-   - Detección de accesos privilegiados.
-
-4. **Evaluación de políticas aplicadas**  
-   - Revisión de políticas de seguridad activas.  
-   - Validación de cumplimiento.  
-   - Identificación de recursos sin políticas aplicadas.
-
-5. **Documentación de hallazgos**  
-   - Registro técnico de cada hallazgo.  
-   - Clasificación por criticidad.  
-   - Propuesta de mejoras.
-
----
-
-## 🔍 Validaciones realizadas  
-- Recursos críticos identificados correctamente.  
-- Configuraciones de seguridad revisadas.  
-- Accesos y permisos validados.  
-- Políticas aplicadas evaluadas.  
-- Hallazgos documentados según estándar técnico.
-
----
-
-## ⚠️ Problemas encontrados  
-- Recursos con configuraciones por defecto no endurecidas.  
-- Identidades con permisos excesivos sobre recursos sensibles.  
-- Ausencia de políticas de seguridad en algunos recursos críticos.
-
----
-
-## 🛠 Soluciones aplicadas  
-- Recomendación de endurecimiento de configuraciones.  
-- Ajuste de permisos y accesos privilegiados.  
-- Propuesta de aplicación de políticas de seguridad obligatorias.
-
----
-
-## 🧠 Implicaciones de seguridad  
-- Reducción de exposición de recursos sensibles.  
-- Mejora del control de accesos.  
-- Alineación con buenas prácticas de seguridad cloud.  
-- Identificación de riesgos que requieren mitigación inmediata.
-
----
-
-## 📎 Recursos útiles  
-- Documentación oficial del proveedor cloud.  
-- Guías de buenas prácticas de seguridad.  
-- Referencias de auditoría cloud.
-
----
-
-## ⚙️ Comandos utilizados (opcional)  
-N/A — Auditoría realizada desde consola y paneles de administración.
-
----
-
-## ⚖️ Aviso Legal  
-Este documento describe prácticas realizadas en un entorno de laboratorio.  
-No contiene información sensible ni perteneciente a ninguna organización real.  
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+## Conclusiones Técnicas
+- Los recursos PaaS deben desplegarse siguiendo plantillas endurecidas (IaC con Bicep o Terraform) que apliquen valores seguros por defecto, evitando configuraciones iniciales débiles.
+- El aislamiento de red mediante Private Endpoints debe priorizarse sobre reglas de cortafuegos IP basadas en direcciones públicas.
