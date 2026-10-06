@@ -1,6 +1,6 @@
 # Lorenzo Lanuza | Portfolio de ciberseguridad
 
-Este repositorio documenta laboratorios y proyectos de seguridad cloud centrados en identidad, control de acceso, auditoría y protección de entornos Azure y Microsoft. El hilo conductor es técnico: partir de una configuración o riesgo, explicar las decisiones tomadas y dejar constancia de cómo se validó el resultado.
+Este repositorio documenta laboratorios y proyectos de seguridad cloud centrados en identidad, control de acceso, auditoría, redes y protección de entornos Azure y Microsoft. El hilo conductor es técnico: partir de una configuración o riesgo, explicar las decisiones tomadas y dejar constancia de cómo se validó el resultado.
 
 El portfolio evoluciona junto con el trabajo. El contenido publicado describe prácticas de laboratorio y documentación técnica; no representa despliegues de producción.
 
@@ -13,6 +13,7 @@ El portfolio evoluciona junto con el trabajo. El contenido publicado describe pr
 - [Operación de Microsoft Defender](05-defender-suite/README.md): prácticas sobre identidad, endpoints, correo, XDR y otros componentes de la suite.
 - [Privileged Access & Identity Governance](06-identity-protection/README.md): acceso privilegiado, Conditional Access, PIM, RBAC y Identity Protection.
 - [Controles DevSecOps para repositorios](07-devsecops/README.md): protección de ramas, secretos, seguridad del pipeline y validación de entregas.
+- [Seguridad de red en Azure](08-seguridad-red-azure/README.md): segmentación, control de tráfico y conectividad privada a servicios.
 
 ## Recorrido técnico
 
@@ -24,6 +25,7 @@ Algunos documentos de entrada:
 - [Policies y hardening en Defender for Cloud](04-defender-for-cloud/practicas/04-policies-hardening/README.md)
 - [Análisis de incidentes en Defender XDR](05-defender-suite/practicas/04-defender-xdr/README.md)
 - [Protección de la rama principal](07-devsecops/branch-protection.md)
+- [Segmentación de redes con VNet y NSG](08-seguridad-red-azure/practicas/01-segmentacion-vnet-nsg/README.md)
 
 ## Cómo leer los proyectos
 
