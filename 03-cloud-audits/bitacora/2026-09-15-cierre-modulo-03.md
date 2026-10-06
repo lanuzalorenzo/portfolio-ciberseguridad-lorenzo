@@ -1,77 +1,12 @@
-# 🗒️ Bitácora — Cierre del Módulo 03  
-**Fecha:** 2026-09-15  
+# Bitácora — 2026-09-15: Auditoría de Recursos Críticos e Identidades (Cierre Módulo 03)
+
 **Módulo:** 03 — Auditorías Cloud  
-**Ref:** turn0browsertab1
+**Prácticas:** 02 — Recursos Críticos & 03 — Identidades y Accesos
 
----
+Jornada dedicada a completar las revisiones de recursos críticos y del directorio de identidades para cerrar formalmente el módulo de auditorías cloud.
 
-## 📘 Contexto  
-Cierre del módulo 03 del temario, correspondiente a las prácticas de auditoría cloud.  
-El módulo incluye tres bloques definidos en la TABLA.md:
+En la primera mitad del día me centré en los recursos PaaS. El hallazgo más relevante apareció en una cuenta de almacenamiento: el parámetro `allowBlobPublicAccess` estaba habilitado. Aunque no hubiera contenedores públicos en ese momento, dejar la puerta abierta a nivel de cuenta es un riesgo inaceptable de fuga de datos accidental. Procedí a cambiarlo a `false` y verifiqué con curl que la API de blobs rechaza las peticiones anónimas con error 409. Además, detecté un servidor Azure SQL que permitía conexiones desde cualquier IP interna de Azure (`0.0.0.0`), recomendando el aislamiento mediante reglas específicas o Private Endpoints.
 
-- 03.1 Auditoría de suscripciones  
-- 03.2 Hardening cloud  
-- 03.3 Seguridad de recursos críticos  
+Por la tarde audité el directorio Microsoft Entra ID. Revisé el inventario de *App Registrations* y detecté un Service Principal con un *Client Secret* configurado sin fecha de caducidad (*Never expire*). Este tipo de secretos permanentes son vectores de persistencia silenciosa habituales tras filtraciones en repositorios. Recomendé su sustitución por una Managed Identity o, en su defecto, fijar expiración máxima a 180 días. También documenté el exceso de *Global Administrators* permanentes, abogando por el uso de PIM.
 
-Los tres han sido completados y convertidos en prácticas técnicas dentro del portfolio.
-
----
-
-## 🧪 Ejercicios completados
-
-### ✔ Ejercicio 01 — Auditoría de suscripciones  
-- Creación de estructura.  
-- Generación de README.  
-- Documento técnico.  
-- Commit final.  
-
-### ✔ Ejercicio 02 — Auditoría de recursos críticos  
-- Creación de estructura.  
-- README generado.  
-- Documento técnico generado.  
-- Commit final.  
-
-### ✔ Ejercicio 03 — Auditoría de identidades y accesos  
-- Creación de estructura.  
-- README generado.  
-- Documento técnico generado.  
-- Commit final.  
-
----
-
-## 🛠 Trabajo realizado hoy (2026-09-15)
-
-- Revisión del temario en TABLA.md (RefId: turn0browsertab1).  
-- Confirmación de que el módulo 03 contiene exactamente tres prácticas.  
-- Generación de estructura del ejercicio 03.  
-- Creación del README del ejercicio 03.  
-- Creación del documento técnico del ejercicio 03.  
-- Commit final del ejercicio 03.  
-- Validación del estado del módulo 03 como **completo**.  
-- Preparación de la bitácora de cierre del módulo.
-
----
-
-## 🔍 Validaciones
-
-- Estructura del módulo 03 alineada con el estándar del repositorio.  
-- Todos los ejercicios contienen README y documento técnico.  
-- No existen ejercicios adicionales fuera del temario.  
-- El módulo queda marcado como completado y listo para actualizar en TABLA.md.
-
----
-
-## 📘 Conclusiones  
-El módulo 03 queda cerrado con tres prácticas completas, documentadas y comiteadas.  
-Se han cubierto auditorías de suscripciones, hardening cloud y seguridad de recursos críticos, consolidando la base técnica necesaria para avanzar al módulo 04.
-
----
-
-## ⚖️ Aviso Legal  
-Esta bitácora documenta actividades realizadas en un entorno de laboratorio.  
-No contiene información sensible ni perteneciente a ninguna organización real.
-
----
-
-## 🔐 Licencia  
-Este documento se distribuye bajo licencia MIT.
+Con estos informes técnicos estructurados con matrices de hallazgos y planes de remediación, doy por finalizado el Módulo 03.

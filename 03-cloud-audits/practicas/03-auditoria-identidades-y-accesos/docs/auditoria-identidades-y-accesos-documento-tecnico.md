@@ -1,91 +1,27 @@
-# 🔐 Informe técnico — Auditoría de identidades y accesos
+# Informe técnico — Auditoría de Identidades, Roles y Accesos en Microsoft Entra ID
 
-## 📘 Contexto  
-Suscripción cloud de laboratorio.  
-El objetivo es auditar identidades, roles, permisos y accesos para detectar riesgos derivados de una mala gestión de privilegios.
+**Módulo:** 03 — Auditorías Cloud  
+**Práctica:** 03 — Auditoría de Identidades y Accesos
 
----
+## Contexto y Alcance
+En los entornos cloud modernos, la identidad constituye el perímetro principal de seguridad. Con el paso del tiempo, los tenants de Microsoft Entra ID acumulan cuentas obsoletas, asignaciones de roles administrativos innecesarias y credenciales de aplicaciones desatendidas que amplían significativamente la superficie de ataque.
 
-## 🎯 Objetivo  
-Evaluar el estado de seguridad de las identidades y accesos dentro de la suscripción, identificar permisos excesivos, cuentas huérfanas, configuraciones débiles y documentar hallazgos de forma técnica y atemporal.
+Esta práctica documenta la auditoría exhaustiva sobre el directorio Microsoft Entra ID y las asignaciones de acceso en Azure, evaluando la higiene de cuentas, la gestión de privilegios elevados y el ciclo de vida de los Service Principals conforme a las directrices de CIS Microsoft 365 y Microsoft Cloud Security Benchmark.
 
----
+## Áreas Auditadas
+1. **Higiene de Cuentas de Usuario:** Detección de cuentas inactivas (>90 días sin inicio de sesión) y cuentas de invitados (B2B/Guest) residuales.
+2. **Gobernanza de Roles Privilegiados:** Conteo y análisis de asignaciones permanentes en roles críticos (*Global Administrator*, *Privileged Role Administrator*, *Security Admin*).
+3. **Credenciales de Aplicaciones (Service Principals):** Revisión de vigencia de secretos (*Client Secrets*), certificados asociados y permisos delegados excesivos en *App Registrations*.
 
-## 🛠 Trabajo realizado
+## Matriz de Hallazgos de Seguridad
 
-### 1. Inventario de identidades  
-- Enumeración de usuarios, grupos y cuentas de servicio.  
-- Clasificación por tipo de identidad y nivel de exposición.  
-- Identificación de identidades inactivas o sin uso reciente.
+| ID Hallazgo | Severidad | Área Auditada | Descripción del Hallazgo | Riesgo Asociado | Recomendación de Remediación |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **SEC-IAM-01** | **Crítica** | App Registrations | Registro de aplicación con un *Client Secret* configurado sin fecha de caducidad (*Never expire*). | Persistencia a largo plazo si el secreto se filtra en repositorios o logs; ausencia de ciclo de vida forzado. | Eliminar el secreto permanente, crear un secreto con vigencia máxima de 6 a 12 meses, o migrar preferentemente a una **Managed Identity** sin secretos. |
+| **SEC-IAM-02** | **Alta** | Roles de Entra ID | Múltiples cuentas de usuario asignadas de forma permanente como *Global Administrator* para tareas operativas rutinarias. | Compromiso total del tenant ante el robo de credenciales de una sola cuenta de usuario. | Reducir el número de administradores permanentes a un máximo de 2-4 (incluyendo cuentas de emergencia Break-Glass) y configurar el resto como elegibles bajo demanda mediante Privileged Identity Management (PIM). |
+| **SEC-IAM-03** | **Media** | Cuentas B2B / Guest | Cuentas de invitados externos sin actividad de inicio de sesión registrada en los últimos 90 días con pertenencia a grupos internos. | Identidades huérfanas que pueden ser explotadas si el directorio de origen del tercero es comprometido. | Habilitar revisiones periódicas de acceso (*Access Reviews*) en Entra ID Governance para revocar automáticamente cuentas de invitados inactivas. |
+| **SEC-IAM-04** | **Baja** | Políticas de Acceso | Usuarios estándar del tenant con permisos por defecto para registrar aplicaciones (*Users can register applications = Yes*). | Creación descontrolada de Service Principals y posibles aplicaciones maliciosas con consentimiento implícito. | Restringir el registro de aplicaciones a administradores o roles específicos de desarrollador en las propiedades de usuario de Entra ID. |
 
-### 2. Revisión de roles y permisos  
-- Validación de roles asignados a cada identidad.  
-- Análisis de permisos efectivos y privilegios heredados.  
-- Detección de accesos excesivos o no justificados.
-
-### 3. Auditoría de accesos privilegiados  
-- Revisión de cuentas con roles administrativos.  
-- Validación de accesos críticos a recursos sensibles.  
-- Identificación de rutas de escalada de privilegios.
-
-### 4. Evaluación de políticas de acceso  
-- Revisión de políticas de autenticación.  
-- Validación de MFA, contraseñas y métodos de acceso.  
-- Identificación de identidades sin políticas aplicadas.
-
-### 5. Documentación de hallazgos  
-- Registro técnico de cada hallazgo.  
-- Clasificación por criticidad.  
-- Propuesta de mitigaciones y endurecimiento.
-
----
-
-## 🔍 Validaciones realizadas  
-- Identidades inventariadas correctamente.  
-- Roles y permisos revisados.  
-- Accesos privilegiados validados.  
-- Políticas de acceso evaluadas.  
-- Hallazgos documentados según estándar técnico.
-
----
-
-## ⚠️ Problemas encontrados  
-- Identidades con roles administrativos sin justificación.  
-- Permisos excesivos sobre recursos sensibles.  
-- Cuentas inactivas sin deshabilitar.  
-- Ausencia de MFA en identidades críticas.
-
----
-
-## 🛠 Soluciones aplicadas  
-- Recomendación de aplicar MFA obligatorio.  
-- Ajuste de roles y permisos excesivos.  
-- Deshabilitación de identidades inactivas.  
-- Propuesta de políticas de acceso más restrictivas.
-
----
-
-## 🧠 Implicaciones de seguridad  
-- Reducción de riesgo de escalada de privilegios.  
-- Mejora del control de accesos.  
-- Alineación con buenas prácticas de seguridad cloud.  
-- Identificación de riesgos que requieren mitigación inmediata.
-
----
-
-## 📎 Recursos útiles  
-- Documentación oficial del proveedor cloud.  
-- Guías de buenas prácticas de gestión de identidades.  
-- Referencias de auditoría cloud.
-
----
-
-## ⚙️ Comandos utilizados (opcional)  
-N/A — Auditoría realizada desde consola y paneles de administración.
-
----
-
-## ⚖️ Aviso Legal  
-Este documento describe prácticas realizadas en un entorno de laboratorio.  
-No contiene información sensible ni perteneciente a ninguna organización real.  
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+## Conclusiones Técnicas y Plan de Acción
+- **Prioridad Inmediata:** La remediación de secretos de aplicaciones de duración infinita y la supresión de roles permanentes deben abordarse de forma prioritaria, ya que representan vectores directos de persistencia.
+- **Automatización de Gobernanza:** Depender exclusivamente de revisiones manuales no es escalable. La implementación de revisiones de acceso automatizadas (*Access Reviews*) y políticas de ciclo de vida de identidades en Entra ID Governance es indispensable para mantener la higiene del directorio a largo plazo.
