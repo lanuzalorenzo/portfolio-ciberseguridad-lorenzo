@@ -1,6 +1,6 @@
 # Bitácora — 2026-09-28
 
-## Proyecto
+## Contexto y alcance
 Módulo 05 — Defender Suite
 
 ## Objetivo
@@ -12,18 +12,18 @@ Continuar la generación de documentación técnica del módulo y avanzar en las
 - Preparación del cierre del módulo.
 - Ajuste de estructura de bitácora para mantener coherencia con módulos anteriores.
 
-## Validaciones
+## Resultados y validaciones
 - Estructura de carpetas correcta.
 - Nombres de ficheros coherentes con el resto del portfolio.
 - Documentación generada sin inconsistencias.
 
-## Problemas
+## Pendientes y riesgos
 Ninguno relevante.
 
-## Soluciones
+## Acciones realizadas
 No aplican.
 
-## Aprendizajes
+## Aprendizaje clave
 - Consolidación del flujo de documentación del módulo Defender Suite.
 - Alineación de la bitácora con el estilo del portfolio.
 

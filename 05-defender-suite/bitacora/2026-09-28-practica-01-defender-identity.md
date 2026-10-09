@@ -1,12 +1,16 @@
 # 📄 Bitácora — Práctica 01: Defender for Identity
 
-## 🕒 Fecha
+## Contexto y alcance
+
+Este módulo se documenta como un ejercicio técnico con enfoque en aprendizaje, validación y trazabilidad del trabajo realizado.
+
+## Fecha
 $(date +%Y-%m-%d)
 
-## 🎯 Objetivo del día
+## Objetivo
 Instalación del sensor de Defender for Identity en el controlador de dominio y validación de telemetría y alertas iniciales.
 
-## 🛠 Trabajo realizado
+## Trabajo realizado
 - Revisión de requisitos del controlador de dominio.
 - Descarga del paquete del sensor desde el portal.
 - Instalación del sensor con clave de acceso del tenant.
@@ -15,14 +19,14 @@ Instalación del sensor de Defender for Identity en el controlador de dominio y 
 - Revisión de ingestión de eventos y señales.
 - Análisis de las primeras alertas generadas por el motor de análisis.
 
-## 🔍 Observaciones relevantes
+## Resultados y validaciones
 - El sensor quedó en estado Healthy sin incidencias.
 - La telemetría comenzó a fluir en menos de 5 minutos.
 - Se detectaron señales relacionadas con técnicas de movimiento lateral.
 - El portal mostró actividad de cuentas privilegiadas.
 
-## 🧠 Conclusión del día
+## Conclusión del día
 La integración quedó completada y el sensor proporciona visibilidad inmediata sobre técnicas de ataque basadas en credenciales y autenticación.
 
-## ⚖️ Aviso Legal
+## Aviso legal
 Documento generado en un entorno de laboratorio sin datos reales.

@@ -1,14 +1,14 @@
 # Bitácora — DevSecOps
 
-## 📘 Proyecto
+## Contexto y alcance
 Portfolio de Ciberseguridad — Módulo 07: DevSecOps
 
-## 🎯 Objetivo del día
+## Objetivo
 Definir la estructura del módulo 07, revisar la práctica de protección de la rama main, establecer la política DevSecOps mínima y reorganizar el contenido para que siga la nomenclatura oficial del portfolio.
 
 ---
 
-## 🛠 Trabajo realizado
+## Trabajo realizado
 - Revisión del contenido existente del módulo 07 y detección de que solo incluía la práctica de protección de la rama main.
 - Decisión de ampliar el módulo para incluir una política DevSecOps mínima y obligatoria.
 - Revisión completa del documento `branch-protection.md` y reescritura siguiendo el formato oficial del portfolio.
@@ -25,7 +25,7 @@ Definir la estructura del módulo 07, revisar la práctica de protección de la 
 
 ---
 
-## 🔍 Validaciones realizadas
+## Resultados y validaciones
 - La práctica de protección de la rama main sigue el formato oficial.
 - La estructura del módulo es coherente con el resto del portfolio.
 - La política DevSecOps está correctamente integrada como práctica técnica.
@@ -34,14 +34,14 @@ Definir la estructura del módulo 07, revisar la práctica de protección de la 
 
 ---
 
-## ⚠️ Problemas encontrados
+## Pendientes y riesgos
 - La estructura inicial del módulo era insuficiente para representar una aceleradora DevSecOps.
 - Existían carpetas conceptuales que no seguían la nomenclatura oficial.
 - El documento `branch-protection.md` contenía narrativa temporal y elementos no técnicos.
 
 ---
 
-## 🛠 Soluciones aplicadas
+## Acciones realizadas
 - Reestructuración completa del módulo 07.
 - Reescritura del documento de protección de la rama main.
 - Eliminación de carpetas conceptuales y evidencias innecesarias.
@@ -50,14 +50,14 @@ Definir la estructura del módulo 07, revisar la práctica de protección de la 
 
 ---
 
-## 🧠 Aprendizajes clave
+## Aprendizaje clave
 - La claridad en la estructura facilita la escalabilidad del módulo.
 - La política DevSecOps debe ser técnica, mínima y aplicable a todos los repositorios.
 - Las bitácoras deben seguir siempre la norma del portfolio: **una por día, con fecha en el nombre del fichero**.
 
 ---
 
-## 📎 Recursos útiles
+## Recursos útiles
 - GitHub Branch Protection Rules  
 - Buenas prácticas DevSecOps  
 - Documentación de Pull Requests

@@ -1,5 +1,9 @@
 # Bitácora — Inicio del módulo 09
 
+## Contexto y alcance
+
+Este módulo se documenta como un ejercicio técnico con enfoque en aprendizaje, validación y trazabilidad del trabajo realizado.
+
 ## Objetivo
 
 Definir la continuidad del portfolio hacia la operación y la seguridad de eventos. El punto de entrada será Microsoft Sentinel, con enfoque en detección, análisis y respuesta automatizada.
@@ -16,5 +20,4 @@ Definir la continuidad del portfolio hacia la operación y la seguridad de event
 El módulo ha sido creado con su estructura base y su primer foco documental. Queda pendiente la elección del caso de uso y la validación de consultas en un entorno concreto.
 
 ## Siguiente paso
-
 Elegir una fuente de datos real o simulada y comprobar que la solución de Sentinel y sus conectores se pueden documentar con una evidencia clara.

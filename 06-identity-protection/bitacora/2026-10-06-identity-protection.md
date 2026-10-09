@@ -1,9 +1,9 @@
 # Bitácora — Identity Protection & Privileged Access
 
-## Proyecto
+## Contexto y alcance
 Portfolio de Ciberseguridad — Módulo 06
 
-## Objetivo del día
+## Objetivo
 Definir la estructura del módulo 06, separar claramente el tema de autenticación (módulo 01) de la gobernanza y control del acceso privilegiado, y dejar una base de documentación homogénea con el resto del portfolio.
 
 ## Trabajo realizado
@@ -13,7 +13,7 @@ Definir la estructura del módulo 06, separar claramente el tema de autenticaci�
 - Preparación de la estructura de prácticas con enfoque en Conditional Access, PIM, RBAC y Identity Protection.
 - Establecimiento del patrón del portfolio: README del módulo + práctica con informe técnico asociado.
 
-## Validaciones realizadas
+## Resultados y validaciones
 - La propuesta mantiene coherencia con la línea general del portfolio.
 - El módulo aporta diferenciación clara respecto a autenticación y seguridad de identidades general.
 - La estructura permite futuro crecimiento sin perder claridad y legibilidad.
