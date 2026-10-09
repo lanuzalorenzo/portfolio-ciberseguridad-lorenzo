@@ -23,6 +23,7 @@ Este portfolio reúne trabajo documentado sobre seguridad cloud, identidad, prot
 - [04 | Defender for Cloud](04-defender-for-cloud/README.md): planes, recomendaciones, workloads y hardening. [Ver práctica de policies y hardening](04-defender-for-cloud/practicas/04-policies-hardening/README.md).
 - [05 | Microsoft Defender](05-defender-suite/README.md): protección de identidad, endpoints, correo y respuesta con XDR. [Ver análisis con Defender XDR](05-defender-suite/practicas/04-defender-xdr/README.md).
 - [08 | Seguridad de red en Azure](08-seguridad-red-azure/README.md): segmentación, control de tráfico y Private Link. [Ver diseño de segmentación VNet/NSG](08-seguridad-red-azure/practicas/01-segmentacion-vnet-nsg/README.md). **Validación del laboratorio pendiente.**
+- [09 | Microsoft Sentinel](09-microsoft-sentinel/README.md): detección, normalización y respuesta operativa en seguridad cloud. [Ver práctica de detección con KQL](09-microsoft-sentinel/practicas/01-deteccion-kql/README.md). **Diseño del módulo en curso.**
 
 </details>
 
