@@ -78,3 +78,18 @@ Qué se hará a continuación para completar o profundizar el módulo.
 - Deben distinguir claramente entre trabajo ejecutado y trabajo planificado.
 - Deben mostrar criterio técnico, no meras anotaciones administrativas.
 - Cuando no haya validación real, debe indicarse explícitamente como pendiente o trabajo de diseño.
+
+## Convenciones de Commits
+
+Todos los commits de este repositorio (realizados por el usuario o por asistentes de IA como GitHub Copilot, Google Antigravity, Claude, etc.) deben seguir estrictamente el estándar **Conventional Commits**:
+
+- Formato: `type(scope): imperative summary in English`.
+- **Ámbitos (`scope`) permitidos:**
+  - Código o nombre del módulo: `01-azure`, `02-identity`, `03-audits`, `04-defender`, `05-defender-suite`, `06-identity-protection`, `07-devsecops`, `08-network`, `09-sentinel`, `10-elk`.
+  - Ámbito general del repositorio: `repo`.
+- **Tipos permitidos:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`.
+- El asunto debe ser imperativo, conciso y redactado en inglés.
+- Ejemplos:
+  - `docs(07-devsecops): document branch protection and PR review rules`
+  - `docs(01-azure): explain JWT validation and JWKS discovery`
+  - `docs(repo): update architecture and defense in depth model`
