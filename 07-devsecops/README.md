@@ -1,6 +1,10 @@
 # 07 | DevSecOps y gobernanza del software
 
-Este módulo centra la seguridad del desarrollo en la protección del flujo de cambios, la revisión de código y la automatización de controles de seguridad antes de que un cambio llegue a producción. La práctica de protección de ramas es la base, pero el verdadero valor del módulo está en convertir la seguridad en un requisito del propio ciclo de vida del software.
+Este módulo centra la seguridad del desarrollo en la protección del flujo de cambios, la revisión de código y la automatización de controles de seguridad antes de que un cambio llegue a producción. La práctica de protección de ramas es la base, pero el verdadero valor del módulo está en convertir la seguridad en un requisito intrínseco del ciclo de vida del software (*Shift-Left Security*).
+
+## Carga de trabajo y aplicación de referencia
+
+Los controles, políticas y pipelines documentados en este módulo se implementan de forma práctica sobre la aplicación empresarial [**EcommerceApi (lab-api-local-azure)**](https://github.com/lanuzalorenzo/lab-api-local-azure), cuyo pipeline CI en GitHub Actions ejecuta de forma automatizada escaneo de secretos (Gitleaks), análisis estático de dependencias NuGet (Trivy SCA) y verificación del contenedor Docker non-root.
 
 ## Objetivo del módulo
 
@@ -19,7 +23,8 @@ Las [bitácoras del módulo](bitacora/) documentan la evolución del laboratorio
 
 ## Alcance
 
-Este módulo recoge la práctica de referencia de protección de ramas y revisión de cambios, con enfoque en seguridad del repositorio y control de integraciones. La documentación se mantiene alineada con el estilo del resto del portfolio y queda preparada para ampliarse con validaciones adicionales de CI/CD, escaneo de secretos, SAST y SCA.
+Este módulo recoge las prácticas de referencia en seguridad del repositorio, análisis estático y control de integraciones aplicadas a un flujo de trabajo real. La documentación se mantiene alineada con el estilo del resto del portfolio y vinculada con los workflows de CI/CD de `lab-api-local-azure`.
+
 
 ## Arquitectura y componentes de seguridad considerados
 
