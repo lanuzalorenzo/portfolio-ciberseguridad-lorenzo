@@ -19,3 +19,5 @@ La API empresarial utilizada para validar estos flujos es [**EcommerceApi (lab-a
 
 El material documenta el protocolo de autorización, la emisión de tokens y la lógica de validación en la API. Los documentos describen un entorno de laboratorio técnico controlado y reproducible; las credenciales y datos de tenant han sido redactados.
 
+> **Nota sobre el historial:** antes de migrar la API a `lab-api-local-azure`, este repositorio contenía su documentación. Algunos ejemplos históricos usan `Authorization: Bearer $TOKEN` y cabeceras JWT truncadas con `...`. Son marcadores, no credenciales válidas. Se conservan por trazabilidad y están cubiertos por la allowlist acotada de `.gitleaks.toml`; no se reescribió el historial. Si alguna vez se usó un token real, debe rotarse.
+

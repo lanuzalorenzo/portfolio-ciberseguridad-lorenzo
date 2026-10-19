@@ -1,0 +1,20 @@
+# Gitleaks configuration for the public portfolio repository.
+#
+# The API source was moved to lab-api-local-azure. Historical commits still
+# contain its documentation, including examples such as
+# "Authorization: Bearer $TOKEN" and truncated JWT headers ending in "...".
+# Those values are placeholders, not credentials. The allowlist is restricted
+# to the historical paths so a real secret introduced anywhere else is still
+# detected. No history was rewritten.
+
+title = "portfolio-ciberseguridad-lorenzo gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Historical API documentation placeholders moved to lab-api-local-azure"
+paths = [
+  '''01-seguridad-azure/api-local/.*\.md''',
+  '''01-seguridad-azure/bitacora/2026-09-0[12]-.*\.md'''
+]
