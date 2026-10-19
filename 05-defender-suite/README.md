@@ -1,4 +1,6 @@
-# 05 | Microsoft Defender
+# 05 | Microsoft Defender Suite
+
+> **Estado:** parcial. Prácticas 01–04 y 08–14 documentadas; 05–07 (APIs, contenedores y storage) son diseño, pendientes de validación en un entorno con Defender habilitado.
 
 Este módulo reúne las principales capacidades de detección, protección, gobernanza y respuesta del ecosistema Microsoft Defender. El recorrido abarca identidad, endpoint, correo, aplicaciones, superficie de ataque externa, posture cloud y correlación de incidentes en XDR.
 
@@ -12,6 +14,9 @@ Validar cómo la suite de Microsoft Defender permite abarcar la seguridad desde 
 - [Defender for Endpoint](practicas/02-defender-endpoint/README.md)
 - [Defender for Office 365](practicas/03-defender-office365/README.md)
 - [Defender XDR](practicas/04-defender-xdr/README.md)
+- [Defender for APIs](practicas/05-defender-apis/README.md) — *diseño, pendiente de validación*
+- [Defender for Containers](practicas/06-defender-containers/README.md) — *diseño, pendiente de validación*
+- [Defender for Storage](practicas/07-defender-storage/README.md) — *diseño, pendiente de validación*
 - [Defender EASM](practicas/08-defender-easm/README.md)
 - [Defender Vulnerability Management](practicas/09-defender-vulnerability-management/README.md)
 - [Defender App Governance](practicas/10-defender-app-governance/README.md)
