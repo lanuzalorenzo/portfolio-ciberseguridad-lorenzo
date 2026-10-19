@@ -1,5 +1,7 @@
 # 09 | Microsoft Sentinel
 
+> **Estado:** diseño en curso. El caso de uso y las consultas KQL están planteados; no se ha validado un workspace con datos reales.
+
 Este módulo abre la capa de detección, investigación y respuesta operativa en Microsoft Sentinel. El enfoque es seguir la misma lógica que el resto del portfolio: identificar un problema de seguridad, documentar la arquitectura de observabilidad y dejar claro qué validaciones se ejecutarán o quedan pendientes.
 
 ## Prácticas

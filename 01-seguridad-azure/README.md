@@ -1,5 +1,7 @@
 # 01 | OAuth 2.0, PKCE y validación de JWT
 
+> **Estado:** validado en laboratorio. Flujo y validación documentados; la API de referencia aplica validación JWT y autorización por usuario.
+
 Este módulo analiza e implementa la capa de **Seguridad en Aplicaciones (AppSec) e Identidad** para APIs REST: el flujo completo de autenticación moderna donde una aplicación cliente obtiene un token mediante Authorization Code con PKCE y una API empresarial valida criptográficamente su firma y sus *claims* antes de autorizar cualquier operación de negocio.
 
 ## Carga de trabajo asociada

@@ -8,7 +8,9 @@ Al trabajar en el repositorio:
 - Conserva la organización existente. Para contenido nuevo, sigue el patrón del módulo cercano: README de entrada, bitácora y prácticas cuando correspondan.
 - No crees carpetas vacías ni reestructures contenido existente solo para uniformarlo.
 - Distingue los planes de las pruebas ejecutadas y sus resultados observados; no inventes evidencias ni afirmaciones técnicas.
+- Usa el estado explícito: **Validado**, **Parcial**, **Diseño** o **Pendiente**. Un diseño no es una validación.
 - No añadas secretos, datos personales ni identificadores sensibles.
+- Mantén la coherencia entre el README del módulo, la web, el perfil y la matriz de cumplimiento.
 - Escribe la documentación en español claro y conserva los nombres oficiales de productos y controles cuando corresponda.
 
 ## Estructura recomendada para módulos y bitácoras
@@ -85,7 +87,7 @@ Todos los commits de este repositorio (realizados por el usuario o por asistente
 
 - Formato: `type(scope): imperative summary in English`.
 - **Ámbitos (`scope`) permitidos:**
-  - Código o nombre del módulo: `01-azure`, `02-identity`, `03-audits`, `04-defender`, `05-defender-suite`, `06-identity-protection`, `07-devsecops`, `08-network`, `09-sentinel`, `10-elk`.
+  - Código o nombre del módulo: `01-azure`, `02-identity`, `03-audits`, `04-defender`, `05-defender-suite`, `06-identity-protection`, `07-devsecops`, `08-network`, `09-sentinel`, `10-elk`, `11-api-offensive`, `12-forensics`, `compliance`.
   - Ámbito general del repositorio: `repo`.
 - **Tipos permitidos:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`.
 - El asunto debe ser imperativo, conciso y redactado en inglés.

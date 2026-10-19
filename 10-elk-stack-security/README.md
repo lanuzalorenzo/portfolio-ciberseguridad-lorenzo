@@ -1,6 +1,8 @@
 # 10 | ELK Stack Security
 
-Este módulo amplia el portfolio hacia la observabilidad y la analítica de seguridad. El enfoque es documentar cómo una pila ELK puede recibir eventos, normalizarlos, correlacionarlos y convertirlos en indicadores útiles para detección y respuesta.
+> **Estado:** diseño en curso. Ingesta y visualización planteadas; no se ha desplegado una pila ELK con datos reales.
+
+Este módulo amplía el portfolio hacia la observabilidad y la analítica de seguridad. El enfoque es documentar cómo una pila ELK puede recibir eventos, normalizarlos, correlacionarlos y convertirlos en indicadores útiles para detección y respuesta.
 
 ## Prácticas
 
