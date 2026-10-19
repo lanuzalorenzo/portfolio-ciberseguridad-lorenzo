@@ -3,7 +3,7 @@
 Este portfolio documenta la aplicación de **Security by Design, DevSecOps, Cloud Security y respuesta a incidentes** sobre una carga de trabajo empresarial: una API .NET protegida con Microsoft Entra ID. El hilo conductor no es una colección de herramientas, sino un modelo de **Defensa en Profundidad** con evidencia y estado de validación explícito.
 
 > [!NOTE]
-> El contenido describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica si está validada, es parcial, es un diseño o está pendiente. No se incluyen secretos, identificadores reales ni datos personales.
+> El contenido describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica si está validada, es parcial, tiene un runbook preparado, es un diseño o está pendiente. No se incluyen secretos, identificadores reales ni datos personales.
 
 ---
 
@@ -55,6 +55,12 @@ La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuz
       Capa transversal: validación ofensiva (11), forense y respuesta (12),
       matriz de cumplimiento (cumplimiento-normativo/).
 ```
+
+### 🧪 Laboratorio final
+
+El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conectan las capas sobre una sola carga de trabajo, con [arquitectura de referencia](docs/laboratorio-final/arquitectura.md), [plan de ejecución](docs/laboratorio-final/plan-ejecucion.md) y un [índice de evidencias](docs/laboratorio-final/evidencias/README.md). Las prácticas ejecutables usan un [runbook](plantillas/runbook-template.md) y registran su prueba con una [plantilla de evidencia](plantillas/evidencia-template.md).
+
+> El laboratorio está en fase de diseño y planificación. No hay recursos Azure desplegados ni evidencias de ejecución asociadas todavía.
 
 ---
 
@@ -109,6 +115,7 @@ La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuz
 |---|---|
 | **Validado** | Ejecutado en laboratorio y con evidencia documentada. |
 | **Parcial** | Implementado en código o configuración, pero sin ejecución completa o con brechas. |
+| **Runbook preparado** | Pasos y comandos escritos, todavía no ejecutados. Se muestra como «Diseño · runbook listo». |
 | **Diseño** | Arquitectura, procedimiento o IaC documentados; no desplegados. |
 | **Pendiente** | Identificado y no iniciado. |
 
@@ -138,8 +145,9 @@ Cada módulo incluye:
 
 - `README.md` con alcance, objetivos, prácticas y estado.
 - `bitacora/` con el registro cronológico.
-- `practicas/` con procedimientos, evidencias y limitaciones.
+- `practicas/` con procedimientos y limitaciones; cuando la práctica es ejecutable, incluye `runbook.md` y `evidencias/`.
 - `docs/` con informes técnicos y plantillas.
+- `docs/laboratorio-final/` con la arquitectura, el plan de ejecución y el índice de evidencias del laboratorio integrado.
 
 El código de la carga de trabajo se versiona en [lab-api-local-azure](https://github.com/lanuzalorenzo/lab-api-local-azure).
 
