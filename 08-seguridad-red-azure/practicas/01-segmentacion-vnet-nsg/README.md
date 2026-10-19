@@ -31,8 +31,10 @@
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Flujo autorizado | Probar una comunicación incluida en la matriz | El flujo requerido funciona | Pendiente: práctica no ejecutada. |
-| Flujo no autorizado | Probar una comunicación excluida de la matriz | El flujo queda bloqueado por el control previsto | Pendiente: práctica no ejecutada. |
+| Plantilla válida | `bicep build infra/main.bicep` | Compilación sin errores | PASS: compila; linter sin avisos |
+| Reglas NSG | Revisión de `infra/main.bicep` | 443 desde VNet y denegación por defecto | Implementado en IaC |
+| Flujo autorizado | Probar una comunicación incluida en la matriz | El flujo requerido funciona | Pendiente: requiere despliegue |
+| Flujo no autorizado | Probar una comunicación excluida de la matriz | El flujo queda bloqueado | Pendiente: requiere despliegue |
 
 > [!WARNING]
 > No declarar una prueba superada si no se ejecutó. Redactar datos sensibles.

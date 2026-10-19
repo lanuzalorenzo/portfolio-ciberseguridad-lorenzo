@@ -32,9 +32,11 @@
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Resolución desde la red autorizada | Consultar el nombre del servicio desde el entorno de prueba | Se resuelve según el diseño privado | Pendiente: práctica no ejecutada. |
-| Acceso desde la red autorizada | Probar la conectividad al servicio | El acceso funciona por la ruta privada | Pendiente: práctica no ejecutada. |
-| Acceso público | Evaluar el acceso público tras validar dependencias | Se comporta conforme a la decisión documentada | Pendiente: práctica no ejecutada. |
+| Plantilla válida | `bicep build infra/main.bicep` | Compilación sin errores | PASS: compila; linter sin avisos |
+| Private Endpoint | Revisión de `infra/main.bicep` | Key Vault y App Service con PE | Implementado en IaC |
+| Resolución desde la red autorizada | Consultar el nombre del servicio desde el entorno de prueba | Se resuelve según el diseño privado | Pendiente: requiere despliegue |
+| Acceso desde la red autorizada | Probar la conectividad al servicio | El acceso funciona por la ruta privada | Pendiente: requiere despliegue |
+| Acceso público | Evaluar el acceso público tras validar dependencias | Se comporta conforme a la decisión documentada | Pendiente: requiere despliegue |
 
 > [!WARNING]
 > No restringir el acceso público hasta comprobar dependencias y validar el acceso privado. No declarar una prueba superada si no se ejecutó.
