@@ -1,0 +1,15 @@
+ts=2026-10-20T09:00:00Z host=srv-auth-01 service=ssh user=alice src_ip=203.0.113.45 action=ssh_login result=failure reason=Failed_password severity=medium
+ts=2026-10-20T09:00:03Z host=srv-auth-01 service=ssh user=alice src_ip=203.0.113.45 action=ssh_login result=failure reason=Failed_password severity=medium
+ts=2026-10-20T09:00:06Z host=srv-auth-01 service=ssh user=alice src_ip=203.0.113.45 action=ssh_login result=failure reason=Failed_password severity=medium
+ts=2026-10-20T09:00:09Z host=srv-auth-01 service=ssh user=alice src_ip=203.0.113.45 action=ssh_login result=failure reason=Failed_password severity=medium
+ts=2026-10-20T09:00:12Z host=srv-auth-01 service=ssh user=alice src_ip=203.0.113.45 action=ssh_login result=failure reason=Failed_password severity=high
+ts=2026-10-20T09:00:15Z host=srv-auth-01 service=ssh user=alice src_ip=203.0.113.45 action=ssh_login result=failure reason=Failed_password severity=high
+ts=2026-10-20T09:01:00Z host=srv-auth-01 service=ssh user=bob src_ip=198.51.100.23 action=ssh_login result=success reason=ok severity=info
+ts=2026-10-20T09:02:00Z host=srv-auth-01 service=system user=alice src_ip=203.0.113.45 action=sudo result=success reason=ok severity=low command=whoami
+ts=2026-10-20T09:03:00Z host=srv-web-01 service=web user=alice src_ip=203.0.113.45 action=web_login result=failure reason=invalid_credentials severity=medium method=POST path=/api/login status=401
+ts=2026-10-20T09:03:05Z host=srv-web-01 service=web user=alice src_ip=203.0.113.45 action=web_login result=failure reason=invalid_credentials severity=medium method=POST path=/api/login status=401
+ts=2026-10-20T09:03:30Z host=srv-web-01 service=web user=bob src_ip=198.51.100.23 action=web_login result=success reason=ok severity=info method=POST path=/api/login status=200
+ts=2026-10-20T09:04:00Z host=srv-web-01 service=web user=alice src_ip=203.0.113.45 action=web_request result=failure reason=forbidden severity=high method=GET path=/admin status=403
+ts=2026-10-20T09:04:10Z host=srv-web-01 service=web user=alice src_ip=203.0.113.45 action=web_request result=failure reason=bad_request severity=high method=GET path=/../../etc/passwd status=400
+ts=2026-10-20T09:05:00Z host=srv-web-01 service=web user=bob src_ip=198.51.100.23 action=web_request result=success reason=ok severity=info method=GET path=/api/orders/1001 status=200
+ts=2026-10-20T09:06:00Z host=srv-auth-01 service=system user=alice src_ip=203.0.113.45 action=service_stop result=success reason=ok severity=high command=systemctl_stop_sshd

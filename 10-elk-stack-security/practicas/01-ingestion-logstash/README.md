@@ -1,5 +1,9 @@
 # 01 | Ingestión y normalización con Logstash
 
+> **Estado:** Runbook preparado. El laboratorio y los comandos están escritos; no se han ejecutado todavía.
+>
+> **Runbook:** [runbook.md](runbook.md).
+
 ## Contexto y alcance
 
 **Escenario:** un entorno de laboratorio con logs de autenticación, acceso a servicios y actividad del sistema. Se recoge un caso realista de detección basado en fallos de autenticación, intentos repetidos y cambios sospechosos en la actividad de un host. La práctica se centra en convertir esos eventos en señales útiles para análisis y detección.

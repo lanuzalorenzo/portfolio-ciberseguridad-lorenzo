@@ -1,8 +1,14 @@
 # 10 | ELK Stack Security
 
-> **Estado:** diseño en curso. Ingesta y visualización planteadas; no se ha desplegado una pila ELK con datos reales.
+> **Estado:** Runbook preparado. La pila ELK local está definida con Docker Compose, logs sintéticos y scripts de verificación; no se ha ejecutado todavía.
 
 Este módulo amplía el portfolio hacia la observabilidad y la analítica de seguridad. El enfoque es documentar cómo una pila ELK puede recibir eventos, normalizarlos, correlacionarlos y convertirlos en indicadores útiles para detección y respuesta.
+
+## Laboratorio
+
+- [Laboratorio ELK local](lab/README.md): Docker Compose, Logstash, logs sintéticos y scripts.
+- [Runbook de ingestión](practicas/01-ingestion-logstash/runbook.md): levantar la pila, ingerir y verificar.
+- [Runbook de Kibana](practicas/02-kibana-deteccion/runbook.md): vista de datos, consultas y dashboard.
 
 ## Prácticas
 

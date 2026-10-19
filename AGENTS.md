@@ -26,6 +26,7 @@ Cada módulo debe mantener una estructura clara y legible, con un objetivo técn
 - bitácora/: registro del recorrido técnico del módulo.
 - practicas/: contenido específico por caso de uso o escenario.
 - docs/: artefactos técnicos, informes internos, plantillas y notas de laboratorio.
+- lab/: artefactos locales de ejecución (compose, pipelines, scripts y datos sintéticos).
 - docs/laboratorio-final/: arquitectura, plan de ejecución e índice de evidencias del laboratorio integrado.
 - plantillas/: runbook y registro de evidencia reutilizables.
 

@@ -95,7 +95,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 ### 5. Operaciones de seguridad, forense y respuesta
 
 - [09 | Microsoft Sentinel](09-microsoft-sentinel/README.md) — *diseño en curso*: KQL y automatización.
-- [10 | ELK Stack Security](10-elk-stack-security/README.md) — *diseño en curso*.
+- [10 | ELK Stack Security](10-elk-stack-security/README.md) — *runbook preparado*: pila local, logs sintéticos y scripts; pendiente de ejecución.
 - [12 | Forense cloud y respuesta](12-forense-cloud-respuesta/README.md) — *diseño y KQL*: evidencia, timeline y playbook.
 
 ### 6. Cumplimiento y arquitectura de control
@@ -146,6 +146,7 @@ Cada módulo incluye:
 - `README.md` con alcance, objetivos, prácticas y estado.
 - `bitacora/` con el registro cronológico.
 - `practicas/` con procedimientos y limitaciones; cuando la práctica es ejecutable, incluye `runbook.md` y `evidencias/`.
+- `lab/` con los artefactos locales de ejecución (por ejemplo, `docker-compose.yml`, pipeline y scripts).
 - `docs/` con informes técnicos y plantillas.
 - `docs/laboratorio-final/` con la arquitectura, el plan de ejecución y el índice de evidencias del laboratorio integrado.
 

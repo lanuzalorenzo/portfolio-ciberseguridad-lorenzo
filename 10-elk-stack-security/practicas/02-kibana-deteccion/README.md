@@ -1,5 +1,9 @@
 # 02 | Visualización, detección y análisis con Kibana
 
+> **Estado:** Runbook preparado. El laboratorio y las consultas están escritos; no se han ejecutado todavía.
+>
+> **Runbook:** [runbook.md](runbook.md).
+
 ## Contexto y alcance
 
 **Escenario:** una vez centralizados los eventos en Elasticsearch, la práctica se centra en convertir esos datos en señales de seguridad útiles. La idea es convertir un conjunto de logs normalizados en una secuencia de indicadores para apoyar la investigación de actividad sospechosa.

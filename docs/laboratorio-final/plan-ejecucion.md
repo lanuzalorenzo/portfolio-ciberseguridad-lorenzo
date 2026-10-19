@@ -18,7 +18,7 @@
 | Entregable | Estado |
 |---|---|
 | Evidencia local de API y módulo 11 | Parcial: existen pruebas locales; falta consolidarlas en el índice |
-| Runbook de ELK (módulo 10) | Pendiente |
+| Runbook de ELK (módulo 10) | Runbook preparado |
 | Ejecución de ELK con logs sintéticos | Pendiente |
 | Runbook del tabletop forense (módulo 12) | Pendiente |
 | Ejecución del tabletop y acta | Pendiente |
@@ -125,10 +125,10 @@ Reglas:
 
 | Fase | Estado | Nota |
 |---|---|---|
-| Fase 0 | En preparación | API validada en CI; ELK y tabletop pendientes |
+| Fase 0 | En preparación | API validada en CI; runbook ELK preparado; ejecución y tabletop pendientes |
 | Fase 1 | Pendiente | Requiere suscripción, presupuesto y autorización |
 | Fase 2 | Pendiente | No se inicia sin cerrar la Fase 1 |
 
 ## Próximo paso
 
-Convertir ELK en runbook, ejecutarlo y registrar la primera evidencia.
+Ejecutar el runbook de ELK y registrar la primera evidencia.
