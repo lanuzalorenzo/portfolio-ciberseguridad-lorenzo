@@ -30,7 +30,7 @@ Reducir el riesgo de cambios no revisados, credenciales expuestas, dependencias 
 | SCA | Trivy filesystem, CRITICAL/HIGH | Implementado y validado en CI y localmente | Workflow, Trivy |
 | Contenedor | Docker multi-stage, usuario no-root, Trivy image | Implementado y validado en CI | `Dockerfile`, workflow |
 | IaC | Bicep + Trivy config | Implementado y validado en CI y localmente | `infra/`, workflow |
-| Dependency Review | Bloqueo por severidad High en PR | Implementado | Workflow |
+| Dependency Review | Bloqueo por severidad High en PR | Implementado; dependency graph habilitado | Workflow |
 | OIDC a Azure | Identidad federada sin secretos | Diseñado, no activo | `infra/README.md` |
 | Pruebas de integración | xUnit, 10 pruebas | Implementado y ejecutado localmente | `tests/EcommerceApi.Tests` |
 
