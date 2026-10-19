@@ -1,39 +1,44 @@
 # 02 | Detección de secretos y credenciales expuestas
 
+> **Estado:** implementado y validado localmente. La ejecución remota se confirma en GitHub Actions.
+
 ## Descripción del escenario y objetivo de seguridad
 
-**Escenario:** Repositorio con historial de desarrollo que puede contener tokens, claves, cadenas de conexión o credenciales insertadas accidentalmente en código, variables de entorno o archivos de configuración.  
-**Objetivo de seguridad:** Detectar y eliminar credenciales expuestas antes de que se integren en el repositorio o se compartan con terceros.  
-**Alcance:** Repositorio Git, historial de cambios, pull requests, releases y validación de secretos en los flujos de desarrollo.
+**Escenario:** Historial de desarrollo que puede contener tokens, claves, cadenas de conexión o credenciales insertadas accidentalmente.  
+**Objetivo de seguridad:** Detectar y eliminar credenciales expuestas antes de que se integren o compartan.  
+**Alcance:** Historial Git, pull requests, releases y flujo de desarrollo.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
-
-## Arquitectura y componentes de seguridad considerados
+## Arquitectura y componentes
 
 | Componente | Función | Configuración relevante |
 |---|---|---|
-| **Secret scanning** | Detección de cadenas confidenciales | Escaneo activo en commits y PRs. |
-| **Pre-commit hooks** | Prevención local antes de subir cambios | Validación temprana del código. |
-| **Repositorios remotos** | Origen del código y trazabilidad | GitHub / Azure DevOps / GitLab con controles de seguridad. |
-| **Auditoría y alertas** | Evidencia y notificación de exposición | Alertas por riesgo y resolución. |
+| **Gitleaks** | Detección de secretos | Escaneo del historial completo en CI. |
+| **Allowlist acotada** | Evitar falsos positivos | Solo rutas de documentación y patrones `$TOKEN`/JWT truncados. |
+| **GitHub Actions** | Ejecución automática | Push, PR y ejecución manual. |
+| **Respuesta** | Rotación y limpieza | Procedimiento documentado. |
 
-## Implementación de controles DevSecOps / Seguridad
+## Controles de seguridad
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Escaneo temprano de secretos | Verificación previa al merge | GitHub secret scanning / herramientas de análisis | MCSB IM-1 |
-| Revisión de historial | Búsqueda de credenciales en commits previos | Auditoría periódica del repositorio | MCSB IM-2 |
-| Bloqueo en PR | Rechazo automático si se detecta una clave | Gates de seguridad | MCSB DS-2 |
-| Rotación de credenciales | Eliminar y regenerar credenciales comprometidas | Respuesta operativa | MCSB IA-3 |
+| Control | Implementación | Referencia |
+|---|---|---|
+| Escaneo temprano | Gitleaks en cada push/PR | MCSB IM-1 |
+| Revisión de historial | `fetch-depth: 0` | MCSB IM-2 |
+| Bloqueo en CI | `--exit-code 2` | MCSB DS-2 |
+| Rotación | Regenerar credenciales comprometidas | MCSB IA-3 |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
-
-## Validación o pruebas de seguridad realizadas
+## Validación
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Detección de credenciales sintéticas | Inserción controlada o análisis de patrones | Hallazgo detectado | Sí |
-| Validación en PR | Ejecución del escáner con cambio sospechoso | Bloqueo del merge | Sí |
-| Revisión de historial | Búsqueda de secretos en commits previos | Riesgos detectados y corregibles | Sí |
+| Escaneo del historial | Gitleaks 8.30.1 sobre 27 commits | Sin secretos reales | PASS: 0 leaks |
+| Falsos positivos de documentación | Allowlist por ruta y patrón | Sin ocultar secretos arbitrarios | PASS: allowlist acotada |
+| Bloqueo en CI | `--exit-code 2` | Falla ante hallazgo | Implementado; pendiente de ejecución remota |
+
+## Limitación
+
+La allowlist de documentación podría ocultar un secreto real introducido en un `.md`. Se revisa manualmente y se mantiene limitada a patrones de placeholder. Si se detecta un secreto real, se rota y se evalúa la reescritura del historial.
+
+## Artefactos relacionados
+
+- [`.gitleaks.toml`](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.gitleaks.toml)
+- [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)

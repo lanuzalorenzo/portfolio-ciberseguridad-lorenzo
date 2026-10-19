@@ -1,40 +1,48 @@
 # 04 | Pipeline segura por defecto y validación de entregas
 
+> **Estado:** parcial. Permisos mínimos y gates implementados; OIDC y despliegue no activos.
+
 ## Descripción del escenario y objetivo de seguridad
 
-**Escenario:** Pipeline de integración continua y despliegue que ejecuta cambios sin comprobaciones suficientes, con permisos excesivos, accesos no minimizados y validaciones insuficientes antes de publicar artefactos.  
-**Objetivo de seguridad:** Diseñar una pipeline segura por defecto en la que cada cambio se valora, autoriza y ejecuta con permisos mínimos y controles de seguridad predefinidos.  
-**Alcance:** CI/CD del repositorio, artefactos generados, entornos de despliegue, autenticación, gestión de permisos y gates de validación.
+**Escenario:** Pipeline que ejecuta cambios sin comprobaciones suficientes, con permisos excesivos y validaciones incompletas antes de publicar artefactos.  
+**Objetivo de seguridad:** Diseñar una pipeline con permisos mínimos, gates de seguridad y credenciales efímeras.  
+**Alcance:** CI/CD, artefactos, entornos, autenticación y gates.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
-
-## Arquitectura y componentes de seguridad considerados
+## Arquitectura y componentes
 
 | Componente | Función | Configuración relevante |
 |---|---|---|
-| **Pipeline CI/CD** | Orquestación de validación y entrega | Validación automática antes del despliegue. |
-| **Identidad federada / OIDC** | AuthN sin secretos estáticos | Menor riesgo de credenciales persistentes. |
-| **Permisos mínimos** | Control de acceso por rol y alcance | Reduce impacto de abuso de privilegios. |
-| **Gates de calidad** | Validación de builds, tests y seguridad | Bloqueo de entregas no conformes. |
-| **Entornos protegidos** | Control de despliegue por entorno | Aprobar solo releases con criterios claros. |
+| **GitHub Actions** | Orquestación | Jobs independientes y `concurrency`. |
+| **Permisos** | Mínimo privilegio | `contents: read`; `security-events: write` solo donde se publica SARIF. |
+| **Gates** | Validación | Build, tests, SAST, SCA, secretos, contenedor e IaC. |
+| **OIDC** | Autenticación federada | Diseñado, no activo. |
+| **Entornos** | Control de despliegue | No hay workflow de despliegue. |
 
-## Implementación de controles DevSecOps / Seguridad
+## Controles de seguridad
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Permisos mínimos | Uso de roles y alcance acotado | OIDC y políticas de acceso | MCSB DS-2 |
-| Validación de releases | Gates de CI/CD para pruebas y análisis | Rechazo automático por fallos | MCSB DS-1 |
-| Protección de entornos | Aprobar despliegues por etapa | Protección del entorno y revisión | MCSB GS-2 |
-| Eliminar secretos estáticos | Usar credenciales efímeras y federadas | Policy-as-code y secretos gestionados | MCSB IM-1 |
+| Control | Implementación | Referencia |
+|---|---|---|
+| Permisos mínimos | Permisos por job | MCSB DS-2 |
+| Validación de releases | Gates bloqueantes | MCSB DS-1 |
+| Protección de entornos | Aprobación por etapa | MCSB GS-2 |
+| Sin secretos estáticos | OIDC (diseño) | MCSB IM-1 |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
-
-## Validación o pruebas de seguridad realizadas
+## Validación
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Validación de build | Ejecución de pipeline con cambios | Error si falla el proceso | Sí |
-| Permisos mínimos | Revisar credenciales y roles | Permisos restringidos | Sí |
-| Protección de entorno | Validación de deploy con aprobación | Despliegue sólo con control | Sí |
+| Build y tests | `dotnet build`, `dotnet test` | Fallo si no compila o no pasan | PASS local: 10 pruebas |
+| Permisos mínimos | Revisión del workflow | Permisos acotados | PASS: revisado |
+| Gates de seguridad | Revisión del workflow | Bloqueo ante hallazgos | Implementado; pendiente de ejecución remota |
+| OIDC | Revisión de `infra/README.md` | Sin secretos de larga duración | Diseñado, no activo |
+
+## Limitaciones
+
+- No hay suscripción de Azure asociada, por lo que no se ha validado un despliegue con OIDC.
+- Los gates de CodeQL, Trivy image y Trivy config no se han ejecutado en GitHub en esta iteración.
+- La pipeline no firma artefactos ni genera SBOM; es una línea de trabajo pendiente.
+
+## Artefactos relacionados
+
+- [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)
+- [Diseño OIDC](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/infra/README.md)

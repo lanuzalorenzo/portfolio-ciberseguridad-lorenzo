@@ -1,39 +1,48 @@
 # 03 | SAST, SCA e IaC scanning
 
+> **Estado:** implementado en el workflow de la API. SAST e IaC pendientes de la primera ejecución remota; SCA validado localmente.
+
 ## Descripción del escenario y objetivo de seguridad
 
-**Escenario:** Proyecto software con dependencias de terceros, infraestructura declarativa y lógica de aplicación que no se validan de forma automatizada antes de integrarse. Esto incrementa el riesgo de introducir vulnerabilidades conocidas, defectos de seguridad y configuraciones inseguras.  
-**Objetivo de seguridad:** Automatizar la validación del código, dependencias y plantillas de infraestructura mediante análisis estático antes de la entrega.  
-**Alcance:** Código fuente, dependencias, plantillas de infraestructura (Terraform, Bicep, ARM o similares) y validación previa a la integración.
+**Escenario:** Proyecto con dependencias de terceros, infraestructura declarativa y lógica de aplicación sin validación automatizada antes del merge.  
+**Objetivo de seguridad:** Automatizar la validación de código, dependencias y plantillas antes de la entrega.  
+**Alcance:** Código .NET, paquetes NuGet y plantillas Bicep.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
-
-## Arquitectura y componentes de seguridad considerados
+## Arquitectura y componentes
 
 | Componente | Función | Configuración relevante |
 |---|---|---|
-| **SAST** | Análisis estático del código fuente | Detección de vulnerabilidades en lógica y flujo. |
-| **SCA** | Revisión de dependencias y paquetes | Identificación de librerías vulnerables. |
-| **IaC scanning** | Validación de plantillas de infraestructura | Detección de configuración insegura. |
-| **Pipeline de validación** | Ejecución automatizada de análisis | Gating previo al merge o despliegue. |
+| **CodeQL** | SAST para C# | `security-extended`, autobuild. |
+| **Trivy fs** | SCA de dependencias | CRITICAL/HIGH, `ignore-unfixed`. |
+| **Trivy config** | IaC scanning | ARM compilado desde Bicep. |
+| **Dependency Review** | Revisión de cambios de dependencias | Solo PR, severidad High. |
 
-## Implementación de controles DevSecOps / Seguridad
+## Controles de seguridad
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Análisis estático del código | Identificación de patrones inseguros | Ejecución en PR y CI | MCSB PV-2 |
-| Escaneo de dependencias | Revisión de librerías o paquetes vulnerables | SCA en pipeline | MCSB PV-3 |
-| Validación de infraestructura | Revisión de IaC con referencia normativa | Escaneo en PRs y despliegues | MCSB DS-1 |
-| Bloqueo por hallazgos críticos | Rechazo del cambio en CI si supera umbral | Gates de seguridad | MCSB IR-2 |
+| Control | Implementación | Referencia |
+|---|---|---|
+| SAST | CodeQL en cada push/PR | MCSB PV-2 |
+| SCA | Trivy bloqueante | MCSB PV-3 |
+| IaC | Trivy config sobre ARM | MCSB DS-1 |
+| Bloqueo por hallazgos | `exit-code: 1` | MCSB IR-2 |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
-
-## Validación o pruebas de seguridad realizadas
+## Validación
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| SAST en cambio crítico | Análisis de código con riesgo latente | Hallazgos identificados | Sí |
-| SCA de dependencias | Revisar paquetes vulnerables | Alertas priorizadas por severidad | Sí |
-| IaC scanning | Validación de plantillas | Configuraciones inseguras detectadas | Sí |
+| SAST | CodeQL | Hallazgos publicados en Security | Implementado; pendiente de ejecución remota |
+| SCA | Trivy fs | Sin CRITICAL/HIGH no corregidos | PASS local: 0 hallazgos |
+| IaC | `bicep build` + Trivy config | Plantilla válida y sin CRITICAL/HIGH | PASS local: AZU-0013 justificado |
+| Dependency Review | PR con cambio de paquete | Bloqueo por severidad High | Implementado |
+
+## Limitaciones
+
+- Trivy no interpreta `.bicep`; se compila a ARM antes del escaneo.
+- `AZU-0013` se suprime con justificación porque el Key Vault usa `defaultAction: Deny`, sin acceso público y con Private Endpoint; Trivy no evalúa bien el bloque `networkAcls` del ARM compilado.
+- CodeQL y el escaneo de imagen requieren GitHub Actions; no se han ejecutado localmente.
+
+## Artefactos relacionados
+
+- [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)
+- [Plantilla Bicep](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/infra/main.bicep)
+- [Justificación de Trivy](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.trivyignore)
