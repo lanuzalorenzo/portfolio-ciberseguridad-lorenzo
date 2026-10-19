@@ -1,6 +1,6 @@
 # Laboratorio final
 
-> **Estado:** diseño y planificación. No hay recursos Azure desplegados ni evidencias de ejecución asociadas todavía.
+> **Estado:** primera evidencia local registrada (ELK, módulo 10). Las fases Azure siguen pendientes de autorización y presupuesto; no hay recursos Azure desplegados.
 >
 > Este documento define el marco común. El estado real de cada control se consulta en el README de su módulo y en el [índice de evidencias](evidencias/README.md).
 
@@ -28,7 +28,7 @@ Cada capa debe poder activarse, validarse y retirarse de forma controlada. El re
 | Detección y respuesta | Defender for Cloud, Sentinel, KQL, playbooks | **Diseño**; ver módulos [04](../../04-defender-for-cloud/README.md), [05](../../05-defender-suite/README.md) y [09](../../09-microsoft-sentinel/README.md) |
 | Validación ofensiva | OWASP API Top 10, BOLA/BFLA, mass assignment | **Parcial**: pruebas locales en el [módulo 11](../../11-hacking-etico-api/README.md) |
 | Forense | Recolección, integridad, timeline, cadena de custodia | **Diseño**; ver [módulo 12](../../12-forense-cloud-respuesta/README.md) |
-| Laboratorio local | ELK, logs sintéticos, dashboards | **Runbook preparado**; ver [módulo 10](../../10-elk-stack-security/README.md) |
+| Laboratorio local | ELK, logs sintéticos, dashboards | **Validado en local**; ver [módulo 10](../../10-elk-stack-security/README.md) y su [evidencia](evidencias/2026-10-19-10-elk-ingesta/README.md) |
 
 ## Reparto de repositorios
 
@@ -70,4 +70,4 @@ Un runbook preparado no es una validación.
 
 ## Próximo paso
 
-El módulo 10 (ELK) ya tiene runbook preparado. Falta ejecutarlo y registrar su evidencia. Después, repetir el patrón con el tabletop forense del módulo 12 antes de pasar a Azure.
+El módulo 10 (ELK) está validado en local y su evidencia está registrada. El siguiente paso es convertir el tabletop forense del módulo 12 en un runbook ejecutable y registrar su acta antes de pasar a Azure.

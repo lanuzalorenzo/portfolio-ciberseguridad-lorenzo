@@ -1,6 +1,6 @@
 # Índice de evidencias
 
-> **Estado:** sin evidencias registradas todavía.
+> **Estado:** 1 evidencia registrada.
 
 Este directorio centraliza las evidencias de ejecución del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook y un entorno concreto. No es un repositorio de capturas sueltas.
 
@@ -16,7 +16,7 @@ YYYY-MM-DD-modulo-practica/
 Ejemplo:
 
 ```text
-2026-10-20-10-elk-ingesta/
+2026-10-19-10-elk-ingesta/
 ```
 
 ## Contenido mínimo de una evidencia
@@ -44,7 +44,7 @@ Ejemplo:
 
 | Fecha | Módulo | Práctica | Resultado | Enlace |
 |---|---|---|---|---|
-| — | — | Sin evidencias registradas | — | — |
+| 2026-10-19 | 10 — ELK Stack Security | 01 — Ingestión y normalización · 02 — Kibana | Validado en local | [Ver evidencia](2026-10-19-10-elk-ingesta/README.md) |
 
 Cuando se añada una evidencia, actualiza esta tabla y el README del módulo correspondiente.
 

@@ -35,7 +35,7 @@ La capa local (ELK) permite practicar ingesta, búsqueda y detección sin depend
 | 6. Detección y respuesta | Defender for Cloud, Sentinel, KQL, playbooks | Logs → SOC | **Diseño** |
 | 7. Validación ofensiva | BOLA/BFLA, mass assignment, pruebas de API | Pruebas controladas → API | **Parcial** (local) |
 | 8. Forense | Recolección, integridad, timeline, cadena de custodia | Incidente → evidencia | **Diseño** |
-| 9. Laboratorio local | ELK, logs sintéticos, dashboards | Entorno local → analista | **Diseño** |
+| 9. Laboratorio local | ELK, logs sintéticos, dashboards | Entorno local → analista | **Validado en local** |
 
 ## Flujos principales
 

@@ -1,0 +1,71 @@
+--- conteo de fallos ---
+{"count":10,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}
+--- agregaciones por IP y servicio ---
+{
+  "took" : 4,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 10,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "por_ip" : {
+      "doc_count_error_upper_bound" : 0,
+      "sum_other_doc_count" : 0,
+      "buckets" : [
+        {
+          "key" : "203.0.113.45",
+          "doc_count" : 10
+        }
+      ]
+    },
+    "por_servicio" : {
+      "doc_count_error_upper_bound" : 0,
+      "sum_other_doc_count" : 0,
+      "buckets" : [
+        {
+          "key" : "ssh",
+          "doc_count" : 6
+        },
+        {
+          "key" : "web",
+          "doc_count" : 4
+        }
+      ]
+    }
+  }
+}
+=== data view ===
+[
+  {
+    "id": "53df8705-4770-45d4-b9dd-bd181698a4ad",
+    "title": "lab-security-*",
+    "name": "Lab Security",
+    "timeFieldName": null
+  }
+]
+
+=== conteos de las 6 consultas ===
+1. Fallos totales: 10 [OK]
+2. Fallos SSH: 6 [OK]
+3. Fallos desde 203.0.113.45: 10 [OK]
+4. Errores web >= 400: 4 [OK]
+5. Eventos sudo: 1 [OK]
+6. Accesos a /admin: 1 [OK]
+--- detalle de la vista de datos ---
+{
+  "id": "53df8705-4770-45d4-b9dd-bd181698a4ad",
+  "title": "lab-security-*",
+  "name": "Lab Security",
+  "timeFieldName": "@timestamp"
+}

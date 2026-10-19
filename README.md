@@ -60,7 +60,7 @@ La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuz
 
 El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conectan las capas sobre una sola carga de trabajo, con [arquitectura de referencia](docs/laboratorio-final/arquitectura.md), [plan de ejecución](docs/laboratorio-final/plan-ejecucion.md) y un [índice de evidencias](docs/laboratorio-final/evidencias/README.md). Las prácticas ejecutables usan un [runbook](plantillas/runbook-template.md) y registran su prueba con una [plantilla de evidencia](plantillas/evidencia-template.md).
 
-> El laboratorio está en fase de diseño y planificación. No hay recursos Azure desplegados ni evidencias de ejecución asociadas todavía.
+> El laboratorio tiene una primera evidencia local (ELK). Las fases Azure siguen pendientes de autorización, presupuesto y resource group temporal; no hay recursos Azure desplegados.
 
 ---
 
@@ -95,7 +95,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 ### 5. Operaciones de seguridad, forense y respuesta
 
 - [09 | Microsoft Sentinel](09-microsoft-sentinel/README.md) — *diseño en curso*: KQL y automatización.
-- [10 | ELK Stack Security](10-elk-stack-security/README.md) — *runbook preparado*: pila local, logs sintéticos y scripts; pendiente de ejecución.
+- [10 | ELK Stack Security](10-elk-stack-security/README.md) — *validado en local*: pila ELK con Docker Compose, 15 eventos sintéticos, 6 consultas KQL y dashboard exportado; sin Azure ni datos reales.
 - [12 | Forense cloud y respuesta](12-forense-cloud-respuesta/README.md) — *diseño y KQL*: evidencia, timeline y playbook.
 
 ### 6. Cumplimiento y arquitectura de control

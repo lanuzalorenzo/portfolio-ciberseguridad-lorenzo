@@ -1,0 +1,23 @@
+ Container lab-logstash-1  Stopping
+ Container lab-kibana-1  Stopping
+ Container lab-kibana-1  Stopped
+ Container lab-kibana-1  Removing
+ Container lab-kibana-1  Removed
+ Container lab-logstash-1  Stopped
+ Container lab-logstash-1  Removing
+ Container lab-logstash-1  Removed
+ Container lab-elasticsearch-1  Stopping
+ Container lab-elasticsearch-1  Stopped
+ Container lab-elasticsearch-1  Removing
+ Container lab-elasticsearch-1  Removed
+ Network lab_default  Removing
+ Volume lab_esdata  Removing
+ Volume lab_esdata  Removed
+ Network lab_default  Removed
+Laboratorio eliminado. El volumen 'esdata' ya no existe.
+--- volúmenes tras la limpieza ---
+lab_esdata no existe
+--- contenedores del proyecto ---
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+--- puertos 9200 y 5601 ---
+puertos 9200 y 5601 libres

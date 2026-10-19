@@ -1,0 +1,51 @@
+Levantando Elasticsearch, Kibana y Logstash...
+ Network lab_default  Creating
+ Network lab_default  Created
+ Volume lab_esdata  Creating
+ Volume lab_esdata  Created
+ Container lab-elasticsearch-1  Creating
+ Container lab-elasticsearch-1  Created
+ Container lab-kibana-1  Creating
+ Container lab-logstash-1  Creating
+ Container lab-logstash-1  Created
+ Container lab-kibana-1  Created
+ Container lab-elasticsearch-1  Starting
+ Container lab-elasticsearch-1  Started
+ Container lab-elasticsearch-1  Waiting
+ Container lab-elasticsearch-1  Waiting
+ Container lab-elasticsearch-1  Healthy
+ Container lab-logstash-1  Starting
+ Container lab-elasticsearch-1  Healthy
+ Container lab-kibana-1  Starting
+ Container lab-kibana-1  Started
+ Container lab-logstash-1  Started
+Esperando a Elasticsearch...
+{
+  "cluster_name" : "docker-cluster",
+  "status" : "green",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 0,
+  "active_shards" : 0,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 0,
+  "unassigned_primary_shards" : 0,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 100.0
+}
+Esperando a Kibana...
+
+Servicios activos:
+NAME                  IMAGE                                                   COMMAND                  SERVICE         CREATED          STATUS                             PORTS
+lab-elasticsearch-1   docker.elastic.co/elasticsearch/elasticsearch:8.19.23   "/bin/tini -- /usr/l…"   elasticsearch   39 seconds ago   Up 38 seconds (healthy)            127.0.0.1:9200->9200/tcp, 9300/tcp
+lab-kibana-1          docker.elastic.co/kibana/kibana:8.19.23                 "/bin/tini -- /usr/l…"   kibana          38 seconds ago   Up 17 seconds (health: starting)   127.0.0.1:5601->5601/tcp
+lab-logstash-1        docker.elastic.co/logstash/logstash:8.19.23             "/usr/local/bin/dock…"   logstash        38 seconds ago   Up 17 seconds                      5044/tcp, 9600/tcp
+
+Kibana: http://localhost:5601
+Elasticsearch: http://localhost:9200
+Siguiente: ./scripts/verify.sh

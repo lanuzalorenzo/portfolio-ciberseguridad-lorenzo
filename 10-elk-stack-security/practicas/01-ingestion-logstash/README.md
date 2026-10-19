@@ -1,8 +1,10 @@
 # 01 | Ingestión y normalización con Logstash
 
-> **Estado:** Runbook preparado. El laboratorio y los comandos están escritos; no se han ejecutado todavía.
+> **Estado:** Validado en local. La pila se ha ejecutado y la ingesta se ha verificado con los 15 eventos sintéticos.
 >
 > **Runbook:** [runbook.md](runbook.md).
+>
+> **Evidencia:** [2026-10-19-10-elk-ingesta](../../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).
 
 ## Contexto y alcance
 
@@ -51,10 +53,10 @@ Se utilizará una composición de logs de sistema y servicios para simular un es
 
 | Prueba | Método | Resultado esperado | Estado |
 |---|---|---|---|
-| Ingesta de eventos | Carga de logs con fallos de autenticación y accesos sospechosos | Flujo correcto y sin pérdida | Pendiente |
-| Normalización | Validación de campos clave para investigación | Esquema consistente y trazable | Pendiente |
-| Exploración en Elasticsearch | Consulta por usuario, IP y servicio | Datos visibles y recuperables para análisis | Pendiente |
-| Detección básica | Identificación de patrones repetidos | Evidencia útil para Kibana y alertado | Pendiente |
+| Ingesta de eventos | Carga de logs con fallos de autenticación y accesos sospechosos | Flujo correcto y sin pérdida | Validado en local |
+| Normalización | Validación de campos clave para investigación | Esquema consistente y trazable | Validado en local |
+| Exploración en Elasticsearch | Consulta por usuario, IP y servicio | Datos visibles y recuperables para análisis | Validado en local |
+| Detección básica | Identificación de patrones repetidos | Evidencia útil para Kibana y alertado | Validado en local |
 
 ## Aprendizaje clave
 

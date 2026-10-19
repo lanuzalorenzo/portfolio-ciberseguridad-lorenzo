@@ -1,0 +1,16 @@
+{
+  "version": {
+    "number": "8.19.23",
+    "build_hash": "bb0fffbaf841ec1d529c098d5d10ff9b43f976ff",
+    "build_number": 88402,
+    "build_snapshot": false,
+    "build_flavor": "traditional",
+    "build_date": "2026-09-30T22:09:37.043Z"
+  },
+  "status": {
+    "overall": {
+      "level": "available",
+      "summary": "All services and plugins are available"
+    }
+  }
+}

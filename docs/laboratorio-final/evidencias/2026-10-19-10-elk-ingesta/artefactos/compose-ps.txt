@@ -1,0 +1,4 @@
+NAME                  IMAGE                                                   COMMAND                  SERVICE         CREATED              STATUS                        PORTS
+lab-elasticsearch-1   docker.elastic.co/elasticsearch/elasticsearch:8.19.23   "/bin/tini -- /usr/l…"   elasticsearch   About a minute ago   Up About a minute (healthy)   127.0.0.1:9200->9200/tcp, 9300/tcp
+lab-kibana-1          docker.elastic.co/kibana/kibana:8.19.23                 "/bin/tini -- /usr/l…"   kibana          About a minute ago   Up 45 seconds (healthy)       127.0.0.1:5601->5601/tcp
+lab-logstash-1        docker.elastic.co/logstash/logstash:8.19.23             "/usr/local/bin/dock…"   logstash        About a minute ago   Up 45 seconds                 5044/tcp, 9600/tcp

@@ -1,6 +1,6 @@
 # Plan de ejecución
 
-> **Estado:** planificación. Ninguna fase Azure se ha ejecutado. La Fase 0 tiene trabajo local pendiente.
+> **Estado:** Fase 0 en curso con la primera evidencia local (ELK). Ninguna fase Azure se ha ejecutado.
 
 ## Principios
 
@@ -18,11 +18,11 @@
 | Entregable | Estado |
 |---|---|
 | Evidencia local de API y módulo 11 | Parcial: existen pruebas locales; falta consolidarlas en el índice |
-| Runbook de ELK (módulo 10) | Runbook preparado |
-| Ejecución de ELK con logs sintéticos | Pendiente |
+| Runbook de ELK (módulo 10) | Validado en local |
+| Ejecución de ELK con logs sintéticos | Validado en local: ingesta, 6 consultas KQL, dashboard y exportación |
 | Runbook del tabletop forense (módulo 12) | Pendiente |
 | Ejecución del tabletop y acta | Pendiente |
-| Primera entrada del índice de evidencias | Pendiente |
+| Primera entrada del índice de evidencias | Validado: evidencia ELK enlazada |
 
 **Gate de salida:**
 
@@ -125,10 +125,10 @@ Reglas:
 
 | Fase | Estado | Nota |
 |---|---|---|
-| Fase 0 | En preparación | API validada en CI; runbook ELK preparado; ejecución y tabletop pendientes |
+| Fase 0 | En curso | API validada en CI; ELK validado en local con evidencia; tabletop forense pendiente |
 | Fase 1 | Pendiente | Requiere suscripción, presupuesto y autorización |
 | Fase 2 | Pendiente | No se inicia sin cerrar la Fase 1 |
 
 ## Próximo paso
 
-Ejecutar el runbook de ELK y registrar la primera evidencia.
+Convertir el tabletop forense del módulo 12 en un runbook ejecutable y registrar su acta.

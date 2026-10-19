@@ -1,6 +1,6 @@
 # Runbook — Ingestión y normalización con Logstash
 
-> **Estado:** Runbook preparado. No ejecutado todavía.
+> **Estado:** Validado en local. Ejecutado el 2026-10-19 con 15 eventos sintéticos.
 >
 > **Última revisión:** 2026-10-19.
 >
@@ -158,34 +158,34 @@ ss -ltn | grep -E ':(9200|5601)'
 Crea la carpeta de evidencia:
 
 ```bash
-mkdir -p ../../../docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/artefactos
+mkdir -p ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos
 ```
 
 Captura y guarda:
 
 ```bash
-./scripts/preflight.sh | tee ../../../docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/artefactos/preflight.txt
-./scripts/up.sh 2>&1 | tee ../../../docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/artefactos/up.txt
-docker compose ps | tee ../../../docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/artefactos/compose-ps.txt
-curl -fsS 'http://localhost:9200/_cluster/health?pretty' | tee ../../../docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/artefactos/cluster-health.json
-./scripts/verify.sh 2>&1 | tee ../../../docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/artefactos/verify.txt
-curl -fsS 'http://localhost:9200/_cat/indices/lab-security-*?v&h=index,docs.count,store.size' | tee ../../../docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/artefactos/indices.txt
-docker compose logs --tail=80 logstash | tee ../../../docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/artefactos/logstash.log
-docker compose port elasticsearch 9200 | tee ../../../docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/artefactos/puerto-elasticsearch.txt
-docker compose port kibana 5601 | tee ../../../docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/artefactos/puerto-kibana.txt
+./scripts/preflight.sh | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/preflight.txt
+./scripts/up.sh 2>&1 | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/up.txt
+docker compose ps | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/compose-ps.txt
+curl -fsS 'http://localhost:9200/_cluster/health?pretty' | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/cluster-health.json
+./scripts/verify.sh 2>&1 | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/verify.txt
+curl -fsS 'http://localhost:9200/_cat/indices/lab-security-*?v&h=index,docs.count,store.size' | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/indices.txt
+docker compose logs --tail=80 logstash | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/logstash.log
+docker compose port elasticsearch 9200 | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/puerto-elasticsearch.txt
+docker compose port kibana 5601 | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/puerto-kibana.txt
 ```
 
 No incluyas rutas personales, tokens ni datos reales. Los logs del laboratorio son sintéticos, pero revisa igualmente antes de publicar.
 
 ## 6. Validación
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Ingesta | `./scripts/verify.sh` | 15 eventos | Pendiente de ejecución |
-| Normalización | Consulta a Elasticsearch | Campos ECS visibles | Pendiente de ejecución |
-| Detección de fallos | Agregación `event.outcome` | 10 fallos | Pendiente de ejecución |
-| Correlación por IP | Agregación `source.ip` | 10 fallos desde `203.0.113.45` | Pendiente de ejecución |
-| Exposición local | `docker compose port` | Solo `127.0.0.1` | Pendiente de ejecución |
+| Prueba | Método | Resultado esperado | Resultado observado | Veredicto |
+|---|---|---|---|---|
+| Ingesta | `./scripts/verify.sh` | 15 eventos | 15 eventos | Validado en local |
+| Normalización | Consulta a Elasticsearch | Campos ECS visibles | `host.name`, `service.name`, `source.ip`, `event.outcome` y `http.*` presentes | Validado en local |
+| Detección de fallos | Agregación `event.outcome` | 10 fallos | 10 fallos | Validado en local |
+| Correlación por IP | Agregación `source.ip` | 10 fallos desde `203.0.113.45` | 10 fallos desde `203.0.113.45` | Validado en local |
+| Exposición local | `docker compose port` | Solo `127.0.0.1` | `127.0.0.1:9200` y `127.0.0.1:5601` | Validado en local |
 
 ## 7. Limpieza
 

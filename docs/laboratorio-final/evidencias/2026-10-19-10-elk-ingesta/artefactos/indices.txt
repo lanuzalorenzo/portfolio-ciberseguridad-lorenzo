@@ -1,0 +1,2 @@
+index                   docs.count store.size
+lab-security-2026.10.20         15      132kb

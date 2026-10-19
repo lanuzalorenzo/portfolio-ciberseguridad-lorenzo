@@ -1,0 +1,80 @@
+logstash-1  |     },
+logstash-1  |        "process" => {
+logstash-1  |         "command_line" => "whoami"
+logstash-1  |     },
+logstash-1  |        "service" => {
+logstash-1  |         "name" => "system"
+logstash-1  |     },
+logstash-1  |            "log" => {
+logstash-1  |         "file" => {
+logstash-1  |             "path" => "/usr/share/logstash/sample-logs/security.log"
+logstash-1  |         }
+logstash-1  |     },
+logstash-1  |           "user" => {
+logstash-1  |         "name" => "alice"
+logstash-1  |     }
+logstash-1  | }
+logstash-1  | {
+logstash-1  |         "source" => {
+logstash-1  |         "ip" => "203.0.113.45"
+logstash-1  |     },
+logstash-1  |          "event" => {
+logstash-1  |         "severity" => "high",
+logstash-1  |           "action" => "ssh_login",
+logstash-1  |          "dataset" => "security.synthetic",
+logstash-1  |         "original" => "ts=2026-10-20T09:00:15Z host=srv-auth-01 service=ssh user=alice src_ip=203.0.113.45 action=ssh_login result=failure reason=Failed_password severity=high",
+logstash-1  |           "reason" => "Failed_password",
+logstash-1  |          "outcome" => "failure"
+logstash-1  |     },
+logstash-1  |     "@timestamp" => 2026-10-20T09:00:15.000Z,
+logstash-1  |            "lab" => {
+logstash-1  |         "name" => "elk-security-lab"
+logstash-1  |     },
+logstash-1  |       "@version" => "1",
+logstash-1  |           "host" => {
+logstash-1  |         "name" => "srv-auth-01"
+logstash-1  |     },
+logstash-1  |        "service" => {
+logstash-1  |         "name" => "ssh"
+logstash-1  |     },
+logstash-1  |            "log" => {
+logstash-1  |         "file" => {
+logstash-1  |             "path" => "/usr/share/logstash/sample-logs/security.log"
+logstash-1  |         }
+logstash-1  |     },
+logstash-1  |           "user" => {
+logstash-1  |         "name" => "alice"
+logstash-1  |     }
+logstash-1  | }
+logstash-1  | {
+logstash-1  |         "source" => {
+logstash-1  |         "ip" => "203.0.113.45"
+logstash-1  |     },
+logstash-1  |          "event" => {
+logstash-1  |         "severity" => "medium",
+logstash-1  |           "action" => "ssh_login",
+logstash-1  |          "dataset" => "security.synthetic",
+logstash-1  |         "original" => "ts=2026-10-20T09:00:03Z host=srv-auth-01 service=ssh user=alice src_ip=203.0.113.45 action=ssh_login result=failure reason=Failed_password severity=medium",
+logstash-1  |           "reason" => "Failed_password",
+logstash-1  |          "outcome" => "failure"
+logstash-1  |     },
+logstash-1  |     "@timestamp" => 2026-10-20T09:00:03.000Z,
+logstash-1  |            "lab" => {
+logstash-1  |         "name" => "elk-security-lab"
+logstash-1  |     },
+logstash-1  |       "@version" => "1",
+logstash-1  |           "host" => {
+logstash-1  |         "name" => "srv-auth-01"
+logstash-1  |     },
+logstash-1  |        "service" => {
+logstash-1  |         "name" => "ssh"
+logstash-1  |     },
+logstash-1  |            "log" => {
+logstash-1  |         "file" => {
+logstash-1  |             "path" => "/usr/share/logstash/sample-logs/security.log"
+logstash-1  |         }
+logstash-1  |     },
+logstash-1  |           "user" => {
+logstash-1  |         "name" => "alice"
+logstash-1  |     }
+logstash-1  | }

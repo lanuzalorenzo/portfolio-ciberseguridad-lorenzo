@@ -1,0 +1,8 @@
+Eventos totales: 15
+Fallos: 10
+Éxitos: 5
+Web 4xx/5xx: 4
+Eventos sudo: 1
+Servicios: ssh=7, system=2, web=6
+IPs con más fallos: 203.0.113.45=10
+OK: los valores coinciden con el dataset sintético.

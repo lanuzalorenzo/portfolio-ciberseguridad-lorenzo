@@ -24,7 +24,7 @@ Convertir el módulo 10 de diseño documental en un laboratorio local ejecutable
 
 - El módulo ya tiene una ruta ejecutable de principio a fin.
 - La verificación automática espera 15 eventos, 10 fallos, 5 éxitos, 4 errores web y 10 fallos desde `203.0.113.45`.
-- La evidencia queda definida en `docs/laboratorio-final/evidencias/2026-10-20-10-elk-ingesta/`.
+- La evidencia queda definida en `docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/`.
 
 ## Pendientes y riesgos
 

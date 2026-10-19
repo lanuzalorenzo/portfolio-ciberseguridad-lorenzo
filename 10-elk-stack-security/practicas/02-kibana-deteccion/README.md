@@ -1,8 +1,10 @@
 # 02 | Visualización, detección y análisis con Kibana
 
-> **Estado:** Runbook preparado. El laboratorio y las consultas están escritos; no se han ejecutado todavía.
+> **Estado:** Validado en local. La vista de datos, las 6 consultas KQL y el dashboard se han ejecutado y verificado con los datos sintéticos.
 >
 > **Runbook:** [runbook.md](runbook.md).
+>
+> **Evidencia:** [2026-10-19-10-elk-ingesta](../../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).
 
 ## Contexto y alcance
 
@@ -51,10 +53,10 @@ Ese conjunto de eventos puede sugerir fuerza bruta, enumeración, uso indebido d
 
 | Prueba | Método | Resultado esperado | Estado |
 |---|---|---|---|
-| Dashboard base | Visualización de eventos por tiempo y servicio | Evidencia clara y legible | Pendiente |
-| Consulta por fallos y IP | Filtro de autenticación repetitiva | Señal visible y correlacionable | Pendiente |
-| Consulta por actividad privilegiada | Búsqueda de comandos o acceso administrativo | Detección de patrón anómalo | Pendiente |
-| Correlación | Comparación de eventos en ventana de tiempo | Hipótesis de seguridad sustentada | Pendiente |
+| Dashboard base | Visualización de eventos por tiempo y servicio | Evidencia clara y legible | Validado en local |
+| Consulta por fallos y IP | Filtro de autenticación repetitiva | Señal visible y correlacionable | Validado en local |
+| Consulta por actividad privilegiada | Búsqueda de comandos o acceso administrativo | Detección de patrón anómalo | Validado en local |
+| Correlación | Comparación de eventos en ventana de tiempo | Hipótesis de seguridad sustentada | Validado en local |
 
 ## Aprendizaje clave
 

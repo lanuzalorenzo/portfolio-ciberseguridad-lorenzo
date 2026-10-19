@@ -57,11 +57,13 @@ La evidencia enlaza al módulo o al repositorio de la API. Cuando la evidencia e
 
 | Repositorio | Evidencia principal | Estado |
 |---|---|---|
-| `portfolio-ciberseguridad-lorenzo` | Módulos 01–12, bitácoras y prácticas | Documentado |
+| `portfolio-ciberseguridad-lorenzo` | Módulos 01–12, bitácoras, prácticas y evidencia local de ELK | Documentado + evidencia local parcial |
 | `lab-api-local-azure` | Código, tests, CI, Bicep | Implementado y probado localmente |
 | `ai-agent-local-lab` | Laboratorio local-first, seguridad de prompts | Documentado |
 | `lanuzalorenzo` | Perfil profesional | Publicado |
 | `lanuzalorenzo.github.io` | Portfolio web | Publicado |
+
+La primera evidencia de ejecución local (módulo 10, ELK) está registrada en el [índice de evidencias](../docs/laboratorio-final/evidencias/README.md).
 
 ## Brechas declaradas
 
