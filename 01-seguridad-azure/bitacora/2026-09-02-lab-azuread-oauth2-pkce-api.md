@@ -1,7 +1,7 @@
 # Bitácora — 2026-09-02: Laboratorio manual de OAuth2 PKCE
 
 > [!NOTE]
-> Los scripts mencionados viven ahora en `lab-api-local-azure`.
+> Los scripts mencionados se han consolidado en el módulo: viven en [`01-seguridad-azure/lab/pkce`](../lab/pkce/) y la práctica está documentada en [`practicas/01-pkce-manual`](../practicas/01-pkce-manual/README.md).
 
 **Objetivo:** Diseccionar el flujo PKCE manualmente usando bash y curl para entender exactamente qué ocurre por debajo antes de depender de librerías mágicas.
 

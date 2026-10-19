@@ -68,7 +68,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 
 ### 1. Arquitectura y AppSec
 
-- [01 | OAuth 2.0, PKCE y validación JWT](01-seguridad-azure/README.md) — *validado en laboratorio*.
+- [01 | OAuth 2.0, PKCE y validación JWT](01-seguridad-azure/README.md) — *validado en laboratorio*; incluye la práctica de [PKCE manual](01-seguridad-azure/practicas/01-pkce-manual/README.md), con evidencia pendiente de reejecución.
 - [11 | Hacking ético de APIs](11-hacking-etico-api/README.md) — *validación local de BOLA y mass assignment; pentest desplegado pendiente*.
 - [API de referencia](https://github.com/lanuzalorenzo/lab-api-local-azure) — código, tests, CI y Bicep.
 

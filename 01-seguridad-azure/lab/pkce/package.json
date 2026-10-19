@@ -1,0 +1,27 @@
+{
+  "name": "lab-azuread-oauth2-pkce-api",
+  "version": "1.0.0",
+  "description": "API local protegida con OAuth2 Authorization Code Flow + PKCE usando Azure AD",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test:token": "node -e \"const { validateAccessToken } = require('./utils/validateToken'); console.log(typeof validateAccessToken);\""
+  },
+  "keywords": [
+    "azure-ad",
+    "oauth2",
+    "pkce",
+    "express",
+    "jwt",
+    "jwks"
+  ],
+  "author": "Lab Azure AD",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.1.0"
+  }
+}
