@@ -68,7 +68,7 @@ La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuz
 
 ### 2. DevSecOps y supply chain
 
-- [07 | DevSecOps y gobernanza del software](07-devsecops/README.md) — *parcial: controles implementados, primera ejecución verde pendiente*.
+- [07 | DevSecOps y gobernanza del software](07-devsecops/README.md) — *validado en CI: build, pruebas, Gitleaks, CodeQL, Trivy y contenedor no-root*.
   - [Protección de ramas](07-devsecops/branch-protection.md).
   - [Detección de secretos](07-devsecops/practicas/02-secret-scanning/README.md).
   - [SAST, SCA e IaC](07-devsecops/practicas/03-sast-sca-iac/README.md).

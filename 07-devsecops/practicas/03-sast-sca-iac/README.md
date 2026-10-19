@@ -1,6 +1,6 @@
 # 03 | SAST, SCA e IaC scanning
 
-> **Estado:** implementado en el workflow de la API. SAST e IaC pendientes de la primera ejecución remota; SCA validado localmente.
+> **Estado:** validado en CI (run 39243360276, 2026-10-19). SAST, SCA e IaC completaron sin hallazgos CRITICAL/HIGH.
 
 ## Descripción del escenario y objetivo de seguridad
 
@@ -30,9 +30,9 @@
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| SAST | CodeQL | Hallazgos publicados en Security | Implementado; pendiente de ejecución remota |
-| SCA | Trivy fs | Sin CRITICAL/HIGH no corregidos | PASS local: 0 hallazgos |
-| IaC | `bicep build` + Trivy config | Plantilla válida y sin CRITICAL/HIGH | PASS local: AZU-0013 justificado |
+| SAST | CodeQL | Hallazgos publicados en Security | PASS CI: CodeQL completado y SARIF publicado |
+| SCA | Trivy fs | Sin CRITICAL/HIGH no corregidos | PASS local y CI: 0 hallazgos |
+| IaC | `bicep build` + Trivy config | Plantilla válida y sin CRITICAL/HIGH | PASS local y CI: hallazgos AZU justificados |
 | Dependency Review | PR con cambio de paquete | Bloqueo por severidad High | Implementado |
 
 ## Limitaciones

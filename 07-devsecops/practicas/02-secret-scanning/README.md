@@ -1,6 +1,6 @@
 # 02 | Detección de secretos y credenciales expuestas
 
-> **Estado:** implementado y validado localmente. La ejecución remota se confirma en GitHub Actions.
+> **Estado:** validado localmente y en CI (run 39243360276, 2026-10-19).
 
 ## Descripción del escenario y objetivo de seguridad
 
@@ -30,9 +30,9 @@
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Escaneo del historial | Gitleaks 8.30.1 sobre 27 commits | Sin secretos reales | PASS: 0 leaks |
+| Escaneo del historial | Gitleaks 8.30.1 sobre historial completo | Sin secretos reales | PASS local y CI: 0 leaks |
 | Falsos positivos de documentación | Allowlist por ruta y patrón | Sin ocultar secretos arbitrarios | PASS: allowlist acotada |
-| Bloqueo en CI | `--exit-code 2` | Falla ante hallazgo | Implementado; pendiente de ejecución remota |
+| Bloqueo en CI | `--exit-code 2` | Falla ante hallazgo | PASS CI: job completado sin hallazgos |
 
 ## Limitación
 
