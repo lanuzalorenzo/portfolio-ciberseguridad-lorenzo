@@ -1,6 +1,6 @@
 # 04 | Pipeline segura por defecto y validación de entregas
 
-> **Estado:** parcial. Permisos mínimos y gates implementados; OIDC y despliegue no activos.
+> **Estado:** parcial. Permisos mínimos y gates implementados y validados en CI; OIDC y despliegue no activos.
 
 ## Descripción del escenario y objetivo de seguridad
 
@@ -31,15 +31,15 @@
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Build y tests | `dotnet build`, `dotnet test` | Fallo si no compila o no pasan | PASS local: 10 pruebas |
+| Build y tests | `dotnet build`, `dotnet test` | Fallo si no compila o no pasan | PASS local y CI: 10 pruebas |
 | Permisos mínimos | Revisión del workflow | Permisos acotados | PASS: revisado |
-| Gates de seguridad | Revisión del workflow | Bloqueo ante hallazgos | Implementado; pendiente de ejecución remota |
+| Gates de seguridad | Revisión del workflow | Bloqueo ante hallazgos | PASS CI: jobs de Gitleaks, CodeQL, Trivy y contenedor en verde |
 | OIDC | Revisión de `infra/README.md` | Sin secretos de larga duración | Diseñado, no activo |
 
 ## Limitaciones
 
 - No hay suscripción de Azure asociada, por lo que no se ha validado un despliegue con OIDC.
-- Los gates de CodeQL, Trivy image y Trivy config no se han ejecutado en GitHub en esta iteración.
+- Los gates se ejecutan en GitHub Actions; el despliegue y la autenticación OIDC no están activos.
 - La pipeline no firma artefactos ni genera SBOM; es una línea de trabajo pendiente.
 
 ## Artefactos relacionados
