@@ -1,58 +1,56 @@
-# Autenticación Passwordless
 # 02 | Autenticación Passwordless en Microsoft Entra ID
 
-La práctica documenta la habilitación y comprobación de métodos de inicio de sesión sin contraseña en Microsoft Entra ID.
+> **Estado:** validado en laboratorio (PASS). Tenant de prueba, sin datos reales.
+
 ## Descripción del escenario y objetivo de seguridad
 
+**Escenario:** Identidades dependientes de contraseñas complejas, vulnerables a phishing, fatiga de contraseñas y fuerza bruta.  
+**Objetivo de seguridad:** Desplegar una estrategia sin contraseñas basada en Microsoft Authenticator, Passkeys (FIDO2) y Windows Hello for Business.  
+**Alcance:** Políticas de métodos de autenticación del tenant y usuario nativo (*Member*).
+
 ## Enfoque técnico
-**Escenario:** Identidades de usuario dependientes de contraseñas complejas, vulnerables a ataques de phishing de credenciales, fatiga de contraseñas y fuerza bruta.  
-**Objetivo de seguridad:** Desplegar una estrategia de autenticación sin contraseñas (Passwordless) robusta basada en Microsoft Authenticator, Passkeys (FIDO2) y Windows Hello for Business.  
-**Alcance:** Políticas de métodos de autenticación del tenant de Entra ID y usuario nativo (*Member*).
 
 - Microsoft Authenticator en modo Passwordless.
 - Passkey / FIDO2.
 - Windows Hello for Business.
+- Validación del inicio de sesión sin contraseña.
+
 > [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
+> Práctica realizada en un entorno de laboratorio. No incluye identificadores,
 > secretos ni datos sensibles.
 
-## Validación
-## Arquitectura y componentes de Azure utilizados
+## Arquitectura y componentes
 
-El escenario registra el inicio de sesión con los métodos configurados y la comprobación de sus controles de autenticación.
 | Componente | Función | Configuración relevante |
 |---|---|---|
-| **Microsoft Authenticator** | Notificación push con coincidencia de números | Passwordless habilitado; coincidencia de números activa para evitar fatiga de MFA. |
-| **Passkey (FIDO2)** | Autenticación resistente al phishing | Habilitado autoservicio; sin requisito de atestación estricta para pruebas. |
-| **Windows Hello for Business** | Autenticación biométrica / PIN local ligada a hardware | Habilitado a nivel de directiva de métodos de autenticación. |
-| **Usuario Nativo (Member)** | Sujeto de autenticación | Cuenta nativa en `@dominio.onmicrosoft.com` (las cuentas Guest/EXT no soportan passwordless nativo). |
+| **Microsoft Authenticator** | Notificación push con coincidencia de números | Passwordless habilitado; number matching activo. |
+| **Passkey (FIDO2)** | Autenticación resistente al phishing | Habilitado autoservicio; sin atestación estricta en pruebas. |
+| **Windows Hello for Business** | Autenticación biométrica/PIN ligada al hardware | Habilitado en la directiva de métodos. |
+| **Usuario nativo (Member)** | Sujeto de autenticación | Cuenta `@dominio.onmicrosoft.com`; las cuentas Guest no admiten Passwordless nativo. |
 
-## Documentación técnica
-## Implementación de controles DevSecOps / Seguridad
+## Controles de seguridad
 
-[Configuración de métodos Passwordless](docs/passwordless-configuracion.md)
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Autenticación resistente a phishing | Métodos Passkey / FIDO2 | Directiva de métodos en portal Entra ID | MCSB IA-2 / FIDO Alliance |
-| Notificación de número coincidente | Número mostrado en pantalla que debe teclearse en app | Política de Microsoft Authenticator | NIST SP 800-63B |
-| Eliminación de secreto estático (contraseña) | Flujo completo de inicio sin solicitar contraseña | Autenticación basada en criptografía asimétrica | MCSB IA-1 |
+| Control | Implementación | Referencia |
+|---|---|---|
+| Autenticación resistente a phishing | Passkey / FIDO2 | MCSB IA-2 / FIDO Alliance |
+| Coincidencia de números | Número en pantalla que se teclea en la app | NIST SP 800-63B |
+| Eliminación del secreto estático | Inicio de sesión sin contraseña | MCSB IA-1 |
 
-**Artefactos relacionados:** [Configuración de métodos Passwordless](docs/passwordless-configuracion.md).
-
-## Validación o pruebas de seguridad realizadas
+## Validación
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Habilitación de métodos en directiva | Portal Entra ID → Authentication methods | Métodos activados y dirigidos a usuarios del laboratorio | PASS: Habilitados Authenticator, FIDO2 y WHfB |
-| Registro de usuario invitado (EXT) vs nativo | Intento de registro en cuenta Guest | Cuentas tipo Guest no habilitan flujo passwordless | PASS: Confirmado; se creó usuario Member nativo para el laboratorio |
-| Inicio de sesión Passwordless con Authenticator | Login introduciendo solo UPN y emparejando número | Acceso concedido sin teclear contraseña | PASS: Autenticación completada con éxito |
+| Habilitación de métodos | Portal Entra ID → Authentication methods | Métodos activos para usuarios del laboratorio | PASS: Authenticator, FIDO2 y WHfB habilitados |
+| Registro en cuenta Guest | Intento de registro en cuenta EXT | Guest no habilita Passwordless nativo | PASS: se creó un usuario Member para el laboratorio |
+| Login Passwordless con Authenticator | UPN + coincidencia de número | Acceso sin contraseña | PASS: autenticación completada |
 
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
+## Lecciones aprendidas
 
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| **IA-1: Identidades de confianza y credenciales seguras** | Adopción de Passwordless | Elimina el vector de ataque número uno en identidad corporativa: el robo y reutilización de credenciales. |
-| **IA-2: Autenticación fuerte y moderna** | Despliegue de Passkeys / FIDO2 | Ofrece la mayor protección contra ataques Man-in-the-Middle (AitM) y phishing inverso. |
+- Las cuentas invitadas dependen de su tenant de origen y no admiten Passwordless nativo gestionado en el destino.
+- La coincidencia de números mitiga ataques de fatiga de MFA.
+- Passkeys reduce el riesgo de phishing inverso y *man-in-the-middle*.
 
-- Las cuentas invitadas o externas (B2B/Guest) tienen un ciclo de autenticación dependiente de su tenant de origen y no admiten Passwordless nativo gestionado en el tenant de destino.
-- La coincidencia de números (*Number Matching*) es esencial para anular los ataques de saturación o fatiga de MFA (*MFA fatigue*).
+## Artefactos relacionados
+
+- [Configuración de métodos Passwordless](docs/passwordless-configuracion.md)
+- [Bitácora del módulo](../../bitacora/2026-09-08-identity-security.md)

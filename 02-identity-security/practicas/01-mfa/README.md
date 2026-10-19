@@ -1,58 +1,57 @@
-# MFA en Microsoft Entra ID
-# 01 | Habilitación de MFA en Microsoft Entra ID
+# 01 | MFA en Microsoft Entra ID
 
-La práctica documenta la habilitación de MFA en un tenant de laboratorio, el registro de un método TOTP y la comprobación del inicio de sesión.
+> **Estado:** validado en laboratorio (PASS). Tenant de prueba, sin datos reales.
+
 ## Descripción del escenario y objetivo de seguridad
 
+**Escenario:** Tenant de Microsoft Entra ID con identidades administrativas y estándar expuestas al riesgo de autenticación basada únicamente en contraseña.  
+**Objetivo de seguridad:** Eliminar el riesgo de compromiso de cuentas mediante autenticación multifactor (MFA), combinando Security Defaults y el registro de un método TOTP externo.  
+**Alcance:** Tenant de laboratorio, usuarios de prueba nativos y aplicación de autenticación TOTP (Proton Pass).
+
 ## Enfoque técnico
-**Escenario:** Entorno de laboratorio en Microsoft Entra ID con identidades administrativas y estándar expuestas a riesgos de autenticación basada únicamente en contraseña.  
-**Objetivo de seguridad:** Eliminar el riesgo de compromiso de cuentas mediante el despliegue de autenticación multifactor (MFA), combinando Security Defaults y registro de un método TOTP externo.  
-**Alcance:** Tenant de laboratorio en Microsoft Entra ID, usuarios de prueba nativos y aplicación de autenticación TOTP (Proton Pass).
 
 - Activación de Security Defaults.
 - Revisión de la configuración de MFA por usuario en el portal.
 - Registro de un autenticador TOTP externo.
+- Validación del desafío MFA en el inicio de sesión.
+
 > [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
+> Práctica realizada en un entorno de laboratorio. No incluye identificadores,
 > secretos ni datos sensibles.
 
-## Validación
-## Arquitectura y componentes de Azure utilizados
+## Arquitectura y componentes
 
-El informe técnico registra la activación de MFA y la validación del flujo de inicio de sesión con el método TOTP.
 | Componente | Función | Configuración relevante |
 |---|---|---|
-| **Microsoft Entra ID** | Proveedor de Identidad (IdP) | Tenant en modo nube nativo; gestión centralizada de usuarios. |
-| **Security Defaults** | Directiva base de protección | Activado en propiedades del tenant; impone MFA y bloquea legacy auth. |
-| **Panel MFA por Usuario** | Gestión granular de autenticación multifactor | Usuario de prueba en estado *Enabled*. |
-| **Proton Pass (TOTP)** | Autenticador externo compatible OATH-TOTP | Registro mediante código QR y validación de código temporal de 6 dígitos. |
+| **Microsoft Entra ID** | Proveedor de identidad | Tenant cloud-native; gestión centralizada de usuarios. |
+| **Security Defaults** | Directiva base de protección | Activado; impone MFA y bloquea autenticación heredada. |
+| **Panel MFA por usuario** | Gestión granular | Usuario de prueba en estado *Enabled*. |
+| **Proton Pass (TOTP)** | Autenticador externo OATH-TOTP | Registro por QR y validación de código de 6 dígitos. |
 
-## Documentación
-## Implementación de controles DevSecOps / Seguridad
+## Controles de seguridad
 
-[Informe técnico de configuración](docs/mfa-configuracion.md)
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Autenticación multifactor obligatoria | Security Defaults activado en Entra ID | Directiva global de tenant | MCSB IA-2 / CIS 1.1 |
-| Bloqueo de autenticación heredada | Forzado automáticamente por Security Defaults | Política de acceso básico | MCSB IA-3 |
-| Registro de método OATH-TOTP | Registro y comprobación en portal *My Sign-Ins* | Flujo autoservicio de usuario | RFC 6238 |
+| Control | Implementación | Referencia |
+|---|---|---|
+| MFA obligatoria | Security Defaults activado en el tenant | MCSB IA-2 / CIS 1.1 |
+| Bloqueo de autenticación heredada | Forzado por Security Defaults | MCSB IA-3 |
+| Registro de método OATH-TOTP | Alta y comprobación en *My Sign-Ins* | RFC 6238 |
 
-**Artefactos relacionados:** [Informe técnico de configuración](docs/mfa-configuracion.md).
-
-## Validación o pruebas de seguridad realizadas
+## Validación
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Inicio de sesión solo con contraseña | Login en portal Entra ID | Solicitud obligatoria de configuración/desafío MFA | PASS: El portal detiene el acceso y exige el segundo factor |
-| Registro de método TOTP con Proton Pass | Escaneo de código QR e introducción de token | Vinculación exitosa del generador de códigos | PASS: Token verificado y método guardado en *Security Info* |
-| Validación de desafío MFA en login | Inicio de sesión introduciendo código de 6 dígitos | Acceso concedido al portal | PASS: Autenticación completada satisfactoriamente |
+| Inicio de sesión solo con contraseña | Login en el portal de Entra ID | Solicitud obligatoria de MFA | PASS: el portal exige el segundo factor |
+| Registro de TOTP con Proton Pass | Escaneo de QR e introducción de token | Vinculación exitosa | PASS: método verificado en *Security Info* |
+| Desafío MFA en login | Introducción de código de 6 dígitos | Acceso concedido | PASS: autenticación completada |
 
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
+## Lecciones aprendidas
 
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| **IA-2: Despliegue de MFA** | Aplicación de MFA en todas las identidades | Security Defaults es la forma más rápida y efectiva de elevar la postura en tenants sin licencias premium P1/P2. |
-| **IA-3: Bloqueo de legacy authentication** | Mitigación de protocolos POP3/IMAP/SMTP básicos | Elimina de raíz ataques de *password spraying* dirigidos a protocolos sin soporte MFA. |
+- Security Defaults es la forma más rápida de elevar la postura en tenants sin licencias P1/P2.
+- El bloqueo de autenticación heredada elimina ataques de *password spraying* contra protocolos sin MFA.
+- La opción clásica *Enforce* pierde relevancia frente a Security Defaults o Acceso Condicional moderno.
+- Los autenticadores TOTP de terceros son interoperables mediante RFC 6238.
 
-- La opción clásica *Enforce* de MFA ya no es relevante con Security Defaults o Acceso Condicional moderno; *Enabled* dispara el registro en el siguiente login.
-- Aplicaciones TOTP de terceros (Proton Pass, Bitwarden, etc.) son perfectamente interoperables con Entra ID vía estándar RFC 6238.
+## Artefactos relacionados
+
+- [Informe técnico de configuración](docs/mfa-configuracion.md)
+- [Bitácora del módulo](../../bitacora/2026-09-04-mfa-entra-id.md)
