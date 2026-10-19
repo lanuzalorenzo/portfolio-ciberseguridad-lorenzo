@@ -23,6 +23,7 @@ Cada módulo debe mantener una estructura clara y legible, con un objetivo técn
 ### Patrones esperados
 
 - README del módulo: presentación del alcance, objetivos y enlaces a prácticas.
+- README de práctica: usa `plantillas/README-practica-template.md` para escenario, arquitectura, controles, validación y lecciones.
 - bitácora/: registro del recorrido técnico del módulo.
 - practicas/: contenido específico por caso de uso o escenario.
 - docs/: artefactos técnicos, informes internos, plantillas y notas de laboratorio.
