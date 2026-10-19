@@ -11,6 +11,8 @@ Ejecutar de principio a fin el laboratorio ELK local: levantar la pila, ingerir 
 - 15 eventos sintéticos fechados el 2026-10-20 entre las 09:00 y las 09:06 UTC.
 - Alcance limitado a ingesta, normalización, consulta y visualización. Sin alertas automatizadas, sin Azure y sin datos reales.
 
+> **Nota de fechas:** la sesión estaba prevista para el `2026-10-20`; el dataset sintético se preparó con esa fecha y la ejecución se adelantó al `2026-10-19`.
+
 ## Trabajo realizado
 
 - Instalación de Docker nativo de Ubuntu (`docker.io` y `docker-compose-v2`) y preparación del usuario para ejecutar Docker.

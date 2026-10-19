@@ -16,6 +16,8 @@
 - **Datos:** sintéticos, con usuarios e IPs de los rangos reservados para documentación.
 - **Autorización:** laboratorio local sin recursos cloud, sin coste y sin datos reales.
 
+> **Nota de fechas:** la sesión estaba prevista para el `2026-10-20` y el dataset sintético se preparó con esa fecha. Finalmente se ejecutó el `2026-10-19`, un día antes; por eso los eventos y las capturas muestran el `2026-10-20` mientras la carpeta de evidencia usa la fecha real de ejecución.
+
 ## 2. Comandos ejecutados
 
 El detalle está en [comandos.md](comandos.md). Resumen:

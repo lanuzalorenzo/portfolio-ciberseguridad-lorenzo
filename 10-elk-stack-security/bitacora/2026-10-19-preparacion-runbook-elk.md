@@ -41,4 +41,4 @@ Convertir el módulo 10 de diseño documental en un laboratorio local ejecutable
 
 ## Siguiente paso
 
-Ejecutar la sesión del 2026-10-20, capturar la evidencia y actualizar el estado a **Parcial** o **Validado** según el resultado.
+La sesión estaba prevista para el 2026-10-20; finalmente se ejecutó el 2026-10-19, un día antes. La ejecución, los resultados y la evidencia están en la [bitácora de ejecución](2026-10-19-ejecucion-elk.md) y en `docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/`. El estado del módulo pasó a **Validado en local**.
