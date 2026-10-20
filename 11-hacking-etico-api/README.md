@@ -11,6 +11,8 @@ Este módulo convierte la API de referencia en un objetivo controlado para valid
 - No se incluyen tokens, secretos ni datos de clientes.
 - Las pruebas que requieren Azure se describen como pendientes hasta disponer de un entorno autorizado.
 
+El alcance, las condiciones de ejecución, los criterios de parada y la retirada de artefactos están en [Alcance y autorización del laboratorio](docs/alcance-y-autorizacion.md).
+
 ## Objetivo
 
 - Validar BOLA/IDOR y BFLA en los endpoints de pedidos.
@@ -24,13 +26,17 @@ Este módulo convierte la API de referencia en un objetivo controlado para valid
 
 ## Metodología
 
-1. **Reconocimiento:** inventario de endpoints, métodos y modelos.
-2. **Autenticación:** obtención de tokens de laboratorio y verificación de claims.
-3. **Autorización:** pruebas con dos identidades (A y B) y recursos cruzados.
-4. **Entrada:** mass assignment, tipos, límites y validación.
-5. **Consumo:** rate limit y tamaño de petición.
-6. **Remediación:** cambio de código, prueba de regresión y evidencia.
-7. **Informe:** hallazgo, severidad, impacto, evidencia y estado.
+Las siete fases ordenan el trabajo y cada una deja una evidencia verificable. El modelo es una herramienta de organización, no una metodología certificada.
+
+| Fase | Qué se hace | Evidencia |
+|---|---|---|
+| 1. Reconocimiento | Inventario de endpoints, métodos y modelos | Matriz OWASP y revisión de controladores en [04](practicas/04-informe-final/README.md) |
+| 2. Autenticación | Verificación de firma, emisor, audiencia y claims | [02 — JWT y claims](practicas/02-jwt-claims/README.md) |
+| 3. Autorización | Pruebas con dos identidades (A y B) y recursos cruzados | [01 — BOLA/BFLA](practicas/01-bola-bfla/README.md): `UserCannotReadAnotherUsersOrder` |
+| 4. Entrada | Mass assignment, tipos, límites y validación | [03](practicas/03-rate-limiting-mass-assignment/README.md): `CreateProduct_IgnoresClientSuppliedId` |
+| 5. Consumo | Rate limit y tamaño de petición | [03](practicas/03-rate-limiting-mass-assignment/README.md): configuración revisada; carga pendiente |
+| 6. Remediación | Cambio de código y prueba de regresión | Tests de `EcommerceApi.Tests` citados en cada hallazgo |
+| 7. Informe | Hallazgo, severidad, impacto, evidencia y estado | [04 — Informe final](practicas/04-informe-final/README.md) |
 
 ## Prácticas
 
@@ -48,4 +54,4 @@ Este módulo convierte la API de referencia en un objetivo controlado para valid
 
 ## Alcance
 
-El módulo demuestra pruebas de seguridad de API sobre un laboratorio local y deja explícito qué requiere un despliegue real (APIM, WAF, tokens de Entra, dos usuarios delegados). No se presenta como un pentest de producción.
+El módulo demuestra pruebas de seguridad de API sobre un laboratorio local y deja explícito qué requiere un despliegue real (APIM, WAF, tokens de Entra, dos usuarios delegados). No es un pentest de producción y no se ha probado ningún sistema de terceros. Los detalles están en [Alcance y autorización del laboratorio](docs/alcance-y-autorizacion.md).
