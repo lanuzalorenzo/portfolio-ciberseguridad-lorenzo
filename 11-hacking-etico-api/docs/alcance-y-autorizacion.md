@@ -21,13 +21,13 @@ En el laboratorio no hay cliente ni contrato: el titular de los sistemas es el p
 ## Fuera de alcance
 
 - Cualquier sistema que no sea una instancia local arrancada desde el repositorio propio.
-- La red del centro de estudios, la red doméstica, la LAN del autor y el resto de equipos del entorno.
+- Redes locales, corporativas o domésticas ajenas al laboratorio y cualquier equipo distinto de la instancia de prueba.
 - Tenants, suscripciones, dominios, APIs y datos de terceros.
 - Tokens, credenciales o datos de clientes reales.
 - Denegación de servicio, persistencia, movimiento lateral y pruebas sobre personas.
 - Un despliegue de Azure/APIM sin autorización explícita, presupuesto, grupo de recursos temporal y plan de limpieza.
 
-El entorno se limita a la API levantada por `WebApplicationFactory` o por el contenedor local. Si una prueba necesita Azure, se describe como pendiente hasta que exista un entorno autorizado.
+El entorno se limita a la API levantada en local para las pruebas de integración (`WebApplicationFactory`). El módulo no prueba el contenedor, un despliegue en Azure ni una instancia compartida. Si una prueba necesitara Azure, se describe como pendiente hasta que exista un entorno autorizado.
 
 ## Condiciones de ejecución
 
@@ -39,7 +39,9 @@ El entorno se limita a la API levantada por `WebApplicationFactory` o por el con
 | Técnicas | Peticiones HTTP, análisis de configuración y lectura de código |
 | Ritmo | El de la suite de pruebas; sin escaneo masivo ni fuzzing sostenido |
 | Ventana | La de la sesión de trabajo, sin necesidad de franja horaria |
-| Registro | Cada prueba deja hipótesis, resultado observado y evidencia enlazada |
+| Registro | Cada prueba documentada deja hipótesis, resultado observado y estado |
+
+Cualquier ampliación, como ejecutar contra Azure o añadir una técnica nueva, exige actualizar este documento y su fecha de revisión antes de actuar.
 
 ### Criterios de parada
 
@@ -55,7 +57,7 @@ Ante cualquiera de estos casos: detener la ejecución, anotar el estado, restaur
 - La evidencia se limita a salidas de test, configuración redactada y extractos de código. No se guardan tokens, cabeceras de autorización ni identificadores reales.
 - Los pedidos y productos creados por las pruebas viven en el almacén en memoria y desaparecen al reiniciar la API; no se generan cuentas, ficheros ni tareas persistentes.
 - Si una prueba necesitara crear un artefacto duradero, se registraría aquí y se retiraría al terminar.
-- Los hallazgos se documentan aunque no se puedan remediar en el momento; el estado (`validado`, `parcial`, `pendiente`) refleja lo ejecutado, no lo deseado.
+- Los hallazgos se documentan aunque no se puedan remediar en el momento; el estado (`Validado`, `Parcial`, `Pendiente`) refleja lo ejecutado, no lo deseado.
 
 ## Límites de esta declaración
 

@@ -30,12 +30,12 @@ Las siete fases ordenan el trabajo y cada una deja una evidencia verificable. El
 
 | Fase | Qué se hace | Evidencia |
 |---|---|---|
-| 1. Reconocimiento | Inventario de endpoints, métodos y modelos | Matriz OWASP y revisión de controladores en [04](practicas/04-informe-final/README.md) |
-| 2. Autenticación | Verificación de firma, emisor, audiencia y claims | [02 — JWT y claims](practicas/02-jwt-claims/README.md) |
+| 1. Reconocimiento | Inventario de endpoints, métodos y modelos | Matriz OWASP y cobertura de endpoints en [04](practicas/04-informe-final/README.md) |
+| 2. Autenticación | Revisión de firma, emisor, audiencia y vida útil | [02 — JWT y claims](practicas/02-jwt-claims/README.md): configuración revisada; token real pendiente |
 | 3. Autorización | Pruebas con dos identidades (A y B) y recursos cruzados | [01 — BOLA/BFLA](practicas/01-bola-bfla/README.md): `UserCannotReadAnotherUsersOrder` |
 | 4. Entrada | Mass assignment, tipos, límites y validación | [03](practicas/03-rate-limiting-mass-assignment/README.md): `CreateProduct_IgnoresClientSuppliedId` |
 | 5. Consumo | Rate limit y tamaño de petición | [03](practicas/03-rate-limiting-mass-assignment/README.md): configuración revisada; carga pendiente |
-| 6. Remediación | Cambio de código y prueba de regresión | Tests de `EcommerceApi.Tests` citados en cada hallazgo |
+| 6. Remediación | Cambio de código y prueba de regresión | Tests de `EcommerceApi.Tests` citados en los hallazgos mitigados |
 | 7. Informe | Hallazgo, severidad, impacto, evidencia y estado | [04 — Informe final](practicas/04-informe-final/README.md) |
 
 ## Prácticas
