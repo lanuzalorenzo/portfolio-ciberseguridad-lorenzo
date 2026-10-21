@@ -1,6 +1,6 @@
 # 02 | Seguridad de identidades en Microsoft Entra ID
 
-> **Estado:** validado en laboratorio. Prácticas 01–07 documentadas; MFA, Passwordless, SSPR y PIM con evidencias de ejecución.
+> **Estado:** validado en laboratorio, con **evidencia documental** (informe técnico + bitácora fechada + tabla de resultados; sin captura original). Prácticas 01–07 documentadas.
 
 Este módulo recorre los controles que protegen una identidad durante su uso: autenticación, recuperación de cuenta, elevación temporal, asignación de permisos y acceso a secretos. Las prácticas están documentadas como escenarios de laboratorio, con sus procedimientos y validaciones.
 

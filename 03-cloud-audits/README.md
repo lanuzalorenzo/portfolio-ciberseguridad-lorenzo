@@ -1,6 +1,6 @@
 # 03 | Auditoría de entornos cloud
 
-> **Estado:** validado en laboratorio. Revisiones de suscripción, recursos críticos e identidades documentadas.
+> **Estado:** validado en laboratorio, con **evidencia documental** (informe técnico + bitácora fechada + hallazgos; sin captura original). Revisiones de suscripción, recursos críticos e identidades documentadas.
 
 Este módulo organiza revisiones de seguridad desde tres perspectivas: la suscripción, los recursos críticos y las identidades con acceso. Cada práctica registra el alcance revisado y los hallazgos en su documentación técnica.
 

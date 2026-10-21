@@ -6,7 +6,7 @@ El flujo PKCE elimina la necesidad de un client secret y permite que aplicacione
 
 ---
 
-# 🏛️ Arquitectura del flujo
+## 🏛️ Arquitectura del flujo
 
 Usuario / Navegador  
 → Solicita acceso a la aplicación
@@ -28,13 +28,13 @@ Respuesta
 
 ---
 
-# ❓ ¿Por qué PKCE?
+## ❓ ¿Por qué PKCE?
 PKCE asegura el flujo Authorization Code en clientes que **no pueden almacenar secretos**.  
 El servidor comprueba que el code_verifier coincide con el code_challenge original, evitando ataques de interceptación del authorization code.
 
 ---
 
-# 🧩 1. Registro de aplicaciones en Azure AD
+## 🧩 1. Registro de aplicaciones en Azure AD
 
 Se registran dos aplicaciones:
 
@@ -52,7 +52,7 @@ api://<api-client-id>/access_as_user
 
 ---
 
-# 🧩 2. Generación de PKCE
+## 🧩 2. Generación de PKCE
 
 El cliente genera:
 
@@ -67,7 +67,7 @@ Script incluido en el laboratorio:
 
 ---
 
-# 🧩 3. Construcción de la URL de autorización
+## 🧩 3. Construcción de la URL de autorización
 
 ```
 [https://login.microsoftonline.com/](https://login.microsoftonline.com/)<tenant-id>/oauth2/v2.0/authorize
@@ -83,7 +83,7 @@ Script incluido en el laboratorio:
 
 ---
 
-# 🧩 4. Obtención del authorization_code
+## 🧩 4. Obtención del authorization_code
 
 Tras autenticarse, Azure AD redirige a:
 
@@ -93,7 +93,7 @@ http://localhost/callback?code=<authorization_code>&state=123456
 
 ---
 
-# 🧩 5. Intercambio del authorization_code por token
+## 🧩 5. Intercambio del authorization_code por token
 
 ```bash
 curl -X POST \
@@ -116,7 +116,7 @@ Respuesta:
 
 ---
 
-# 🧩 6. Validación del JWT en la API local
+## 🧩 6. Validación del JWT en la API local
 
 La API **no confía en el cliente**.  
 Valida el token usando JWKS:
@@ -140,7 +140,7 @@ Código relevante:
 
 ---
 
-# ⚠️ Errores comunes
+## ⚠️ Errores comunes
 
 ### ❌ Error 501481  
 Falta autorización o flujo PKCE no habilitado.
@@ -178,7 +178,7 @@ Soluciones:
 
 ---
 
-# 🧪 Pasos del laboratorio
+## 🧪 Pasos del laboratorio
 
 1. Instalar dependencias:
    ```bash
@@ -211,7 +211,7 @@ Soluciones:
 
 ---
 
-# 🧩 Buenas prácticas
+## 🧩 Buenas prácticas
 
 - Nunca enviar client secret en clientes públicos  
 - Usar siempre `S256`  
@@ -221,6 +221,6 @@ Soluciones:
 
 ---
 
-# ✔️ Conclusión
+## ✔️ Conclusión
 PKCE añade una capa crítica de seguridad al flujo Authorization Code en aplicaciones públicas.  
 Combinado con validación JWT mediante JWKS en la API, se obtiene un modelo robusto para proteger recursos y garantizar acceso seguro.

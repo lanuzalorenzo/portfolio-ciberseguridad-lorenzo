@@ -1,6 +1,6 @@
 # Plan de ejecución
 
-> **Estado:** Fase 0 en curso con la primera evidencia local (ELK). Ninguna fase Azure se ha ejecutado.
+> **Estado:** Fase 0 en curso. Dos evidencias de ejecución (ELK y BOLA/BFLA) y cuatro documentales o verificables (02, 03, 04 y 07); falta el tabletop para cerrar el gate. Ninguna fase Azure se ha ejecutado.
 
 ## Principios
 

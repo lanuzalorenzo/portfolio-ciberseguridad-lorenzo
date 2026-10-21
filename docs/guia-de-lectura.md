@@ -105,9 +105,9 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 | # | Módulo | Pregunta que responde | Estado |
 |---|---|---|---|
 | 01 | [OAuth 2.0, PKCE y JWT](../01-seguridad-azure/README.md) | ¿Cómo se autentica una API y se valida un token? | Parcial: JWT validado en CI; PKCE manual sin evidencia estandarizada |
-| 02 | [Identity Security](../02-identity-security/README.md) | ¿Cómo se protege la identidad y el acceso privilegiado? | Validado en laboratorio |
-| 03 | [Cloud Audits](../03-cloud-audits/README.md) | ¿Cómo se audita la postura cloud? | Validado en laboratorio |
-| 04 | [Defender for Cloud](../04-defender-for-cloud/README.md) | ¿Cómo se detectan y priorizan riesgos cloud? | Validado en laboratorio |
+| 02 | [Identity Security](../02-identity-security/README.md) | ¿Cómo se protege la identidad y el acceso privilegiado? | Validado en laboratorio (documental) |
+| 03 | [Cloud Audits](../03-cloud-audits/README.md) | ¿Cómo se audita la postura cloud? | Validado en laboratorio (documental) |
+| 04 | [Defender for Cloud](../04-defender-for-cloud/README.md) | ¿Cómo se detectan y priorizan riesgos cloud? | Validado en laboratorio (documental) |
 | 05 | [Defender Suite](../05-defender-suite/README.md) | ¿Cómo se cubre identidad, endpoint y XDR? | Parcial |
 | 06 | [Identity Protection](../06-identity-protection/README.md) | ¿Cómo se aplican Conditional Access y PIM/JIT? | Diseño |
 | 07 | [DevSecOps](../07-devsecops/README.md) | ¿Cómo se integra seguridad en el pipeline? | Validado en CI |
@@ -120,7 +120,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 
 ## 7. Cómo verificar sin confiar en la narrativa
 
-El portfolio distingue explícitamente entre **diseño**, **runbook preparado**, **parcial** y **validado**. Para comprobarlo:
+El portfolio distingue explícitamente entre **diseño**, **runbook preparado**, **parcial**, **validado** y **pendiente**, y clasifica la evidencia de lo validado como **de ejecución**, **documental** o **verificable**. Para comprobarlo:
 
 - [Índice de evidencias](laboratorio-final/evidencias/README.md): qué se ejecutó, cuándo y con qué resultado.
 - **Runbooks:** cada comando no ejecutado está marcado como tal; no se inventan salidas.

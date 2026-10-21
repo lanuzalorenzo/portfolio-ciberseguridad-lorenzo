@@ -1,6 +1,6 @@
 # 04 | Postura de seguridad con Defender for Cloud
 
-> **Estado:** validado en laboratorio. Planes, recomendaciones, workloads y hardening documentados.
+> **Estado:** validado en laboratorio, con **evidencia documental** (informe técnico + bitácora fechada + tabla de resultados; sin captura original). Planes, recomendaciones, workloads y hardening documentados.
 
 Este módulo sigue el trabajo de configuración y revisión de Microsoft Defender for Cloud: planes de protección, recomendaciones, workloads y políticas de hardening.
 

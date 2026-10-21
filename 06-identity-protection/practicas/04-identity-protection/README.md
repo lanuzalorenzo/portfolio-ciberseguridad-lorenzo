@@ -1,5 +1,7 @@
 # 04 | Identity Protection y revisiones de acceso
 
+> **Estado:** diseño. Práctica documentada; no ejecutada ni con evidencia registrada.
+
 ## Descripción del escenario y objetivo de seguridad
 
 **Escenario:** Entorno con riesgo de identidad asociado a accesos sospechosos, credenciales comprometidas y usuarios con permisos antiguos o no revisados.  

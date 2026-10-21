@@ -1,5 +1,7 @@
 # 01 | Conditional Access y MFA adaptativo
 
+> **Estado:** diseño. Práctica documentada; no ejecutada ni con evidencia registrada.
+
 ## Descripción del escenario y objetivo de seguridad
 
 **Escenario:** Un entorno con usuarios que acceden desde diferentes ubicaciones, dispositivos y contextos, sin políticas adaptativas que restrinjan accesos sensibles o bloqueen ubicaciones no confiables.  

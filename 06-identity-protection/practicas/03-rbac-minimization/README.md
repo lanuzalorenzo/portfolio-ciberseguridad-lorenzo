@@ -1,5 +1,7 @@
 # 03 | RBAC y minimización de privilegios
 
+> **Estado:** diseño. Práctica documentada; no ejecutada ni con evidencia registrada.
+
 ## Descripción del escenario y objetivo de seguridad
 
 **Escenario:** Entorno con varios grupos y roles de acceso asignados sin un análisis claro del principio de mínimo privilegio, generando permisos innecesarios y superficie de ataque excesiva.  

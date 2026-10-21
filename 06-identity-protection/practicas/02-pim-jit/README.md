@@ -1,5 +1,7 @@
 # 02 | PIM y acceso Just-In-Time
 
+> **Estado:** diseño. Práctica documentada; no ejecutada ni con evidencia registrada.
+
 ## Descripción del escenario y objetivo de seguridad
 
 **Escenario:** Usuarios con roles administrativos o de alto impacto que conservan permisos permanentes durante largos periodos, aumentando la superficie de riesgo ante abuso de credenciales, sesiones comprometidas o errores de configuración.  

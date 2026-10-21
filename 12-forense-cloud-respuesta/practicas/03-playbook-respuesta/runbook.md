@@ -114,13 +114,13 @@ La decisión de aceptar una caída temporal la registra el responsable del servi
 ### 6.4 Comandos preparados (no ejecutados)
 
 ```bash
-# Captura de la configuración del NSG antes de tocarla
+## Captura de la configuración del NSG antes de tocarla
 az network nsg show -g "$RESOURCE_GROUP" -n "$NSG_NAME" -o json > "nsg-antes-$INC_ID.json"
 
-# Reglas efectivas de una NIC
+## Reglas efectivas de una NIC
 az network nic list-effective-nsg -g "$RESOURCE_GROUP" -n "nic-app" -o json
 
-# Actividad de la ventana
+## Actividad de la ventana
 az monitor activity-log list \
   --start-time "$WINDOW_START" --end-time "$WINDOW_END" \
   --query "[?contains(operationName.value, 'securityRules')]" -o json

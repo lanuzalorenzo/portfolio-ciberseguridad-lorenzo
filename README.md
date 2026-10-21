@@ -84,13 +84,13 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 
 ### 3. Identidad, acceso y gobierno Zero Trust
 
-- [02 | Identity Security](02-identity-security/README.md) — *validado en laboratorio*: MFA, Passwordless, SSPR, PIM, RBAC, Key Vault y Managed Identities.
+- [02 | Identity Security](02-identity-security/README.md) — *validado en laboratorio (evidencia documental)*: MFA, Passwordless, SSPR, PIM, RBAC, Key Vault y Managed Identities.
 - [06 | Identity Protection](06-identity-protection/README.md) — *diseño*: Conditional Access, PIM/JIT, RBAC e Identity Protection documentados; prácticas no ejecutadas.
 
 ### 4. Cloud, postura y redes
 
-- [03 | Cloud Audits](03-cloud-audits/README.md) — *validado en laboratorio*.
-- [04 | Defender for Cloud](04-defender-for-cloud/README.md) — *validado en laboratorio*.
+- [03 | Cloud Audits](03-cloud-audits/README.md) — *validado en laboratorio (evidencia documental)*.
+- [04 | Defender for Cloud](04-defender-for-cloud/README.md) — *validado en laboratorio (evidencia documental)*.
 - [05 | Microsoft Defender Suite](05-defender-suite/README.md) — *parcial*: identidad, endpoint, XDR y CSPM; APIs, contenedores y storage en diseño.
 - [08 | Seguridad de red en Azure](08-seguridad-red-azure/README.md) — *diseño + IaC*: VNet, NSG y Private Endpoints; no desplegado.
 
@@ -115,7 +115,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 
 | Estado | Significado |
 |---|---|
-| **Validado** | Ejecutado en laboratorio y con evidencia documentada. |
+| **Validado** | Ejecutado y con evidencia enlazada: de ejecución, documental o verificable. |
 | **Parcial** | Implementado en código o configuración, pero sin ejecución completa o con brechas. |
 | **Runbook preparado** | Pasos y comandos escritos, todavía no ejecutados. Se muestra como «Diseño · runbook listo». |
 | **Diseño** | Arquitectura, procedimiento o IaC documentados; no desplegados. |

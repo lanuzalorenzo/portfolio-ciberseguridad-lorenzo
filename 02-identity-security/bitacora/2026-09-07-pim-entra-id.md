@@ -1,5 +1,4 @@
-# Bitácora — 2026-09-07 — Privileged Identity Management (PIM)
-# Bitácora — 2026-09-07: Análisis y Simulación de PIM en Entra ID
+# Bitácora — 2026-09-07: análisis y simulación de PIM en Entra ID
 
 ## Trabajo realizado
 - Acceso al portal de Microsoft Entra ID.

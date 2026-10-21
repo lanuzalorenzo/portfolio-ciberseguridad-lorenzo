@@ -56,6 +56,8 @@
 
 ## Enlaces
 
-- Runbook: [runbook.md](runbook.md)
-- Evidencias: [evidencias/](evidencias/)
-- Bitácora: [bitacora/](bitacora/) (si aplica)
+- Runbook: `runbook.md`
+- Evidencias: `evidencias/`
+- Bitácora: `bitacora/` (si aplica)
+
+> Los enlaces anteriores son rutas de ejemplo: conviértelos en enlaces reales al crear la práctica.

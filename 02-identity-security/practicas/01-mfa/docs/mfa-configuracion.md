@@ -1,109 +1,78 @@
-# Informe técnico — Configuración de MFA en Microsoft Entra ID
-# Informe técnico — Configuración y Validación de MFA en Microsoft Entra ID
+# Informe técnico — Configuración y validación de MFA en Microsoft Entra ID
 
-## Contexto
-Tenant de laboratorio en Microsoft Entra ID.  
-Se requiere habilitar MFA, registrar un método TOTP externo y validar el flujo completo de autenticación.
-**Módulo:** 02 — Identity Security  
+**Módulo:** 02 — Identity Security
 **Práctica:** 01 — Multi-Factor Authentication (MFA)
+**Entorno:** tenant de laboratorio, sin datos reales.
 
----
-## Contexto y Alcance
-En entornos corporativos y de laboratorio, la autenticación basada únicamente en credenciales estáticas (usuario y contraseña) es vulnerable a ataques de *password spraying*, filtraciones y fuerza bruta.
+## Contexto y alcance
+
+En entornos corporativos y de laboratorio, la autenticación basada únicamente en credenciales estáticas está expuesta a *password spraying*, filtraciones y fuerza bruta. Esta práctica aplica una línea base de seguridad, habilita MFA para un usuario de laboratorio y valida un método TOTP externo compatible con OATH.
 
 ## Objetivo
-Aplicar una configuración mínima de seguridad basada en Security Defaults, habilitar MFA para un usuario de laboratorio y verificar el funcionamiento de un método TOTP externo (Proton Pass).
-Esta práctica documenta la aplicación de una directiva base de seguridad mediante **Security Defaults**, la configuración de MFA por usuario y la verificación del flujo completo utilizando una aplicación de autenticación TOTP externa compatible con el estándar OATH (Proton Pass).
 
----
-## Procedimiento Técnico y Decisiones de Configuración
+Aplicar Security Defaults, habilitar MFA por usuario y verificar el flujo completo con una aplicación de autenticación TOTP externa (Proton Pass).
 
-## Trabajo realizado
+## Configuración y decisiones
 
 ### 1. Activación de Security Defaults
-- Acceso al portal: https://entra.microsoft.com  
-- Ruta: Identidad → Overview → Properties  
-- Acción: activar **Security Defaults**.  
-- Efectos:
-  - MFA obligatorio para administradores.  
-  - Bloqueo de autenticación heredada.  
-  - Baseline mínima sin granularidad avanzada.
-Se habilitó la línea base de seguridad en el tenant:
-- **Ruta de configuración:** *Microsoft Entra admin center* → *Overview* → *Properties* → *Manage security defaults*.
+
+- **Ruta:** *Microsoft Entra admin center* → *Overview* → *Properties* → *Manage security defaults*.
 - **Configuración aplicada:** `Security defaults = Enabled`.
-- **Impacto directo:** 
-  - Obligatoriedad de MFA para roles con privilegios administrativos.
-  - Bloqueo global de protocolos de autenticación heredada (*Legacy Authentication* como POP3, IMAP, SMTP y PowerShell básico).
-  - Exigencia de registro de MFA a todos los usuarios en situaciones de riesgo o según directiva.
+- **Impacto:**
+  - MFA obligatoria para roles con privilegios administrativos.
+  - Bloqueo global de protocolos de autenticación heredada (POP3, IMAP, SMTP y PowerShell básico).
+  - Exigencia de registro de MFA a los usuarios en situaciones de riesgo o según directiva.
 
 ### 2. Localización del panel clásico de MFA
-- Ruta real en la UI moderna:
-  - Identidad → Usuarios  
-  - Métodos de autenticación  
-  - Tarjeta: **Autenticación multifactor por usuario**  
-- Observación: la opción clásica **Enforce** ya no aparece; solo **Enable**.
-### 2. Navegación en Interfaz y Localización del Panel Clásico
-Durante la práctica se identificó que la interfaz moderna de Entra integra el panel tradicional de MFA de forma embebida:
+
+Durante la práctica se comprobó que la interfaz moderna integra el panel tradicional de MFA de forma embebida:
+
 - **Ruta identificada:** *Identidad* → *Usuarios* → pestaña *Métodos de autenticación* → tarjeta *Autenticación multifactor por usuario*.
-- **Observación técnica:** La opción clásica de estado *Enforce* ha quedado obsoleta en la consola moderna; el estado operativo es *Enabled*, delegando la obligatoriedad en el siguiente inicio de sesión o mediante directivas de acceso moderno.
+- **Observación:** la opción clásica *Enforce* ya no aparece; solo *Enable*. La obligatoriedad se delega en el siguiente inicio de sesión o en directivas de acceso modernas.
 
 ### 3. Habilitación de MFA por usuario
-- Selección del usuario en el panel clásico.  
-- Acción: **Enable MFA**.  
+
+- Selección del usuario en el panel clásico.
+- Acción: **Enable MFA**.
 - Resultado: el usuario debe registrar MFA en el siguiente inicio de sesión.
-### 3. Registro de Método OATH-TOTP Externo (Proton Pass)
-En lugar de depender exclusivamente de la aplicación propietaria Microsoft Authenticator, se validó la interoperabilidad del estándar RFC 6238:
-1. El usuario inicia sesión y el portal solicita la configuración del segundo factor.
-2. Se selecciona la opción *"Deseo usar otra aplicación de autenticación"*.
-3. Se escanea el código QR generado con Proton Pass.
-4. Se introduce el código temporal de 6 dígitos para confirmar la sincronización temporal.
+
+### 4. Registro de un método TOTP externo (Proton Pass)
+
+Para validar la interoperabilidad del estándar RFC 6238 sin depender solo de Microsoft Authenticator:
+
+1. El usuario inicia sesión y el portal solicita configurar el segundo factor.
+2. Se selecciona la opción *«Deseo usar otra aplicación de autenticación»*.
+3. Se escanea el código QR con Proton Pass.
+4. Se introduce el código temporal de 6 dígitos para confirmar la sincronización.
 5. El método queda registrado y validado en el perfil de seguridad del usuario.
 
-### 4. Registro del método TOTP externo (Proton Pass)
-- Flujo seguido:
-  - Inicio de sesión del usuario.  
-  - Selección de “Aplicación de autenticación”.  
-  - Escaneo del QR con Proton Pass.  
-  - Introducción del código TOTP.  
-- Resultado: método registrado y verificado correctamente.
-## Validaciones y Pruebas Realizadas
+## Validaciones y pruebas
 
-### 5. Validación del flujo MFA
-- Inicio de sesión con MFA habilitado.  
-- Introducción del código TOTP desde Proton Pass.  
-- Resultado: autenticación completada y MFA aplicado.
-| Control / Prueba | Método | Comportamiento Esperado | Resultado Observado |
-| :--- | :--- | :--- | :--- |
-| Bloqueo de acceso directo solo con contraseña | Autenticación en portal web de Azure/Entra | El sistema exige registro/desafío de segundo factor | PASS: Acceso detenido hasta verificar MFA |
-| Validación de código TOTP | Introducción del código de 6 dígitos desde Proton Pass | Validación criptográfica del hash temporal | PASS: Autenticación exitosa y acceso concedido |
-| Bloqueo de cliente con autenticación básica | Intento de autenticación vía cliente sin soporte MFA | Rechazo de la conexión por Security Defaults | PASS: Protocolos heredados deshabilitados |
+| Control / prueba | Método | Comportamiento esperado | Resultado observado |
+|---|---|---|---|
+| Acceso solo con contraseña | Autenticación en el portal de Entra ID | El sistema exige el segundo factor | PASS: acceso detenido hasta verificar MFA |
+| Validación de código TOTP | Código de 6 dígitos desde Proton Pass | Validación criptográfica del hash temporal | PASS: autenticación exitosa |
+| Cliente con autenticación básica | Intento sin soporte MFA | Rechazo por Security Defaults | PASS: protocolos heredados deshabilitados |
 
----
-
-## Validaciones realizadas
-- Security Defaults activo.  
-- Usuario marcado como **Enabled** para MFA.  
-- Método TOTP registrado y funcional.  
-- Flujo de autenticación validado de extremo a extremo.
-
----
+Resumen: Security Defaults activo, usuario en estado **Enabled**, método TOTP registrado y flujo validado de extremo a extremo.
 
 ## Problemas encontrados
-- El panel clásico de MFA está oculto dentro de la UI moderna.  
-- Documentación oficial aún referencia opciones que ya no existen (como **Enforce**).
 
----
+- El panel clásico de MFA está oculto dentro de la UI moderna.
+- La documentación oficial sigue referenciando opciones que ya no existen, como *Enforce*.
 
 ## Soluciones aplicadas
-- Documentación de la ruta real hacia el panel clásico.  
-- Ajuste del procedimiento para la interfaz moderna.  
-- Validación del comportamiento de Security Defaults como reemplazo de Enforce.
 
----
+- Documentar la ruta real al panel clásico.
+- Ajustar el procedimiento a la interfaz moderna.
+- Validar Security Defaults como reemplazo de *Enforce*.
 
 ## Implicaciones de seguridad
-- Security Defaults es adecuado para laboratorios y entornos pequeños
-## Lecciones de Troubleshooting y Seguridad
-- **Diferencia de estados clásicos vs modernos:** Comprender que *Enforce* ya no se utiliza en implementaciones modernas evita discrepancias al seguir guías o documentación histórica.
-- **Interoperabilidad OATH:** Permitir autenticadores compatibles con RFC 6238 ofrece flexibilidad para usuarios que gestionan sus credenciales en gestores de contraseñas de terceros.
-- **Limitación de Security Defaults:** Aunque es gratuito y protege eficazmente entornos pequeños o de laboratorio, no permite exclusiones granulares ni condiciones contextuales (ubicación, riesgo de IP); en entornos empresariales maduros debe sustituirse por directivas de **Conditional Access** (requiere Entra ID P1/P2).
+
+Security Defaults es adecuado para laboratorios y entornos pequeños, pero no permite exclusiones granulares ni condiciones contextuales.
+
+## Lecciones
+
+- **Estados clásicos vs modernos:** saber que *Enforce* ya no se usa evita discrepancias al seguir documentación histórica.
+- **Interoperabilidad OATH:** admitir autenticadores RFC 6238 da flexibilidad a quien gestiona sus credenciales en un gestor de contraseñas.
+- **Límite de Security Defaults:** en entornos maduros debe sustituirse por **Conditional Access** (requiere Entra ID P1/P2).
