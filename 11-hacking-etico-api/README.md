@@ -40,7 +40,7 @@ Las siete fases ordenan el trabajo y cada una deja una evidencia verificable. El
 
 ## Prácticas
 
-- [BOLA/BFLA: aislamiento de pedidos](practicas/01-bola-bfla/README.md) — *validado localmente*
+- [BOLA/BFLA: aislamiento de pedidos](practicas/01-bola-bfla/README.md) — *validado localmente* · [runbook](practicas/01-bola-bfla/runbook.md) · [evidencia](../docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md)
 - [Endurecimiento de JWT y claims](practicas/02-jwt-claims/README.md) — *configuración revisada; token real pendiente*
 - [Rate limiting y mass assignment](practicas/03-rate-limiting-mass-assignment/README.md) — *validado localmente; rate limit manual pendiente*
 - [Informe final y matriz OWASP API Top 10](practicas/04-informe-final/README.md) — *documentado*

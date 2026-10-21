@@ -1,6 +1,10 @@
 # 01 | BOLA/BFLA: aislamiento de pedidos
 
 > **Estado:** validado localmente con pruebas de integración. No se ha ejecutado contra un despliegue real con tokens de Entra ID.
+>
+> **Runbook:** [runbook.md](runbook.md).
+>
+> **Evidencia:** [2026-10-21-11-api-bola](../../../docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
 
 ## Descripción del escenario y objetivo de seguridad
 
@@ -30,7 +34,7 @@
 | Lectura de pedido ajeno | A crea pedido; B solicita el mismo ID | `404` | PASS: `UserCannotReadAnotherUsersOrder` |
 | Listado de pedidos ajenos | B lista `/api/orders` | Solo pedidos de B | PASS: `CreateOrder_ReturnsOnlyOwnOrders` |
 | Lectura del pedido propio | A solicita su pedido | `200` | PASS |
-| Pedido inexistente | A solicita ID inexistente | `404` | PASS |
+| Pedido inexistente | A solicita ID inexistente | `404` | No ejecutado: no existe una prueba específica |
 | BFLA | Revisión de endpoints | Sin funciones admin expuestas | PASS: no existen endpoints admin; no hay políticas de rol |
 
 Comando:
@@ -63,3 +67,4 @@ dotnet test tests/EcommerceApi.Tests/EcommerceApi.Tests.csproj --filter "FullyQu
 - [Pruebas de pedidos](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/tests/EcommerceApi.Tests/OrdersEndpointsTests.cs)
 - [Controlador de pedidos](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/EcommerceApi/Controllers/OrdersController.cs)
 - [Threat model de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/docs/threat-model-appsec.md)
+- [Evidencia de ejecución](../../../docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md)
