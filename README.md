@@ -5,6 +5,8 @@ Este portfolio documenta la aplicación de **Security by Design, DevSecOps, Clou
 > [!NOTE]
 > El contenido describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica si está validada, es parcial, tiene un runbook preparado, es un diseño o está pendiente. No se incluyen secretos, identificadores reales ni datos personales.
 
+> **¿Primera vez aquí?** Empieza por la [guía de lectura](docs/guia-de-lectura.md): qué es este portfolio, qué no es y en qué orden leerlo.
+
 ---
 
 ## 🌐 Ecosistema
