@@ -34,6 +34,6 @@
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Sign-in con riesgo | Simulación del escenario de riesgo | Se detecta y activa mitigación | Sí |
-| Review de accesos | Análisis de roles activos | Permisos no necesarios visibles | Sí |
-| Mitigación automática | Política de riesgo | MFA o bloqueo aplicados | Sí |
+| Sign-in con riesgo | Simulación del escenario de riesgo | Se detecta y activa mitigación | Pendiente |
+| Review de accesos | Análisis de roles activos | Permisos no necesarios visibles | Pendiente |
+| Mitigación automática | Política de riesgo | MFA o bloqueo aplicados | Pendiente |

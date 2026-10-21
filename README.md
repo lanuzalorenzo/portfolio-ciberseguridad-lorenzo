@@ -62,7 +62,7 @@ La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuz
 
 El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conectan las capas sobre una sola carga de trabajo, con [arquitectura de referencia](docs/laboratorio-final/arquitectura.md), [plan de ejecución](docs/laboratorio-final/plan-ejecucion.md) y un [índice de evidencias](docs/laboratorio-final/evidencias/README.md). Las prácticas ejecutables usan un [runbook](plantillas/runbook-template.md), registran su prueba con una [plantilla de evidencia](plantillas/evidencia-template.md) y documentan el caso con una [plantilla de README de práctica](plantillas/README-practica-template.md).
 
-> El laboratorio tiene dos evidencias locales registradas (ELK y BOLA/BFLA). Las fases Azure siguen pendientes de autorización, presupuesto y resource group temporal; no hay recursos Azure desplegados.
+> El laboratorio tiene dos evidencias de ejecución (ELK y BOLA/BFLA) y cuatro evidencias documentales o verificables (02, 03, 04 y 07). Las fases Azure siguen pendientes de autorización, presupuesto y resource group temporal; no hay recursos Azure desplegados.
 
 ---
 
@@ -70,7 +70,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 
 ### 1. Arquitectura y AppSec
 
-- [01 | OAuth 2.0, PKCE y validación JWT](01-seguridad-azure/README.md) — *validado en laboratorio*; incluye la práctica de [PKCE manual](01-seguridad-azure/practicas/01-pkce-manual/README.md), con evidencia pendiente de reejecución.
+- [01 | OAuth 2.0, PKCE y validación JWT](01-seguridad-azure/README.md) — *parcial*: validación JWT implementada y probada en CI; la práctica de [PKCE manual](01-seguridad-azure/practicas/01-pkce-manual/README.md) sigue pendiente de evidencia estandarizada.
 - [11 | Hacking ético de APIs](11-hacking-etico-api/README.md) — *validación local de BOLA y mass assignment*; pentest desplegado pendiente. [Evidencia](docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
 - [API de referencia](https://github.com/lanuzalorenzo/lab-api-local-azure) — código, tests, CI y Bicep.
 
@@ -85,7 +85,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 ### 3. Identidad, acceso y gobierno Zero Trust
 
 - [02 | Identity Security](02-identity-security/README.md) — *validado en laboratorio*: MFA, Passwordless, SSPR, PIM, RBAC, Key Vault y Managed Identities.
-- [06 | Identity Protection](06-identity-protection/README.md) — *validado en laboratorio*: Conditional Access, PIM/JIT, RBAC e Identity Protection.
+- [06 | Identity Protection](06-identity-protection/README.md) — *diseño*: Conditional Access, PIM/JIT, RBAC e Identity Protection documentados; prácticas no ejecutadas.
 
 ### 4. Cloud, postura y redes
 

@@ -34,6 +34,6 @@
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Revisar permisos de un usuario | Inspección del rol asignado | Solo permisos mínimos | Sí |
-| Validar alcance de acceso | Comprobación de ámbito del rol | Sin acceso excesivo | Sí |
-| Auditoría de roles | Revisión de acceso no utilizado | Eliminación de permisos redundantes | Sí |
+| Revisar permisos de un usuario | Inspección del rol asignado | Solo permisos mínimos | Pendiente |
+| Validar alcance de acceso | Comprobación de ámbito del rol | Sin acceso excesivo | Pendiente |
+| Auditoría de roles | Revisión de acceso no utilizado | Eliminación de permisos redundantes | Pendiente |

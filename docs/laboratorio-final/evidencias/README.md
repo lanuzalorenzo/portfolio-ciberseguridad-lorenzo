@@ -1,8 +1,18 @@
 # Índice de evidencias
 
-> **Estado:** 2 evidencias registradas.
+> **Estado:** 6 evidencias registradas: 2 de ejecución y 4 documentales o verificables.
 
-Este directorio centraliza las evidencias de ejecución del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook y un entorno concreto. No es un repositorio de capturas sueltas.
+Este directorio centraliza las evidencias del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook, un informe o un run de CI, y hasta un entorno concreto. No es un repositorio de capturas sueltas.
+
+## Dos tipos de evidencia
+
+| Tipo | Qué aporta | Qué no aporta |
+|---|---|---|
+| **Ejecución** | Carpeta fechada con comandos, salida redactada y artefactos | — |
+| **Documental** | Informe técnico + bitácora fechada + tabla de resultados | No conserva la salida original ni capturas |
+| **Verificable** | Un run de CI reproducible y enlazado | Solo cubre lo que el pipeline ejecuta |
+
+Una evidencia documental **no se presenta como una captura**. Si la práctica se reejecuta, se sustituye por una evidencia de ejecución.
 
 ## Convención de nombres
 
@@ -19,7 +29,7 @@ Ejemplo:
 2026-10-19-10-elk-ingesta/
 ```
 
-## Contenido mínimo de una evidencia
+## Contenido mínimo de una evidencia de ejecución
 
 - Fecha y responsable.
 - Runbook utilizado.
@@ -40,15 +50,29 @@ Ejemplo:
 - Sin capturas que muestren información fuera del alcance.
 - Si un dato es necesario para entender la evidencia, se sustituye por un placeholder explícito.
 
-## Índice
+## Evidencias de ejecución
 
 | Fecha | Módulo | Práctica | Resultado | Enlace |
 |---|---|---|---|---|
 | 2026-10-19 | 10 — ELK Stack Security | 01 — Ingestión y normalización · 02 — Kibana | Validado en local | [Ver evidencia](2026-10-19-10-elk-ingesta/README.md) |
 | 2026-10-21 | 11 — Hacking ético de APIs | 01 — BOLA/BFLA · 03 — Mass assignment | Validado en local | [Ver evidencia](2026-10-21-11-api-bola/README.md) |
 
-Cuando se añada una evidencia, actualiza esta tabla y el README del módulo correspondiente.
+## Evidencias documentales y verificables
+
+| Fecha | Módulo | Tipo | Qué prueba | Enlace |
+|---|---|---|---|---|
+| 2026-09-11 | 02 — Identity Security | Documental | 7 prácticas (MFA, Passwordless, SSPR, PIM, RBAC, Key Vault, Managed Identities) con informe técnico, tabla de resultados y bitácora | [Módulo](../../../02-identity-security/README.md) |
+| 2026-09-15 | 03 — Cloud Audits | Documental | 3 auditorías (suscripciones, recursos críticos, identidades) con hallazgos y recomendaciones | [Módulo](../../../03-cloud-audits/README.md) |
+| 2026-09-25 | 04 — Defender for Cloud | Documental | 4 prácticas (planes, recomendaciones, workloads, hardening) con informe y bitácora | [Módulo](../../../04-defender-for-cloud/README.md) |
+| 2026-10-19 | 07 — DevSecOps | Verificable (CI) | Pipeline completa en verde: build, 10 pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root e IaC | [Run 39243360276](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/39243360276) |
+
+> Las evidencias documentales se apoyan en el informe y la bitácora del módulo. Declaran explícitamente que no se conservó la salida original; por eso no se mezclan con las de ejecución.
+
+## Pendiente
+
+- Módulo 01: reejecutar PKCE manual con tenant de laboratorio y generar evidencia de ejecución.
+- Módulo 06: ejecutar las prácticas y sustituir las tablas «Pendiente» por resultados reales.
 
 ## Plantilla
 
-Usa la [plantilla de evidencia](../../../plantillas/evidencia-template.md) como punto de partida.
+Usa la [plantilla de evidencia](../../../plantillas/evidencia-template.md) como punto de partida para una evidencia de ejecución.

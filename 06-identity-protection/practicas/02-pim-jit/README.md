@@ -34,6 +34,6 @@
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Activación temporal de rol | Solicitud y activación de acceso | El usuario obtiene permisos solo por el periodo necesario | Sí |
-| Revisión de aprobaciones | Validación del proceso de activación | Solicitud con justificación y aprobación | Sí |
-| Revocación del rol | Finalización del periodo de activación | Permisos revocados automáticamente | Sí |
+| Activación temporal de rol | Solicitud y activación de acceso | El usuario obtiene permisos solo por el periodo necesario | Pendiente |
+| Revisión de aprobaciones | Validación del proceso de activación | Solicitud con justificación y aprobación | Pendiente |
+| Revocación del rol | Finalización del periodo de activación | Permisos revocados automáticamente | Pendiente |

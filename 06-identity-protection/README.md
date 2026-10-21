@@ -1,6 +1,6 @@
 # 06 | Privileged Access & Identity Governance
 
-> **Estado:** validado en laboratorio. Conditional Access, PIM/JIT, RBAC e Identity Protection documentados.
+> **Estado:** diseño. Conditional Access, PIM/JIT, RBAC e Identity Protection están documentados como prácticas de laboratorio; las pruebas de validación **no se han ejecutado ni registrado** (ver el índice de evidencias).
 
 Este módulo se centra en la protección del acceso privilegiado y la gobernanza de identidades en Microsoft Entra ID. Mientras el módulo 01 explica la autenticación y el flujo de tokens, este bloque se enfoca en cómo controlar, limitar, auditar y reforzar el acceso a los recursos críticos del entorno.
 

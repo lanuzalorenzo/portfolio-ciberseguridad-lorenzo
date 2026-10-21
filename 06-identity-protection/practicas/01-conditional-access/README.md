@@ -34,6 +34,6 @@
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Acceso con MFA | Validación del flujo de autenticación | Requiere segundo factor | Sí |
-| Acceso desde ubicación no confiable | Simulación del contexto | Acceso bloqueado o reforzado | Sí |
-| Riesgo de sign-in | Revisión de sign-ins sospechosos | Condición de riesgo detectada | Sí |
+| Acceso con MFA | Validación del flujo de autenticación | Requiere segundo factor | Pendiente |
+| Acceso desde ubicación no confiable | Simulación del contexto | Acceso bloqueado o reforzado | Pendiente |
+| Riesgo de sign-in | Revisión de sign-ins sospechosos | Condición de riesgo detectada | Pendiente |
