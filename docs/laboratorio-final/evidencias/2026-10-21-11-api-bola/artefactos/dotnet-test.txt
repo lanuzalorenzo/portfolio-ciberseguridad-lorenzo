@@ -1,0 +1,26 @@
+
+Esto es .NET 10.0.
+---------------------
+Versión del SDK: 10.0.113
+
+----------------
+Instalar un certificado de desarrollo HTTPS de ASP.NET Core.
+Para confiar en el certificado, ejecute "dotnet dev-certs https --trust"
+Obtenga información sobre HTTPS: https://aka.ms/dotnet-https
+
+----------------
+Escribir su primera aplicación: https://aka.ms/dotnet-hello-world
+Descubra las novedades: https://aka.ms/dotnet-whats-new
+Explore la documentación: https://aka.ms/dotnet-docs
+Notificar problemas y encontrar el código fuente en GitHub: https://github.com/dotnet/core
+Use "dotnet --help" para ver los comandos disponibles o visite: https://aka.ms/dotnet-cli
+--------------------------------------------------------------------------------------
+  Determinando los proyectos que se van a restaurar...
+  Se ha restaurado ~/Repositorios/lab-api-local-azure/EcommerceApi/EcommerceApi.csproj (en 592 ms).
+  Se ha restaurado ~/Repositorios/lab-api-local-azure/tests/EcommerceApi.Tests/EcommerceApi.Tests.csproj (en 594 ms).
+  EcommerceApi -> ~/Repositorios/lab-api-local-azure/EcommerceApi/bin/Debug/net10.0/EcommerceApi.dll
+  EcommerceApi.Tests -> ~/Repositorios/lab-api-local-azure/tests/EcommerceApi.Tests/bin/Debug/net10.0/EcommerceApi.Tests.dll
+Serie de pruebas para ~/Repositorios/lab-api-local-azure/tests/EcommerceApi.Tests/bin/Debug/net10.0/EcommerceApi.Tests.dll (.NETCoreApp,Version=v10.0)
+1 archivos de prueba en total coincidieron con el patrón especificado.
+
+Correctas! - Con error:     0, Superado:    10, Omitido:     0, Total:    10, Duración: 782 ms - EcommerceApi.Tests.dll (net10.0)
