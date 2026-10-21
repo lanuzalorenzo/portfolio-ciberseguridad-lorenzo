@@ -108,6 +108,13 @@ Resumen técnico del valor del ejercicio y de la toma de decisiones.
 Qué se hará a continuación para completar o profundizar el módulo.
 ```
 
+### Guía de lectura
+
+- `docs/guia-de-lectura.md` es la puerta de entrada pública al portfolio: rutas, glosario, mapa de módulos y criterios de verificación.
+- Mantenerla alineada cuando cambie el estado de un módulo, se añada o retire una evidencia, cambie el orden recomendado o se renombren enlaces de entrada.
+- No duplicar la guía en la web ni en el perfil: esos repos solo enlazan a esta fuente única.
+- Al cerrar un cambio que afecte al lector, revisar la sección «Mantenimiento» de la guía y actualizar la fecha de revisión.
+
 ### Reglas de calidad
 
 - Las bitácoras deben ser útiles para un lector técnico, no solo genéricas.
