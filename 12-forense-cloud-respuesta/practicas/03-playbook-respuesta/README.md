@@ -1,6 +1,6 @@
 # 03 | Playbook de respuesta y tabletop
 
-> **Estado:** diseño. Playbook documentado; tabletop no ejecutado.
+> **Estado:** diseño. Playbook documentado, runbook esbozado; tabletop no ejecutado.
 
 ## Descripción del escenario y objetivo de seguridad
 
@@ -72,10 +72,13 @@
 
 | Táctica | Técnica | Evidencia a buscar |
 |---|---|---|
-| Credential Access | T1552 Unsecured Credentials | Accesos a Key Vault, secretos en logs. |
-| Persistence | T1098 Account Manipulation | Cambios de roles/aplicaciones. |
-| Defense Evasion | T1562 Impair Defenses | Cambios de NSG, diagnóstico o políticas. |
-| Collection | T1530 Data from Cloud Storage | Lectura masiva de blobs. |
+| Credential Access | T1528 Steal Application Access Token | Uso de token fuera de su ventana, IP o user agent habitual. |
+| Credential Access | T1078.004 Cloud Accounts | Identidad válida usada desde una ubicación o dispositivo anómalo. |
+| Persistence | T1098 Account Manipulation | Cambios de roles, aplicaciones o credenciales. |
+| Defense Evasion | T1562.007 Disable or Modify Cloud Firewall | Cambios de NSG, reglas o diagnósticos. |
+| Collection | T1530 Data from Cloud Storage | Lectura masiva de blobs; no aplica a secretos de Key Vault. |
+
+> Mapeo orientativo. `T1552` no aplica aquí: describe credenciales expuestas en ficheros, no el acceso a Key Vault.
 
 ## Limitaciones
 
@@ -86,6 +89,7 @@
 
 ## Artefactos relacionados
 
+- [Runbook del tabletop](runbook.md) — *esqueleto; no ejecutado*
 - [Recolección de evidencia](../01-recoleccion-logs-azure/README.md)
 - [Consultas KQL](../02-timeline-kql/README.md)
 - [Informe técnico](../../docs/informe-tecnico.md)
