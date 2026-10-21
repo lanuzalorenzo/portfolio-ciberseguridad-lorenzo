@@ -105,7 +105,7 @@ grep -rn "Authorize\|Roles\|Admin" EcommerceApi/Controllers/
 | Listado de pedidos ajenos | B lista `/api/orders` | Solo pedidos de B | PASS — `CreateOrder_ReturnsOnlyOwnOrders` |
 | Lectura del pedido propio | A solicita su pedido | `200` | PASS — misma prueba, aserción `OK` |
 | Pedido inexistente | A solicita un `id` no creado | `404` | No ejecutado: no hay prueba específica |
-| BFLA | Revisión de controladores | Sin endpoints admin expuestos | PASS — no existen endpoints ni políticas de rol |
+| BFLA | Revisión de controladores | Sin endpoints admin expuestos | Parcial — no hay endpoints admin; `POST /api/products` sin rol (H-03) |
 | Control de autenticación | `GET /api/products` sin token | `401` | PASS — `GetProducts_WithoutToken_ReturnsUnauthorized` |
 
 ## 8. Evidencia

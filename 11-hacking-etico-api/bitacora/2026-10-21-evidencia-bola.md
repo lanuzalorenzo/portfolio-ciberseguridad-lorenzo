@@ -34,6 +34,7 @@ Cerrar la validación local del módulo 11 con una evidencia registrada, reutili
 - El esquema de test no valida firma, emisor, audiencia ni expiración del JWT.
 - Rate limiting y consumo de recursos siguen sin prueba manual.
 - Falta repetir la validación contra un despliegue autorizado con dos usuarios delegados.
+- `POST /api/products` solo exige autenticación: cualquier usuario válido puede alterar el catálogo. Se declara en H-03 del informe final.
 - La evidencia caduca si cambia el commit del workload; hay que repetir el runbook.
 
 ## Aprendizaje

@@ -44,10 +44,12 @@
 - No hay cuota por usuario ni por operación.
 - No se ha ejecutado una prueba de carga; el umbral no está calibrado.
 - El límite de 16 KB puede ser demasiado bajo para futuros endpoints de carga.
+- `POST /api/products` solo exige autenticación: cualquier usuario válido puede crear productos y fijar `price` dentro del rango permitido (`0–1.000.000`). Falta una política de rol y una regla de negocio sobre el precio mínimo.
 
 ## Recomendaciones
 
 - Añadir cuotas por usuario y por endpoint.
+- Exigir rol o scope para crear o modificar el catálogo, y definir si el precio 0 es válido para el negocio.
 - Probar `429` y `413` con k6 o JMeter.
 - Revisar el umbral con métricas reales.
 - Añadir un WAF/APIM para límites de perímetro.

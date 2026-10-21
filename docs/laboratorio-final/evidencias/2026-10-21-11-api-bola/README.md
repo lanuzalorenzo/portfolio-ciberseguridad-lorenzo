@@ -49,7 +49,7 @@ Pruebas totales: 4   # filtro OrdersEndpointsTests
 | Lectura de pedido ajeno (BOLA) | B recibe `404` sobre el pedido de A | `UserCannotReadAnotherUsersOrder` superada | PASS |
 | Listado de pedidos ajenos | B solo ve sus pedidos | `CreateOrder_ReturnsOnlyOwnOrders`: A ve 1, B ve 0 | PASS |
 | Lectura del pedido propio | A recibe `200` | Aserción `OK` en la misma prueba | PASS |
-| BFLA | Sin endpoints administrativos ni políticas de rol | Solo `[Authorize]` en pedidos y productos | PASS |
+| BFLA | Sin endpoints administrativos ni políticas de rol | Solo `[Authorize]`; `POST /api/products` sin rol (H-03) | Parcial |
 | Control de autenticación | Productos sin token devuelve `401` | `GetProducts_WithoutToken_ReturnsUnauthorized` superada | PASS |
 | Mass assignment | El `id` enviado por el cliente se ignora | `CreateProduct_IgnoresClientSuppliedId` superada | PASS |
 | Validación de entrada | Lista vacía, producto inexistente, precio negativo y nombre vacío devuelven `400` | Las cuatro pruebas superadas | PASS |
@@ -92,7 +92,7 @@ No se incluyen tokens, cabeceras de autorización, identificadores reales ni cap
 
 ## 7. Conclusiones
 
-La API aplica autorización a nivel de objeto: el propietario lee su pedido (`200`) y otro usuario recibe `404`, sin filtrar la existencia del recurso. El listado se filtra por el `UserId` del claim y el `id` enviado por el cliente no se acepta en la creación de productos. No existen endpoints administrativos que permitan probar BFLA.
+La API aplica autorización a nivel de objeto: el propietario lee su pedido (`200`) y otro usuario recibe `404`, sin filtrar la existencia del recurso. El listado se filtra por el `UserId` del claim y el `id` enviado por el cliente no se acepta en la creación de productos. No existen endpoints administrativos, pero `POST /api/products` tampoco exige rol: BFLA se declara **parcial**, no mitigado (H-03).
 
 La suite completa (10 pruebas) pasa también en el mismo commit, por lo que los cambios de autorización y validación no rompen salud, productos ni autenticación.
 
@@ -101,6 +101,7 @@ La suite completa (10 pruebas) pasa también en el mismo commit, por lo que los 
 - El esquema `X-Test-User` sustituye a Entra ID: no se validan firma, emisor, audiencia ni expiración del token.
 - No se ha probado contra APIM, WAF ni un despliegue con dos usuarios delegados reales.
 - BFLA se limita a la ausencia de endpoints administrativos; no hay matriz de roles.
+- `POST /api/products` solo exige autenticación: cualquier usuario válido puede alterar el catálogo. Se declara en H-03.
 - Rate limiting y consumo de recursos siguen pendientes de prueba manual.
 - El resultado depende del commit `b66028a`; cambios posteriores requieren repetir el runbook.
 

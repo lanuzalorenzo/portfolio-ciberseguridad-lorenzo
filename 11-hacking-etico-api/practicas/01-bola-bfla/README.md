@@ -35,7 +35,7 @@
 | Listado de pedidos ajenos | B lista `/api/orders` | Solo pedidos de B | PASS: `CreateOrder_ReturnsOnlyOwnOrders` |
 | Lectura del pedido propio | A solicita su pedido | `200` | PASS |
 | Pedido inexistente | A solicita ID inexistente | `404` | No ejecutado: no existe una prueba específica |
-| BFLA | Revisión de endpoints | Sin funciones admin expuestas | PASS: no existen endpoints admin; no hay políticas de rol |
+| BFLA | Revisión de endpoints | Sin funciones admin expuestas | Parcial: no hay funciones admin, pero `POST /api/products` no exige rol (H-03) |
 
 Comando:
 

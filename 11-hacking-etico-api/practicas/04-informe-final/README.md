@@ -14,7 +14,7 @@ La API de referencia implementa autenticación JWT, aislamiento de pedidos por u
 | **API2 Broken Authentication** | Validación JWT incompleta o laxa | Alta | Parcial | Configuración revisada; token real pendiente |
 | **API3 Mass Assignment** | Cliente controla `id`, `total` o `userId` | Alta | Mitigado | `CreateProduct_IgnoresClientSuppliedId` |
 | **API4 Resource Consumption** | Sin límites de peticiones/cuerpo | Media | Parcial | Rate limit 120/min y 16 KB; prueba de carga pendiente |
-| **API5 BFLA** | Sin políticas por rol/scope | Alta | Pendiente | No hay endpoints admin; falta matriz de roles |
+| **API5 BFLA** | Sin políticas por rol/scope; `POST /api/products` accesible a cualquier usuario | Alta | Parcial | Solo `[Authorize]`; ver H-03 |
 | **API6 Business Flows** | Sin antifraude ni límites de negocio | Media | Pendiente | Fuera del alcance actual |
 | **API7 SSRF** | No aplica | — | No aplica | La API no consume URLs del usuario |
 | **API8 Misconfiguration** | CORS, headers, HTTPS, contenedor | Media | Parcial | CORS deny-by-default; WAF/despliegue pendientes |
@@ -39,9 +39,9 @@ La API de referencia implementa autenticación JWT, aislamiento de pedidos por u
 
 ### H-03 — Autorización granular ausente (Alta, pendiente)
 
-- **Descripción:** todos los endpoints requieren autenticación, pero no scopes/roles.
-- **Impacto:** un token válido puede acceder a cualquier operación permitida por la API.
-- **Remediación propuesta:** políticas por scope/rol, pruebas negativas y matriz de permisos.
+- **Descripción:** todos los endpoints requieren autenticación, pero no scopes/roles. Ejemplo concreto: `POST /api/products` permite a cualquier usuario autenticado crear un producto con precio 0, dentro del rango `0–1.000.000`.
+- **Impacto:** un token válido puede acceder a cualquier operación permitida por la API y alterar el catálogo.
+- **Remediación propuesta:** políticas por scope/rol, pruebas negativas y matriz de permisos; validación de negocio del precio.
 - **Estado:** pendiente.
 
 ### H-04 — Rate limit no calibrado (Media, parcial)
