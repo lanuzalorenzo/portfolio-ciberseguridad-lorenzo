@@ -14,6 +14,77 @@ Documentar la implementación técnica del flujo OAuth2 Authorization Code con P
 5. **Intercambio por Tokens:** El cliente hace una petición POST al endpoint de token enviando el `authorization_code` y el `code_verifier` original.
 6. **Validación y Entrega:** Azure AD aplica SHA256 al `code_verifier` y lo compara con el `code_challenge`. Si coinciden, emite el token de acceso (JWT).
 
+## Canal frontal y canal trasero
+
+PKCE separa dos momentos del flujo. Esa separación explica por qué el verifier no se filtra igual que el código.
+
+```text
+Canal frontal (URL, historial, referrer)
+  Navegador ── /authorize?code_challenge=HASH ──▶ Entra ID
+  Navegador ◀─ redirect?code=ABC ─────────────── Entra ID
+
+Canal trasero (POST, cuerpo, TLS)
+  Cliente ── /token  code=ABC + code_verifier ──▶ Entra ID
+```
+
+- El `code_challenge` es público: es un hash y no revela el verifier.
+- El `authorization_code` viaja por la URL: queda en el historial, el referrer y los logs de redirección. Es la parte débil del flujo.
+- El `code_verifier` viaja una sola vez, en el cuerpo del POST al endpoint de tokens, por TLS. No se envía a la API.
+
+## Dónde se guarda el code_verifier
+
+No existe un almacén invulnerable. El objetivo es reducir la exposición y la vida del secreto: se genera antes de redirigir, se recupera al volver y se borra tras el canje.
+
+| Cliente | Almacenamiento habitual | Riesgo principal |
+|---|---|---|
+| SPA con redirect | `sessionStorage` de la pestaña | XSS; se borra al cerrar la pestaña |
+| SPA con popup | Memoria | XSS; se pierde al recargar |
+| App móvil | Keychain (iOS) / Keystore (Android) | Malware o dispositivo rooteado |
+| App de escritorio | Almacén del sistema o memoria | Proceso comprometido |
+| CLI | Memoria | Proceso comprometido |
+
+Reglas:
+
+- Nunca en `localStorage`, en la URL, en logs ni en cookies: persiste demasiado o queda expuesto.
+- Borrar el verifier después del canje. Es de un solo uso y vive minutos, no días.
+- Para SPAs de alto riesgo, usar el patrón **BFF** (*Backend for Frontend*): cliente confidencial en el backend y sesión por cookie, sin tokens ni verifier en el navegador.
+
+## Límites de PKCE
+
+PKCE protege el canje del código, no el token ya emitido ni un cliente comprometido.
+
+| Amenaza | ¿La mitiga PKCE? | Control complementario |
+|---|---|---|
+| Interceptar el `code` en la redirección | Sí | TLS |
+| Leer el `code` del historial o del referrer | Sí | `redirect_uri` exacta y registrada |
+| XSS que lee el verifier | No | CSP; BFF reduce el robo de tokens |
+| Malware o dispositivo comprometido | No | Almacén seguro y EDR |
+| MITM sin TLS | No | TLS y HSTS |
+| Robo del access token ya emitido | No | DPoP/mTLS |
+| CSRF en la redirección | No | `state` |
+| Replay del ID token | No | `nonce` |
+
+Si un atacante puede leer el POST a Entra, también puede leer el token en el cliente. PKCE reduce la superficie de un ataque remoto de interceptación; no convierte un dispositivo comprometido en seguro.
+
+## Sesiones y revocación
+
+PKCE termina cuando se emiten los tokens. A partir de ahí, el ciclo de vida es otro.
+
+| Elemento | Vida aproximada | Dónde se usa | Efecto de revocar sesiones |
+|---|---|---|---|
+| Access token | ~60–90 min (configurable) | Cabecera `Authorization` hacia la API | **No** se invalida; sigue válido hasta `exp` |
+| Refresh token | Días (~90 por defecto) | Solo en el endpoint de tokens | **Sí** se invalida; no se emiten nuevos access tokens |
+| Sesión de aplicación | Según la aplicación | Cookie o token propio | No cambia |
+| Conexión de red | Según TCP | SSH o HTTP | No se cierra |
+
+Conviene no confundir tres cosas que se llaman «sesión»:
+
+1. **Sesión de autenticación:** refresh token y cookie de Entra.
+2. **Sesión de aplicación:** cookie o token propio de la API.
+3. **Conexión de red:** socket TCP abierto.
+
+Revocar sesiones en Entra invalida el refresh token y la cookie de autenticación, pero **no** los access tokens ya emitidos ni las conexiones TCP. Deshabilitar la identidad o bloquear con Conditional Access impide nuevos inicios de sesión y nuevas emisiones, pero no revoca el access token actual: para eso hay que esperar a `exp` o usar Continuous Access Evaluation en servicios compatibles, que acorta la ventana pero no es universal ni instantáneo.
+
 ## Implementación en Azure AD (App Registration)
 
 Para que el flujo funcione correctamente, la aplicación debe estar configurada de manera precisa en Entra ID:
@@ -32,9 +103,17 @@ Durante la integración y pruebas de laboratorio se identificaron y resolvieron 
 | **AADSTS90013** | Solicitud de `scope` incorrecto, falta de consentimiento del administrador, o permisos no aceptados por el usuario. | Validar que el scope solicitado tiene el formato `api://...` y que la API ha sido autorizada para delegar acceso (Admin Consent). |
 
 ## Consideraciones de Seguridad
+
 - PKCE protege el `authorization_code` frente a ataques de interceptación durante la redirección al navegador.
-- Al actuar como *Public Client*, no se almacena ningún secreto en el cliente, mitigando el riesgo de fuga de credenciales estáticas.
+- Al actuar como *Public Client*, no se almacena un secreto estático (`client_secret`): el `code_verifier` es efímero, de un solo uso y vive minutos. Esto reduce el riesgo de fuga de credenciales estáticas, pero no elimina el riesgo de XSS ni de un dispositivo comprometido.
+- PKCE no sustituye a `state`, `nonce`, TLS ni a la validación del token en la API.
+- Aunque PKCE nació para clientes públicos, la práctica actual (RFC 9700) lo recomienda también en clientes confidenciales como defensa en profundidad.
+- Revocar sesiones invalida refresh tokens y cookies de autenticación, no los access tokens ya emitidos.
 
 ## Recursos de referencia
+
 - [RFC 7636 - Proof Key for Code Exchange](https://datatracker.ietf.org/doc/html/rfc7636)
+- [RFC 9700 - OAuth 2.0 Security Best Current Practice](https://datatracker.ietf.org/doc/rfc9700/)
 - [Microsoft Entra ID - Flujo de código de autorización OAuth 2.0](https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+- [Microsoft Entra ID - Refresh tokens](https://learn.microsoft.com/entra/identity-platform/refresh-tokens)
+- [Microsoft Entra ID - Revocar el acceso de un usuario en una emergencia](https://learn.microsoft.com/entra/identity/users/users-revoke-access)
