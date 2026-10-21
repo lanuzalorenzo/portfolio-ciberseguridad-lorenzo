@@ -17,12 +17,12 @@
 
 | Entregable | Estado |
 |---|---|
-| Evidencia local de API y módulo 11 | Parcial: existen pruebas locales; falta consolidarlas en el índice |
+| Evidencia local de API y módulo 11 | Validado: evidencia `2026-10-21-11-api-bola` registrada en el índice |
 | Runbook de ELK (módulo 10) | Validado en local |
 | Ejecución de ELK con logs sintéticos | Validado en local: ingesta, 6 consultas KQL, dashboard y exportación |
 | Runbook del tabletop forense (módulo 12) | Pendiente |
 | Ejecución del tabletop y acta | Pendiente |
-| Primera entrada del índice de evidencias | Validado: evidencia ELK enlazada |
+| Primera entrada del índice de evidencias | Validado: evidencias ELK (10) y BOLA/BFLA (11) enlazadas |
 
 **Gate de salida:**
 
@@ -125,7 +125,7 @@ Reglas:
 
 | Fase | Estado | Nota |
 |---|---|---|
-| Fase 0 | En curso | API validada en CI; ELK validado en local con evidencia; tabletop forense pendiente |
+| Fase 0 | En curso | API validada en CI y en local (evidencia 11); ELK validado en local con evidencia; tabletop forense pendiente |
 | Fase 1 | Pendiente | Requiere suscripción, presupuesto y autorización |
 | Fase 2 | Pendiente | No se inicia sin cerrar la Fase 1 |
 

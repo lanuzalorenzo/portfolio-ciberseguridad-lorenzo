@@ -1,6 +1,6 @@
 # Índice de evidencias
 
-> **Estado:** 1 evidencia registrada.
+> **Estado:** 2 evidencias registradas.
 
 Este directorio centraliza las evidencias de ejecución del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook y un entorno concreto. No es un repositorio de capturas sueltas.
 
@@ -45,6 +45,7 @@ Ejemplo:
 | Fecha | Módulo | Práctica | Resultado | Enlace |
 |---|---|---|---|---|
 | 2026-10-19 | 10 — ELK Stack Security | 01 — Ingestión y normalización · 02 — Kibana | Validado en local | [Ver evidencia](2026-10-19-10-elk-ingesta/README.md) |
+| 2026-10-21 | 11 — Hacking ético de APIs | 01 — BOLA/BFLA · 03 — Mass assignment | Validado en local | [Ver evidencia](2026-10-21-11-api-bola/README.md) |
 
 Cuando se añada una evidencia, actualiza esta tabla y el README del módulo correspondiente.
 
