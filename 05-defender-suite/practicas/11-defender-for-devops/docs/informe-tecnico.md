@@ -1,63 +1,60 @@
-# 🔐 Informe técnico — Práctica 11: Defender for DevOps
+# Informe técnico — Práctica 11: Defender for DevOps
 
-## 🧩 Introducción
+## Introducción
+
 Esta práctica se centra en la integración de repositorios y pipelines con Defender for DevOps para habilitar análisis de seguridad, detección de secretos, evaluación de IaC y protección de la cadena de suministro.
 
----
+## Revisión de repositorios
 
-## 📦 Revisión de repositorios
 Se revisó:
+
 - Repositorios integrados.
 - Estado de seguridad.
 - Configuraciones de protección.
 
----
+## Escaneo de IaC
 
-## 🛠 Escaneo de IaC
 Se validó:
+
 - Escaneo de Terraform, Bicep y ARM.
 - Configuraciones inseguras detectadas.
 - Recomendaciones de seguridad.
 
----
+## Detección de secretos
 
-## 🔐 Detección de secretos
 Se revisó:
+
 - Secretos expuestos.
 - Credenciales detectadas.
 - Acciones sugeridas.
 
----
+## Análisis de dependencias
 
-## 🧬 Análisis de dependencias
 Se validó:
+
 - Vulnerabilidades en dependencias.
 - CVEs detectadas.
 - Impacto en pipelines.
 
----
+## Alertas
 
-## 🚨 Alertas
 Se revisó:
+
 - Alertas generadas.
 - Correlación con XDR.
 - Incidentes relacionados.
 
----
+## Conclusiones técnicas
 
-## 🧠 Conclusiones técnicas
-- Defender for DevOps detectó configuraciones inseguras correctamente.
-- El escaneo de IaC permitió identificar riesgos en infraestructura.
+- Defender for DevOps detectó las configuraciones inseguras.
+- El escaneo de IaC permitió identificar riesgos en la infraestructura.
 - La detección de secretos reforzó la seguridad del pipeline.
 - El análisis de dependencias identificó vulnerabilidades críticas.
-- Se identificaron mejoras futuras:
+- Mejoras futuras identificadas:
   - Automatización de remediación.
   - Hardening de pipelines.
   - Control de versiones y dependencias.
 
----
+## Aviso legal
 
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.
-No contiene información sensible ni perteneciente a ninguna organización real.
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+Este documento describe prácticas realizadas en un entorno de laboratorio. No contiene información sensible ni perteneciente a ninguna organización real. Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
