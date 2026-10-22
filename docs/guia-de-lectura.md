@@ -120,7 +120,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 
 ## 7. Cómo verificar sin confiar en la narrativa
 
-El portfolio distingue explícitamente entre **diseño**, **runbook preparado**, **parcial**, **validado** y **pendiente**, y clasifica la evidencia de lo validado como **de ejecución**, **documental** o **verificable**. Para comprobarlo:
+El portfolio distingue explícitamente entre **Diseño**, **Runbook preparado**, **Parcial**, **Validado** y **Pendiente**. Clasifica la evidencia de lo validado como **de ejecución**, **documental** o **verificable**. Para comprobarlo:
 
 - [Índice de evidencias](laboratorio-final/evidencias/README.md): qué se ejecutó, cuándo y con qué resultado.
 - **Runbooks:** cada comando no ejecutado está marcado como tal; no se inventan salidas.

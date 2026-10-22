@@ -1,6 +1,8 @@
 # Lorenzo Lanuza | Portfolio de Ciberseguridad, DevSecOps y Arquitectura
 
-Este portfolio documenta la aplicación de **Security by Design, DevSecOps, Cloud Security y respuesta a incidentes** sobre una carga de trabajo empresarial: una API .NET protegida con Microsoft Entra ID. El hilo conductor no es una colección de herramientas, sino un modelo de **Defensa en Profundidad** con evidencia y estado de validación explícito.
+Este portfolio aplica **Security by Design, DevSecOps, Cloud Security y respuesta a incidentes** a una carga de trabajo empresarial: una API .NET protegida con Microsoft Entra ID. El hilo conductor es un modelo de **Defensa en Profundidad** con evidencia y estado de validación en cada capa. Cada módulo responde a la misma pregunta: qué control protege qué y cómo se demuestra.
+
+> **En fácil:** este repositorio enseña, capa por capa, cómo se protege una sola aplicación: quién puede entrar, cómo se comprueba y qué se puede demostrar con una prueba. Cada apartado dice si está probado o solo diseñado.
 
 > [!NOTE]
 > El contenido describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica si está validada, es parcial, tiene un runbook preparado, es un diseño o está pendiente. No se incluyen secretos, identificadores reales ni datos personales.
@@ -9,7 +11,7 @@ Este portfolio documenta la aplicación de **Security by Design, DevSecOps, Clou
 
 ---
 
-## 🌐 Ecosistema
+## Ecosistema
 
 | Repositorio | Rol | Enlace |
 |---|---|---|
@@ -21,7 +23,7 @@ Este portfolio documenta la aplicación de **Security by Design, DevSecOps, Clou
 
 ---
 
-## 🏛️ Arquitectura del portfolio
+## Arquitectura del portfolio
 
 La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure), una Web API en .NET 10 con autenticación federada, autorización por usuario, DTOs, pruebas de integración y pipeline DevSecOps.
 
@@ -58,7 +60,7 @@ La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuz
       matriz de cumplimiento (cumplimiento-normativo/).
 ```
 
-### 🧪 Laboratorio final
+### Laboratorio final
 
 El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conectan las capas sobre una sola carga de trabajo, con [arquitectura de referencia](docs/laboratorio-final/arquitectura.md), [plan de ejecución](docs/laboratorio-final/plan-ejecucion.md) y un [índice de evidencias](docs/laboratorio-final/evidencias/README.md). Las prácticas ejecutables usan un [runbook](plantillas/runbook-template.md), registran su prueba con una [plantilla de evidencia](plantillas/evidencia-template.md) y documentan el caso con una [plantilla de README de práctica](plantillas/README-practica-template.md).
 
@@ -66,7 +68,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 
 ---
 
-## 🧭 Recorridos técnicos
+## Recorridos técnicos
 
 ### 1. Arquitectura y AppSec
 
@@ -111,7 +113,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 
 ---
 
-## 📊 Estado de validación
+## Estado de validación
 
 | Estado | Significado |
 |---|---|
@@ -125,7 +127,7 @@ La tabla de cada módulo y la [matriz de cumplimiento](cumplimiento-normativo/RE
 
 ---
 
-## 🧪 Caso de estudio end-to-end
+## Caso de estudio end-to-end
 
 **De la API al SOC:** un recorrido que conecta arquitectura, identidad, red, entrega, detección y respuesta.
 
@@ -141,7 +143,7 @@ Enlaces: [API](https://github.com/lanuzalorenzo/lab-api-local-azure) · [módulo
 
 ---
 
-## 🛠️ Organización
+## Organización
 
 Cada módulo incluye:
 
@@ -156,7 +158,7 @@ El código de la carga de trabajo se versiona en [lab-api-local-azure](https://g
 
 ---
 
-## 📫 Contacto
+## Contacto
 
 - **Autor:** Lorenzo Lanuza Arellano — *Software Architect | .NET, DevSecOps & Cloud Security*
 - **LinkedIn:** [linkedin.com/in/lanuzalorenzo](https://www.linkedin.com/in/lanuzalorenzo)
@@ -165,6 +167,6 @@ El código de la carga de trabajo se versiona en [lab-api-local-azure](https://g
 
 ---
 
-## ⚖️ Licencia y responsabilidad
+## Licencia y responsabilidad
 
 Material técnico y formativo. No acredita configuraciones de producción ni certificaciones. No incluye secretos, identificadores reales ni datos personales. Distribuido bajo licencia [MIT](LICENSE).
