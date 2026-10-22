@@ -51,6 +51,7 @@ Las siete fases ordenan el trabajo y cada una deja una evidencia verificable. El
 - [07 — DevSecOps](../07-devsecops/README.md): SAST/SCA y pruebas en CI.
 - [08 — Redes Azure](../08-seguridad-red-azure/README.md): exposición y Private Endpoints.
 - [12 — Forense cloud](../12-forense-cloud-respuesta/README.md): evidencia y respuesta.
+- [ai-agent-local-lab](https://github.com/lanuzalorenzo/ai-agent-local-lab): pruebas adversariales de LLM (inyección y robustez a perturbaciones). Fuera del alcance de este módulo: aquí el objetivo es la API, no el modelo.
 
 ## Alcance
 
