@@ -203,6 +203,23 @@ La iteración 1 queda como **línea base**. El objetivo de la 2 no es «acertar�
 - **Queda abierto** si se rotó la connection string; afecta a la atribución del pico de `401`.
 - La evidencia prueba **decisiones trazables**, no capacidades técnicas.
 
+### 8.b Lo que no se ejecutó y lo que correspondía
+
+| No ejecutado | Lo que correspondía | Momento |
+|---|---|---|
+| Estado del host (`who`, `last`, `ss -tnp`, procesos) | Capturarlo como evidencia #1 antes de tocar el NSG | T+00 / T+10 |
+| Corte de identidad (RBAC, firewall del Key Vault, cuenta `ops-red@lab`) | Proponerlo al abrir el incidente y ejecutarlo en ≤ 10 min | T+00 / T+10 |
+| Cardinalidad de IPs y tokens del `401` | Pedir logs HTTP con IP y token antes de calificarlo de ataque | T+20 |
+| Comprobación de sesión SSH viva | Verificarla en el host tras revertir el NSG | T+10 |
+| AuditLogs de las 07:43 | Revisarlos en cuanto apareció el cambio de NSG: era el indicio de persistencia más antiguo | T+10 |
+| Hora límite de contención y criterio de reapertura | Fijarlos al decidir el aislamiento | T+30 |
+| Autoridad de caída de servicio | Declararla al abrir el incidente | T+00 |
+| Respuesta a si se rotó la connection string | Registrarla al descartar la rotación | T+20 |
+| Hot wash formal | Que el participante enumerase los huecos antes que el facilitador | Cierre |
+| Versión completa del guion | Justificar la elección de la versión reducida | Inicio |
+
+Estas omisiones son la causa de varias de las acciones de mejora de §6: el acta prueba decisiones, no ejecución.
+
 ## 9. Criterio de cierre
 
 | Requisito del runbook §1 | Cumplido |
