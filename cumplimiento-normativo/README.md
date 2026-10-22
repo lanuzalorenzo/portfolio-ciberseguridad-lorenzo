@@ -2,6 +2,8 @@
 
 > **Estado:** documentado. No es una certificación ni una auditoría. Mapea controles técnicos del portfolio a marcos de referencia para facilitar la conversación con equipos de seguridad, arquitectura y compliance.
 
+> **En fácil:** la matriz cruza lo que se ha practicado con los controles que piden los marcos de seguridad. Sirve para ver qué está probado, qué a medias y qué falta, y para recordar que esto no es una certificación.
+
 ## Objetivo
 
 Traducir el trabajo técnico del portfolio a un lenguaje de control: qué marco cubre cada práctica, qué evidencia existe y qué queda pendiente. La matriz evita dos errores frecuentes: afirmar cumplimiento sin evidencia y tratar un laboratorio como un sistema certificado.
@@ -61,7 +63,7 @@ La evidencia enlaza al módulo o al repositorio de la API. Cuando la columna ind
 
 | Repositorio | Evidencia principal | Estado |
 |---|---|---|
-| `portfolio-ciberseguridad-lorenzo` | Módulos 01–12, bitácoras, prácticas y 7 evidencias indexadas | Documentado + 3 de ejecución y 4 documentales/verificables |
+| `portfolio-ciberseguridad-lorenzo` | Módulos 01–12, bitácoras, prácticas y 7 evidencias indexadas | Documentado; 3 evidencias de ejecución y 4 documentales o verificables |
 | `lab-api-local-azure` | Código, tests, CI, Bicep | Implementado y probado localmente |
 | `ai-agent-local-lab` | Laboratorio local-first, evaluación y robustez de prompts | Documentado |
 | `lanuzalorenzo` | Perfil profesional | Publicado |
@@ -82,7 +84,7 @@ Las evidencias (3 de ejecución y 4 documentales o verificables) están registra
 
 ## Próximos pasos
 
-- Convertir cada “Parcial” en una prueba ejecutada y enlazada.
+- Convertir cada «Parcial» en una prueba ejecutada y enlazada.
 - Añadir un registro de evidencias con fecha, entorno y resultado.
 - Revisar la matriz contra la versión vigente de cada marco.
 - Separar controles de laboratorio de controles de producción en la narrativa.

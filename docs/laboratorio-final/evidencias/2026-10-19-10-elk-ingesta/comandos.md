@@ -4,6 +4,8 @@
 >
 > Fecha: 2026-10-19.
 
+Comandos en el orden del runbook. Cada paso enlaza la salida redactada correspondiente.
+
 ## 1. Preflight
 
 ```bash
