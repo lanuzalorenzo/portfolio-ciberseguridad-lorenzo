@@ -1,12 +1,15 @@
-# 🧪 Guion — Práctica 08: Defender EASM
+# Guion — Práctica 08: Defender EASM
 
-## 🎯 Objetivo
-Descubrir, mapear y analizar activos expuestos en Internet mediante Defender EASM, identificando dominios, subdominios, servicios, tecnologías, vulnerabilidades y riesgos asociados a la superficie de ataque externa.
+> **En fácil:** este guion recorre qué hay de la organización visible desde Internet: dominios, servicios y tecnologías. Después se revisa qué está mal configurado o expuesto. Es mirar desde fuera, sin atacar nada.
 
----
+## Objetivo
 
-## 🧩 Contexto técnico
+Descubrir, mapear y analizar activos expuestos en Internet mediante Defender EASM: dominios, subdominios, servicios, tecnologías, vulnerabilidades y riesgos asociados a la superficie de ataque externa.
+
+## Contexto técnico
+
 Defender EASM permite:
+
 - Descubrimiento automático de activos expuestos.
 - Mapeo de dominios, subdominios y servicios.
 - Identificación de tecnologías y versiones.
@@ -14,44 +17,38 @@ Defender EASM permite:
 - Visibilidad sobre Shadow IT.
 - Integración con Defender XDR.
 
----
+## Preparación del entorno
 
-## 🛠 Preparación del entorno
 1. Activar EASM en la suscripción.
-2. Validar permisos del usuario.
+2. Validar los permisos del usuario.
 3. Crear un proyecto nuevo.
 
----
+## Descubrimiento de activos
 
-## 🌐 Descubrimiento de activos
-1. Configurar dominios raíz.
+1. Configurar los dominios raíz.
 2. Añadir rangos de IP opcionales.
-3. Ejecutar escaneo inicial.
+3. Ejecutar un escaneo inicial.
 4. Revisar:
-   - Dominios
-   - Subdominios
-   - IPs
-   - Servicios expuestos
-   - Tecnologías detectadas
+   - Dominios.
+   - Subdominios.
+   - IPs.
+   - Servicios expuestos.
+   - Tecnologías detectadas.
 
----
+## Análisis de riesgos
 
-## 🚨 Análisis de riesgos
-1. Revisar vulnerabilidades detectadas.
-2. Validar configuraciones inseguras.
-3. Revisar exposición de servicios.
+1. Revisar las vulnerabilidades detectadas.
+2. Validar las configuraciones inseguras.
+3. Revisar la exposición de servicios.
 4. Identificar Shadow IT.
 
----
+## Integración con XDR
 
-## 🔗 Integración con XDR
-1. Revisar incidentes relacionados.
-2. Validar correlación con señales de otros productos.
+1. Revisar los incidentes relacionados.
+2. Validar la correlación con señales de otros productos.
 
----
+## Cierre
 
-## 🧠 Cierre
-1. Evaluar superficie de ataque externa.
+1. Evaluar la superficie de ataque externa.
 2. Identificar mejoras futuras.
 3. Registrar en bitácora al final del módulo.
-
