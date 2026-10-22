@@ -1,12 +1,15 @@
-# 🧪 Guion — Práctica 04: Defender XDR
+# Guion — Práctica 04: Defender XDR
 
-## 🎯 Objetivo
-Analizar incidentes y correlaciones en Microsoft Defender XDR, comprendiendo cómo se unifican señales de identidad, endpoint, correo y aplicaciones para construir una visión completa del ataque, identificar técnicas MITRE ATT&CK y evaluar opciones de respuesta.
+> **En fácil:** este guion reúne en un solo incidente las señales de identidad, equipo, correo y aplicaciones. El objetivo es leer la historia del ataque en orden y ver qué se puede hacer desde un panel único. No se ejecutan acciones destructivas.
 
----
+## Objetivo
 
-## 🧩 Contexto técnico
+Analizar incidentes y correlaciones en Microsoft Defender XDR: cómo se unifican las señales de identidad, endpoint, correo y aplicaciones para construir una visión del ataque, identificar técnicas MITRE ATT&CK y evaluar opciones de respuesta.
+
+## Contexto técnico
+
 Microsoft Defender XDR es la plataforma de correlación y respuesta unificada que integra:
+
 - Señales de **Defender for Identity**.
 - Señales de **Defender for Endpoint**.
 - Señales de **Defender for Office 365**.
@@ -14,34 +17,37 @@ Microsoft Defender XDR es la plataforma de correlación y respuesta unificada qu
 - Señales de **Azure AD / Entra ID**.
 
 Su objetivo es:
+
 - Correlacionar eventos dispersos en un único incidente.
 - Mostrar la cronología completa del ataque.
-- Identificar entidades implicadas.
+- Identificar las entidades implicadas.
 - Clasificar técnicas MITRE ATT&CK.
 - Facilitar la respuesta centralizada.
 
----
+## Preparación del entorno
 
-## 🛠 Preparación del entorno
+### 1. Revisión del estado del portal
 
-### 🔹 1. Revisión del estado del portal
 Antes de analizar incidentes:
+
 - Validar que los sensores de Identity y Endpoint están enviando telemetría.
 - Confirmar que SafeLinks y SafeAttachments están activos.
 - Revisar que no existan errores de ingestión en ningún producto.
 
-### 🔹 2. Requisitos de permisos
+### 2. Requisitos de permisos
+
 El usuario debe disponer de:
+
 - Rol de **Security Reader**, **Security Operator** o superior.
 - Acceso al portal de Microsoft Defender XDR.
-- Permisos para ejecutar acciones de respuesta (si se van a probar).
+- Permisos para ejecutar acciones de respuesta, si se van a probar.
 
----
+## Análisis de incidentes
 
-## 🚨 Análisis de incidentes
+### 3. Revisión de incidentes activos
 
-### 🔹 3. Revisión de incidentes activos
 En Microsoft Defender XDR:
+
 - Acceder a **Incidents**.
 - Seleccionar un incidente activo o simulado.
 - Revisar:
@@ -50,74 +56,79 @@ En Microsoft Defender XDR:
   - Técnicas MITRE asociadas.
   - Productos implicados.
 
-### 🔹 4. Correlación de señales
-Analizar cómo el incidente agrupa señales de:
-- Identity (movimiento lateral, Pass-the-Hash, anomalías de autenticación).
-- Endpoint (procesos sospechosos, conexiones anómalas).
-- Office 365 (phishing, SafeLinks, SafeAttachments).
-- Cloud Apps (actividad anómala en aplicaciones SaaS).
+### 4. Correlación de señales
 
-### 🔹 5. Attack Timeline
+Analizar cómo el incidente agrupa señales de:
+
+- Identity: movimiento lateral, Pass-the-Hash y anomalías de autenticación.
+- Endpoint: procesos sospechosos y conexiones anómalas.
+- Office 365: phishing, SafeLinks y SafeAttachments.
+- Cloud Apps: actividad anómala en aplicaciones SaaS.
+
+### 5. Attack Timeline
+
 Revisar la cronología del ataque:
+
 - Evento inicial.
 - Expansión del ataque.
 - Técnicas MITRE detectadas.
 - Entidades afectadas.
 - Acciones del atacante simuladas.
 
----
+## Análisis de entidades
 
-## 🧬 Análisis de entidades
+### 6. Entidades implicadas
 
-### 🔹 6. Entidades implicadas
 Para cada incidente:
-- Revisar usuarios implicados.
-- Revisar dispositivos afectados.
-- Revisar correos relacionados.
-- Revisar procesos y conexiones.
-- Revisar aplicaciones cloud utilizadas.
 
-### 🔹 7. Evaluación del impacto
+- Revisar los usuarios implicados.
+- Revisar los dispositivos afectados.
+- Revisar los correos relacionados.
+- Revisar los procesos y las conexiones.
+- Revisar las aplicaciones cloud utilizadas.
+
+### 7. Evaluación del impacto
+
 Determinar:
+
 - Alcance del incidente.
 - Riesgo para identidades privilegiadas.
 - Riesgo para endpoints críticos.
 - Riesgo para correo y colaboración.
 
----
+## Opciones de respuesta
 
-## 🛡 Opciones de respuesta
+### 8. Acciones disponibles
 
-### 🔹 8. Acciones disponibles
 Defender XDR permite:
+
 - Aislar un dispositivo.
 - Revocar sesiones de usuario.
 - Marcar un correo como malicioso.
-- Bloquear un archivo o hash.
+- Bloquear un archivo o un hash.
 - Ejecutar acciones automáticas basadas en reglas.
 
-### 🔹 9. Validación de acciones
+### 9. Validación de acciones
+
 En el laboratorio:
+
 - Revisar qué acciones están disponibles.
 - Validar que las acciones se muestran correctamente.
-- No ejecutar acciones destructivas (laboratorio controlado).
+- No ejecutar acciones destructivas: laboratorio controlado.
 
----
+## Cierre de la práctica
 
-## 🧠 Cierre de la práctica
+### 10. Conclusiones técnicas
 
-### 🔹 10. Conclusiones técnicas
 - Evaluar la correlación entre señales.
 - Confirmar que el incidente se construye correctamente.
 - Validar que la cronología del ataque es coherente.
-- Identificar mejoras futuras (automatización, reglas avanzadas).
+- Identificar mejoras futuras: automatización y reglas avanzadas.
 
-### 🔹 11. Registro en bitácora
-Se documentará al final del módulo, según tu instrucción.
+### 11. Registro en bitácora
 
----
+Se documentará al final del módulo.
 
-## ⚖️ Aviso Legal
-Este documento describe prácticas realizadas en un entorno de laboratorio.
-No contiene información sensible ni perteneciente a ninguna organización real.
-Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
+## Aviso legal
+
+Este documento describe prácticas realizadas en un entorno de laboratorio. No contiene información sensible ni perteneciente a ninguna organización real. Las configuraciones y ejemplos son demostraciones técnicas con fines educativos.
