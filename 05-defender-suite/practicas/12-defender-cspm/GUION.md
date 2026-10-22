@@ -1,12 +1,15 @@
-# 🧪 Guion — Práctica 12: Defender CSPM
+# Guion — Práctica 12: Defender CSPM
 
-## 🎯 Objetivo
+> **En fácil:** este guion revisa si la configuración de la nube está como debe estar: qué recursos están abiertos, qué normas se incumplen y qué toca arreglar primero.
+
+## Objetivo
+
 Evaluar y mejorar la postura de seguridad cloud mediante CSPM, revisando configuraciones inseguras, cumplimiento, riesgos y recomendaciones automatizadas.
 
----
+## Contexto técnico
 
-## 🧩 Contexto técnico
 Defender CSPM permite:
+
 - Evaluación continua de postura de seguridad.
 - Recomendaciones basadas en Azure Security Benchmark.
 - Detección de configuraciones inseguras.
@@ -14,51 +17,43 @@ Defender CSPM permite:
 - Exposición basada en riesgo.
 - Integración con Defender XDR.
 
----
+## Preparación del entorno
 
-## 🛠 Preparación del entorno
 1. Activar CSPM.
 2. Validar permisos.
-3. Confirmar ingestión de recursos.
+3. Confirmar la ingestión de recursos.
 
----
+## Postura de seguridad
 
-## 📊 Postura de seguridad
-1. Revisar panel de postura.
-2. Validar configuraciones inseguras.
-3. Revisar recursos afectados.
+1. Revisar el panel de postura.
+2. Validar las configuraciones inseguras.
+3. Revisar los recursos afectados.
 
----
+## Cumplimiento
 
-## 📜 Cumplimiento
-1. Revisar desviaciones.
-2. Validar políticas incumplidas.
-3. Revisar impacto en recursos.
+1. Revisar las desviaciones.
+2. Validar las políticas incumplidas.
+3. Revisar el impacto en los recursos.
 
----
+## Riesgos y exposición
 
-## 🚨 Riesgos y exposición
-1. Revisar exposición basada en riesgo.
-2. Validar recursos críticos.
-3. Revisar acciones sugeridas.
+1. Revisar la exposición basada en riesgo.
+2. Validar los recursos críticos.
+3. Revisar las acciones sugeridas.
 
----
+## Recomendaciones
 
-## 🛡 Recomendaciones
-1. Revisar recomendaciones priorizadas.
-2. Validar configuraciones inseguras.
-3. Revisar acciones de remediación.
+1. Revisar las recomendaciones priorizadas.
+2. Validar las configuraciones inseguras.
+3. Revisar las acciones de remediación.
 
----
+## Integración con XDR
 
-## 🔗 Integración con XDR
-1. Revisar incidentes relacionados.
-2. Validar correlación con señales de Cloud.
+1. Revisar los incidentes relacionados.
+2. Validar la correlación con señales de Cloud.
 
----
+## Cierre
 
-## 🧠 Cierre
-1. Evaluar postura de seguridad.
+1. Evaluar la postura de seguridad.
 2. Identificar mejoras futuras.
 3. Registrar en bitácora al final del módulo.
-

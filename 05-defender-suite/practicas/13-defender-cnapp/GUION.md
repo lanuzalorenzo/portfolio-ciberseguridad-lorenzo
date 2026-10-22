@@ -1,12 +1,15 @@
-# 🧪 Guion — Práctica 13: Defender CNAPP
+# Guion — Práctica 13: Defender CNAPP
 
-## 🎯 Objetivo
+> **En fácil:** este guion revisa lo que se despliega en la nube antes y después de publicarlo: plantillas de infraestructura, imágenes de contenedor y cargas en ejecución.
+
+## Objetivo
+
 Proteger aplicaciones cloud-native mediante CNAPP, revisando IaC, contenedores, workloads, exposición y correlación con XDR.
 
----
+## Contexto técnico
 
-## 🧩 Contexto técnico
 CNAPP permite:
+
 - Escaneo de IaC.
 - Seguridad de contenedores.
 - Protección de workloads cloud-native.
@@ -14,52 +17,44 @@ CNAPP permite:
 - Integración con DevOps.
 - Correlación con XDR.
 
----
+## Preparación del entorno
 
-## 🛠 Preparación del entorno
 1. Activar CNAPP.
 2. Validar permisos.
-3. Confirmar ingestión de recursos cloud-native.
+3. Confirmar la ingestión de recursos cloud-native.
 
----
+## Escaneo de IaC
 
-## 🛠 Escaneo de IaC
-1. Revisar escaneos de Terraform, Bicep y ARM.
-2. Validar configuraciones inseguras.
-3. Revisar recomendaciones.
+1. Revisar los escaneos de Terraform, Bicep y ARM.
+2. Validar las configuraciones inseguras.
+3. Revisar las recomendaciones.
 
----
+## Seguridad de contenedores
 
-## 🐳 Seguridad de contenedores
-1. Revisar imágenes escaneadas.
-2. Validar vulnerabilidades detectadas.
-3. Revisar configuraciones inseguras.
+1. Revisar las imágenes escaneadas.
+2. Validar las vulnerabilidades detectadas.
+3. Revisar las configuraciones inseguras.
 
----
+## Protección de workloads cloud-native
 
-## ☁️ Protección de workloads cloud-native
-1. Revisar workloads protegidos.
-2. Validar alertas generadas.
-3. Revisar correlación con XDR.
+1. Revisar los workloads protegidos.
+2. Validar las alertas generadas.
+3. Revisar la correlación con XDR.
 
----
+## Exposición y riesgos
 
-## 🚨 Exposición y riesgos
-1. Revisar exposición basada en riesgo.
-2. Validar recursos críticos.
-3. Revisar acciones sugeridas.
+1. Revisar la exposición basada en riesgo.
+2. Validar los recursos críticos.
+3. Revisar las acciones sugeridas.
 
----
+## Recomendaciones
 
-## 🛡 Recomendaciones
-1. Revisar recomendaciones priorizadas.
-2. Validar configuraciones inseguras.
-3. Revisar acciones de remediación.
+1. Revisar las recomendaciones priorizadas.
+2. Validar las configuraciones inseguras.
+3. Revisar las acciones de remediación.
 
----
+## Cierre
 
-## 🧠 Cierre
-1. Evaluar seguridad cloud-native.
+1. Evaluar la seguridad cloud-native.
 2. Identificar mejoras futuras.
 3. Registrar en bitácora al final del módulo.
-
