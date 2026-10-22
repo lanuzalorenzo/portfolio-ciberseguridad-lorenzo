@@ -29,7 +29,16 @@ Ejemplo:
 2026-10-19-10-elk-ingesta/
 ```
 
-## Contenido mínimo de una evidencia de ejecución
+## Dos rutas dentro de la evidencia de ejecución
+
+| Ruta | Qué registra | Núcleo |
+|---|---|---|
+| **A — Ejecución** | Algo que se ejecutó: comandos, salida y artefactos | Comandos, validación, artefactos |
+| **B — Decisión** | Algo que se decidió: tabletop, triaje, simulacro, respuesta a incidente | El caso, propuestas y valoración, decisión óptima |
+
+Una evidencia de **decisión** se indexa como de ejecución —se hizo, con fecha y acta—, pero **no puede declarar PASS sin acta de decisiones**. Lo que prueba es criterio, no capacidad técnica: el estado del módulo no sube a **Validado** hasta que exista recolección real.
+
+## Contenido mínimo de una evidencia de ejecución (ruta A)
 
 - Fecha y responsable.
 - Runbook utilizado.
@@ -77,4 +86,4 @@ Ejemplo:
 
 ## Plantilla
 
-Usa la [plantilla de evidencia](../../../plantillas/evidencia-template.md) como punto de partida para una evidencia de ejecución.
+Usa la [plantilla de evidencia](../../../plantillas/evidencia-template.md) como punto de partida. Tiene dos rutas: **A** para lo ejecutado y **B** para lo decidido (tabletop, triaje, simulacro). El acta `2026-10-22-12-tabletop` es la primera evidencia escrita con la ruta B.
