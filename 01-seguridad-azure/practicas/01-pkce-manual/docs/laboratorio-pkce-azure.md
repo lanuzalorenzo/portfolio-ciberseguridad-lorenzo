@@ -1,76 +1,61 @@
-# 🔐 Laboratorio: OAuth2 Authorization Code Flow con PKCE en Azure AD
+# Laboratorio — OAuth 2.0 Authorization Code con PKCE
 
-## 🧾 Descripción
-Este laboratorio muestra cómo proteger una API local con tokens JWT emitidos por Microsoft Entra ID (Azure AD) utilizando el flujo OAuth2 Authorization Code con PKCE.  
-El flujo PKCE elimina la necesidad de un client secret y permite que aplicaciones públicas (SPA, móviles, scripts) realicen autenticación segura.
+> **En fácil:** una aplicación pública pide permiso a Microsoft Entra ID sin guardar ninguna contraseña. Entra ID devuelve un pase temporal y la API comprueba que el pase es auténtico antes de responder. Es como una consigna: se entrega un resguardo, no la llave maestra.
 
----
+## Descripción
 
-## 🏛️ Arquitectura del flujo
+Este laboratorio muestra cómo proteger una API local con tokens JWT emitidos por Microsoft Entra ID (Azure AD) mediante el flujo OAuth 2.0 Authorization Code con PKCE. PKCE elimina la necesidad de un client secret y permite que aplicaciones públicas (SPA, móviles, scripts) se autentiquen sin guardar credenciales.
 
-Usuario / Navegador  
-→ Solicita acceso a la aplicación
+## Arquitectura del flujo
 
-Azure AD / Microsoft Entra ID  
-→ Emite authorization code + PKCE challenge
+| Paso | Quién | Qué ocurre |
+|---|---|---|
+| 1 | Usuario o navegador | Solicita acceso a la aplicación |
+| 2 | Microsoft Entra ID | Emite authorization code y PKCE challenge |
+| 3 | Cliente (SPA, script, app pública) | Intercambia el authorization code usando `code_verifier` |
+| 4 | Microsoft Entra ID | Emite `access_token` y `refresh_token` |
+| 5 | API local (Node.js + Express) | Valida el JWT usando JWKS |
+| 6 | API local | Devuelve los datos protegidos |
 
-Cliente (SPA / Script / App pública)  
-→ Intercambia authorization code usando code_verifier
+## ¿Por qué PKCE?
 
-Azure AD  
-→ Emite access_token + refresh_token
+PKCE protege el flujo Authorization Code en clientes que no pueden almacenar secretos. El servidor comprueba que el `code_verifier` coincide con el `code_challenge` original, lo que evita el uso de un authorization code interceptado.
 
-API local (Node.js + Express)  
-→ Valida JWT usando JWKS
+## 1. Registro de aplicaciones en Azure AD
 
-Respuesta  
-→ Datos protegidos
+Se registran dos aplicaciones.
 
----
+### Aplicación cliente (SPA o script)
 
-## ❓ ¿Por qué PKCE?
-PKCE asegura el flujo Authorization Code en clientes que **no pueden almacenar secretos**.  
-El servidor comprueba que el code_verifier coincide con el code_challenge original, evitando ataques de interceptación del authorization code.
+- No usa client secret.
+- Debe permitir el flujo Authorization Code + PKCE.
+- Debe tener permisos delegados sobre la API.
 
----
+### API protegida (recurso)
 
-## 🧩 1. Registro de aplicaciones en Azure AD
-
-Se registran dos aplicaciones:
-
-### ✔️ Aplicación cliente (SPA / script)
-- No usa client secret  
-- Debe permitir flujo Authorization Code + PKCE  
-- Debe tener permisos delegados sobre la API
-
-### ✔️ API protegida (Resource API)
 Debe exponer un scope, por ejemplo:
 
-```
+```text
 api://<api-client-id>/access_as_user
 ```
 
----
+## 2. Generación de PKCE
 
-## 🧩 2. Generación de PKCE
+El cliente genera dos valores:
 
-El cliente genera:
-
-- **code_verifier** → cadena aleatoria de 43–128 caracteres  
-- **code_challenge** → `BASE64URL(SHA256(code_verifier))`
+- `code_verifier`: cadena aleatoria de 43 a 128 caracteres.
+- `code_challenge`: `BASE64URL(SHA256(code_verifier))`.
 
 Script incluido en el laboratorio:
 
-```
+```bash
 ./api-local/scripts/generate-pkce.sh
 ```
 
----
+## 3. Construcción de la URL de autorización
 
-## 🧩 3. Construcción de la URL de autorización
-
-```
-[https://login.microsoftonline.com/](https://login.microsoftonline.com/)<tenant-id>/oauth2/v2.0/authorize
+```text
+https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/authorize
   ?client_id=<client-id>
   &response_type=code
   &redirect_uri=http://localhost/callback
@@ -81,146 +66,125 @@ Script incluido en el laboratorio:
   &code_challenge_method=S256
 ```
 
----
+## 4. Obtención del authorization code
 
-## 🧩 4. Obtención del authorization_code
+Tras autenticarse, Entra ID redirige a:
 
-Tras autenticarse, Azure AD redirige a:
-
-```
+```text
 http://localhost/callback?code=<authorization_code>&state=123456
 ```
 
----
-
-## 🧩 5. Intercambio del authorization_code por token
+## 5. Intercambio del código por token
 
 ```bash
 curl -X POST \
-"https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token" \
--H "Content-Type: application/x-www-form-urlencoded" \
---data-urlencode "client_id=<client-id>" \
---data-urlencode "scope=api://<api-client-id>/access_as_user" \
---data-urlencode "code=<authorization_code>" \
---data-urlencode "redirect_uri=http://localhost/callback" \
---data-urlencode "grant_type=authorization_code" \
---data-urlencode "code_verifier=<code_verifier>"
+  "https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  --data-urlencode "client_id=<client-id>" \
+  --data-urlencode "scope=api://<api-client-id>/access_as_user" \
+  --data-urlencode "code=<authorization_code>" \
+  --data-urlencode "redirect_uri=http://localhost/callback" \
+  --data-urlencode "grant_type=authorization_code" \
+  --data-urlencode "code_verifier=<code_verifier>"
 ```
 
-Respuesta:
+La respuesta contiene:
 
-- access_token  
-- refresh_token  
-- expires_in  
-- token_type  
+- `access_token`
+- `refresh_token`
+- `expires_in`
+- `token_type`
 
----
+## 6. Validación del JWT en la API local
 
-## 🧩 6. Validación del JWT en la API local
+La API no confía en el cliente: valida el token con las claves JWKS publicadas en:
 
-La API **no confía en el cliente**.  
-Valida el token usando JWKS:
-
-```
+```text
 https://login.microsoftonline.com/<tenant-id>/discovery/v2.0/keys
 ```
 
 Se verifica:
 
-- `iss`  
-- `aud`  
-- `exp`  
-- `nbf`  
-- firma RS256  
-- `kid` presente en JWKS  
+- `iss`
+- `aud`
+- `exp`
+- `nbf`
+- firma RS256
+- que el `kid` esté presente en JWKS
 
-Código relevante:
-- `api-local/server.js`  
-- `api-local/utils/validateToken.js`
+El código relevante está en `api-local/server.js` y `api-local/utils/validateToken.js`.
 
----
+## 7. Errores comunes
 
-## ⚠️ Errores comunes
+### Error 501481
 
-### ❌ Error 501481  
-Falta autorización o flujo PKCE no habilitado.
+Falta autorización o el flujo PKCE no está habilitado. Comprueba:
 
-Soluciones:
-- Usar `response_type=code`  
-- Usar `code_challenge_method=S256`  
-- Revisar `redirect_uri`  
-- Habilitar *public client flows* si aplica  
+- `response_type=code`
+- `code_challenge_method=S256`
+- `redirect_uri`
+- *public client flows*, si aplica
 
----
+### Error 90013
 
-### ❌ Error 90013  
-Falta consentimiento o permisos delegados.
+Falta consentimiento o permisos delegados. Comprueba:
 
-Soluciones:
-- Conceder permisos delegados  
-- Aceptar consentimiento administrativo  
-- Revisar scope correcto  
+- los permisos delegados concedidos
+- el consentimiento administrativo
+- el scope solicitado
 
----
+### Token inválido en la API local
 
-### ❌ Token inválido en la API local
+Causas: `aud` incorrecto, `iss` incorrecto, firma no válida o token expirado.
 
-Causas:
-- `aud` incorrecto  
-- `iss` incorrecto  
-- firma no válida  
-- token expirado  
+Revisa `.env`, `API_AUDIENCE`, `AZURE_TENANT_ID` y `AZURE_CLIENT_ID`.
 
-Soluciones:
-- Revisar `.env`  
-- Revisar `API_AUDIENCE`  
-- Revisar `AZURE_TENANT_ID` y `AZURE_CLIENT_ID`  
-
----
-
-## 🧪 Pasos del laboratorio
+## 8. Pasos del laboratorio
 
 1. Instalar dependencias:
+
    ```bash
    cd api-local
    npm install
    ```
 
-2. Iniciar API:
+2. Iniciar la API:
+
    ```bash
    npm start
    ```
 
 3. Generar PKCE:
+
    ```bash
    ./scripts/generate-pkce.sh
    ```
 
-4. Construir URL de autorización  
-5. Autenticarse y obtener authorization_code  
-6. Intercambiar código por token:
+4. Construir la URL de autorización.
+
+5. Autenticarse y obtener el authorization code.
+
+6. Intercambiar el código por un token:
+
    ```bash
    ./scripts/exchange-token.sh
    ```
 
-7. Consumir API:
+7. Consumir la API:
+
    ```bash
    export ACCESS_TOKEN="<access_token>"
    ./scripts/call-api.sh
    ```
 
----
+## 9. Buenas prácticas
 
-## 🧩 Buenas prácticas
+- No enviar client secret en clientes públicos.
+- Usar siempre S256.
+- Validar el JWT en la API, no en el front-end.
+- Mantener el `redirect_uri` exacto.
+- Revisar permisos y consentimiento.
 
-- Nunca enviar client secret en clientes públicos  
-- Usar siempre `S256`  
-- Validar JWT en la API, no en el front-end  
-- Mantener `redirect_uri` exacto  
-- Revisar permisos y consentimiento  
+## 10. Conclusión
 
----
-
-## ✔️ Conclusión
-PKCE añade una capa crítica de seguridad al flujo Authorization Code en aplicaciones públicas.  
-Combinado con validación JWT mediante JWKS en la API, se obtiene un modelo robusto para proteger recursos y garantizar acceso seguro.
+PKCE añade una capa de seguridad al flujo Authorization Code en aplicaciones públicas. La validación del JWT con JWKS completa el modelo: la API no confía en lo que le envía el cliente.
