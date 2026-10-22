@@ -8,6 +8,8 @@
 >
 > **Ruta manual:** este runbook está pensado para seguirlo sin asistente. Cada paso indica qué abrir, qué escribir y qué debe aparecer. Si algo no coincide, no continúes: revisa el punto de control.
 
+> **En fácil:** con los registros ya cargados, este documento enseña a mirarlos, hacer seis preguntas y guardar las respuestas en un panel. Es la parte de mirar, no la de recoger.
+
 ## 1. Prerrequisitos
 
 - Pila ELK levantada con el runbook 01.
@@ -228,7 +230,7 @@ Para esta visualización es más claro usar una **búsqueda guardada en Discover
    - Abajo: `Lab 02` (tabla de IPs) y `Lab 04` (búsqueda de errores web).
 7. Pulsa **Save**.
 8. **Title:** `Lab Security — ELK`.
-9. Marca **Store time range** o **Save current time range** si aparece. Así el dashboard abrirá siempre con el rango correcto y no con “Last 15 minutes”.
+9. Marca **Store time range** o **Save current time range** si aparece. Así el dashboard abrirá siempre con el rango correcto y no con «Last 15 minutes».
 10. Pulsa **Save**.
 11. Pulsa **Switch to view mode** para salir del modo edición.
 

@@ -7,6 +7,8 @@
 > **Entorno:** ninguno. Simulacro sobre documentación, datos sintéticos, sin suscripción de Azure.
 > **Coste:** 0. **Limpieza:** no aplica. **Recursos desplegados:** 0.
 
+> **En fácil:** alguien entra por una puerta abierta y usa la identidad de la aplicación para leer una contraseña guardada. El ejercicio mide si se cierra la puerta correcta: aquí era la identidad, no el cortafuegos. No se ejecutó nada; las pistas las puso el facilitador.
+
 ## 1. El caso
 
 `INC-2026-001` sobre el laboratorio `rg-lab-forense`. La API `app-api-lab` es una aplicación .NET que corre en App Service con identidad gestionada y lee su cadena de conexión del secreto `sql-conn` en `kv-lab-forense`. La red se controla con `nsg-app`.

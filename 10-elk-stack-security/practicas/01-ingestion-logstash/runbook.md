@@ -6,6 +6,8 @@
 >
 > **Objetivo de la sesión:** levantar la pila ELK local, ingerir 15 eventos sintéticos y verificar que Logstash normaliza los campos de seguridad.
 
+> **En fácil:** este documento explica cómo arrancar tres programas en local, darles registros de ejemplo y comprobar que salen ordenados. Al terminar se apaga todo. Nada de esto toca Azure ni datos reales.
+
 ## 1. Alcance
 
 - Entorno local con Docker Compose.
