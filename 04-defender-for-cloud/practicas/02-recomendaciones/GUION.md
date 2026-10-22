@@ -1,9 +1,11 @@
-# 🧪 Guion — Práctica 02: Recomendaciones
+# Guion — Práctica 02: Recomendaciones
 
-## 🎯 Objetivo
+## Objetivo
+
 Analizar y aplicar recomendaciones de seguridad para mejorar el Security Score.
 
-## 🛠 Pasos detallados
+## Pasos detallados
+
 1. Acceder al panel de recomendaciones.
 2. Revisar el Security Score inicial.
 3. Identificar recomendaciones críticas.
@@ -11,11 +13,13 @@ Analizar y aplicar recomendaciones de seguridad para mejorar el Security Score.
 5. Validar el impacto en el Security Score.
 6. Documentar resultados.
 
-## 📌 Entregables
+## Entregables
+
 - README de la práctica.
 - Documento técnico.
 - Conclusiones.
 - Bitácora del día.
 
-## ⚖️ Aviso Legal
+## Aviso legal
+
 Este documento describe prácticas realizadas en un entorno de laboratorio.
