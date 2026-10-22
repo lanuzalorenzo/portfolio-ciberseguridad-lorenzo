@@ -13,7 +13,7 @@ Traducir el trabajo técnico del portfolio a un lenguaje de control: qué marco 
 - **Pendiente:** no hay implementación ni evidencia.
 - **No aplica:** el control no corresponde al alcance del laboratorio.
 
-La evidencia enlaza al módulo o al repositorio de la API. Cuando la evidencia es documental, se indica; cuando es código o CI, también.
+La evidencia enlaza al módulo o al repositorio de la API. Cuando la columna indica **IA local**, la evidencia vive en `ai-agent-local-lab`; cuando indica **API**, en `lab-api-local-azure`.
 
 ## Matriz principal
 
@@ -49,6 +49,10 @@ La evidencia enlaza al módulo o al repositorio de la API. Cuando la evidencia e
 | **OWASP API4** | Resource Consumption | 11 | Rate limit, límites | Parcial |
 | **OWASP API5** | BFLA | 11 | Revisión | Pendiente |
 | **OWASP API8** | Misconfiguration | 07, 08, 11 | CORS, headers, contenedor | Parcial |
+| **OWASP LLM01** | Prompt Injection | IA local, 11 | Conjunto dorado, pruebas de inyección y matriz de perturbación | Diseño: sin ejecución |
+| **OWASP LLM02** | Salida no confiable | API | Validación de esquema y *fallback* determinista | Diseño |
+| **OWASP LLM07** | Fuga del prompt de sistema | IA local | Canario de fuga (C2) | Diseño |
+| **OWASP LLM10** | Consumo ilimitado | API, 11 | Límite de tokens, cuota y alerta | Parcial: rate limit de laboratorio, sin gateway de IA |
 | **ISO 27001 A.8** | Gestión de activos | 03 | Auditoría | Parcial |
 | **ISO 27001 A.12** | Operaciones | 09, 12 | Monitorización | Parcial |
 | **ISO 27001 A.14** | Desarrollo seguro | 07, 11 | DevSecOps, pruebas | Cubierto |
@@ -59,7 +63,7 @@ La evidencia enlaza al módulo o al repositorio de la API. Cuando la evidencia e
 |---|---|---|
 | `portfolio-ciberseguridad-lorenzo` | Módulos 01–12, bitácoras, prácticas y 7 evidencias indexadas | Documentado + 3 de ejecución y 4 documentales/verificables |
 | `lab-api-local-azure` | Código, tests, CI, Bicep | Implementado y probado localmente |
-| `ai-agent-local-lab` | Laboratorio local-first, seguridad de prompts | Documentado |
+| `ai-agent-local-lab` | Laboratorio local-first, evaluación y robustez de prompts | Documentado |
 | `lanuzalorenzo` | Perfil profesional | Publicado |
 | `lanuzalorenzo.github.io` | Portfolio web | Publicado |
 
@@ -74,6 +78,7 @@ Las evidencias (3 de ejecución y 4 documentales o verificables) están registra
 5. **Sin tabletop:** el playbook no se ha ejercitado.
 6. **Sin medición de tiempos:** detección, contención y recuperación no están medidas.
 7. **Sin SBOM ni firma de artefactos:** línea de trabajo DevSecOps.
+8. **Sin evidencias de IA:** la integración, la evaluación y la robustez de LLM están diseñadas y no ejecutadas; las filas **OWASP LLM** reflejan diseño, no validación.
 
 ## Próximos pasos
 
