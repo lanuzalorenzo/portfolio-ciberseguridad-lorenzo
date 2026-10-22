@@ -1,6 +1,6 @@
 # Laboratorio final
 
-> **Estado:** dos evidencias de ejecución (ELK, módulo 10; BOLA/BFLA, módulo 11) y cuatro documentales o verificables (02, 03, 04 y 07). Las fases Azure siguen pendientes de autorización y presupuesto; no hay recursos Azure desplegados.
+> **Estado:** tres evidencias de ejecución (ELK, módulo 10; BOLA/BFLA, módulo 11; tabletop forense, módulo 12) y cuatro documentales o verificables (02, 03, 04 y 07). Las fases Azure siguen pendientes de autorización y presupuesto; no hay recursos Azure desplegados.
 >
 > Este documento define el marco común. El estado real de cada control se consulta en el README de su módulo y en el [índice de evidencias](evidencias/README.md).
 

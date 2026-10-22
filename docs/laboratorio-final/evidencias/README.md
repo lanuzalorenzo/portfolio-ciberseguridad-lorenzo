@@ -1,6 +1,6 @@
 # Índice de evidencias
 
-> **Estado:** 6 evidencias registradas: 2 de ejecución y 4 documentales o verificables.
+> **Estado:** 7 evidencias registradas: 3 de ejecución y 4 documentales o verificables.
 
 Este directorio centraliza las evidencias del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook, un informe o un run de CI, y hasta un entorno concreto. No es un repositorio de capturas sueltas.
 
@@ -56,6 +56,7 @@ Ejemplo:
 |---|---|---|---|---|
 | 2026-10-19 | 10 — ELK Stack Security | 01 — Ingestión y normalización · 02 — Kibana | Validado en local | [Ver evidencia](2026-10-19-10-elk-ingesta/README.md) |
 | 2026-10-21 | 11 — Hacking ético de APIs | 01 — BOLA/BFLA · 03 — Mass assignment | Validado en local | [Ver evidencia](2026-10-21-11-api-bola/README.md) |
+| 2026-10-22 | 12 — Forense cloud y respuesta | 03 — Playbook de respuesta · tabletop | PASS como tabletop (sin recolección técnica) | [Ver acta](2026-10-22-12-tabletop/README.md) |
 
 ## Evidencias documentales y verificables
 
@@ -72,6 +73,7 @@ Ejemplo:
 
 - Módulo 01: reejecutar PKCE manual con tenant de laboratorio y generar evidencia de ejecución.
 - Módulo 06: ejecutar las prácticas y sustituir las tablas «Pendiente» por resultados reales.
+- Módulo 12: ejecutar la variante de laboratorio del tabletop y la recolección técnica con datos sintéticos.
 
 ## Plantilla
 

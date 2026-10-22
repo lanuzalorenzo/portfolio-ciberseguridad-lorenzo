@@ -1,6 +1,6 @@
 # 12 | Forense cloud y respuesta a incidentes
 
-> **Estado:** diseño y KQL documentados. No se han ejecutado las consultas en un workspace de Sentinel con datos reales ni se ha realizado un tabletop con evidencia de producción.
+> **Estado:** parcial. Playbook, runbook y KQL documentados, y **tabletop ejecutado el 2026-10-22** con [acta](../docs/laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md). Pendiente: variante de laboratorio, recolección técnica y ejecución de las consultas en un workspace de Sentinel con datos.
 
 Este módulo cubre la investigación de incidentes en Azure desde la recolección de evidencia hasta la respuesta. Se apoya en la telemetría que ya define la arquitectura de referencia: Activity Log, Entra ID, Defender, App Service, Key Vault y flujos de red.
 

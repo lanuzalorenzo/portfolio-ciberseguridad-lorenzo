@@ -1,8 +1,8 @@
 # Runbook — 12 Forense cloud / Tabletop de respuesta
 
-> **Estado:** Diseño — esqueleto. No ejecutado.
+> **Estado:** Parcial — ejecutado como tabletop. Variante de laboratorio sin ejecutar.
 >
-> **Última ejecución:** no ejecutado.
+> **Última ejecución:** 2026-10-22, tabletop de decisión (sin recolección técnica). Acta: [`docs/laboratorio-final/evidencias/2026-10-22-12-tabletop/`](../../../docs/laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md).
 >
 > **Tipo:** tabletop (simulacro) sobre el playbook; variante de laboratorio opcional.
 
@@ -163,7 +163,28 @@ Criterios de éxito: las seis fases cubiertas, cada decisión con responsable y 
 
 Estado actual: **vacío**. No hay tabletop ejecutado.
 
-## 9. Limpieza
+## 9. Re-ejecución y comparación
+
+Una sola ejecución no dice si el criterio se ha interiorizado o si se acertó por suerte. La repetición se planifica:
+
+- **Cuándo:** al menos una semana después y, preferiblemente, cuando exista telemetría real (App Service desplegado y diagnóstico activo). No se repite en la misma sesión.
+- **Qué se conserva:** variables, guion de inyecciones, tabla de volatilidad y criterio de contención.
+- **Qué se cambia:** **una sola variable** del escenario por iteración, para poder atribuir la diferencia a esa variable y no al azar. Las variantes están listadas en el acta del 2026-10-22.
+- **Protocolo ciego:** la persona no relee el acta anterior ni las lecciones; el acta previa se «sella» hasta cerrar la iteración; el facilitador no revela el orden de las inyecciones.
+- **Registro:** carpeta propia `YYYY-MM-DD-12-tabletop-iterN/`, con el acta y una tabla comparativa de las métricas frente a la iteración anterior.
+
+**Rúbrica (cuatro métricas, medidas por el facilitador):**
+
+| Métrica | Umbral |
+|---|---|
+| Minutos hasta **cortar la identidad** (no hasta «contener») | ≤ 10 |
+| Piezas de evidencia volátil capturadas **antes** de contener | ≥ 3 |
+| ¿Pidió la cardinalidad de IPs y tokens del pico `401`? | Sí |
+| ¿Rotó el secreto **sin** cortar la identidad? | No |
+
+La iteración **no sustituye** a la anterior: se comparan. El módulo solo pasa a **Validado** cuando la iteración incluye recolección real (variante de laboratorio), no solo decisión.
+
+## 10. Limpieza
 
 Tabletop: no crea recursos. Archivar el acta y enlazarla desde la bitácora.
 
@@ -176,16 +197,16 @@ az group exists --name "$RESOURCE_GROUP"
 
 **Verificación:** el resource group no existe y no quedan Key Vault, NSG ni snapshots huérfanos.
 
-## 10. Coste y tiempo
+## 11. Coste y tiempo
 
 - **Coste tabletop:** 0 €.
 - **Coste variante lab:** estimado por debajo de 5 €; no medido.
 - **Tiempo:** 90 min de simulacro + 30 min de hot wash.
 - **Tiempo real:** no medido.
 
-## 11. Limitaciones
+## 12. Limitaciones
 
-- El tabletop no se ha ejecutado: este documento es un esqueleto.
+- El tabletop se ha ejecutado en versión reducida (2026-10-22); la versión completa y la variante de laboratorio siguen sin ejecutar.
 - No hay workspace de Sentinel ni datos reales; las consultas no se han validado contra producción.
 - Los tiempos de detección y contención no están medidos.
 - La revocación de sesiones y la rotación de secretos no se han probado en un tenant de laboratorio.
@@ -193,7 +214,7 @@ az group exists --name "$RESOURCE_GROUP"
 - El mapeo MITRE es orientativo y debe revisarse contra la técnica concreta.
 - No cubre ransomware, exfiltración masiva ni respuesta legal.
 
-## 12. Referencias
+## 13. Referencias
 
 - [README de la práctica](README.md)
 - [Recolección de evidencia](../01-recoleccion-logs-azure/README.md)

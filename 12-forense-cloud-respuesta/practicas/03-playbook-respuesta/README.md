@@ -1,6 +1,6 @@
 # 03 | Playbook de respuesta y tabletop
 
-> **Estado:** diseño. Playbook documentado, runbook esbozado; tabletop no ejecutado.
+> **Estado:** parcial. Playbook documentado y runbook ejecutado como tabletop el 2026-10-22; variante de laboratorio pendiente.
 
 ## Descripción del escenario y objetivo de seguridad
 

@@ -62,7 +62,7 @@ La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuz
 
 El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conectan las capas sobre una sola carga de trabajo, con [arquitectura de referencia](docs/laboratorio-final/arquitectura.md), [plan de ejecución](docs/laboratorio-final/plan-ejecucion.md) y un [índice de evidencias](docs/laboratorio-final/evidencias/README.md). Las prácticas ejecutables usan un [runbook](plantillas/runbook-template.md), registran su prueba con una [plantilla de evidencia](plantillas/evidencia-template.md) y documentan el caso con una [plantilla de README de práctica](plantillas/README-practica-template.md).
 
-> El laboratorio tiene dos evidencias de ejecución (ELK y BOLA/BFLA) y cuatro evidencias documentales o verificables (02, 03, 04 y 07). Las fases Azure siguen pendientes de autorización, presupuesto y resource group temporal; no hay recursos Azure desplegados.
+> El laboratorio tiene tres evidencias de ejecución (ELK, BOLA/BFLA y el tabletop forense del módulo 12) y cuatro evidencias documentales o verificables (02, 03, 04 y 07). Las fases Azure siguen pendientes de autorización, presupuesto y resource group temporal; no hay recursos Azure desplegados.
 
 ---
 

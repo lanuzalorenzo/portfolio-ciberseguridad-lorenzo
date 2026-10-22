@@ -57,13 +57,13 @@ La evidencia enlaza al módulo o al repositorio de la API. Cuando la evidencia e
 
 | Repositorio | Evidencia principal | Estado |
 |---|---|---|
-| `portfolio-ciberseguridad-lorenzo` | Módulos 01–12, bitácoras, prácticas y 6 evidencias indexadas | Documentado + 2 de ejecución y 4 documentales/verificables |
+| `portfolio-ciberseguridad-lorenzo` | Módulos 01–12, bitácoras, prácticas y 7 evidencias indexadas | Documentado + 3 de ejecución y 4 documentales/verificables |
 | `lab-api-local-azure` | Código, tests, CI, Bicep | Implementado y probado localmente |
 | `ai-agent-local-lab` | Laboratorio local-first, seguridad de prompts | Documentado |
 | `lanuzalorenzo` | Perfil profesional | Publicado |
 | `lanuzalorenzo.github.io` | Portfolio web | Publicado |
 
-Las evidencias (2 de ejecución y 4 documentales o verificables) están registradas en el [índice de evidencias](../docs/laboratorio-final/evidencias/README.md).
+Las evidencias (3 de ejecución y 4 documentales o verificables) están registradas en el [índice de evidencias](../docs/laboratorio-final/evidencias/README.md).
 
 ## Brechas declaradas
 
