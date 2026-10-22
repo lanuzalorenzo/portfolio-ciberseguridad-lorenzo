@@ -4,9 +4,11 @@
 >
 > Este documento define el marco común. El estado real de cada control se consulta en el README de su módulo y en el [índice de evidencias](evidencias/README.md).
 
+> **En fácil:** el laboratorio es una casa con varias cerraduras: la puerta de entrada (red), la llave (identidad), lo que se guarda dentro (datos) y la cámara que graba (logs). Se practica cerradura a cerradura, primero en local y sin coste, y no se abre la siguiente hasta que la anterior tiene prueba.
+
 ## Objetivo
 
-El laboratorio final conecta los módulos del portfolio sobre una única carga de trabajo: [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure). La intención es demostrar un modelo de defensa en profundidad coherente, no una colección de prácticas aisladas.
+El laboratorio final conecta los módulos del portfolio sobre una única carga de trabajo: [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure). El objetivo es defensa en profundidad sobre una sola aplicación, no una colección de prácticas aisladas.
 
 Cada capa debe poder activarse, validarse y retirarse de forma controlada. El resultado esperado es un recorrido reproducible:
 

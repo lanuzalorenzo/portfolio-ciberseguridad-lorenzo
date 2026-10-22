@@ -4,11 +4,13 @@
 
 Este directorio centraliza las evidencias del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook, un informe o un run de CI, y hasta un entorno concreto. No es un repositorio de capturas sueltas.
 
+> **En fácil:** una evidencia es el recibo de algo que se hizo: qué se ejecutó, cuándo, con qué resultado y dónde está la prueba. Un informe escrito a posteriori no es lo mismo que el registro de una ejecución, y aquí se distinguen.
+
 ## Dos tipos de evidencia
 
 | Tipo | Qué aporta | Qué no aporta |
 |---|---|---|
-| **Ejecución** | Carpeta fechada con comandos, salida redactada y artefactos | — |
+| **Ejecución** | Carpeta fechada con comandos, salida redactada y artefactos | Nada: es el registro completo |
 | **Documental** | Informe técnico + bitácora fechada + tabla de resultados | No conserva la salida original ni capturas |
 | **Verificable** | Un run de CI reproducible y enlazado | Solo cubre lo que el pipeline ejecuta |
 

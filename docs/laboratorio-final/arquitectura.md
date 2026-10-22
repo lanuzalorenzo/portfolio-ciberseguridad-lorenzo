@@ -1,6 +1,6 @@
 # Arquitectura de referencia
 
-> **Estado:** diseño. La topología no se ha desplegado. El módulo 08 tiene IaC validada estáticamente; el resto de capas son diseño o trabajo parcial.
+> **Estado:** **Diseño**. La topología no se ha desplegado. El módulo 08 tiene IaC validada estáticamente; el resto de capas son diseño o trabajo parcial.
 
 ## Vista de capas
 

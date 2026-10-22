@@ -84,7 +84,7 @@
 - Ningún recurso huérfano.
 - Estados actualizados y brechas declaradas.
 
-## Definition of done
+## Criterio de cierre
 
 Una práctica se considera cerrada cuando:
 
