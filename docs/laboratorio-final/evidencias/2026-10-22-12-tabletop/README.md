@@ -5,7 +5,9 @@
 > **Fecha:** 2026-10-22.
 > **Runbook utilizado:** [`12-forense-cloud-respuesta/practicas/03-playbook-respuesta/runbook.md`](../../../../12-forense-cloud-respuesta/practicas/03-playbook-respuesta/runbook.md).
 > **Entorno:** ninguno. Simulacro sobre documentación, datos sintéticos, sin suscripción de Azure.
-> **Coste:** 0. **Limpieza:** no aplica. **Recursos desplegados:** 0.
+> **Coste:** 0.
+> **Limpieza:** no aplica.
+> **Recursos desplegados:** 0.
 
 > **En fácil:** alguien entra por una puerta abierta y usa la identidad de la aplicación para leer una contraseña guardada. El ejercicio mide si se cierra la puerta correcta: aquí era la identidad, no el cortafuegos. No se ejecutó nada; las pistas las puso el facilitador.
 
@@ -205,7 +207,7 @@ La iteración 1 queda como **línea base**. El objetivo de la 2 no es «acertar�
 - **Queda abierto** si se rotó la connection string; afecta a la atribución del pico de `401`.
 - La evidencia prueba **decisiones trazables**, no capacidades técnicas.
 
-### 8.b Lo que no se ejecutó y lo que correspondía
+### 8.1 Lo que no se ejecutó y lo que correspondía
 
 | No ejecutado | Lo que correspondía | Momento |
 |---|---|---|

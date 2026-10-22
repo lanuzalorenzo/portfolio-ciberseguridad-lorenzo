@@ -29,8 +29,8 @@ El detalle está en [comandos.md](comandos.md). Resumen:
 ./scripts/down.sh --yes
 ./scripts/up.sh
 ./scripts/verify.sh
-## Kibana: vista de datos, 6 consultas KQL, 5 visualizaciones y dashboard
-## Exportación de objetos y limpieza final
+# Kibana: vista de datos, 6 consultas KQL, 5 visualizaciones y dashboard
+# Exportación de objetos y limpieza final
 ./scripts/down.sh --yes
 ```
 
