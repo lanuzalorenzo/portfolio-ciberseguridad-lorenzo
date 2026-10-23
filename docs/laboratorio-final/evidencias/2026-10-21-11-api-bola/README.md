@@ -8,7 +8,7 @@
 >
 > **Práctica relacionada:** [03 — Rate limiting y mass assignment](../../../../11-hacking-etico-api/practicas/03-rate-limiting-mass-assignment/README.md)
 
-> **En fácil:** se comprobó que un usuario no puede abrir el pedido de otro cambiando el número de la dirección. Lo hicieron las pruebas automáticas, con dos usuarios falsos y ningún dato real, en el propio portátil.
+> Se comprobó que un usuario no puede abrir el pedido de otro cambiando el número de la dirección. Lo hicieron las pruebas automáticas, con dos usuarios falsos y ningún dato real, en el propio portátil.
 
 ## 1. Contexto
 

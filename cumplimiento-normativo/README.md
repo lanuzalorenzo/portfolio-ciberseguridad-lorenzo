@@ -2,7 +2,7 @@
 
 > **Estado:** documentado. No es una certificación ni una auditoría. Mapea controles técnicos del portfolio a marcos de referencia para facilitar la conversación con equipos de seguridad, arquitectura y compliance.
 
-> **En fácil:** la matriz cruza lo que se ha practicado con los controles que piden los marcos de seguridad. Sirve para ver qué está probado, qué a medias y qué falta, y para recordar que esto no es una certificación.
+> La matriz cruza lo que se ha practicado con los controles que piden los marcos de seguridad. Sirve para ver qué está probado, qué está a medias y qué falta, y para recordar que esto no es una certificación.
 
 ## Objetivo
 
@@ -22,34 +22,34 @@ La evidencia enlaza al módulo o al repositorio de la API. Cuando la columna ind
 | Marco / control | Descripción | Módulo | Evidencia | Estado |
 |---|---|---|---|---|
 | **MCSB IM-1** | Protección de credenciales y secretos | 02, 07 | Key Vault, Managed Identity, Gitleaks | Cubierto |
-| **MCSB IM-2** | Gestión de identidades privilegiadas | 02, 06 | PIM, RBAC, Access Reviews | Cubierto |
-| **MCSB IA-2** | MFA | 02, 06 | MFA, Passwordless, Conditional Access | Cubierto |
-| **MCSB PA-1** | Mínimo privilegio | 02, 06, 08 | RBAC, PIM, NSG | Cubierto |
+| **MCSB IM-2** | Gestión de identidades privilegiadas | 02, 06 | PIM, RBAC | Parcial: PIM sin activación real (sin P2) |
+| **MCSB IA-2** | MFA | 02, 06 | MFA, Passwordless; Conditional Access en diseño | Cubierto |
+| **MCSB PA-1** | Mínimo privilegio | 02, 06, 08 | RBAC, PIM, NSG | Parcial: PIM sin P2 y NSG sin desplegar |
 | **MCSB PA-7** | Separación de funciones | 02 | Matriz RBAC | Cubierto |
 | **MCSB DP-1** | Protección de datos sensibles | 02 | Key Vault, RBAC | Cubierto |
-| **MCSB DP-3** | Cifrado en tránsito | 01, 08 | HTTPS/TLS, JWT | Cubierto |
+| **MCSB DP-3** | Cifrado en tránsito | 01, 04, 08 | JWT validado en CI, TLS 1.2 en almacenamiento, red en IaC | Parcial: TLS de red sin desplegar |
 | **MCSB NS-1** | Segmentación de red | 08 | VNet/NSG/Private Endpoint (IaC) | Parcial: no desplegado |
 | **MCSB NS-2** | Acceso privado a servicios | 08 | Private Endpoints (IaC) | Parcial: no desplegado |
-| **MCSB PV-2** | Análisis de vulnerabilidades | 07 | CodeQL | Parcial: ejecución remota pendiente |
+| **MCSB PV-2** | Análisis de vulnerabilidades | 07 | CodeQL en CI (run 39243360276) | Cubierto |
 | **MCSB PV-3** | Gestión de dependencias | 07 | Trivy SCA | Cubierto |
 | **MCSB DS-1** | Seguridad del desarrollo | 07 | Protección de ramas, IaC | Cubierto |
 | **MCSB DS-2** | DevSecOps / pipelines | 07 | Workflow con gates | Cubierto |
 | **MCSB IR-1** | Integridad del historial | 07 | Branch protection | Cubierto con bypass de admin |
-| **MCSB IR-2** | Detección y respuesta | 09, 12 | KQL, playbook | Parcial: no ejecutado |
+| **MCSB IR-2** | Detección y respuesta | 09, 12 | KQL, playbook | Parcial: tabletop sobre documentación; recolección pendiente |
 | **MCSB LT-1** | Registro y auditoría | 09, 12 | Diagnóstico, Log Analytics | Parcial: no desplegado |
 | **NIS2 art. 21** | Gestión de riesgos y controles técnicos | 02, 07, 08, 09, 12 | Módulos y matriz | Parcial: laboratorio, no sistema real |
 | **NIS2 art. 23** | Notificación de incidentes | 12 | Playbook | Diseño |
 | **ENS mp.info.1** | Protección de la información | 02, 08 | Key Vault, Private Endpoint | Parcial |
 | **ENS op.exp.2** | Gestión de incidentes | 12 | Playbook | Diseño |
 | **ENS op.mon.1** | Monitorización | 09, 12 | KQL, diagnóstico | Parcial |
-| **CIS Azure 1.x** | Identidad y acceso | 02, 06 | MFA, PIM, RBAC | Cubierto |
+| **CIS Azure 1.x** | Identidad y acceso | 02, 06 | MFA, Passwordless, RBAC; PIM parcial | Cubierto |
 | **CIS Azure 6.x** | Redes | 08 | NSG, Private Endpoint | Parcial |
 | **CIS Azure 8.x** | Key Vault | 02 | RBAC, purge protection | Cubierto |
 | **OWASP API1** | BOLA | 11 | Pruebas y remediación | Cubierto localmente |
 | **OWASP API2** | Broken Authentication | 01, 11 | JWT, pruebas | Parcial |
 | **OWASP API3** | Mass Assignment | 11 | DTOs, pruebas | Cubierto |
 | **OWASP API4** | Resource Consumption | 11 | Rate limit, límites | Parcial |
-| **OWASP API5** | BFLA | 11 | Revisión | Pendiente |
+| **OWASP API5** | BFLA | 11 | Revisión local | Parcial: sin funciones admin, pero `POST /api/products` no exige rol |
 | **OWASP API8** | Misconfiguration | 07, 08, 11 | CORS, headers, contenedor | Parcial |
 | **OWASP LLM01** | Prompt Injection | IA local, 11 | Conjunto dorado, pruebas de inyección y matriz de perturbación | Diseño: sin ejecución |
 | **OWASP LLM02** | Salida no confiable | API | Validación de esquema y *fallback* determinista | Diseño |

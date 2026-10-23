@@ -4,7 +4,7 @@
 >
 > Este documento define el marco común. El estado real de cada control se consulta en el README de su módulo y en el [índice de evidencias](evidencias/README.md).
 
-> **En fácil:** el laboratorio es una casa con varias cerraduras: la puerta de entrada (red), la llave (identidad), lo que se guarda dentro (datos) y la cámara que graba (logs). Se practica cerradura a cerradura, primero en local y sin coste, y no se abre la siguiente hasta que la anterior tiene prueba.
+> El laboratorio es una casa con varias cerraduras: la puerta de entrada (red), la llave (identidad), lo que se guarda dentro (datos) y la cámara que graba (logs). Se practica cerradura a cerradura, primero en local y sin coste, y no se abre la siguiente hasta que la anterior tiene prueba.
 
 ## Objetivo
 

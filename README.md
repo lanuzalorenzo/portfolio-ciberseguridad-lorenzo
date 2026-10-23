@@ -2,7 +2,7 @@
 
 Este portfolio aplica **Security by Design, DevSecOps, Cloud Security y respuesta a incidentes** a una carga de trabajo empresarial: una API .NET protegida con Microsoft Entra ID. El hilo conductor es un modelo de **Defensa en Profundidad** con evidencia y estado de validación en cada capa. Cada módulo responde a la misma pregunta: qué control protege qué y cómo se demuestra.
 
-> **En fácil:** este repositorio enseña, capa por capa, cómo se protege una sola aplicación: quién puede entrar, cómo se comprueba y qué se puede demostrar con una prueba. Cada apartado dice si está probado o solo diseñado.
+> Este repositorio enseña, capa por capa, cómo se protege una sola aplicación: quién puede entrar, cómo se comprueba y qué se puede demostrar con una prueba. Cada apartado dice si está probado o solo diseñado.
 
 > [!NOTE]
 > El contenido describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica si está validada, es parcial, tiene un runbook preparado, es un diseño o está pendiente. No se incluyen secretos, identificadores reales ni datos personales.
@@ -78,8 +78,8 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 
 ### 2. DevSecOps y supply chain
 
-- [07 | DevSecOps y gobernanza del software](07-devsecops/README.md) — *validado en CI: build, pruebas, Gitleaks, CodeQL, Trivy y contenedor no-root*.
-  - [Protección de ramas](07-devsecops/branch-protection.md).
+- [07 | DevSecOps y gobernanza del software](07-devsecops/README.md) — *validado en CI: build, pruebas, Gitleaks, CodeQL, Trivy y contenedor no-root; OIDC y despliegue pendientes*.
+  - [Protección de ramas](07-devsecops/practicas/01-proteccion-ramas/README.md).
   - [Detección de secretos](07-devsecops/practicas/02-secret-scanning/README.md).
   - [SAST, SCA e IaC](07-devsecops/practicas/03-sast-sca-iac/README.md).
   - [Pipeline segura](07-devsecops/practicas/04-pipeline-security/README.md).
@@ -100,7 +100,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 
 - [09 | Microsoft Sentinel](09-microsoft-sentinel/README.md) — *diseño en curso*: KQL y automatización.
 - [10 | ELK Stack Security](10-elk-stack-security/README.md) — *validado en local*: pila ELK con Docker Compose, 15 eventos sintéticos, 6 consultas KQL y dashboard exportado; sin Azure ni datos reales.
-- [12 | Forense cloud y respuesta](12-forense-cloud-respuesta/README.md) — *diseño y KQL*: evidencia, timeline y playbook.
+- [12 | Forense cloud y respuesta](12-forense-cloud-respuesta/README.md) — *parcial*: tabletop ejecutado; recolección técnica pendiente.
 
 ### 6. Cumplimiento y arquitectura de control
 

@@ -6,7 +6,7 @@
 >
 > **Objetivo:** ejecutar a mano el flujo OAuth2 Authorization Code + PKCE contra Microsoft Entra ID, canjear el código por un token y validar el JWT en una API local mediante JWKS.
 
-> **En fácil:** este documento explica cómo pedir un token a Microsoft Entra ID a mano, sin guardar ninguna contraseña de aplicación, y cómo comprobar que la API solo acepta tokens legítimos. Se ejecuta en local y no despliega nada en Azure.
+> Este documento explica cómo pedir un token a Microsoft Entra ID a mano, sin guardar ninguna contraseña de aplicación, y cómo comprobar que la API solo acepta tokens legítimos. Se ejecuta en local y no despliega nada en Azure.
 
 ## 1. Prerrequisitos y permisos
 

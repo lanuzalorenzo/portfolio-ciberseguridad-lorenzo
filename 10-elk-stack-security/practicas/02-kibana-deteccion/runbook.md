@@ -8,7 +8,7 @@
 >
 > **Ruta manual:** este runbook está pensado para seguirlo sin asistente. Cada paso indica qué abrir, qué escribir y qué debe aparecer. Si algo no coincide, no continúes: revisa el punto de control.
 
-> **En fácil:** con los registros ya cargados, este documento enseña a mirarlos, hacer seis preguntas y guardar las respuestas en un panel. Es la parte de mirar, no la de recoger.
+> Con los registros ya cargados, este documento enseña a mirarlos, hacer seis preguntas y guardar las respuestas en un panel. Es la parte de mirar, no la de recoger.
 
 ## 1. Prerrequisitos
 
