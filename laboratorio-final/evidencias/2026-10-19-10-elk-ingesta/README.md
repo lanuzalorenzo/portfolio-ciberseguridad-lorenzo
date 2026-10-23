@@ -13,7 +13,7 @@
 - **Fecha de ejecución:** 2026-10-19.
 - **Datos sintéticos:** fechados el 2026-10-20 entre las 09:00 y las 09:06 UTC.
 - **Responsable:** Lorenzo Lanuza.
-- **Entorno:** equipo local XPS con Ubuntu 26.04.1 LTS, Docker Engine 29.1.3, Docker Compose 2.40.3 y pila ELK 8.19.23.
+- **Entorno:** equipo local con Ubuntu 26.04.1 LTS, Docker Engine 29.1.3, Docker Compose 2.40.3 y pila ELK 8.19.23.
 - **Alcance:** levantar Elasticsearch, Logstash y Kibana en local, ingerir 15 eventos sintéticos, normalizarlos, crear la vista de datos `Lab Security`, validar 6 consultas KQL, construir un dashboard de 5 paneles y exportar los objetos de Kibana.
 - **Datos:** sintéticos, con usuarios e IPs de los rangos reservados para documentación.
 - **Autorización:** laboratorio local sin recursos cloud, sin coste y sin datos reales.

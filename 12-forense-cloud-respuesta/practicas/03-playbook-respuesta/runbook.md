@@ -152,18 +152,20 @@ az monitor activity-log list \
 | Negativa: sesión tras cerrar el puerto | Cerrar `22/tcp` con sesión abierta | El equipo aísla o mata la sesión | No ejecutado |
 | Control: reversión sin captura | Revertir el NSG sin exportar | El equipo detecta la pérdida de evidencia | No ejecutado |
 
+Estas pruebas pertenecen a la variante de laboratorio; el tabletop de decisión se evalúa en §8.
+
 Criterios de éxito: las seis fases cubiertas, cada decisión con responsable y hora, cada evidencia con origen y retención, y al menos tres huecos documentados.
 
 ## 8. Evidencia del tabletop
 
-- [ ] Acta con participantes y roles.
-- [ ] Timeline con hora, fuente y hecho.
-- [ ] Registro de decisiones (quién, cuándo, con qué dato).
-- [ ] Lista de evidencias solicitadas y su origen.
-- [ ] Huecos del playbook y acciones de mejora.
+- [x] Acta con participantes y roles.
+- [x] Timeline con hora, fuente y hecho.
+- [x] Registro de decisiones (quién, cuándo, con qué dato).
+- [x] Lista de evidencias solicitadas y su origen.
+- [x] Huecos del playbook y acciones de mejora.
 - [ ] Hash de los artefactos exportados (solo variante lab).
 
-Estado actual: **vacío**. No hay tabletop ejecutado.
+Estado actual: **PASS** en el tabletop de decisión del 2026-10-22 ([acta](../../../laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md)). La variante de laboratorio y el hash quedan pendientes.
 
 ## 9. Re-ejecución y comparación
 
