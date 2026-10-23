@@ -4,7 +4,7 @@
 >
 > **Qué vas a encontrar:** el orden recomendado, un glosario mínimo y un mapa de los doce módulos. La guía no sustituye a la documentación de cada módulo: la ordena.
 >
-> **Última revisión:** 2026-10-21. Ver [mantenimiento](#10-mantenimiento).
+> **Última revisión:** 2026-10-23. Ver [mantenimiento](#10-mantenimiento).
 
 ## 1. La idea en cinco líneas
 
@@ -33,9 +33,11 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 | Parte | Pregunta que responde |
 |---|---|
 | `README.md` | ¿Por qué existe, qué alcance tiene y en qué estado está? |
+| `docs/` | ¿Cómo funciona, explicado y con diagramas? |
 | `practicas/` | ¿Qué se hizo y con qué controles? |
 | `runbook.md` | ¿Cómo se reproduce, paso a paso? |
 | `evidencias/` | ¿Qué se observó realmente? |
+| `lab/` | ¿Con qué código se ejecuta? |
 | `bitacora/` | ¿Qué se aprendió, qué falló y qué queda pendiente? |
 
 **Orden para una primera lectura:** README → práctica → evidencia. El runbook y la bitácora se leen cuando quieres reproducir o entender las decisiones.
