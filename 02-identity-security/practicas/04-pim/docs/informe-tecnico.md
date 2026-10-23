@@ -36,9 +36,9 @@ Se revisaron y aplicaron las directivas que gobiernan la activación del rol:
 | Control / Prueba | Método | Comportamiento Esperado | Resultado Observado |
 | :--- | :--- | :--- | :--- |
 | Comprobación de permisos antes de activación | Navegación en portal como usuario base | Sin visibilidad ni capacidades administrativas | PASS: Sin privilegios concedidos en reposo |
-| Activación sin justificación o sin MFA | Intento de elevación omitiendo datos requeridos | Bloqueo del asistente de activación | PASS: Campos obligatorios impuestos por directiva |
-| Verificación de elevación temporal | Inspección de estado en *Active assignments* | El rol permanece activo durante la ventana definida | PASS: Permisos operativos concedidos temporalmente |
-| Trazabilidad y auditoría de elevación | Consulta de *Resource audit* en PIM | Registro completo con timestamp, identidad y justificación | PASS: Trazabilidad inmutable comprobada |
+| Activación sin justificación o sin MFA | Intento de elevación omitiendo datos requeridos | Bloqueo del asistente de activación | PASS (simulación): campos obligatorios impuestos por directiva |
+| Verificación de elevación temporal | Inspección de estado en *Active assignments* | El rol permanece activo durante la ventana definida | **No ejecutada**: la activación efectiva requiere licencia Microsoft Entra ID P2 |
+| Trazabilidad y auditoría de elevación | Consulta de *Resource audit* en PIM | Registro con timestamp, identidad y justificación | Comprobado en la simulación del flujo: el panel registra identidad, hora y justificación |
 
 ## Lecciones de Troubleshooting y Seguridad
 - **Cuentas de emergencia (Break-Glass):** Un error grave al implementar PIM es aplicarlo al 100% de los administradores. Siempre deben mantenerse al menos 2 cuentas de acceso de emergencia excluidas de PIM y de directivas de Conditional Access, con contraseñas complejas almacenadas en caja fuerte física y monitorizadas mediante alertas de Sentinel o Defender.

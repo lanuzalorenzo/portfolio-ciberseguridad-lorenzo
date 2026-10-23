@@ -86,7 +86,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 
 ### 3. Identidad, acceso y gobierno Zero Trust
 
-- [02 | Identity Security](02-identity-security/README.md) — *validado en laboratorio (evidencia documental)*: MFA, Passwordless, SSPR, PIM, RBAC, Key Vault y Managed Identities.
+- [02 | Identity Security](02-identity-security/README.md) — *validado en laboratorio (evidencia documental), salvo PIM, que queda parcial por licencia*: MFA, Passwordless, SSPR, PIM, RBAC, Key Vault y Managed Identities.
 - [06 | Identity Protection](06-identity-protection/README.md) — *diseño*: Conditional Access, PIM/JIT, RBAC e Identity Protection documentados; prácticas no ejecutadas.
 
 ### 4. Cloud, postura y redes

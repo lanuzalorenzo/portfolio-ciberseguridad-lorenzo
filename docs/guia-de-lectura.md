@@ -107,7 +107,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 | # | Módulo | Pregunta que responde | Estado |
 |---|---|---|---|
 | 01 | [OAuth 2.0, PKCE y JWT](../01-seguridad-azure/README.md) | ¿Cómo se autentica una API y se valida un token? | Parcial: JWT validado en CI; PKCE manual sin evidencia estandarizada |
-| 02 | [Identity Security](../02-identity-security/README.md) | ¿Cómo se protege la identidad y el acceso privilegiado? | Validado en laboratorio (documental) |
+| 02 | [Identity Security](../02-identity-security/README.md) | ¿Cómo se protege la identidad y el acceso privilegiado? | Validado en laboratorio (documental); PIM parcial |
 | 03 | [Cloud Audits](../03-cloud-audits/README.md) | ¿Cómo se audita la postura cloud? | Validado en laboratorio (documental) |
 | 04 | [Defender for Cloud](../04-defender-for-cloud/README.md) | ¿Cómo se detectan y priorizan riesgos cloud? | Validado en laboratorio (documental) |
 | 05 | [Defender Suite](../05-defender-suite/README.md) | ¿Cómo se cubre identidad, endpoint y XDR? | Parcial |

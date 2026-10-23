@@ -1,6 +1,6 @@
 # 04 | Privileged Identity Management (PIM)
 
-> **Estado:** **Validado** en laboratorio (evidencia documental). Tenant de prueba, sin datos reales.
+> **Estado:** **Parcial**. La asignación elegible y las políticas de activación se comprobaron; la elevación efectiva no se completó porque exige licencia Microsoft Entra ID P2. Evidencia documental.
 >
 > **Referencias:** MCSB PA-1, PA-2, PA-3, LT-1.
 
@@ -11,14 +11,15 @@ Si una cuenta administrativa tiene el privilegio todo el día, basta con robarla
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
 | Estado inicial | Inspección de asignaciones | Sin privilegios activos | PASS: solo *Eligible* |
-| Activación sin justificación | Flujo *My Roles* | Bloqueo | PASS: exige justificación y MFA |
-| Activación y expiración | Activación JIT y espera | *Active* temporal y vuelta a *Eligible* | PASS: evento registrado en auditoría |
+| Activación sin justificación | Flujo *My Roles*, en simulación | Bloqueo | PASS: el asistente exige justificación y MFA |
+| Elevación efectiva y expiración | Activación JIT real | Rol *Active* temporal y vuelta a *Eligible* | **No ejecutada**: sin licencia P2 no se puede activar el rol |
 
 ## Lecciones
 
 - Cuanto menos tiempo está activo un privilegio, menos vale una credencial robada.
 - PIM necesita Access Reviews: una elegibilidad que nadie revisa sigue siendo una puerta abierta.
 - Hacen falta cuentas de emergencia permanentes, fuera de PIM y monitorizadas, para no quedarse sin acceso.
+- Sin licencia P2 el flujo se puede estudiar, pero no activar; conviene decirlo antes de dar la práctica por cerrada.
 
 ## Más detalle
 
