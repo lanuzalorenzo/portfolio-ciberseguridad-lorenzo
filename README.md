@@ -1,110 +1,63 @@
 # Lorenzo Lanuza | Portfolio de Ciberseguridad, DevSecOps y Arquitectura
 
-Este portfolio aplica **Security by Design, DevSecOps, Cloud Security y respuesta a incidentes** a una carga de trabajo empresarial: una API .NET protegida con Microsoft Entra ID. El hilo conductor es un modelo de **Defensa en Profundidad** con evidencia y estado de validación en cada capa. Cada módulo responde a la misma pregunta: qué control protege qué y cómo se demuestra.
+Este portfolio aplica **Security by Design, DevSecOps, Cloud Security y respuesta a incidentes** a una carga de trabajo empresarial: una API .NET protegida con Microsoft Entra ID. El hilo conductor es un modelo de **Defensa en Profundidad** con evidencia y estado de validación en cada capa. Cada módulo responde a la misma pregunta: *¿qué control protege qué y cómo se demuestra?*
 
-> Este repositorio enseña, capa por capa, cómo se protege una sola aplicación: quién puede entrar, cómo se comprueba y qué se puede demostrar con una prueba. Cada apartado dice si está probado o solo diseñado.
-
-> [!NOTE]
-> El contenido describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica si está validada, es parcial, tiene un runbook preparado, es un diseño o está pendiente. No se incluyen secretos, identificadores reales ni datos personales.
-
-> **¿Primera vez aquí?** Empieza por la [guía de lectura](docs/guia-de-lectura.md): qué es este portfolio, qué no es y en qué orden leerlo.
+> Este repositorio describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica su estado: **Validado**, **Parcial**, **Runbook preparado**, **Diseño** o **Pendiente**. No se incluyen secretos, identificadores reales ni datos personales.
 
 ---
 
-## Ecosistema
+## Arquitectura de referencia
 
-| Repositorio | Rol | Enlace |
+La carga de trabajo es **EcommerceApi** (Web API .NET 10 con OAuth 2.0/PKCE, DTOs, tests y pipeline DevSecOps), versionada en [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure).
+
+```mermaid
+graph TD
+    A[TRÁFICO EXTERNO / CLIENTES] --> B[CAPA 5: DETECCIÓN, SOC Y ANALÍTICA<br/>09 Sentinel · 10 ELK · 12 Respuesta]
+    B --> C[CAPA 4: RED Y POSTURA CLOUD<br/>03 Audits · 04 Defender Cloud · 05 Defender Suite · 08 Red]
+    C --> D[CAPA 3: IDENTIDAD Y GOBERNANZA ZERO TRUST<br/>01 OAuth/PKCE/JWT · 02 Identity · 06 Acceso Privilegiado]
+    D --> E[CAPA 2: DESARROLLO SEGURO / DEVSECOPS<br/>07 Pipeline, SAST, SCA, contenedor, IaC]
+    E --> F[CAPA 1: ARQUITECTURA Y APPSEC<br/>API .NET · 11 Validación ofensiva]
+    classDef trans fill:#f9f,stroke:#333;
+    class G trans;
+    G[CAPA TRANSVERSAL: Validación ofensiva (11) y Forense (12)]
+```
+
+---
+
+## Módulos y estado
+
+| # | Módulo | Estado |
 |---|---|---|
-| **Portfolio** | Documentación, prácticas y narrativa técnica | [portfolio-ciberseguridad-lorenzo](https://github.com/lanuzalorenzo/portfolio-ciberseguridad-lorenzo) |
-| **API de referencia** | Código .NET, tests, CI y Bicep | [lab-api-local-azure](https://github.com/lanuzalorenzo/lab-api-local-azure) |
-| **Laboratorio de IA local** | Modelos locales, agentes y seguridad de prompts | [ai-agent-local-lab](https://github.com/lanuzalorenzo/ai-agent-local-lab) |
-| **Perfil profesional** | Trayectoria, stack y proyectos | [lanuzalorenzo](https://github.com/lanuzalorenzo) |
-| **Web personal** | Portfolio visual y contacto | [lanuzalorenzo.github.io](https://lanuzalorenzo.github.io) |
+| 01 | [OAuth 2.0, PKCE y JWT](01-seguridad-azure/README.md) | Parcial |
+| 02 | [Identity Security](02-identity-security/README.md) | Validado (documental) |
+| 03 | [Cloud Audits](03-cloud-audits/README.md) | Validado (documental) |
+| 04 | [Defender for Cloud](04-defender-for-cloud/README.md) | Validado (documental) |
+| 05 | [Microsoft Defender Suite](05-defender-suite/README.md) | Diseño |
+| 06 | [Acceso privilegiado](06-identity-protection/README.md) | Diseño |
+| 07 | [DevSecOps y gobernanza](07-devsecops/README.md) | Validado en CI |
+| 08 | [Seguridad de red en Azure](08-seguridad-red-azure/README.md) | Diseño + IaC estática |
+| 09 | [Microsoft Sentinel](09-microsoft-sentinel/README.md) | Diseño |
+| 10 | [ELK Stack Security](10-elk-stack-security/README.md) | Validado en local |
+| 11 | [Hacking ético de APIs](11-hacking-etico-api/README.md) | Validado en local |
+| 12 | [Forense cloud y respuesta](12-forense-cloud-respuesta/README.md) | Parcial |
+
+**Criterio:** [Estados de validación](#estado-de-validación) — no se presenta un diseño como una validación.
 
 ---
 
-## Arquitectura del portfolio
+## Qué leer primero
 
-La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure), una Web API en .NET 10 con autenticación federada, autorización por usuario, DTOs, pruebas de integración y pipeline DevSecOps.
-
-```
-                       [ TRÁFICO EXTERNO / CLIENTES ]
-                                      │
-                                      ▼
-      ┌───────────────────────────────────────────────────────────────┐
-      │  CAPA 5: DETECCIÓN, SOC Y ANALÍTICA (09 y 10)                 │
-      │  KQL en Sentinel, visualización ELK y respuesta (12)          │
-      └──────────────────────────────┬────────────────────────────────┘
-                                     │
-      ┌──────────────────────────────▼────────────────────────────────┐
-      │  CAPA 4: RED Y POSTURA CLOUD (03, 04, 05 y 08)                │
-      │  Segmentación VNet/NSG, Private Endpoints y Defender          │
-      └──────────────────────────────┬────────────────────────────────┘
-                                     │
-      ┌──────────────────────────────▼────────────────────────────────┐
-      │  CAPA 3: IDENTIDAD Y GOBERNANZA ZERO TRUST (01, 02 y 06)      │
-      │  Entra ID, OAuth 2.0/PKCE, JWT/JWKS, PIM, RBAC y MFA          │
-      └──────────────────────────────┬────────────────────────────────┘
-                                     │
-      ┌──────────────────────────────▼────────────────────────────────┐
-      │  CAPA 2: DESARROLLO SEGURO / DEVSECOPS (07)                   │
-      │  SAST, SCA, secretos, contenedor, IaC y dependencias          │
-      └──────────────────────────────┬────────────────────────────────┘
-                                     │
-      ┌──────────────────────────────▼────────────────────────────────┐
-      │  CAPA 1: ARQUITECTURA Y APPSEC (API + 11)                     │
-      │  .NET, DTOs, BOLA/BFLA, mass assignment y pruebas             │
-      └───────────────────────────────────────────────────────────────┘
-
-      Capa transversal: validación ofensiva (11) y forense y respuesta (12).
-```
-
-### Laboratorio final
-
-El [laboratorio final](laboratorio-final/README.md) define cómo se conectan las capas sobre una sola carga de trabajo, con [arquitectura de referencia](laboratorio-final/arquitectura.md), [plan de ejecución](laboratorio-final/plan-ejecucion.md) y un [índice de evidencias](laboratorio-final/evidencias/README.md). Las prácticas ejecutables usan un [runbook](plantillas/runbook-template.md), registran su prueba con una [plantilla de evidencia](plantillas/evidencia-template.md) y documentan el caso con una [plantilla de README de práctica](plantillas/README-practica-template.md).
-
-> El laboratorio tiene tres evidencias de ejecución (ELK, BOLA/BFLA y el tabletop forense del módulo 12) y cuatro evidencias documentales o verificables (02, 03, 04 y 07). Las fases Azure siguen pendientes de autorización, presupuesto y resource group temporal; no hay recursos Azure desplegados.
+- **15 min:** [Guía de lectura](docs/guia-de-lectura.md) → [Índice de evidencias](laboratorio-final/evidencias/README.md) → tabla de estados arriba.
+- **60–90 min (hilo identidad + API):** [Arquitectura](laboratorio-final/arquitectura.md) → [Módulo 01](01-seguridad-azure/README.md) → [Módulo 11](11-hacking-etico-api/README.md) + [evidencia BOLA](laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) → [Módulo 12](12-forense-cloud-respuesta/README.md) + [acta tabletop](laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md).
+- **Revisión técnica:** README → índice de evidencias → [módulo 11](11-hacking-etico-api/README.md) → [módulo 07](07-devsecops/README.md) → [API reference](https://github.com/lanuzalorenzo/lab-api-local-azure).
 
 ---
 
-## Recorridos técnicos
+## Laboratorio final
 
-### 1. Arquitectura y AppSec
+[Arquitectura](laboratorio-final/arquitectura.md) · [Plan de ejecución](laboratorio-final/plan-ejecucion.md) · [Índice de evidencias](laboratorio-final/evidencias/README.md).
 
-- [01 | OAuth 2.0, PKCE y validación JWT](01-seguridad-azure/README.md) — *parcial*: validación JWT implementada y probada en CI; la práctica de [PKCE manual](01-seguridad-azure/practicas/01-pkce-manual/README.md) sigue pendiente de evidencia estandarizada.
-- [11 | Hacking ético de APIs](11-hacking-etico-api/README.md) — *validación local de BOLA y mass assignment*; pentest desplegado pendiente. [Evidencia](laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
-- [API de referencia](https://github.com/lanuzalorenzo/lab-api-local-azure) — código, tests, CI y Bicep.
-
-### 2. DevSecOps y supply chain
-
-- [07 | DevSecOps y gobernanza del software](07-devsecops/README.md) — *validado en CI: build, pruebas, Gitleaks, CodeQL, Trivy y contenedor no-root; OIDC y despliegue pendientes*.
-  - [Protección de ramas](07-devsecops/practicas/01-proteccion-ramas/README.md).
-  - [Detección de secretos](07-devsecops/practicas/02-secret-scanning/README.md).
-  - [SAST, SCA e IaC](07-devsecops/practicas/03-sast-sca-iac/README.md).
-  - [Pipeline segura](07-devsecops/practicas/04-pipeline-security/README.md).
-
-### 3. Identidad, acceso y gobierno Zero Trust
-
-- [02 | Identity Security](02-identity-security/README.md) — *validado en laboratorio (evidencia documental), salvo PIM, que queda parcial por licencia*: MFA, Passwordless, SSPR, PIM, RBAC, Key Vault y Managed Identities.
-- [06 | Acceso privilegiado](06-identity-protection/README.md) — *diseño*: Conditional Access, PIM con aprobación y riesgo de identidad; sin licencia P1/P2 no se ejecutaron.
-
-### 4. Cloud, postura y redes
-
-- [03 | Cloud Audits](03-cloud-audits/README.md) — *validado en laboratorio (evidencia documental)*.
-- [04 | Defender for Cloud](04-defender-for-cloud/README.md) — *validado en laboratorio (evidencia documental)*.
-- [05 | Microsoft Defender Suite](05-defender-suite/README.md) — *diseño*: mapa de los catorce productos y qué hace falta para validarlos; ninguna práctica tiene evidencia de ejecución.
-- [08 | Seguridad de red en Azure](08-seguridad-red-azure/README.md) — *diseño + IaC validada estáticamente*: VNet, NSG y Private Endpoints; sin desplegar.
-
-### 5. Operaciones de seguridad, forense y respuesta
-
-- [09 | Microsoft Sentinel](09-microsoft-sentinel/README.md) — *diseño*: workspace y diagnósticos en IaC; Sentinel sin habilitar.
-- [10 | ELK Stack Security](10-elk-stack-security/README.md) — *validado en local*: pila ELK con Docker Compose, 15 eventos sintéticos, 6 consultas KQL y dashboard exportado; sin Azure ni datos reales.
-- [12 | Forense cloud y respuesta](12-forense-cloud-respuesta/README.md) — *parcial*: tabletop ejecutado; recolección técnica pendiente.
-
-### 6. IA local y desarrollo asistido
-
-- [ai-agent-local-lab](https://github.com/lanuzalorenzo/ai-agent-local-lab) — laboratorio local-first con Ollama, OpenCode y modelos abiertos.
-- [Caso de estudio de migración a OpenCode](https://github.com/lanuzalorenzo/ai-agent-local-lab/blob/main/CASE_STUDY_OPENCODE_MIGRATION.md) — decisiones, configuración y límites.
+> Tres evidencias de ejecución (ELK, BOLA/BFLA, tabletop forense) y cuatro documentales (02, 03, 04, 07). Fases Azure pendientes de autorización, presupuesto y resource group temporal; **no hay recursos Azure desplegados**.
 
 ---
 
@@ -112,57 +65,29 @@ El [laboratorio final](laboratorio-final/README.md) define cómo se conectan las
 
 | Estado | Significado |
 |---|---|
-| **Validado** | Ejecutado y con evidencia enlazada: de ejecución, documental o verificable. |
+| **Validado** | Ejecutado y con evidencia enlazada (de ejecución, documental o verificable). |
 | **Parcial** | Implementado en código o configuración, pero sin ejecución completa o con brechas. |
-| **Runbook preparado** | Pasos y comandos escritos, todavía no ejecutados. Se muestra como «Diseño · runbook listo». |
+| **Runbook preparado** | Pasos y comandos escritos, sin ejecutar. Se muestra como «Diseño · runbook listo». |
 | **Diseño** | Arquitectura, procedimiento o IaC documentados; no desplegados. |
 | **Pendiente** | Identificado y no iniciado. |
 
-La tabla de cada módulo usa este criterio. No se presenta un diseño como una validación.
+---
+
+## Ecosistema
+
+| Repositorio | Rol |
+|---|---|
+| **Portfolio** | Documentación, prácticas y narrativa (este repo) |
+| **API de referencia** | Código .NET, tests, CI y Bicep → [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure) |
+| **IA local** | Modelos locales, agentes y seguridad de prompts → [`ai-agent-local-lab`](https://github.com/lanuzalorenzo/ai-agent-local-lab) |
+| **Perfil** | Trayectoria y stack → [`lanuzalorenzo`](https://github.com/lanuzalorenzo) |
+| **Web** | Portfolio visual y contacto → [`lanuzalorenzo.github.io`](https://lanuzalorenzo.github.io) |
 
 ---
 
-## Caso de estudio end-to-end
+## Contacto y licencia
 
-**De la API al SOC:** un recorrido que conecta arquitectura, identidad, red, entrega, detección y respuesta.
+**Autor:** Lorenzo Lanuza Arellano — *Software Architect \| .NET, DevSecOps & Cloud Security*  
+**LinkedIn:** [linkedin.com/in/lanuzalorenzo](https://www.linkedin.com/in/lanuzalorenzo) · **GitHub:** [github.com/lanuzalorenzo](https://github.com/lanuzalorenzo) · **Email:** [lanuzalorenzo@gmail.com](mailto:lanuzalorenzo@gmail.com)
 
-1. **Arquitectura:** API .NET con DTOs, validación y separación de responsabilidades.
-2. **Identidad:** Entra ID, OAuth 2.0/PKCE, validación JWT y MFA.
-3. **Red:** VNet, NSG, Private Endpoints y Key Vault sin acceso público (IaC).
-4. **Entrega:** pipeline con tests, Gitleaks, CodeQL, Trivy SCA, contenedor no-root e IaC.
-5. **Detección:** diagnóstico a Log Analytics y consultas KQL en Sentinel.
-6. **Validación ofensiva:** BOLA, mass assignment y revisión de JWT sobre la API local.
-7. **Respuesta:** preservación de evidencia, timeline y playbook NIST.
-
-Enlaces: [API](https://github.com/lanuzalorenzo/lab-api-local-azure) · [módulo 07](07-devsecops/README.md) · [módulo 11](11-hacking-etico-api/README.md) · [módulo 12](12-forense-cloud-respuesta/README.md).
-
----
-
-## Organización
-
-Cada módulo incluye:
-
-- `README.md` con alcance, objetivos, prácticas y estado.
-- `bitacora/` con el registro cronológico.
-- `practicas/` con una página por caso y, cuando hace falta, su `informe.md`; si la práctica es ejecutable, incluye `runbook.md` y `evidencias/`.
-- `lab/` con los artefactos locales de ejecución (por ejemplo, `docker-compose.yml`, pipeline y scripts).
-- `docs/` con la explicación que sirve a varias prácticas a la vez.
-- `laboratorio-final/` con la arquitectura, el plan de ejecución y el índice de evidencias del laboratorio integrado.
-- [plantillas/](plantillas/README.md) con las plantillas de práctica, runbook y evidencia.
-
-El código de la carga de trabajo se versiona en [lab-api-local-azure](https://github.com/lanuzalorenzo/lab-api-local-azure).
-
----
-
-## Contacto
-
-- **Autor:** Lorenzo Lanuza Arellano — *Software Architect | .NET, DevSecOps & Cloud Security*
-- **LinkedIn:** [linkedin.com/in/lanuzalorenzo](https://www.linkedin.com/in/lanuzalorenzo)
-- **GitHub:** [github.com/lanuzalorenzo](https://github.com/lanuzalorenzo)
-- **Email:** [lanuzalorenzo@gmail.com](mailto:lanuzalorenzo@gmail.com)
-
----
-
-## Licencia y responsabilidad
-
-Material técnico y formativo. No acredita configuraciones de producción ni certificaciones. No incluye secretos, identificadores reales ni datos personales. Distribuido bajo licencia [MIT](LICENSE).
+Material técnico y formativo. No acredita configuraciones de producción ni certificaciones. Distribuido bajo licencia [MIT](LICENSE).
