@@ -60,13 +60,13 @@
 - Añadir detecciones y pruebas de regresión.
 - Actualizar el playbook y la matriz de controles.
 
-## Tabletop propuesto
+## Tabletop con participantes
 
 | Escenario | Participantes | Duración | Artefactos |
 |---|---|---|---|
 | Acceso anómalo a Key Vault + cambio de NSG | SecOps, AppSec, Cloud | 90 min | Timeline, decisiones, evidencias |
 
-**Estado:** no ejecutado. No hay resultados que presentar.
+**Estado:** pendiente. El simulacro del 2026-10-22 recorrió el runbook sobre documentación; esta variante con reparto de roles y entorno real no se ha hecho.
 
 ## Mapeo MITRE ATT&CK (orientativo)
 

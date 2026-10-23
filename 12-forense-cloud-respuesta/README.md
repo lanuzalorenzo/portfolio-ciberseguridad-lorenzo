@@ -27,7 +27,7 @@ Este módulo cubre la investigación de incidentes en Azure desde la recolecció
 
 - [Recolección y preservación de evidencia](practicas/01-recoleccion-logs-azure/README.md) — *diseño; Bicep con diagnóstico, no desplegado*
 - [Línea temporal y consultas KQL](practicas/02-timeline-kql/README.md) — *KQL revisado, no ejecutado*
-- [Playbook de respuesta y tabletop](practicas/03-playbook-respuesta/README.md) — *diseño, no ejecutado*
+- [Playbook de respuesta y tabletop](practicas/03-playbook-respuesta/README.md) — *tabletop ejecutado el 2026-10-22; variante con roles pendiente*
 
 ## Principios
 
@@ -47,7 +47,7 @@ Este módulo cubre la investigación de incidentes en Azure desde la recolecció
 
 - No hay workspace de Sentinel ni tenant con datos de laboratorio en esta iteración.
 - Las consultas KQL están revisadas sintácticamente, pero no ejecutadas.
-- No se ha realizado un tabletop con participantes.
+- El tabletop se ejecutó sobre documentación; falta la variante con reparto de roles y entorno real.
 - La retención y el coste de Log Analytics no se han calibrado.
 
 ## Aviso

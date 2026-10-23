@@ -6,7 +6,7 @@
 >
 > **Tipo:** tabletop (simulacro) sobre el playbook; variante de laboratorio opcional.
 
-> **En fácil:** es un ensayo de incidente. Alguien inyecta pistas y el equipo decide qué hacer, en qué orden y qué guardar antes de tocar nada. El objetivo no es acertar rápido, sino no destruir pruebas y cerrar la puerta correcta.
+> Es un ensayo de incidente. Alguien inyecta pistas y el equipo decide qué hacer, en qué orden y qué guardar antes de tocar nada. El objetivo no es acertar rápido, sino no destruir pruebas y cerrar la puerta correcta.
 
 ## 1. Objetivo
 
