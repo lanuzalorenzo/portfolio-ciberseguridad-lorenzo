@@ -1,47 +1,21 @@
 # 02 | Automatización de respuesta y contención
 
-## Descripción del escenario y objetivo de seguridad
+Cuando la alerta ya existe, la pregunta es qué se hace en los primeros minutos. Un playbook de Sentinel puede abrir una revisión, pedir aprobación o aplicar una contención limitada; lo que no puede es sustituir el criterio de quien decide. El diseño está escrito; no hay automatización probada.
 
-**Escenario:** Un entorno donde una alerta de seguridad necesita una respuesta rápida para limitar daños, iniciar triage o pedir validación humana. El diseño del laboratorio se mantiene orientativo y no representa producción.
-**Objetivo de seguridad:** Reducir el tiempo de respuesta mediante automatización basada en incidentes, alertas y playbooks.
-**Alcance:** Microsoft Sentinel, analíticas, playbooks y acciones de contención sobre entornos de laboratorio controlados.
+**Referencias:** MCSB IR-2 · NIST SP 800-61
 
-> [!NOTE]
-> Práctica propuesta para un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
-
-## Arquitectura y componentes de Azure utilizados
-
-| Componente | Función | Configuración relevante |
+| Paso | Qué haría | Estado |
 |---|---|---|
-| Microsoft Sentinel | Orquestación y gestión de incidentes | Reglas, alertas y triage. |
-| Playbook de automatización | Acción de respuesta iniciada por alerta | Ejecutar tareas controladas y documentadas. |
-| Entornos conectados | Recursos que pueden ser objeto de contención | Azure, Entra ID o servicios con permisos limitados. |
+| Disparador | Incidente creado por la regla de la práctica 01 | Pendiente: sin regla |
+| Aprobación | Revisión humana antes de tocar una identidad o un recurso | Diseño |
+| Contención | Acción mínima y reversible, con permisos acotados | Diseño |
+| Registro | Traza de qué se ejecutó y con qué resultado | Diseño |
+| Prueba | Incidente simulado de principio a fin | Pendiente |
 
-## Implementación de controles DevSecOps / Seguridad
+La lógica es deliberadamente corta: el playbook no decide, ejecuta lo que una persona aprueba. Esa decisión reduce el riesgo de que un falso positivo bloquee a un usuario legítimo, pero también limita la velocidad; el equilibrio depende del caso.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Respuesta inicial | Playbook que inicia revisión y/o contención | Automatización basada en alerta | Sentinel automation |
-| Contención | Acciones limitadas y documentadas | Playbooks con permisos mínimos | Seguridad operativa |
+El [playbook del módulo 12](../../../12-forense-cloud-respuesta/practicas/03-playbook-respuesta/README.md) se recorrió a mano en un tabletop, sin automatización. Automatizarlo exige el workspace, la regla y permisos de la identidad del playbook, y ninguno está desplegado.
 
-**Artefactos relacionados:** [Informe técnico](informe.md).
+Tampoco conviene que el playbook crezca antes de tener un caso probado: cada acción añade permisos y una forma nueva de equivocarse.
 
-## Validación o pruebas de seguridad realizadas
-
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Disparador de playbook | Ejecutar una alerta de prueba | Se inicia la automatización esperada | Pendiente: no ejecutado en laboratorio. |
-| Contención controlada | Validar que la acción es mínima y reversible | Se evita impacto innecesario | Pendiente: no ejecutado en laboratorio. |
-
-> [!WARNING]
-> No declarar una prueba superada si no se ejecutó. Redactar datos sensibles.
-
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
-
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| Pendiente de verificar contra la versión vigente | Automatización y respuesta ante incidentes | La automatización debe ser simple, reversible y claramente documentada. |
-
-- Asegurar que los playbooks no ejecuten acciones sin una firma humana o validación documental.
-- Limitar el alcance de la automatización al caso de uso definido.
+Automatizar sin aprobación multiplica errores; una acción irreversible no debería ser la primera; y un playbook sin registro no se puede auditar.

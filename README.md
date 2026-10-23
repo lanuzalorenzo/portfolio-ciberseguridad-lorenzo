@@ -98,7 +98,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 
 ### 5. Operaciones de seguridad, forense y respuesta
 
-- [09 | Microsoft Sentinel](09-microsoft-sentinel/README.md) — *diseño en curso*: KQL y automatización.
+- [09 | Microsoft Sentinel](09-microsoft-sentinel/README.md) — *diseño*: workspace y diagnósticos en IaC; Sentinel sin habilitar.
 - [10 | ELK Stack Security](10-elk-stack-security/README.md) — *validado en local*: pila ELK con Docker Compose, 15 eventos sintéticos, 6 consultas KQL y dashboard exportado; sin Azure ni datos reales.
 - [12 | Forense cloud y respuesta](12-forense-cloud-respuesta/README.md) — *parcial*: tabletop ejecutado; recolección técnica pendiente.
 
