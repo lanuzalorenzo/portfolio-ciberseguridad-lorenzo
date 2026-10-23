@@ -1,47 +1,39 @@
 # 01 | Protección de ramas y revisión de cambios
 
-> **Estado:** validado en GitHub para los repositorios de código. El propietario administrador conserva bypass; se documenta como limitación.
+> **Estado:** **Validado** en GitHub para los repositorios de código. `enforce_admins` está desactivado: el propietario puede saltarse la regla, y se documenta como limitación.
+>
+> **Referencias:** MCSB DS-1, GS-2, IR-1, DS-2.
 
-## Descripción del escenario y objetivo de seguridad
+Sin regla, cualquier cambio entra en `main` sin que nadie lo mire y el historial se puede reescribir con un `force-push`. La protección de rama convierte la revisión en un requisito del repositorio y no en una costumbre del equipo.
 
-**Escenario:** Repositorio con flujo de cambios directo hacia `main`, sin validación ni control de integridad del historial.  
-**Objetivo de seguridad:** Garantizar que cualquier integración pase por revisión, validación automática y restricciones de integridad.  
-**Alcance:** Rama principal, pull requests, revisión y reglas de protección.
+## Qué hay configurado
 
-## Arquitectura y componentes
+Reglas consultadas por API el 2026-10-23:
 
-| Componente | Función | Configuración relevante |
-|---|---|---|
-| **Repositorio Git** | Código y trazabilidad | `main` protegida. |
-| **Pull Request** | Revisión y validación | Todos los cambios pasan por PR. |
-| **Required reviewers** | Revisión humana | Al menos un aprobador. |
-| **Status checks** | Validación automática | Build, tests y seguridad. |
-| **Historial** | Integridad | Sin force-push ni borrado de la rama. |
-
-## Controles de seguridad
-
-| Control | Implementación | Referencia |
-|---|---|---|
-| Protección de la rama principal | PR obligatorio | MCSB DS-1 |
-| Revisión obligatoria | Aprobación antes del merge | MCSB GS-2 |
-| Bloqueo de sobreescritura | Force-push y borrado bloqueados | MCSB IR-1 |
-| Validación automática | Checks de CI/CD | MCSB DS-2 |
+| Regla | Valor |
+|---|---|
+| Pull request | Obligatorio, con una aprobación |
+| Checks exigidos | Siete jobs del pipeline, con la rama al día |
+| Historial | Lineal: sin commits de merge |
+| Force-push y borrado | Bloqueados |
+| Administradores | Exentos: `enforce_admins` desactivado |
 
 ## Validación
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Escritura directa a `main` | Revisión de la regla | Bloqueada para no administradores | PASS: regla activa; admin puede omitir |
-| Fusión vía PR | Apertura de PR | Revisión requerida | PASS |
-| Protección de historial | Intento de force-push | Rechazado | PASS (regla) |
-| Checks automáticos | Ejecución del pipeline | Requisitos antes del merge | Implementado; pendiente de ejecución verde |
+| Prueba | Resultado observado |
+|---|---|
+| Escritura directa a `main` | Rechazada para cuentas sin permiso de administrador |
+| PR sin aprobación | No se puede fusionar |
+| Pipeline en rojo | El merge queda bloqueado: los checks son obligatorios |
+| Force-push | Rechazado por la regla |
 
-## Limitación
+## Lecciones
 
-La protección de rama no protege frente a una cuenta administradora comprometida. Para reducir ese riesgo se recomienda aplicar la regla también a administradores (`enforce_admins`) y usar una cuenta de servicio para automatizaciones.
+- La regla no protege de una cuenta administradora comprometida: activar `enforce_admins` y usar una cuenta de servicio para automatizaciones cerraría el hueco.
+- Una aprobación sin criterio se convierte en un clic; el valor está en que el revisor mire el cambio.
+- Siete checks obligatorios con la rama al día encarecen el merge, y ese coste es justo el que evita integrar algo roto.
 
-## Artefactos relacionados
+## Más detalle
 
-- [Informe técnico](informe.md)
-- [Política de protección de ramas](../../branch-protection.md)
+- [Módulo 07](../../README.md)
 - [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)

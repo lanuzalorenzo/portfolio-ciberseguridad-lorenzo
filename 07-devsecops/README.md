@@ -1,60 +1,24 @@
 # 07 | DevSecOps y gobernanza del software
 
-> **Estado:** validado en CI. La pipeline completa (build, formato, 10 pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root, Trivy image y Trivy config sobre Bicep) finalizó en verde el 2026-10-19. OIDC y despliegue siguen fuera de alcance.
+> **Estado:** **Validado en CI**. La pipeline completa —build, formato, 10 pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root, Trivy image y Trivy config sobre Bicep— terminó en verde el 2026-10-19 y ha vuelto a pasar desde entonces; la última ejecución es del 2026-10-23. OIDC y despliegue siguen fuera de alcance.
 
-Este módulo centra la seguridad del desarrollo en la protección del flujo de cambios, la revisión de código y la automatización de controles antes de que un cambio llegue a producción. La protección de ramas es la base; el valor principal está en convertir la seguridad en un requisito del ciclo de vida (*Shift-Left Security*).
+La seguridad del desarrollo no se demuestra con una política escrita, sino con un cambio que no puede entrar si no pasa las pruebas. Este módulo aplica ese criterio sobre EcommerceApi: la rama protegida obliga a revisar, el escaneo de secretos tumba la integración si aparece una credencial, los análisis bloquean el merge y el contenedor se ejecuta sin privilegios.
 
-## Carga de trabajo de referencia
+## Carga de trabajo
 
-Los controles se aplican sobre [**EcommerceApi (lab-api-local-azure)**](https://github.com/lanuzalorenzo/lab-api-local-azure). Su pipeline ejecuta compilación, pruebas de integración, Gitleaks, CodeQL, Trivy SCA, escaneo de contenedor y Trivy config sobre Bicep.
+Los controles se aplican sobre [EcommerceApi (lab-api-local-azure)](https://github.com/lanuzalorenzo/lab-api-local-azure), el mismo workload del resto del portfolio. El código, el workflow y las plantillas Bicep viven allí; aquí se documenta qué se aplicó y qué se observó.
 
-## Objetivo del módulo
+## Las cuatro prácticas
 
-Reducir el riesgo de cambios no revisados, credenciales expuestas, dependencias vulnerables, configuraciones inseguras y entregas sin validación.
-
-## Prácticas documentadas
-
-- [Protección de ramas y revisión de cambios](practicas/01-proteccion-ramas/README.md)
-- [Detección de secretos y credenciales expuestas](practicas/02-secret-scanning/README.md)
-- [SAST, SCA e IaC scanning](practicas/03-sast-sca-iac/README.md)
-- [Pipeline segura por defecto y validación de entregas](practicas/04-pipeline-security/README.md)
-
-## Controles y estado real
-
-| Control | Implementación | Estado | Evidencia |
+| # | Práctica | Qué controla | Estado |
 |---|---|---|---|
-| Protección de rama principal | PR + revisión + bloqueo de force-push/borrado | Implementado en repositorios de código | Reglas de GitHub |
-| Revisión obligatoria | Aprobación previa al merge | Implementado con bypass de administrador documentado | Configuración del repositorio |
-| Detección de secretos | Gitleaks sobre historial completo | Implementado y validado en CI y localmente | `.gitleaks.toml`, workflow |
-| SAST | CodeQL C# (`security-extended`) | Implementado y validado en CI | Workflow `devsecops-ci.yml`, run 39243360276 |
-| SCA | Trivy filesystem, CRITICAL/HIGH | Implementado y validado en CI y localmente | Workflow, Trivy |
-| Contenedor | Docker multi-stage, usuario no-root, Trivy image | Implementado y validado en CI | `Dockerfile`, workflow |
-| IaC | Bicep + Trivy config | Implementado y validado en CI y localmente | `infra/`, workflow |
-| Dependency Review | Bloqueo por severidad High en PR | Implementado; dependency graph habilitado | Workflow |
-| OIDC a Azure | Identidad federada sin secretos | Diseñado, no activo | `infra/README.md` |
-| Pruebas de integración | xUnit, 10 pruebas | Implementado y ejecutado localmente | `tests/EcommerceApi.Tests` |
+| 01 | [Protección de ramas](practicas/01-proteccion-ramas/README.md) | Que ningún cambio entre sin revisión | **Validado** |
+| 02 | [Detección de secretos](practicas/02-secret-scanning/README.md) | Que una credencial no se quede en el historial | **Validado** |
+| 03 | [SAST, SCA e IaC](practicas/03-sast-sca-iac/README.md) | Que código, dependencias e infraestructura pasen el análisis | **Validado** |
+| 04 | [Pipeline segura](practicas/04-pipeline-security/README.md) | Que cada job tenga el permiso mínimo y los gates bloqueen | **Parcial** |
 
-## Validación del módulo
+## Lo que no está
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Protección de rama principal | Revisión de reglas del repositorio | `main` protegida con PR | PASS: regla activa; bypass de admin documentado |
-| Revisión obligatoria | Configuración de pull request | Aprobación previa | PASS: revisión requerida |
-| Detección de secretos | Gitleaks sobre historial | Sin hallazgos reales | PASS local y CI: 0 leaks |
-| SAST | CodeQL en CI | Análisis publicado | PASS CI: CodeQL completado y SARIF publicado |
-| SCA | Trivy sobre dependencias | Sin CRITICAL/HIGH no corregidos | PASS local y CI: 0 hallazgos |
-| IaC | `bicep build` + Trivy config | Plantilla válida y sin CRITICAL/HIGH | PASS local y CI; hallazgos AZU justificados en `.trivyignore` |
-| Contenedor no-root | `docker run --entrypoint id` | UID distinto de 0 | PASS CI: UID distinto de 0 |
-| Pipeline bloqueante | Revisión del workflow | Fallo ante hallazgos críticos | PASS CI: todos los jobs finalizaron en verde; gates bloqueantes activos |
+El propietario administrador puede saltarse la protección de rama, y la regla no lo impide: harían falta `enforce_admins` y una cuenta de servicio para las automatizaciones. La autenticación OIDC con Azure está diseñada pero no activa, no hay workflow de despliegue y la pipeline no firma artefactos ni genera SBOM. Son las tres deudas del módulo, escritas como tales.
 
-## Limitaciones
-
-- El propietario administrador puede omitir la protección de rama; la regla no es una defensa absoluta contra la propia cuenta comprometida.
-- CodeQL y el escaneo de contenedor se ejecutan en GitHub Actions; el entorno local no dispone de Docker. Los resultados remotos están enlazados en este documento.
-- El análisis IaC usa el ARM compilado desde Bicep porque Trivy no interpreta `.bicep` directamente.
-- No hay workflow de despliegue ni OIDC activo.
-- El escaneo de secretos necesita una allowlist para ejemplos de documentación; la allowlist está acotada por ruta y patrón.
-
-## Registro del trabajo
-
-Las [bitácoras del módulo](bitacora/) documentan la evolución del laboratorio y las decisiones técnicas.
+No hay bitácora. El trabajo quedó en las páginas y en el workflow, y la entrada que había contaba una reorganización de carpetas que ya no existe.

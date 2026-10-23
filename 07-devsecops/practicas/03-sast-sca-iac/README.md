@@ -1,49 +1,37 @@
-# 03 | SAST, SCA e IaC scanning
+# 03 | SAST, SCA e IaC
 
-> **Estado:** validado en CI (run 39243360276, 2026-10-19). SAST, SCA e IaC completaron sin hallazgos CRITICAL/HIGH.
+> **Estado:** **Validado** en CI (run 39243360276, 2026-10-19). Los tres análisis terminaron sin hallazgos CRITICAL ni HIGH.
+>
+> **Referencias:** MCSB PV-2, PV-3, DS-1, IR-2.
 
-## Descripción del escenario y objetivo de seguridad
+Tres preguntas distintas antes del merge: si el código tiene un patrón vulnerable, si una dependencia arrastra un CVE y si la infraestructura declarada abre algo que no debería. Cada una la responde una herramienta, y las tres pueden tumbar el pipeline.
 
-**Escenario:** Proyecto con dependencias de terceros, infraestructura declarativa y lógica de aplicación sin validación automatizada antes del merge.  
-**Objetivo de seguridad:** Automatizar la validación de código, dependencias y plantillas antes de la entrega.  
-**Alcance:** Código .NET, paquetes NuGet y plantillas Bicep.
+## Qué se aplicó
 
-## Arquitectura y componentes
-
-| Componente | Función | Configuración relevante |
-|---|---|---|
-| **CodeQL** | SAST para C# | `security-extended`, autobuild. |
-| **Trivy fs** | SCA de dependencias | CRITICAL/HIGH, `ignore-unfixed`. |
-| **Trivy config** | IaC scanning | ARM compilado desde Bicep. |
-| **Dependency Review** | Revisión de cambios de dependencias | Solo PR, severidad High. |
-
-## Controles de seguridad
-
-| Control | Implementación | Referencia |
-|---|---|---|
-| SAST | CodeQL en cada push/PR | MCSB PV-2 |
-| SCA | Trivy bloqueante | MCSB PV-3 |
-| IaC | Trivy config sobre ARM | MCSB DS-1 |
-| Bloqueo por hallazgos | `exit-code: 1` | MCSB IR-2 |
+| Análisis | Herramienta y configuración |
+|---|---|
+| SAST | CodeQL para C#, consultas `security-extended`, autobuild |
+| SCA | Trivy filesystem, CRITICAL y HIGH, `ignore-unfixed` |
+| IaC | `bicep build` y Trivy config sobre el ARM compilado |
+| Dependencias nuevas | Dependency Review en el PR, bloqueo por severidad High |
 
 ## Validación
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| SAST | CodeQL | Hallazgos publicados en Security | PASS CI: CodeQL completado y SARIF publicado |
-| SCA | Trivy fs | Sin CRITICAL/HIGH no corregidos | PASS local y CI: 0 hallazgos |
-| IaC | `bicep build` + Trivy config | Plantilla válida y sin CRITICAL/HIGH | PASS local y CI: hallazgos AZU justificados |
-| Dependency Review | PR con cambio de paquete | Bloqueo por severidad High | Implementado |
+| Prueba | Resultado observado |
+|---|---|
+| CodeQL | Completado y SARIF publicado en Security |
+| Trivy fs | 0 hallazgos CRITICAL/HIGH sin corregir |
+| Trivy config | Plantilla válida; `AZU-0013` justificado en `.trivyignore` |
 
-## Limitaciones
+## Lecciones
 
-- Trivy no interpreta `.bicep`; se compila a ARM antes del escaneo.
-- `AZU-0013` se suprime con justificación porque el Key Vault usa `defaultAction: Deny`, sin acceso público y con Private Endpoint; Trivy no evalúa bien el bloque `networkAcls` del ARM compilado.
-- CodeQL y el escaneo de imagen requieren GitHub Actions; no se han ejecutado localmente.
+- Trivy no lee `.bicep`: hay que compilar a ARM y escanear esa salida, con el desfase que eso supone.
+- `ignore-unfixed` evita bloquear por lo que no tiene parche, pero deja ese riesgo sin fecha de arreglo.
+- Una supresión sin justificación escrita es un agujero silencioso; `AZU-0013` se explica porque Trivy no interpreta bien el bloque `networkAcls`.
 
-## Artefactos relacionados
+## Más detalle
 
-- [Informe técnico](informe.md)
+- [Módulo 07](../../README.md)
 - [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)
 - [Plantilla Bicep](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/infra/main.bicep)
 - [Justificación de Trivy](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.trivyignore)

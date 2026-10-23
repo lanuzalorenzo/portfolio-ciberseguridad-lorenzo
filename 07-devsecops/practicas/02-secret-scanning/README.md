@@ -1,45 +1,36 @@
 # 02 | Detección de secretos y credenciales expuestas
 
-> **Estado:** validado localmente y en CI (run 39243360276, 2026-10-19).
+> **Estado:** **Validado** localmente y en CI (run 39243360276, 2026-10-19).
+>
+> **Referencias:** MCSB IM-1, IM-2, DS-2.
 
-## Descripción del escenario y objetivo de seguridad
+Un token pegado en un commit sigue ahí aunque se borre en el siguiente: el historial guarda el objeto. Gitleaks recorre el historial completo en cada push a `main` y en cada pull request, y un hallazgo tumba el job. Si el secreto ya se empujó, el escaneo no lo borra del historial: obliga a rotarlo y a decidir si se reescribe.
 
-**Escenario:** Historial de desarrollo que puede contener tokens, claves, cadenas de conexión o credenciales insertadas accidentalmente.  
-**Objetivo de seguridad:** Detectar y eliminar credenciales expuestas antes de que se integren o compartan.  
-**Alcance:** Historial Git, pull requests, releases y flujo de desarrollo.
+## Qué se aplicó
 
-## Arquitectura y componentes
-
-| Componente | Función | Configuración relevante |
-|---|---|---|
-| **Gitleaks** | Detección de secretos | Escaneo del historial completo en CI. |
-| **Allowlist acotada** | Evitar falsos positivos | Solo rutas de documentación y patrones `$TOKEN`/JWT truncados. |
-| **GitHub Actions** | Ejecución automática | Push, PR y ejecución manual. |
-| **Respuesta** | Rotación y limpieza | Procedimiento documentado. |
-
-## Controles de seguridad
-
-| Control | Implementación | Referencia |
-|---|---|---|
-| Escaneo temprano | Gitleaks en cada push/PR | MCSB IM-1 |
-| Revisión de historial | `fetch-depth: 0` | MCSB IM-2 |
-| Bloqueo en CI | `--exit-code 2` | MCSB DS-2 |
-| Rotación | Regenerar credenciales comprometidas | MCSB IA-3 |
+| Pieza | Configuración |
+|---|---|
+| Gitleaks 8.30.1 | Historial completo con `fetch-depth: 0` |
+| Bloqueo | `--exit-code 2`: un hallazgo tumba el job |
+| Allowlist | Solo rutas de documentación y patrones `$TOKEN` o JWT truncados |
+| Respuesta | Rotar la credencial y valorar la reescritura del historial |
 
 ## Validación
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Escaneo del historial | Gitleaks 8.30.1 sobre historial completo | Sin secretos reales | PASS local y CI: 0 leaks |
-| Falsos positivos de documentación | Allowlist por ruta y patrón | Sin ocultar secretos arbitrarios | PASS: allowlist acotada |
-| Bloqueo en CI | `--exit-code 2` | Falla ante hallazgo | PASS CI: job completado sin hallazgos |
+| Prueba | Resultado observado |
+|---|---|
+| Escaneo del historial completo | 0 secretos reales en local y en CI |
+| Falsos positivos de documentación | La allowlist los cubre; el resto del repositorio se escanea igual |
+| Bloqueo ante hallazgo | Configurado con `--exit-code 2`; no se probó con un secreto real |
 
-## Limitación
+## Lecciones
 
-La allowlist de documentación podría ocultar un secreto real introducido en un `.md`. Se revisa manualmente y se mantiene limitada a patrones de placeholder. Si se detecta un secreto real, se rota y se evalúa la reescritura del historial.
+- La allowlist es el punto débil: una regla por ruta puede tapar un secreto real escondido en un `.md`.
+- Primero se rota la credencial; reescribir el historial viene después, y solo si el secreto llegó a publicarse.
+- Escanear el historial completo, y no solo el diff del commit, es lo que encuentra lo que ya estaba dentro.
 
-## Artefactos relacionados
+## Más detalle
 
-- [Informe técnico](informe.md)
+- [Módulo 07](../../README.md)
 - [`.gitleaks.toml`](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.gitleaks.toml)
 - [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)
