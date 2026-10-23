@@ -1,38 +1,30 @@
 # 10 | Defender App Governance
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** Diseño. No hay licencia de App Governance ni aplicaciones OAuth de laboratorio que revisar.
+>
+> **Referencias:** MCSB AM-2 · IA-3 · IR-2.
 
-**Escenario:** Aplicaciones OAuth y conectores del entorno de Microsoft 365 con permisos amplios y poca visibilidad de comportamiento, incrementando el riesgo de abuso de accesos y fuga de datos.
-**Objetivo de seguridad:** Evaluar permisos, comportamientos y riesgos de aplicaciones mediante Defender App Governance para reforzar la gobernanza y detectar actividades sospechosas.
-**Alcance:** Aplicaciones conectadas a Microsoft 365, permisos consentidos, análisis de riesgos y validación de alertas sobre actividades anómalas.
+Una aplicación de terceros con permiso para leer todo el correo de la organización no es un usuario: es una llave maestra que nadie revisa. Se concedió en dos clics, funciona sin contraseña y sobrevive al empleado que la aprobó.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+App Governance mira las aplicaciones conectadas a Microsoft 365: qué permisos tienen, quién los concedió y cómo se comportan. El riesgo no suele estar en la aplicación, está en el permiso que arrastra.
 
-## Arquitectura y componentes de Microsoft Defender utilizados
+## Qué lo validaría
 
-| Componente | Función | Configuración relevante |
+| Prueba | Cómo se haría | Qué hace falta |
 |---|---|---|
-| **Defender App Governance** | Gobernanza de aplicaciones y permisos | Visibilidad de aplicaciones conectadas. |
-| **OAuth / permisos** | Evaluación de accesos y consentimiento | Determinación de privilegios excesivos. |
-| **Alertas de riesgo** | Señales de actividad sospechosa | Detección de uso anómalo. |
-| **Conectores y datos** | Revisión del acceso a información sensible | Análisis de riesgo y comportamiento. |
+| Inventario de aplicaciones | Revisar las apps con permisos de Graph y quién las consintió | Defender for Cloud Apps con el complemento |
+| Permiso excesivo | Buscar una app con acceso de lectura a todo el correo | Una app registrada y un consentimiento de administrador |
+| Comportamiento anómalo | Generar actividad fuera de su patrón habitual | La app en uso y unos días de línea base |
+| Respuesta | Revocar el permiso desde el panel y comprobar el efecto | Permisos de administrador y una app no crítica |
 
-## Implementación de controles DevSecOps / Seguridad
+Falta la licencia y no hay apps que auditar: ninguna se ha ejecutado.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Gobernanza de permisos | Identificación de aplicaciones con accesos excesivos | Revisión continua de consentimientos | MCSB AM-2 |
-| Detección de anomalías | Monitorización de utilización inusual de apps | Alertas por riesgo | MCSB IR-2 |
-| Reducción de superficie | Revocación o ajuste de permisos | Respuesta operativa | MCSB IA-3 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+- El riesgo no es la aplicación, es el permiso. Una app útil con `Mail.Read` en toda la organización es un buzón compartido con todos.
+- La gobernanza empieza por el inventario. Sin la lista de aplicaciones consentidas no hay política que aplicar.
+- Un consentimiento de administrador concedido para una demo no caduca solo. Se revisa o se revoca, y casi nunca se hace lo segundo.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Revisar permisos | Inspección de apps registradas | Riesgos de exceso de privilegios visibles | Correcto |
-| Verificar alertas | Revisión del panel de seguridad | Incidentes o señales identificadas | Sí |
-| Validar comportamiento | Análisis de actividad anómala | Evidencia de riesgo documentada | Sí |
+- [Matriz de requisitos del módulo](../../docs/requisitos.md)

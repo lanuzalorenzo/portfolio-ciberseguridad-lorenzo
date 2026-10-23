@@ -1,42 +1,30 @@
-# 14 | Simulación controlada y correlación en Defender XDR
+# 14 | Simulación controlada y correlación en XDR
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** Diseño. No se ha lanzado ninguna simulación; además depende de los productos 01–04, que tampoco están desplegados.
+>
+> **Referencias:** MCSB IR-1 · IR-2 · IR-3.
 
-**Escenario:** Entorno de laboratorio con una cadena de ataque controlada diseñada para validar la detección, correlación y respuesta de varios productos de Microsoft Defender.
-**Objetivo de seguridad:** Ejecutar una simulación de ataque y confirmar que la suite de Microsoft Defender es capaz de correlacionar señales de identidad, endpoint, correo y cloud en un único caso de respuesta.
-**Alcance:** Laboratorio con escenarios de phishing, malware, abuso de credenciales o movimiento lateral, con análisis de impacto y modelado de respuesta.
+Lanzar un ataque contra el laboratorio sin alcance escrito no es una prueba: es un incidente con el nombre cambiado. La simulación necesita permiso, límites y una forma de pararla, y eso se escribe antes de empezar.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+Con esas condiciones, la prueba es la más útil del módulo: un escenario simple que recorra identidad, equipo y correo, y comprobar si la suite lo cuenta como una historia o como cuatro alertas sueltas.
 
-## Arquitectura y componentes de Microsoft Defender utilizados
+## Qué lo validaría
 
-| Componente | Función | Configuración relevante |
+| Prueba | Cómo se haría | Qué hace falta |
 |---|---|---|
-| **Defender XDR** | Correlación de señales y cronología del ataque | Caso de incidente central. |
-| **Defender for Endpoint** | Evidencia de ejecución y procesos | Detección de malware y comportamiento. |
-| **Defender for Identity** | Señales de autenticación anómala | Riesgo de acceso y movimiento lateral. |
-| **Defender for Cloud Apps / otros** | Contexto de apps y acceso | Integración con actividad cloud. |
+| Escenario simple | Contraseña débil o adjunto de prueba, sin exploits | Un tenant de laboratorio y datos sintéticos |
+| Detección por producto | Confirmar que cada pieza emite su alerta | 01, 02 y 03 activos |
+| Incidente único | Revisar que XDR las agrupa con entidades y cronología | XDR con las señales conectadas |
+| Respuesta y cierre | Aislar un equipo, documentar y deshacer | Permisos de respuesta y un equipo no crítico |
 
-## Implementación de controles DevSecOps / Seguridad
+No hay resultados que presentar: ninguna se ha ejecutado.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Simulación de técnica adversaria | Ejecución controlada del escenario | Validación planificada en laboratorio | MCSB IR-2 |
-| Correlación entre señales | Análisis de timeline y entidades | Caso único en XDR | MCSB IR-1 |
-| Priorización y respuesta | Revisión del impacto y posible mitigación | Respuesta manual o automatizada | MCSB IR-3 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+- Una simulación sin permiso y sin alcance escrito no es una prueba. El documento que la autoriza es parte del control.
+- El valor está en el incidente único: si cada producto abre su propio caso, XDR no está correlacionando y el problema no es el ataque.
+- Se empieza por la técnica más simple. El escenario complejo esconde los fallos de detección detrás del ruido que genera.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Simulación de ataque | Ejecución del escenario de laboratorio | Evidencia generada y detectada | Correcto |
-| Correlación de señales | Revisión de timeline de XDR | Ataque completo reconstruido | Correcto |
-| Respuesta operativa | Validación de acciones y mitigaciones | Caso con respuesta adecuada | Sí |
-
-## Alcance
-
-El escenario se plantea como una práctica controlada de laboratorio y no como actividad contra sistemas externos.
+- [Matriz de requisitos del módulo](../../docs/requisitos.md)

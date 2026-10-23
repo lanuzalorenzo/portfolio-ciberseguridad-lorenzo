@@ -1,38 +1,29 @@
 # 01 | Defender for Identity
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** Diseño. La instalación del sensor y la validación de alertas están descritas, pero no hay registro de que se ejecutaran.
+>
+> **Referencias:** MCSB IA-1 · IA-2 · IR-2.
 
-**Escenario:** Tenant Microsoft 365 con infraestructura híbrida y uso de Active Directory/Entra ID sin monitoreo activo de actividades anómalas, acceso privilegiado o movimientos laterales.
-**Objetivo de seguridad:** Detectar comportamientos sospechosos de identidad, anomalías de autenticación y riesgo de acceso privilegiado mediante Defender for Identity.
-**Alcance:** Controladores de dominio, usuarios y grupos del laboratorio, así como validación de alertas de identidad y riesgo asociado.
+Una cuenta con privilegios que empieza a enumerar el dominio no dispara ninguna alarma: el inicio de sesión es correcto. El ataque ocurre dentro de la sesión legítima, y los eventos que lo delatarían llevan años sin que nadie los lea.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+Defender for Identity pone un sensor en el controlador de dominio que lee esos eventos. Un Kerberoasting suelto no dice nada; el reconocimiento que lo precede, sí.
 
-## Arquitectura y componentes de Microsoft Defender utilizados
+## Qué lo validaría
 
-| Componente | Función | Configuración relevante |
+| Prueba | Cómo se haría | Qué hace falta |
 |---|---|---|
-| **Defender for Identity** | Detección de identidad y comportamiento anómalo | Integración con Active Directory y Entra ID. |
-| **Sensores de identidad** | Recolección de eventos de autenticación y actividad de dominio | Desplegados en controladores de dominio. |
-| **Microsoft Entra ID** | Origen de identidades y autenticación | Validación de sign-ins sospechosos y privilegios. |
-| **Timeline de incidentes** | Correlación de actividad sospechosa | Análisis de riesgo de lateral movement. |
+| Sensor operativo | Instalar el paquete y revisar estado del servicio y última conexión | Un controlador de dominio de laboratorio y la clave de acceso del tenant |
+| Telemetría real | Comprobar en el portal el volumen de eventos procesados | Auditoría de AD habilitada en el dominio |
+| Detección de técnica conocida | Kerberoasting controlado con una cuenta de servicio del laboratorio | Sensor sano y una licencia que cubra identidad |
 
-## Implementación de controles DevSecOps / Seguridad
+No hay dominio en el laboratorio, así que ninguna se ha ejecutado.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Detección de anomalías de autenticación | Sensor de Defender for Identity conectado al dominio | Recolección continua de eventos AD | MCSB IA-1 |
-| Supervisión de accesos privilegiados | Analítica de comportamiento del usuario y de roles sensibles | Alertas basadas en riesgo | MCSB IA-2 |
-| Identificación de lateral movement | Correlación de uso de credenciales y rutas de acceso | Timeline y detecciones de sospecha | MCSB IR-2 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+- El sensor no ve el dominio, ve el tráfico que el dominio ya genera. Si la auditoría avanzada está apagada, la mitad de la señal no existe aunque el sensor esté sano.
+- Lo que se detecta es la secuencia. Una alerta aislada de identidad se puede explicar; tres en el mismo orden y sobre la misma cuenta, no.
+- La licencia va antes que la configuración: sin Defender for Identity no hay nada que instalar, y es la razón por la que esta práctica sigue en diseño.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Conectividad del sensor | Verificación del estado de servicio del sensor | Sensor operativo y conectado | Correcto |
-| Detección de actividad anómala | Revisión de eventos de autenticación | Alertas de riesgo visibles | Sí |
-| Validación de identidad sospechosa | Análisis de riesgos y alertas | Incidente clasificado con evidencia | Sí |
+- [Matriz de requisitos del módulo](../../docs/requisitos.md)

@@ -1,48 +1,30 @@
 # 06 | Defender for Containers
 
-> **Estado:** diseño documentado. No ejecutado: no hay clúster de Kubernetes ni registro de contenedores desplegado.
+> **Estado:** Diseño. No hay clúster de Kubernetes ni registro de imágenes en el laboratorio, así que no hay nada que proteger todavía.
+>
+> **Referencias:** MCSB DS-1 · IR-2 · PV-3 · CIS Kubernetes Benchmark.
 
-## Descripción del escenario y objetivo de seguridad
+Una imagen con una librería vulnerable no es un incidente hasta que se ejecuta con red y credenciales. Para entonces el fallo ya está en producción y el Dockerfile que lo introdujo lleva semanas sin tocarse.
 
-**Escenario:** Imagen de contenedor de la API construida con Docker, sin análisis continuo de vulnerabilidades, control de admisión ni detección de runtime en un clúster.  
-**Objetivo de seguridad:** Extender la seguridad del contenedor desde el build hasta el runtime con Defender for Containers: escaneo de imágenes, recomendaciones de hardening y detección de comportamientos anómalos.  
-**Alcance:** Imagen `ecommerce-api`, Azure Container Registry y un clúster AKS de laboratorio.
+Defender for Containers cubre tres momentos que se confunden con facilidad: la imagen antes de desplegarse, el clúster antes de admitirla y el contenedor mientras corre. Son controles distintos y se compran juntos.
 
-## Arquitectura y componentes
+## Qué lo validaría
 
-| Componente | Función | Configuración relevante |
+| Prueba | Cómo se haría | Qué hace falta |
 |---|---|---|
-| **Azure Container Registry** | Registro de imágenes | Escaneo de imágenes al push. |
-| **AKS** | Runtime de contenedores | Defender for Containers habilitado. |
-| **Defender for Containers** | Postura y detección | Agente y sensores de runtime. |
-| **Dockerfile** | Build seguro | Multi-stage, usuario no-root. |
+| Escaneo de imagen | Subir la imagen de la API y revisar sus recomendaciones | Un registro de imágenes y el plan de contenedores |
+| Control de admisión | Intentar desplegar una imagen con vulnerabilidades críticas | Un clúster con la política de admisión activa |
+| Detección en runtime | Ejecutar un proceso anómalo dentro de un pod de laboratorio | El agente desplegado en el clúster |
+| Auditoría del API server | Revisar los eventos de Kubernetes | Registro de auditoría habilitado |
 
-## Controles de seguridad
+No hay clúster ni registro, así que ninguna se ha ejecutado.
 
-| Control | Implementación | Referencia |
-|---|---|---|
-| Imagen mínima y no-root | Multi-stage + `USER $APP_UID` | CIS Docker Benchmark |
-| Escaneo de imagen | Defender for Containers / Trivy | MCSB PV-3 |
-| Control de admisión | Azure Policy para AKS | MCSB DS-1 |
-| Detección de runtime | Defender for Containers | MCSB IR-2 |
+## Lecciones
 
-## Validación
+- Escaneo y runtime son dos planes de la misma pieza. Uno mira lo que la imagen contiene; el otro, lo que hace cuando corre.
+- Un Dockerfile no es un clúster. Sin registro ni orquestador no hay superficie que Defender pueda vigilar.
+- El control de admisión es lo único que impide que una imagen vulnerable llegue a ejecutarse. El escaneo avisa; la admisión decide.
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Escaneo al push | Subir imagen a ACR | Hallazgos visibles | Pendiente: requiere ACR |
-| Usuario no-root | `docker run --entrypoint id` | UID distinto de 0 | Definido en CI; no ejecutado localmente |
-| Control de admisión | Desplegar imagen no firmada | Bloqueo o alerta | Pendiente |
-| Detección de runtime | Ejecutar proceso sospechoso | Alerta | Pendiente |
+## Más detalle
 
-## Limitaciones
-
-- Defender for Containers requiere un clúster y un registro; no se ha desplegado.
-- El Dockerfile se valida en CI, pero el escaneo de imagen depende de Docker en el runner.
-- La firma de imágenes y la verificación de procedencia son trabajo futuro (Sigstore/Notation).
-
-## Artefactos relacionados
-
-- [Dockerfile de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/Dockerfile)
-- [Workflow de contenedor](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)
-- [Guion de la práctica](GUION.md)
+- [Matriz de requisitos del módulo](../../docs/requisitos.md)

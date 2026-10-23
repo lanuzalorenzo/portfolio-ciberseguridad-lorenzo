@@ -1,38 +1,29 @@
 # 04 | Defender XDR
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** Diseño. El análisis de incidentes correlacionados está descrito, pero no hay registro de que se ejecutara.
+>
+> **Referencias:** MCSB IR-1 · IR-2 · IR-3.
 
-**Escenario:** Entorno con señales distribuidas entre identidad, endpoints y correo sin correlación centralizada, generando dificultad para distinguir ataques reales de alertas aisladas.
-**Objetivo de seguridad:** Analizar incidentes y correlaciones en Microsoft Defender XDR para reconstruir la cronología de los ataques, prioritizar la respuesta y validar la coordinación entre productos Defender.
-**Alcance:** Incidentes del laboratorio, correlación entre identidad, endpoint, correo y aplicaciones, con análisis de entidades y severidad.
+Cuatro alertas en cuatro paneles distintos no cuentan un ataque; cuentan cuatro problemas. El analista que las lee por separado cierra tres como ruido y persigue la cuarta, que era la consecuencia de las otras tres.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+Defender XDR no detecta nada nuevo: recoge lo que ya emitieron identidad, equipo, correo y aplicaciones y lo agrupa en un incidente con entidades y cronología. Su valor no está en la detección, está en el orden.
 
-## Arquitectura y componentes de Microsoft Defender utilizados
+## Qué lo validaría
 
-| Componente | Función | Configuración relevante |
+| Prueba | Cómo se haría | Qué hace falta |
 |---|---|---|
-| **Defender XDR** | Correlación de incidentes entre productos | Vista unificada del ataque. |
-| **Defender for Identity** | Señales de anomalías de identidad | Entidades asociadas al ataque. |
-| **Defender for Endpoint** | Señales de proceso y endpoint | Evidencia del comportamiento del host. |
-| **Defender for Office 365** | Señales de correo y phishing | Alertas y mensajes maliciosos. |
+| Incidente único | Provocar dos señales del mismo origen y comprobar que caen en un solo caso | Al menos dos productos emitiendo señales |
+| Cronología legible | Revisar el orden de las entidades y los eventos del incidente | Retención suficiente en los productos de origen |
+| Respuesta reversible | Aislar un equipo de laboratorio desde el incidente y deshacerlo | Permisos de respuesta y un equipo que no sea crítico |
 
-## Implementación de controles DevSecOps / Seguridad
+Sin 01, 02 y 03 no hay señales que correlacionar: ninguna se ha ejecutado.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Correlación de incidentes | XDR unifica señales de varios productos | Análisis automatizado de cronología | MCSB IR-2 |
-| Priorización de urgencia | Valores de severidad y riesgo | Clasificación por impacto | MCSB IR-3 |
-| Respuesta operativa | Acciones recomendadas y evidencia asociada | Enriquecimiento del caso de seguridad | MCSB IR-1 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+- XDR no inventa señales. Si los productos de origen no están encendidos, el panel está limpio porque no mira, no porque no pase nada.
+- Un incidente con cuatro alertas y dos entidades vale más que cuarenta alertas sueltas: el trabajo del analista es descartar, y agrupar es la mitad de ese trabajo.
+- La respuesta se prueba con una acción reversible, como aislar un equipo. Una acción que borra o bloquea cuentas se prueba cuando ya hay un procedimiento acordado.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Revisión de incidentes | Consulta del caso de XDR | Evidencia correlacionada | Correcto |
-| Cronología del ataque | Análisis de timeline | Secuencia del ataque visible | Sí |
-| Impacto y severidad | Revisión de entidades y contexto | Clasificación consistente | Sí |
+- [Matriz de requisitos del módulo](../../docs/requisitos.md)

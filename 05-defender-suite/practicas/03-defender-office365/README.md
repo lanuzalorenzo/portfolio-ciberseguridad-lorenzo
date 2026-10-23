@@ -1,38 +1,29 @@
 # 03 | Defender for Office 365
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** Diseño. La configuración de políticas y su validación están descritas, pero no hay registro de que se ejecutaran.
+>
+> **Referencias:** MCSB AM-1 · AM-2 · IR-2.
 
-**Escenario:** Entorno de Microsoft 365 con políticas de correo no reforzadas, que incrementa el riesgo de phishing, malware y acceso a enlaces maliciosos a través del bandeja de entrada.
-**Objetivo de seguridad:** Evaluar y activar políticas de correo seguro, validando SafeLinks, SafeAttachments y detección de amenazas a través de Defender for Office 365.
-**Alcance:** Tenant de laboratorio, buzones de correo, políticas de correo electrónico y revisión de alertas asociadas a amenazas de correo.
+El correo sigue siendo la entrada más barata: no hace falta una vulnerabilidad, basta con que alguien abra un archivo o pulse un enlace. Y el usuario que lo abre no está haciendo nada malo; está haciendo su trabajo.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+Defender for Office 365 añade dos filtros que hacen cosas distintas. Safe Links reescribe la dirección y la comprueba en el momento del clic, cuando ya se sabe si el dominio cambió de dueño. Safe Attachments abre el archivo en una máquina aislada y observa qué intenta hacer antes de entregarlo.
 
-## Arquitectura y componentes de Microsoft Defender utilizados
+## Qué lo validaría
 
-| Componente | Función | Configuración relevante |
+| Prueba | Cómo se haría | Qué hace falta |
 |---|---|---|
-| **Defender for Office 365** | Protección del correo y colaboración | Políticas de seguridad y análisis de mensajes. |
-| **SafeLinks** | Reescritura y validación de URLs maliciosas | Bloqueo y análisis de enlaces sospechosos. |
-| **SafeAttachments** | Análisis dinámico de adjuntos | Sustitución del archivo por una versión escaneada. |
-| **Threat Explorer** | Revisión de campañas y mensajes maliciosos | Análisis de indicadores y patrones. |
+| Enlace bloqueado | Enviar una URL de prueba entre dos buzones del laboratorio y seguir el clic | Un tenant con dos buzones y la política aplicada |
+| Adjunto detonado | Enviar un archivo de prueba y revisar la detonación y su alerta | La política de adjuntos en modo bloqueo |
+| Alerta correlacionada | Comprobar que el evento aparece en el explorador de amenazas | Retención y permisos de lectura sobre el tenant |
 
-## Implementación de controles DevSecOps / Seguridad
+No hay tenant de correo, así que ninguna se ha ejecutado.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Protección de enlaces | SafeLinks con políticas de bloqueo y seguimiento | Reglas de seguridad del tenant | MCSB AM-1 |
-| Protección de adjuntos | SafeAttachments para análisis en sandbox | Filtrado previo a entrega | MCSB AM-2 |
-| Detección de campañas | Revisión de amenazas y campañas de phishing | Alertas automatizadas | MCSB IR-2 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+- Los dos filtros no son intercambiables. Uno actúa sobre el enlace, el otro sobre el archivo, y un ataque puede usar solo uno.
+- El modo auditoría sirve para medir, no para proteger. Se queda en pruebas y se documenta la fecha en que se cambió.
+- El correo es el vector más barato del laboratorio: no requiere exploits, requiere una víctima y una excusa.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Validación de SafeLinks | Simulación de URL sospechosa | Bloqueo o análisis de la URL | Correcto |
-| Validación de SafeAttachments | Envío de archivo sintético malicioso | Escaneo y bloqueo previo | Correcto |
-| Revisión de alertas | Consulta del portal de correo y alertas | Indicadores y tendencia visibles | Sí |
+- [Matriz de requisitos del módulo](../../docs/requisitos.md)

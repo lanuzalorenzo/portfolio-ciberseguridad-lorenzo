@@ -1,38 +1,31 @@
-# 12 | Defender CSPM (Cloud Security Posture Management)
+# 12 | Defender CSPM
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** Parcial. La suscripción de laboratorio existe y el plan gratuito ya da recomendaciones; el plan de CSPM, que añade rutas de ataque y explorador, no está activo.
+>
+> **Referencias:** MCSB DP-3 · GS-1 · GS-2.
 
-**Escenario:** Suscripción de laboratorio con recursos cloud expuestos sin evaluación continua de postura, generando riesgos de configuración, cumplimiento y visibilidad de seguridad.
-**Objetivo de seguridad:** Revisar la postura de seguridad cloud mediante Defender CSPM para identificar recomendaciones, evaluación de riesgo y desviaciones de configuración.
-**Alcance:** Recursos de Azure del laboratorio, cumplimiento frente al benchmark, recomendaciones priorizadas y validación de las principales desviaciones de seguridad.
+Una suscripción puede estar llena de recomendaciones y seguir igual durante meses: una lista de cien hallazgos sin orden no es un plan.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+Defender CSPM añade a Defender for Cloud lo que el plan gratuito no tiene: el explorador de seguridad del cloud, el análisis de rutas de ataque y la evaluación sin agente. Su valor no es contar lo que está mal, es decir por dónde se llega.
 
-## Arquitectura y componentes de Microsoft Defender utilizados
+## Qué lo validaría
 
-| Componente | Función | Configuración relevante |
+| Prueba | Cómo se haría | Qué hace falta |
 |---|---|---|
-| **Defender CSPM** | Evaluación continua de postura cloud | Analítica de configuración y riesgos. |
-| **Secure Score / recomendaciones** | Priorización del esfuerzo de remediación | Recomendaciones con impacto calculado. |
-| **Benchmark de seguridad** | Comparación con estándares de referencia | MCSB y mejores prácticas. |
-| **Exposición y cumplimiento** | Riesgos y desviaciones de políticas | Integración con continuidad de seguridad. |
+| Plan activo | Revisar qué funciones aparecen tras activarlo | Defender CSPM en la suscripción |
+| Recomendaciones del benchmark | Comparar el cumplimiento antes y después | El plan y un ciclo de evaluación |
+| Ruta de ataque | Buscar un hallazgo y seguir el camino hasta un recurso expuesto | Datos de postura y al menos un recurso público |
+| Cierre | Corregir un hallazgo y comprobar que desaparece | Acceso al recurso y tiempo de reevaluación |
 
-## Implementación de controles DevSecOps / Seguridad
+Las rutas de ataque no se han visto nunca en este laboratorio; el plan gratuito sí, en el módulo 04.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Evaluación de Postura | Análisis de riesgos y configuraciones | Sensores de CSPM continuos | MCSB GS-2 |
-| Priorización de recomendaciones | Ordenación por impacto y esfuerzo | Secure Score y remediación guiada | MCSB GS-1 |
-| Cumplimiento y hardening | Revisión de desviaciones regulatorias | Políticas y mejores prácticas | MCSB DP-3 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+- CSPM no arregla, prioriza. El valor está en la ruta de ataque, no en la lista de recomendaciones.
+- El plan gratuito da recomendaciones; el de pago añade explorador y rutas. Saber cuál se mira evita atribuirse funciones que no están.
+- Una recomendación sin dueño no se cierra: el panel no cambia hasta que alguien responde por el recurso.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Revisión de posture | Análisis del panel de Defender CSPM | Riesgos y configuraciones visibles | Correcto |
-| Secure Score | Evaluación del score actual | Valor con contexto de mejora | Correcto |
-| Prioridad de remediación | Comparación de recomendaciones | Impacto y esfuerzo bien definidos | Sí |
+- [Matriz de requisitos del módulo](../../docs/requisitos.md)
+- [Módulo 04 — Defender for Cloud](../../../04-defender-for-cloud/README.md)

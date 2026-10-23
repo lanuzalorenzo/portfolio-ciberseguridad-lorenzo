@@ -110,7 +110,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 | 02 | [Identity Security](../02-identity-security/README.md) | ¿Cómo se protege la identidad y el acceso privilegiado? | Validado en laboratorio (documental); PIM parcial |
 | 03 | [Cloud Audits](../03-cloud-audits/README.md) | ¿Cómo se audita la postura cloud? | Validado en laboratorio (documental) |
 | 04 | [Defender for Cloud](../04-defender-for-cloud/README.md) | ¿Cómo se detectan y priorizan riesgos cloud? | Validado en laboratorio (documental) |
-| 05 | [Defender Suite](../05-defender-suite/README.md) | ¿Cómo se cubre identidad, endpoint y XDR? | Parcial |
+| 05 | [Defender Suite](../05-defender-suite/README.md) | ¿Qué cubre cada producto de Defender y qué cuesta probarlo? | Diseño: mapa de los catorce productos; sin evidencia de ejecución |
 | 06 | [Identity Protection](../06-identity-protection/README.md) | ¿Cómo se aplican Conditional Access y PIM/JIT? | Diseño |
 | 07 | [DevSecOps](../07-devsecops/README.md) | ¿Cómo se integra seguridad en el pipeline? | Validado en CI |
 | 08 | [Seguridad de red](../08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Diseño + IaC |
@@ -151,7 +151,7 @@ Si puedes responderlas sin mirar, ya tienes el hilo. Si no, vuelve a la Ruta 1.
 
 ## 10. Mantenimiento
 
-- **Última revisión:** 2026-10-21.
+- **Última revisión:** 2026-10-23.
 - **Actualizar cuando:** cambie el estado de un módulo, se añada o retire una evidencia, cambie la estructura de módulos o enlaces, o se añada una ruta de lectura.
 - **No actualizar por:** cambios internos que no afecten a lo que el lector necesita para orientarse.
 - **Fuente única:** esta guía vive aquí; la web y el perfil solo enlazan.

@@ -1,38 +1,30 @@
-# 13 | Defender CNAPP (Cloud-Native Application Protection Platform)
+# 13 | Defender CNAPP
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** Diseño. CNAPP no se contrata: resulta de activar CSPM y las protecciones de carga, y ninguna de esas piezas está desplegada.
+>
+> **Referencias:** MCSB DS-1 · EP-1 · PV-2.
 
-**Escenario:** Aplicaciones cloud-native con riesgo de exposición en el ciclo de desarrollo y ejecución, incluyendo arquitectura basada en contenedores, IaC e infraestructura temporal.
-**Objetivo de seguridad:** Evaluar la protección de workloads cloud-native mediante Defender CNAPP, analizando IaC, contenedores, exposiciones y riesgo asociado en la plataforma.
-**Alcance:** Infraestructura cloud-native del laboratorio, análisis de seguridad en IaC, contenedores, workloads y recomendaciones priorizadas.
+CNAPP no es un producto que se encienda. Es lo que aparece cuando la postura del cloud, las imágenes, los clústeres y las cargas en ejecución miran el mismo entorno y se pueden unir en una sola vista. Si las piezas no están, el nombre no significa nada.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+Por eso esta práctica es la que más se malinterpreta en una compra: se pide CNAPP como se pide una licencia y se recibe un panel vacío.
 
-## Arquitectura y componentes de Microsoft Defender utilizados
+## Qué lo validaría
 
-| Componente | Función | Configuración relevante |
+| Prueba | Cómo se haría | Qué hace falta |
 |---|---|---|
-| **Defender CNAPP** | Protección de workloads cloud-native | Visibilidad en IaC y runtime. |
-| **Seguridad de contenedores** | Revisión de imágenes y vulnerabilidades | Detección de riesgos de ejecución. |
-| **Protección de workloads** | Evaluación del riesgo por aplicación | Exposición y configuración. |
-| **Correlación con XDR** | Relación con incidentes y alertas | Contexto extremo para respuesta. |
+| Cobertura conjunta | Comprobar que CSPM y las protecciones de carga están activas a la vez | Los planes de 05, 06, 07, 11 y 12 |
+| Enlace de un fallo | Seguir un hallazgo desde la plantilla hasta el recurso en ejecución | IaC conectado y workload desplegado |
+| Ruta de ataque | Revisar si el explorador une postura y runtime | CSPM con datos suficientes |
+| Priorización | Comparar dos hallazgos y justificar cuál va primero | Contexto de exposición real |
 
-## Implementación de controles DevSecOps / Seguridad
+Dependen de todas las anteriores, así que ninguna se ha ejecutado.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Seguridad de IaC | Análisis de configuración con plantillas | Análisis en pipeline y despliegue | MCSB DS-1 |
-| Seguridad de contenedores | Revisión de imágenes, capas y vulnerabilidades | Escaneo y alertas | MCSB PV-2 |
-| Protección de workloads | Evaluación de exposición y riesgo | Directrices de hardening | MCSB EP-1 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+- CNAPP es la suma, no otra licencia. Comprarlo como producto suelto es el error más caro del módulo.
+- La gracia es seguir un fallo desde la plantilla hasta el runtime. Sin ese enlace es otro panel con otro nombre.
+- Un CNAPP sin cargas desplegadas no demuestra nada: la cobertura se mide por lo que ve, no por lo que tiene contratado.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Escaneo de IaC | Revisión del panel de CNAPP | Riesgos detectados y priorizados | Correcto |
-| Evaluación de contenedores | Análisis de imágenes y capas | Vulnerabilidades o riesgos visibles | Correcto |
-| Protección de workloads | Verificación de riesgos y exposición | Evidencia con impacto identificado | Sí |
+- [Matriz de requisitos del módulo](../../docs/requisitos.md)

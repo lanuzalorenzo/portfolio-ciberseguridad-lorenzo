@@ -1,47 +1,30 @@
 # 07 | Defender for Storage
 
-> **Estado:** diseño documentado. No ejecutado: no hay cuenta de almacenamiento con Defender for Storage habilitado.
+> **Estado:** Diseño. No hay cuenta de almacenamiento con Defender for Storage habilitado.
+>
+> **Referencias:** MCSB DP-2 · DP-3 · IR-2 · NS-2.
 
-## Descripción del escenario y objetivo de seguridad
+El almacenamiento es donde un dato se queda. Un archivo malicioso subido a un contenedor de blobs espera ahí a que alguien lo descargue, y un blob público sigue respondiendo aunque nadie lo recuerde.
 
-**Escenario:** Datos y artefactos de la API almacenados en Azure Storage sin detección de malware, sin clasificación de datos sensibles y con visibilidad limitada de accesos anómalos.  
-**Objetivo de seguridad:** Proteger el plano de datos de Storage con Defender for Storage: análisis de malware en carga, descubrimiento de datos sensibles y alertas de actividad sospechosa.  
-**Alcance:** Cuenta de almacenamiento de laboratorio, contenedores de blobs y telemetría de Defender.
+Defender for Storage vigila el plano de datos: analiza lo que se sube, detecta accesos anómalos y busca información sensible en lo que se guarda. Es de los pocos controles del módulo que se puede probar con un fichero y una cuenta.
 
-## Arquitectura y componentes
+## Qué lo validaría
 
-| Componente | Función | Configuración relevante |
+| Prueba | Cómo se haría | Qué hace falta |
 |---|---|---|
-| **Azure Storage** | Almacenamiento de blobs | HTTPS only, TLS 1.2, acceso público deshabilitado. |
-| **Defender for Storage** | Malware scanning y detección | Habilitado a nivel de cuenta. |
-| **Microsoft Purview** | Clasificación de datos | Integración opcional. |
-| **Log Analytics** | Evidencia | Diagnóstico de Storage. |
+| Malware en carga | Subir EICAR a una cuenta aislada y comprobar la cuarentena | Una cuenta de almacenamiento con el plan activo |
+| Acceso anónimo | Intentar leer un blob sin credenciales y confirmar el bloqueo | Acceso público deshabilitado en la cuenta |
+| Acceso anómalo | Descargar en volumen desde otra ubicación | Diagnóstico activo y el plan de Defender for Storage |
+| Datos sensibles | Revisar qué contenedores aparecen con información detectada | El análisis de datos sensibles habilitado |
 
-## Controles de seguridad
+Falta la cuenta con el plan, así que ninguna se ha ejecutado.
 
-| Control | Implementación | Referencia |
-|---|---|---|
-| Cifrado en tránsito | HTTPS y TLS 1.2 | MCSB DP-3 |
-| Acceso público | Deshabilitado; Private Endpoint | MCSB NS-2 |
-| Malware scanning | Defender for Storage | MCSB DP-2 |
-| Detección de acceso anómalo | Alertas de Defender | MCSB IR-2 |
+## Lecciones
 
-## Validación
+- El análisis de malware necesita una cuenta real. Un fichero en el portátil no se escanea.
+- El acceso anónimo se cierra con configuración, no con detección. Defender solo lo señala si está mirando.
+- Un contenedor público con datos antiguos es la fuga más silenciosa del laboratorio: nadie la busca porque nadie cree que esté ahí.
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Carga de archivo limpio | Subida a blob | Sin alerta | Pendiente: requiere Storage |
-| Carga de EICAR | Subida de muestra de prueba | Alerta de malware | Pendiente |
-| Acceso anónimo | Intento de lectura pública | Bloqueo | Pendiente |
-| Acceso desde ubicación anómala | Simulación | Alerta | Pendiente |
+## Más detalle
 
-## Limitaciones
-
-- No se ha desplegado una cuenta de Storage ni habilitado Defender for Storage.
-- El análisis de malware tiene coste por GB y requiere configuración de retención.
-- La clasificación de datos sensible necesita Purview y etiquetas de confidencialidad.
-
-## Artefactos relacionados
-
-- [Guion de la práctica](GUION.md)
-- [Módulo 08 — Redes Azure](../../../08-seguridad-red-azure/README.md)
+- [Matriz de requisitos del módulo](../../docs/requisitos.md)

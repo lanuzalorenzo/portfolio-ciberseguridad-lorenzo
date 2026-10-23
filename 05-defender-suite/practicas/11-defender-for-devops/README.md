@@ -1,38 +1,30 @@
 # 11 | Defender for DevOps
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** Parcial. El repositorio existe y el conector es gratuito, pero los hallazgos requieren Defender CSPM, que no está activo.
+>
+> **Referencias:** MCSB DS-1 · IM-1 · PV-2.
 
-**Escenario:** Ciclo de vida de software con repositorios y pipelines conectados sin análisis continuo de IaC, secretos o dependencias, incrementando el riesgo de fuga de credenciales y componentes vulnerables.
-**Objetivo de seguridad:** Integrar repositorios y pipelines en Defender for DevOps para evaluar IaC, secretos expuestos y vulnerabilidades del software antes de la entrega continua.
-**Alcance:** Repositorios de laboratorio, pipelines, plantillas de infraestructura y análisis de seguridad sobre componentes y artefactos generados.
+El mismo fallo cuesta un commit en el repositorio y un incidente en el portal. La diferencia no es la gravedad: es el momento en que se descubre, y ese momento lo decide dónde está el control.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+Defender for DevOps conecta repositorios y pipelines para revisar plantillas de infraestructura, secretos y dependencias antes de que lleguen a producción. Ve los repositorios que se le dan; el resto sigue invisible.
 
-## Arquitectura y componentes de Microsoft Defender utilizados
+## Qué lo validaría
 
-| Componente | Función | Configuración relevante |
+| Prueba | Cómo se haría | Qué hace falta |
 |---|---|---|
-| **Defender for DevOps** | Seguridad en repositorios y pipelines | Integración con GitHub/Azure DevOps. |
-| **Análisis de IaC** | Escaneo de Terraform, Bicep o ARM | Detección de configuración insegura. |
-| **Detección de secretos** | Identificación de tokens y credenciales | Escaneo del repositorio. |
-| **Dependencias y artefactos** | Revisión de vulnerabilidades y librerías | Análisis de cadena de suministro. |
+| Repositorio conectado | Autorizar el conector sobre un repositorio de laboratorio | Defender CSPM activo y permisos sobre el repositorio |
+| Fallo de IaC | Introducir una plantilla Bicep con un puerto abierto | El análisis de IaC habilitado |
+| Secreto expuesto | Añadir una credencial falsa y comprobar que se marca | El escaneo de secretos y el historial del repo |
+| Trazabilidad | Abrir el hallazgo y ver el commit que lo introdujo | El conector con acceso al historial |
 
-## Implementación de controles DevSecOps / Seguridad
+Solo existe el repositorio: el conector no se ha probado y, sin CSPM, los hallazgos no aparecen.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Análisis de IaC | Revisar plantillas de infraestructura | Escaneo de seguridad en CI/CD | MCSB DS-1 |
-| Detección de secretos | Búsqueda de credenciales expuestas | Validación previa a commit o despliegue | MCSB IM-1 |
-| Seguridad de dependencias | Revisión de paquetes vulnerables | Alertas de riesgo y remediación | MCSB PV-2 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+- El escaneo de IaC demuestra la diferencia de tiempo: el mismo puerto abierto es un comentario en el pull request o un incidente en producción.
+- Un secreto en el historial sigue siendo un secreto filtrado aunque se borre la línea. Rotarlo es la única corrección real.
+- El conector ve los repositorios que le das. La sensación de cobertura total es el error más común al activarlo.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Escaneo de IaC | Revisión de plantillas de infraestructura | Hallazgos de riesgo visibles | Correcto |
-| Secret scanning | Validación de credenciales en repositorio | Alertas de riesgo si existen secretos | Sí |
-| Evaluación de dependencias | Análisis de paquetes y librerías | Vulnerabilidades priorizadas | Sí |
+- [Matriz de requisitos del módulo](../../docs/requisitos.md)
