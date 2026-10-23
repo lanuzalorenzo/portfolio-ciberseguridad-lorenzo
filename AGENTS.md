@@ -1,5 +1,7 @@
 # Guía del repositorio
 
+> **Si llegas nuevo:** empieza por [`docs/guia-de-lectura.md`](docs/guia-de-lectura.md). Este archivo es el contrato de trabajo de quien edita o automatiza el repositorio.
+
 Este repositorio es un portfolio público de documentación y laboratorios de ciberseguridad cloud. El contenido abarca Azure, Microsoft Entra ID, Microsoft Defender y DevSecOps; describe trabajo documentado y no debe presentarse como despliegue de producción.
 
 También aloja la arquitectura del laboratorio final, los runbooks y el índice de evidencias. El código y el IaC específicos del workload viven en `lab-api-local-azure`; no dupliques aquí esa infraestructura.
@@ -31,7 +33,7 @@ Cada módulo debe mantener una estructura clara y legible, con un objetivo técn
 - `bitacora/`: solo si guarda un hecho que no está en ningún otro sitio.
 - `lab/`: artefactos locales de ejecución (compose, pipelines, scripts y datos sintéticos).
 - `laboratorio-final/`: arquitectura, plan de ejecución e índice de evidencias del laboratorio integrado.
-- `plantillas/`: runbook y registro de evidencia reutilizables.
+- `plantillas/`: índice y plantillas de práctica, runbook y evidencia.
 
 ### Cómo se trabaja un módulo
 

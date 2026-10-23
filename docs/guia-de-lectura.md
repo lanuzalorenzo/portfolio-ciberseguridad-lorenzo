@@ -61,7 +61,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 | **SAST / SCA** | Análisis estático del código / análisis de dependencias y vulnerabilidades. |
 | **BOLA / BFLA** | Fallos de autorización a nivel de objeto / de función: acceder a lo ajeno o a una operación privilegiada. |
 
-## 5. Tres rutas de lectura
+## 5. Cuatro rutas de lectura
 
 ### Ruta 0 — 15 minutos: entender qué es esto
 
@@ -153,7 +153,7 @@ Si puedes responderlas sin mirar, ya tienes el hilo. Si no, vuelve a la Ruta 1.
 - **Última revisión:** 2026-10-23.
 - **Actualizar cuando:** cambie el estado de un módulo, se añada o retire una evidencia, cambie la estructura de módulos o enlaces, o se añada una ruta de lectura.
 - **No actualizar por:** cambios internos que no afecten a lo que el lector necesita para orientarse.
-- **Fuente única:** esta guía vive aquí; la web y el perfil solo enlazan.
+- **Fuente única:** esta guía es la referencia; la web y el perfil resumen y enlazan.
 - **Checklist rápida:** enlaces locales, estados del mapa, fecha y rutas.
 
 ---

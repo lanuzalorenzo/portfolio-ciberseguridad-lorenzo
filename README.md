@@ -148,6 +148,7 @@ Cada módulo incluye:
 - `lab/` con los artefactos locales de ejecución (por ejemplo, `docker-compose.yml`, pipeline y scripts).
 - `docs/` con la explicación que sirve a varias prácticas a la vez.
 - `laboratorio-final/` con la arquitectura, el plan de ejecución y el índice de evidencias del laboratorio integrado.
+- [plantillas/](plantillas/README.md) con las plantillas de práctica, runbook y evidencia.
 
 El código de la carga de trabajo se versiona en [lab-api-local-azure](https://github.com/lanuzalorenzo/lab-api-local-azure).
 

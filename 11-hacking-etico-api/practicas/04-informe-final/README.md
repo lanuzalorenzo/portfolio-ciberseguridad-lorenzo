@@ -4,7 +4,7 @@ El cierre del módulo pone en una tabla los diez riesgos de OWASP API, lo que se
 
 **Referencias:** OWASP API Security Top 10 (2023) · MCSB PA-7
 
-| Riesgo | Hallazgo | Severidad | Estado | Evidencia |
+| Riesgo | Hallazgo | Severidad | Remediación | Evidencia |
 |---|---|---|---|---|
 | **API1 BOLA** | Pedido ajeno accesible sin control de propiedad | Alta | Mitigado | `UserCannotReadAnotherUsersOrder` |
 | **API2 Broken Authentication** | Validación JWT incompleta o laxa | Alta | Parcial | Configuración revisada; token real pendiente |

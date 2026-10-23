@@ -44,7 +44,7 @@ Terminal 1:
 cd 01-seguridad-azure/lab/pkce
 npm install
 cp .env.example .env
-# edita .env con los valores del tenant; no lo subas a Git
+  # edita .env con los valores del tenant; no lo subas a Git
 npm start
 ```
 
