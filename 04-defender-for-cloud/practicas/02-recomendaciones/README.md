@@ -1,50 +1,32 @@
-# 02 | Revisión y Remediación de Recomendaciones de Seguridad
+# 02 | Recomendaciones y Secure Score
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** **Validado** en laboratorio (evidencia documental).
+>
+> **Referencias:** MCSB GS-1, GS-2, NS-1, DP-3 · CIS 6.2.
 
-**Escenario:** Suscripción de laboratorio con planes de Defender for Cloud activos que genera un catálogo de recomendaciones de seguridad sin priorizar ni remediar, reduciendo la eficacia del CSPM.
-**Objetivo de seguridad:** Analizar el panel de recomendaciones de Defender for Cloud, priorizar las de mayor impacto en el Secure Score y aplicar remediaciones directas, distinguiendo entre correcciones automáticas (*Quick Fix*) y procedimientos manuales.
-**Alcance:** Suscripción de laboratorio en Azure; recomendaciones de los dominios de red, identidad y cifrado generadas por la iniciativa Microsoft Cloud Security Benchmark.
+El panel de recomendaciones puede tener cientos de entradas. Sin criterio se convierte en una lista que nadie termina, y el valor no está en leerla entera sino en ordenarla por lo que resta al Secure Score y por lo que cuesta arreglar cada cosa.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+## Cómo se priorizó
 
-## Arquitectura y componentes de Azure utilizados
+1. **Impacto:** cuántos puntos resta la recomendación.
+2. **Esfuerzo:** primero lo que tiene *Quick Fix* y no obliga a rediseñar.
+3. **Exclusiones explícitas:** lo que exige cambiar la arquitectura se documenta como pendiente y no se maquilla.
 
-| Componente | Función | Configuración relevante |
-|---|---|---|
-| **Defender for Cloud — Recommendations** | Motor de evaluación continua de postura | Recomendaciones agrupadas por control de seguridad con puntuación de impacto. |
-| **Secure Score** | Indicador numérico del estado de seguridad | Puntuación sobre 100 basada en controles del MCSB. |
-| **Quick Fix** | Remediación automatizada directa desde el portal | Disponible en recomendaciones con impacto alto y remediación estandarizada. |
-| **Azure Resource Graph** | Consulta de recursos afectados por recomendación | Permite inspeccionar y filtrar los recursos evaluados por Defender for Cloud. |
+## Validación
 
-## Implementación de controles DevSecOps / Seguridad
+| Prueba | Resultado observado |
+|---|---|
+| *Quick Fix* en puertos de administración | JIT activado; la recomendación pasa a *Healthy* |
+| TLS 1.2 en la cuenta de almacenamiento | Propiedad actualizada y recurso conforme |
+| Diagnóstico del registro de actividad | Enviado a un espacio de Log Analytics |
+| Recomendaciones sin remediación rápida | Documentadas como pendientes, no como PASS |
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Priorización de recomendaciones por impacto | Ordenación por deducción de puntos sobre el Secure Score | Análisis en panel *Recommendations* | MCSB GS-1 |
-| Remediación de puertos de administración expuestos | Habilitación de acceso Just-in-Time (JIT) en VMs | *Quick Fix* desde el panel de Defender for Cloud | MCSB NS-1 / CIS 6.2 |
-| Actualización de versión mínima de TLS | Forzado de TLS 1.2 en Storage Accounts afectados | Remediación directa en propiedades del recurso | MCSB DP-3 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+- El Secure Score mide tendencia, no seguridad: un recurso conforme al benchmark puede seguir siendo explotable.
+- Un *Quick Fix* resuelve el síntoma en un recurso, no la causa en el proceso; sin política, el siguiente nace igual.
+- Dejar por escrito lo que no se arregló vale más que un panel en verde.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Aplicación de Quick Fix en recomendación crítica | Remediación en un clic desde el panel de Defender for Cloud | La recomendación pasa a estado *Healthy* en el siguiente ciclo de evaluación | PASS: Recurso marcado como conforme tras la remediación |
-| Comprobación del incremento del Secure Score | Comparativa de puntuación antes/después de las remediaciones | Incremento proporcional al peso de los controles remediados | PASS: Mejora observada en la puntuación del control aplicado |
-| Verificación de recomendaciones con remediación manual | Identificación de recomendaciones sin *Quick Fix* disponible | Acciones descritas y documentadas para remediación manual | No ejecutada — algunos controles requieren cambios de arquitectura fuera del alcance del laboratorio |
-
-> [!WARNING]
-> Las pruebas no ejecutadas se registran como pendientes. No se declaran como PASS.
-
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
-
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| **GS-2: Gestión de la postura de seguridad** | Revisión y remediación periódica del Secure Score | El Secure Score no es un fin en sí mismo; debe combinarse con análisis de riesgo para priorizar correctamente. |
-| **NS-1: Seguridad de red perimetral** | Cierre de puertos de administración expuestos innecesariamente | Los puertos RDP (3389) y SSH (22) no deben estar accesibles desde Internet; el acceso JIT reduce la ventana de exposición a minutos bajo demanda. |
-
-- Algunas recomendaciones de Defender for Cloud requieren cambios de arquitectura significativos (como migrar a Private Endpoints) que no son aplicables en laboratorios de coste cero; documentarlos como hallazgos pendientes es la práctica correcta.
+- [Recomendaciones analizadas y remediaciones](docs/informe-tecnico.md)

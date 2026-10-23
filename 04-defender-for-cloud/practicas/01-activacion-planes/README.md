@@ -1,48 +1,35 @@
-# 01 | Activación de Planes de Microsoft Defender for Cloud
+# 01 | Activación de planes
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** **Validado** en laboratorio (evidencia documental).
+>
+> **Referencias:** MCSB GS-1, EP-1, EP-2, IR-2.
 
-**Escenario:** Suscripción de laboratorio en Azure con únicamente el nivel gratuito (*Foundational CSPM*) habilitado, sin protección activa contra amenazas en workloads ni telemetría de seguridad en servicios PaaS.
-**Objetivo de seguridad:** Evaluar el catálogo de planes de protección de Defender for Cloud y habilitar los pertinentes al entorno, entendiendo el impacto de cada plan en la postura de seguridad (CSPM) y en la protección de cargas de trabajo (CWPP).
-**Alcance:** Suscripción de laboratorio en Azure. Evaluación de planes disponibles y validación de capacidades activadas desde el portal de Microsoft Defender for Cloud.
+Una suscripción recién creada ya trae Defender for Cloud, pero en su versión mínima: inventario, Secure Score y recomendaciones. Sabe qué hay; no sabe qué pasa dentro. La diferencia entre saber y vigilar son los planes de pago, y elegirlos es una decisión de coste tanto como de riesgo.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+## Qué se decidió
 
-## Arquitectura y componentes de Azure utilizados
-
-| Componente | Función | Configuración relevante |
+| Plan | Coste | Decisión en el laboratorio |
 |---|---|---|
-| **Microsoft Defender for Cloud** | Plataforma unificada de CSPM y CWPP | Habilitado en la suscripción; evaluación desde *Environment settings*. |
-| **Foundational CSPM (Gratuito)** | Inventario de recursos, Secure Score y recomendaciones básicas | Activo por defecto en todas las suscripciones. |
-| **Defender CSPM (Plan de pago)** | CSPM avanzado: Attack Path Analysis, Cloud Security Explorer, gobernanza | Evaluado; no activado por restricciones de coste del laboratorio. |
-| **Defender for Servers (Plan 1 / Plan 2)** | Protección de VMs con integración de Microsoft Defender for Endpoint y MDVM | Plan 1 activado para evaluación; Plan 2 evaluado a nivel de capacidades. |
-| **Defender for Storage** | Detección de malware en blobs y accesos anómalos en Storage Accounts | Evaluado en el catálogo de planes. |
+| Foundational CSPM | Gratuito | Activo por defecto |
+| Defender CSPM | Por recurso | Evaluado, no activado |
+| Defender for Servers Plan 1 | Por servidor y hora | **Activado** |
+| Defender for Servers Plan 2 | Por servidor y hora | Evaluado, no activado |
+| Defender for Storage | Por cuenta | Evaluado, no activado |
 
-## Implementación de controles DevSecOps / Seguridad
+## Validación
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Visibilidad de postura de seguridad (CSPM) | Foundational CSPM activo con Secure Score y recomendaciones | Sin coste adicional; habilitado por defecto | MCSB GS-1 |
-| Protección de VMs contra amenazas (CWPP) | Defender for Servers Plan 1 habilitado | Aprovisionamiento automático del agente MMA/AMA | MCSB EP-1 / EP-2 |
-| Detección de comportamientos anómalos | Alertas de seguridad generadas por los planes activos | Motor de detección de amenazas de Defender for Cloud | MCSB IR-2 |
+| Prueba | Resultado observado |
+|---|---|
+| Estado de los planes | Foundational CSPM y Servers Plan 1 en *On* |
+| Extensión MDE en la VM de prueba | Instalada sola, sin onboarding manual |
+| Secure Score tras la activación | Aparecen controles de endpoint y de configuración del sistema |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+## Lecciones
 
-## Validación o pruebas de seguridad realizadas
+- Activar el catálogo entero es fácil y caro; el valor está en justificar cada plan por el riesgo que cubre.
+- El aprovisionamiento automático del agente funciona, pero conviene excluir las máquinas no críticas.
+- El CSPM gratuito da visibilidad suficiente para empezar; lo que falta después no es inventario, es detección.
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Verificación de estado de planes | Panel *Environment settings* → suscripción de laboratorio | Planes habilitados visibles con estado *On* | PASS: Foundational CSPM y Defender for Servers Plan 1 activos |
-| Impacto en Secure Score tras activación | Comparativa de puntuación antes y después | Aparición de nuevas recomendaciones gestionadas por los planes | PASS: Nuevas recomendaciones de red y cifrado incorporadas al Secure Score |
-| Aprovisionamiento automático del agente | Inspección de extensiones en VM de prueba | Presencia de la extensión MDE o Azure Monitor Agent | PASS: Extensión instalada automáticamente según política del plan |
+## Más detalle
 
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
-
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| **GS-1: Alinear con estrategia de seguridad** | Selección deliberada de planes conforme al perfil de riesgo | Activar todos los planes sin análisis previo puede generar un coste desproporcionado al valor obtenido en laboratorios pequeños. |
-| **EP-1: Protección de endpoints** | Defender for Servers como capa de EDR sobre VMs | La integración de Defender for Servers con Microsoft Defender for Endpoint es transparente y se activa sin necesidad de onboarding manual separado. |
-
-- El nivel *Foundational CSPM* gratuito es suficiente para obtener visibilidad e identificar brechas; los planes de pago añaden capacidades de prevención activa (JIT, MDVM, Attack Path) que requieren justificación de negocio o alcance de laboratorio ampliado.
+- [Catálogo evaluado y verificación](docs/informe-tecnico.md)
