@@ -94,7 +94,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 - [03 | Cloud Audits](03-cloud-audits/README.md) — *validado en laboratorio (evidencia documental)*.
 - [04 | Defender for Cloud](04-defender-for-cloud/README.md) — *validado en laboratorio (evidencia documental)*.
 - [05 | Microsoft Defender Suite](05-defender-suite/README.md) — *diseño*: mapa de los catorce productos y qué hace falta para validarlos; ninguna práctica tiene evidencia de ejecución.
-- [08 | Seguridad de red en Azure](08-seguridad-red-azure/README.md) — *diseño + IaC*: VNet, NSG y Private Endpoints; no desplegado.
+- [08 | Seguridad de red en Azure](08-seguridad-red-azure/README.md) — *diseño + IaC validada estáticamente*: VNet, NSG y Private Endpoints; sin desplegar.
 
 ### 5. Operaciones de seguridad, forense y respuesta
 

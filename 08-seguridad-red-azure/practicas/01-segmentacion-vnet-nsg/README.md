@@ -1,49 +1,19 @@
 # 01 | Segmentación con VNet y Network Security Groups
 
-## Descripción del escenario y objetivo de seguridad
+La red del laboratorio separa la API de sus dependencias para que un fallo en una capa no abra las demás. El diseño está en [`infra/main.bicep`](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/infra/main.bicep) y no se ha desplegado: lo comprobado es que la plantilla compila y que las reglas declaradas son las que se quieren probar.
 
-**Escenario:** Diseño de una red virtual de laboratorio con capas de carga de trabajo que requieren flujos explícitos entre subredes. El escenario es una propuesta y no describe un despliegue realizado.<br>
-**Objetivo de seguridad:** Reducir la comunicación no necesaria entre componentes mediante segmentación y reglas de red justificadas.<br>
-**Alcance:** Diseño de subredes, matriz de flujos y reglas de Network Security Groups (NSG); no incluye recursos de producción.
+**Referencias:** MCSB NS-1 · CIS Azure 6.x
 
-> [!NOTE]
-> Práctica propuesta para un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
-
-## Arquitectura y componentes de Azure utilizados
-
-| Componente | Función | Configuración relevante |
+| Qué se definió | Valor | Estado |
 |---|---|---|
-| Virtual Network | Límite de conectividad privada del laboratorio | Espacio de direcciones y subredes por definir según el escenario. |
-| Subredes | Separación lógica de capas | Crear solo las capas necesarias para demostrar los flujos. |
-| Network Security Group | Filtrado de tráfico de red | Reglas explícitas basadas en origen, destino, protocolo, puerto y dirección. |
+| VNet | `10.20.0.0/16` | En IaC |
+| Subred de aplicación | `snet-app`, `10.20.1.0/24`, delegada a `Microsoft.Web/serverFarms` | En IaC |
+| Subred de endpoints | `snet-pe`, `10.20.2.0/24`, con políticas de Private Endpoint desactivadas | En IaC |
+| NSG | 443/TCP desde `VirtualNetwork` (prioridad 100), `AzureLoadBalancer` (110) y denegación total de entrada (4096) | En IaC |
+| Flujo permitido y flujo denegado | Conectividad real entre subredes | Pendiente: sin desplegar |
 
-## Implementación de controles DevSecOps / Seguridad
+La validación es estática: el job de Bicep del CI compila la plantilla y Trivy revisa la configuración con cuatro supresiones justificadas en `.trivyignore`. No hay prueba de conectividad.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Segmentación de red | Separar componentes por función y documentar sus comunicaciones necesarias | Diseño y configuración de NSG en el laboratorio | Matriz de flujos de la práctica |
-| Mínimo privilegio de red | Permitir solo flujos justificados y revisar reglas efectivas | Revisión manual y validación de conectividad | Reglas NSG |
+El NSG solo filtra la entrada. La salida sigue con las reglas predeterminadas de Azure hasta que se añada un control de egreso, que es lo que propone la práctica 02.
 
-**Artefactos relacionados:** [Informe técnico](informe.md).
-
-## Validación o pruebas de seguridad realizadas
-
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Plantilla válida | `bicep build infra/main.bicep` | Compilación sin errores | PASS: compila; linter sin avisos |
-| Reglas NSG | Revisión de `infra/main.bicep` | 443 desde VNet y denegación por defecto | Implementado en IaC |
-| Flujo autorizado | Probar una comunicación incluida en la matriz | El flujo requerido funciona | Pendiente: requiere despliegue |
-| Flujo no autorizado | Probar una comunicación excluida de la matriz | El flujo queda bloqueado | Pendiente: requiere despliegue |
-
-> [!WARNING]
-> No declarar una prueba superada si no se ejecutó. Redactar datos sensibles.
-
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
-
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| Pendiente de verificar contra la versión vigente | Relacionar el control aplicable con la segmentación y las reglas validadas | Completar después de confirmar la referencia y ejecutar el laboratorio. |
-
-- Registrar la matriz de flujos y justificar cada regla después de completar la práctica.
-- Documentar limitaciones y excepciones observadas durante la validación.
+Una subred por función evita reglas que se solapan; la delegación de `snet-app` la exige la integración de App Service; y una plantilla que compila no demuestra que el tráfico correcto pase, solo que la intención está escrita.

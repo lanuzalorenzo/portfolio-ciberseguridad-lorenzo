@@ -113,7 +113,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 | 05 | [Defender Suite](../05-defender-suite/README.md) | ¿Qué cubre cada producto de Defender y qué cuesta probarlo? | Diseño: mapa de los catorce productos; sin evidencia de ejecución |
 | 06 | [Acceso privilegiado bajo licencia](../06-identity-protection/README.md) | ¿Qué añaden Conditional Access y PIM cuando hay licencia P1/P2? | Diseño: tres controles descritos, sin ejecutar |
 | 07 | [DevSecOps](../07-devsecops/README.md) | ¿Cómo se integra seguridad en el pipeline? | Validado en CI; OIDC y despliegue pendientes |
-| 08 | [Seguridad de red](../08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Diseño + IaC |
+| 08 | [Seguridad de red](../08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Diseño + IaC validada estáticamente |
 | 09 | [Microsoft Sentinel](../09-microsoft-sentinel/README.md) | ¿Cómo se detecta con KQL y se automatiza? | Diseño en curso |
 | 10 | [ELK Stack Security](../10-elk-stack-security/README.md) | ¿Cómo se centralizan logs y se consultan? | Validado en local |
 | 11 | [Hacking ético de APIs](../11-hacking-etico-api/README.md) | ¿Cómo se prueban BOLA, BFLA y mass assignment? | Validado en local; BFLA parcial |

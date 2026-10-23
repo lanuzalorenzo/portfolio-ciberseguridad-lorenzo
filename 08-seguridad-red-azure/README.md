@@ -1,38 +1,22 @@
 # 08 | Seguridad de red en Azure
 
-> **Estado:** diseño e IaC. La topología está implementada en Bicep y validada con `bicep build`; no se ha desplegado en Azure.
+Una API expuesta a Internet necesita más que un cortafuegos de aplicación: las subredes, las reglas de tráfico y la resolución de nombres deciden qué puede alcanzar a qué. Este módulo documenta esa capa para la API del laboratorio: separar por función, cerrar la entrada y llevar los servicios a conectividad privada. El diseño está escrito en Bicep y validado de forma estática; no se ha desplegado en Azure.
 
-Este módulo aborda controles de red que reducen la superficie de exposición y limitan los flujos de tráfico hacia y entre las cargas de trabajo de Azure. Se centra en **segmentación por capas, control de tráfico perimetral y conectividad privada**.
+## Topología
 
-## Escenario de referencia en la arquitectura
+La red parte de una VNet `10.20.0.0/16` con dos subredes. `snet-app` aloja la integración de App Service y lleva el NSG que solo permite 443 desde la propia VNet y deniega el resto de la entrada. `snet-pe` aloja los Private Endpoints de Key Vault y App Service, con sus zonas de DNS privado enlazadas a la VNet. La API sale a Internet con HTTPS y TLS 1.2, y los dos servicios dejan de aceptar tráfico público.
 
-La topología de red documentada en este módulo está diseñada para aislar los componentes de una solución multicapa como [**EcommerceApi (lab-api-local-azure)**](https://github.com/lanuzalorenzo/lab-api-local-azure):
-1. **Subred Frontend / Ingress:** Control de entrada perimetral hacia la API mediante políticas de inspección.
-2. **Subred de Carga de Trabajo (Workload):** Alojamiento de la API .NET protegido mediante Network Security Groups (NSGs) que permiten únicamente tráfico HTTPS entrante autorizado y bloquean el acceso directo desde Internet.
-3. **Subred de Datos y Secretos:** Aislamiento total de las bases de datos y de **Azure Key Vault**, garantizando que el acceso se realice exclusivamente a través de **Private Endpoints (Private Link)** con IPs privadas internas.
+## Qué está validado y qué no
 
-## Artefactos IaC
-
-La plantilla [`infra/main.bicep`](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/infra/main.bicep) implementa:
-
-- VNet `10.20.0.0/16` con `snet-app` y `snet-pe`.
-- NSG con allowlist de 443 desde la VNet y denegación por defecto.
-- Key Vault con RBAC, purge protection, acceso público deshabilitado y Private Endpoint.
-- Private DNS para Key Vault y App Service.
-- App Service con integración VNet, HTTPS only y TLS 1.2.
-
-La validación es estática (`bicep build` + Trivy config). No se ha ejecutado un despliegue real.
+- **Validado estáticamente:** el job de Bicep del CI compila la plantilla (runs `39243360276` y `39920448092`) y Trivy config la revisa con cuatro supresiones justificadas en `.trivyignore`.
+- **No ejecutado:** no hay despliegue, ni prueba de conectividad, ni resolución DNS real, ni firewall. La plantilla demuestra que la intención está escrita y compila, no que el tráfico correcto pase.
 
 ## Prácticas
 
-- [Segmentación con VNet y Network Security Groups](practicas/01-segmentacion-vnet-nsg/README.md) — *IaC disponible; pendiente de despliegue*
-- [Control centralizado de tráfico con Azure Firewall](practicas/02-control-trafico-firewall/README.md) — *diseño, no ejecutado*
-- [Acceso privado a servicios con Private Link](practicas/03-acceso-privado-private-link/README.md) — *IaC disponible; pendiente de despliegue*
+- [Segmentación con VNet y Network Security Groups](practicas/01-segmentacion-vnet-nsg/README.md) — *IaC validada estáticamente; flujos pendientes de despliegue*
+- [Control centralizado de tráfico con Azure Firewall](practicas/02-control-trafico-firewall/README.md) — *diseño, sin IaC ni despliegue*
+- [Acceso privado a servicios con Private Link](practicas/03-acceso-privado-private-link/README.md) — *IaC validada estáticamente; resolución y acceso pendientes*
 
-## Registro del trabajo
+## Límites
 
-La [bitácora del módulo](bitacora/) registra las decisiones de diseño, topología y evolución de los laboratorios.
-
-## Alcance
-
-El módulo combina diseño, IaC y prácticas pendientes de validación. No representa una configuración desplegada en producción comercial. Cada práctica indica qué está implementado y qué falta por probar.
+El NSG filtra solo la entrada: la salida sigue con las reglas predeterminadas de Azure hasta que exista un control de egreso, que es lo que plantea la práctica 02. El firewall no está en la plantilla porque su coste y su disponibilidad regional no se han confirmado. Y ninguna de las pruebas que importan —conectividad permitida, conectividad denegada, nombre que resuelve a una IP privada— se ha ejecutado todavía.

@@ -1,51 +1,17 @@
 # 03 | Acceso privado a servicios con Private Link
 
-## Descripción del escenario y objetivo de seguridad
+Key Vault y App Service no necesitan una IP pública para funcionar. El diseño los mete en la VNet mediante Private Endpoints y resuelve sus nombres con DNS privado, de modo que la API hable con ellos por la red interna y no por Internet.
 
-**Escenario:** Un servicio PaaS seleccionado para el laboratorio debe ser accesible desde una red virtual mediante conectividad privada. El escenario es una propuesta y no describe un despliegue realizado.<br>
-**Objetivo de seguridad:** Limitar la exposición del servicio y comprobar la resolución DNS y conectividad desde la red autorizada.<br>
-**Alcance:** Private Endpoint, zona DNS privada correspondiente al servicio y evaluación de la configuración de acceso público.
+**Referencias:** MCSB NS-2 · CIS Azure 6.x
 
-> [!NOTE]
-> Práctica propuesta para un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
-
-## Arquitectura y componentes de Azure utilizados
-
-| Componente | Función | Configuración relevante |
+| Qué se definió | Valor | Estado |
 |---|---|---|
-| Servicio PaaS | Recurso de destino del laboratorio | Seleccionar el servicio y revisar sus opciones de red antes de configurarlo. |
-| Private Endpoint | Conecta el servicio a una interfaz de red privada | Ubicarlo en la VNet y subred definidas para el escenario. |
-| DNS privado | Resuelve el nombre del servicio hacia el acceso privado | Confirmar la zona DNS requerida por el servicio seleccionado antes de crearla. |
+| Private Endpoint de Key Vault | `snet-pe`, grupo `vault`, zona `privatelink.vaultcore.azure.net` | En IaC |
+| Private Endpoint de App Service | `snet-pe`, grupo `sites`, zona `privatelink.azurewebsites.net` | En IaC |
+| Acceso público | Key Vault y App Service con `publicNetworkAccess: Disabled` | En IaC |
+| Enlaces DNS | Ambas zonas enlazadas a la VNet, sin registro automático | En IaC |
+| Resolución y conectividad privadas | Consulta y conexión desde la subred de aplicación | Pendiente: sin desplegar |
 
-## Implementación de controles DevSecOps / Seguridad
+La plantilla compila en CI. Lo que no se ha hecho es desplegarla y comprobar que el nombre de Key Vault resuelve a la IP privada del endpoint, que la API obtiene el secreto y que el acceso público no responde. Esa es la diferencia entre declarar una red privada y tenerla.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Conectividad privada | Asociar el servicio a un Private Endpoint en la red de laboratorio | Configuración de Private Link | Diseño de conectividad privada |
-| Resolución DNS privada | Configurar la integración DNS necesaria para el servicio elegido | Zona DNS privada y enlace a la red, si aplica | Requisitos DNS del servicio |
-| Reducción de acceso público | Evaluar la restricción del endpoint público después de probar el acceso privado | Configuración de red del servicio | Decisión pendiente según el escenario |
-
-**Artefactos relacionados:** [Informe técnico](informe.md).
-
-## Validación o pruebas de seguridad realizadas
-
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Plantilla válida | `bicep build infra/main.bicep` | Compilación sin errores | PASS: compila; linter sin avisos |
-| Private Endpoint | Revisión de `infra/main.bicep` | Key Vault y App Service con PE | Implementado en IaC |
-| Resolución desde la red autorizada | Consultar el nombre del servicio desde el entorno de prueba | Se resuelve según el diseño privado | Pendiente: requiere despliegue |
-| Acceso desde la red autorizada | Probar la conectividad al servicio | El acceso funciona por la ruta privada | Pendiente: requiere despliegue |
-| Acceso público | Evaluar el acceso público tras validar dependencias | Se comporta conforme a la decisión documentada | Pendiente: requiere despliegue |
-
-> [!WARNING]
-> No restringir el acceso público hasta comprobar dependencias y validar el acceso privado. No declarar una prueba superada si no se ejecutó.
-
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
-
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| Pendiente de verificar contra la versión vigente | Relacionar el control aplicable con la exposición y conectividad comprobadas | Completar después de confirmar la referencia y ejecutar el laboratorio. |
-
-- Registrar la zona DNS y las dependencias reales del servicio seleccionado.
-- Documentar si se restringió el acceso público y qué prueba justificó esa decisión.
+El endpoint no basta sin la zona DNS y su enlace; deshabilitar el acceso público antes de probar la ruta privada puede romper la aplicación; y el grupo del endpoint (`vault` o `sites`) tiene que coincidir con el servicio.
