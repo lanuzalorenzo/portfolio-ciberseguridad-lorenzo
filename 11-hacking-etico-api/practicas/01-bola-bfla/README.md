@@ -1,70 +1,21 @@
 # 01 | BOLA/BFLA: aislamiento de pedidos
 
-> **Estado:** validado localmente con pruebas de integración. No se ha ejecutado contra un despliegue real con tokens de Entra ID.
->
-> **Runbook:** [runbook.md](runbook.md).
->
-> **Evidencia:** [2026-10-21-11-api-bola](../../../docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
+Una API autenticada que devuelve pedidos por identificador puede estar diciendo «tienes sesión» sin decir «este pedido es tuyo». La prueba consiste en crear un pedido con un usuario y pedirlo con otro. Si responde `200`, hay BOLA; si responde `404`, el control de propiedad funciona.
 
-## Descripción del escenario y objetivo de seguridad
+**Referencias:** OWASP API1 · MCSB PA-7
 
-**Escenario:** Una API autenticada devuelve pedidos por identificador. Si no comprueba la propiedad del recurso, un usuario puede leer pedidos de otro cambiando el `{id}` (BOLA/IDOR). Si no separa funciones, puede acceder a operaciones administrativas (BFLA).  
-**Objetivo de seguridad:** Garantizar que cada usuario solo accede a sus propios pedidos y que las funciones administrativas no están expuestas a usuarios estándar.  
-**Alcance:** `GET /api/orders`, `GET /api/orders/{id}`, `POST /api/orders` y endpoints de productos.
+| Prueba | Resultado observado |
+|---|---|
+| A crea un pedido; B pide el mismo ID | PASS: `UserCannotReadAnotherUsersOrder` (`404`) |
+| B lista sus pedidos | PASS: solo ve los suyos (`CreateOrder_ReturnsOnlyOwnOrders`) |
+| A pide su propio pedido | PASS: `200` |
+| ID inexistente | No ejecutado: sin prueba específica |
+| BFLA | Parcial: no hay endpoints admin, pero `POST /api/products` no exige rol (H-03) |
 
-## Hipótesis
+La remediación fue asignar `Order.UserId` desde el claim, marcarlo `[JsonIgnore]`, filtrar el listado y devolver `404` cuando el pedido no pertenece al usuario.
 
-1. Un usuario B puede leer un pedido creado por A si conoce el ID.
-2. Un usuario B puede listar pedidos de A.
-3. Un usuario estándar puede invocar funciones administrativas inexistentes o no protegidas.
+Las pruebas usan el esquema `X-Test-User` y dos identidades falsas, no tokens de Entra ID; tampoco se han ejecutado contra APIM o WAF. El [runbook](runbook.md) y la [evidencia](../../../docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) recogen los pasos y la salida.
 
-## Arquitectura y componentes
+Si B recibiera el pedido de A, el fallo estaría en la consulta y no en el token: la identidad se validó y aun así el recurso se entregó. Esa distinción importa al buscar la causa.
 
-| Componente | Función | Configuración relevante |
-|---|---|---|
-| **JwtBearer** | Identidad del llamante | Claims `NameIdentifier`/`oid`/`sub`. |
-| **OrdersController** | Autorización de objeto | Filtra por `UserId`; devuelve `404` para recursos ajenos. |
-| **InMemoryStore** | Repositorio | Pedidos con `UserId` no serializado. |
-| **xUnit + WebApplicationFactory** | Pruebas | Esquema de test `X-Test-User` para dos identidades. |
-
-## Pruebas ejecutadas
-
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Lectura de pedido ajeno | A crea pedido; B solicita el mismo ID | `404` | PASS: `UserCannotReadAnotherUsersOrder` |
-| Listado de pedidos ajenos | B lista `/api/orders` | Solo pedidos de B | PASS: `CreateOrder_ReturnsOnlyOwnOrders` |
-| Lectura del pedido propio | A solicita su pedido | `200` | PASS |
-| Pedido inexistente | A solicita ID inexistente | `404` | No ejecutado: no existe una prueba específica |
-| BFLA | Revisión de endpoints | Sin funciones admin expuestas | Parcial: no hay funciones admin, pero `POST /api/products` no exige rol (H-03) |
-
-Comando:
-
-```bash
-dotnet test tests/EcommerceApi.Tests/EcommerceApi.Tests.csproj --filter "FullyQualifiedName~OrdersEndpointsTests"
-```
-
-## Remediación aplicada
-
-- `Order.UserId` se asigna desde el claim de identidad y se marca `[JsonIgnore]`.
-- `GetAllOrders` filtra por `UserId`.
-- `GetOrderById` devuelve `404` si el pedido no pertenece al usuario.
-- Se eliminó la lista de pedidos compartida sin control de propiedad.
-
-## Limitaciones
-
-- Las pruebas usan un esquema de autenticación de test, no tokens reales de Entra ID.
-- BFLA se limita a confirmar que no hay endpoints administrativos; no hay una matriz de roles que probar.
-- No se ha probado contra APIM, WAF ni un entorno con dos usuarios delegados.
-
-## Recomendaciones
-
-- Añadir políticas por scopes/roles y una prueba negativa para cada rol.
-- Añadir auditoría de accesos denegados.
-- Repetir la prueba contra el entorno desplegado antes de cerrar el hallazgo.
-
-## Artefactos relacionados
-
-- [Pruebas de pedidos](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/tests/EcommerceApi.Tests/OrdersEndpointsTests.cs)
-- [Controlador de pedidos](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/EcommerceApi/Controllers/OrdersController.cs)
-- [Threat model de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/docs/threat-model-appsec.md)
-- [Evidencia de ejecución](../../../docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md)
+Un `403` ya revela que el recurso existe; el `404` evita esa fuga. Y el listado también necesita el filtro: proteger solo el detalle deja abierto el índice de pedidos.
