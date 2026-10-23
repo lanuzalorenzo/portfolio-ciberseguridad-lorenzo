@@ -1,6 +1,6 @@
 # Informe técnico — Validación JWT y JWKS en Entra ID
 
-**Proyecto:** Módulo 01 — Seguridad en Azure (Autenticación, Autorización y Protección de APIs).
+**Proyecto:** Módulo 01 — OAuth 2.0, PKCE y validación de JWT.
 
 ## Objetivo
 Documentar el mecanismo por el cual una API valida un token JWT de acceso emitido por Azure AD (v2.0). Se centra en la verificación criptográfica mediante JWKS y la inspección crítica de *claims* específicos de Microsoft Entra ID.
@@ -20,6 +20,20 @@ Para evitar la validación con claves estáticas, la API consulta el endpoint of
 1. **Obtención de claves públicas:** La API descarga el JSON Web Key Set (JWKS).
 2. **Selección de la clave:** Se localiza la clave pública que coincide con el claim `kid` del header del JWT.
 3. **Verificación:** Se comprueba que la firma RS256 es válida y que el token no ha sido alterado.
+
+```mermaid
+flowchart LR
+    T["JWT recibido"] --> H["header.kid"]
+    H --> Q{"¿kid en caché?"}
+    Q -- no --> J["GET /discovery/v2.0/keys"]
+    J --> Q
+    Q -- sí --> K["clave pública"]
+    K --> F{"¿firma válida?"}
+    F -- no --> R["401"]
+    F -- sí --> C{"¿iss, aud, exp<br/>y nbf correctos?"}
+    C -- no --> R
+    C -- sí --> OK["200 · acceso al recurso"]
+```
 
 ## Validación de Claims Específicos de Azure AD v2.0
 

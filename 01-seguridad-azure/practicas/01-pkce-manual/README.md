@@ -1,6 +1,10 @@
 # 01 | PKCE manual con cliente público
 
+Pedimos un pase a Entra ID a mano, con `curl`, sin librerías que escondan los pasos, y comprobamos que la API solo abre la puerta con un pase legítimo.
+
 > **Estado:** Parcial. La ejecución histórica está documentada en la bitácora del módulo; la evidencia estandarizada queda pendiente de reejecución con un tenant de laboratorio.
+>
+> Esta práctica cubre **solo el laboratorio Node.js**. La validación JWT de la API .NET es otra pieza del módulo y sí está validada en CI: ver [estado real del módulo](../../README.md#estado).
 >
 > **Runbook:** [runbook.md](runbook.md).
 >
@@ -23,7 +27,7 @@
 - [Flujo OAuth 2.0 con PKCE](../../docs/02-flujo-oauth2-pkce.md).
 - [Validación de JWT y JWKS](../../docs/03-validacion-jwt-jwks.md).
 - [Bitácora histórica de la ejecución](../../bitacora/2026-09-02-lab-azuread-oauth2-pkce-api.md).
-- [Documento técnico del laboratorio](docs/laboratorio-pkce-azure.md).
+- [Nota de fusión del tutorial](docs/laboratorio-pkce-azure.md): el antiguo documento de laboratorio se integró en 02, 03 y el runbook.
 - API de referencia del workload: [lab-api-local-azure](https://github.com/lanuzalorenzo/lab-api-local-azure).
 
 ## Qué aporta

@@ -1,27 +1,46 @@
 # 01 | OAuth 2.0, PKCE y validación de JWT
 
-> **Estado:** parcial. La validación JWT está implementada y probada en CI sobre la API de referencia; la práctica de PKCE manual conserva una ejecución histórica y su evidencia estandarizada sigue pendiente de reejecución con tenant.
+Cuando una aplicación quiere leer tus datos, lo habitual es que te pida la contraseña. Aquí se hace lo contrario: la aplicación te manda a hablar con Microsoft Entra ID, que le entrega un pase temporal y limitado a una API concreta. Nadie guarda tu contraseña y el pase caduca solo.
 
-Este módulo analiza e implementa la capa de **Seguridad en Aplicaciones (AppSec) e Identidad** para APIs REST: el flujo completo de autenticación moderna donde una aplicación cliente obtiene un token mediante Authorization Code con PKCE y una API empresarial valida criptográficamente su firma y sus *claims* antes de autorizar cualquier operación de negocio.
+El módulo explica cómo se pide ese pase (PKCE) y cómo la API comprueba que es auténtico antes de dejar pasar la petición (JWT). Es la primera capa del modelo: si la puerta de entrada falla, las demás dan igual.
 
-## Carga de trabajo asociada
+```mermaid
+flowchart TD
+    U([Tú]) -->|"1 · inicias sesión"| B["Entra ID"]
+    A["La app<br/>cliente público"] -->|"2 · pide permiso<br/>con la huella PKCE"| B
+    B -->|"3 · devuelve un resguardo"| A
+    A -->|"4 · canjea el resguardo<br/>+ el secreto PKCE"| B
+    B -->|"5 · emite el pase (JWT)"| A
+    A -->|"6 · presenta el pase"| C["API · EcommerceApi"]
+    C -->|"7 · responde 200 o 401"| A
+```
 
-La API empresarial utilizada para validar estos flujos es [**EcommerceApi (lab-api-local-azure)**](https://github.com/lanuzalorenzo/lab-api-local-azure), desarrollada en **.NET (C#)** con integración nativa del middleware `JwtBearer` contra los endpoints de **Microsoft Entra ID (v2.0)**.
+El paso 4 es el que hace PKCE. Si alguien intercepta el resguardo del paso 3, no puede canjearlo porque no tiene el secreto.
 
-## Recorrido técnico
+## Estado
 
-- [Conceptos y contexto](docs/01-conceptos.md): Fundamentos de tokens de acceso, delegated scopes y roles.
-- [Flujo OAuth 2.0 con PKCE](docs/02-flujo-oauth2-pkce.md): Obtención segura de tokens sin secretos en clientes públicos.
-- [Validación de JWT y JWKS](docs/03-validacion-jwt-jwks.md): Verificación criptográfica de firma asimétrica contra el endpoint Discovery de Microsoft Entra ID.
-- [Bitácoras del laboratorio](bitacora/): Registro cronológico de diseño, pruebas y decisiones técnicas.
+El módulo cubre dos piezas con madurez distinta y conviene no leerlas como una sola.
 
-## Prácticas
+| Pieza | Qué es | Estado |
+|---|---|---|
+| Validación JWT en la API .NET ([`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure)) | Comprueba firma y claims en cada petición | **Validado**, probado en CI |
+| [Práctica manual PKCE](practicas/01-pkce-manual/README.md), API Node local | Pide el pase a mano, paso a paso | **Parcial**: runbook completo, evidencia pendiente |
+| Reejecución con tenant de laboratorio | Cierra la evidencia con fecha y entorno | **Pendiente** |
 
-- [01 — PKCE manual con cliente público](practicas/01-pkce-manual/README.md): flujo Authorization Code + PKCE, canje de token y validación JWKS con un cliente público. Estado **Parcial**: runbook preparado y evidencia pendiente de reejecución con tenant.
+El código está y el procedimiento es reproducible. Falta volver a ejecutarlo y guardar la prueba con el formato de evidencia del portfolio.
 
-## Alcance y rigor técnico
+## Por dónde empezar
 
-El material documenta el protocolo de autorización, la emisión de tokens y la lógica de validación en la API. Los documentos describen un entorno de laboratorio técnico controlado y reproducible; las credenciales y datos de tenant han sido redactados.
+- [Conceptos](docs/01-conceptos.md): qué es un pase y por qué no se presta la contraseña.
+- [Flujo OAuth 2.0 con PKCE](docs/02-flujo-oauth2-pkce.md): el paso a paso y los límites reales de PKCE.
+- [Validación JWT y JWKS](docs/03-validacion-jwt-jwks.md): cómo comprueba la API el pase.
+- [Práctica 01](practicas/01-pkce-manual/README.md): ejecución a mano, pruebas negativas y evidencia.
 
-> **Nota sobre el historial:** antes de migrar la API a `lab-api-local-azure`, este repositorio contenía su documentación. Algunos ejemplos históricos usan `Authorization: Bearer $TOKEN` y cabeceras JWT truncadas con `...`. Son marcadores, no credenciales válidas. Se conservan por trazabilidad y están cubiertos por la allowlist acotada de `.gitleaks.toml`; no se reescribió el historial. Si alguna vez se usó un token real, debe rotarse.
+El código ejecutable está en [`lab/pkce`](lab/pkce/README.md) y las decisiones fechadas en la [bitácora](bitacora/). La [guía de lectura](../docs/guia-de-lectura.md) explica cómo se lee un módulo.
 
+## Lo que no se ha podido probar
+
+- La práctica de PKCE manual no se ha reejecutado: no hay tenant de laboratorio y la evidencia histórica no se guardó con el formato actual.
+- El laboratorio Node.js es local y HTTP, sin TLS, tests ni CI. La pieza validada en CI es la API .NET del workload.
+
+> Antes de migrar la API a `lab-api-local-azure`, este repositorio alojaba su documentación. Los ejemplos antiguos con `Authorization: Bearer $TOKEN` y JWT truncados con `...` son marcadores, no credenciales: se conservan por trazabilidad, están cubiertos por la allowlist de `.gitleaks.toml` y el historial no se reescribió. Si alguna vez se usó un token real, hay que rotarlo.

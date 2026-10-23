@@ -1,6 +1,6 @@
 # Informe técnico — Flujo OAuth2 PKCE en Azure AD
 
-**Proyecto:** Módulo 01 — Seguridad en Azure (Autenticación, Autorización y Protección de APIs).
+**Proyecto:** Módulo 01 — OAuth 2.0, PKCE y validación de JWT.
 
 ## Objetivo
 Documentar la implementación técnica del flujo OAuth2 Authorization Code con PKCE frente a Microsoft Entra ID (Azure AD), detallando las configuraciones necesarias en el portal, las particularidades del proveedor y la resolución de problemas frecuentes.
@@ -18,14 +18,28 @@ Documentar la implementación técnica del flujo OAuth2 Authorization Code con P
 
 PKCE separa dos momentos del flujo. Esa separación explica por qué el verifier no se filtra igual que el código.
 
-```text
-Canal frontal (URL, historial, referrer)
-  Navegador ── /authorize?code_challenge=HASH ──▶ Entra ID
-  Navegador ◀─ redirect?code=ABC ─────────────── Entra ID
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as Usuario
+    participant C as App · cliente público
+    participant E as Entra ID
+    participant A as API protegida
 
-Canal trasero (POST, cuerpo, TLS)
-  Cliente ── /token  code=ABC + code_verifier ──▶ Entra ID
+    C->>C: genera code_verifier y code_challenge = SHA256(verifier)
+    U->>E: /authorize con code_challenge (canal frontal)
+    E->>U: login y MFA
+    E-->>C: redirect con authorization_code (canal frontal)
+    C->>E: POST /token con code + code_verifier (canal trasero, TLS)
+    E->>E: comprueba SHA256(verifier) contra challenge
+    E-->>C: access_token (JWT)
+    C->>A: GET /api/products con Authorization Bearer
+    A->>A: valida firma con JWKS y claims iss, aud, exp, nbf
+    A-->>C: 200 con datos protegidos
 ```
+
+- **Canal frontal** (pasos 2–4): viaja por la URL. El `code_challenge` es público porque es un hash; el `authorization_code` también, y por eso es la parte débil.
+- **Canal trasero** (pasos 5–7): el `code_verifier` se envía una sola vez, en el cuerpo del POST y por TLS.
 
 - El `code_challenge` es público: es un hash y no revela el verifier.
 - El `authorization_code` viaja por la URL: queda en el historial, el referrer y los logs de redirección. Es la parte débil del flujo.
@@ -109,6 +123,15 @@ Durante la integración y pruebas de laboratorio se identificaron y resolvieron 
 - PKCE no sustituye a `state`, `nonce`, TLS ni a la validación del token en la API.
 - Aunque PKCE nació para clientes públicos, la práctica actual (RFC 9700) lo recomienda también en clientes confidenciales como defensa en profundidad.
 - Revocar sesiones invalida refresh tokens y cookies de autenticación, no los access tokens ya emitidos.
+
+### Reglas prácticas
+
+- No enviar `client_secret` en clientes públicos: el `code_verifier` es efímero y de un solo uso.
+- Usar siempre `S256` como método de challenge, nunca `plain`.
+- Validar el JWT en la API, nunca en el front-end.
+- Mantener el `redirect_uri` exacto y registrado; es la causa más común de `AADSTS501481`.
+- Antes de depurar un fallo de permisos, comprobar scope, consentimiento y que el identificador de la API tiene el formato `api://...`.
+- Borrar el `code_verifier` después del canje.
 
 ## Recursos de referencia
 
