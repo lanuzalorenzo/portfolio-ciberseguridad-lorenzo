@@ -1,47 +1,30 @@
-# 01 | Auditoría de Seguridad en Suscripciones Azure
+# 01 | Auditoría de la suscripción
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** **Validado** en laboratorio (evidencia documental).
+>
+> **Referencias:** MCSB GS-1, GS-2, PA-1, PA-3 · CIS Azure 2.0.
 
-**Escenario:** Suscripción cloud de laboratorio que aloja múltiples cargas de trabajo, con configuraciones heredadas, políticas dispersas y asignaciones de permisos en el ámbito de suscripción sin inventario formal.  
-**Objetivo de seguridad:** Evaluar el estado de seguridad y gobernanza de la suscripción, identificando brechas en la postura global (Secure Score), asignaciones de privilegios amplios y políticas ausentes conforme al Microsoft Cloud Security Benchmark (MCSB).  
-**Alcance:** Ámbito de suscripción en Azure Resource Manager (ARM), evaluaciones de Microsoft Defender for Cloud y directivas base de Azure Policy.
+La suscripción es el plano de control: quien tiene permisos ahí decide sobre todo lo que hay debajo. Si los roles se reparten a mano entre personas, nadie sabe ya quién puede qué, y una baja o un cambio de puesto deja permisos vivos.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+La revisión combinó Defender for Cloud para la postura (*Secure Score*), Azure Policy para el cumplimiento y Azure Resource Graph para el inventario.
 
-## Arquitectura y componentes de Azure utilizados
+## Hallazgos
 
-| Componente | Función | Configuración relevante |
-|---|---|---|
-| **Azure Resource Manager (ARM)** | Plano de control y gobernanza | Alcance `/subscriptions/<subscription-id>` para evaluación de permisos y recursos. |
-| **Microsoft Defender for Cloud** | Gestión de postura de seguridad (CSPM) | Secure Score habilitado con la iniciativa Microsoft Cloud Security Benchmark. |
-| **Azure Policy** | Cumplimiento normativo y directivas | Asignación de iniciativas de seguridad estándar para detección de desviaciones. |
-| **Azure Resource Graph** | Inventario y consultas analíticas KQL | Consultas de auditoría rápida sobre recursos desprotegidos y configuraciones globales. |
+| ID | Qué se comprobó | Cómo | Resultado observado | Gravedad |
+|---|---|---|---|---|
+| SEC-SUB-01 | Asignaciones del rol *Owner* | Inspección de IAM de la suscripción | Asignaciones directas a usuarios; se propuso pasar a grupos y a PIM | Alta |
+| SEC-SUB-02 | Registro de actividad | Cumplimiento de Azure Policy | Sin directiva que obligue a enviar los diagnósticos a Log Analytics | Media |
+| SEC-SUB-03 | Etiquetado de recursos | Inventario en Resource Graph | Recursos sin propietario, entorno ni criticidad | Baja |
 
-## Implementación de controles DevSecOps / Seguridad
+Los tres quedaron como recomendación: no se aplicó ningún cambio en la suscripción.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Evaluación continua de postura (CSPM) | Secure Score en Defender for Cloud | Iniciativa regulatoria MCSB | MCSB GS-1 / CIS Azure 2.0 |
-| Auditoría de asignaciones RBAC a nivel root | Revisión de roles *Owner* y *Contributor* en suscripción | Consultas de inventario en IAM | MCSB PA-1 / PA-3 |
-| Detección de recursos no conformes | Auditoría declarativa de configuraciones básicas | Azure Policy (`Audit` mode) | MCSB GS-2 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe de auditoría](docs/auditoria-suscripciones-documento-tecnico.md).
+- Un rol asignado a una persona desaparece con la persona; asignado a un grupo, se audita y se revoca.
+- Azure Policy en modo *Deny* previene la desviación; en modo *Audit* solo deja constancia de ella.
+- El etiquetado no es burocracia: sin propietario no hay a quién avisar cuando un recurso aparece en un incidente.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Revisión de asignaciones *Owner* permanentes | Inspección de IAM en suscripción | Máximo 2-3 identidades con justificación formal | PASS: Se detectaron asignaciones directas a usuarios; se propuso migración a PIM/grupos |
-| Estado de cumplimiento de Secure Score | Panel de Defender for Cloud | Identificación de recomendaciones críticas de seguridad | PASS: Score evaluado con foco en remediación de red y cifrado |
-| Comprobación de políticas obligatorias activas | Evaluación de cumplimiento en Azure Policy | Iniciativa MCSB en estado de auditoría asignada | PASS: Detección de recursos sin diagnósticos habilitados |
-
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
-
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| **GS-1: Asignar responsabilidades de seguridad** | Auditoría y seguimiento del Secure Score | La postura no es estática; las recomendaciones de Defender for Cloud deben integrarse en rutinas periódicas de revisión. |
-| **PA-1: Minimizar privilegios a nivel de suscripción** | Restricción de ámbito a Resource Groups | Asignar roles a nivel de suscripción amplía excesivamente el radio de explosión ante cualquier identidad vulnerada. |
-
-- Azure Resource Graph es el mecanismo más rápido y escalable para auditar el cumplimiento de propiedades de recursos sin depender de la navegación manual por el portal.
+- [Informe técnico con la matriz completa](docs/auditoria-suscripciones-documento-tecnico.md)
+- [Bitácora del 14 de septiembre](../../bitacora/2026-09-14-inicio-modulo-03.md)

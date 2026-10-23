@@ -1,47 +1,31 @@
-# 03 | Auditoría de Identidades, Roles y Accesos en Microsoft Entra ID
+# 03 | Auditoría de identidades y accesos
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** **Validado** en laboratorio (evidencia documental).
+>
+> **Referencias:** MCSB IA-1, PA-1, PA-6 · CIS Microsoft 365 1.2, 1.14 · NIST AC-2.
 
-**Escenario:** Tenant de Microsoft Entra ID y suscripciones de Azure donde convergen cuentas de usuario internas, colaboradores externos (B2B/Guest) y registros de aplicaciones (Service Principals) con asignaciones de roles acumuladas en el tiempo.  
-**Objetivo de seguridad:** Ejecutar una auditoría exhaustiva sobre el plano de identidad para identificar identidades inactivas o huérfanas, excesos de privilegios administrativos, credenciales de aplicaciones de larga duración y ausencia de factores de autenticación fuerte.  
-**Alcance:** Directorio Microsoft Entra ID de laboratorio, usuarios miembros, invitados, roles de directorio y Service Principals.
+En la nube la identidad es el perímetro. Un directorio acumula con los años cuentas que ya no se usan, administradores que lo son todos los días y credenciales de aplicación que nadie recuerda haber creado; cada una es una entrada que sobrevive a su dueño.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+Una cosa estaba bien: ninguna cuenta invitada tenía roles administrativos. El problema no era su privilegio sino su permanencia.
 
-## Arquitectura y componentes de Azure utilizados
+## Hallazgos
 
-| Componente | Función | Configuración relevante |
-|---|---|---|
-| **Microsoft Entra ID** | Proveedor de Identidad central | Gestión de usuarios, grupos, roles de directorio y aplicaciones registradas. |
-| **Entra ID Roles** | Asignaciones de privilegios globales | Revisión de roles como *Global Administrator*, *Privileged Role Administrator* y *User Administrator*. |
-| **Cuentas de Invitado (B2B)** | Identidades externas colaboradoras | Auditoría de cuentas `@external.com` inactivas o con privilegios asignados. |
-| **App Registrations / Service Principals** | Identidades de aplicaciones y automatizaciones | Inspección de certificados y *client secrets* asociados, vigencia y permisos delegados o de aplicación. |
+| ID | Qué se comprobó | Cómo | Resultado observado | Gravedad |
+|---|---|---|---|---|
+| SEC-IAM-01 | Caducidad de secretos de aplicación | Revisión de *Certificates & Secrets* | Un *client secret* configurado como *Never expire* | Crítica |
+| SEC-IAM-02 | Administradores globales | Conteo de asignaciones permanentes | Varias cuentas con el rol permanente para tareas diarias | Alta |
+| SEC-IAM-03 | Cuentas invitadas | Filtro por `userType == 'Guest'` | Invitados sin acceso en 90 días dentro de grupos internos | Media |
+| SEC-IAM-04 | Registro de aplicaciones | Propiedades de usuario del tenant | Cualquier usuario puede registrar aplicaciones | Baja |
 
-## Implementación de controles DevSecOps / Seguridad
+Ninguno se corrigió en el laboratorio: son recomendaciones. El secreto permanente debería sustituirse por una identidad administrada; los administradores globales, pasar a elegibles con PIM y quedar en dos o cuatro cuentas de emergencia.
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Mapeo y reducción de Global Administrators | Limitar cuentas con administración total a un máximo de 2-4 | Revisión periódica de IAM en Entra ID | MCSB PA-1 / CIS 1.2 |
-| Ciclo de vida y caducidad de secretos de apps | Prohibir secretos con duración mayor a 6-12 meses | Auditoría de *App Registrations* | MCSB PA-6 / CIS 1.14 |
-| Detección de cuentas huérfanas o inactivas | Identificación de usuarios sin inicio de sesión en >90 días | Logs de inicio de sesión (*Sign-in logs*) | MCSB IA-1 / NIST AC-2 |
+## Lecciones
 
-**Artefactos relacionados:** [Informe técnico de auditoría de identidades y accesos](docs/auditoria-identidades-y-accesos-documento-tecnico.md).
+- Un secreto sin caducidad no es comodidad: es persistencia regalada a quien lo filtre.
+- Lo que no se revisa no se revoca; las *Access Reviews* automatizan esa limpieza.
+- Una cuenta invitada depende del directorio de un tercero: si ese directorio cae, la tuya también.
 
-## Validación o pruebas de seguridad realizadas
+## Más detalle
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Conteo y revisión de Global Administrators | Filtro en *Microsoft Entra roles* | Sin asignaciones permanentes descontroladas | PASS: Identificadas cuentas asignadas; se recomendó conversión a elegibles vía PIM |
-| Auditoría de caducidad en secretos de Service Principals | Inspección de *Certificates & Secrets* en apps | Secretos vigentes y con caducidad no superior a 1 año | PASS: Detectado secreto sin caducidad; se recomendó rotación y uso de Managed Identities |
-| Revisión de cuentas Guest con roles privilegiados | Filtro por `userType == 'Guest'` en asignaciones de roles | Ningún usuario invitado con roles administrativos | PASS: Cero asignaciones privilegiadas a cuentas externas |
-
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
-
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| **PA-1: Protección de cuentas privilegiadas** | Eliminación de asignaciones permanentes | Ningún usuario humano debe operar como Administrador Global permanente para tareas diarias. |
-| **PA-6: Gestión de credenciales de aplicaciones** | Reemplazo de secretos estáticos por identidades administradas | Los secretos de aplicaciones representan un vector silencioso de persistencia si no se audita su fecha de expiración y alcance de permisos. |
-
-- Complementar las auditorías manuales con revisiones de acceso automatizadas (*Access Reviews*) en Entra ID Governance es esencial para revocar privilegios a usuarios o invitados que abandonan proyectos.
+- [Informe técnico con la matriz completa](docs/auditoria-identidades-y-accesos-documento-tecnico.md)
+- [Bitácora del 15 de septiembre](../../bitacora/2026-09-15-cierre-modulo-03.md)

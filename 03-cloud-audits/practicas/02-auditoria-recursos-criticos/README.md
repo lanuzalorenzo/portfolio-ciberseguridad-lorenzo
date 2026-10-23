@@ -1,47 +1,30 @@
-# 02 | Auditoría de Seguridad en Recursos Críticos (PaaS y Storage)
+# 02 | Auditoría de recursos críticos
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** **Validado** en laboratorio (evidencia documental).
+>
+> **Referencias:** MCSB DP-2, DP-3, DP-4, NS-1 · CIS Azure 3.7 · NIST SP 800-52.
 
-**Escenario:** Cargas de trabajo en Azure que utilizan servicios PaaS esenciales (Azure Storage Accounts, Azure SQL Database y Key Vault) expuestos a riesgos de fuga de información por configuraciones laxas por defecto.  
-**Objetivo de seguridad:** Auditar la configuración de seguridad de recursos críticos, comprobando cifrado en tránsito/reposo, restricción de acceso público, directivas de red y autenticación moderna.  
-**Alcance:** Cuentas de almacenamiento (Blob Storage), bases de datos Azure SQL y recursos Key Vault en suscripción de laboratorio.
+Almacenamiento, bases de datos y almacenes de secretos son donde vive lo que hay que proteger. Sus valores por defecto priman la rapidez de despliegue, y casi todos dejan una puerta abierta hasta que alguien la cierra.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
+## Hallazgos
 
-## Arquitectura y componentes de Azure utilizados
+| ID | Qué se comprobó | Cómo | Resultado observado | Gravedad |
+|---|---|---|---|---|
+| SEC-RES-01 | Acceso anónimo a blobs | Petición HTTP anónima al contenedor | Estaba habilitado; se desactivó y la petición pasó a devolver `409` | Crítica |
+| SEC-RES-02 | Versión mínima de TLS | Negociación con TLS 1.0 y 1.1 | Estaba en TLS 1.0; se fijó en 1.2 y el *handshake* antiguo se rechaza | Alta |
+| SEC-RES-03 | Cortafuegos de Azure SQL | Inspección de reglas del servidor | Regla abierta a «todos los servicios de Azure» | Alta |
+| SEC-RES-04 | Protección contra borrado | Configuración de Key Vault | Sin *Purge Protection*: un borrado podía ser definitivo | Media |
 
-| Componente | Función | Configuración relevante |
-|---|---|---|
-| **Azure Storage Account** | Almacenamiento de blobs y artefactos | Revisión de `allowBlobPublicAccess`, versión mínima de TLS (1.2) y acceso por claves compartidas. |
-| **Azure SQL Database** | Base de datos relacional PaaS | Revisión de reglas de firewall, TLS forzado y autenticación basada en Microsoft Entra ID. |
-| **Azure Key Vault** | Almacén criptográfico | Verificación de configuración de red pública, Azure RBAC activo y directiva de retención (*Soft Delete*). |
-| **Network Security Groups (NSGs)** | Filtrado perimetral de red | Inspección de reglas de entrada permisivas (`0.0.0.0/0` en puertos administrativos como 22 o 3389). |
+Se corrigieron y verificaron los dos primeros. Los otros dos quedaron recomendados: reglas de firewall por IP o *Private Endpoints*, y activar *Purge Protection* con retención de 90 días.
 
-## Implementación de controles DevSecOps / Seguridad
+## Lecciones
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Bloqueo total de acceso anónimo a datos | `allowBlobPublicAccess = false` en Storage | Azure Policy en modo *Deny* / *Audit* | MCSB DP-4 / CIS 3.7 |
-| Forzado de TLS moderno (1.2 o superior) | `minimumTlsVersion = TLS1_2` en Storage y SQL | Directiva de endurecimiento de transporte | MCSB DP-3 / NIST SP 800-52 |
-| Eliminación de autenticación por claves locales | Deshabilitar *Shared Key Access* en favor de Entra ID | Azure RBAC exclusivo | MCSB DP-2 |
+- Dejar el parámetro seguro a nivel de cuenta no basta si el operador puede volver a abrirlo: hace falta una política que lo impida.
+- TLS 1.0 sigue siendo el valor por defecto de muchos recursos creados sin plantilla endurecida.
+- «Permitir servicios de Azure» no distingue tus recursos de los de cualquier otro tenant.
+- *Soft Delete* sin *Purge Protection* protege del error, no del ataque.
 
-**Artefactos relacionados:** [Informe técnico de auditoría de recursos críticos](docs/auditoria-recursos-criticos-documento-tecnico.md).
+## Más detalle
 
-## Validación o pruebas de seguridad realizadas
-
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Comprobación de acceso anónimo a Blob Storage | Petición HTTP anónima a contenedor de prueba | Error 409 PublicAccessNotPermitted | PASS: Acceso público deshabilitado a nivel de cuenta |
-| Verificación de versión mínima de TLS | Negociación TLS con versiones obsoletas (TLS 1.0/1.1) | Rechazo del handshake TLS | PASS: El servicio exige TLS 1.2 estrictamente |
-| Auditoría de reglas de firewall en Azure SQL | Inspección de rangos IP autorizados | Sin reglas permisivas abiertas a Internet (`0.0.0.0`) | PASS: Reglas acotadas a IPs de gestión autorizadas |
-
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
-
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| **DP-4: Prevención de fuga de datos en reposo** | Deshabilitación de acceso público en Storage | La opción de habilitar o deshabilitar acceso anónimo debe bloquearse a nivel de política de tenant, no dejarse al criterio del operador. |
-| **DP-3: Protección de datos en tránsito** | Exigencia de TLS 1.2+ en todos los endpoints PaaS | Mitiga ataques de degradación criptográfica y descifrado pasivo de tráfico en tránsito. |
-
-- La autenticación basada exclusivamente en Microsoft Entra ID para Azure SQL y Storage Accounts elimina la dispersión de contraseñas y claves de acceso (*Shared Keys*) imposibles de rotar ágilmente.
+- [Informe técnico con la matriz completa](docs/auditoria-recursos-criticos-documento-tecnico.md)
+- [Bitácora del 15 de septiembre](../../bitacora/2026-09-15-cierre-modulo-03.md)
