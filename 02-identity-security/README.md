@@ -34,6 +34,4 @@ flowchart TB
 
 Las siete prácticas se ejecutaron en un tenant de laboratorio y quedaron registradas con informe técnico, bitácora fechada y tabla de resultados. Son evidencias documentales: no se conservaron capturas originales. No hay recursos de producción en ningún caso.
 
-## Cómo se lee
-
-Cada práctica abre con el problema y resume en una tabla qué se probó y qué se observó. El detalle de configuración y las decisiones están en el informe técnico de su carpeta `docs/`. El historial fechado, en la [bitácora](bitacora/).
+El detalle de configuración y las decisiones están en el informe técnico de cada práctica; el historial fechado, en la [bitácora](bitacora/).
