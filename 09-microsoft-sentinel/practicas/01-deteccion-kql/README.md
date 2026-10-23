@@ -12,7 +12,7 @@ Un inicio de sesión fallido no es un incidente; veinte seguidos de un acceso co
 | Regla analítica e incidente | No creados |
 | Prueba con datos | Pendiente |
 
-El caso: agrupar por usuario, IP y aplicación los fallos de un intervalo corto, y buscar después un acceso correcto desde una IP que no aparecía antes. La consulta existe en la [práctica de timeline del módulo 12](../../../12-forense-cloud-respuesta/practicas/02-timeline-kql/README.md); lo que falta es el workspace con datos y la regla que la convierta en alerta.
+El caso: agrupar por usuario, IP y aplicación los fallos de un intervalo corto, y buscar después un acceso correcto desde una IP que no aparecía antes. La consulta existe en el [informe técnico del módulo 12](../../../12-forense-cloud-respuesta/docs/informe-tecnico.md); lo que falta es el workspace con datos y la regla que la convierta en alerta.
 
 Una detección no se valida porque la consulta compile: se valida cuando devuelve el caso sembrado, cuando el ruido es tolerable y cuando el analista puede reconstruir qué pasó con los campos que recibe.
 

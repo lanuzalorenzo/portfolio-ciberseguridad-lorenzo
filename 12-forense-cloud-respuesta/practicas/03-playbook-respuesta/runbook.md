@@ -128,7 +128,7 @@ az monitor activity-log list \
   --query "[?contains(operationName.value, 'securityRules')]" -o json
 ```
 
-> Estado de los comandos: **no ejecutados**. Las consultas KQL están en la [práctica 02](../02-timeline-kql/README.md).
+> Estado de los comandos: **no ejecutados**. El código de las consultas KQL está en el [informe técnico](../../docs/informe-tecnico.md).
 
 ### 6.5 Trampas que el facilitador debe inyectar
 
@@ -220,7 +220,7 @@ az group exists --name "$RESOURCE_GROUP"
 
 - [README de la práctica](README.md)
 - [Recolección de evidencia](../01-recoleccion-logs-azure/README.md)
-- [Consultas KQL](../02-timeline-kql/README.md)
+- [Consultas KQL](../../docs/informe-tecnico.md)
 - [Módulo 08 — Redes Azure](../../../08-seguridad-red-azure/README.md)
 - [Módulo 09 — Microsoft Sentinel](../../../09-microsoft-sentinel/README.md)
 - [NIST SP 800-61 Rev. 2](https://csrc.nist.gov/pubs/sp/800/61/r2/final)
