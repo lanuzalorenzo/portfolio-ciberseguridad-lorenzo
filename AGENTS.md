@@ -17,6 +17,7 @@ Al trabajar en el repositorio:
 - No añadas secretos, datos personales ni identificadores sensibles.
 - Mantén la coherencia entre el README del módulo, la web y el perfil.
 - Escribe la documentación en español claro y conserva los nombres oficiales de productos y controles cuando corresponda.
+- **Voz:** directa y cercana, sin épica. El lector no tiene por qué ser experto: explica el concepto técnico con una analogía o símil antes de entrar en detalle (p. ej., «el laboratorio es una casa con varias cerraduras: la puerta de entrada es la red, la llave es la identidad...»). No uses rótulos de registro («En fácil», «TL;DR»): la claridad está en la prosa, no en la etiqueta.
 
 ## Estructura recomendada para módulos, runbooks y bitácoras
 
