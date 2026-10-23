@@ -1,25 +1,22 @@
 # 10 | ELK Stack Security
 
-> **Estado:** Validado en local. La pila ELK se ha ejecutado con Docker Compose, la ingesta y la normalización se han verificado, y se ha construido y exportado un dashboard de Kibana. No se ha desplegado en Azure ni se ha probado con datos reales.
+Centralizar logs sirve de poco si no se puede responder con ellos a una pregunta concreta. Este módulo monta una pila ELK en local con Docker Compose, ingiere quince eventos sintéticos de autenticación y servicio web, los normaliza y comprueba que se pueden consultar y dibujar. Todo se ejecutó en un equipo local y se apagó al terminar; no hay Azure, ni datos reales, ni alertas automatizadas.
 
-Este módulo amplía el portfolio hacia la observabilidad y la analítica de seguridad. El enfoque es documentar cómo una pila ELK puede recibir eventos, normalizarlos, correlacionarlos y convertirlos en indicadores útiles para detección y respuesta.
+## Qué se ejecutó
 
-## Laboratorio
+- Elasticsearch, Logstash y Kibana 8.19.23 en local, con los puertos ligados solo a `127.0.0.1`.
+- Quince eventos: diez fallos de autenticación, cinco accesos correctos, cuatro errores web y una actividad con `sudo`.
+- Normalización a campos tipo ECS y seis consultas en Kibana sobre la vista `Lab Security`.
+- Un dashboard de cinco paneles y la exportación de siete objetos en NDJSON.
+- Limpieza completa: contenedores, red y volumen eliminados.
 
-- [Laboratorio ELK local](lab/README.md): Docker Compose, Logstash, logs sintéticos y scripts.
-- [Runbook de ingestión](practicas/01-ingestion-logstash/runbook.md): levantar la pila, ingerir y verificar.
-- [Runbook de Kibana](practicas/02-kibana-deteccion/runbook.md): vista de datos, consultas y dashboard.
-- [Evidencia de ejecución](../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md): ingesta, consultas KQL, dashboard y exportación.
+Los eventos son sintéticos, fechados el 2026-10-20 y con usuarios e IPs de los rangos reservados para documentación; se pueden publicar sin sanearlos.
 
 ## Prácticas
 
-- [Ingestión y normalización con Logstash](practicas/01-ingestion-logstash/README.md)
-- [Visualización, detección y análisis con Kibana](practicas/02-kibana-deteccion/README.md)
+- [Ingestión y normalización con Logstash](practicas/01-ingestion-logstash/README.md) — *validado en local*; runbook y evidencia.
+- [Visualización, detección y análisis con Kibana](practicas/02-kibana-deteccion/README.md) — *validado en local*; seis consultas y dashboard.
 
-## Registro del trabajo
+## Límites
 
-La [bitácora del módulo](bitacora/) refleja el planteamiento del caso de uso, el diseño de la arquitectura y el estado de validación.
-
-## Alcance
-
-El módulo se plantea como un laboratorio orientativo de seguridad operativa. No representa una implantación de producción ni una configuración real con datos sensibles. El objetivo es comprender cómo ELK puede apoyar la investigación de eventos, la detección y la visualización de riesgo.
+El clúster es single-node, Elasticsearch va sin TLS ni autenticación y no se han creado reglas ni alertas: el módulo demuestra ingesta, consulta y visualización, no la operación de un SIEM. Tampoco se ha probado el acceso desde otra máquina ni con datos reales. La evidencia completa está en [2026-10-19-10-elk-ingesta](../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).

@@ -1,67 +1,19 @@
 # 01 | Ingestión y normalización con Logstash
 
-> **Estado:** Validado en local. La pila se ha ejecutado y la ingesta se ha verificado con los 15 eventos sintéticos.
->
-> **Runbook:** [runbook.md](runbook.md).
->
-> **Informe:** [informe.md](informe.md).
->
-> **Evidencia:** [2026-10-19-10-elk-ingesta](../../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).
+Quince líneas de log no son una detección, pero sí permiten comprobar si una tubería conserva lo que importa: quién entró, desde dónde, qué servicio respondió y con qué resultado. La práctica ejecutó esa tubería en local y verificó los conteos antes de pasar a Kibana.
 
-## Contexto y alcance
+**Referencias:** MCSB LT-1 · NIST SP 800-92
 
-**Escenario:** un entorno de laboratorio con logs de autenticación, acceso a servicios y actividad del sistema. Se recoge un caso realista de detección basado en fallos de autenticación, intentos repetidos y cambios sospechosos en la actividad de un host. La práctica se centra en convertir esos eventos en señales útiles para análisis y detección.
+| Qué se hizo | Resultado observado |
+|---|---|
+| Levantar Elasticsearch, Logstash y Kibana con Docker Compose | Tres contenedores `healthy`; puertos solo en `127.0.0.1` |
+| Ingerir 15 eventos sintéticos | 15 documentos: 10 fallos, 5 accesos correctos, 4 errores web y 1 `sudo` |
+| Normalizar campos | `host.name`, `service.name`, `source.ip`, `event.outcome` y `http.response.status_code` presentes |
+| Correlacionar por IP | 10 fallos desde `203.0.113.45` |
+| Limpiar | Contenedores, red y volumen eliminados; puertos libres |
 
-**Objetivo de seguridad:** consolidar logs procedentes de diferentes fuentes para detectar anomalías, correlacionar eventos y preparar la señal para análisis posterior en Kibana.
+La normalización fue lo que hizo útil el resto: sin campos comunes, la consulta por IP o por resultado no se puede escribir. El volumen era pequeño a propósito; el objetivo era verificar la tubería, no medir rendimiento. El dataset usa usuarios e IPs de los rangos reservados para documentación, así que se puede publicar sin sanearlo.
 
-> [!NOTE]
-> La práctica se documenta como ejercicio técnico y no representa una implementación en producción.
+El [runbook](runbook.md) recoge los pasos y la [evidencia](../../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md) los artefactos. El log de ejemplo y los scripts viven en `lab/`.
 
-## Caso real de logs utilizado
-
-| Fuente | Ejemplo de evento | Valor para detección |
-|---|---|---|
-| Auth log | `Failed password` repetidos | Identifica fuerza bruta o abuso de credenciales. |
-| Sistema operativo | `sudo` o comandos privilegiados | Detecta uso anómalo de permisos. |
-| Servicio web | Acceso a rutas inesperadas | Señala exploración o explotación. |
-| SSH / accesos | Logins desde IPs no habituales | Ayuda a detectar pivote o accesos externos. |
-
-Se utilizará una composición de logs de sistema y servicios para simular un escenario de seguridad operativa con patrones típicos de análisis.
-
-## Arquitectura y componentes
-
-| Componente | Función | Observación |
-|---|---|---|
-| Elasticsearch | Almacenamiento y búsqueda | Motor principal para índices y consultas. |
-| Logstash | Ingesta, transforma y enruta eventos | Se usa para normalizar y filtrar logs. |
-| Kibana | Visualización y análisis | Permite explorar datos y construir dashboards. |
-| Fuente de logs | Aplicaciones, servicios o eventos de seguridad | Pueden venir de Linux, servicios web o actividad de red. |
-
-## Trabajo propuesto
-
-- Definir un caso de seguridad concreto: accesos fallidos, anomalías por IP, uso de sudo, rutas sospechosas o cambios de servicio.
-- Configurar una pipeline de Logstash para leer el log y normalizar sus campos.
-- Extraer y estructurar campos clave: timestamp, host, servicio, usuario, ip_origen, evento, nivel, resultado y detalle.
-- Enviar la salida a un índice de Elasticsearch con un esquema claro para su análisis.
-- Validar la ingesta y confirmar que los eventos quedan preparadas para detección en Kibana.
-
-## Resultados esperados
-
-- Logs capturados y transformados de forma consistente.
-- Campos normalizados para consultas de detección y paneles.
-- Base útil para identificar patrones anómalos con contexto.
-
-## Validación planificada
-
-| Prueba | Método | Resultado esperado | Estado |
-|---|---|---|---|
-| Ingesta de eventos | Carga de logs con fallos de autenticación y accesos sospechosos | Flujo correcto y sin pérdida | Validado en local |
-| Normalización | Validación de campos clave para investigación | Esquema consistente y trazable | Validado en local |
-| Exploración en Elasticsearch | Consulta por usuario, IP y servicio | Datos visibles y recuperables para análisis | Validado en local |
-| Detección básica | Identificación de patrones repetidos | Evidencia útil para Kibana y alertado | Validado en local |
-
-## Aprendizaje clave
-
-- La calidad de los datos es más importante que el volumen y clave para la detección.
-- La normalización no solo ordena el log, también permite correlacionar señales con contexto.
-- ELK es especialmente útil cuando se quiere combinar eventos de autenticación, acceso y sistema para construir alertas y análisis de riesgo.
+El esquema importa más que el número de eventos; un campo mal tipado arrastra el análisis; y comprobar los conteos justo después de ingerir evita descubrir el fallo en el dashboard.
