@@ -1,56 +1,28 @@
 # 02 | Autenticación Passwordless en Microsoft Entra ID
 
-> **Estado:** validado en laboratorio (PASS). Tenant de prueba, sin datos reales.
+> **Estado:** **Validado** en laboratorio (evidencia documental). Tenant de prueba, sin datos reales.
+>
+> **Referencias:** MCSB IA-1, IA-2 · NIST SP 800-63B · FIDO Alliance.
 
-## Descripción del escenario y objetivo de seguridad
+MFA encarece el ataque, pero la contraseña sigue existiendo. Passwordless la elimina: el usuario demuestra quién es con un dispositivo, una passkey o la cara, y no hay secreto que robar, adivinar ni reutilizar en otro servicio.
 
-**Escenario:** Identidades dependientes de contraseñas complejas, vulnerables a phishing, fatiga de contraseñas y fuerza bruta.  
-**Objetivo de seguridad:** Desplegar una estrategia sin contraseñas basada en Microsoft Authenticator, Passkeys (FIDO2) y Windows Hello for Business.  
-**Alcance:** Políticas de métodos de autenticación del tenant y usuario nativo (*Member*).
-
-## Enfoque técnico
-
-- Microsoft Authenticator en modo Passwordless.
-- Passkey / FIDO2.
-- Windows Hello for Business.
-- Validación del inicio de sesión sin contraseña.
-
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluye identificadores,
-> secretos ni datos sensibles.
-
-## Arquitectura y componentes
-
-| Componente | Función | Configuración relevante |
-|---|---|---|
-| **Microsoft Authenticator** | Notificación push con coincidencia de números | Passwordless habilitado; number matching activo. |
-| **Passkey (FIDO2)** | Autenticación resistente al phishing | Habilitado autoservicio; sin atestación estricta en pruebas. |
-| **Windows Hello for Business** | Autenticación biométrica/PIN ligada al hardware | Habilitado en la directiva de métodos. |
-| **Usuario nativo (Member)** | Sujeto de autenticación | Cuenta `@dominio.onmicrosoft.com`; las cuentas Guest no admiten Passwordless nativo. |
-
-## Controles de seguridad
-
-| Control | Implementación | Referencia |
-|---|---|---|
-| Autenticación resistente a phishing | Passkey / FIDO2 | MCSB IA-2 / FIDO Alliance |
-| Coincidencia de números | Número en pantalla que se teclea en la app | NIST SP 800-63B |
-| Eliminación del secreto estático | Inicio de sesión sin contraseña | MCSB IA-1 |
+En esta práctica se habilitaron Microsoft Authenticator en modo sin contraseña, passkeys FIDO2 y Windows Hello for Business, y se validó el inicio de sesión sin contraseña con coincidencia de números.
 
 ## Validación
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Habilitación de métodos | Portal Entra ID → Authentication methods | Métodos activos para usuarios del laboratorio | PASS: Authenticator, FIDO2 y WHfB habilitados |
-| Registro en cuenta Guest | Intento de registro en cuenta EXT | Guest no habilita Passwordless nativo | PASS: se creó un usuario Member para el laboratorio |
-| Login Passwordless con Authenticator | UPN + coincidencia de número | Acceso sin contraseña | PASS: autenticación completada |
+| Habilitación de métodos | Portal de Entra ID, métodos de autenticación | Métodos activos para el laboratorio | PASS: Authenticator, FIDO2 y Windows Hello habilitados |
+| Registro en una cuenta Guest | Intento de alta en cuenta externa | Passwordless no disponible para Guest | PASS: se creó un usuario Member para la práctica |
+| Inicio de sesión sin contraseña | UPN y coincidencia de número | Acceso sin contraseña | PASS: autenticación completada |
 
-## Lecciones aprendidas
+## Lecciones
 
-- Las cuentas invitadas dependen de su tenant de origen y no admiten Passwordless nativo gestionado en el destino.
-- La coincidencia de números mitiga ataques de fatiga de MFA.
-- Passkeys reduce el riesgo de phishing inverso y *man-in-the-middle*.
+- Una cuenta invitada depende de su tenant de origen: no admite Passwordless nativo en el destino.
+- La coincidencia de números corta la fatiga de MFA, porque el usuario no aprueba a ciegas.
+- Las passkeys resisten el phishing inverso y el ataque de intermediario mucho mejor que un código.
 
-## Artefactos relacionados
+## Más detalle
 
-- [Configuración de métodos Passwordless](docs/passwordless-configuracion.md)
+- [Configuración de métodos](docs/passwordless-configuracion.md)
 - [Bitácora del módulo](../../bitacora/2026-09-08-identity-security.md)

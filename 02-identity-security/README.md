@@ -1,23 +1,39 @@
 # 02 | Seguridad de identidades en Microsoft Entra ID
 
-> **Estado:** validado en laboratorio, con **evidencia documental** (informe técnico + bitácora fechada + tabla de resultados; sin captura original). Prácticas 01–07 documentadas.
+Una contraseña filtrada basta para entrar en una cuenta. Los siete controles de este módulo existen para que esa contraseña, sola, no sirva: un segundo factor, la supresión de la contraseña, la recuperación sin soporte, el privilegio temporal, el mínimo privilegio, la custodia de secretos y, al final, la desaparición de los secretos.
 
-Este módulo recorre los controles que protegen una identidad durante su uso: autenticación, recuperación de cuenta, elevación temporal, asignación de permisos y acceso a secretos. Las prácticas están documentadas como escenarios de laboratorio, con sus procedimientos y validaciones.
+Los cuatro primeros protegen a las personas. Los tres últimos protegen a las aplicaciones y a los recursos donde trabajan.
 
-## Prácticas
+```mermaid
+flowchart TB
+    subgraph P["Personas"]
+        A["MFA<br/>segundo factor"] --> B["Passwordless<br/>sin contraseña"]
+        B --> C["SSPR<br/>recuperación autónoma"]
+        C --> D["PIM<br/>privilegio temporal"]
+    end
+    subgraph W["Aplicaciones y recursos"]
+        E["RBAC<br/>mínimo privilegio"] --> F["Key Vault<br/>secretos custodiados"]
+        F --> G["Managed Identities<br/>sin secretos"]
+    end
+    D --> E
+```
 
-- [MFA](practicas/01-mfa/README.md)
-- [Autenticación Passwordless](practicas/02-passwordless/README.md)
-- [Self-Service Password Reset](practicas/03-sspr/README.md)
-- [Privileged Identity Management](practicas/04-pim/README.md)
-- [RBAC](practicas/05-rbac/README.md)
-- [Azure Key Vault](practicas/06-key-vault/README.md)
-- [Managed Identities](practicas/07-managed-identities/README.md)
+## Los siete controles
 
-## Registro del trabajo
+| # | Control | Qué evita | Estado |
+|---|---|---|---|
+| 01 | [MFA](practicas/01-mfa/README.md) | Entrar con una contraseña robada | **Validado** |
+| 02 | [Passwordless](practicas/02-passwordless/README.md) | Que la contraseña exista | **Validado** |
+| 03 | [SSPR](practicas/03-sspr/README.md) | Recuperar la cuenta por teléfono con soporte | **Validado** |
+| 04 | [PIM](practicas/04-pim/README.md) | Privilegio permanente y sin justificar | **Validado** |
+| 05 | [RBAC](practicas/05-rbac/README.md) | Permisos de más sobre los recursos | **Validado** |
+| 06 | [Key Vault](practicas/06-key-vault/README.md) | Secretos en código o en variables de entorno | **Validado** |
+| 07 | [Managed Identities](practicas/07-managed-identities/README.md) | Que la aplicación tenga secretos que robar | **Validado** |
 
-Las [bitácoras del módulo](bitacora/) conservan la evolución de los ejercicios y las decisiones tomadas durante el laboratorio.
+## Qué prueba esta evidencia
 
-## Alcance
+Las siete prácticas se ejecutaron en un tenant de laboratorio y quedaron registradas con informe técnico, bitácora fechada y tabla de resultados. Son evidencias documentales: no se conservaron capturas originales. No hay recursos de producción en ningún caso.
 
-El material se limita a prácticas de identidad y acceso en Microsoft Entra ID y Azure. No describe una configuración de producción.
+## Cómo se lee
+
+Cada práctica abre con el problema y resume en una tabla qué se probó y qué se observó. El detalle de configuración y las decisiones están en el informe técnico de su carpeta `docs/`. El historial fechado, en la [bitácora](bitacora/).

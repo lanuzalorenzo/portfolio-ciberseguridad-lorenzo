@@ -1,45 +1,26 @@
-# 07 | Identidades Administradas (Managed Identities) en Azure
+# 07 | Identidades administradas en Azure
 
-## Descripción del escenario y objetivo de seguridad
+> **Estado:** **Validado** en laboratorio (evidencia documental).
+>
+> **Referencias:** MCSB IA-1, PA-1 · OWASP A10:2021.
 
-**Escenario:** Servicios y aplicaciones desplegadas en Azure que requieren conectarse a Azure Key Vault u otros recursos, recurriendo habitualmente a secretos de aplicación embebidos en código o archivos de configuración.  
-**Objetivo de seguridad:** Eliminar por completo el uso de secretos estáticos en código mediante la implementación de Identidades Administradas (Managed Identities) autenticadas vía Azure Instance Metadata Service (IMDS).  
-**Alcance:** Recurso de cómputo en Azure con System-assigned Managed Identity y acceso a secretos en Azure Key Vault.
+Key Vault resuelve dónde guardar el secreto, pero la aplicación sigue necesitando uno para entrar. Una identidad administrada elimina ese último secreto: Azure reconoce al recurso por lo que es y le entrega un token temporal, sin contraseña que caduque ni que rotar.
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
-
-## Arquitectura y componentes de Azure utilizados
-
-| Componente | Función | Configuración relevante |
-|---|---|---|
-| **System-assigned Managed Identity** | Identidad sin contraseña vinculada al recurso | Ciclo de vida atado al recurso de cómputo; Service Principal gestionado por Azure. |
-| **Endpoint IMDS (`169.254.169.254`)** | Emisión local de tokens OAuth2 de plataforma | Accesible solo internamente desde el recurso; exige cabecera `Metadata: true`. |
-| **Azure Key Vault** | Recurso destino de acceso seguro | Asignación de rol *Key Vault Secrets User* a la Managed Identity en el plano de datos. |
-
-## Implementación de controles DevSecOps / Seguridad
-
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| Eliminación total de credenciales en código | Identidad administrada asignada por el sistema | Configuración nativa del recurso | MCSB IA-1 / DevSecOps |
-| Protección contra SSRF en obtención de token | Exigencia obligatoria de cabecera HTTP `Metadata: true` | Implementación nativa de Azure IMDS | OWASP Top 10 A10:2021 |
-| Mínimo privilegio en el consumo de secretos | Asignación exclusiva del rol *Key Vault Secrets User* | Asignación RBAC en Key Vault | MCSB PA-1 |
-
-**Artefactos relacionados:** [Configuración y validación de Managed Identities](docs/managed-identities-documento-tecnico.md).
-
-## Validación o pruebas de seguridad realizadas
+## Validación
 
 | Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| Petición a IMDS sin cabecera `Metadata: true` | `curl` directo al endpoint de metadatos local | Error 400 Bad Request | PASS: Azure rechaza la petición; mitigación SSRF efectiva |
-| Solicitud de token con cabecera de seguridad | `curl -H "Metadata: true"` solicitando recurso de Key Vault | Emisión exitosa de JWT firmado por Entra ID | PASS: Token obtenido sin credenciales estáticas |
-| Consumo de secreto en Key Vault usando el JWT | Petición a la API de Key Vault con Bearer token | Retorno del secreto almacenado | PASS: Acceso concedido conforme al rol RBAC |
+| Petición a IMDS sin cabecera `Metadata: true` | `curl` al endpoint de metadatos | Rechazo | PASS: 400, mitigación de SSRF |
+| Token con cabecera de seguridad | `curl -H "Metadata: true"` | JWT firmado por Entra ID | PASS: token sin credenciales estáticas |
+| Consumo de un secreto con ese token | Petición a Key Vault | Secreto devuelto según el rol | PASS: acceso concedido |
 
-## Lecciones aprendidas y buenas prácticas del Microsoft Cloud Security Benchmark
+## Lecciones
 
-| Dominio o control MCSB aplicable | Aplicación en la práctica | Lección aprendida |
-|---|---|---|
-| **IA-1: Uso de identidades gestionadas por el proveedor** | Reemplazo de Client Secrets por Managed Identities | Elimina el riesgo operativo de expiración de secretos y el riesgo de seguridad por fuga en repositorios de código. |
+- La cabecera obligatoria `Metadata: true` impide que una SSRF pida tokens desde dentro del recurso.
+- Al destruir el recurso de cómputo, Azure elimina su identidad: no quedan permisos huérfanos.
+- El rol asignado sigue siendo lo importante: sin mínimo privilegio, la identidad administrada solo cambia el problema de sitio.
 
-- Al destruir o recrear el recurso de cómputo, Azure borra automáticamente el Service Principal en Entra ID, previniendo identidades huérfanas con permisos residuales en el entorno.
+## Más detalle
+
+- [Configuración y validación](docs/managed-identities-documento-tecnico.md)
+- [Bitácora del módulo](../../bitacora/2026-09-11-ejercicio-07-managed-identities.md)
