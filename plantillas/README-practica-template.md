@@ -1,63 +1,54 @@
 # NN | Nombre de la práctica
 
-<!-- Badges solo si reflejan estados reales y verificados. -->
+<!--
+Copia este archivo en NN-modulo/practicas/NN-practica/README.md.
+Los enlaces de las secciones finales son relativos a esa carpeta.
+Extensión orientativa: 240 a 310 palabras. El detalle va al informe de docs/.
+-->
 
-> **Uso:** copia esta plantilla en `NN-modulo/practicas/NN-practica/README.md`; los enlaces de la sección final son relativos a esa carpeta.
+> **Estado:** Validado / Parcial / Runbook preparado / Diseño / Pendiente. [Una frase: qué se ejecutó y qué no.]
 >
-> **Estado:** Validado / Parcial / Runbook preparado / Diseño / Pendiente
->
-> **Última revisión:** YYYY-MM-DD
+> **Referencias:** MCSB XX-N · CIS N.N · NIST XX-N.
 
-## 1. Descripción del escenario y objetivo de seguridad
+[El problema en prosa, dos o tres frases: qué falla si este control no existe y por qué importa. Sin jerga que no se explique en la misma frase.]
 
-**Escenario:** [Entorno, rol de la API o servicio y necesidad técnica.]
+## Qué se comprobó
 
-**Objetivo de seguridad y vectores de riesgo:** [Riesgo mitigado según OWASP, MITRE ATT&CK o CIS.]
+<!-- Una sola tabla. Elige la forma según el tipo de práctica; no mezcles las dos. -->
 
-**Alcance:** [Componentes incluidos, límites del laboratorio y prerrequisitos.]
+<!-- Si la práctica aplica un control: -->
 
-> [!NOTE]
-> Laboratorio realizado en entorno controlado. La información sensible ha sido redactada.
-
-## 2. Arquitectura, componentes y flujo de datos
-
-| Componente | Rol en la arquitectura | Configuración de seguridad clave |
-|---|---|---|
-| [API .NET, Entra ID, VNet, Key Vault] | [Responsabilidad en el flujo] | [Control implementado: OIDC, JWT, TLS, RBAC] |
-
-**Diagrama:** [Enlace a `diagrams/arquitectura.mmd`, si existe.]
-
-## 3. Implementación de controles DevSecOps y Cloud Security
-
-| Control | Implementación | Nivel de automatización | Referencia / Estándar |
+| Prueba | Método | Resultado esperado | Resultado observado |
 |---|---|---|---|
-| [Control aplicado] | [Detalle técnico o fragmento de código/política] | [CI/CD, Azure Policy, IaC o manual] | [OWASP / MCSB / CIS / ENS] |
+| [Qué se probó] | [Portal, comando o petición] | [Comportamiento que debería tener] | [Lo que se observó de verdad] |
 
-**Artefactos relacionados:** [Enlaces a scripts, código, workflows o informes técnicos.]
+<!-- Si la práctica audita o diagnostica: -->
 
-## 4. Validación o pruebas de seguridad realizadas
-
-| Prueba | Herramienta / Método | Resultado esperado | Resultado observado |
+| Hallazgo | Método | Resultado observado | Gravedad |
 |---|---|---|---|
-| [Prueba ejecutada] | [Comando, test automatizado o curl] | [Comportamiento esperado] | [PASS / FAIL / Pendiente de entorno] |
+| [Qué se comprobó] | [Cómo se comprobó] | [Lo que se encontró] | Alta / Media / Baja |
 
-> [!WARNING]
-> No des por superada ninguna comprobación que no se haya ejecutado y verificado.
+[Una frase que separe lo corregido de lo recomendado, o lo ejecutado de lo pendiente. Lo que no se ejecutó se nombra aquí y en la tabla, con la razón.]
 
-## 5. Lecciones aprendidas, buenas prácticas y alineación normativa
+## Lecciones
 
-| Marco o estándar | Dominio o control | Aplicación y lección aprendida |
-|---|---|---|
-| [MCSB / ENS / OWASP API / NIST] | [Identificador de control] | [Conclusión práctica respaldada por la prueba] |
+- [Dos o tres, cada una un hecho que se pueda defender en una entrevista.]
+- [La que más cuesta admitir suele ser la más útil: el límite del entorno, el error que bloqueó, lo que no se pudo probar.]
 
-- **Decisión arquitectónica clave:** [Razón técnica de la solución adoptada frente a alternativas.]
-- **Perspectiva DevSecOps:** [Cómo se equilibra la seguridad del control con la velocidad de desarrollo y entrega.]
-- **Mejora identificada:** [Limitación actual o siguiente paso de evolución.]
+## Más detalle
 
-## Enlaces
+- Informe técnico: `docs/informe-tecnico.md`
+- Bitácora: `../../bitacora/YYYY-MM-DD-tema.md` <!-- solo si existe y aporta un hecho que no está en esta página -->
 
-- Runbook: `runbook.md`
-- Evidencias: `evidencias/`
-- Bitácora: `bitacora/` (si aplica)
+<!-- Cuando los enlaces sean reales, escríbelos como enlaces normales de Markdown
+apuntando a docs/informe-tecnico.md y a la bitácora.
 
-> Los enlaces anteriores son rutas de ejemplo: conviértelos en enlaces reales al crear la práctica.
+Si la práctica se puede reejecutar paso a paso, añade además runbook.md y evidencias/.
+-->
+
+<!--
+Antes de dar la página por terminada:
+- No repitas la tabla de arquitectura ni la de controles del informe.
+- No marques PASS en una fila que no se ejecutó.
+- No uses etiquetas de registro ni frases de plantilla sin resolver.
+-->

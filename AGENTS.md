@@ -22,14 +22,50 @@ Cada módulo debe mantener una estructura clara y legible, con un objetivo técn
 
 ### Patrones esperados
 
-- README del módulo: presentación del alcance, objetivos y enlaces a prácticas.
-- README de práctica: usa `plantillas/README-practica-template.md` para escenario, arquitectura, controles, validación y lecciones.
-- bitácora/: registro del recorrido técnico del módulo.
-- practicas/: contenido específico por caso de uso o escenario.
-- docs/: artefactos técnicos, informes internos, plantillas y notas de laboratorio.
-- lab/: artefactos locales de ejecución (compose, pipelines, scripts y datos sintéticos).
-- docs/laboratorio-final/: arquitectura, plan de ejecución e índice de evidencias del laboratorio integrado.
-- plantillas/: runbook y registro de evidencia reutilizables.
+- `README.md` del módulo: la puerta. Qué es el módulo, qué piezas lo forman y en qué estado está cada una.
+- `README.md` de práctica: sigue `plantillas/README-practica-template.md`.
+- `practicas/`: un caso por carpeta, con su página y su detalle.
+- `docs/` del módulo: explicación que sirve a varias prácticas a la vez (conceptos, arquitectura del módulo).
+- `docs/` dentro de una práctica: su informe técnico, cuando documenta una configuración, una auditoría o una decisión concreta.
+- `runbook.md` y `evidencias/`: solo si la práctica se puede volver a ejecutar paso a paso.
+- `bitacora/`: solo si guarda un hecho que no está en ningún otro sitio.
+- `lab/`: artefactos locales de ejecución (compose, pipelines, scripts y datos sintéticos).
+- `docs/laboratorio-final/`: arquitectura, plan de ejecución e índice de evidencias del laboratorio integrado.
+- `plantillas/`: runbook y registro de evidencia reutilizables.
+
+### Cómo se trabaja un módulo
+
+Un módulo se recorre siempre en el mismo orden, porque el orden evita reescribir dos veces:
+
+1. **Lee y cuenta.** El módulo completo, su fila en `docs/guia-de-lectura.md` y el estado de Git. Anota ficheros y palabras por documento: el volumen enseña dónde está el peso.
+2. **Cuéntalo antes de tocarlo.** Qué problema resuelve el módulo, qué piezas lo forman y qué está ejecutado frente a lo que solo está diseñado. Si no se puede explicar así, todavía no se ha entendido.
+3. **Inventaría.** Para cada fichero: qué información única tiene, qué repite y qué no dice nada. Un documento que no aporta ningún hecho se retira, y antes se comprueba quién lo enlaza.
+4. **Propón.** Qué se queda, qué se fusiona, qué se retira y qué estado le corresponde a cada pieza. Los borrados y los cambios de estado se confirman antes de aplicarlos.
+5. **Aplica** la forma de abajo, sin reestructurar por uniformidad lo que ya funciona.
+6. **Verifica y cierra** con la definición de hecho.
+
+Formas de cada pieza:
+
+- **Puerta del módulo:** entre 250 y 500 palabras. Abre con el problema en prosa, muestra la estructura si la hay (un diagrama Mermaid basta), lista las piezas con su estado y separa lo ejecutado de lo recomendado. No repite lo que ya está en la guía de lectura ni en las prácticas.
+- **Página de práctica:** entre 240 y 310 palabras. El problema en prosa, una línea de referencias (MCSB, CIS, NIST), una tabla con lo que se hizo o se encontró, dos o tres lecciones y dos enlaces: el informe y la bitácora si existe.
+- **Informe técnico:** el detalle que no cabe en la página: configuración, decisiones, matriz de hallazgos, verificación. Vive en `docs/`.
+- **Runbook:** solo para prácticas reejecutables, con el contrato de la sección siguiente.
+- **Bitácora:** según el criterio de más abajo.
+
+Reglas:
+
+- **La página no duplica el informe.** Una tabla de arquitectura o de controles que ya está en el informe se queda solo en el informe.
+- **Un hallazgo no es un PASS.** Una auditoría que encuentra el problema ha funcionado, pero el control no está aprobado. La tabla lleva el resultado observado y la gravedad, y una frase aparte dice qué se corrigió y qué solo se recomendó.
+- **Lo no ejecutado se escribe como no ejecutado**, con la razón. No se omite ni se marca como aprobado.
+- **El estado se desglosa** cuando el rótulo del módulo cubre piezas con madurez distinta.
+- **Nada de documentos que aparentan.** Un guion sin comandos, resultado esperado y evidencia no es un runbook: o se convierte en uno, o se retira.
+
+Definición de hecho de un módulo:
+
+1. Cero enlaces rotos en el repositorio.
+2. El estado coincide en la puerta, la guía de lectura, el índice del repositorio y la web.
+3. No hay tablas ni párrafos duplicados entre la página y el informe.
+4. No quedan restos de plantilla: etiquetas de registro, emojis ni frases sin resolver.
 
 ### Runbooks y evidencias
 
@@ -59,54 +95,17 @@ Reglas:
 - Un despliegue de laboratorio requiere autorización explícita, suscripción de laboratorio, presupuesto, resource group temporal, datos sintéticos y plan de limpieza. Nunca se ejecuta en producción.
 - Los estados de módulos, web, perfil y matriz de cumplimiento deben coincidir.
 
-### Plantilla recomendada para bitácoras
+### Bitácoras
 
-Cada entrada de bitácora debe responder a estas preguntas:
+Una bitácora registra una sesión de trabajo, no un formulario. Se escribe el día que pasa, porque lo que no se anota entonces no se reconstruye después: la decisión tomada, el error que bloqueó media tarde, la comprobación que el entorno no permitía hacer.
 
-- ¿Cuál es el objetivo del módulo o sesión?
-- ¿Qué escenario o caso de uso se está analizando?
-- ¿Qué tecnologías o servicios se están revisando?
-- ¿Qué se hizo, qué se revisó o qué se probó?
-- ¿Qué fue útil, qué falló o qué quedó pendiente?
-- ¿Qué aprendizaje técnico aporta?
-- ¿Cuál es el siguiente paso?
+Reglas:
 
-Formato recomendado para cada entrada:
-
-```md
-# Bitácora — [Nombre del módulo o sesión]
-
-## Objetivo
-
-Describir el propósito del trabajo y el problema de seguridad que se está abordando.
-
-## Contexto y alcance
-
-Explicar el escenario, la infraestructura o los servicios implicados y la delimitación del caso de uso.
-
-## Trabajo realizado
-
-- Revisión de arquitectura.
-- Evaluación de control, servicio o flujo.
-- Diagnóstico o diseño propuesto.
-- Validación ejecutada o planificada.
-
-## Resultados
-
-Documentar lo observado, los hallazgos, las decisiones o los puntos de mejora.
-
-## Pendientes o riesgos
-
-Indicar qué queda por validar, qué no se ejecutó o qué requiere un entorno real.
-
-## Aprendizaje
-
-Resumen técnico del valor del ejercicio y de la toma de decisiones.
-
-## Siguiente paso
-
-Qué se hará a continuación para completar o profundizar el módulo.
-```
+- Solo existe si guarda al menos un hecho que no está en el informe ni en la página de la práctica: una decisión, un fallo, una fecha o una limitación del entorno.
+- Si al eliminar la entrada no se pierde ningún hecho, no era una bitácora: no se escribe.
+- Se escribe en primera persona, con fechas, nombres de paneles y mensajes de error tal como aparecieron.
+- Un módulo puede no tener bitácora. Si su ausencia extraña, la puerta lo explica en una frase.
+- No se rellenan epígrafes vacíos ni se copia el índice de tareas del día: eso no es un registro, es una plantilla.
 
 ### Guía de lectura
 
