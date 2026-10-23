@@ -1,6 +1,6 @@
 # Arquitectura de referencia
 
-> **Estado:** **Diseño**. La topología no se ha desplegado. El módulo 08 tiene IaC validada estáticamente; el resto de capas son diseño o trabajo parcial.
+> **Estado:** **Diseño cloud; validación local parcial.** La topología no se ha desplegado. El módulo 08 tiene IaC validada estáticamente; el workload y ELK tienen validación local en CI o laboratorio, y el tabletop forense tiene acta.
 
 ## Vista de capas
 
@@ -33,11 +33,13 @@ La capa local (ELK) permite practicar ingesta, búsqueda y detección sin depend
 | 4. Datos y secretos | Key Vault, Storage, acceso privado | Workload → servicios de datos | **Diseño** |
 | 5. Observabilidad | Log Analytics, Application Insights, diagnóstico | Workload → plataforma de logs | **Diseño** |
 | 6. Detección y respuesta | Defender for Cloud, Sentinel, KQL, playbooks | Logs → SOC | **Diseño** |
-| 7. Validación ofensiva | BOLA/BFLA, mass assignment, pruebas de API | Pruebas controladas → API | **Parcial** (local) |
-| 8. Forense | Recolección, integridad, timeline, cadena de custodia | Incidente → evidencia | **Diseño** |
+| 7. Validación ofensiva | BOLA/BFLA, mass assignment, pruebas de API | Pruebas controladas → API | **Validado en local**; BFLA parcial |
+| 8. Forense | Recolección, integridad, timeline, cadena de custodia | Incidente → evidencia | **Parcial**: tabletop de decisión; recolección pendiente |
 | 9. Laboratorio local | ELK, logs sintéticos, dashboards | Entorno local → analista | **Validado en local** |
 
 ## Flujos principales
+
+Estos flujos describen el diseño; solo la parte local está ejecutada.
 
 ### Flujo de aplicación
 

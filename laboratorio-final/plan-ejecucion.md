@@ -1,6 +1,6 @@
 # Plan de ejecución
 
-> **Estado:** Fase 0 en curso. Dos evidencias de ejecución (ELK y BOLA/BFLA) y cuatro documentales o verificables (02, 03, 04 y 07); falta el tabletop para cerrar el gate. Ninguna fase Azure se ha ejecutado.
+> **Estado:** Fase 0 cerrada el 2026-10-22. Tres evidencias de ejecución (ELK, BOLA/BFLA y tabletop) y cuatro documentales o verificables (02, 03, 04 y 07). Ninguna fase Azure se ha ejecutado.
 
 ## Principios
 
@@ -20,11 +20,11 @@
 | Evidencia local de API y módulo 11 | Validado: evidencia `2026-10-21-11-api-bola` registrada en el índice |
 | Runbook de ELK (módulo 10) | Validado en local |
 | Ejecución de ELK con logs sintéticos | Validado en local: ingesta, 6 consultas KQL, dashboard y exportación |
-| Runbook del tabletop forense (módulo 12) | Pendiente |
-| Ejecución del tabletop y acta | Pendiente |
-| Primera entrada del índice de evidencias | Validado: evidencias ELK (10) y BOLA/BFLA (11) enlazadas |
+| Runbook del tabletop forense (módulo 12) | Validado: runbook y acta `2026-10-22-12-tabletop` |
+| Ejecución del tabletop y acta | Validado: tabletop de decisión, sin recolección técnica |
+| Primera entrada del índice de evidencias | Validado: tres evidencias de ejecución enlazadas |
 
-**Gate de salida:**
+**Gate de salida:** cumplido el 2026-10-22.
 
 - Tres evidencias locales enlazadas.
 - Plantillas de runbook y evidencia usadas al menos una vez.
@@ -86,7 +86,7 @@
 
 ## Criterio de cierre
 
-Una práctica se considera cerrada cuando:
+Una práctica ejecutable se considera cerrada cuando:
 
 1. Tiene un `runbook.md` con comandos y resultados esperados.
 2. Se ha ejecutado en un entorno identificado.
@@ -125,10 +125,10 @@ Reglas:
 
 | Fase | Estado | Nota |
 |---|---|---|
-| Fase 0 | En curso | API validada en CI y en local (evidencia 11); ELK validado en local con evidencia; tabletop forense pendiente |
+| Fase 0 | Cerrada el 2026-10-22 | API validada en CI y en local (evidencia 11); ELK validado en local con evidencia; tabletop forense con acta |
 | Fase 1 | Pendiente | Requiere suscripción, presupuesto y autorización |
 | Fase 2 | Pendiente | No se inicia sin cerrar la Fase 1 |
 
 ## Próximo paso
 
-Convertir el tabletop forense del módulo 12 en un runbook ejecutable y registrar su acta.
+La Fase 1 no se inicia sin autorización, suscripción y presupuesto. En local quedan la reejecución de PKCE con tenant y la recolección técnica del módulo 12.

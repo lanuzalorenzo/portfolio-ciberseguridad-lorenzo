@@ -8,9 +8,9 @@ Este directorio centraliza las evidencias del laboratorio final. Cada entrada de
 
 ## Dos tipos de evidencia
 
-| Tipo | Qué aporta | Qué no aporta |
+| Tipo | Qué aporta | Límite |
 |---|---|---|
-| **Ejecución** | Carpeta fechada con comandos, salida redactada y artefactos | Nada: es el registro completo |
+| **Ejecución** | Carpeta fechada con comandos, salida redactada y artefactos | No sustituye al runbook |
 | **Documental** | Informe técnico + bitácora fechada + tabla de resultados | No conserva la salida original ni capturas |
 | **Verificable** | Un run de CI reproducible y enlazado | Solo cubre lo que el pipeline ejecuta |
 
@@ -40,18 +40,9 @@ Ejemplo:
 
 Una evidencia de **decisión** se indexa como de ejecución —se hizo, con fecha y acta—, pero **no puede declarar PASS sin acta de decisiones**. Lo que prueba es criterio, no capacidad técnica: el estado del módulo no sube a **Validado** hasta que exista recolección real.
 
-## Contenido mínimo de una evidencia de ejecución (ruta A)
+## Contenido mínimo
 
-- Fecha y responsable.
-- Runbook utilizado.
-- Entorno y alcance.
-- Comandos ejecutados.
-- Resultado observado: PASS, FAIL o parcial.
-- Prueba negativa o de control, si aplica.
-- Limpieza realizada.
-- Coste, si hubo recursos cloud.
-- Limitaciones y lo que no se ha ejecutado.
-- Enlaces a artefactos redactados.
+La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apartados y las dos rutas. El índice solo añade lo específico: runbook utilizado, fecha, resultado y limitaciones.
 
 ## Reglas de redacción
 
