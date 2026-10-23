@@ -83,7 +83,7 @@ Una evidencia de **decisión** se indexa como de ejecución —se hizo, con fech
 ## Pendiente
 
 - Módulo 01: reejecutar PKCE manual con tenant de laboratorio y generar evidencia de ejecución.
-- Módulo 06: ejecutar las prácticas y sustituir las tablas «Pendiente» por resultados reales.
+- Módulo 06: ejecutar los controles con licencia P1/P2; hoy son diseño y no hay resultados que tabular.
 - Módulo 12: ejecutar la variante de laboratorio del tabletop y la recolección técnica con datos sintéticos.
 
 ## Plantilla

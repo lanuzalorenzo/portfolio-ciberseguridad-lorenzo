@@ -111,7 +111,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 | 03 | [Cloud Audits](../03-cloud-audits/README.md) | ¿Cómo se audita la postura cloud? | Validado en laboratorio (documental) |
 | 04 | [Defender for Cloud](../04-defender-for-cloud/README.md) | ¿Cómo se detectan y priorizan riesgos cloud? | Validado en laboratorio (documental) |
 | 05 | [Defender Suite](../05-defender-suite/README.md) | ¿Qué cubre cada producto de Defender y qué cuesta probarlo? | Diseño: mapa de los catorce productos; sin evidencia de ejecución |
-| 06 | [Identity Protection](../06-identity-protection/README.md) | ¿Cómo se aplican Conditional Access y PIM/JIT? | Diseño |
+| 06 | [Acceso privilegiado bajo licencia](../06-identity-protection/README.md) | ¿Qué añaden Conditional Access y PIM cuando hay licencia P1/P2? | Diseño: tres controles descritos, sin ejecutar |
 | 07 | [DevSecOps](../07-devsecops/README.md) | ¿Cómo se integra seguridad en el pipeline? | Validado en CI |
 | 08 | [Seguridad de red](../08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Diseño + IaC |
 | 09 | [Microsoft Sentinel](../09-microsoft-sentinel/README.md) | ¿Cómo se detecta con KQL y se automatiza? | Diseño en curso |

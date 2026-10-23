@@ -1,41 +1,31 @@
-# 01 | Conditional Access y MFA adaptativo
+# 01 | Conditional Access
 
-> **Estado:** diseño. Práctica documentada; no ejecutada ni con evidencia registrada.
+> **Estado:** **Diseño**. Políticas descritas y justificadas; no configuradas ni probadas: el tenant no tiene licencia P1.
+>
+> **Referencias:** MCSB IA-2, IA-3 · CIS 1.1.
 
-## Descripción del escenario y objetivo de seguridad
+Security Defaults impone el segundo factor a todo el mundo y no admite excepciones. Es un buen suelo y un mal traje: no distingue a un administrador de un invitado, ni un portátil corporativo de una IP desconocida, ni una sesión de riesgo alto. Conditional Access sí. Cada política es una condición —quién entra, desde dónde, con qué dispositivo, con qué riesgo— y una decisión: pedir MFA, exigir un equipo conforme o bloquear.
 
-**Escenario:** Un entorno con usuarios que acceden desde diferentes ubicaciones, dispositivos y contextos, sin políticas adaptativas que restrinjan accesos sensibles o bloqueen ubicaciones no confiables.  
-**Objetivo de seguridad:** Reforzar la autenticación mediante MFA adaptativo y requisitos de acceso basados en riesgo, dispositivo, localización y condiciones de contexto.  
-**Alcance:** Microsoft Entra ID, políticas de acceso condicional, MFA, validación de sign-in sospechosos y control del acceso a aplicaciones y recursos.
+## Qué se diseñó
 
-> [!NOTE]
-> Práctica realizada en un entorno de laboratorio. No incluir identificadores,
-> secretos ni datos sensibles.
-
-## Arquitectura y componentes de Microsoft Entra ID utilizados
-
-| Componente | Función | Configuración relevante |
+| Política | Condición | Decisión |
 |---|---|---|
-| **Microsoft Entra ID** | Plataforma de identidad y acceso | Gestión de sesiones, usuarios y acceso a recursos. |
-| **Conditional Access** | Reglas de acceso dinámicas | Requiere MFA, confianza del dispositivo o acceso restringido. |
-| **Multi-Factor Authentication** | Verificación adicional de identidad | Protección frente a credenciales robadas. |
-| **Sign-in risk** | Evaluación del riesgo de sesión | Bloqueo o desafío en accesos sospechosos. |
+| MFA para administradores | Cualquier rol privilegiado | MFA y sesión de una hora |
+| Bloqueo de autenticación heredada | Protocolos sin MFA | Bloquear |
+| Equipo conforme | Acceso a datos | Exigir dispositivo híbrido |
+| Riesgo alto de sesión | IP anónima o viaje imposible | Bloquear y cambiar contraseña |
 
-## Implementación de controles DevSecOps / Seguridad
+## Lo que falta para probarlo
 
-| Control | Implementación | Automatización o política | Referencia |
-|---|---|---|---|
-| MFA obligatorio | Requisito para accesos sensibles | Política de acceso condicional | MCSB IA-1 |
-| Acceso basado en contexto | Restricción por ubicación, dispositivo y riesgo | Conditional Access | MCSB IA-2 |
-| Detección de riesgo | Sign-in riesgo y sesion risk | Evaluación automática del acceso | MCSB IR-2 |
-| Rechazo de acceso inseguro | Bloqueo de sesiones sospechosas | Política de protección | MCSB IA-3 |
+Una licencia P1, usuarios de prueba y una cuenta de emergencia excluida de todas las políticas. Sin esa exclusión, un administrador que se bloquea a sí mismo se queda fuera del tenant y la recuperación es un ticket a soporte. También conviene activar cada política en modo *solo informe* unas horas antes de aplicarla.
 
-**Artefactos relacionados:** [Informe técnico](informe.md).
+## Lecciones
 
-## Validación o pruebas de seguridad realizadas
+- Security Defaults y Conditional Access no conviven: activar el segundo exige apagar el primero.
+- La cuenta de emergencia forma parte del diseño, no es un detalle de última hora.
+- El modo *solo informe* enseña a quién habría bloqueado la política antes de bloquearlo de verdad.
 
-| Prueba | Método | Resultado esperado | Resultado observado |
-|---|---|---|---|
-| Acceso con MFA | Validación del flujo de autenticación | Requiere segundo factor | Pendiente |
-| Acceso desde ubicación no confiable | Simulación del contexto | Acceso bloqueado o reforzado | Pendiente |
-| Riesgo de sign-in | Revisión de sign-ins sospechosos | Condición de riesgo detectada | Pendiente |
+## Más detalle
+
+- [Módulo 06](../../README.md)
+- [MFA con Security Defaults en el módulo 02](../../../02-identity-security/practicas/01-mfa/README.md)
