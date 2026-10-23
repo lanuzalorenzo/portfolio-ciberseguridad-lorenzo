@@ -23,5 +23,5 @@ Si una cuenta administrativa tiene el privilegio todo el día, basta con robarla
 
 ## Más detalle
 
-- [Configuración y validación](docs/informe-tecnico.md)
+- [Configuración y validación](informe.md)
 - [Bitácora del módulo](../../bitacora/2026-09-07-pim-entra-id.md)

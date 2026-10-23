@@ -30,7 +30,7 @@
 | Mínimo privilegio | Roles asignados solo en el tiempo necesario | Governance de acceso | MCSB IA-3 |
 | Auditoría de accesos | Registro de activaciones y duración | Compliance y evidencia | MCSB IR-1 |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+**Artefactos relacionados:** [Informe técnico](informe.md).
 
 ## Validación o pruebas de seguridad realizadas
 

@@ -27,5 +27,5 @@ Ninguno se corrigió en el laboratorio: son recomendaciones. El secreto permanen
 
 ## Más detalle
 
-- [Informe técnico con la matriz completa](docs/auditoria-identidades-y-accesos-documento-tecnico.md)
+- [Informe técnico con la matriz completa](informe.md)
 - [Bitácora del 15 de septiembre](../../bitacora/2026-09-15-cierre-modulo-03.md)

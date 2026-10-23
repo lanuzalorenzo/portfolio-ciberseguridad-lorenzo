@@ -30,7 +30,7 @@
 | Mitigación automática | MFA, bloqueo o desafío ante riesgo alto | Políticas de respuesta | MCSB IR-2 |
 | Gobernanza de privilegios | Eliminación de roles no necesarios | Revisión técnica y operativa | MCSB IA-3 |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+**Artefactos relacionados:** [Informe técnico](informe.md).
 
 ## Validación o pruebas de seguridad realizadas
 

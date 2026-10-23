@@ -42,5 +42,6 @@ La protección de rama no protege frente a una cuenta administradora comprometid
 
 ## Artefactos relacionados
 
+- [Informe técnico](informe.md)
 - [Política de protección de ramas](../../branch-protection.md)
 - [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)

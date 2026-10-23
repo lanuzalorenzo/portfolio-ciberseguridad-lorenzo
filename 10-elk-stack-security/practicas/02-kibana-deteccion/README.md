@@ -4,6 +4,8 @@
 >
 > **Runbook:** [runbook.md](runbook.md).
 >
+> **Informe:** [informe.md](informe.md).
+>
 > **Evidencia:** [2026-10-19-10-elk-ingesta](../../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).
 
 ## Contexto y alcance

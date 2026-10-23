@@ -30,4 +30,4 @@ El CSPM mira la configuración, pero no ve que alguien acaba de ejecutar un bina
 
 ## Más detalle
 
-- [Capacidades por plan y cobertura](docs/informe-tecnico.md)
+- [Capacidades por plan y cobertura](informe.md)

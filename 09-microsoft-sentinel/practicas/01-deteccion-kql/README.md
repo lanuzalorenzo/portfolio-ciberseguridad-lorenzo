@@ -25,7 +25,7 @@
 | Detección de actividades sospechosas | Consultas KQL enfocadas a anomalías y patrones de riesgo | Consulta y detección de eventos | Microsoft Sentinel analytics |
 | Correlación de eventos | Vincular señales con identidad, acceso y recursos | Incidentes en Sentinel | Seguridad operativa |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+**Artefactos relacionados:** [Informe técnico](informe.md).
 
 ## Validación o pruebas de seguridad realizadas
 

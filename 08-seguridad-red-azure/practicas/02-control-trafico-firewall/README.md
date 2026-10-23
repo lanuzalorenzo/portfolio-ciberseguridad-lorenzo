@@ -25,7 +25,7 @@
 | Egreso controlado | Definir políticas explícitas para los destinos requeridos y las rutas asociadas | Reglas de Firewall y rutas definidas por el usuario | Política de tráfico del laboratorio |
 | Reducción de exposición | Evitar excepciones amplias que no estén justificadas por el escenario | Revisión manual de reglas y rutas | Matriz de tráfico |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+**Artefactos relacionados:** [Informe técnico](informe.md).
 
 ## Validación o pruebas de seguridad realizadas
 

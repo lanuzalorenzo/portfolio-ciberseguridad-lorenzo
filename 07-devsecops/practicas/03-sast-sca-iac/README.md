@@ -43,6 +43,7 @@
 
 ## Artefactos relacionados
 
+- [Informe técnico](informe.md)
 - [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)
 - [Plantilla Bicep](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/infra/main.bicep)
 - [Justificación de Trivy](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.trivyignore)

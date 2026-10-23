@@ -8,12 +8,12 @@ Una recomendación se resuelve una vez; el siguiente recurso nace mal otra vez. 
 
 ## Qué se aplicó
 
-| Control | Efecto | Qué consigue |
+| Control | Directiva y efecto | Qué consigue |
 |---|---|---|
-| Iniciativa MCSB | Auditoría | Línea base común y porcentaje de cumplimiento |
-| Acceso público a blobs | *Deny* | El despliegue falla antes de crear el recurso |
-| TLS 1.2 en almacenamiento | *Audit* | Marca los recursos antiguos para remediar |
-| Diagnóstico de actividad | *Audit* | Detecta recursos que no envían registros |
+| Línea base de cumplimiento | Iniciativa MCSB, en auditoría | Porcentaje de cumplimiento común para toda la suscripción |
+| Acceso público a blobs | *Deny* sobre `allowBlobPublicAccess` | El despliegue falla antes de crear el recurso |
+| TLS 1.2 en almacenamiento | *AuditIfNotExists* sobre `minimumTlsVersion` | Marca los recursos antiguos para remediar |
+| Diagnóstico de actividad | *AuditIfNotExists* sobre *Diagnostic Settings* | Detecta recursos que no envían registros |
 
 ## Validación
 
@@ -31,4 +31,4 @@ Una recomendación se resuelve una vez; el siguiente recurso nace mal otra vez. 
 
 ## Más detalle
 
-- [Directivas, efectos y verificación](docs/informe-tecnico.md)
+- [Módulo 04](../../README.md)

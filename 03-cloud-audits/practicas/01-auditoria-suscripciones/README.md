@@ -26,5 +26,5 @@ Los tres quedaron como recomendación: no se aplicó ningún cambio en la suscri
 
 ## Más detalle
 
-- [Informe técnico con la matriz completa](docs/auditoria-suscripciones-documento-tecnico.md)
+- [Informe técnico con la matriz completa](informe.md)
 - [Bitácora del 14 de septiembre](../../bitacora/2026-09-14-inicio-modulo-03.md)

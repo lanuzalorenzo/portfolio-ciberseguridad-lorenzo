@@ -27,6 +27,6 @@ Del catálogo de planes se activaron el CSPM gratuito y Defender for Servers Pla
 
 Tampoco se hicieron todas las pruebas. No se generaron alertas reales de malware ni se simularon ataques, porque eso exige un entorno aislado que este laboratorio no tiene. Esas pruebas aparecen como no ejecutadas, no como aprobadas.
 
-La evidencia es documental: informe técnico y tabla de resultados en cada práctica. No hay capturas originales.
+La evidencia es documental: la tabla de resultados de cada práctica y el informe de las que lo necesitan. No hay capturas originales.
 
-Este módulo no tiene bitácora. Las sesiones quedaron documentadas en las propias prácticas y en sus informes, y las entradas que había eran una plantilla rellenada sin ningún dato del entorno, así que se retiraron en octubre de 2026.
+Este módulo no tiene bitácora. Las sesiones quedaron documentadas en las propias prácticas, y las entradas que había eran una plantilla rellenada sin ningún dato del entorno, así que se retiraron en octubre de 2026.

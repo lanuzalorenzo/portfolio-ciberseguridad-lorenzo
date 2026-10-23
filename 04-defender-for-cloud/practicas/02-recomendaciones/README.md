@@ -6,20 +6,17 @@
 
 El panel de recomendaciones puede tener cientos de entradas. Sin criterio se convierte en una lista que nadie termina, y el valor no está en leerla entera sino en ordenarla por lo que resta al Secure Score y por lo que cuesta arreglar cada cosa.
 
-## Cómo se priorizó
+## Qué se priorizó y qué se hizo
 
-1. **Impacto:** cuántos puntos resta la recomendación.
-2. **Esfuerzo:** primero lo que tiene *Quick Fix* y no obliga a rediseñar.
-3. **Exclusiones explícitas:** lo que exige cambiar la arquitectura se documenta como pendiente y no se maquilla.
+| Control | Recomendación | Impacto | Acción | Resultado |
+|---|---|---|---|---|
+| Puertos de administración | Cerrarlos o protegerlos con acceso JIT | Alto | JIT activado desde el panel | Recomendación en *Healthy* |
+| Cifrado en tránsito | Exigir TLS 1.2 en la cuenta de almacenamiento | Medio | `minimumTlsVersion = TLS1_2` | Recurso conforme |
+| Diagnóstico del registro de actividad | Enviarlo a Log Analytics | Medio | *Diagnostic Settings* sobre la suscripción | Log centralizado |
+| MFA para administradores | Exigir segundo factor a los roles privilegiados | Alto | Pendiente: requiere Conditional Access o *Security Defaults* | Documentada, no aplicada |
+| Red privada | Migrar a Private Endpoints | Alto | Excluida: obliga a rediseñar la red | Pendiente por arquitectura |
 
-## Validación
-
-| Prueba | Resultado observado |
-|---|---|
-| *Quick Fix* en puertos de administración | JIT activado; la recomendación pasa a *Healthy* |
-| TLS 1.2 en la cuenta de almacenamiento | Propiedad actualizada y recurso conforme |
-| Diagnóstico del registro de actividad | Enviado a un espacio de Log Analytics |
-| Recomendaciones sin remediación rápida | Documentadas como pendientes, no como PASS |
+El criterio fue impacto en la puntuación, esfuerzo de la corrección y exclusiones explícitas. Lo que no se arregló se quedó escrito como pendiente, no se maquilló como aprobado.
 
 ## Lecciones
 
@@ -29,4 +26,4 @@ El panel de recomendaciones puede tener cientos de entradas. Sin criterio se con
 
 ## Más detalle
 
-- [Recomendaciones analizadas y remediaciones](docs/informe-tecnico.md)
+- [Módulo 04](../../README.md)

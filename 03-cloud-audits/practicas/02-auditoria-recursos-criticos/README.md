@@ -26,5 +26,5 @@ Se corrigieron y verificaron los dos primeros. Los otros dos quedaron recomendad
 
 ## Más detalle
 
-- [Informe técnico con la matriz completa](docs/auditoria-recursos-criticos-documento-tecnico.md)
+- [Informe técnico con la matriz completa](informe.md)
 - [Bitácora del 15 de septiembre](../../bitacora/2026-09-15-cierre-modulo-03.md)

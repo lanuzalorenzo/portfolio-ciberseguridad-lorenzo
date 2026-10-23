@@ -32,4 +32,4 @@ Una suscripción recién creada ya trae Defender for Cloud, pero en su versión 
 
 ## Más detalle
 
-- [Catálogo evaluado y verificación](docs/informe-tecnico.md)
+- [Catálogo evaluado y verificación](informe.md)

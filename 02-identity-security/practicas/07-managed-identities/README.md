@@ -22,5 +22,5 @@ Key Vault resuelve dónde guardar el secreto, pero la aplicación sigue necesita
 
 ## Más detalle
 
-- [Configuración y validación](docs/managed-identities-documento-tecnico.md)
+- [Configuración y validación](informe.md)
 - [Bitácora del módulo](../../bitacora/2026-09-11-ejercicio-07-managed-identities.md)

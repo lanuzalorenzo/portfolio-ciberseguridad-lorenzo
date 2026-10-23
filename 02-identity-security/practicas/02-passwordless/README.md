@@ -24,5 +24,5 @@ En esta práctica se habilitaron Microsoft Authenticator en modo sin contraseña
 
 ## Más detalle
 
-- [Configuración de métodos](docs/passwordless-configuracion.md)
+- [Configuración de métodos](informe.md)
 - [Bitácora del módulo](../../bitacora/2026-09-08-identity-security.md)

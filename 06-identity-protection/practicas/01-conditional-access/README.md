@@ -30,7 +30,7 @@
 | Detección de riesgo | Sign-in riesgo y sesion risk | Evaluación automática del acceso | MCSB IR-2 |
 | Rechazo de acceso inseguro | Bloqueo de sesiones sospechosas | Política de protección | MCSB IA-3 |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+**Artefactos relacionados:** [Informe técnico](informe.md).
 
 ## Validación o pruebas de seguridad realizadas
 

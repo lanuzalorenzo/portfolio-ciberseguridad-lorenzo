@@ -44,5 +44,6 @@
 
 ## Artefactos relacionados
 
+- [Informe técnico](informe.md)
 - [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)
 - [Diseño OIDC](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/infra/README.md)

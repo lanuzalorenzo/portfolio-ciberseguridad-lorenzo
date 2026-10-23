@@ -22,5 +22,5 @@ Una contraseña de base de datos en un fichero de configuración es una credenci
 
 ## Más detalle
 
-- [Configuración y controles](docs/key-vault-documento-tecnico.md)
+- [Configuración y controles](informe.md)
 - [Bitácora del módulo](../../bitacora/2026-09-11-ejercicio-06-key-vault.md)

@@ -25,7 +25,7 @@
 | Segmentación de red | Separar componentes por función y documentar sus comunicaciones necesarias | Diseño y configuración de NSG en el laboratorio | Matriz de flujos de la práctica |
 | Mínimo privilegio de red | Permitir solo flujos justificados y revisar reglas efectivas | Revisión manual y validación de conectividad | Reglas NSG |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+**Artefactos relacionados:** [Informe técnico](informe.md).
 
 ## Validación o pruebas de seguridad realizadas
 

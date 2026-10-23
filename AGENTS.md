@@ -24,9 +24,9 @@ Cada módulo debe mantener una estructura clara y legible, con un objetivo técn
 
 - `README.md` del módulo: la puerta. Qué es el módulo, qué piezas lo forman y en qué estado está cada una.
 - `README.md` de práctica: sigue `plantillas/README-practica-template.md`.
-- `practicas/`: un caso por carpeta, con su página y su detalle.
+- `practicas/`: un caso por carpeta, con su página y, si lo necesita, su informe al lado.
 - `docs/` del módulo: explicación que sirve a varias prácticas a la vez (conceptos, arquitectura del módulo).
-- `docs/` dentro de una práctica: su informe técnico, cuando documenta una configuración, una auditoría o una decisión concreta.
+- `informe.md` dentro de la práctica: el detalle que la página no puede sostener. Sin subcarpetas para un solo fichero.
 - `runbook.md` y `evidencias/`: solo si la práctica se puede volver a ejecutar paso a paso.
 - `bitacora/`: solo si guarda un hecho que no está en ningún otro sitio.
 - `lab/`: artefactos locales de ejecución (compose, pipelines, scripts y datos sintéticos).
@@ -47,14 +47,14 @@ Un módulo se recorre siempre en el mismo orden, porque el orden evita reescribi
 Formas de cada pieza:
 
 - **Puerta del módulo:** entre 250 y 500 palabras. Abre con el problema en prosa, muestra la estructura si la hay (un diagrama Mermaid basta), lista las piezas con su estado y separa lo ejecutado de lo recomendado. No repite lo que ya está en la guía de lectura ni en las prácticas.
-- **Página de práctica:** entre 240 y 310 palabras. El problema en prosa, una línea de referencias (MCSB, CIS, NIST), una tabla con lo que se hizo o se encontró, dos o tres lecciones y dos enlaces: el informe y la bitácora si existe.
-- **Informe técnico:** el detalle que no cabe en la página: configuración, decisiones, matriz de hallazgos, verificación. Vive en `docs/`.
+- **Página de práctica:** entre 240 y 310 palabras. El problema en prosa, una línea de referencias (MCSB, CIS, NIST), una tabla con lo que se hizo o se encontró, dos o tres lecciones y los enlaces que hagan falta: el informe si existe y la bitácora si la hay.
+- **Informe:** solo cuando guarda algo que la página no puede sostener: catálogo, configuración con valores, matriz de hallazgos o verificación. Vive en `informe.md`, junto a la página.
 - **Runbook:** solo para prácticas reejecutables, con el contrato de la sección siguiente.
 - **Bitácora:** según el criterio de más abajo.
 
 Reglas:
 
-- **La página no duplica el informe.** Una tabla de arquitectura o de controles que ya está en el informe se queda solo en el informe.
+- **La página no duplica el informe, y el informe no repite la página.** Si el informe solo cuenta lo mismo con más palabras, no existe: lo que aporte se funde en la página y se retira.
 - **Un hallazgo no es un PASS.** Una auditoría que encuentra el problema ha funcionado, pero el control no está aprobado. La tabla lleva el resultado observado y la gravedad, y una frase aparte dice qué se corrigió y qué solo se recomendó.
 - **Lo no ejecutado se escribe como no ejecutado**, con la razón. No se omite ni se marca como aprobado.
 - **El estado se desglosa** cuando el rótulo del módulo cubre piezas con madurez distinta.
@@ -64,7 +64,7 @@ Definición de hecho de un módulo:
 
 1. Cero enlaces rotos en el repositorio.
 2. El estado coincide en la puerta, la guía de lectura, el índice del repositorio y la web.
-3. No hay tablas ni párrafos duplicados entre la página y el informe.
+3. No hay tablas ni párrafos duplicados entre la página y el informe, ni informes que solo repitan la página.
 4. No quedan restos de plantilla: etiquetas de registro, emojis ni frases sin resolver.
 
 ### Runbooks y evidencias

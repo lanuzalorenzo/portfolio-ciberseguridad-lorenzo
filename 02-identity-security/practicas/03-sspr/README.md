@@ -22,5 +22,5 @@ Cuando alguien olvida la contraseña o se queda fuera, la salida rápida es llam
 
 ## Más detalle
 
-- [Configuración y validación](docs/sspr-configuracion.md)
+- [Configuración y validación](informe.md)
 - [Bitácora del módulo](../../bitacora/2026-09-08-identity-security.md)

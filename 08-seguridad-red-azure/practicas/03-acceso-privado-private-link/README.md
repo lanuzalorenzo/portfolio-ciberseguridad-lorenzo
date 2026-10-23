@@ -26,7 +26,7 @@
 | Resolución DNS privada | Configurar la integración DNS necesaria para el servicio elegido | Zona DNS privada y enlace a la red, si aplica | Requisitos DNS del servicio |
 | Reducción de acceso público | Evaluar la restricción del endpoint público después de probar el acceso privado | Configuración de red del servicio | Decisión pendiente según el escenario |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+**Artefactos relacionados:** [Informe técnico](informe.md).
 
 ## Validación o pruebas de seguridad realizadas
 

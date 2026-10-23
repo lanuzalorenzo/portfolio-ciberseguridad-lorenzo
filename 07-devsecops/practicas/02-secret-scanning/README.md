@@ -40,5 +40,6 @@ La allowlist de documentación podría ocultar un secreto real introducido en un
 
 ## Artefactos relacionados
 
+- [Informe técnico](informe.md)
 - [`.gitleaks.toml`](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.gitleaks.toml)
 - [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)

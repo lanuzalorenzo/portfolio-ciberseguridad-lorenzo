@@ -149,9 +149,9 @@ Cada módulo incluye:
 
 - `README.md` con alcance, objetivos, prácticas y estado.
 - `bitacora/` con el registro cronológico.
-- `practicas/` con procedimientos y limitaciones; cuando la práctica es ejecutable, incluye `runbook.md` y `evidencias/`.
+- `practicas/` con una página por caso y, cuando hace falta, su `informe.md`; si la práctica es ejecutable, incluye `runbook.md` y `evidencias/`.
 - `lab/` con los artefactos locales de ejecución (por ejemplo, `docker-compose.yml`, pipeline y scripts).
-- `docs/` con informes técnicos y plantillas.
+- `docs/` con la explicación que sirve a varias prácticas a la vez.
 - `docs/laboratorio-final/` con la arquitectura, el plan de ejecución y el índice de evidencias del laboratorio integrado.
 
 El código de la carga de trabajo se versiona en [lab-api-local-azure](https://github.com/lanuzalorenzo/lab-api-local-azure).

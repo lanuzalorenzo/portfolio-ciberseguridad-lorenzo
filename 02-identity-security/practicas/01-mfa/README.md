@@ -22,5 +22,5 @@ Una cuenta protegida solo por contraseña se abre con una contraseña filtrada. 
 
 ## Más detalle
 
-- [Configuración paso a paso](docs/mfa-configuracion.md)
+- [Configuración paso a paso](informe.md)
 - [Bitácora del módulo](../../bitacora/2026-09-04-mfa-entra-id.md)

@@ -30,7 +30,7 @@
 | Revisión de asignaciones | Validación periódica de usuarios y roles | Auditoría operativa | MCSB IR-1 |
 | Principio de necesidad | Solo accesos requeridos para la tarea | Control de acceso basado en necesidad | MCSB IA-2 |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+**Artefactos relacionados:** [Informe técnico](informe.md).
 
 ## Validación o pruebas de seguridad realizadas
 

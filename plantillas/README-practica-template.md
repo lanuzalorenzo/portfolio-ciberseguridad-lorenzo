@@ -3,7 +3,7 @@
 <!--
 Copia este archivo en NN-modulo/practicas/NN-practica/README.md.
 Los enlaces de las secciones finales son relativos a esa carpeta.
-Extensión orientativa: 240 a 310 palabras. El detalle va al informe de docs/.
+Extensión orientativa: 240 a 310 palabras. Si la práctica necesita un informe, va en informe.md, junto a esta página.
 -->
 
 > **Estado:** Validado / Parcial / Runbook preparado / Diseño / Pendiente. [Una frase: qué se ejecutó y qué no.]
@@ -37,18 +37,18 @@ Extensión orientativa: 240 a 310 palabras. El detalle va al informe de docs/.
 
 ## Más detalle
 
-- Informe técnico: `docs/informe-tecnico.md`
+- Informe: `informe.md` <!-- solo si aporta algo que esta página no puede sostener -->
 - Bitácora: `../../bitacora/YYYY-MM-DD-tema.md` <!-- solo si existe y aporta un hecho que no está en esta página -->
 
 <!-- Cuando los enlaces sean reales, escríbelos como enlaces normales de Markdown
-apuntando a docs/informe-tecnico.md y a la bitácora.
+apuntando a informe.md y a la bitácora, sin enlazar un informe que no existe.
 
 Si la práctica se puede reejecutar paso a paso, añade además runbook.md y evidencias/.
 -->
 
 <!--
 Antes de dar la página por terminada:
-- No repitas la tabla de arquitectura ni la de controles del informe.
+- No repitas en el informe lo que ya cuenta la página; si lo único que añade es más palabras, fusiónalo y retíralo.
 - No marques PASS en una fila que no se ejecutó.
 - No uses etiquetas de registro ni frases de plantilla sin resolver.
 -->

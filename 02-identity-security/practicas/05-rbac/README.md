@@ -22,5 +22,5 @@ Un operador con permisos de propietario sobre toda la suscripción puede cambiar
 
 ## Más detalle
 
-- [Diseño y validación del modelo](docs/rbac-documento-tecnico.md)
+- [Diseño y validación del modelo](informe.md)
 - [Bitácora del módulo](../../bitacora/2026-09-11-ejercicio-05-rbac.md)

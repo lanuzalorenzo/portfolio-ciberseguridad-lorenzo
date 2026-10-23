@@ -25,7 +25,7 @@
 | Respuesta inicial | Playbook que inicia revisión y/o contención | Automatización basada en alerta | Sentinel automation |
 | Contención | Acciones limitadas y documentadas | Playbooks con permisos mínimos | Seguridad operativa |
 
-**Artefactos relacionados:** [Informe técnico](docs/informe-tecnico.md).
+**Artefactos relacionados:** [Informe técnico](informe.md).
 
 ## Validación o pruebas de seguridad realizadas
 
