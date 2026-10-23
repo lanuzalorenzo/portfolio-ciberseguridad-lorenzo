@@ -56,8 +56,7 @@ La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuz
       │  .NET, DTOs, BOLA/BFLA, mass assignment y pruebas             │
       └───────────────────────────────────────────────────────────────┘
 
-      Capa transversal: validación ofensiva (11), forense y respuesta (12),
-      matriz de cumplimiento (cumplimiento-normativo/).
+      Capa transversal: validación ofensiva (11) y forense y respuesta (12).
 ```
 
 ### Laboratorio final
@@ -102,11 +101,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 - [10 | ELK Stack Security](10-elk-stack-security/README.md) — *validado en local*: pila ELK con Docker Compose, 15 eventos sintéticos, 6 consultas KQL y dashboard exportado; sin Azure ni datos reales.
 - [12 | Forense cloud y respuesta](12-forense-cloud-respuesta/README.md) — *parcial*: tabletop ejecutado; recolección técnica pendiente.
 
-### 6. Cumplimiento y arquitectura de control
-
-- [Matriz de cumplimiento](cumplimiento-normativo/README.md) — mapeo a MCSB, NIS2, ENS, CIS, ISO 27001 y OWASP API Top 10, con brechas declaradas.
-
-### 7. IA local y desarrollo asistido
+### 6. IA local y desarrollo asistido
 
 - [ai-agent-local-lab](https://github.com/lanuzalorenzo/ai-agent-local-lab) — laboratorio local-first con Ollama, OpenCode y modelos abiertos.
 - [Caso de estudio de migración a OpenCode](https://github.com/lanuzalorenzo/ai-agent-local-lab/blob/main/CASE_STUDY_OPENCODE_MIGRATION.md) — decisiones, configuración y límites.
@@ -123,7 +118,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 | **Diseño** | Arquitectura, procedimiento o IaC documentados; no desplegados. |
 | **Pendiente** | Identificado y no iniciado. |
 
-La tabla de cada módulo y la [matriz de cumplimiento](cumplimiento-normativo/README.md) usan este criterio. No se presenta un diseño como una validación.
+La tabla de cada módulo usa este criterio. No se presenta un diseño como una validación.
 
 ---
 

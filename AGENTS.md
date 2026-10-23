@@ -13,7 +13,7 @@ Al trabajar en el repositorio:
 - Usa el estado explícito: **Validado**, **Parcial**, **Runbook preparado**, **Diseño** o **Pendiente**. Un diseño o un runbook sin ejecutar no son una validación.
 - No crees módulos nuevos mientras los existentes no estén consolidados; prioriza profundizar y evidenciar sobre ampliar el catálogo.
 - No añadas secretos, datos personales ni identificadores sensibles.
-- Mantén la coherencia entre el README del módulo, la web, el perfil y la matriz de cumplimiento.
+- Mantén la coherencia entre el README del módulo, la web y el perfil.
 - Escribe la documentación en español claro y conserva los nombres oficiales de productos y controles cuando corresponda.
 
 ## Estructura recomendada para módulos, runbooks y bitácoras
@@ -93,7 +93,7 @@ Reglas:
 - Un comando no ejecutado se marca como **no ejecutado**; no se inventan salidas.
 - Cada evidencia indica fecha, runbook, entorno, resultado y enlaces; elimina secretos, IPs internas, identificadores reales y datos personales.
 - Un despliegue de laboratorio requiere autorización explícita, suscripción de laboratorio, presupuesto, resource group temporal, datos sintéticos y plan de limpieza. Nunca se ejecuta en producción.
-- Los estados de módulos, web, perfil y matriz de cumplimiento deben coincidir.
+- Los estados de módulos, web y perfil deben coincidir.
 
 ### Bitácoras
 

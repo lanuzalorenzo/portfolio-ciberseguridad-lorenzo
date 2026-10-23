@@ -25,6 +25,7 @@ Si solo lees una frase, que sea esta: **cada módulo es una capa de la misma API
 - **No es un pentest de terceros.** Todo se limita a un laboratorio propio y a datos sintéticos.
 - **No está todo validado.** Hay módulos validados, parciales, en diseño y pendientes. La tabla de estado lo dice.
 - **No contiene secretos ni datos reales.** Los identificadores y credenciales están redactados.
+- **No es una declaración de cumplimiento.** El trabajo se puede leer contra los marcos habituales de seguridad cloud —Microsoft Cloud Security Benchmark, NIS2, Esquema Nacional de Seguridad, controles CIS e ISO 27001, además del OWASP API Top 10—, pero no se publica un mapeo fino ni se reclama certificación. Si necesitas ese mapeo para un puesto o un encargo concreto, se prepara para ese marco.
 
 ## 3. Cómo se lee un módulo
 
@@ -87,7 +88,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 3. **Red:** módulo [08](../08-seguridad-red-azure/README.md).
 4. **Detección:** módulos [10](../10-elk-stack-security/README.md) y [09](../09-microsoft-sentinel/README.md).
 5. **Respuesta:** módulo [12](../12-forense-cloud-respuesta/README.md).
-6. **Cierre:** [laboratorio final](laboratorio-final/README.md) y [matriz de cumplimiento](../cumplimiento-normativo/README.md).
+6. **Cierre:** [laboratorio final](laboratorio-final/README.md) y su [índice de evidencias](laboratorio-final/evidencias/README.md).
 
 **Al terminar:** tendrás el mapa completo y sabrás qué capas están validadas y cuáles son diseño.
 
@@ -97,8 +98,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 2. Índice de evidencias.
 3. Evidencia local de BOLA/BFLA y módulo 11.
 4. Módulo 07: pipeline y controles de supply chain.
-5. Matriz de cumplimiento.
-6. Repositorio de la API: tests, CI y Bicep.
+5. Repositorio de la API: tests, CI y Bicep.
 
 **Al terminar:** sabrás qué se ha ejecutado, qué se ha documentado y qué queda pendiente, sin leer los doce módulos.
 
@@ -118,7 +118,6 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 | 10 | [ELK Stack Security](../10-elk-stack-security/README.md) | ¿Cómo se centralizan logs y se consultan? | Validado en local |
 | 11 | [Hacking ético de APIs](../11-hacking-etico-api/README.md) | ¿Cómo se prueban BOLA, BFLA y mass assignment? | Validado en local; BFLA parcial |
 | 12 | [Forense cloud y respuesta](../12-forense-cloud-respuesta/README.md) | ¿Cómo se preserva evidencia y se responde? | Parcial: tabletop ejecutado; recolección técnica pendiente |
-| — | [Cumplimiento normativo](../cumplimiento-normativo/README.md) | ¿Qué control cubre qué requisito? | Documentado |
 
 ## 7. Cómo verificar sin confiar en la narrativa
 

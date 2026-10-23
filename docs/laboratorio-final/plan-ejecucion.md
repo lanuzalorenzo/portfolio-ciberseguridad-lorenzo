@@ -94,7 +94,7 @@ Una práctica se considera cerrada cuando:
 4. Existe una prueba negativa o de control cuando aplica.
 5. La limpieza se ha ejecutado y verificado.
 6. El README del módulo refleja el estado real.
-7. La web, el perfil y la matriz de cumplimiento siguen siendo coherentes.
+7. La web y el perfil siguen siendo coherentes.
 
 ## Costes y limpieza
 

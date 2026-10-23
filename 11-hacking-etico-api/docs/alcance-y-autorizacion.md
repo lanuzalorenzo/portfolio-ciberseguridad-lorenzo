@@ -63,7 +63,7 @@ Ante cualquiera de estos casos: detener la ejecución, anotar el estado, restaur
 
 - No cubre un pentest real: no hay cliente, contrato, reglas de enfrentamiento pactadas ni seguro de responsabilidad.
 - No cubre un despliegue en Azure, ni APIM, ni WAF, ni un tenant con usuarios delegados.
-- No convierte el módulo en una auditoría de cumplimiento. La relación con marcos se recoge en [`cumplimiento-normativo/`](../../cumplimiento-normativo/README.md), que distingue control, evidencia y certificación.
+- No convierte el módulo en una auditoría de cumplimiento: no hay certificación ni mapeo formal a marcos, solo prácticas y evidencia.
 - El modelo de fases usado en el módulo es una herramienta de organización del trabajo, no una metodología certificada.
 
 ## Referencias

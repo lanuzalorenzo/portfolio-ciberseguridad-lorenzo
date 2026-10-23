@@ -68,7 +68,7 @@ Un runbook preparado no es una validación.
 - No se ejecuta nada en producción ni con datos reales.
 - Cada comando no ejecutado se marca como **no ejecutado**.
 - Cada evidencia elimina secretos, direcciones IP internas, identificadores reales y datos personales.
-- Los estados de los módulos, la web, el perfil y la matriz de cumplimiento deben coincidir.
+- Los estados de los módulos, la web y el perfil deben coincidir.
 
 ## Próximo paso
 
