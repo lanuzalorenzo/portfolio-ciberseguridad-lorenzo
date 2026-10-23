@@ -42,5 +42,3 @@ El código ejecutable está en [`lab/pkce`](lab/pkce/README.md) y las decisiones
 
 - La práctica de PKCE manual no se ha reejecutado: no hay tenant de laboratorio y la evidencia histórica no se guardó con el formato actual.
 - El laboratorio Node.js es local y HTTP, sin TLS, tests ni CI. La pieza validada en CI es la API .NET del workload.
-
-> Antes de migrar la API a `lab-api-local-azure`, este repositorio alojaba su documentación. Los ejemplos antiguos con `Authorization: Bearer $TOKEN` y JWT truncados con `...` son marcadores, no credenciales: se conservan por trazabilidad, están cubiertos por la allowlist de `.gitleaks.toml` y el historial no se reescribió. Si alguna vez se usó un token real, hay que rotarlo.
