@@ -61,7 +61,7 @@ La carga de trabajo de referencia es [**EcommerceApi**](https://github.com/lanuz
 
 ### Laboratorio final
 
-El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conectan las capas sobre una sola carga de trabajo, con [arquitectura de referencia](docs/laboratorio-final/arquitectura.md), [plan de ejecución](docs/laboratorio-final/plan-ejecucion.md) y un [índice de evidencias](docs/laboratorio-final/evidencias/README.md). Las prácticas ejecutables usan un [runbook](plantillas/runbook-template.md), registran su prueba con una [plantilla de evidencia](plantillas/evidencia-template.md) y documentan el caso con una [plantilla de README de práctica](plantillas/README-practica-template.md).
+El [laboratorio final](laboratorio-final/README.md) define cómo se conectan las capas sobre una sola carga de trabajo, con [arquitectura de referencia](laboratorio-final/arquitectura.md), [plan de ejecución](laboratorio-final/plan-ejecucion.md) y un [índice de evidencias](laboratorio-final/evidencias/README.md). Las prácticas ejecutables usan un [runbook](plantillas/runbook-template.md), registran su prueba con una [plantilla de evidencia](plantillas/evidencia-template.md) y documentan el caso con una [plantilla de README de práctica](plantillas/README-practica-template.md).
 
 > El laboratorio tiene tres evidencias de ejecución (ELK, BOLA/BFLA y el tabletop forense del módulo 12) y cuatro evidencias documentales o verificables (02, 03, 04 y 07). Las fases Azure siguen pendientes de autorización, presupuesto y resource group temporal; no hay recursos Azure desplegados.
 
@@ -72,7 +72,7 @@ El [laboratorio final](docs/laboratorio-final/README.md) define cómo se conecta
 ### 1. Arquitectura y AppSec
 
 - [01 | OAuth 2.0, PKCE y validación JWT](01-seguridad-azure/README.md) — *parcial*: validación JWT implementada y probada en CI; la práctica de [PKCE manual](01-seguridad-azure/practicas/01-pkce-manual/README.md) sigue pendiente de evidencia estandarizada.
-- [11 | Hacking ético de APIs](11-hacking-etico-api/README.md) — *validación local de BOLA y mass assignment*; pentest desplegado pendiente. [Evidencia](docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
+- [11 | Hacking ético de APIs](11-hacking-etico-api/README.md) — *validación local de BOLA y mass assignment*; pentest desplegado pendiente. [Evidencia](laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
 - [API de referencia](https://github.com/lanuzalorenzo/lab-api-local-azure) — código, tests, CI y Bicep.
 
 ### 2. DevSecOps y supply chain
@@ -147,7 +147,7 @@ Cada módulo incluye:
 - `practicas/` con una página por caso y, cuando hace falta, su `informe.md`; si la práctica es ejecutable, incluye `runbook.md` y `evidencias/`.
 - `lab/` con los artefactos locales de ejecución (por ejemplo, `docker-compose.yml`, pipeline y scripts).
 - `docs/` con la explicación que sirve a varias prácticas a la vez.
-- `docs/laboratorio-final/` con la arquitectura, el plan de ejecución y el índice de evidencias del laboratorio integrado.
+- `laboratorio-final/` con la arquitectura, el plan de ejecución y el índice de evidencias del laboratorio integrado.
 
 El código de la carga de trabajo se versiona en [lab-api-local-azure](https://github.com/lanuzalorenzo/lab-api-local-azure).
 

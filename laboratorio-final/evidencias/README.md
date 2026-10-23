@@ -73,9 +73,9 @@ Una evidencia de **decisión** se indexa como de ejecución —se hizo, con fech
 
 | Fecha | Módulo | Tipo | Qué prueba | Enlace |
 |---|---|---|---|---|
-| 2026-09-11 | 02 — Identity Security | Documental | 7 prácticas (MFA, Passwordless, SSPR, PIM, RBAC, Key Vault, Managed Identities) con informe técnico, tabla de resultados y bitácora | [Módulo](../../../02-identity-security/README.md) |
-| 2026-09-15 | 03 — Cloud Audits | Documental | 3 auditorías (suscripciones, recursos críticos, identidades) con hallazgos y recomendaciones | [Módulo](../../../03-cloud-audits/README.md) |
-| 2026-09-25 | 04 — Defender for Cloud | Documental | 4 prácticas (planes, recomendaciones, workloads, hardening) con informe y bitácora | [Módulo](../../../04-defender-for-cloud/README.md) |
+| 2026-09-11 | 02 — Identity Security | Documental | 7 prácticas (MFA, Passwordless, SSPR, PIM, RBAC, Key Vault, Managed Identities) con informe técnico, tabla de resultados y bitácora | [Módulo](../../02-identity-security/README.md) |
+| 2026-09-15 | 03 — Cloud Audits | Documental | 3 auditorías (suscripciones, recursos críticos, identidades) con hallazgos y recomendaciones | [Módulo](../../03-cloud-audits/README.md) |
+| 2026-09-25 | 04 — Defender for Cloud | Documental | 4 prácticas (planes, recomendaciones, workloads, hardening) con informe y bitácora | [Módulo](../../04-defender-for-cloud/README.md) |
 | 2026-10-19 | 07 — DevSecOps | Verificable (CI) | Pipeline completa en verde: build, 10 pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root e IaC | [Run 39243360276](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/39243360276) |
 
 > Las evidencias documentales se apoyan en el informe y la bitácora del módulo. Declaran explícitamente que no se conservó la salida original; por eso no se mezclan con las de ejecución.
@@ -88,4 +88,4 @@ Una evidencia de **decisión** se indexa como de ejecución —se hizo, con fech
 
 ## Plantilla
 
-Usa la [plantilla de evidencia](../../../plantillas/evidencia-template.md) como punto de partida. Tiene dos rutas: **A** para lo ejecutado y **B** para lo decidido (tabletop, triaje, simulacro). El acta `2026-10-22-12-tabletop` es la primera evidencia escrita con la ruta B.
+Usa la [plantilla de evidencia](../../plantillas/evidencia-template.md) como punto de partida. Tiene dos rutas: **A** para lo ejecutado y **B** para lo decidido (tabletop, triaje, simulacro). El acta `2026-10-22-12-tabletop` es la primera evidencia escrita con la ruta B.

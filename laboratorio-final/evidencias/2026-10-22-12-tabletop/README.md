@@ -1,9 +1,9 @@
 # Evidencia — Tabletop forense del módulo 12 (INC-2026-001)
 
-> **Tipo:** ejecución — ruta B (decisión) de [`plantillas/evidencia-template.md`](../../../../plantillas/evidencia-template.md), sin recolección técnica.
+> **Tipo:** ejecución — ruta B (decisión) de [`plantillas/evidencia-template.md`](../../../plantillas/evidencia-template.md), sin recolección técnica.
 > **Resultado:** PASS en los cuatro criterios del runbook, con las limitaciones de la sección 8.
 > **Fecha:** 2026-10-22.
-> **Runbook utilizado:** [`12-forense-cloud-respuesta/practicas/03-playbook-respuesta/runbook.md`](../../../../12-forense-cloud-respuesta/practicas/03-playbook-respuesta/runbook.md).
+> **Runbook utilizado:** [`12-forense-cloud-respuesta/practicas/03-playbook-respuesta/runbook.md`](../../../12-forense-cloud-respuesta/practicas/03-playbook-respuesta/runbook.md).
 > **Entorno:** ninguno. Simulacro sobre documentación, datos sintéticos, sin suscripción de Azure.
 > **Coste:** 0.
 > **Limpieza:** no aplica.

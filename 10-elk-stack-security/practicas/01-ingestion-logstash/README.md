@@ -14,6 +14,6 @@ Quince líneas de log no son una detección, pero sí permiten comprobar si una 
 
 La normalización fue lo que hizo útil el resto: sin campos comunes, la consulta por IP o por resultado no se puede escribir. El volumen era pequeño a propósito; el objetivo era verificar la tubería, no medir rendimiento. El dataset usa usuarios e IPs de los rangos reservados para documentación, así que se puede publicar sin sanearlo.
 
-El [runbook](runbook.md) recoge los pasos y la [evidencia](../../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md) los artefactos. El log de ejemplo y los scripts viven en `lab/`.
+El [runbook](runbook.md) recoge los pasos y la [evidencia](../../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md) los artefactos. El log de ejemplo y los scripts viven en `lab/`.
 
 El esquema importa más que el número de eventos; un campo mal tipado arrastra el análisis; y comprobar los conteos justo después de ingerir evita descubrir el fallo en el dashboard.

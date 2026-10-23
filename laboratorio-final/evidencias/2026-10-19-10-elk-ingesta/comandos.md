@@ -163,7 +163,7 @@ curl -s -X POST 'http://localhost:5601/api/saved_objects/_export' \
   -H 'Content-Type: application/json' \
   -H 'kbn-xsrf: true' \
   -d '{"objects":[{"type":"index-pattern","id":"53df8705-4770-45d4-b9dd-bd181698a4ad"},{"type":"dashboard","id":"d2a30262-82c5-4ce4-b9cb-2746dbfef110"},{"type":"lens","id":"3a27fe79-5be4-4437-bdfd-03e939122bbb"},{"type":"lens","id":"a5ea1c38-2f79-4a8c-af9b-f6a72d58cea9"},{"type":"lens","id":"8445c92b-3cb8-4645-a570-775d21cd4142"},{"type":"lens","id":"95767c3f-4340-44cb-b1cc-f901eefd3197"},{"type":"search","id":"98f7a09e-61d2-4f28-b83e-e590d06912e0"}],"includeReferencesDeep":true}' \
-  -o ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/kibana-saved-objects.ndjson
+  -o ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/kibana-saved-objects.ndjson
 ```
 
 Resultado: 7 objetos exportados (1 vista de datos, 1 dashboard, 4 visualizaciones Lens y 1 búsqueda guardada).

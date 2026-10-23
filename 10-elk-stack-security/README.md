@@ -19,4 +19,4 @@ Los eventos son sintéticos, fechados el 2026-10-20 y con usuarios e IPs de los 
 
 ## Límites
 
-El clúster es single-node, Elasticsearch va sin TLS ni autenticación y no se han creado reglas ni alertas: el módulo demuestra ingesta, consulta y visualización, no la operación de un SIEM. Tampoco se ha probado el acceso desde otra máquina ni con datos reales. La evidencia completa está en [2026-10-19-10-elk-ingesta](../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).
+El clúster es single-node, Elasticsearch va sin TLS ni autenticación y no se han creado reglas ni alertas: el módulo demuestra ingesta, consulta y visualización, no la operación de un SIEM. Tampoco se ha probado el acceso desde otra máquina ni con datos reales. La evidencia completa está en [2026-10-19-10-elk-ingesta](../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).

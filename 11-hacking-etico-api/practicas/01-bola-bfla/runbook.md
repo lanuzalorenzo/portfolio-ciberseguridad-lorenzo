@@ -116,7 +116,7 @@ grep -rn "Authorize\|Roles\|Admin" EcommerceApi/Controllers/
 - [x] Resultado y limitaciones.
 - [x] Enlace a la entrada del índice.
 
-Evidencia registrada: [`2026-10-21-11-api-bola`](../../../docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
+Evidencia registrada: [`2026-10-21-11-api-bola`](../../../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
 
 ## 9. Limpieza
 

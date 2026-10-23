@@ -67,17 +67,17 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 
 1. [`README.md`](../README.md) del portfolio.
 2. Esta guía.
-3. [Índice de evidencias](laboratorio-final/evidencias/README.md).
+3. [Índice de evidencias](../laboratorio-final/evidencias/README.md).
 4. Tabla de estados del README.
 
 **Al terminar:** sabrás qué carga de trabajo se protege, qué capas existen y qué está demostrado.
 
 ### Ruta 1 — 60–90 minutos: el hilo identidad + API
 
-1. [Arquitectura de referencia](laboratorio-final/arquitectura.md).
+1. [Arquitectura de referencia](../laboratorio-final/arquitectura.md).
 2. [Módulo 01 — OAuth 2.0, PKCE y JWT](../01-seguridad-azure/README.md): documentos 01, 02 y 03.
-3. [Módulo 11 — Hacking ético de APIs](../11-hacking-etico-api/README.md): práctica 01 y su [evidencia](laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
-4. [Módulo 12 — Forense y respuesta](../12-forense-cloud-respuesta/README.md): el playbook, el runbook y su [acta de tabletop](laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md).
+3. [Módulo 11 — Hacking ético de APIs](../11-hacking-etico-api/README.md): práctica 01 y su [evidencia](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
+4. [Módulo 12 — Forense y respuesta](../12-forense-cloud-respuesta/README.md): el playbook, el runbook y su [acta de tabletop](../laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md).
 
 **Al terminar:** entenderás cómo se autentica una petición, cómo se autoriza por propietario y qué se puede demostrar con una prueba local.
 
@@ -88,7 +88,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 3. **Red:** módulo [08](../08-seguridad-red-azure/README.md).
 4. **Detección:** módulos [10](../10-elk-stack-security/README.md) y [09](../09-microsoft-sentinel/README.md).
 5. **Respuesta:** módulo [12](../12-forense-cloud-respuesta/README.md).
-6. **Cierre:** [laboratorio final](laboratorio-final/README.md) y su [índice de evidencias](laboratorio-final/evidencias/README.md).
+6. **Cierre:** [laboratorio final](../laboratorio-final/README.md) y su [índice de evidencias](../laboratorio-final/evidencias/README.md).
 
 **Al terminar:** tendrás el mapa completo y sabrás qué capas están validadas y cuáles son diseño.
 
@@ -123,7 +123,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 
 El portfolio distingue explícitamente entre **Diseño**, **Runbook preparado**, **Parcial**, **Validado** y **Pendiente**. Clasifica la evidencia de lo validado como **de ejecución**, **documental** o **verificable**. Para comprobarlo:
 
-- [Índice de evidencias](laboratorio-final/evidencias/README.md): qué se ejecutó, cuándo y con qué resultado.
+- [Índice de evidencias](../laboratorio-final/evidencias/README.md): qué se ejecutó, cuándo y con qué resultado.
 - **Runbooks:** cada comando no ejecutado está marcado como tal; no se inventan salidas.
 - **Tests y CI:** en el repositorio [lab-api-local-azure](https://github.com/lanuzalorenzo/lab-api-local-azure).
 - **Bicep:** la infraestructura está validada estáticamente; no se presenta como desplegada.
@@ -146,7 +146,7 @@ Si puedes responderlas sin mirar, ya tienes el hilo. Si no, vuelve a la Ruta 1.
 - Si te interesa la **identidad**: empieza por el [módulo 01](../01-seguridad-azure/README.md).
 - Si te interesa la **API**: ve al [módulo 11](../11-hacking-etico-api/README.md) y su evidencia.
 - Si te interesa la **operación**: sigue por [detección](../09-microsoft-sentinel/README.md) y [respuesta](../12-forense-cloud-respuesta/README.md).
-- Si quieres ver **qué está probado**: abre el [índice de evidencias](laboratorio-final/evidencias/README.md).
+- Si quieres ver **qué está probado**: abre el [índice de evidencias](../laboratorio-final/evidencias/README.md).
 
 ## 10. Mantenimiento
 

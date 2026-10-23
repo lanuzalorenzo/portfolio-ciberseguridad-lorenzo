@@ -14,7 +14,7 @@ Una API autenticada que devuelve pedidos por identificador puede estar diciendo 
 
 La remediación fue asignar `Order.UserId` desde el claim, marcarlo `[JsonIgnore]`, filtrar el listado y devolver `404` cuando el pedido no pertenece al usuario.
 
-Las pruebas usan el esquema `X-Test-User` y dos identidades falsas, no tokens de Entra ID; tampoco se han ejecutado contra APIM o WAF. El [runbook](runbook.md) y la [evidencia](../../../docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) recogen los pasos y la salida.
+Las pruebas usan el esquema `X-Test-User` y dos identidades falsas, no tokens de Entra ID; tampoco se han ejecutado contra APIM o WAF. El [runbook](runbook.md) y la [evidencia](../../../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) recogen los pasos y la salida.
 
 Si B recibiera el pedido de A, el fallo estaría en la consulta y no en el token: la identidad se validó y aun así el recurso se entregó. Esa distinción importa al buscar la causa.
 

@@ -160,21 +160,21 @@ ss -ltn | grep -E ':(9200|5601)'
 Crea la carpeta de evidencia:
 
 ```bash
-mkdir -p ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos
+mkdir -p ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos
 ```
 
 Captura y guarda:
 
 ```bash
-./scripts/preflight.sh | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/preflight.txt
-./scripts/up.sh 2>&1 | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/up.txt
-docker compose ps | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/compose-ps.txt
-curl -fsS 'http://localhost:9200/_cluster/health?pretty' | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/cluster-health.json
-./scripts/verify.sh 2>&1 | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/verify.txt
-curl -fsS 'http://localhost:9200/_cat/indices/lab-security-*?v&h=index,docs.count,store.size' | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/indices.txt
-docker compose logs --tail=80 logstash | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/logstash.log
-docker compose port elasticsearch 9200 | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/puerto-elasticsearch.txt
-docker compose port kibana 5601 | tee ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/puerto-kibana.txt
+./scripts/preflight.sh | tee ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/preflight.txt
+./scripts/up.sh 2>&1 | tee ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/up.txt
+docker compose ps | tee ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/compose-ps.txt
+curl -fsS 'http://localhost:9200/_cluster/health?pretty' | tee ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/cluster-health.json
+./scripts/verify.sh 2>&1 | tee ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/verify.txt
+curl -fsS 'http://localhost:9200/_cat/indices/lab-security-*?v&h=index,docs.count,store.size' | tee ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/indices.txt
+docker compose logs --tail=80 logstash | tee ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/logstash.log
+docker compose port elasticsearch 9200 | tee ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/puerto-elasticsearch.txt
+docker compose port kibana 5601 | tee ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/puerto-kibana.txt
 ```
 
 No incluyas rutas personales, tokens ni datos reales. Los logs del laboratorio son sintéticos, pero revisa igualmente antes de publicar.

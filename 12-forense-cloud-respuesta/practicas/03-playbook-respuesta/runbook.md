@@ -2,7 +2,7 @@
 
 > **Estado:** Parcial — ejecutado como tabletop. Variante de laboratorio sin ejecutar.
 >
-> **Última ejecución:** 2026-10-22, tabletop de decisión (sin recolección técnica). Acta: [`docs/laboratorio-final/evidencias/2026-10-22-12-tabletop/`](../../../docs/laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md).
+> **Última ejecución:** 2026-10-22, tabletop de decisión (sin recolección técnica). Acta: [`laboratorio-final/evidencias/2026-10-22-12-tabletop/`](../../../laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md).
 >
 > **Tipo:** tabletop (simulacro) sobre el playbook; variante de laboratorio opcional.
 

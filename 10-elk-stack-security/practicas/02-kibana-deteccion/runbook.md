@@ -252,12 +252,12 @@ Para esta visualización es más claro usar una **búsqueda guardada en Discover
 ### Opción B — Por API
 
 ```bash
-mkdir -p ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos
+mkdir -p ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos
 curl -fsS -X POST 'http://localhost:5601/api/saved_objects/_export' \
   -H 'kbn-xsrf: true' \
   -H 'Content-Type: application/json' \
   -d '{"type":["dashboard","visualization","search","index-pattern"],"includeReferencesDeep":true}' \
-  -o ../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/kibana-saved-objects.ndjson
+  -o ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/kibana-saved-objects.ndjson
 ```
 
 **Debe aparecer:** un archivo NDJSON con el dashboard y sus referencias.

@@ -4,7 +4,7 @@
 >
 > **Resultado:** Validado en local
 >
-> **Runbooks:** [01 — Ingestión y normalización](../../../../10-elk-stack-security/practicas/01-ingestion-logstash/runbook.md) · [02 — Visualización y detección](../../../../10-elk-stack-security/practicas/02-kibana-deteccion/runbook.md)
+> **Runbooks:** [01 — Ingestión y normalización](../../../10-elk-stack-security/practicas/01-ingestion-logstash/runbook.md) · [02 — Visualización y detección](../../../10-elk-stack-security/practicas/02-kibana-deteccion/runbook.md)
 
 > Se levantaron tres programas en un portátil, se les dieron 15 eventos falsos y se comprobó que se veían, se buscaban y se dibujaban en un panel. Al terminar se apagó y se borró todo.
 

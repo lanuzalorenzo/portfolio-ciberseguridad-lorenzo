@@ -30,7 +30,7 @@ Cada módulo debe mantener una estructura clara y legible, con un objetivo técn
 - `runbook.md` y `evidencias/`: solo si la práctica se puede volver a ejecutar paso a paso.
 - `bitacora/`: solo si guarda un hecho que no está en ningún otro sitio.
 - `lab/`: artefactos locales de ejecución (compose, pipelines, scripts y datos sintéticos).
-- `docs/laboratorio-final/`: arquitectura, plan de ejecución e índice de evidencias del laboratorio integrado.
+- `laboratorio-final/`: arquitectura, plan de ejecución e índice de evidencias del laboratorio integrado.
 - `plantillas/`: runbook y registro de evidencia reutilizables.
 
 ### Cómo se trabaja un módulo

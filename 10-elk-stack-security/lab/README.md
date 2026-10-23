@@ -2,7 +2,7 @@
 
 > **Estado:** Validado en local. Ejecutado el 2026-10-19 con 15 eventos sintéticos, consultas KQL y dashboard de Kibana.
 >
-> **Evidencia:** [2026-10-19-10-elk-ingesta](../../docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).
+> **Evidencia:** [2026-10-19-10-elk-ingesta](../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).
 >
 > Laboratorio local para practicar ingesta, normalización y detección con Elasticsearch, Logstash y Kibana sobre logs sintéticos.
 

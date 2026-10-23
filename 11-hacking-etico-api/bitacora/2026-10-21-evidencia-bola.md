@@ -17,7 +17,7 @@ Cerrar la validación local del módulo 11 con una evidencia registrada, reutili
 - Ejecución de la suite completa (10 pruebas) y de la suite filtrada de pedidos (4 pruebas).
 - Revisión de la superficie administrativa con `grep` sobre los controladores.
 - Redacción de un `runbook.md` con prerrequisitos, comandos, validación, limpieza y limitaciones.
-- Creación de la evidencia `docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/` con salidas redactadas.
+- Creación de la evidencia `laboratorio-final/evidencias/2026-10-21-11-api-bola/` con salidas redactadas.
 - Actualización del índice de evidencias, del README del módulo y de los estados del laboratorio.
 
 ## Resultados

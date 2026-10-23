@@ -4,9 +4,9 @@
 >
 > **Resultado:** Validado en local
 >
-> **Runbook:** [01 — BOLA/BFLA: aislamiento de pedidos](../../../../11-hacking-etico-api/practicas/01-bola-bfla/runbook.md)
+> **Runbook:** [01 — BOLA/BFLA: aislamiento de pedidos](../../../11-hacking-etico-api/practicas/01-bola-bfla/runbook.md)
 >
-> **Práctica relacionada:** [03 — Rate limiting y mass assignment](../../../../11-hacking-etico-api/practicas/03-rate-limiting-mass-assignment/README.md)
+> **Práctica relacionada:** [03 — Rate limiting y mass assignment](../../../11-hacking-etico-api/practicas/03-rate-limiting-mass-assignment/README.md)
 
 > Se comprobó que un usuario no puede abrir el pedido de otro cambiando el número de la dirección. Lo hicieron las pruebas automáticas, con dos usuarios falsos y ningún dato real, en el propio portátil.
 
@@ -17,7 +17,7 @@
 - **Entorno:** equipo local con Ubuntu 26.04.1 LTS, kernel 7.0.0-38 y .NET SDK 10.0.113; `lab-api-local-azure` en el commit `b66028a`.
 - **Alcance:** ejecutar la suite de integración de `EcommerceApi` contra `WebApplicationFactory`, con dos identidades de test, y verificar aislamiento de pedidos, control de funciones y validación de entrada.
 - **Datos:** sintéticos, generados por las propias pruebas en un almacén en memoria.
-- **Autorización:** [alcance y autorización del módulo 11](../../../../11-hacking-etico-api/docs/alcance-y-autorizacion.md). Laboratorio propio, sin recursos cloud, sin coste y sin datos reales.
+- **Autorización:** [alcance y autorización del módulo 11](../../../11-hacking-etico-api/docs/alcance-y-autorizacion.md). Laboratorio propio, sin recursos cloud, sin coste y sin datos reales.
 - **Identidades:** `X-Test-User` con valores aleatorios por prueba (`owner-*`, `other-*`, `list-owner-*`). No se usan cuentas ni tokens de Entra ID.
 
 ## 2. Comandos ejecutados

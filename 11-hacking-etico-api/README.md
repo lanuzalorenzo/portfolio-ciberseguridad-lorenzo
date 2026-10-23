@@ -16,7 +16,7 @@ Todas las pruebas se ejecutan contra `lab-api-local-azure`, un laboratorio propi
 | Consumo | Rate limit y cuerpo definidos; prueba de carga pendiente | [03](practicas/03-rate-limiting-mass-assignment/README.md) |
 | Informe | Documentado | [04](practicas/04-informe-final/README.md) |
 
-La carga de trabajo es [EcommerceApi](https://github.com/lanuzalorenzo/lab-api-local-azure): API .NET 10 con Entra ID, DTOs, aislamiento de pedidos y pruebas de integración. El [runbook](practicas/01-bola-bfla/runbook.md) y la [evidencia de ejecución](../docs/laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) acompañan a la práctica 01.
+La carga de trabajo es [EcommerceApi](https://github.com/lanuzalorenzo/lab-api-local-azure): API .NET 10 con Entra ID, DTOs, aislamiento de pedidos y pruebas de integración. El [runbook](practicas/01-bola-bfla/runbook.md) y la [evidencia de ejecución](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) acompañan a la práctica 01.
 
 ## Límites
 

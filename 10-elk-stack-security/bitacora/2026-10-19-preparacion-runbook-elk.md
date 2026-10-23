@@ -24,7 +24,7 @@ Convertir el módulo 10 de diseño documental en un laboratorio local ejecutable
 
 - El módulo ya tiene una ruta ejecutable de principio a fin.
 - La verificación automática espera 15 eventos, 10 fallos, 5 éxitos, 4 errores web y 10 fallos desde `203.0.113.45`.
-- La evidencia queda definida en `docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/`.
+- La evidencia queda definida en `laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/`.
 
 ## Pendientes y riesgos
 
@@ -41,4 +41,4 @@ Convertir el módulo 10 de diseño documental en un laboratorio local ejecutable
 
 ## Siguiente paso
 
-La sesión estaba prevista para el 2026-10-20; finalmente se ejecutó el 2026-10-19, un día antes. La ejecución, los resultados y la evidencia están en la [bitácora de ejecución](2026-10-19-ejecucion-elk.md) y en `docs/laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/`. El estado del módulo pasó a **Validado en local**.
+La sesión estaba prevista para el 2026-10-20; finalmente se ejecutó el 2026-10-19, un día antes. La ejecución, los resultados y la evidencia están en la [bitácora de ejecución](2026-10-19-ejecucion-elk.md) y en `laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/`. El estado del módulo pasó a **Validado en local**.
