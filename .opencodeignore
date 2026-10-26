@@ -1,0 +1,6 @@
+**/evidencias/**/*.png
+**/evidencias/**/*.jpg
+**/evidencias/**/*.pdf
+**/lab/**/node_modules/
+**/package-lock.json
+**/.git/
