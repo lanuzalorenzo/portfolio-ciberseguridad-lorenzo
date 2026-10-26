@@ -1,142 +1,70 @@
 # Guía del repositorio
 
-> **Si llegas nuevo:** empieza por [`docs/guia-de-lectura.md`](docs/guia-de-lectura.md). Este archivo es el contrato de trabajo de quien edita o automatiza el repositorio.
+Portfolio público de documentación y laboratorios de ciberseguridad cloud (Azure, Entra ID, Defender, DevSecOps). Describe trabajo documentado, no producción. La arquitectura del lab final, runbooks e índice de evidencias viven aquí; código e IaC del workload en `lab-api-local-azure`.
 
-Este repositorio es un portfolio público de documentación y laboratorios de ciberseguridad cloud. El contenido abarca Azure, Microsoft Entra ID, Microsoft Defender y DevSecOps; describe trabajo documentado y no debe presentarse como despliegue de producción.
+Si llegas nuevo: empieza por `docs/guia-de-lectura.md`. Este archivo es el contrato de trabajo.
 
-También aloja la arquitectura del laboratorio final, los runbooks y el índice de evidencias. El código y el IaC específicos del workload viven en `lab-api-local-azure`; no dupliques aquí esa infraestructura.
+## Reglas de trabajo
 
-Al trabajar en el repositorio:
-
-- Comprueba el árbol y los documentos relacionados antes de crear o enlazar contenido; el estado actual del repositorio es la referencia.
-- Conserva la organización existente. Para contenido nuevo, sigue el patrón del módulo cercano: README de entrada, bitácora y prácticas cuando correspondan.
-- No crees carpetas vacías ni reestructures contenido existente solo para uniformarlo.
-- Distingue los planes de las pruebas ejecutadas y sus resultados observados; no inventes evidencias ni afirmaciones técnicas.
-- Usa el estado explícito: **Validado**, **Parcial**, **Runbook preparado**, **Diseño** o **Pendiente**. Un diseño o un runbook sin ejecutar no son una validación.
-- No crees módulos nuevos mientras los existentes no estén consolidados; prioriza profundizar y evidenciar sobre ampliar el catálogo.
+- Comprueba árbol y documentos relacionados antes de crear/enlazar; el estado actual del repo es la referencia.
+- Conserva la organización existente; sigue el patrón del módulo cercano (README de entrada, bitácora, prácticas).
+- No crees carpetas vacías ni reestructures por uniformidad.
+- Distingue planes de pruebas ejecutadas y resultados observados; no inventes evidencias.
+- Estados explícitos: **Validado**, **Parcial**, **Runbook preparado**, **Diseño**, **Pendiente**.
+- No crees módulos nuevos hasta consolidar los existentes.
 - No añadas secretos, datos personales ni identificadores sensibles.
-- Mantén la coherencia entre el README del módulo, la web y el perfil.
-- Escribe la documentación en español claro y conserva los nombres oficiales de productos y controles cuando corresponda.
-- **Voz:** directa y cercana, sin épica. El lector no tiene por qué ser experto: explica el concepto técnico con una analogía o símil antes de entrar en detalle (p. ej., «el laboratorio es una casa con varias cerraduras: la puerta de entrada es la red, la llave es la identidad...»). No uses rótulos de registro («En fácil», «TL;DR»): la claridad está en la prosa, no en la etiqueta.
+- Mantén coherencia entre README del módulo, web y perfil.
+- Documentación en español claro; nombres oficiales de productos/controles.
+- Voz directa y cercana, sin épica; explica conceptos con analogía antes del detalle. Sin rótulos de registro.
 
-## Estructura recomendada para módulos, runbooks y bitácoras
+## Estructura esperada
 
-Cada módulo debe mantener una estructura clara y legible, con un objetivo técnico definido y una narrativa de aprendizaje. La intención del portfolio es mostrar progresión real, no solo volumen de documentos.
-
-### Patrones esperados
-
-- `README.md` del módulo: la puerta. Qué es el módulo, qué piezas lo forman y en qué estado está cada una.
+- `README.md` del módulo: puerta (qué es, piezas, estado).
 - `README.md` de práctica: sigue `plantillas/README-practica-template.md`.
-- `practicas/`: un caso por carpeta, con su página y, si lo necesita, su informe al lado.
-- `docs/` del módulo: explicación que sirve a varias prácticas a la vez (conceptos, arquitectura del módulo).
-- `informe.md` dentro de la práctica: el detalle que la página no puede sostener. Sin subcarpetas para un solo fichero.
-- `runbook.md` y `evidencias/`: solo si la práctica se puede volver a ejecutar paso a paso.
-- `bitacora/`: solo si guarda un hecho que no está en ningún otro sitio.
-- `lab/`: artefactos locales de ejecución (compose, pipelines, scripts y datos sintéticos).
-- `laboratorio-final/`: arquitectura, plan de ejecución e índice de evidencias del laboratorio integrado.
-- `plantillas/`: índice y plantillas de práctica, runbook y evidencia.
+- `practicas/`: un caso por carpeta, con página e informe al lado si hace falta.
+- `docs/` del módulo: explicación compartida (conceptos, arquitectura).
+- `informe.md` en la práctica: detalle no sostenible en la página.
+- `runbook.md` + `evidencias/`: solo prácticas reejecutables.
+- `bitacora/`: solo hechos no presentes en otro sitio.
+- `lab/`: artefactos locales (compose, pipelines, scripts, datos sintéticos).
+- `laboratorio-final/`: arquitectura, plan de ejecución, índice de evidencias.
+- `plantillas/`: índice y plantillas.
 
-### Cómo se trabaja un módulo
+## Cómo se trabaja un módulo
 
-Un módulo se recorre siempre en el mismo orden, porque el orden evita reescribir dos veces:
+Orden: 1) lee y cuenta; 2) cuéntalo antes de tocarlo; 3) inventaría (único/repetido/vacío); 4) propón (queda/fusiona/retira/estado) y confirma borrados/cambios de estado; 5) aplica; 6) verifica y cierra.
 
-1. **Lee y cuenta.** El módulo completo, su fila en `docs/guia-de-lectura.md` y el estado de Git. Anota ficheros y palabras por documento: el volumen enseña dónde está el peso.
-2. **Cuéntalo antes de tocarlo.** Qué problema resuelve el módulo, qué piezas lo forman y qué está ejecutado frente a lo que solo está diseñado. Si no se puede explicar así, todavía no se ha entendido.
-3. **Inventaría.** Para cada fichero: qué información única tiene, qué repite y qué no dice nada. Un documento que no aporta ningún hecho se retira, y antes se comprueba quién lo enlaza.
-4. **Propón.** Qué se queda, qué se fusiona, qué se retira y qué estado le corresponde a cada pieza. Los borrados y los cambios de estado se confirman antes de aplicarlos.
-5. **Aplica** la forma de abajo, sin reestructurar por uniformidad lo que ya funciona.
-6. **Verifica y cierra** con la definición de hecho.
+Formas:
+- Puerta del módulo: 250–500 palabras; problema en prosa, estructura si aplica, piezas con estado, ejecutado vs recomendado.
+- Página de práctica: 240–310 palabras; problema, referencias (MCSB/CIS/NIST), tabla de hallazgos, 2–3 lecciones, enlaces.
+- Informe: solo catálogo/config/matriz/verificación; `informe.md` junto a la página.
+- Runbook: solo prácticas reejecutables (contrato abajo).
+- Bitácora: según criterio abajo.
 
-Formas de cada pieza:
+Reglas: página no duplica informe; un hallazgo no es PASS; lo no ejecutado se escribe como tal; estado desglosado si madurez distinta; nada de documentos que aparentan.
 
-- **Puerta del módulo:** entre 250 y 500 palabras. Abre con el problema en prosa, muestra la estructura si la hay (un diagrama Mermaid basta), lista las piezas con su estado y separa lo ejecutado de lo recomendado. No repite lo que ya está en la guía de lectura ni en las prácticas.
-- **Página de práctica:** entre 240 y 310 palabras. El problema en prosa, una línea de referencias (MCSB, CIS, NIST), una tabla con lo que se hizo o se encontró, dos o tres lecciones y los enlaces que hagan falta: el informe si existe y la bitácora si la hay.
-- **Informe:** solo cuando guarda algo que la página no puede sostener: catálogo, configuración con valores, matriz de hallazgos o verificación. Vive en `informe.md`, junto a la página.
-- **Runbook:** solo para prácticas reejecutables, con el contrato de la sección siguiente.
-- **Bitácora:** según el criterio de más abajo.
+Definición de hecho: 0 enlaces rotos; estado coherente en puerta/guía/índice/web; sin duplicados página-informe; sin restos de plantilla.
 
-Reglas:
+## Runbooks y evidencias
 
-- **La página no duplica el informe, y el informe no repite la página.** Si el informe solo cuenta lo mismo con más palabras, no existe: lo que aporte se funde en la página y se retira.
-- **Un hallazgo no es un PASS.** Una auditoría que encuentra el problema ha funcionado, pero el control no está aprobado. La tabla lleva el resultado observado y la gravedad, y una frase aparte dice qué se corrigió y qué solo se recomendó.
-- **Lo no ejecutado se escribe como no ejecutado**, con la razón. No se omite ni se marca como aprobado.
-- **El estado se desglosa** cuando el rótulo del módulo cubre piezas con madurez distinta.
-- **Nada de documentos que aparentan.** Un guion sin comandos, resultado esperado y evidencia no es un runbook: o se convierte en uno, o se retira.
+Responsabilidades: `README.md` (por qué/alcance/estado/enlaces), `runbook.md` (cómo), `evidencias/` (salidas reales fechadas redactadas), `bitacora/` (qué ocurrió).
 
-Definición de hecho de un módulo:
+Contrato mínimo del runbook: prerrequisitos/permisos; variables/nombres; comandos copiables; resultado esperado; evidencia a capturar; prueba negativa/control; limpieza/restauración; coste/tiempo; limitaciones/no ejecutado.
 
-1. Cero enlaces rotos en el repositorio.
-2. El estado coincide en la puerta, la guía de lectura, el índice del repositorio y la web.
-3. No hay tablas ni párrafos duplicados entre la página y el informe, ni informes que solo repitan la página.
-4. No quedan restos de plantilla: etiquetas de registro, emojis ni frases sin resolver.
+Reglas: comando no ejecutado marcado como no ejecutado; cada evidencia con fecha, runbook, entorno, resultado, enlaces; sin secretos/IPs internas/IDs reales/datos personales; despliegue de lab requiere autorización, suscripción de lab, presupuesto, RG temporal, datos sintéticos y plan de limpieza.
 
-### Runbooks y evidencias
+## Bitácoras
 
-Una práctica ejecutable separa cuatro responsabilidades:
+Solo si guarda un hecho no presente en informe/página (decisión, fallo, fecha, limitación). Primera persona, fechas, nombres de paneles, mensajes de error tal cual. Un módulo puede no tener bitácora; si extraña, la puerta lo explica en una frase. No rellenar epígrafes vacíos ni copiar índice de tareas.
 
-- `README.md`: por qué existe, alcance, estado y enlaces.
-- `runbook.md`: cómo ejecutarla paso a paso.
-- `evidencias/`: salidas reales, fechadas y redactadas.
-- `bitacora/`: qué ocurrió, decisiones y aprendizaje.
+## Guía de lectura
 
-Contrato mínimo de un runbook:
+`docs/guia-de-lectura.md` es la puerta pública: rutas, glosario, mapa de módulos, criterios de verificación. Mantenerla alineada al cambiar estado/evidencias/orden/enlaces. No duplicar en web/perfil.
 
-1. Prerrequisitos y permisos.
-2. Variables y nombres de recursos.
-3. Comandos copiables.
-4. Resultado esperado.
-5. Evidencia que se debe capturar.
-6. Prueba negativa o de control.
-7. Limpieza y restauración.
-8. Coste y tiempo estimados.
-9. Limitaciones y lo que no se ha ejecutado.
+## Reglas de calidad
 
-Reglas:
+Bitácoras útiles para lector técnico; sin secretos/IDs reales/datos sensibles/evidencia inventada; distinguir ejecutado vs planificado; mostrar criterio técnico; indicar pendiente/runbook/diseño cuando no haya validación real.
 
-- Un comando no ejecutado se marca como **no ejecutado**; no se inventan salidas.
-- Cada evidencia indica fecha, runbook, entorno, resultado y enlaces; elimina secretos, IPs internas, identificadores reales y datos personales.
-- Un despliegue de laboratorio requiere autorización explícita, suscripción de laboratorio, presupuesto, resource group temporal, datos sintéticos y plan de limpieza. Nunca se ejecuta en producción.
-- Los estados de módulos, web y perfil deben coincidir.
+## Convenciones de commits
 
-### Bitácoras
-
-Una bitácora registra una sesión de trabajo, no un formulario. Se escribe el día que pasa, porque lo que no se anota entonces no se reconstruye después: la decisión tomada, el error que bloqueó media tarde, la comprobación que el entorno no permitía hacer.
-
-Reglas:
-
-- Solo existe si guarda al menos un hecho que no está en el informe ni en la página de la práctica: una decisión, un fallo, una fecha o una limitación del entorno.
-- Si al eliminar la entrada no se pierde ningún hecho, no era una bitácora: no se escribe.
-- Se escribe en primera persona, con fechas, nombres de paneles y mensajes de error tal como aparecieron.
-- Un módulo puede no tener bitácora. Si su ausencia extraña, la puerta lo explica en una frase.
-- No se rellenan epígrafes vacíos ni se copia el índice de tareas del día: eso no es un registro, es una plantilla.
-
-### Guía de lectura
-
-- `docs/guia-de-lectura.md` es la puerta de entrada pública al portfolio: rutas, glosario, mapa de módulos y criterios de verificación.
-- Mantenerla alineada cuando cambie el estado de un módulo, se añada o retire una evidencia, cambie el orden recomendado o se renombren enlaces de entrada.
-- No duplicar la guía en la web ni en el perfil: esos repos solo enlazan a esta fuente única.
-- Al cerrar un cambio que afecte al lector, revisar la sección «Mantenimiento» de la guía y actualizar la fecha de revisión.
-
-### Reglas de calidad
-
-- Las bitácoras deben ser útiles para un lector técnico, no solo genéricas.
-- No deben incluir secretos, identificadores reales, datos sensibles o evidencia inventada.
-- Deben distinguir claramente entre trabajo ejecutado y trabajo planificado.
-- Deben mostrar criterio técnico, no meras anotaciones administrativas.
-- Cuando no haya validación real, debe indicarse explícitamente como pendiente, runbook preparado o trabajo de diseño.
-
-## Convenciones de Commits
-
-Todos los commits de este repositorio (realizados por el usuario o por asistentes de IA como GitHub Copilot, Google Antigravity, Claude, etc.) deben seguir estrictamente el estándar **Conventional Commits**:
-
-- Formato: `type(scope): imperative summary in English`.
-- **Ámbitos (`scope`) permitidos:**
-  - Código o nombre del módulo: `01-azure`, `02-identity`, `03-audits`, `04-defender`, `05-defender-suite`, `06-identity-protection`, `07-devsecops`, `08-network`, `09-sentinel`, `10-elk`, `11-api-offensive`, `12-forensics`, `compliance`.
-  - Laboratorio final, runbooks y plantillas: `lab`.
-  - Ámbito general del repositorio: `repo`.
-- **Tipos permitidos:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`.
-- El asunto debe ser imperativo, conciso y redactado en inglés.
-- Ejemplos:
-  - `docs(07-devsecops): document branch protection and PR review rules`
-  - `docs(01-azure): explain JWT validation and JWKS discovery`
-  - `docs(repo): update architecture and defense in depth model`
+Formato: `type(scope): imperative summary in English`. Tipos: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`. Scopes: código/módulo (`01-azure`, `02-identity`, …, `compliance`), `lab`, `repo`. Asunto imperativo, conciso, en inglés. Commit/push requieren autorización explícita por lote.
