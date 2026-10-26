@@ -169,7 +169,7 @@ La secuencia que el caso pide, en orden:
 
 **Decisión:** el caso **se repite**, pero no para practicar la respuesta aprendida. Se repite para comprobar si el criterio se ha interiorizado y si el playbook corregido aguanta un escenario distinto.
 
-**Cuándo.** No antes de cerrar T5 (App Service desplegado y con diagnóstico). Dos razones: deja pasar el tiempo suficiente para no medir memoria a corto plazo, y permite que la segunda pasada incluya **telemetría real** en vez de inyecciones. La fecha la fija el puntero de `plan-de-sesiones.md`, no esta acta.
+**Cuándo.** No antes de cerrar T5 (App Service desplegado y con diagnóstico). Dos razones: deja pasar el tiempo suficiente para no medir memoria a corto plazo, y permite que la segunda pasada incluya **telemetría real** en vez de inyecciones. La fecha la fija el plan de trabajo interno, no esta acta.
 
 **Protocolo ciego (el facilitador lo hace cumplir):**
 
