@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="600" viewBox="0 0 720 600" role="img" aria-labelledby="titulo descripcion">
+  <title id="titulo">Defensa en profundidad: capas y módulos del portfolio</title>
+  <desc id="descripcion">Cinco capas, de detección y respuesta en la parte superior a arquitectura y AppSec en la base. Una banda transversal cubre la validación ofensiva y el forense.</desc>
+
+  <style>
+    .card { fill: #ffffff; stroke: #d8dee4; stroke-width: 1.2; }
+    .pill { fill: #f6f8fa; stroke: #d0d7de; stroke-width: 1.2; }
+    .chip { fill: #0969da; }
+    .chip-num { fill: #ffffff; font-size: 15px; font-weight: 700; }
+    .title { fill: #1f2328; font-size: 15.5px; font-weight: 600; }
+    .modules { fill: #57606a; font-size: 12px; }
+    .pill-text { fill: #1f2328; font-size: 13.5px; font-weight: 600; }
+    .edge { stroke: #8c959f; stroke-width: 1.6; fill: none; }
+    .arrowhead { fill: #8c959f; }
+    .band { fill: none; stroke: #8c959f; stroke-width: 1.2; stroke-dasharray: 5 4; }
+    .band-text { fill: #57606a; font-size: 12px; font-weight: 600; letter-spacing: 0.4px; }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+
+    @media (prefers-color-scheme: dark) {
+      .card { fill: #161b22; stroke: #30363d; }
+      .pill { fill: #161b22; stroke: #30363d; }
+      .chip { fill: #1f6feb; }
+      .title { fill: #e6edf3; }
+      .modules { fill: #8b949e; }
+      .pill-text { fill: #e6edf3; }
+      .edge { stroke: #6e7681; }
+      .arrowhead { fill: #6e7681; }
+      .band { stroke: #6e7681; }
+      .band-text { fill: #8b949e; }
+    }
+  </style>
+
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="arrowhead" d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  </defs>
+
+  <!-- Entrada -->
+  <rect class="pill" x="290" y="8" width="236" height="40" rx="20" />
+  <text class="pill-text" x="408" y="28" text-anchor="middle" dominant-baseline="central">Tráfico externo / clientes</text>
+
+  <path class="edge" d="M 408 48 L 408 84" marker-end="url(#flecha)" />
+
+  <!-- Banda transversal -->
+  <rect class="band" x="52" y="88" width="42" height="500" rx="12" />
+  <text class="band-text" x="73" y="338" text-anchor="middle" dominant-baseline="central" transform="rotate(-90 73 338)">Transversal · 11 Validación ofensiva · 12 Forense y respuesta</text>
+
+  <!-- Capa 5 -->
+  <rect class="card" x="112" y="88" width="592" height="84" rx="12" />
+  <rect class="chip" x="130" y="113" width="34" height="34" rx="9" />
+  <text class="chip-num" x="147" y="130" text-anchor="middle" dominant-baseline="central">5</text>
+  <text class="title" x="184" y="119" dominant-baseline="central">Capa 5 · Detección, SOC y analítica</text>
+  <text class="modules" x="184" y="141" dominant-baseline="central">09 Microsoft Sentinel · 10 ELK Stack Security · 12 Forense cloud y respuesta</text>
+
+  <path class="edge" d="M 408 172 L 408 192" marker-end="url(#flecha)" />
+
+  <!-- Capa 4 -->
+  <rect class="card" x="112" y="192" width="592" height="84" rx="12" />
+  <rect class="chip" x="130" y="217" width="34" height="34" rx="9" />
+  <text class="chip-num" x="147" y="234" text-anchor="middle" dominant-baseline="central">4</text>
+  <text class="title" x="184" y="223" dominant-baseline="central">Capa 4 · Red y postura cloud</text>
+  <text class="modules" x="184" y="245" dominant-baseline="central">03 Cloud Audits · 04 Defender for Cloud · 05 Defender Suite · 08 Seguridad de red</text>
+
+  <path class="edge" d="M 408 276 L 408 296" marker-end="url(#flecha)" />
+
+  <!-- Capa 3 -->
+  <rect class="card" x="112" y="296" width="592" height="84" rx="12" />
+  <rect class="chip" x="130" y="321" width="34" height="34" rx="9" />
+  <text class="chip-num" x="147" y="338" text-anchor="middle" dominant-baseline="central">3</text>
+  <text class="title" x="184" y="327" dominant-baseline="central">Capa 3 · Identidad y Zero Trust</text>
+  <text class="modules" x="184" y="349" dominant-baseline="central">01 OAuth 2.0, PKCE y JWT · 02 Identity Security · 06 Acceso privilegiado</text>
+
+  <path class="edge" d="M 408 380 L 408 400" marker-end="url(#flecha)" />
+
+  <!-- Capa 2 -->
+  <rect class="card" x="112" y="400" width="592" height="84" rx="12" />
+  <rect class="chip" x="130" y="425" width="34" height="34" rx="9" />
+  <text class="chip-num" x="147" y="442" text-anchor="middle" dominant-baseline="central">2</text>
+  <text class="title" x="184" y="431" dominant-baseline="central">Capa 2 · Desarrollo seguro</text>
+  <text class="modules" x="184" y="453" dominant-baseline="central">07 DevSecOps y gobernanza: pipeline, SAST, SCA, contenedor e IaC</text>
+
+  <path class="edge" d="M 408 484 L 408 504" marker-end="url(#flecha)" />
+
+  <!-- Capa 1 -->
+  <rect class="card" x="112" y="504" width="592" height="84" rx="12" />
+  <rect class="chip" x="130" y="529" width="34" height="34" rx="9" />
+  <text class="chip-num" x="147" y="546" text-anchor="middle" dominant-baseline="central">1</text>
+  <text class="title" x="184" y="535" dominant-baseline="central">Capa 1 · Arquitectura y AppSec</text>
+  <text class="modules" x="184" y="557" dominant-baseline="central">EcommerceApi .NET · 11 Hacking ético de APIs</text>
+</svg>
