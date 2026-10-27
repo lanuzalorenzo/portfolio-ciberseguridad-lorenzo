@@ -12,14 +12,14 @@ La carga de trabajo es **EcommerceApi** (Web API .NET 10 con OAuth 2.0/PKCE, DTO
 
 ```mermaid
 graph TD
-    A[TRÁFICO EXTERNO / CLIENTES] --> B[CAPA 5: DETECCIÓN, SOC Y ANALÍTICA<br/>09 Sentinel · 10 ELK · 12 Respuesta]
-    B --> C[CAPA 4: RED Y POSTURA CLOUD<br/>03 Audits · 04 Defender Cloud · 05 Defender Suite · 08 Red]
-    C --> D[CAPA 3: IDENTIDAD Y GOBERNANZA ZERO TRUST<br/>01 OAuth/PKCE/JWT · 02 Identity · 06 Acceso Privilegiado]
-    D --> E[CAPA 2: DESARROLLO SEGURO / DEVSECOPS<br/>07 Pipeline, SAST, SCA, contenedor, IaC]
-    E --> F[CAPA 1: ARQUITECTURA Y APPSEC<br/>API .NET · 11 Validación ofensiva]
+    A["TRÁFICO EXTERNO / CLIENTES"] --> B["CAPA 5: DETECCIÓN, SOC Y ANALÍTICA<br/>09 Sentinel · 10 ELK · 12 Respuesta"]
+    B --> C["CAPA 4: RED Y POSTURA CLOUD<br/>03 Audits · 04 Defender Cloud · 05 Defender Suite · 08 Red"]
+    C --> D["CAPA 3: IDENTIDAD Y GOBERNANZA ZERO TRUST<br/>01 OAuth/PKCE/JWT · 02 Identity · 06 Acceso Privilegiado"]
+    D --> E["CAPA 2: DESARROLLO SEGURO / DEVSECOPS<br/>07 Pipeline, SAST, SCA, contenedor, IaC"]
+    E --> F["CAPA 1: ARQUITECTURA Y APPSEC<br/>API .NET · 11 Validación ofensiva"]
+    G["CAPA TRANSVERSAL: Validación ofensiva (11) y Forense (12)"]
     classDef trans fill:#f9f,stroke:#333;
     class G trans;
-    G[CAPA TRANSVERSAL: Validación ofensiva (11) y Forense (12)]
 ```
 
 ---
