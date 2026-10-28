@@ -4,7 +4,7 @@ Un único SVG, `portfolio.svg`, usado en la cabecera del README y como icono de 
 
 - Glifo: `map-marker-path` (ruta con destino).
 
-Sigue la [identidad visual del workspace](https://github.com/lanuzalorenzo/lanuzalorenzo.github.io/blob/main/docs/identidad-visual.md): 64×64, `rx=16`, fondo navy con degradado y glifo blanco relleno. Sin etiqueta ni color por repositorio: la distinción va en el glifo.
+Formato: 64×64, `rx=16`, fondo navy con degradado (`#07131e` → `#0e2a47`) y glifo blanco relleno (`#f8fafc`). Sin etiqueta ni color por repositorio: la distinción va en el glifo.
 
 ## Origen y licencia
 
