@@ -1,3 +1,5 @@
+<img src="assets/iconos/portfolio.svg" width="64" alt="Icono del portfolio de ciberseguridad">
+
 # Lorenzo Lanuza | Portfolio de Ciberseguridad, DevSecOps y Arquitectura
 
 Este portfolio aplica **Security by Design, DevSecOps, Cloud Security y respuesta a incidentes** a una carga de trabajo empresarial: una API .NET protegida con Microsoft Entra ID. El hilo conductor es un modelo de **Defensa en Profundidad** con evidencia y estado de validación en cada capa. Cada módulo responde a la misma pregunta: *¿qué control protege qué y cómo se demuestra?*
