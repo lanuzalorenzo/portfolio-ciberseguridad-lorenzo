@@ -47,7 +47,7 @@ La carga de trabajo es **EcommerceApi** (Web API .NET 10 con OAuth 2.0/PKCE, DTO
 
 ## Laboratorio final
 
-[Arquitectura](laboratorio-final/arquitectura.md) · [Plan de ejecución](laboratorio-final/plan-ejecucion.md) · [Índice de evidencias](laboratorio-final/evidencias/README.md).
+[Arquitectura](laboratorio-final/arquitectura.md) · [Plan de ejecución](laboratorio-final/plan-ejecucion.md) · [Herramientas](laboratorio-final/herramientas.md) · [Índice de evidencias](laboratorio-final/evidencias/README.md).
 
 > Tres evidencias de ejecución (ELK, BOLA/BFLA, tabletop forense) y cuatro documentales (02, 03, 04, 07). Fases Azure pendientes de autorización, presupuesto y resource group temporal; **no hay recursos Azure desplegados**.
 

@@ -10,6 +10,7 @@ Se practica cerradura a cerradura: primero en local y sin coste; después, Azure
 
 - [Arquitectura de referencia](arquitectura.md): capas, flujos, límites de confianza y orden de activación.
 - [Plan de ejecución](plan-ejecucion.md): fases, gates, costes y limpieza.
+- [Herramientas](herramientas.md): qué se usa en cada caso, por qué y qué alternativas se descartaron.
 - [Índice de evidencias](evidencias/README.md): qué se ejecutó, cuándo y dónde está la prueba.
 - [Plantilla de runbook](../plantillas/runbook-template.md) y [de evidencia](../plantillas/evidencia-template.md).
 

@@ -4,7 +4,7 @@
 >
 > **Qué vas a encontrar:** el orden recomendado, un glosario mínimo y un mapa de los doce módulos. La guía no sustituye a la documentación de cada módulo: la ordena.
 >
-> **Última revisión:** 2026-10-23. Ver [mantenimiento](#10-mantenimiento).
+> **Última revisión:** 2026-10-29. Ver [mantenimiento](#10-mantenimiento).
 
 ## 1. La idea en cinco líneas
 
@@ -98,7 +98,8 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 2. Índice de evidencias.
 3. Evidencia local de BOLA/BFLA y módulo 11.
 4. Módulo 07: pipeline y controles de supply chain.
-5. Repositorio de la API: tests, CI y Bicep.
+5. [Herramientas del laboratorio](../laboratorio-final/herramientas.md): qué se usa, por qué y qué se descartó.
+6. Repositorio de la API: tests, CI y Bicep.
 
 **Al terminar:** sabrás qué se ha ejecutado, qué se ha documentado y qué queda pendiente, sin leer los doce módulos.
 
@@ -150,7 +151,7 @@ Si puedes responderlas sin mirar, ya tienes el hilo. Si no, vuelve a la Ruta 1.
 
 ## 10. Mantenimiento
 
-- **Última revisión:** 2026-10-23.
+- **Última revisión:** 2026-10-29.
 - **Actualizar cuando:** cambie el estado de un módulo, se añada o retire una evidencia, cambie la estructura de módulos o enlaces, o se añada una ruta de lectura.
 - **No actualizar por:** cambios internos que no afecten a lo que el lector necesita para orientarse.
 - **Fuente única:** esta guía es la referencia; la web y el perfil resumen y enlazan.
