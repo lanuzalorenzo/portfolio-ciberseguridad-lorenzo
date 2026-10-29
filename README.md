@@ -79,7 +79,7 @@ La carga de trabajo es **EcommerceApi** (Web API .NET 10 con OAuth 2.0/PKCE, DTO
 
 ## Contacto y licencia
 
-**Autor:** Lorenzo Lanuza Arellano — *Software Architect \| .NET, DevSecOps & Cloud Security*  
+**Autor:** Lorenzo Lanuza Arellano — *Software Engineer & Architect \| .NET, DevSecOps & Cloud Security*  
 **LinkedIn:** [linkedin.com/in/lanuzalorenzo](https://www.linkedin.com/in/lanuzalorenzo) · **GitHub:** [github.com/lanuzalorenzo](https://github.com/lanuzalorenzo) · **Email:** [lanuzalorenzo@gmail.com](mailto:lanuzalorenzo@gmail.com)
 
 Material técnico y formativo. No acredita configuraciones de producción ni certificaciones. Distribuido bajo licencia [MIT](LICENSE).
