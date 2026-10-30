@@ -17,6 +17,17 @@ Los controles se aplican sobre [EcommerceApi (lab-api-local-azure)](https://gith
 | 03 | [SAST, SCA e IaC](practicas/03-sast-sca-iac/README.md) | Que código, dependencias e infraestructura pasen el análisis | **Validado** |
 | 04 | [Pipeline segura](practicas/04-pipeline-security/README.md) | Que cada job tenga el permiso mínimo y los gates bloqueen | **Parcial** |
 
+## Lo que la pipeline no detecta
+
+Los gates cubren lo mecánico: secretos, vulnerabilidades, infraestructura, formato y pruebas. Un mal diseño no deja firma en ningún escaneo y pasa en verde igual. Estos criterios se revisan a mano en cada cambio:
+
+- **Instancias estáticas con estado.** Las dependencias salen del contenedor en `Program.cs`; `TimeProvider` y la factoría de conexiones son singleton porque no guardan estado. Una instancia estática mutable rompería el aislamiento de las pruebas y ningún escaneo la señalaría.
+- **Acoplamiento entre capas.** Aquí sí hay gate: `LayerDependencyTests` rompe la compilación si una capa referencia la que no debe.
+- **Código que no se puede probar.** Las pruebas arrancan la API real con `WebApplicationFactory`, una base SQLite temporal y un esquema de autenticación de prueba. Si un caso exigiera un servicio externo vivo, el problema está en el diseño, no en la prueba.
+- **Optimización prematura y duplicación.** CQRS ligero y outbox entraron con ADR y motivo escrito; sin medición que lo justifique, no entra. `dotnet format` vigila el estilo, no la claridad del código ni la duplicación.
+
+Nada de esto es un control validado: son criterios de revisión de pull request. El estado **Validado en CI** del módulo se apoya en los gates, no en estas comprobaciones.
+
 ## Lo que no está
 
 El propietario administrador puede saltarse la protección de rama, y la regla no lo impide: harían falta `enforce_admins` y una cuenta de servicio para las automatizaciones. La autenticación OIDC con Azure está diseñada pero no activa, no hay workflow de despliegue y la pipeline no firma artefactos ni genera SBOM. Son las tres deudas del módulo, escritas como tales.
