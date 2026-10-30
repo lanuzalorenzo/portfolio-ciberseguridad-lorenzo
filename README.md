@@ -71,7 +71,7 @@ La carga de trabajo es **EcommerceApi** (Web API .NET 10 con OAuth 2.0/PKCE, DTO
 |---|---|
 | **Portfolio** | Documentación, prácticas y narrativa (este repo) |
 | **API de referencia** | Código .NET, tests, CI y Bicep → [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure) |
-| **IA local** | Modelos locales, agentes y seguridad de prompts → [`ai-agent-local-lab`](https://github.com/lanuzalorenzo/ai-agent-local-lab) |
+| **Aprendizaje en IA** | Modelos locales, clientes de desarrollo y seguridad de prompts → [`lab-ia-aprendizaje`](https://github.com/lanuzalorenzo/lab-ia-aprendizaje) |
 | **Perfil** | Trayectoria y stack → [`lanuzalorenzo`](https://github.com/lanuzalorenzo) |
 | **Web** | Portfolio visual y contacto → [`lanuzalorenzo.github.io`](https://lanuzalorenzo.github.io) |
 

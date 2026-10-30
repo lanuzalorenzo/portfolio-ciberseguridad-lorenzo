@@ -34,7 +34,7 @@ Se practica cerradura a cerradura: primero en local y sin coste; después, Azure
 |---|---|
 | `portfolio-ciberseguridad-lorenzo` | Arquitectura, runbooks, plantillas, evidencias y narrativa. |
 | `lab-api-local-azure` | Código, tests, Dockerfile, CI e IaC del workload. |
-| `ai-agent-local-lab` | Laboratorio de IA independiente; no forma parte del laboratorio de seguridad. |
+| `lab-ia-aprendizaje` | Laboratorio de IA independiente; no forma parte del laboratorio de seguridad. |
 
 ## Reglas
 
