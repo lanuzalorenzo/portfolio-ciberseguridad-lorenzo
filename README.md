@@ -2,7 +2,7 @@
 
 # Lorenzo Lanuza | Portfolio de Ciberseguridad, DevSecOps y Arquitectura
 
-Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen falta puertas, rejas, alarma y alguien que sepa qué hacer si suena. Este portfolio recorre esa defensa por capas —**Defensa en Profundidad**— sobre una misma carga de trabajo, una API .NET protegida con Microsoft Entra ID, y en cada capa separa lo probado de lo solo diseñado. Cada módulo responde a la misma pregunta: *¿qué control protege qué y cómo se demuestra?*
+Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen falta puertas, rejas, alarma y alguien que sepa qué hacer si suena. Este portfolio aplica Security by Design, DevSecOps, Cloud Security y respuesta a incidentes sobre una misma carga de trabajo, una API .NET protegida con Microsoft Entra ID, y recorre la **Defensa en Profundidad** capa a capa, separando lo probado de lo solo diseñado. Cada módulo responde a la misma pregunta: *¿qué control protege qué y cómo se demuestra?*
 
 > Este repositorio describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica su estado: **Validado**, **Parcial**, **Runbook preparado**, **Diseño** o **Pendiente**. No se incluyen secretos, identificadores reales ni datos personales.
 
