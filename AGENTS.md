@@ -21,7 +21,7 @@ Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trab
 - Conserva la organización y sigue el patrón del módulo cercano. No crees carpetas vacías, documentos de relleno ni reestructuraciones por uniformidad.
 - No abras módulos nuevos hasta consolidar los existentes.
 - Mantén el estado coherente entre la puerta del módulo, la guía de lectura, el índice y la web/perfil.
-- Definición de hecho: 0 enlaces rotos; estado coherente; sin duplicados página-informe; sin restos de plantilla.
+- Definición de hecho: 0 enlaces rotos; estado coherente; sin duplicados página-informe; sin restos de plantilla; los tres checks del pipeline en verde (secretos, enlaces y laboratorio PKCE).
 
 ## Estructura y formatos
 
