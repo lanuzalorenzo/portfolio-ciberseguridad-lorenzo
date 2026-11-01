@@ -1,6 +1,6 @@
 # Informe técnico — Forense cloud y KQL
 
-Documento de apoyo del módulo 12. Recoge el modelo de evidencia, las consultas, la cadena de custodia y las limitaciones. **No contiene resultados de ejecución**: las consultas no se han lanzado contra un workspace con datos.
+Reconstruir un incidente en la nube es como ordenar las cámaras de un edificio después de un robo: cada una ve una parte y solo alineadas por la hora cuentan la misma historia. Este documento reúne las fuentes que dejan rastro en Azure (accesos, cambios de permisos, lecturas de secretos), las consultas KQL (el lenguaje con el que se interrogan esos registros) y la cadena de custodia (el registro de quién tocó cada prueba). **No contiene resultados de ejecución**: las consultas no se han lanzado contra un workspace con datos.
 
 ## 1. Modelo de evidencia
 

@@ -6,9 +6,11 @@
 >
 > **Objetivo de la sesión:** comprobar que la API no devuelve pedidos de otro usuario y que un usuario estándar no alcanza funciones administrativas.
 
+> Este runbook comprueba que un cliente no puede leer el pedido de otro cambiando un número en la dirección, y que no hay una puerta administrativa abierta al pasar. Es como probar las habitaciones de un hotel con la llave de la tuya: la de al lado debe negarse, y el mostrador no debe abrir a cualquiera. La prueba se ejecuta en local, contra el código, sin Azure ni datos reales.
+
 ## 1. Objetivo
 
-Validar el control de autorización a nivel de objeto (BOLA/IDOR) y de función (BFLA) en los endpoints de pedidos. Se considera éxito que:
+Validar el control de autorización a nivel de objeto (BOLA/IDOR: pedir el recurso de otro cambiando su identificador) y de función (BFLA: alcanzar acciones que no te corresponden) en los endpoints de pedidos. Se considera éxito que:
 
 - Un usuario B reciba `404` al solicitar un pedido de A.
 - El listado de B no incluya pedidos de A.
@@ -54,7 +56,7 @@ Cliente de prueba B ──X-Test-User: other-*──┘                         
                                                                                 └── filtra por UserId del claim
 ```
 
-- `TestAuthHandler` sustituye a Entra ID y emite los claims de identidad.
+- `TestAuthHandler` sustituye a Entra ID y emite los claims de identidad (los datos que identifican al usuario dentro del token).
 - `OrdersController` resuelve el propietario desde el claim y devuelve `404` cuando el pedido no pertenece al usuario.
 - `Order.UserId` no se serializa (`[JsonIgnore]`), por lo que el cliente no puede fijar el propietario.
 

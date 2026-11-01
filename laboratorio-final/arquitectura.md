@@ -2,6 +2,8 @@
 
 > **Estado:** **Diseño cloud; validación local parcial.** La topología no se ha desplegado. El módulo 08 tiene IaC validada estáticamente; el workload y ELK tienen validación local en CI o laboratorio, y el tabletop forense tiene acta.
 
+Este documento es el plano de la casa: qué piezas hay, qué confianza merece cada una y en qué orden se encienden. La capa local ya está probada; las de Azure están diseñadas y se validarán una a una, con evidencia y coste declarados.
+
 ## Vista de capas
 
 ```mermaid

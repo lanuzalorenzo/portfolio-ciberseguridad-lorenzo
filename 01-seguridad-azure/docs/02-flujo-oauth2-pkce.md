@@ -2,8 +2,10 @@
 
 **Proyecto:** Módulo 01 — OAuth 2.0, PKCE y validación de JWT.
 
+Pedir un token con PKCE es como facturar una maleta: en el mostrador se entrega una etiqueta con un número (el `code_challenge`, que es público) y el resguardo se queda en el bolsillo. Para recoger la maleta hay que presentar ese resguardo, y quien solo haya visto la etiqueta no puede suplantarte. Este informe explica ese intercambio en Entra ID, dónde se guarda cada pieza y qué no protege.
+
 ## Objetivo
-Documentar la implementación técnica del flujo OAuth2 Authorization Code con PKCE frente a Microsoft Entra ID (Azure AD), detallando las configuraciones necesarias en el portal, las particularidades del proveedor y la resolución de problemas frecuentes.
+Documentar la implementación técnica del flujo OAuth2 Authorization Code con PKCE (un mecanismo que ata el código de autorización a quien lo pidió) frente a Microsoft Entra ID (Azure AD), detallando las configuraciones necesarias en el portal, las particularidades del proveedor y la resolución de problemas frecuentes.
 
 ## Funcionamiento del flujo con PKCE
 
@@ -51,7 +53,7 @@ No existe un almacén invulnerable. El objetivo es reducir la exposición y la v
 
 | Cliente | Almacenamiento habitual | Riesgo principal |
 |---|---|---|
-| SPA con redirect | `sessionStorage` de la pestaña | XSS; se borra al cerrar la pestaña |
+| SPA con redirect | `sessionStorage` de la pestaña | XSS (un script ajeno inyectado en la página); se borra al cerrar la pestaña |
 | SPA con popup | Memoria | XSS; se pierde al recargar |
 | App móvil | Keychain (iOS) / Keystore (Android) | Malware o dispositivo rooteado |
 | App de escritorio | Almacén del sistema o memoria | Proceso comprometido |
@@ -75,8 +77,8 @@ PKCE protege el canje del código, no el token ya emitido ni un cliente comprome
 | Malware o dispositivo comprometido | No | Almacén seguro y EDR |
 | MITM sin TLS | No | TLS y HSTS |
 | Robo del access token ya emitido | No | DPoP/mTLS |
-| CSRF en la redirección | No | `state` |
-| Replay del ID token | No | `nonce` |
+| CSRF en la redirección | No | `state` (un valor que confirma que la respuesta corresponde a tu petición) |
+| Replay del ID token | No | `nonce` (un valor de un solo uso que impide reutilizar el token) |
 
 Si un atacante puede leer el POST a Entra, también puede leer el token en el cliente. PKCE reduce la superficie de un ataque remoto de interceptación; no convierte un dispositivo comprometido en seguro.
 
@@ -103,7 +105,7 @@ Revocar sesiones en Entra invalida el refresh token y la cookie de autenticació
 
 Para que el flujo funcione correctamente, la aplicación debe estar configurada de manera precisa en Entra ID:
 
-- **Plataforma del cliente:** Debe registrarse como aplicación de tipo *Single-page application (SPA)* o *Mobile and desktop applications* (Public Client). Esto habilita implícitamente el soporte para PKCE sin requerir un Client Secret.
+- **Plataforma del cliente:** Debe registrarse como aplicación de tipo *Single-page application (SPA)* o *Mobile and desktop applications* (Public Client: una aplicación que no puede guardar secretos, como una web o un móvil). Esto habilita implícitamente el soporte para PKCE sin requerir un Client Secret.
 - **Exposición de la API:** En la sección *Expose an API*, se configura el Application ID URI (habitualmente `api://<client-id>`) y se define un scope personalizado, típicamente `access_as_user`, para permitir la delegación de identidad.
 - **Configuración de Scopes en el cliente:** Durante el *Authorization Request*, el cliente debe solicitar explícitamente este scope configurado (ej. `api://<api-client-id>/access_as_user`).
 

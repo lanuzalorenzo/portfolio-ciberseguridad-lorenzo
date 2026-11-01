@@ -8,7 +8,7 @@
 >
 > **Ruta manual:** este runbook está pensado para seguirlo sin asistente. Cada paso indica qué abrir, qué escribir y qué debe aparecer. Si algo no coincide, no continúes: revisa el punto de control.
 
-> Con los registros ya cargados, este documento enseña a mirarlos, hacer seis preguntas y guardar las respuestas en un panel. Es la parte de mirar, no la de recoger.
+> Con los registros ya cargados, este documento enseña a mirarlos, hacer seis preguntas y guardar las respuestas en un panel. Es como tener las grabaciones de una semana y aprender a encontrar en ellas las tres horas que importan: primero se ordenan por hora, luego se pregunta quién falló, desde dónde y a qué hora. Es la parte de mirar, no la de recoger.
 
 ## 1. Prerrequisitos
 
@@ -52,6 +52,8 @@ curl -fsS 'http://localhost:9200/_cat/indices/lab-security-*?v&h=index,docs.coun
 
 ## 3. Crear la vista de datos
 
+Una vista de datos es la forma de decirle a Kibana qué índices debe mirar y cómo tratarlos como una sola fuente.
+
 1. Abre el navegador en <http://localhost:5601>.
 2. Espera a que Kibana cargue. Si aparece una pantalla de bienvenida, pulsa **Explore on my own**.
 3. **Menú:** abre el menú lateral (icono de hamburguesa) → **Stack Management**.
@@ -86,7 +88,7 @@ Los eventos son de `2026-10-20` entre `09:00:00Z` y `09:06:00Z`. Kibana los mues
 
 ## 5. Consultas de detección en Discover
 
-En **Discover**, con la vista `Lab Security` y el rango temporal aplicado, escribe cada consulta en la barra de búsqueda (KQL) y pulsa **Refresh** o `Enter`.
+En **Discover**, con la vista `Lab Security` y el rango temporal aplicado, escribe cada consulta en la barra de búsqueda (KQL, el lenguaje de búsqueda de Kibana) y pulsa **Refresh** o `Enter`.
 
 | Consulta KQL | Hits esperados | Qué demuestra |
 |---|---|---|
@@ -123,7 +125,7 @@ curl -fsS -H 'Content-Type: application/json' \
 
 ## 6. Construir el dashboard
 
-El dashboard se construye con cinco visualizaciones. Para cada una:
+El dashboard (el panel que reúne varios gráficos en una sola pantalla) se construye con cinco visualizaciones. Para cada una:
 
 1. **Menú:** **Visualize Library** (o **Visualize**) → **Create visualization**.
 2. Elige **Lens** si Kibana pregunta por el tipo.
@@ -260,7 +262,7 @@ curl -fsS -X POST 'http://localhost:5601/api/saved_objects/_export' \
   -o ../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/artefactos/kibana-saved-objects.ndjson
 ```
 
-**Debe aparecer:** un archivo NDJSON con el dashboard y sus referencias.
+**Debe aparecer:** un archivo NDJSON (un objeto JSON por línea) con el dashboard y sus referencias.
 
 > La ruta de evidencia usa la fecha de ejecución `2026-10-19`. Si repites el laboratorio otro día, cambia la carpeta por la fecha correspondiente.
 
