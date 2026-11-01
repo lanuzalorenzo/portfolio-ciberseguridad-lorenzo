@@ -4,7 +4,7 @@
 >
 > **Evidencia:** [2026-10-19-10-elk-ingesta](../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).
 >
-> Laboratorio local para practicar ingesta, normalización y detección con Elasticsearch, Logstash y Kibana sobre logs sintéticos.
+> Laboratorio local para practicar la búsqueda de agujas en un pajar: se generan registros falsos, se ordenan y se aprende a encontrar la señal. Aquí se monta con Elasticsearch, Logstash y Kibana, sin Azure ni datos reales.
 
 ## Arquitectura
 
