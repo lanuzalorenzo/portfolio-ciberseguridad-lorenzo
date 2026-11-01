@@ -10,6 +10,7 @@ Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trab
 - Estados: **Validado**, **Parcial**, **Runbook preparado**, **Diseño**, **Pendiente**. Un diseño o runbook sin ejecutar no es validación.
 - Distingue ejecutado, observado, recomendado y planificado. No inventes evidencias; un hallazgo no es un PASS.
 - Sin secretos, datos personales, IPs internas ni identificadores reales. Explica con una analogía antes del detalle técnico.
+- **Apertura llana:** el documento de más de 80 líneas abre con dos o tres frases que se entiendan sin ser del oficio —qué problema resuelve, con una comparación cotidiana— y después entra en el detalle. La analogía abre la puerta, no sustituye el rigor: si el lector técnico solo leyera ese párrafo, no debe salir con una idea falsa. Sin rótulos del tipo «En fácil» ni «Resumen».
 
 ## Reglas de trabajo
 
