@@ -3,7 +3,7 @@
 > [!NOTE]
 > El código al que se hace referencia está externalizado en `lab-api-local-azure`.
 
-**Objetivo:** Configurar la API .NET para que exija un JWT válido emitido por nuestro tenant de Entra ID.
+**Objetivo:** Configurar la API .NET para que exija un JWT válido emitido por el tenant de Entra ID del laboratorio.
 
 Hoy la sesión ha sido intensa. Empecé configurando el pipeline de .NET (`Program.cs`) para inyectar `UseAuthentication()` y configurar el esquema JWT Bearer. Añadí las credenciales base en `appsettings.json` (`TenantId`, `ClientId`, `Audience` y `Authority`).
 
