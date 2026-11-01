@@ -13,7 +13,7 @@ Los controles se aplican sobre [EcommerceApi (lab-api-local-azure)](https://gith
 | # | Práctica | Qué controla | Estado |
 |---|---|---|---|
 | 01 | [Protección de ramas](practicas/01-proteccion-ramas/README.md) | Que ningún cambio entre sin revisión | **Validado** |
-| 02 | [Detección de secretos](practicas/02-secret-scanning/README.md) | Que una credencial no se quede en el historial | **Validado** |
+| 02 | [Detección de secretos](practicas/02-secret-scanning/README.md) | Que una credencial no salga de la máquina ni se quede en el historial | **Validado** |
 | 03 | [SAST, SCA e IaC](practicas/03-sast-sca-iac/README.md) | Que código, dependencias e infraestructura pasen el análisis | **Validado** |
 | 04 | [Pipeline segura](practicas/04-pipeline-security/README.md) | Que cada job tenga el permiso mínimo y los gates bloqueen | **Parcial** |
 
