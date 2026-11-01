@@ -11,6 +11,9 @@ Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trab
 - Distingue ejecutado, observado, recomendado y planificado. No inventes evidencias; un hallazgo no es un PASS.
 - Sin secretos, datos personales, IPs internas ni identificadores reales. Explica con una analogía antes del detalle técnico.
 - **Apertura llana:** el documento de más de 80 líneas abre con dos o tres frases que se entiendan sin ser del oficio —qué problema resuelve, con una comparación cotidiana— y después entra en el detalle. La analogía abre la puerta, no sustituye el rigor: si el lector técnico solo leyera ese párrafo, no debe salir con una idea falsa. Sin rótulos del tipo «En fácil» ni «Resumen».
+- **Jerga en su primera aparición:** el término se conserva y se aclara entre paréntesis en una frase. Si no cabe, no se aclara a medias: se añade al glosario de `docs/guia-de-lectura.md`, que es el único.
+- **La claridad no cambia lo que se afirma:** estados, cifras, comandos, tablas y evidencias se conservan; lo que suena seguro y no está probado se marca **Parcial** o **Pendiente**, no se reescribe para que suene mejor.
+- **Se reescribe en tandas de cinco documentos**, con visto bueno antes de commitear, y no se tocan bloques de código, comandos ni tablas de datos.
 
 ## Reglas de trabajo
 

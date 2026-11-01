@@ -60,6 +60,18 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 | **IaC** | Infraestructura como código: la red y los recursos se declaran en Bicep u otra plantilla. |
 | **SAST / SCA** | Análisis estático del código / análisis de dependencias y vulnerabilidades. |
 | **BOLA / BFLA** | Fallos de autorización a nivel de objeto / de función: acceder a lo ajeno o a una operación privilegiada. |
+| **IDOR** | Acceder a un objeto ajeno cambiando su identificador; en APIs se llama BOLA. |
+| **APIM (API Management)** | Puerta de entrada gestionada para APIs: cuotas, claves, políticas y registro. |
+| **Outbox** | Bandeja donde el aviso se guarda en la misma transacción que el dato, para no perderlo. |
+| **Idempotencia** | Propiedad por la que repetir la misma operación no duplica su efecto. |
+| **DLQ (*dead-letter queue*)** | Cola donde se apartan los mensajes que no se han podido procesar tras los reintentos. |
+| **Claims** | Datos que viajan dentro del token: quién, para qué y hasta cuándo. |
+| **JWKS** | Juego de claves públicas con el que se comprueba la firma de un token. |
+| **STRIDE** | Seis familias de amenaza: suplantación, manipulación, repudio, fuga, denegación y elevación. |
+| **DPoP / mTLS** | Formas de atar el token a un cliente concreto: clave por petición o certificado mutuo. |
+| **Cold start** | Arranque en frío: latencia extra cuando una función lleva tiempo sin ejecutarse. |
+| **Flex Consumption** | Plan de Azure Functions que escala a cero y permite red privada. |
+| **p95** | Valor por debajo del cual cae el 95 % de las mediciones; mide la cola lenta, no la media. |
 
 ## 5. Cuatro rutas de lectura
 
