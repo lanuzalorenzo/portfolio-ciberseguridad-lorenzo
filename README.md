@@ -6,6 +6,8 @@ Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen fal
 
 > Este repositorio describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica su estado: **Validado**, **Parcial**, **Runbook preparado**, **Diseño** o **Pendiente**. No se incluyen secretos, identificadores reales ni datos personales.
 
+[![Portfolio CI](https://github.com/lanuzalorenzo/portfolio-ciberseguridad-lorenzo/actions/workflows/portfolio-ci.yml/badge.svg)](https://github.com/lanuzalorenzo/portfolio-ciberseguridad-lorenzo/actions/workflows/portfolio-ci.yml)
+
 ---
 
 ## Arquitectura de referencia
