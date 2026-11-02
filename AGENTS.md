@@ -9,7 +9,7 @@ Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trab
 - Español claro y directo, sin épica ni rótulos de registro («En fácil», «TL;DR», «En resumen»). Nombres oficiales de productos y controles.
 - Estados: **Validado**, **Parcial**, **Runbook preparado**, **Diseño**, **Pendiente**. Un diseño o runbook sin ejecutar no es validación.
 - Distingue ejecutado, observado, recomendado y planificado. No inventes evidencias; un hallazgo no es un PASS.
-- Sin secretos, datos personales, IPs internas ni identificadores reales. Explica con una analogía antes del detalle técnico.
+- Sin secretos, datos de terceros, IPs internas ni identificadores reales. Los datos profesionales propios van al perfil y al CV, no a este repositorio. Explica con una analogía antes del detalle técnico.
 - **Apertura llana:** el documento de más de 80 líneas abre con dos o tres frases que se entiendan sin ser del oficio —qué problema resuelve, con una comparación cotidiana— y después entra en el detalle. La analogía abre la puerta, no sustituye el rigor: si el lector técnico solo leyera ese párrafo, no debe salir con una idea falsa. Sin rótulos del tipo «En fácil» ni «Resumen».
 - **Jerga en su primera aparición:** el término se conserva y se aclara entre paréntesis en una frase. Si no cabe, no se aclara a medias: se añade al glosario de `docs/guia-de-lectura.md`, que es el único.
 - **La claridad no cambia lo que se afirma:** estados, cifras, comandos, tablas y evidencias se conservan; lo que suena seguro y no está probado se marca **Parcial** o **Pendiente**, no se reescribe para que suene mejor.
@@ -21,7 +21,8 @@ Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trab
 - Conserva la organización y sigue el patrón del módulo cercano. No crees carpetas vacías, documentos de relleno ni reestructuraciones por uniformidad.
 - No abras módulos nuevos hasta consolidar los existentes.
 - Mantén el estado coherente entre la puerta del módulo, la guía de lectura, el índice y la web/perfil.
-- Definición de hecho: 0 enlaces rotos; estado coherente; sin duplicados página-informe; sin restos de plantilla; los tres checks del pipeline en verde (secretos, enlaces y laboratorio PKCE).
+- **Definición de módulo cerrado:** 0 enlaces rotos; estado coherente; sin duplicados página-informe; sin restos de plantilla; los tres checks del pipeline en verde (secretos, enlaces y laboratorio PKCE).
+- `main` exige PR, los tres checks del pipeline y rama actualizada; solo el propietario fusiona.
 
 ## Estructura y formatos
 
@@ -29,7 +30,7 @@ Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trab
 - **Práctica** (`practicas/<caso>/`): 240–310 palabras; problema, referencias (MCSB/CIS/NIST), tabla de hallazgos, 2–3 lecciones y enlaces. Sigue `plantillas/README-practica-template.md`.
 - **Informe** (`informe.md`, junto a la práctica): solo catálogo, configuración, matriz o verificación; no repite la página.
 - **Runbook** (`runbook.md` + `evidencias/`): solo prácticas reejecutables, con el contrato de abajo.
-- **Bitácora** (`bitacora/`): solo hechos que no estén en página ni informe (decisión, fallo, fecha, limitación). Primera persona, fechas, paneles y mensajes de error tal cual. Puede no existir; si extraña, la puerta lo explica en una frase. Sin epígrafes vacíos ni índices de tareas.
+- **Bitácora** (`bitacora/`): solo hechos que no estén en página ni informe (decisión tomada y su resultado, fallo, fecha, limitación). Primera persona, fechas, paneles y mensajes de error tal cual. No es un registro paralelo de decisiones. Puede no existir; si extraña, la puerta lo explica en una frase. Sin epígrafes vacíos ni índices de tareas.
 - **Docs del módulo** (`docs/`): conceptos y arquitectura compartidos. **Lab** (`lab/`): artefactos locales. **Lab final** (`laboratorio-final/`): arquitectura, plan de ejecución e índice de evidencias. **Plantillas** (`plantillas/`): índice y plantillas.
 
 ## Cómo se trabaja un módulo
