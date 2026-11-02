@@ -1,6 +1,6 @@
 # Índice de evidencias
 
-> **Estado:** 7 evidencias registradas: 3 de ejecución y 4 documentales o verificables.
+> **Estado:** 8 evidencias registradas: 4 de ejecución y 4 documentales o verificables.
 
 Este directorio centraliza las evidencias del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook, un informe o un run de CI, y hasta un entorno concreto. No es un repositorio de capturas sueltas.
 
@@ -59,6 +59,7 @@ La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apa
 | 2026-10-19 | 10 — ELK Stack Security | 01 — Ingestión y normalización · 02 — Kibana | Validado en local | [Ver evidencia](2026-10-19-10-elk-ingesta/README.md) |
 | 2026-10-21 | 11 — Hacking ético de APIs | 01 — BOLA/BFLA · 03 — Mass assignment | Validado en local | [Ver evidencia](2026-10-21-11-api-bola/README.md) |
 | 2026-10-22 | 12 — Forense cloud y respuesta | 03 — Playbook de respuesta · tabletop | PASS como tabletop (sin recolección técnica) | [Ver acta](2026-10-22-12-tabletop/README.md) |
+| 2026-11-02 | 11 — Hacking ético de APIs | Laboratorio de inclusión de ficheros en PHP | Validado en local | [Ver evidencia](2026-11-02-11-upload-progress-include/README.md) |
 
 ## Evidencias documentales y verificables
 

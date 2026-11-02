@@ -14,9 +14,12 @@ Todas las pruebas se ejecutan contra `lab-api-local-azure`, un laboratorio propi
 | JWT y claims | Configuración revisada; token real pendiente | [02](practicas/02-jwt-claims/README.md) |
 | Mass assignment y entrada | Validado localmente | [03](practicas/03-rate-limiting-mass-assignment/README.md) |
 | Consumo | Rate limit y cuerpo definidos; prueba de carga pendiente | [03](practicas/03-rate-limiting-mass-assignment/README.md) |
+| Inclusión de ficheros en PHP | Validado localmente en un laboratorio aparte | [Lab](lab/upload-progress-include/README.md) |
 | Informe | Documentado | [04](practicas/04-informe-final/README.md) |
 
 La carga de trabajo es [EcommerceApi](https://github.com/lanuzalorenzo/lab-api-local-azure): API .NET 10 con Entra ID, DTOs, aislamiento de pedidos y pruebas de integración. El [runbook](practicas/01-bola-bfla/runbook.md) y la [evidencia de ejecución](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) acompañan a la práctica 01.
+
+El [laboratorio de inclusión de ficheros](lab/upload-progress-include/README.md) no usa la API: es una aplicación PHP mínima, en dos contenedores sin salida a Internet, que separa dos cosas que suelen confundirse. El fallo del motor de PHP conocido como PHP2Shell se corrige actualizando; la cadena de este laboratorio, que escribe en la sesión y ejecuta al incluirla, sobrevive a esa actualización porque el fallo está en el código. Su [evidencia](../laboratorio-final/evidencias/2026-11-02-11-upload-progress-include/README.md) incluye la prueba de control sobre la versión parcheada.
 
 ## Límites
 

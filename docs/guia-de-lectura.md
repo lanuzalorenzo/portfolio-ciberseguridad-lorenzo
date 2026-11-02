@@ -88,7 +88,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 
 1. [Arquitectura de referencia](../laboratorio-final/arquitectura.md).
 2. [Módulo 01 — OAuth 2.0, PKCE y JWT](../01-seguridad-azure/README.md): documentos 01, 02 y 03.
-3. [Módulo 11 — Hacking ético de APIs](../11-hacking-etico-api/README.md): práctica 01 y su [evidencia](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md).
+3. [Módulo 11 — Hacking ético de APIs](../11-hacking-etico-api/README.md): práctica 01 y su [evidencia](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md), y el [laboratorio de inclusión de ficheros](../11-hacking-etico-api/lab/upload-progress-include/README.md).
 4. [Módulo 12 — Forense y respuesta](../12-forense-cloud-respuesta/README.md): el playbook, el runbook y su [acta de tabletop](../laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md).
 
 **Al terminar:** entenderás cómo se autentica una petición, cómo se autoriza por propietario y qué se puede demostrar con una prueba local.

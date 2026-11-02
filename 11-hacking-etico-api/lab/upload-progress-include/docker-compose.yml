@@ -1,0 +1,21 @@
+services:
+  web:
+    image: php:8.2.34-apache
+    networks:
+      - lab
+    volumes:
+      - ./html:/var/www/html:ro
+  gate:
+    image: alpine/socat:1.8.0.3
+    command: TCP-LISTEN:8080,fork,reuseaddr TCP:web:80
+    ports:
+      - "127.0.0.1:8088:8080"
+    networks:
+      - lab
+      - edge
+    depends_on:
+      - web
+networks:
+  lab:
+    internal: true
+  edge:

