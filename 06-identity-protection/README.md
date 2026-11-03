@@ -1,8 +1,8 @@
 # 06 | Acceso privilegiado bajo licencia
 
-> **Estado:** **Diseño**. Los tres controles descritos aquí no se pueden configurar en el tenant de laboratorio por falta de licencia P1 o P2. No hay ejecución ni evidencia, y la página no los presenta como si la hubiera.
+> **Estado:** **Diseño**. Ninguno de los tres controles se ha ejecutado de punta a punta: el tenant de laboratorio no tiene licencia P1 ni P2. No hay evidencia, y la página no los presenta como si la hubiera.
 
-El módulo 02 hace lo que un tenant gratuito permite: segundo factor con Security Defaults, contraseña fuera de la ecuación, recuperación autónoma, roles elegibles y un modelo de mínimo privilegio. Seis de esos siete controles están ejecutados y validados; el séptimo, la elegibilidad en PIM, quedó en **Parcial** porque la elevación efectiva exige licencia P2. Lo que queda detrás del muro de pago es otra cosa: políticas que deciden según el contexto, elevación con aprobación y caducidad, y riesgo de identidad calculado por Microsoft. Sin licencia P1 o P2 no se pueden ni configurar.
+El módulo 02 hace lo que un tenant gratuito permite: segundo factor con Security Defaults, contraseña fuera de la ecuación, recuperación autónoma, roles elegibles y un modelo de mínimo privilegio. Seis de esos siete controles están ejecutados y validados; el séptimo, la elegibilidad en PIM, quedó en **Parcial** porque la elevación efectiva exige licencia P2. Lo que queda detrás del muro de pago es otra cosa: políticas que deciden según el contexto, elevación con aprobación y caducidad, y riesgo de identidad calculado por Microsoft. Sin licencia P1 ni P2 no hay política que aplicar: en PIM se pudo dejar el rol elegible y las políticas de activación, como quedó en el módulo 02, pero la elevación efectiva no llegó a completarse.
 
 Este módulo existe para separar las dos capas. Mezclar lo probado con lo que no se puede probar es la forma más rápida de que un lector deje de saber qué creer.
 
@@ -24,4 +24,4 @@ El tenant de laboratorio no tiene licencia P1 ni P2. Probar Conditional Access e
 
 El segundo factor, la elegibilidad en PIM y el modelo de roles se ejecutaron en el módulo 02, con sus tablas de resultados y sus límites escritos: [MFA](../02-identity-security/practicas/01-mfa/README.md), [PIM](../02-identity-security/practicas/04-pim/README.md) y [RBAC](../02-identity-security/practicas/05-rbac/README.md). Aquí no se repiten.
 
-Este módulo no tiene bitácora. La entrada que había contaba la decisión de crearlo, y eso cabe en las dos primeras frases de esta página.
+El módulo no tiene prácticas, runbook ni bitácora: esta página y lo que el módulo 02 ya demostró son todo su contenido.
