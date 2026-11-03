@@ -22,7 +22,7 @@ Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trab
 - No abras módulos nuevos hasta consolidar los existentes.
 - Mantén el estado coherente entre la puerta del módulo, la guía de lectura, el índice y la web/perfil.
 - **Definición de módulo cerrado:** 0 enlaces rotos; estado coherente; sin duplicados página-informe; sin restos de plantilla; los tres checks del pipeline en verde (secretos, enlaces y laboratorio PKCE).
-- `main` exige PR, los tres checks del pipeline y rama actualizada; solo el propietario fusiona.
+- `main` exige PR, los tres checks del pipeline y rama actualizada; solo el propietario fusiona, salvo las PRs de Dependabot de parche y minor, que fusiona el flujo automático si pasan los checks.
 
 ## Estructura y formatos
 

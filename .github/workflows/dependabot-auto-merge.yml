@@ -1,0 +1,53 @@
+name: Dependabot auto-merge
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+concurrency:
+  group: dependabot-auto-merge-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  auto-merge:
+    name: Fusionar parches y mejoras menores
+    if: >-
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      github.event.pull_request.base.ref == 'main' &&
+      github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Leer el tipo de actualización
+        id: dependabot
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+
+      # update-type es el mayor cambio del lote: un grupo patch+minor no se
+      # cuela como major y un grupo con un major no se fusiona.
+      - name: Activar la fusión automática
+        if: >-
+          steps.dependabot.outputs.update-type == 'version-update:semver-patch' ||
+          steps.dependabot.outputs.update-type == 'version-update:semver-minor'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          if gh pr merge "$PR" --auto --squash; then
+            exit 0
+          fi
+          # Sin auto-merge nativo (repo privado sin plan de pago): se espera
+          # a que el CI complete y se fusiona el mismo commit validado.
+          for _ in $(seq 1 60); do
+            total=$(gh pr view "$PR" --json statusCheckRollup -q '.statusCheckRollup | length')
+            [ "$total" -gt 0 ] && break
+            sleep 10
+          done
+          sleep 20
+          gh pr checks "$PR" --watch --interval 15
+          sha=$(gh pr view "$PR" --json headRefOid -q .headRefOid)
+          gh pr merge "$PR" --squash --delete-branch --match-head-commit "$sha"
