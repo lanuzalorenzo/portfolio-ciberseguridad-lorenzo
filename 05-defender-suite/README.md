@@ -4,7 +4,7 @@ Catorce productos con el mismo apellido. Se solapan lo suficiente como para cont
 
 Este módulo es el mapa. Ninguna de las catorce piezas tiene evidencia de ejecución en este portfolio, así que no demuestra la suite: la ordena por la señal que produce y deja escrito, en una sola matriz, qué licencia, qué recurso y qué prueba cerrarían cada una. Lo que sí muestra es que catorce productos no son catorce compras: XDR (detección y respuesta extendida) no añade detección, junta la que ya existe; CNAPP (postura y protección de cargas en una sola vista) no se activa, resulta de encender CSPM (gestión de la postura en la nube) y las protecciones de carga.
 
-> **Estado: Diseño.** Ninguna de las catorce piezas conserva evidencia de ejecución. La [matriz de requisitos](docs/requisitos.md) dice qué licencia, qué recurso y qué prueba cerraría cada una.
+> **Estado: Diseño.** Ninguna de las catorce piezas conserva evidencia de ejecución. La [matriz de requisitos](docs/requisitos.md) dice qué licencia, qué recurso y qué prueba cerraría cada una. El módulo no tiene prácticas, runbook ni bitácora.
 
 ```mermaid
 flowchart LR
