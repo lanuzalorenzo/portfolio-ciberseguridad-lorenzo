@@ -12,7 +12,7 @@ Un token pegado en un commit sigue ahí aunque se borre en el siguiente: el hist
 |---|---|
 | Gitleaks 8.30.1 | Historial completo con `fetch-depth: 0` |
 | Bloqueo en CI | `--exit-code 2`: un hallazgo tumba el job |
-| Gancho `pre-commit` | `gitleaks git --staged --redact`, lo que Git ejecuta antes de crear el commit; 0,1 s |
+| Gancho `pre-commit` | [`scripts/hooks/pre-commit`](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/scripts/hooks/pre-commit), instalado con [`install-git-hooks.sh`](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/scripts/install-git-hooks.sh): `gitleaks git --staged --redact` antes del commit; 0,1 s |
 | Allowlist | Rutas de documentación y patrones `$TOKEN` o JWT truncados; un falso positivo se cubre aquí, no con `--no-verify` |
 
 ## Validación
