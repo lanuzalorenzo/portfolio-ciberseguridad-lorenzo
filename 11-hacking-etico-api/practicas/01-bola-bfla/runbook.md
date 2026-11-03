@@ -41,7 +41,7 @@ La autorización y los criterios de parada están en [`docs/alcance-y-autorizaci
 
 | Variable | Valor de ejemplo | Descripción |
 |---|---|---|
-| `API_REPO` | `~/Repositorios/lab-api-local-azure` | Ruta local del workload |
+| `API_REPO` | `/ruta/a/lab-api-local-azure` | Ruta local del clon del workload |
 | `TEST_PROJECT` | `tests/EcommerceApi.Tests/EcommerceApi.Tests.csproj` | Proyecto de pruebas de integración |
 | `TEST_USER_HEADER` | `X-Test-User` | Cabecera del esquema de autenticación de test |
 
