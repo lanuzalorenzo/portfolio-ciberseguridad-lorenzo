@@ -1,6 +1,6 @@
 # Plan de ejecución
 
-> **Estado:** Fase 0 cerrada el 2026-10-22. Tres evidencias de ejecución (ELK, BOLA/BFLA y tabletop) y cuatro documentales o verificables (02, 03, 04 y 07). Ninguna fase Azure se ha ejecutado.
+> **Estado:** Fase 0 cerrada el 2026-10-22 con tres evidencias de ejecución (ELK, BOLA/BFLA y tabletop) y cuatro documentales o verificables (02, 03, 04 y 07). La cuarta evidencia de ejecución, la inclusión de ficheros del módulo 11, llegó el 2026-11-02. Ninguna fase Azure se ha ejecutado.
 
 ## Principios
 
@@ -22,7 +22,7 @@
 | Ejecución de ELK con logs sintéticos | Validado en local: ingesta, 6 consultas KQL, dashboard y exportación |
 | Runbook del tabletop forense (módulo 12) | Validado: runbook y acta `2026-10-22-12-tabletop` |
 | Ejecución del tabletop y acta | Validado: tabletop de decisión, sin recolección técnica |
-| Primera entrada del índice de evidencias | Validado: tres evidencias de ejecución enlazadas |
+| Primera entrada del índice de evidencias | Validado: tres evidencias de ejecución enlazadas al cierre |
 
 **Gate de salida:** cumplido el 2026-10-22.
 
