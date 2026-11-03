@@ -1,6 +1,6 @@
 # Laboratorio final
 
-> **Estado:** Fase 0 cerrada. Tres evidencias de ejecución (ELK, módulo 10; BOLA/BFLA, módulo 11; tabletop forense, módulo 12) y cuatro documentales o verificables (02, 03, 04 y 07). No hay recursos Azure desplegados.
+> **Estado:** Fase 0 cerrada. Cuatro evidencias de ejecución (ELK, módulo 10; BOLA/BFLA e inclusión de ficheros, módulo 11; tabletop forense, módulo 12) y cuatro documentales o verificables (02, 03, 04 y 07). No hay recursos Azure desplegados.
 
 El laboratorio conecta los doce módulos sobre una sola carga de trabajo: [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure). No es una colección de prácticas aisladas, sino el recorrido que las pone en orden: cada capa se activa, se valida y se retira, y no se abre la siguiente hasta que la anterior tiene prueba.
 
@@ -46,4 +46,4 @@ Se practica cerradura a cerradura: primero en local y sin coste; después, Azure
 
 ## Próximo paso
 
-La Fase 0 está cerrada con las tres evidencias locales. La Fase 1 (Azure mínimo) no se inicia hasta que haya autorización, suscripción y presupuesto. En local quedan la reejecución de PKCE con tenant y la recolección técnica del módulo 12.
+La Fase 0 se cerró el 2026-10-22 con tres evidencias locales; la cuarta, la inclusión de ficheros del módulo 11, llegó el 2026-11-02. La Fase 1 (Azure mínimo) no se inicia hasta que haya autorización, suscripción y presupuesto. En local quedan la reejecución de PKCE con tenant y la recolección técnica del módulo 12.
