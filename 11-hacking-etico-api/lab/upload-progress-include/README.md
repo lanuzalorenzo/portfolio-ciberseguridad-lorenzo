@@ -48,7 +48,7 @@ Los pasos 1 a 3 son comportamiento de PHP. El paso 4 es el fallo de la aplicaci�
 ## Cómo se ejecuta
 
 ```bash
-cd ~/Repositorios/portfolio-ciberseguridad-lorenzo/11-hacking-etico-api/lab/upload-progress-include
+cd 11-hacking-etico-api/lab/upload-progress-include   # desde la raíz del clon
 docker compose up -d
 sleep 3
 curl -sS -o /dev/null -w 'web: %{http_code}\n' http://127.0.0.1:8088/
