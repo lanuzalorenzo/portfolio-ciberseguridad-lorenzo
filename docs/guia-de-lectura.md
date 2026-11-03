@@ -29,7 +29,7 @@ Si solo lees una frase, que sea esta: **cada módulo es una capa de la misma API
 
 ## 3. Cómo se lee un módulo
 
-Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
+Cada módulo sigue el mismo patrón, con las piezas que tenga: hay módulos sin prácticas ni runbook, y su `README.md` lo dice. No hace falta leerlo entero la primera vez:
 
 | Parte | Pregunta que responde |
 |---|---|
@@ -41,7 +41,7 @@ Cada módulo sigue el mismo patrón. No hace falta leerlo entero la primera vez:
 | `lab/` | ¿Con qué código se ejecuta? |
 | `bitacora/` | ¿Qué se aprendió, qué falló y qué queda pendiente? |
 
-**Orden para una primera lectura:** README → práctica → evidencia. El runbook y la bitácora se leen cuando quieres reproducir o entender las decisiones.
+**Orden para una primera lectura:** README → práctica → evidencia. En un módulo sin prácticas, el README es la página entera. El runbook y la bitácora se leen cuando quieres reproducir o entender las decisiones.
 
 ## 4. Glosario mínimo
 
