@@ -4,7 +4,7 @@
 >
 > **Qué vas a encontrar:** el orden recomendado, un glosario mínimo y un mapa de los doce módulos. La guía no sustituye a la documentación de cada módulo: la ordena.
 >
-> **Última revisión:** 2026-10-29. Ver [mantenimiento](#10-mantenimiento).
+> **Última revisión:** 2026-11-03. Ver [mantenimiento](#10-mantenimiento).
 
 ## 1. La idea en cinco líneas
 
@@ -163,7 +163,7 @@ Si puedes responderlas sin mirar, ya tienes el hilo. Si no, vuelve a la Ruta 1.
 
 ## 10. Mantenimiento
 
-- **Última revisión:** 2026-10-29.
+- **Última revisión:** 2026-11-03.
 - **Actualizar cuando:** cambie el estado de un módulo, se añada o retire una evidencia, cambie la estructura de módulos o enlaces, o se añada una ruta de lectura.
 - **No actualizar por:** cambios internos que no afecten a lo que el lector necesita para orientarse.
 - **Fuente única:** esta guía es la referencia; la web y el perfil resumen y enlazan.
