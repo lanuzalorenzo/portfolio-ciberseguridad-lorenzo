@@ -60,7 +60,7 @@ El control de versión no valida una vulnerabilidad: valida el diagnóstico. Si 
 | [`artefactos/cadena.txt`](artefactos/cadena.txt) | Sesión creada, nota de progreso con el nombre malicioso y ejecución de `id` | 7 | `cc6debf2e246a9fd12b9ef8b5e2b8f7118dcabff8ebe05783ee39e1ba2eb64eb` |
 | [`artefactos/control-8.2.35.txt`](artefactos/control-8.2.35.txt) | La misma cadena sobre la versión parcheada | 7 | `993ea233561b6c4c8cb903ee1248b4e1e587a76f2b2fab3826ef7fdde54dbf21` |
 
-Los tres ficheros son la salida literal de los comandos, sin retoques. Las rutas absolutas del equipo sustituidas por `~` aparecen solo en `comandos.md`, no en los artefactos.
+Los tres ficheros son la salida literal de los comandos, sin retoques. `comandos.md` usa rutas relativas a la raíz del clon.
 
 ## 5. Limpieza
 

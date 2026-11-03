@@ -25,7 +25,7 @@
 El detalle está en [comandos.md](comandos.md). Resumen:
 
 ```bash
-cd ~/Repositorios/lab-api-local-azure
+cd ~/lab-api-local-azure
 dotnet test tests/EcommerceApi.Tests/EcommerceApi.Tests.csproj --nologo
 dotnet test tests/EcommerceApi.Tests/EcommerceApi.Tests.csproj --no-build --nologo \
   --logger "console;verbosity=normal"

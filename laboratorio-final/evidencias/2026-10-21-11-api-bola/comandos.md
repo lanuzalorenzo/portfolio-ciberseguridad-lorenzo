@@ -4,7 +4,7 @@
 >
 > Fecha: 2026-10-21.
 >
-> Rutas locales sustituidas por `~`. Sin tokens, cabeceras de autorización ni identificadores reales.
+> Rutas locales sustituidas por `~`; el clon de la API aparece como `~/lab-api-local-azure`. Sin tokens, cabeceras de autorización ni identificadores reales.
 
 ## 1. Entorno
 
@@ -12,13 +12,13 @@
 dotnet --version          # 10.0.113
 . /etc/os-release && echo "$PRETTY_NAME"   # Ubuntu 26.04.1 LTS
 uname -r                  # 7.0.0-38-generic
-git -C ~/Repositorios/lab-api-local-azure rev-parse --short HEAD   # b66028a
+git -C ~/lab-api-local-azure rev-parse --short HEAD   # b66028a
 ```
 
 ## 2. Suite completa (restauración implícita)
 
 ```bash
-cd ~/Repositorios/lab-api-local-azure
+cd ~/lab-api-local-azure
 dotnet test tests/EcommerceApi.Tests/EcommerceApi.Tests.csproj --nologo
 ```
 
