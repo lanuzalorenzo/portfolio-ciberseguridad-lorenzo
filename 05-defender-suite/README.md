@@ -2,9 +2,9 @@
 
 Catorce productos con el mismo apellido. Se solapan lo suficiente como para contratar dos que vigilan lo mismo y dejar a oscuras la capa por la que entra el ataque. Casi nunca se compra de más por gusto: se compra mal por no tener el mapa.
 
-Este módulo es el mapa. Ninguna de sus catorce prácticas conserva evidencia de ejecución, así que no demuestra la suite: ordena las piezas por la señal que producen y dice qué haría falta para probarlas. Lo que sí muestra es que catorce productos no son catorce compras: XDR no añade detección, junta la que ya existe; CNAPP no se activa, resulta de encender CSPM y las protecciones de carga.
+Este módulo es el mapa. Ninguna de las catorce piezas tiene evidencia de ejecución en este portfolio, así que no demuestra la suite: la ordena por la señal que produce y deja escrito, en una sola matriz, qué licencia, qué recurso y qué prueba cerrarían cada una. Lo que sí muestra es que catorce productos no son catorce compras: XDR (detección y respuesta extendida) no añade detección, junta la que ya existe; CNAPP (postura y protección de cargas en una sola vista) no se activa, resulta de encender CSPM (gestión de la postura en la nube) y las protecciones de carga.
 
-> **Estado: Diseño.** La [matriz de requisitos](docs/requisitos.md) dice qué licencia, qué recurso y qué prueba cerrarían cada una.
+> **Estado: Diseño.** Ninguna de las catorce piezas conserva evidencia de ejecución. La [matriz de requisitos](docs/requisitos.md) dice qué licencia, qué recurso y qué prueba cerraría cada una.
 
 ```mermaid
 flowchart LR
@@ -32,24 +32,17 @@ flowchart LR
     R --> T["14 Simulación<br/>la cadena entera"]
 ```
 
-## Las catorce piezas
+## Las catorce piezas, por la señal que producen
 
-| # | Pieza | La pregunta que responde |
+| Dónde mira | Piezas | La pregunta que responde |
 |---|---|---|
-| 01 | [Defender for Identity](practicas/01-defender-identity/README.md) | ¿Alguien usa credenciales que no le tocan? |
-| 02 | [Defender for Endpoint](practicas/02-defender-endpoint/README.md) | ¿Qué se ejecuta en el equipo y desde cuándo? |
-| 03 | [Defender for Office 365](practicas/03-defender-office365/README.md) | ¿Este enlace o adjunto es lo que dice ser? |
-| 04 | [Defender XDR](practicas/04-defender-xdr/README.md) | ¿Estas cuatro alertas son un solo ataque? |
-| 05 | [Defender for APIs](practicas/05-defender-apis/README.md) | ¿Alguien pide datos que no le corresponden? |
-| 06 | [Defender for Containers](practicas/06-defender-containers/README.md) | ¿La imagen desplegada es la que se revisó? |
-| 07 | [Defender for Storage](practicas/07-defender-storage/README.md) | ¿Lo que se sube es lo que debería? |
-| 08 | [Defender EASM](practicas/08-defender-easm/README.md) | ¿Qué ve de mí quien me busca desde fuera? |
-| 09 | [Defender Vulnerability Management](practicas/09-defender-vulnerability-management/README.md) | ¿Qué está desactualizado y por dónde se entra? |
-| 10 | [Defender App Governance](practicas/10-defender-app-governance/README.md) | ¿Qué puede leer una app en nombre de todos? |
-| 11 | [Defender for DevOps](practicas/11-defender-for-devops/README.md) | ¿El fallo entra en el commit o en el portal? |
-| 12 | [Defender CSPM](practicas/12-defender-cspm/README.md) | ¿Qué configuración me expone y en qué orden? |
-| 13 | [Defender CNAPP](practicas/13-defender-cnapp/README.md) | ¿Puedo seguir un fallo de la plantilla al runtime? |
-| 14 | [Simulación y XDR](practicas/14-ataque-simulado-xdr/README.md) | ¿La suite detecta un ataque que yo mismo lanzo? |
+| Dentro del tenant | Defender for Identity, for Endpoint, for Office 365 | ¿Quién entra, qué corre y qué llega? |
+| Alrededor de las cargas | Defender for APIs, for Containers, for Storage | ¿Quién pide datos ajenos, qué imagen se desplegó y qué se subió? |
+| Fuera y postura | EASM (lo que ya se ve de mí en Internet), Vulnerability Management, App Governance, DevOps, CSPM, CNAPP | ¿Qué ve de mí quien me busca, qué está desactualizado, qué puede leer una app y qué configuración me expone? |
+| Correlación | XDR | ¿Estas cuatro alertas son un solo ataque? |
+| La cadena entera | Simulación | ¿La suite detecta un ataque que yo mismo lanzo? |
+
+La numeración 01–14 de la [matriz](docs/requisitos.md) identifica piezas de este módulo, no módulos del portfolio.
 
 ## Lo que una simulación demuestra
 
