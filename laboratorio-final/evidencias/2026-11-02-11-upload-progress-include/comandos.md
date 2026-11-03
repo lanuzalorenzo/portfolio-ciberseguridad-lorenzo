@@ -11,7 +11,7 @@
 ## 1. Preparación
 
 ```bash
-cd ~/Repositorios/portfolio-ciberseguridad-lorenzo/11-hacking-etico-api/lab/upload-progress-include
+cd 11-hacking-etico-api/lab/upload-progress-include   # desde la raíz del clon
 docker compose up -d
 sleep 3
 ```

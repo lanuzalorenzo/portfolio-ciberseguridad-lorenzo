@@ -1,4 +1,4 @@
-Serie de pruebas para ~/Repositorios/lab-api-local-azure/tests/EcommerceApi.Tests/bin/Debug/net10.0/EcommerceApi.Tests.dll (.NETCoreApp,Version=v10.0)
+Serie de pruebas para ~/lab-api-local-azure/tests/EcommerceApi.Tests/bin/Debug/net10.0/EcommerceApi.Tests.dll (.NETCoreApp,Version=v10.0)
 1 archivos de prueba en total coincidieron con el patrón especificado.
 [xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 10.0.13)
 [xUnit.net 00:00:00.06]   Discovering: EcommerceApi.Tests
@@ -15,19 +15,19 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Testing
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: ~/Repositorios/lab-api-local-azure/EcommerceApi
+      Content root path: ~/lab-api-local-azure/EcommerceApi
 info: Microsoft.Hosting.Lifetime[0]
       Application started. Press Ctrl+C to shut down.
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Testing
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: ~/Repositorios/lab-api-local-azure/EcommerceApi
+      Content root path: ~/lab-api-local-azure/EcommerceApi
 info: Microsoft.Hosting.Lifetime[0]
       Application started. Press Ctrl+C to shut down.
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Testing
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: ~/Repositorios/lab-api-local-azure/EcommerceApi
+      Content root path: ~/lab-api-local-azure/EcommerceApi
 warn: Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware[9]
       A request body size limit could not be applied. This server does not support the IHttpMaxRequestBodySizeFeature.
 info: EcommerceApi.Tests.TestAuthHandler[12]
