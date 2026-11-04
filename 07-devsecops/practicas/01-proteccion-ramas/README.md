@@ -1,37 +1,39 @@
 # 01 | Protección de ramas y revisión de cambios
 
-> **Estado:** **Validado** en GitHub para los repositorios de código. `enforce_admins` está desactivado: el propietario puede saltarse la regla, y se documenta como limitación.
+> **Estado:** **Validado** sobre `lab-api-local-azure`: push directo y forzado rechazados. El merge con checks en rojo no se reprobó.
 >
 > **Referencias:** MCSB DS-1, GS-2, IR-1, DS-2.
 
-Sin regla, cualquier cambio entra en `main` sin que nadie lo mire y el historial se puede reescribir con un `force-push`. La protección de rama convierte la revisión en un requisito del repositorio y no en una costumbre del equipo.
+Sin regla, cualquier cambio entra en `main` sin que nadie lo mire y un `force-push` reescribe el historial. Un ruleset exige pull request y checks: es requisito del repositorio, no costumbre.
 
 ## Qué hay configurado
 
-Reglas consultadas por API el 2026-10-23:
+Reglas del ruleset `main`, consultadas por API el 2026-11-04:
 
 | Regla | Valor |
 |---|---|
-| Pull request | Obligatorio, con una aprobación |
+| Pull request | Obligatorio, sin aprobaciones exigidas |
 | Checks exigidos | Siete jobs del pipeline, con la rama al día |
-| Historial | Lineal: sin commits de merge |
+| Fusión | Solo squash, con historial lineal |
 | Force-push y borrado | Bloqueados |
-| Administradores | Exentos: `enforce_admins` desactivado |
+| Exenciones | Ninguna: tampoco el propietario |
 
 ## Validación
 
 | Prueba | Resultado observado |
 |---|---|
-| Escritura directa a `main` | Rechazada para cuentas sin permiso de administrador |
-| PR sin aprobación | No se puede fusionar |
-| Pipeline en rojo | El merge queda bloqueado: los checks son obligatorios |
-| Force-push | Rechazado por la regla |
+| Escritura directa a `main` | Rechazada con `GH013`: «7 of 7 required status checks are expected» |
+| Push forzado a `main` | Rechazado: el historial no se reescribe |
+| PR con los checks en verde | Se fusiona sin aprobación; la revisión es proceso, no puerta |
+| Checks en rojo | No reprobado desde el ruleset actual |
+
+La prueba se ejecutó como propietario: el rechazo no depende del rol. Exigir aprobación bloquearía a quien trabaja solo, porque GitHub no deja aprobar el propio pull request.
 
 ## Lecciones
 
-- La regla no protege de una cuenta administradora comprometida: activar `enforce_admins` y usar una cuenta de servicio para automatizaciones cerraría el hueco.
-- Una aprobación sin criterio se convierte en un clic; el valor está en que el revisor mire el cambio.
-- Siete checks obligatorios con la rama al día encarecen el merge, y ese coste es justo el que evita integrar algo roto.
+- La protección cubre al propietario: la automatización usa el mismo camino, un PR de Dependabot con los checks en verde.
+- Sin aprobación obligatoria, la revisión es práctica previa; la puerta real son los checks y la rama al día.
+- Siete checks con la rama al día encarecen el merge; ese coste evita integrar algo roto.
 
 ## Más detalle
 
