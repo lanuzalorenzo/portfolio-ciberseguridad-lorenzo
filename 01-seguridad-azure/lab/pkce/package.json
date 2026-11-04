@@ -19,9 +19,9 @@
   "author": "Lab Azure AD",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.22.3",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
     "jsonwebtoken": "^9.0.2",
-    "jwks-rsa": "^3.1.0"
+    "jwks-rsa": "^4.1.0"
   }
 }
