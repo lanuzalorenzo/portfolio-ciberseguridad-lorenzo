@@ -18,6 +18,7 @@
 | Entregable | Estado |
 |---|---|
 | Evidencia local de API y módulo 11 | Validado: evidencia `2026-10-21-11-api-bola` registrada en el índice |
+| Runbook y evidencia de rate limit | Validado: evidencia `2026-11-05-11-api-rate-limit` registrada en el índice |
 | Runbook de ELK (módulo 10) | Validado en local |
 | Ejecución de ELK con logs sintéticos | Validado en local: ingesta, 6 consultas KQL, dashboard y exportación |
 | Runbook del tabletop forense (módulo 12) | Validado: runbook y acta `2026-10-22-12-tabletop` |

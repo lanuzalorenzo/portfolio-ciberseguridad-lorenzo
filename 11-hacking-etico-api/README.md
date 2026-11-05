@@ -13,14 +13,14 @@ Todas las pruebas se ejecutan contra `lab-api-local-azure`, un laboratorio propi
 | BOLA/BFLA en pedidos | Validado localmente; `POST /api/products` sin rol (H-03) | [01](practicas/01-bola-bfla/README.md) |
 | JWT y claims | Configuración revisada; token real pendiente | [02](practicas/02-jwt-claims/README.md) |
 | Mass assignment y entrada | Validado localmente | [03](practicas/03-rate-limiting-mass-assignment/README.md) |
-| Consumo | Rate limit y cuerpo definidos; prueba de carga pendiente | [03](practicas/03-rate-limiting-mass-assignment/README.md) |
+| Consumo | Rate limit validado en ráfaga secuencial; 16 KB sin probar | [03](practicas/03-rate-limiting-mass-assignment/README.md) |
 | Inclusión de ficheros en PHP | Validado localmente en un laboratorio aparte | [Lab](lab/upload-progress-include/README.md) |
 | Informe | Documentado | [04](practicas/04-informe-final/README.md) |
 
-La carga de trabajo es [EcommerceApi](https://github.com/lanuzalorenzo/lab-api-local-azure): API .NET 10 con Entra ID, DTOs, aislamiento de pedidos y pruebas de integración. El [runbook](practicas/01-bola-bfla/runbook.md) y la [evidencia de ejecución](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) acompañan a la práctica 01.
+La carga de trabajo es [EcommerceApi](https://github.com/lanuzalorenzo/lab-api-local-azure): API .NET 10 con Entra ID, DTOs, aislamiento de pedidos y pruebas de integración. El [runbook](practicas/01-bola-bfla/runbook.md) y la [evidencia de ejecución](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) acompañan a la práctica 01; la práctica 03 tiene su propio [runbook](practicas/03-rate-limiting-mass-assignment/runbook.md) y su [evidencia](../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md).
 
 El [laboratorio de inclusión de ficheros](lab/upload-progress-include/README.md) no usa la API: es una aplicación PHP mínima, en dos contenedores sin salida a Internet, que separa dos cosas que suelen confundirse. El fallo del motor de PHP conocido como PHP2Shell se corrige actualizando; la cadena de este laboratorio, que escribe en la sesión y ejecuta al incluirla, sobrevive a esa actualización porque el fallo está en el código. Su [evidencia](../laboratorio-final/evidencias/2026-11-02-11-upload-progress-include/README.md) incluye la prueba de control sobre la versión parcheada.
 
 ## Límites
 
-Las pruebas usan un esquema de autenticación de test, no tokens de Entra ID; no hay despliegue con APIM ni WAF; y el rate limit no se ha calibrado bajo carga. El módulo demuestra el ciclo hallazgo-remediación-regresión en local, no un pentest de producción.
+Las pruebas usan un esquema de autenticación de test, no tokens de Entra ID; no hay despliegue con APIM ni WAF; y el rate limit se probó en ráfaga secuencial, no bajo carga concurrente ni calibrado. El módulo demuestra el ciclo hallazgo-remediación-regresión en local, no un pentest de producción.

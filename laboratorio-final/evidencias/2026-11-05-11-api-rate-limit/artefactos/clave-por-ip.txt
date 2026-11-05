@@ -1,0 +1,8 @@
+# Prueba de clave del limitador (2026-11-05)
+# Cuota agotada; se reintenta con X-Forwarded-For de rangos de documentación (RFC 5737).
+
+X-Forwarded-For: 192.0.2.10 -> 429
+X-Forwarded-For: 203.0.113.50 -> 429
+X-Forwarded-For: 198.51.100.7 -> 429
+
+Petición sin cabecera de reenvío (referencia) -> 429

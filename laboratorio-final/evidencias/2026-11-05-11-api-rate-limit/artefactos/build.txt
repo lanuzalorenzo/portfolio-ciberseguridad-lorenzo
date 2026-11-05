@@ -1,0 +1,108 @@
+time="2026-11-05T10:08:21+01:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [api internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.32kB done
+#1 DONE 0.0s
+
+#2 [api internal] load metadata for mcr.microsoft.com/dotnet/aspnet:10.0
+#2 DONE 0.0s
+
+#3 [api internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0
+#3 DONE 0.1s
+
+#4 [api internal] load .dockerignore
+#4 transferring context: 184B done
+#4 DONE 0.0s
+
+#5 [api final 1/4] FROM mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca
+#5 resolve mcr.microsoft.com/dotnet/aspnet:10.0@sha256:8af87eba5e7cdafb1514d7388be287365da97c132509e84dfe252ffd552398ca 0.0s done
+#5 DONE 0.0s
+
+#6 [api build  1/11] FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2
+#6 resolve mcr.microsoft.com/dotnet/sdk:10.0@sha256:747cbade5bfd918a175ac32f8f1d931edec2c7d0d5397a3de72eaef1ac1f66d2 0.0s done
+#6 DONE 0.0s
+
+#7 [api internal] load build context
+#7 transferring context: 16.23kB done
+#7 DONE 0.0s
+
+#8 [api build  2/11] WORKDIR /src
+#8 CACHED
+
+#9 [api build  3/11] COPY [EcommerceApi/EcommerceApi.csproj, EcommerceApi/]
+#9 CACHED
+
+#10 [api build  6/11] COPY [EcommerceApi.Infrastructure/EcommerceApi.Infrastructure.csproj, EcommerceApi.Infrastructure/]
+#10 CACHED
+
+#11 [api build  4/11] COPY [EcommerceApi.Domain/EcommerceApi.Domain.csproj, EcommerceApi.Domain/]
+#11 CACHED
+
+#12 [api build  5/11] COPY [EcommerceApi.Application/EcommerceApi.Application.csproj, EcommerceApi.Application/]
+#12 CACHED
+
+#13 [api build  7/11] RUN dotnet restore "EcommerceApi/EcommerceApi.csproj"
+#13 CACHED
+
+#14 [api build  8/11] COPY . .
+#14 DONE 0.1s
+
+#15 [api build  9/11] WORKDIR /src/EcommerceApi
+#15 DONE 0.1s
+
+#16 [api build 10/11] RUN dotnet build "EcommerceApi.csproj" -c Release -o /app/build
+#16 0.696   Determining projects to restore...
+#16 1.587   Restored /src/EcommerceApi.Contracts/EcommerceApi.Contracts.csproj (in 72 ms).
+#16 1.591   Restored /src/EcommerceApi.Application/EcommerceApi.Application.csproj (in 93 ms).
+#16 1.928   Restored /src/EcommerceApi.Infrastructure/EcommerceApi.Infrastructure.csproj (in 430 ms).
+#16 1.929   Restored /src/EcommerceApi/EcommerceApi.csproj (in 431 ms).
+#16 1.932   1 of 5 projects are up-to-date for restore.
+#16 4.164   EcommerceApi.Contracts -> /app/build/EcommerceApi.Contracts.dll
+#16 4.165   EcommerceApi.Domain -> /app/build/EcommerceApi.Domain.dll
+#16 4.503   EcommerceApi.Application -> /app/build/EcommerceApi.Application.dll
+#16 5.024   EcommerceApi.Infrastructure -> /app/build/EcommerceApi.Infrastructure.dll
+#16 5.943   EcommerceApi -> /app/build/EcommerceApi.dll
+#16 5.959 
+#16 5.960 Build succeeded.
+#16 5.960     0 Warning(s)
+#16 5.960     0 Error(s)
+#16 5.960 
+#16 5.960 Time Elapsed 00:00:05.59
+#16 DONE 6.0s
+
+#17 [api build 11/11] RUN dotnet publish "EcommerceApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
+#17 0.661   Determining projects to restore...
+#17 1.408   All projects are up-to-date for restore.
+#17 2.098   EcommerceApi.Domain -> /src/EcommerceApi.Domain/bin/Release/net10.0/EcommerceApi.Domain.dll
+#17 2.108   EcommerceApi.Contracts -> /src/EcommerceApi.Contracts/bin/Release/net10.0/EcommerceApi.Contracts.dll
+#17 3.732   EcommerceApi.Application -> /src/EcommerceApi.Application/bin/Release/net10.0/EcommerceApi.Application.dll
+#17 4.332   EcommerceApi.Infrastructure -> /src/EcommerceApi.Infrastructure/bin/Release/net10.0/EcommerceApi.Infrastructure.dll
+#17 5.197   EcommerceApi -> /src/EcommerceApi/bin/Release/net10.0/EcommerceApi.dll
+#17 5.269   EcommerceApi -> /app/publish/
+#17 DONE 5.4s
+
+#18 [api final 2/4] WORKDIR /app
+#18 CACHED
+
+#19 [api final 3/4] RUN mkdir -p /app/data && chown 1654:1654 /app/data
+#19 CACHED
+
+#20 [api final 4/4] COPY --from=build --chown=1654:1654 /app/publish .
+#20 CACHED
+
+#21 [api] exporting to image
+#21 exporting layers done
+#21 exporting manifest sha256:8f713b1972d3b09fed771f895d7485dfa55046a244ced9c63f8d85e416b2139f done
+#21 exporting config sha256:c3ba8956f03f9c22bf9a8988fed82dc4ad5aea5f42c491f1b1980d286fe1d235 done
+#21 exporting attestation manifest sha256:7bec67bce190d792b60b60b46ecdfbe0d0721855057d9e73f2ad18c054fdeccc
+#21 exporting attestation manifest sha256:7bec67bce190d792b60b60b46ecdfbe0d0721855057d9e73f2ad18c054fdeccc 0.1s done
+#21 exporting manifest list sha256:970468f16fce3531521e74c950874e2ada513627d5e0b4f46323716797a41f4e 0.0s done
+#21 naming to docker.io/library/ecommerce-api:local
+#21 naming to docker.io/library/ecommerce-api:local done
+#21 unpacking to docker.io/library/ecommerce-api:local 0.0s done
+#21 DONE 0.2s
+
+#22 [api] resolving provenance for metadata file
+#22 DONE 0.0s
+ api  Built
