@@ -23,7 +23,7 @@ El módulo cubre dos piezas con madurez distinta y conviene no leerlas como una 
 
 | Pieza | Qué es | Estado |
 |---|---|---|
-| Validación JWT en la API .NET ([`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure)) | Comprueba firma y claims en cada petición | **Validado**, probado en CI |
+| Validación JWT en la API .NET ([`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure)) | Comprueba firma y claims en cada petición | **Parcial**: implementado, fuera de CI y pendiente de ejecutar contra un tenant real |
 | [Práctica manual PKCE](practicas/01-pkce-manual/README.md), API Node local | Pide el pase a mano, paso a paso | **Parcial**: runbook completo, evidencia pendiente |
 | Reejecución con tenant de laboratorio | Cierra la evidencia con fecha y entorno | **Pendiente** |
 
@@ -41,4 +41,4 @@ El código ejecutable está en [`lab/pkce`](lab/pkce/README.md) y las decisiones
 ## Lo que no se ha podido probar
 
 - La práctica de PKCE manual no se ha reejecutado: no hay tenant de laboratorio y la evidencia histórica no se guardó con el formato actual.
-- El laboratorio Node.js es local y HTTP, sin TLS, tests ni CI. La pieza validada en CI es la API .NET del workload.
+- El laboratorio Node.js es local y HTTP, sin TLS, tests ni CI. Los controles de la API .NET que cubre la suite se validan en CI; la validación JWT no.

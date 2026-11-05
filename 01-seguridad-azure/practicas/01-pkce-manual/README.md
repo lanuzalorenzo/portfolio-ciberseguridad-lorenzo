@@ -4,7 +4,7 @@ Pedimos un pase a Entra ID a mano, con `curl`, sin librerías que escondan los p
 
 > **Estado:** Parcial. La ejecución histórica está en la [bitácora](../../bitacora/2026-09-02-lab-azuread-oauth2-pkce-api.md); la evidencia estandarizada queda pendiente de reejecución con un tenant de laboratorio.
 >
-> Esta práctica cubre solo el laboratorio Node.js. La validación JWT de la API .NET está validada en CI: [estado real](../../README.md#estado).
+> Esta práctica cubre solo el laboratorio Node.js. La validación JWT de la API .NET está implementada, pero fuera de CI y pendiente de un tenant real: [estado real](../../README.md#estado).
 
 **Enlaces:** [runbook](runbook.md) · [código](../../lab/pkce/) · [evidencias](evidencias/) · [nota de trazabilidad](docs/laboratorio-pkce-azure.md).
 
