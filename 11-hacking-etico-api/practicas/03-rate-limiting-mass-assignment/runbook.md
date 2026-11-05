@@ -4,7 +4,7 @@
 >
 > **Última revisión:** 2026-11-05.
 >
-> **Objetivo de la sesión:** comprobar que la API corta con `429` al superar las 120 peticiones por minuto y por IP, que vuelve a atender al reiniciarse la ventana y que la cuota no se esquiva cambiando cabeceras del cliente.
+> **Objetivo de la sesión:** comprobar que la API corta con `429` al superar las 120 peticiones por minuto y por IP, que vuelve a atender al reiniciarse la ventana, que la cuota no se esquiva cambiando cabeceras del cliente y que el umbral se sostiene con clientes concurrentes sin cola ni error.
 
 Un límite de peticiones es como el aforo de una sala: no impide que alguien entre, pero fija cuántos caben a la vez y deja fuera al que insiste. Aquí el aforo son 120 visitas por minuto y por dirección de origen; el runbook comprueba que la puerta se cierra en la petición 121 y que se vuelve a abrir sola al minuto siguiente. Se ejecuta en local, contra un contenedor, sin Azure y sin datos reales.
 
@@ -16,13 +16,14 @@ Validar el control de consumo de recursos (OWASP API4) en su forma más básica:
 - La petición 121 y las siguientes devuelvan `429`, sin cuerpo.
 - Tras reiniciarse la ventana, la API vuelva a responder `200`.
 - Cambiar `X-Forwarded-For` no abra una cuota nueva: la clave es la IP de conexión.
+- Con clientes concurrentes, el número de aceptadas no cambie y el rechazo no añada espera.
 
 El límite de cuerpo de 16 KB y el límite por usuario **no** forman parte de esta sesión.
 
 ## 2. Alcance
 
-- **Incluido:** `GET /health` (anónimo) en el contenedor local de `EcommerceApi`, middleware global de rate limiting.
-- **Excluido:** endpoints autenticados, carga concurrente, calibración del umbral, límite de cuerpo, APIM (pasarela de APIs), WAF (cortafuegos de aplicación), Azure y tokens de Entra ID.
+- **Incluido:** `GET /health` (anónimo) en el contenedor local de `EcommerceApi`, middleware global de rate limiting, con carga secuencial y concurrente.
+- **Excluido:** endpoints autenticados, calibración del umbral contra un SLO, límite de cuerpo, APIM (pasarela de APIs), WAF (cortafuegos de aplicación), Azure y tokens de Entra ID.
 - **Entorno:** local, Docker en el equipo de trabajo; sin recursos cloud.
 - **Datos:** ninguno. La prueba solo lee un endpoint de salud que no consulta la base.
 
@@ -35,6 +36,7 @@ La autorización y los criterios de parada están en [`docs/alcance-y-autorizaci
 | Docker | 29.x con Compose 2.x | `docker --version` |
 | Repositorio | `lab-api-local-azure` clonado y limpio | `git -C "$API_REPO" status --short` |
 | `curl` | Cualquier versión reciente | `curl --version` |
+| k6 | v2.3.0 o compatible, en contenedor `grafana/k6` | `docker run --rm grafana/k6 version` |
 | Puerto | `8080` libre en el host | `curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/health` |
 | Permisos | Usuario local del grupo `docker`; sin roles de Azure | `docker ps` |
 | Presupuesto | No aplica | — |
@@ -46,8 +48,12 @@ La autorización y los criterios de parada están en [`docs/alcance-y-autorizaci
 |---|---|---|
 | `API_REPO` | `~/lab-api-local-azure` | Ruta local del clon del workload |
 | `BASE` | `http://localhost:8080` | URL publicada por el contenedor |
-| `OUT` | `laboratorio-final/evidencias/2026-11-05-11-api-rate-limit` | Carpeta de artefactos |
-| `RATE` | `120` | Peticiones permitidas por ventana |
+| `OUT` | `laboratorio-final/evidencias/2026-11-05-11-api-rate-limit` | Carpeta de artefactos de la sesión secuencial |
+| `OUT_LOAD` | `laboratorio-final/evidencias/2026-11-05-11-api-rate-limit-carga` | Carpeta de artefactos de la sesión de carga |
+| `RATE_K6` | `10` | Peticiones por segundo que lanza k6; el umbral de 120 está en el código |
+| `DURATION` | `50s` | Duración de cada escenario de carga |
+
+En los pasos de carga, `-e RATE=<n>` es la tasa de llegada de k6, no la cuota de la API.
 
 No se usan identidades, tokens ni valores de producción.
 
@@ -151,6 +157,51 @@ done
 
 **Si falla:** si alguno devuelve `200`, el despliegue tiene un proxy que reescribe la IP o `UseForwardedHeaders` activo; en ese caso la práctica cambia y el límite deja de ser fiable por IP.
 
+### Paso 7 — Línea base con carga baja
+
+Sirve de referencia para saber si la latencia bajo presión se degrada o no.
+
+```bash
+cd "$OUT_LOAD/artefactos"
+sleep 65
+docker run --rm -i --network host -u "$(id -u):$(id -g)" -v "$PWD:/scripts" \
+  -e BASE="$BASE" -e RATE=1 -e DURATION=20s -e VUS=2 -e MAXVUS=5 \
+  grafana/k6 run /scripts/rate-limit-carga.js \
+  --summary-export=/scripts/base-summary.json
+```
+
+**Resultado esperado:** 21 respuestas `200`, ninguna `429`, p95 en torno a 1 ms.
+
+**Si falla:** revisar que el contenedor esté arriba y que `BASE` apunte al puerto publicado. `--network host` es necesario en Linux para llegar a `localhost`.
+
+### Paso 8 — Saturación alineada a una ventana
+
+La ventana fija de un minuto empieza con la primera petición del proceso. Para que la carga quepa en una sola ventana se reinicia el contenedor, se hace **una** petición de salud y se lanza k6 durante 50 s.
+
+```bash
+cd "$API_REPO"
+docker compose down && docker compose up -d && sleep 4
+curl -s -o /dev/null -w '%{http_code}\n' "$BASE/health"
+
+cd "$OUT_LOAD/artefactos"
+docker run --rm -i --network host -u "$(id -u):$(id -g)" -v "$PWD:/scripts" \
+  -e BASE="$BASE" -e RATE=10 -e DURATION=50s -e VUS=20 -e MAXVUS=60 \
+  grafana/k6 run /scripts/rate-limit-carga.js \
+  --summary-export=/scripts/carga-summary.json
+```
+
+**Resultado esperado:** 501 peticiones, 119 `200` (120 menos la petición de salud) y 382 `429`, sin otros estados. p95 de `200` en torno a 1,6 ms y de `429` en torno a 1,1 ms.
+
+**Si falla:** si las aceptadas no son 119, la carga cruzó el borde de la ventana o había cuota consumida; repetir desde `docker compose down`. Si aparece un `5xx`, el problema no es el límite y hay que revisar los logs.
+
+### Paso 9 — Presión mayor
+
+Repetir el paso 8 con `RATE=50`, `VUS=50` y `MAXVUS=100`, guardando en `carga-50-summary.json`.
+
+**Resultado esperado:** 2 500 peticiones, las mismas 119 aceptadas y 2 381 `429`. El umbral no cambia con la presión; solo cambia el número de rechazos.
+
+**Si falla:** si las aceptadas suben con la presión, el limitador no está aplicando la partición o el `PermitLimit` cambió.
+
 ## 7. Validación
 
 | Prueba | Método | Resultado esperado | Resultado observado (2026-11-05) |
@@ -160,7 +211,12 @@ done
 | Recuperación | 3 peticiones tras 62 s | `200` | 3 × `200` |
 | Cuerpo del `429` | Cabeceras de respuesta | Sin cuerpo, sin `Retry-After` | `Content-Length: 0`; sin `Retry-After` |
 | Clave de cuota | `X-Forwarded-For` inventada | `429` | 3 × `429` |
-| Carga concurrente | Varios clientes en paralelo | No ejecutado | Pendiente |
+| Línea base | 1 petición/s durante 20 s | Todo `200` | 21 × `200` |
+| Saturación 10/s | 50 s con k6 | 119 × `200` y resto `429` | 119 `200`, 382 `429` |
+| Saturación 50/s | 50 s con k6 | 119 × `200` y resto `429` | 119 `200`, 2 381 `429` |
+| Estados inesperados | Recuento de no `200`/`429` | 0 | 0 de 3 523 |
+| Latencia con carga | p95 de `200` | Sin degradación apreciable | 1,58 ms a 10/s; 1,90 ms a 50/s |
+| Coste del rechazo | p95 de `429` | Inmediato, sin cola | 1,09 ms a 10/s; 1,07 ms a 50/s |
 | Límite de cuerpo 16 KB | `POST` con cuerpo grande | No ejecutado | Pendiente |
 
 ## 8. Evidencia
@@ -169,7 +225,7 @@ done
 - [x] Recuento de códigos por petición y cabeceras del `429`.
 - [x] Fecha, entorno, commit e imagen.
 - [x] Resultado y limitaciones.
-- [x] Enlace a la entrada del índice: [`2026-11-05-11-api-rate-limit`](../../../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md).
+- [x] Enlace a la entrada del índice: [`2026-11-05-11-api-rate-limit`](../../../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md) y [`2026-11-05-11-api-rate-limit-carga`](../../../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit-carga/README.md).
 
 ## 9. Limpieza
 
@@ -186,14 +242,15 @@ El volumen `api-data` se conserva para no destruir la base de pruebas. Si la ses
 
 - **Coste estimado:** 0 €.
 - **Coste real:** 0 €.
-- **Tiempo estimado:** 10 minutos, incluidas dos esperas de un minuto.
-- **Tiempo real:** unos 12 minutos con reconstrucción de la imagen.
+- **Tiempo estimado:** 25 minutos, incluidas las esperas de un minuto y las tres ejecuciones de k6.
+- **Tiempo real:** unos 30 minutos entre las dos sesiones, con reconstrucción de la imagen.
 
 ## 11. Limitaciones
 
-- La ráfaga es **secuencial** y sale de un solo cliente: mide el umbral, no el comportamiento bajo carga concurrente ni la latencia en saturación.
-- 120/min no está calibrado contra el coste real de cada endpoint; es una cifra elegida para el laboratorio.
+- La ráfaga secuencial mide el umbral; la concurrencia se midió a 10 y 50 peticiones por segundo durante 50 s, no durante horas ni en el borde entre ventanas.
+- 120/min no está calibrado contra un SLO de latencia ni el coste real de cada endpoint; es una cifra elegida para el laboratorio.
 - La ventana fija permite hasta 120 al final de un minuto y 120 al principio del siguiente. Es una propiedad de `FixedWindowRateLimiter` y no se midió en esta sesión.
+- Un solo cliente y una IP de origen: no se probaron varios clientes ni IPs distribuidas.
 - El límite es por IP: los usuarios detrás de NAT comparten cuota y una IP por petición lo esquiva.
 - Sin `Retry-After`, el cliente no sabe cuándo reintentar; lo deduce del minuto de reloj.
 - Solo se ejercita `GET /health`. Los endpoints autenticados y de escritura no se han probado bajo este límite.
@@ -204,6 +261,8 @@ El volumen `api-data` se conserva para no destruir la base de pruebas. Si la ses
 
 - [Práctica 03 — Rate limiting y mass assignment](README.md)
 - [Módulo 11 — Hacking ético de APIs](../../README.md)
-- [Evidencia de ejecución](../../../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md)
+- [Evidencia de ejecución, sesión secuencial](../../../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md)
+- [Evidencia de ejecución, sesión de carga](../../../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit-carga/README.md)
 - [`docs/api.md` — límites operativos](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/docs/api.md)
+- [k6 — documentación de escenarios](https://grafana.com/docs/k6/latest/using-k6/scenarios/)
 - OWASP API Security Top 10 (2023), API4: Unrestricted Resource Consumption

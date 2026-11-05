@@ -26,6 +26,7 @@ Cuando dos herramientas cumplen, se elige la que produce evidencia más fácil d
 | Infraestructura como código | Bicep, `bicep build`, Trivy config | Nativo de Azure, sin estado remoto | Terraform: estado y toolchain extra para el alcance del laboratorio | [Módulo 08](../08-seguridad-red-azure/README.md) | **Validado** estáticamente |
 | Ingesta, búsqueda y dashboard local | Elasticsearch, Logstash y Kibana 8.19.23; Docker Compose; `curl` | Coste cero y control total del dato | Sentinel: workspace y coste, previsto para Fase 2; Wazuh: añade HIDS, fuera de alcance | [Evidencia ELK](evidencias/2026-10-19-10-elk-ingesta/README.md) | **Validado** |
 | Probar autorización por objeto y función | xUnit, `WebApplicationFactory`, `curl` | Pruebas repetibles con aserciones y datos sintéticos | Burp Suite o ZAP: exploración manual y escaneo, sin aserciones para este caso | [Evidencia BOLA](evidencias/2026-10-21-11-api-bola/README.md) | **Validado**; BFLA parcial |
+| Medir el rate limit bajo carga | `curl` secuencial y k6 en contenedor | Reproduce el `429` a 10 y 50 peticiones/s y separa la latencia de aceptadas y rechazadas | NBomber se valora si la calibración se integra en .NET; JMeter pesa más (JVM y XML) | [Evidencia de carga](evidencias/2026-11-05-11-api-rate-limit-carga/README.md) | **Validado** el umbral; SLO y 16 KB pendientes |
 | Detección con KQL | Sentinel y KQL | Es la cadena que se desplegará en Fase 2 | ELK ya validado como patrón local; no sustituye a Sentinel | [Módulo 09](../09-microsoft-sentinel/README.md) | **Diseño** |
 | Respuesta y forense | Tabletop y KQL revisado; sin herramienta de recolección | El caso era decidir, no recolectar | KAPE o Velociraptor: pendientes de evaluar | [Módulo 12](../12-forense-cloud-respuesta/README.md) y [acta](evidencias/2026-10-22-12-tabletop/README.md) | **Parcial** |
 
@@ -35,12 +36,12 @@ Azure CLI no figura porque ninguna práctica lo ejecutó: identidad y postura se
 
 | Necesidad | Candidatas | Criterio de entrada | Estado |
 |---|---|---|---|
-| Carga y rate limit: 120 req/min y cuerpo de 16 KB | `curl` secuencial ([evidencia](evidencias/2026-11-05-11-api-rate-limit/README.md)); k6 o NBomber para la carga concurrente | Producir un `429` observado con latencias y limitaciones declaradas | **Validado** el umbral; calibración y 16 KB pendientes |
+| Calibración del rate limit contra un SLO | k6 (ya usado) o NBomber para integrarlo en .NET | Fijar latencia objetivo y coste por endpoint antes de mover el umbral | **Pendiente** |
 | Escaneo dinámico de la API | OWASP ZAP, Burp Suite Community | Añadir cobertura que las pruebas de integración no dan, sin sustituirlas | **Pendiente** |
 | Recolección forense | KAPE, Velociraptor, scripts de Azure | Preservar evidencia con integridad y cadena de custodia | **Pendiente** |
 | Runtime de contenedores en AKS (Fase 2) | Falco, frente a Defender for Containers | Detectar comportamiento anómalo con reglas y medir el ruido antes de compararlo con el producto de Azure | **Pendiente** |
 
-JMeter es una opción válida y, si ya se conoce, reutilizarlo tiene sentido: el plan `.jmx` se versiona y se ejecuta sin interfaz con `jmeter -n -t plan.jmx -l resultados.jtl -e -o informe/`. Frente a k6 o NBomber pesa más —JVM y XML— y encaja peor en una revisión por diff. El runbook del 2026-11-05 midió el umbral con `curl` secuencial, que cuenta `429` y no mide concurrencia; la herramienta de carga se elige al calibrar.
+JMeter es una opción válida y, si ya se conoce, reutilizarlo tiene sentido: el plan `.jmx` se versiona y se ejecuta sin interfaz con `jmeter -n -t plan.jmx -l resultados.jtl -e -o informe/`. Frente a k6 o NBomber pesa más —JVM y XML— y encaja peor en una revisión por diff. El runbook del 2026-11-05 midió el umbral primero con `curl` secuencial y después con k6 a 10 y 50 peticiones por segundo; la calibración contra un SLO sigue pendiente y es donde entraría NBomber si se quiere integrar en .NET.
 
 Falco no se evalúa hasta que exista el clúster de Fase 2. Su papel será contrastar el control de Azure, no montar un stack paralelo.
 
