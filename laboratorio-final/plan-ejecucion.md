@@ -1,6 +1,6 @@
 # Plan de ejecución
 
-> **Estado:** Fase 0 cerrada el 2026-10-22 con tres evidencias de ejecución (ELK, BOLA/BFLA y tabletop) y cuatro documentales o verificables (02, 03, 04 y 07). La cuarta evidencia de ejecución, la inclusión de ficheros del módulo 11, llegó el 2026-11-02. Ninguna fase Azure se ha ejecutado.
+> **Estado:** Fase 0 cerrada el 2026-10-22. Hoy hay seis evidencias de ejecución (ELK, BOLA/BFLA, tabletop, inclusión de ficheros, rate limit y carga) y cuatro documentales o verificables (02, 03, 04 y 07). Ninguna fase Azure se ha ejecutado.
 
 ## Principios
 
@@ -18,7 +18,7 @@
 | Entregable | Estado |
 |---|---|
 | Evidencia local de API y módulo 11 | Validado: evidencia `2026-10-21-11-api-bola` registrada en el índice |
-| Runbook y evidencia de rate limit | Validado: evidencia `2026-11-05-11-api-rate-limit` registrada en el índice |
+| Runbook y evidencia de rate limit | Validado: evidencias `2026-11-05-11-api-rate-limit` y `2026-11-05-11-api-rate-limit-carga` registradas en el índice |
 | Runbook de ELK (módulo 10) | Validado en local |
 | Ejecución de ELK con logs sintéticos | Validado en local: ingesta, 6 consultas KQL, dashboard y exportación |
 | Runbook del tabletop forense (módulo 12) | Validado: runbook y acta `2026-10-22-12-tabletop` |

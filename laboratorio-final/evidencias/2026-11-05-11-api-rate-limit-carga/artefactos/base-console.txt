@@ -1,0 +1,110 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /scripts/rate-limit-carga.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 5 max VUs, 50s max duration (incl. graceful stop):
+              * carga: 1.00 iterations/s for 20s (maxVUs: 2-5, gracefulStop: 30s)
+
+
+running (01.0s), 0/2 VUs, 1 complete and 0 interrupted iterations
+carga   [   5% ] 0/2 VUs  01.0s/20s  1.00 iters/s
+
+running (02.0s), 0/2 VUs, 2 complete and 0 interrupted iterations
+carga   [  10% ] 0/2 VUs  02.0s/20s  1.00 iters/s
+
+running (03.0s), 0/2 VUs, 3 complete and 0 interrupted iterations
+carga   [  15% ] 0/2 VUs  03.0s/20s  1.00 iters/s
+
+running (04.0s), 0/2 VUs, 4 complete and 0 interrupted iterations
+carga   [  20% ] 0/2 VUs  04.0s/20s  1.00 iters/s
+
+running (05.0s), 0/2 VUs, 5 complete and 0 interrupted iterations
+carga   [  25% ] 0/2 VUs  05.0s/20s  1.00 iters/s
+
+running (06.0s), 0/2 VUs, 6 complete and 0 interrupted iterations
+carga   [  30% ] 0/2 VUs  06.0s/20s  1.00 iters/s
+
+running (07.0s), 0/2 VUs, 7 complete and 0 interrupted iterations
+carga   [  35% ] 0/2 VUs  07.0s/20s  1.00 iters/s
+
+running (08.0s), 0/2 VUs, 8 complete and 0 interrupted iterations
+carga   [  40% ] 0/2 VUs  08.0s/20s  1.00 iters/s
+
+running (09.0s), 0/2 VUs, 9 complete and 0 interrupted iterations
+carga   [  45% ] 0/2 VUs  09.0s/20s  1.00 iters/s
+
+running (10.0s), 0/2 VUs, 10 complete and 0 interrupted iterations
+carga   [  50% ] 0/2 VUs  10.0s/20s  1.00 iters/s
+
+running (11.0s), 0/2 VUs, 11 complete and 0 interrupted iterations
+carga   [  55% ] 0/2 VUs  11.0s/20s  1.00 iters/s
+
+running (12.0s), 0/2 VUs, 12 complete and 0 interrupted iterations
+carga   [  60% ] 0/2 VUs  12.0s/20s  1.00 iters/s
+
+running (13.0s), 0/2 VUs, 13 complete and 0 interrupted iterations
+carga   [  65% ] 0/2 VUs  13.0s/20s  1.00 iters/s
+
+running (14.0s), 0/2 VUs, 14 complete and 0 interrupted iterations
+carga   [  70% ] 0/2 VUs  14.0s/20s  1.00 iters/s
+
+running (15.0s), 0/2 VUs, 15 complete and 0 interrupted iterations
+carga   [  75% ] 0/2 VUs  15.0s/20s  1.00 iters/s
+
+running (16.0s), 0/2 VUs, 16 complete and 0 interrupted iterations
+carga   [  80% ] 0/2 VUs  16.0s/20s  1.00 iters/s
+
+running (17.0s), 0/2 VUs, 17 complete and 0 interrupted iterations
+carga   [  85% ] 0/2 VUs  17.0s/20s  1.00 iters/s
+
+running (18.0s), 0/2 VUs, 18 complete and 0 interrupted iterations
+carga   [  90% ] 0/2 VUs  18.0s/20s  1.00 iters/s
+
+running (19.0s), 0/2 VUs, 19 complete and 0 interrupted iterations
+carga   [  95% ] 0/2 VUs  19.0s/20s  1.00 iters/s
+
+running (20.0s), 0/2 VUs, 20 complete and 0 interrupted iterations
+carga   [ 100% ] 0/2 VUs  20.0s/20s  1.00 iters/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 21      1.049872/s
+    checks_succeeded...: 100.00% 21 out of 21
+    checks_failed......: 0.00%   0 out of 21
+
+    ✓ estado 200 o 429
+
+    CUSTOM
+    ok_count.......................: 21     1.049872/s
+    ok_latency.....................: avg=842.04µs min=462.53µs med=804.79µs p(90)=1.08ms p(95)=1.28ms p(99)=1.48ms max=1.53ms
+
+    HTTP
+    http_req_duration..............: avg=842.04µs min=462.53µs med=804.79µs p(90)=1.08ms p(95)=1.28ms p(99)=1.48ms max=1.53ms
+      { expected_response:true }...: avg=842.04µs min=462.53µs med=804.79µs p(90)=1.08ms p(95)=1.28ms p(99)=1.48ms max=1.53ms
+    http_req_failed................: 0.00%  0 out of 21
+    http_reqs......................: 21     1.049872/s
+
+    EXECUTION
+    iteration_duration.............: avg=1.1ms    min=625.31µs med=974.72µs p(90)=1.6ms  p(95)=1.68ms p(99)=2.04ms max=2.13ms
+    iterations.....................: 21     1.049872/s
+    vus............................: 0      min=0       max=0
+    vus_max........................: 2      min=2       max=2
+
+    NETWORK
+    data_received..................: 8.1 kB 404 B/s
+    data_sent......................: 1.6 kB 80 B/s
+
+
+
+
+running (20.0s), 0/2 VUs, 21 complete and 0 interrupted iterations
+carga ✓ [ 100% ] 0/2 VUs  20s  1.00 iters/s
