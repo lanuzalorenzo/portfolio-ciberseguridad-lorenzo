@@ -14,6 +14,8 @@ Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen fal
 
 La carga de trabajo es **EcommerceApi** (Web API .NET 10 con OAuth 2.0/PKCE, DTOs, tests y pipeline DevSecOps), versionada en [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure).
 
+Los controles transversales —CORS cerrado por defecto, validación JWT, cabeceras de seguridad, límite por IP, formato de error, HTTPS con HSTS y endpoint de salud— se extraen a paquetes NuGet en [`shared-dotnet`](https://github.com/lanuzalorenzo/shared-dotnet): los paquetes compilan y pasan sus pruebas, la publicación está preparada y sin ejecutar, y el consumo desde la API está **Pendiente**.
+
 ![Defensa en profundidad: cinco capas, de la detección y respuesta en la parte superior a la arquitectura y AppSec en la base, con la validación ofensiva y el forense como ejes transversales](laboratorio-final/arquitectura-capas.svg)
 
 ---
