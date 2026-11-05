@@ -21,7 +21,7 @@ Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trab
 - Conserva la organización y sigue el patrón del módulo cercano. No crees carpetas vacías, documentos de relleno ni reestructuraciones por uniformidad.
 - No abras módulos nuevos hasta consolidar los existentes.
 - Mantén el estado coherente entre la puerta del módulo, la guía de lectura, el índice y la web/perfil.
-- **Definición de módulo cerrado:** 0 enlaces rotos; estado coherente; sin duplicados página-informe; sin restos de plantilla; los tres checks del pipeline en verde (secretos, enlaces y laboratorio PKCE).
+- **Definición de módulo cerrado:** 0 enlaces internos rotos (rutas y anclas relativas, con la acción compartida de [`core`](https://github.com/lanuzalorenzo/core)); estado coherente; sin duplicados página-informe; sin restos de plantilla; los tres checks del pipeline en verde (secretos, enlaces y laboratorio PKCE).
 - `main` exige PR, los tres checks del pipeline y rama actualizada; solo el propietario fusiona, salvo las PRs de Dependabot de parche y minor, que fusiona el flujo automático si pasan los checks.
 
 ## Estructura y formatos
