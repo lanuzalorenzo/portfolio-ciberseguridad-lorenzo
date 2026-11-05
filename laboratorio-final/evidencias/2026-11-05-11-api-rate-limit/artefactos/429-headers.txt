@@ -1,0 +1,10 @@
+# Cabeceras de la primera 429 de una ráfaga posterior
+HTTP/1.1 429 Too Many Requests
+Content-Length: 0
+Date: Thu, 05 Nov 2026 09:11:00 GMT
+Server: Kestrel
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+

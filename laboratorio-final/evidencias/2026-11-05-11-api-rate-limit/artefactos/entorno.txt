@@ -1,0 +1,19 @@
+Fecha de ejecución: 2026-11-05T10:11:01+01:00
+Sistema: Linux 7.0.0-38-generic x86_64
+Docker: Docker version 29.1.3, build 29.1.3-0ubuntu4.1
+Compose: 2.40.3+ds1-0ubuntu1
+.NET SDK del host: 10.0.114
+
+Commit del workload: b9176b0
+Árbol de trabajo del workload: 0 archivos modificados
+
+Imagen:
+  CONTAINER                   REPOSITORY          TAG                 PLATFORM            IMAGE ID            SIZE                CREATED
+  lab-api-local-azure-api-1   ecommerce-api       local               linux/amd64         970468f16fce        117MB               2 minutes ago
+
+Contenedor:
+  NAME                        IMAGE                 COMMAND                  SERVICE   CREATED         STATUS         PORTS
+  lab-api-local-azure-api-1   ecommerce-api:local   "dotnet EcommerceApi…"   api       2 minutes ago   Up 2 minutes   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+
+Usuario del proceso:
+  uid=1654(app) gid=1654(app) groups=1654(app)

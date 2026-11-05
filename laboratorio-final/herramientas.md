@@ -1,6 +1,6 @@
 # Herramientas del laboratorio
 
-> **Última revisión:** 2026-10-29.
+> **Última revisión:** 2026-11-05.
 >
 > **Alcance:** qué herramienta resuelve cada necesidad del laboratorio, por qué se eligió y qué alternativa se descartó. No es un catálogo: una herramienta sin práctica o evidencia detrás no figura como usada.
 
@@ -35,12 +35,12 @@ Azure CLI no figura porque ninguna práctica lo ejecutó: identidad y postura se
 
 | Necesidad | Candidatas | Criterio de entrada | Estado |
 |---|---|---|---|
-| Carga y rate limit: 120 req/min y cuerpo de 16 KB | k6, Apache JMeter, NBomber | Producir un `429` observado con latencias y limitaciones declaradas | **Pendiente** |
+| Carga y rate limit: 120 req/min y cuerpo de 16 KB | `curl` secuencial ([evidencia](evidencias/2026-11-05-11-api-rate-limit/README.md)); k6 o NBomber para la carga concurrente | Producir un `429` observado con latencias y limitaciones declaradas | **Validado** el umbral; calibración y 16 KB pendientes |
 | Escaneo dinámico de la API | OWASP ZAP, Burp Suite Community | Añadir cobertura que las pruebas de integración no dan, sin sustituirlas | **Pendiente** |
 | Recolección forense | KAPE, Velociraptor, scripts de Azure | Preservar evidencia con integridad y cadena de custodia | **Pendiente** |
 | Runtime de contenedores en AKS (Fase 2) | Falco, frente a Defender for Containers | Detectar comportamiento anómalo con reglas y medir el ruido antes de compararlo con el producto de Azure | **Pendiente** |
 
-JMeter es una opción válida y, si ya se conoce, reutilizarlo tiene sentido: el plan `.jmx` se versiona y se ejecuta sin interfaz con `jmeter -n -t plan.jmx -l resultados.jtl -e -o informe/`. Frente a k6 o NBomber pesa más —JVM y XML— y encaja peor en una revisión por diff. La elección se hace al escribir el runbook, no antes.
+JMeter es una opción válida y, si ya se conoce, reutilizarlo tiene sentido: el plan `.jmx` se versiona y se ejecuta sin interfaz con `jmeter -n -t plan.jmx -l resultados.jtl -e -o informe/`. Frente a k6 o NBomber pesa más —JVM y XML— y encaja peor en una revisión por diff. El runbook del 2026-11-05 midió el umbral con `curl` secuencial, que cuenta `429` y no mide concurrencia; la herramienta de carga se elige al calibrar.
 
 Falco no se evalúa hasta que exista el clúster de Fase 2. Su papel será contrastar el control de Azure, no montar un stack paralelo.
 

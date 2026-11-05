@@ -91,7 +91,7 @@ Cada módulo sigue el mismo patrón, con las piezas que tenga: hay módulos sin 
 
 1. [Arquitectura de referencia](../laboratorio-final/arquitectura.md).
 2. [Módulo 01 — OAuth 2.0, PKCE y JWT](../01-seguridad-azure/README.md): documentos 01, 02 y 03.
-3. [Módulo 11 — Hacking ético de APIs](../11-hacking-etico-api/README.md): práctica 01 y su [evidencia](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md), y el [laboratorio de inclusión de ficheros](../11-hacking-etico-api/lab/upload-progress-include/README.md).
+3. [Módulo 11 — Hacking ético de APIs](../11-hacking-etico-api/README.md): práctica 01 y su [evidencia](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md), práctica 03 con su [evidencia de rate limit](../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md), y el [laboratorio de inclusión de ficheros](../11-hacking-etico-api/lab/upload-progress-include/README.md).
 4. [Módulo 12 — Forense y respuesta](../12-forense-cloud-respuesta/README.md): el playbook, el runbook y su [acta de tabletop](../laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md).
 
 **Al terminar:** entenderás cómo se autentica una petición, cómo se autoriza por propietario y qué se puede demostrar con una prueba local.
@@ -132,7 +132,7 @@ Cada módulo sigue el mismo patrón, con las piezas que tenga: hay módulos sin 
 | 08 | [Seguridad de red](../08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Diseño + IaC validada estáticamente |
 | 09 | [Microsoft Sentinel](../09-microsoft-sentinel/README.md) | ¿Cómo se detecta con KQL y se automatiza? | Diseño: workspace y diagnósticos en IaC; Sentinel sin habilitar |
 | 10 | [ELK Stack Security](../10-elk-stack-security/README.md) | ¿Cómo se centralizan logs y se consultan? | Validado en local |
-| 11 | [Hacking ético de APIs](../11-hacking-etico-api/README.md) | ¿Cómo se prueban BOLA, BFLA y mass assignment? | Validado en local; BFLA parcial |
+| 11 | [Hacking ético de APIs](../11-hacking-etico-api/README.md) | ¿Cómo se prueban BOLA, BFLA y mass assignment? | Validado en local; BFLA parcial y rate limit sin calibrar |
 | 12 | [Forense cloud y respuesta](../12-forense-cloud-respuesta/README.md) | ¿Cómo se preserva evidencia y se responde? | Parcial: tabletop ejecutado; recolección técnica pendiente |
 
 ## 7. Cómo verificar sin confiar en la narrativa
