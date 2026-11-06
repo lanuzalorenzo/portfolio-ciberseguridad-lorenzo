@@ -1,6 +1,6 @@
 # Laboratorio final
 
-> **Estado:** Fase 0 cerrada. Cuatro evidencias de ejecución (ELK, módulo 10; BOLA/BFLA e inclusión de ficheros, módulo 11; tabletop forense, módulo 12) y cuatro documentales o verificables (02, 03, 04 y 07). No hay recursos Azure desplegados.
+> **Estado:** Fase 0 cerrada. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md). No hay recursos Azure desplegados.
 
 El laboratorio conecta los doce módulos sobre una sola carga de trabajo: [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure). No es una colección de prácticas aisladas, sino el recorrido que las pone en orden: cada capa se activa, se valida y se retira, y no se abre la siguiente hasta que la anterior tiene prueba.
 

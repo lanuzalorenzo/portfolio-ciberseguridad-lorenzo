@@ -1,6 +1,6 @@
 # Plan de ejecución
 
-> **Estado:** Fase 0 cerrada el 2026-10-22. Hoy hay seis evidencias de ejecución (ELK, BOLA/BFLA, tabletop, inclusión de ficheros, rate limit y carga) y cuatro documentales o verificables (02, 03, 04 y 07). Ninguna fase Azure se ha ejecutado.
+> **Estado:** Fase 0 cerrada el 2026-10-22. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md). Ninguna fase Azure se ha ejecutado.
 
 ## Principios
 
