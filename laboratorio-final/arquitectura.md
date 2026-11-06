@@ -76,6 +76,7 @@ No se activa una capa superior si la inferior no tiene evidencia o una limitaci�
 ## Decisiones de diseño
 
 - **Una sola carga de trabajo:** evita laboratorios desconectados y permite reutilizar identidad, red, logs y pruebas.
+- **Configuración de compilación centralizada:** la solución fija en dos archivos raíz la configuración común y una versión única por paquete; la decisión y sus límites están en el [ADR 0008](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/docs/adr/0008-configuracion-de-compilacion-y-paquetes-centralizada.md).
 - **Local primero:** reduce coste y permite practicar el ciclo completo de evidencia antes de Azure.
 - **IaC antes que despliegue:** el Bicep se autora y valida estáticamente; el despliegue es un acto separado y autorizado.
 - **Evidencia ligada al runbook:** cada salida se puede reproducir y fechar.
