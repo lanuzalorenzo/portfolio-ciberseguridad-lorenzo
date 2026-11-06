@@ -53,7 +53,7 @@ Los controles transversales —CORS cerrado por defecto, validación JWT, cabece
 
 [Arquitectura](laboratorio-final/arquitectura.md) · [Plan de ejecución](laboratorio-final/plan-ejecucion.md) · [Herramientas](laboratorio-final/herramientas.md) · [Índice de evidencias](laboratorio-final/evidencias/README.md).
 
-> Cuatro evidencias de ejecución (ELK, BOLA/BFLA, tabletop forense e inclusión de ficheros) y cuatro documentales o verificables (02, 03, 04, 07). Fases Azure pendientes de autorización, presupuesto y resource group temporal; **no hay recursos Azure desplegados**.
+> Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](laboratorio-final/evidencias/README.md). Fases Azure pendientes de autorización, presupuesto y resource group temporal; **no hay recursos Azure desplegados**.
 
 ---
 
