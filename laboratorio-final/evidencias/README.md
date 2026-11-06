@@ -1,6 +1,6 @@
 # Índice de evidencias
 
-> **Estado:** 10 evidencias registradas: 6 de ejecución y 4 documentales o verificables.
+> **Estado:** 11 evidencias registradas: 7 de ejecución y 4 documentales o verificables.
 
 Este directorio centraliza las evidencias del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook, un informe o un run de CI, y hasta un entorno concreto. No es un repositorio de capturas sueltas.
 
@@ -62,6 +62,7 @@ La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apa
 | 2026-11-02 | 11 — Hacking ético de APIs | Laboratorio de inclusión de ficheros en PHP | Validado en local | [Ver evidencia](2026-11-02-11-upload-progress-include/README.md) |
 | 2026-11-05 | 11 — Hacking ético de APIs | 03 — Rate limiting y mass assignment | Validado en local (ráfaga secuencial) | [Ver evidencia](2026-11-05-11-api-rate-limit/README.md) |
 | 2026-11-05 | 11 — Hacking ético de APIs | 03 — Rate limiting bajo carga | Validado en local (concurrencia) | [Ver evidencia](2026-11-05-11-api-rate-limit-carga/README.md) |
+| 2026-11-06 | Laboratorio local | VM de pruebas con disco del perfil cifrado | Validado en local; perfil móvil pendiente | [Ver evidencia](2026-11-06-lab-vm-pruebas/README.md) |
 
 ## Evidencias documentales y verificables
 
