@@ -1,14 +1,14 @@
 # 07 | DevSecOps y gobernanza del software
 
-> **Estado:** **Validado en CI**. La pipeline completa —build, formato, 10 pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root, Trivy image y Trivy config sobre Bicep— terminó en verde el 2026-10-19 y ha vuelto a pasar desde entonces; la última ejecución es del 2026-10-23. OIDC y despliegue siguen fuera de alcance.
+> **Estado:** **Validado en CI**. La pipeline completa —build, formato, 10 pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root, Trivy image y Trivy config sobre Bicep— terminó en verde el 2026-10-19 y ha vuelto a pasar desde entonces; la última ejecución es del 2026-11-08. OIDC y despliegue siguen fuera de alcance.
 
-La seguridad del desarrollo no se demuestra con una política escrita, sino con un cambio que no puede entrar si no pasa las pruebas. Este módulo aplica ese criterio sobre EcommerceApi: la rama protegida obliga a pasar por pull request y por los checks, el escaneo de secretos tumba la integración si aparece una credencial, los análisis bloquean el merge y el contenedor se ejecuta sin privilegios.
+La seguridad del desarrollo no se demuestra con una política escrita, sino con un cambio que no puede entrar si no pasa las pruebas. Este módulo aplica ese criterio sobre EcommerceApi: la rama protegida obliga a pasar por pull request y por los checks, el escaneo de secretos tumba la integración si aparece una credencial, los análisis bloquean el merge y el contenedor se ejecuta sin privilegios. La credencial que restaura los paquetes es de solo lectura y distinta de la identidad con la que se revisa y aprueba.
 
 ## Carga de trabajo
 
 Los controles se aplican sobre [EcommerceApi (lab-api-local-azure)](https://github.com/lanuzalorenzo/lab-api-local-azure), el mismo workload del resto del portfolio. El código, el workflow y las plantillas Bicep viven allí; aquí se documenta qué se aplicó y qué se observó.
 
-## Las cuatro prácticas
+## Las cinco prácticas
 
 | # | Práctica | Qué controla | Estado |
 |---|---|---|---|
@@ -16,6 +16,7 @@ Los controles se aplican sobre [EcommerceApi (lab-api-local-azure)](https://gith
 | 02 | [Detección de secretos](practicas/02-secret-scanning/README.md) | Que una credencial no salga de la máquina ni se quede en el historial | **Validado** |
 | 03 | [SAST, SCA e IaC](practicas/03-sast-sca-iac/README.md) | Que código, dependencias e infraestructura pasen el análisis | **Validado** |
 | 04 | [Pipeline segura](practicas/04-pipeline-security/README.md) | Que cada job tenga el permiso mínimo y los gates bloqueen | **Parcial** |
+| 05 | [Credenciales de mínimo privilegio](practicas/05-credenciales-minimo-privilegio/README.md) | Que el build use una credencial que solo lea paquetes, separada de la identidad interactiva | **Validado** |
 
 ## Lo que la pipeline no detecta
 

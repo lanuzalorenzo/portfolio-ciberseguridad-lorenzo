@@ -14,6 +14,7 @@ Todas las pruebas se ejecutan contra `lab-api-local-azure`, un laboratorio propi
 | JWT y claims | Configuración revisada; token real pendiente | [02](practicas/02-jwt-claims/README.md) |
 | Mass assignment y entrada | Validado localmente | [03](practicas/03-rate-limiting-mass-assignment/README.md) |
 | Consumo | Rate limit validado (secuencial y concurrente); 16 KB sin probar | [03](practicas/03-rate-limiting-mass-assignment/README.md) |
+| DAST (análisis dinámico) sin autenticar | Parcial: 0 FAIL y 0 WARN, 62 PASS; endpoints tras JWT sin cubrir | [Evidencia](../laboratorio-final/evidencias/2026-11-08-11-api-dast/README.md) |
 | Inclusión de ficheros en PHP | Validado localmente en un laboratorio aparte | [Lab](lab/upload-progress-include/README.md) |
 | Informe | Documentado | [04](practicas/04-informe-final/README.md) |
 
