@@ -1,0 +1,6 @@
+Fecha: 2026-11-08
+Host: Linux 7.0.0-38-generic x86_64
+Docker: 29.1.3 (build 29.1.3-0ubuntu4.1)
+API: ecommerce-api:local sha256:970468f16fce, árbol f202777
+ZAP: ghcr.io/zaproxy/zaproxy@sha256:9624669db72f54d86c4b46a7064518bd9bf79d8c61a4c31befa9923489f328af (2.17.0)
+Python del contenedor de ZAP: incluido en la imagen
