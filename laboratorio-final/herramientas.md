@@ -37,7 +37,7 @@ Azure CLI no figura porque ninguna práctica lo ejecutó: identidad y postura se
 | Necesidad | Candidatas | Criterio de entrada | Estado |
 |---|---|---|---|
 | Calibración del rate limit contra un SLO | k6 (ya usado) o NBomber para integrarlo en .NET | Fijar latencia objetivo y coste por endpoint antes de mover el umbral | **Pendiente** |
-| Escaneo dinámico de la API | OWASP ZAP, Burp Suite Community | Añadir cobertura que las pruebas de integración no dan, sin sustituirlas | **Pendiente** |
+| Escaneo dinámico de la API | OWASP ZAP, Burp Suite Community | Añadir cobertura que las pruebas de integración no dan, sin sustituirlas | **Parcial**: [baseline anónimo](evidencias/2026-11-08-11-api-dast/README.md) ejecutado; activo y autenticado pendientes |
 | Recolección forense | KAPE, Velociraptor, scripts de Azure | Preservar evidencia con integridad y cadena de custodia | **Pendiente** |
 | Runtime de contenedores en AKS (Fase 2) | Falco, frente a Defender for Containers | Detectar comportamiento anómalo con reglas y medir el ruido antes de compararlo con el producto de Azure | **Pendiente** |
 
