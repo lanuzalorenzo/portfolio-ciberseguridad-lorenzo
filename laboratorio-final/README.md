@@ -25,7 +25,7 @@ Se practica cerradura a cerradura: primero en local y sin coste; después, Azure
 | Datos y secretos | Key Vault, Storage, acceso privado | **Diseño** |
 | Observabilidad | Log Analytics, Application Insights, diagnóstico | **Diseño** |
 | Detección y respuesta | Defender for Cloud, Sentinel, KQL, playbooks | **Diseño**; ver módulos [04](../04-defender-for-cloud/README.md), [05](../05-defender-suite/README.md) y [09](../09-microsoft-sentinel/README.md) |
-| Validación ofensiva | OWASP API Top 10, BOLA/BFLA, mass assignment, rate limit | **Validado en local**; BFLA parcial. Ver [módulo 11](../11-hacking-etico-api/README.md) y sus evidencias [BOLA](evidencias/2026-10-21-11-api-bola/README.md), [rate limit](evidencias/2026-11-05-11-api-rate-limit/README.md) y [carga](evidencias/2026-11-05-11-api-rate-limit-carga/README.md) |
+| Validación ofensiva | OWASP API Top 10, BOLA/BFLA, mass assignment, rate limit, DAST | **Validado en local** en BOLA y rate limit; BFLA y DAST parciales. Ver [módulo 11](../11-hacking-etico-api/README.md) y sus evidencias [BOLA](evidencias/2026-10-21-11-api-bola/README.md), [rate limit](evidencias/2026-11-05-11-api-rate-limit/README.md), [carga](evidencias/2026-11-05-11-api-rate-limit-carga/README.md) y [DAST](evidencias/2026-11-08-11-api-dast/README.md) |
 | Forense | Recolección, integridad, timeline, cadena de custodia | **Parcial**: tabletop de decisión; recolección pendiente. Ver [módulo 12](../12-forense-cloud-respuesta/README.md) |
 | Laboratorio local | ELK, logs sintéticos, dashboards | **Validado en local**; ver [módulo 10](../10-elk-stack-security/README.md) y su [evidencia](evidencias/2026-10-19-10-elk-ingesta/README.md) |
 
@@ -47,4 +47,4 @@ Se practica cerradura a cerradura: primero en local y sin coste; después, Azure
 
 ## Próximo paso
 
-La Fase 0 se cerró el 2026-10-22 con tres evidencias locales; la cuarta, la inclusión de ficheros del módulo 11, llegó el 2026-11-02. La Fase 1 (Azure mínimo) no se inicia hasta que haya autorización, suscripción y presupuesto. En local quedan la reejecución de PKCE con tenant y la recolección técnica del módulo 12.
+La Fase 0 se cerró el 2026-10-22 con tres evidencias locales; después llegaron la inclusión de ficheros del módulo 11 (2026-11-02), el rate limit secuencial y de carga (2026-11-05) y el baseline DAST (2026-11-08). La Fase 1 (Azure mínimo) no se inicia hasta que haya autorización, suscripción y presupuesto. En local quedan la reejecución de PKCE con tenant y la recolección técnica del módulo 12.
