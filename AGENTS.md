@@ -7,6 +7,7 @@ Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trab
 ## Contrato editorial
 
 - Español claro y directo, sin épica ni rótulos de registro («En fácil», «TL;DR», «En resumen»). Nombres oficiales de productos y controles.
+- **Resumen en inglés:** tras la apertura, un párrafo `**In English.**` que la traduce fielmente. No añade afirmaciones, cifras ni estados que el texto español no tenga, y no se traduce el resto del documento.
 - Estados: **Validado**, **Parcial**, **Runbook preparado**, **Diseño**, **Pendiente**. Un diseño o runbook sin ejecutar no es validación.
 - Distingue ejecutado, observado, recomendado y planificado. No inventes evidencias; un hallazgo no es un PASS.
 - Sin secretos, datos de terceros, IPs internas ni identificadores reales. Los datos profesionales propios van al perfil y al CV, no a este repositorio. Explica con una analogía antes del detalle técnico.

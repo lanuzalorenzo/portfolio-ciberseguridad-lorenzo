@@ -4,6 +4,8 @@
 
 Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen falta puertas, rejas, alarma y alguien que sepa qué hacer si suena. Este portfolio aplica Security by Design, DevSecOps, Cloud Security y respuesta a incidentes sobre una misma carga de trabajo, una API .NET protegida con Microsoft Entra ID, y recorre la **Defensa en Profundidad** capa a capa, separando lo probado de lo solo diseñado. Cada módulo responde a la misma pregunta: *¿qué control protege qué y cómo se demuestra?*
 
+**In English.** Protecting a system is like securing a house: a lock is not enough —you need doors, bars, an alarm and someone who knows what to do when it goes off. This portfolio applies Security by Design, DevSecOps, Cloud Security and incident response to a single workload, a .NET API protected with Microsoft Entra ID, and walks through Defense-in-Depth layer by layer, separating what has been proven from what is only designed. Every module answers the same question: what does this control protect, and how is it demonstrated?
+
 > Este repositorio describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica su estado: **Validado**, **Parcial**, **Runbook preparado**, **Diseño** o **Pendiente**. No se incluyen secretos, identificadores reales ni datos personales.
 
 [![Portfolio CI](https://github.com/lanuzalorenzo/portfolio-ciberseguridad-lorenzo/actions/workflows/portfolio-ci.yml/badge.svg)](https://github.com/lanuzalorenzo/portfolio-ciberseguridad-lorenzo/actions/workflows/portfolio-ci.yml)
@@ -12,7 +14,7 @@ Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen fal
 
 ## Arquitectura de referencia
 
-La carga de trabajo es **EcommerceApi** (Web API .NET 10 con OAuth 2.0/PKCE, DTOs, tests y pipeline DevSecOps), versionada en [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure).
+La carga de trabajo es **EcommerceApi** (Web API .NET 10 con validación de tokens OAuth 2.0, DTOs, tests y pipeline DevSecOps), versionada en [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure).
 
 Los controles transversales —CORS cerrado por defecto, validación JWT, cabeceras de seguridad, límite por IP, formato de error, HTTPS con HSTS y endpoint de salud— se extraen a paquetes NuGet en [`shared-dotnet`](https://github.com/lanuzalorenzo/shared-dotnet): los paquetes `0.1.0` están publicados en GitHub Packages y `EcommerceApi` los consume desde el feed con permiso de solo lectura de paquetes.
 
