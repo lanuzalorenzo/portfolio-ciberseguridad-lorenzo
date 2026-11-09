@@ -45,7 +45,7 @@ Cambio: [`b328fcc`](https://github.com/lanuzalorenzo/lab-api-local-azure/commit/
 | Momento | Prueba | Resultado |
 |---|---|---|
 | Antes del cambio | `scripts/check-server-header.sh http://localhost:8080/health` (script del árbol de trabajo) contra la imagen construida desde `main` | Sale 1 e imprime `Server: Kestrel` |
-| Antes del cambio | `ServerHeaderTests` sin la opción en `Program.cs` | Falla: `AddServerHeader` es `true` |
+| Antes del cambio | `ServerHeaderTests` sin el apagado, ni en `Program.cs` ni en el paquete | Falla: `AddServerHeader` es `true` |
 | Después del cambio | El mismo script contra la imagen corregida | Sale 0: «Sin cabecera Server» |
 | Después del cambio | Suite completa | 88 pruebas, 0 fallos; `/health` sigue en `200` y las cabeceras de seguridad no cambian |
 
