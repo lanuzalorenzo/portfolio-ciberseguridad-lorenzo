@@ -1,0 +1,13 @@
+inicio 2026-11-09 11:12:32
+tanda 01 build=0 test=0 OK
+tanda 02 build=0 test=0 OK
+tanda 03 build=0 test=134 FALLO
+tanda 04 build=0 test=0 OK
+tanda 05 build=0 test=0 OK
+tanda 06 build=0 test=0 OK
+tanda 07 build=0 test=134 FALLO
+tanda 08 build=0 test=0 OK
+tanda 09 build=0 test=0 OK
+tanda 10 build=0 test=0 OK
+fin 2026-11-09 11:13:20
+RESULTADO: 2 de 10 tandas con fallo del CLR

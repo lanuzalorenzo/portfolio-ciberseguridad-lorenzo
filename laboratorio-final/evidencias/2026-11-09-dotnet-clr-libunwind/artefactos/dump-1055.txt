@@ -1,0 +1,32 @@
+# Volcado dotnet-53485.dmp — 2026-11-09 10:55
+
+Comando:
+
+    dotnet-dump analyze "$DUMP" -c "setthread 8" -c "pe" -c "threads"
+
+Salida:
+
+    Exception object: 00007d064cc00178
+    Exception type:   System.ExecutionEngineException
+    Message:          <none>
+    InnerException:   <none>
+    StackTrace (generated):
+    <none>
+    StackTraceString: <none>
+    HResult: 80131506
+    ...
+    *8 0xD0F5 (53493)
+    ...
+
+Comando:
+
+    dotnet-dump analyze "$DUMP" -c "clrstack -all"
+
+Hilos en la ruta de nodos: 4. Extracto representativo:
+
+    00007D05FD3455B0 00007D15A7486E33 System.IO.Pipes.NamedPipeClientStream.ConnectInternal(Int32, System.Threading.CancellationToken, Int32)
+    00007D05FD345600 00007D15A4F07730 Microsoft.Build.BackEnd.NodeProviderOutOfProcBase.TryConnectToPipeStream(System.IO.Pipes.NamedPipeClientStream, System.String, Microsoft.Build.Internal.Handshake, Int32, Microsoft.Build.Internal.HandshakeResult ByRef)
+    00007D05FD345690 00007D15A4F075F3 Microsoft.Build.BackEnd.NodeProviderOutOfProcBase.TryConnectToProcess(Int32, Int32, Microsoft.Build.Internal.Handshake)
+    00007D05FD3456E0 00007D15A4F885A9 Microsoft.Build.BackEnd.NodeProviderOutOfProcBase+<>c__DisplayClass14_0.<GetNodes>g__StartNewNode|2(Int32)
+
+Lectura: la excepción se lee en el hilo 8; el hilo no deja pila gestionada. Los hilos en `StartNewNode` son una observación de contexto, no la prueba de que sean la causa del aborto.

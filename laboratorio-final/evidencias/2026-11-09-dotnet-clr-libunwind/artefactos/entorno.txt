@@ -1,0 +1,31 @@
+== fecha ==
+2026-11-09 11:15:03 CET
+
+== sistema ==
+Linux 7.0.0-38-generic
+Ubuntu 26.04.1 LTS
+glibc 2.43
+
+== dotnet ==
+10.0.114
+
+Host:
+  Version:      10.0.14
+  Architecture: x64
+
+.NET SDKs installed:
+  10.0.114 [ruta del SDK empaquetado por Ubuntu]
+
+.NET runtimes installed:
+  Microsoft.AspNetCore.App 10.0.14 [ruta del runtime empaquetado por Ubuntu]
+  Microsoft.NETCore.App 10.0.14 [ruta del runtime empaquetado por Ubuntu]
+
+== snap ==
+dotnet-sdk-100  10.0.114  40  latest/stable  canonical**
+
+== libunwind ==
+libunwind8 1.8.3-0ubuntu1
+
+== enlace de libcoreclr ==
+libunwind-x86_64.so.8 => /usr/lib/x86_64-linux-gnu/libunwind-x86_64.so.8
+libunwind.so.8 => /usr/lib/x86_64-linux-gnu/libunwind.so.8
