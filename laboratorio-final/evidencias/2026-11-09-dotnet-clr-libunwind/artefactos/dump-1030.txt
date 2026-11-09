@@ -1,0 +1,32 @@
+# Volcado dotnet-23203.dmp — 2026-11-09 10:30
+
+Comando:
+
+    dotnet-dump analyze "$DUMP" -c "setthread 19" -c "pe" -c "threads"
+
+Salida:
+
+    Exception object: 00006ffcccc00178
+    Exception type:   System.ExecutionEngineException
+    Message:          <none>
+    InnerException:   <none>
+    StackTrace (generated):
+    <none>
+    StackTraceString: <none>
+    HResult: 80131506
+    ...
+    *19 0x5AB6 (23222)
+    ...
+
+Comando:
+
+    dotnet-dump analyze "$DUMP" -c "clrstack -all"
+
+Hilos en la ruta de nodos: 5. Extracto representativo:
+
+    00006FFC9CEEAD90 0000700C28EA6E33 System.IO.Pipes.NamedPipeClientStream.ConnectInternal(Int32, System.Threading.CancellationToken, Int32)
+    00006FFC9CEEADE0 0000700C26A47730 Microsoft.Build.BackEnd.NodeProviderOutOfProcBase.TryConnectToPipeStream(System.IO.Pipes.NamedPipeClientStream, System.String, Microsoft.Build.Internal.Handshake, Int32, Microsoft.Build.Internal.HandshakeResult ByRef)
+    00006FFC9CEEAE70 0000700C26A475F3 Microsoft.Build.BackEnd.NodeProviderOutOfProcBase.TryConnectToProcess(Int32, Int32, Microsoft.Build.Internal.Handshake)
+    00006FFC9CEEAEC0 0000700C26AC85A9 Microsoft.Build.BackEnd.NodeProviderOutOfProcBase+<>c__DisplayClass14_0.<GetNodes>g__StartNewNode|2(Int32)
+
+Lectura: misma firma que el volcado de las 10:55. El hilo 19 es el que se selecciona con `setthread`; sin fijarlo, `pe` consultaría el hilo 0.

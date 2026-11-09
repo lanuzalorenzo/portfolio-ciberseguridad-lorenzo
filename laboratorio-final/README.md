@@ -2,7 +2,7 @@
 
 > **Estado:** Fase 0 cerrada. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md). No hay recursos Azure desplegados.
 
-El laboratorio conecta los doce módulos sobre una sola carga de trabajo: [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure). No es una colección de prácticas aisladas, sino el recorrido que las pone en orden: cada capa se activa, se valida y se retira, y no se abre la siguiente hasta que la anterior tiene prueba.
+El laboratorio conecta los doce módulos sobre una carga de trabajo principal: [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure). No es una colección de prácticas aisladas, sino el recorrido que las pone en orden: cada capa se activa, se valida y se retira, y no se abre la siguiente hasta que la anterior tiene prueba.
 
 Se practica cerradura a cerradura: primero en local y sin coste; después, Azure con autorización y presupuesto.
 
@@ -19,7 +19,7 @@ Se practica cerradura a cerradura: primero en local y sin coste; después, Azure
 
 | Capa | Qué incluye | Estado |
 |---|---|---|
-| Workload | API .NET, DTOs, autorización por propietario, tests | **Validado en CI**; integración Azure no desplegada |
+| Workload | API .NET, DTOs, autorización por propietario, tests | **Validado en CI**; caso de caída intermitente del CLR por `libunwind` en una solución .NET distinta de EcommerceApi, con resultado **Validado en local** ([evidencia](evidencias/2026-11-09-dotnet-clr-libunwind/README.md)); integración Azure no desplegada |
 | Identidad | Entra ID, OAuth 2.0/PKCE, JWT/JWKS, RBAC, Managed Identities | Ver módulos [01](../01-seguridad-azure/README.md), [02](../02-identity-security/README.md) y [06](../06-identity-protection/README.md) |
 | Red | VNet, subredes, NSG, Private Endpoints, DNS privado | **Diseño + IaC validada estáticamente** en el [módulo 08](../08-seguridad-red-azure/README.md) |
 | Datos y secretos | Key Vault, Storage, acceso privado | **Diseño** |
@@ -47,4 +47,4 @@ Se practica cerradura a cerradura: primero en local y sin coste; después, Azure
 
 ## Próximo paso
 
-La Fase 0 se cerró el 2026-10-22 con tres evidencias locales; después llegaron la inclusión de ficheros del módulo 11 (2026-11-02), el rate limit secuencial y de carga (2026-11-05) y el baseline DAST (2026-11-08). La Fase 1 (Azure mínimo) no se inicia hasta que haya autorización, suscripción y presupuesto. En local quedan la reejecución de PKCE con tenant y la recolección técnica del módulo 12.
+La Fase 0 se cerró el 2026-10-22 con tres evidencias locales; después llegaron la inclusión de ficheros del módulo 11 (2026-11-02), el rate limit secuencial y de carga (2026-11-05), el baseline DAST (2026-11-08) y el caso de caída intermitente del CLR por `libunwind` (2026-11-09), con la mitigación local validada. La Fase 1 (Azure mínimo) no se inicia hasta que haya autorización, suscripción y presupuesto. En local quedan la reejecución de PKCE con tenant, la recolección técnica del módulo 12 y confirmar el arreglo de `libunwind` en Ubuntu.

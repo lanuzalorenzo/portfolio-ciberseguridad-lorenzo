@@ -26,6 +26,7 @@ Los gates cubren lo mecánico: secretos, vulnerabilidades, infraestructura, form
 - **Acoplamiento entre capas.** Aquí sí hay gate: `LayerDependencyTests` rompe la compilación si una capa referencia la que no debe.
 - **Código que no se puede probar.** Las pruebas arrancan la API real con `WebApplicationFactory`, una base SQLite temporal y un esquema de autenticación de prueba. Si un caso exigiera un servicio externo vivo, el problema está en el diseño, no en la prueba.
 - **Optimización prematura y duplicación.** CQRS ligero y outbox entraron con ADR y motivo escrito; sin medición que lo justifique, no entra. `dotnet format` vigila el estilo, no la claridad del código ni la duplicación.
+- **Runtime del sistema distinto del de CI.** La pipeline instala el SDK con `actions/setup-dotnet` ([workflow](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)), no con el paquete de Ubuntu; por eso no ejecuta los binarios que enlazan la `libunwind` del sistema. Una condición de carrera en esa biblioteca puede abortar `dotnet build` y `dotnet test` con `0x80131506` sin que ningún gate identifique la causa. La [evidencia del caso](../laboratorio-final/evidencias/2026-11-09-dotnet-clr-libunwind/README.md) reproduce la firma, descarta dos hipótesis y mide la mitigación con `-m:1`.
 
 Nada de esto es un control validado: son criterios de revisión de pull request. El estado **Validado en CI** del módulo se apoya en los gates, no en estas comprobaciones.
 
