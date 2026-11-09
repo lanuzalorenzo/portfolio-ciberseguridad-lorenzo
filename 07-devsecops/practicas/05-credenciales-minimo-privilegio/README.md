@@ -1,6 +1,6 @@
 # 05 | Credenciales de mínimo privilegio para feeds privados
 
-> **Estado:** **Validado** en local y CI ([run 42470483409](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/42470483409), 2026-11-08) para la separación de credenciales; el ciclo de Dependabot sigue **Parcial** (falta una PR real de `LL.*`).
+> **Estado:** **Validado** en local y CI ([run 42470483409](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/42470483409), 2026-11-08) para la separación de credenciales; el ciclo de Dependabot quedó cerrado el 2026-11-09 con una PR real de `LL.*` fusionada por el flujo automático (PR [#55](https://github.com/lanuzalorenzo/lab-api-local-azure/pull/55) de `lab-api`).
 >
 > **Referencias:** MCSB IM-1, IM-2, DS-2.
 

@@ -20,7 +20,7 @@ Los controles se aplican sobre [EcommerceApi (lab-api-local-azure)](https://gith
 
 ## Un caso de remediación, de principio a fin
 
-La cabecera `Server: Kestrel` salía en todas las respuestas y ningún check la miraba. El [caso de remediación](../laboratorio-final/evidencias/2026-11-09-07-remediacion-server-header/README.md) recorre las cinco piezas que separan un hallazgo de un arreglo: la observación contra el contenedor, la causa en la opción por defecto de Kestrel, el cambio en `Program.cs`, una prueba de regresión que falla antes y pasa después, y un run de CI fechado que impide que la cabecera vuelva. Lo que no cubre está escrito allí: la capa que pueda ir delante de Kestrel.
+La cabecera `Server: Kestrel` salía en todas las respuestas y ningún check la miraba. El [caso de remediación](../laboratorio-final/evidencias/2026-11-09-07-remediacion-server-header/README.md) recorre las cinco piezas que separan un hallazgo de un arreglo: la observación contra el contenedor, la causa en la opción por defecto de Kestrel, el cambio, que hoy vive en `LL.Security 0.3.0` y el consumidor hereda sin línea propia, una prueba de regresión que falla antes y pasa después, y un run de CI fechado que impide que la cabecera vuelva. Lo que no cubre está escrito allí: la capa que pueda ir delante de Kestrel.
 
 ## Lo que la pipeline no detecta
 
