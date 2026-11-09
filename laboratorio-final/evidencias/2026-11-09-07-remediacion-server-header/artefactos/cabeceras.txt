@@ -1,0 +1,30 @@
+Cabeceras de /health, 2026-11-09. Salida redactada de curl -D - -o /dev/null.
+
+ANTES (imagen construida desde main, commit 7af6739)
+
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Date: Mon, 09 Nov 2026 19:22:56 GMT
+Server: Kestrel
+Cache-Control: no-store, no-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Pragma: no-cache
+Transfer-Encoding: chunked
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+DESPUÉS (imagen construida desde la rama fix/server-header)
+
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Date: Mon, 09 Nov 2026 19:23:36 GMT
+Cache-Control: no-store, no-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Pragma: no-cache
+Transfer-Encoding: chunked
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Permissions-Policy: geolocation=(), microphone=(), camera=()
