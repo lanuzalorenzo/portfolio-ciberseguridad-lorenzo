@@ -6,7 +6,7 @@ Este directorio centraliza las evidencias del laboratorio final. Cada entrada de
 
 > Una evidencia es el recibo de algo que se hizo: qué se ejecutó, cuándo, con qué resultado y dónde está la prueba. Un informe escrito a posteriori no es lo mismo que el registro de una ejecución, y aquí se distinguen.
 
-## Dos tipos de evidencia
+## Tipos de evidencia
 
 | Tipo | Qué aporta | Límite |
 |---|---|---|

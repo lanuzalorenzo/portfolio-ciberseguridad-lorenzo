@@ -57,7 +57,7 @@ El plan de automatización avisa de que la raíz devuelve `404` y que el spider 
 
 ## 7. Conclusiones
 
-La superficie anónima de la API no devuelve ningún hallazgo pasivo: cabeceras de seguridad presentes, sin cookies y sin número de versión. La cabecera `Server: Kestrel` revela el servidor, no su versión. Eso no cubre los endpoints de negocio, que quedan detrás de JWT y de un tenant que el laboratorio no tiene.
+La superficie anónima de la API no devuelve ningún hallazgo pasivo: cabeceras de seguridad presentes, sin cookies y sin número de versión. La cabecera `Server: Kestrel` revelaba el servidor, no su versión; se [remedió el 2026-11-09](../2026-11-09-07-remediacion-server-header/README.md). Eso no cubre los endpoints de negocio, que quedan detrás de JWT y de un tenant que el laboratorio no tiene.
 
 ## 8. Limitaciones y lo no ejecutado
 

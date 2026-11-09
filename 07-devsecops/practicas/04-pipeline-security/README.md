@@ -11,7 +11,7 @@ Una pipeline con permisos de escritura sobre todo el repositorio es una credenci
 | Pieza | Configuración |
 |---|---|
 | Permisos | `contents: read`; `security-events: write` solo donde se publica SARIF |
-| Gates | Build, 10 pruebas xUnit, Gitleaks, CodeQL, Trivy, contenedor e IaC |
+| Gates | Build, pruebas xUnit, Gitleaks, CodeQL, Trivy, contenedor e IaC |
 | Contenedor | Multi-stage, usuario no-root, Trivy image |
 | Concurrencia | Un run por rama, cancelando el anterior |
 | OIDC | Diseñado, no activo |
@@ -20,7 +20,7 @@ Una pipeline con permisos de escritura sobre todo el repositorio es una credenci
 
 | Prueba | Resultado observado |
 |---|---|
-| Build y pruebas | Compila y pasan las 10 pruebas en local y en CI |
+| Build y pruebas | Compila y pasan las pruebas de la solución en local y en CI |
 | Permisos del workflow | Revisados y acotados por job |
 | Gates de seguridad | Todos los jobs en verde el 2026-10-19 |
 | Contenedor no-root | UID distinto de 0 dentro del contenedor |

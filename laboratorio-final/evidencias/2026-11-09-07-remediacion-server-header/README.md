@@ -38,13 +38,13 @@ Kestrel publica esa cabecera por defecto (`KestrelServerOptions.AddServerHeader`
 - Job `container-security`: arranca la imagen, espera `/health` y ejecuta el script después del escaneo y la publicación del SARIF de Trivy.
 - `docs/api.md` y `docs/capacidades.md`: documentan la capacidad y su comprobación.
 
-Cambio: [`b328fcc`](https://github.com/lanuzalorenzo/lab-api-local-azure/commit/b328fcc81b0615bb4bbbf913e266a57c2837a740), PR [#52](https://github.com/lanuzalorenzo/lab-api-local-azure/pull/52).
+Cambio: [`b328fcc`](https://github.com/lanuzalorenzo/lab-api-local-azure/commit/b328fcc81b0615bb4bbbf913e266a57c2837a740), PR [#52](https://github.com/lanuzalorenzo/lab-api-local-azure/pull/52). El control no se quedó en `Program.cs`: pasó a `LL.Security 0.3.0`, dentro de `UseSecurityHeaders` y con la opción `SuppressServerHeader`, para que cualquier API que monte el paquete lo herede; el consumidor ya no configura Kestrel.
 
 ## 5. Prueba de regresión
 
 | Momento | Prueba | Resultado |
 |---|---|---|
-| Antes del cambio | `scripts/check-server-header.sh http://localhost:8080/health` contra la imagen de `main` | Sale 1 e imprime `Server: Kestrel` |
+| Antes del cambio | `scripts/check-server-header.sh http://localhost:8080/health` (script del árbol de trabajo) contra la imagen construida desde `main` | Sale 1 e imprime `Server: Kestrel` |
 | Antes del cambio | `ServerHeaderTests` sin la opción en `Program.cs` | Falla: `AddServerHeader` es `true` |
 | Después del cambio | El mismo script contra la imagen corregida | Sale 0: «Sin cabecera Server» |
 | Después del cambio | Suite completa | 88 pruebas, 0 fallos; `/health` sigue en `200` y las cabeceras de seguridad no cambian |
@@ -59,4 +59,4 @@ El run [42685834576](https://github.com/lanuzalorenzo/lab-api-local-azure/action
 
 - La comprobación cubre el contenedor que sirve Kestrel, no una capa delante de él. Un front end de App Service o un proxy podrían añadir su propia cabecera y este check no lo vería.
 - La suite de pruebas no reproduce la cabecera: `TestServer` no la escribe. Por eso la ausencia en HTTP se demuestra contra el contenedor, y la prueba de integración solo fija la opción.
-- Solo se comprobaron rutas anónimas; las autenticadas pasan por los mismos cabeceras, pero no se midieron una a una.
+- Solo se comprobaron rutas anónimas; las autenticadas pasan por las mismas cabeceras, pero no se midieron una a una.
