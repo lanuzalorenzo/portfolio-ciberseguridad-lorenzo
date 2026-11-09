@@ -1,6 +1,6 @@
 # 07 | DevSecOps y gobernanza del software
 
-> **Estado:** **Validado en CI**. La pipeline completa —build, formato, 10 pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root, Trivy image y Trivy config sobre Bicep— terminó en verde el 2026-10-19 y ha vuelto a pasar desde entonces; la última ejecución es del 2026-11-08. OIDC y despliegue siguen fuera de alcance.
+> **Estado:** **Validado en CI**. La pipeline completa —build, formato, las pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root, Trivy image y Trivy config sobre Bicep— terminó en verde el 2026-10-19 y ha vuelto a pasar desde entonces; la última ejecución es del 2026-11-09. OIDC y despliegue siguen fuera de alcance.
 
 La seguridad del desarrollo no se demuestra con una política escrita, sino con un cambio que no puede entrar si no pasa las pruebas. Este módulo aplica ese criterio sobre EcommerceApi: la rama protegida obliga a pasar por pull request y por los checks, el escaneo de secretos tumba la integración si aparece una credencial, los análisis bloquean el merge y el contenedor se ejecuta sin privilegios. La credencial que restaura los paquetes es de solo lectura y distinta de la identidad con la que se revisa y aprueba.
 
@@ -17,6 +17,10 @@ Los controles se aplican sobre [EcommerceApi (lab-api-local-azure)](https://gith
 | 03 | [SAST, SCA e IaC](practicas/03-sast-sca-iac/README.md) | Que código, dependencias e infraestructura pasen el análisis | **Validado** |
 | 04 | [Pipeline segura](practicas/04-pipeline-security/README.md) | Que cada job tenga el permiso mínimo y los gates bloqueen | **Parcial** |
 | 05 | [Credenciales de mínimo privilegio](practicas/05-credenciales-minimo-privilegio/README.md) | Que el build use una credencial que solo lea paquetes, separada de la identidad interactiva | **Validado** |
+
+## Un caso de remediación, de principio a fin
+
+La cabecera `Server: Kestrel` salía en todas las respuestas y ningún check la miraba. El [caso de remediación](../laboratorio-final/evidencias/2026-11-09-07-remediacion-server-header/README.md) recorre las cinco piezas que separan un hallazgo de un arreglo: la observación contra el contenedor, la causa en la opción por defecto de Kestrel, el cambio en `Program.cs`, una prueba de regresión que falla antes y pasa después, y un run de CI fechado que impide que la cabecera vuelva. Lo que no cubre está escrito allí: la capa que pueda ir delante de Kestrel.
 
 ## Lo que la pipeline no detecta
 
