@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Comprobar enlaces relativos
-        uses: lanuzalorenzo/core/actions/check-links@v1.1
+        uses: lanuzalorenzo/core/actions/check-links@v1.4
 
   pkce-lab:
     name: Laboratorio PKCE (Node)
