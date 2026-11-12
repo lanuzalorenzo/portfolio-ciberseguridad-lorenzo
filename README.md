@@ -16,7 +16,9 @@ Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen fal
 
 La carga de trabajo es **EcommerceApi** (Web API .NET 10 con validación de tokens OAuth 2.0, DTOs, tests y pipeline DevSecOps), versionada en [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure).
 
-Los controles transversales —CORS cerrado por defecto, validación JWT, cabeceras de seguridad, límite por IP, formato de error, HTTPS con HSTS y endpoint de salud— se extraen a paquetes NuGet en [`shared-dotnet`](https://github.com/lanuzalorenzo/shared-dotnet): los paquetes `0.1.0` están publicados en GitHub Packages y `EcommerceApi` los consume desde el feed con permiso de solo lectura de paquetes.
+La misma línea base se aplica a una segunda carga, **Comicteca** (Blazor WebAssembly y API .NET 10 sobre SQLite en local), versionada en [`comicteca`](https://github.com/lanuzalorenzo/comicteca). Comprueba que los controles compartidos se replican fuera del laboratorio —CORS cerrado por defecto, cabeceras y CSP, límite por IP, ProblemDetails, endpoint de salud, Docker sin root, CodeQL y Trivy sobre las imágenes—, salvo la validación de tokens, que allí sigue **Parcial**. Está en **Parcial**, no se presenta como producto ni como caso de estudio, y su despliegue sigue pendiente.
+
+Los controles transversales —CORS cerrado por defecto, validación JWT, cabeceras de seguridad, límite por IP, formato de error, HTTPS con HSTS y endpoint de salud— se extraen a paquetes NuGet en [`shared-dotnet`](https://github.com/lanuzalorenzo/shared-dotnet): los paquetes `0.1.0` están publicados en GitHub Packages y `EcommerceApi` y `Comicteca` los consumen desde el feed con permiso de solo lectura de paquetes.
 
 ![Defensa en profundidad: cinco capas, de la detección y respuesta en la parte superior a la arquitectura y AppSec en la base, con la validación ofensiva y el forense como ejes transversales](laboratorio-final/arquitectura-capas.svg)
 
@@ -77,6 +79,7 @@ Los controles transversales —CORS cerrado por defecto, validación JWT, cabece
 |---|---|
 | **Portfolio** | Documentación, prácticas y narrativa (este repo) |
 | **API de referencia** | Código .NET, tests, CI y Bicep → [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure) |
+| **Segunda carga** | Los mismos controles en una aplicación propia —CORS, cabeceras y CSP, límite por IP, ProblemDetails, salud, Docker sin root, CodeQL y Trivy—, salvo la validación de tokens, todavía Parcial → [`comicteca`](https://github.com/lanuzalorenzo/comicteca) |
 | **Aprendizaje en IA** | Guías de herramientas y agentes, experimentos medidos y criterios sobre qué datos salen de la red → [`lab-ia-aprendizaje`](https://github.com/lanuzalorenzo/lab-ia-aprendizaje) |
 | **Automatización de CI** | Acciones y workflows compartidos: enlaces, anclas y compilación .NET → [`core`](https://github.com/lanuzalorenzo/core) |
 | **Controles compartidos** | Paquetes NuGet con CORS, cabeceras, límite por IP, ProblemDetails y salud → [`shared-dotnet`](https://github.com/lanuzalorenzo/shared-dotnet) |
