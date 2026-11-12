@@ -1,6 +1,6 @@
 # Índice de evidencias
 
-> **Estado:** 17 evidencias registradas: 12 de ejecución y 5 documentales o verificables.
+> **Estado:** 18 evidencias registradas: 12 de ejecución y 6 documentales o verificables.
 
 Este directorio centraliza las evidencias del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook, un informe o un run de CI, y hasta un entorno concreto. No es un repositorio de capturas sueltas.
 
@@ -78,6 +78,7 @@ La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apa
 | 2026-09-25 | 04 — Defender for Cloud | Documental | 4 prácticas (planes, recomendaciones, workloads, hardening) con informe y bitácora | [Módulo](../../04-defender-for-cloud/README.md) |
 | 2026-10-19 | 07 — DevSecOps | Verificable (CI) | Pipeline completa en verde: build, 10 pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root e IaC | [Run 39243360276](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/39243360276) |
 | 2026-11-12 | 07 — DevSecOps | Verificable (CI) | SBOM CycloneDX de la imagen publicada, adjunto a la ejecución: 3 842 componentes, con el digest de la imagen y el del fichero | [Run 43245455930](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/43245455930) |
+| 2026-11-12 | 07 — DevSecOps | Verificable (CI) | Imagen firmada con cosign keyless y SBOM atestado; `cosign verify` y `cosign verify-attestation` en verde | [Run 43314295991](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/43314295991) |
 
 > Las evidencias documentales se apoyan en el informe y la bitácora del módulo. Declaran explícitamente que no se conservó la salida original; por eso no se mezclan con las de ejecución.
 
