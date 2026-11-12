@@ -75,6 +75,7 @@ La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apa
 | 2026-09-15 | 03 — Cloud Audits | Documental | 3 auditorías (suscripciones, recursos críticos, identidades) con hallazgos y recomendaciones | [Módulo](../../03-cloud-audits/README.md) |
 | 2026-09-25 | 04 — Defender for Cloud | Documental | 4 prácticas (planes, recomendaciones, workloads, hardening) con informe y bitácora | [Módulo](../../04-defender-for-cloud/README.md) |
 | 2026-10-19 | 07 — DevSecOps | Verificable (CI) | Pipeline completa en verde: build, 10 pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root e IaC | [Run 39243360276](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/39243360276) |
+| 2026-11-12 | 07 — DevSecOps | Verificable (CI) | SBOM CycloneDX de la imagen publicada, adjunto a la ejecución: 3 842 componentes, con el digest de la imagen y el del fichero | [Run 43245455930](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/43245455930) |
 
 > Las evidencias documentales se apoyan en el informe y la bitácora del módulo. Declaran explícitamente que no se conservó la salida original; por eso no se mezclan con las de ejecución.
 

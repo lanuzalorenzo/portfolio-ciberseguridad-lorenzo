@@ -13,6 +13,7 @@ Una pipeline con permisos de escritura sobre todo el repositorio es una credenci
 | Permisos | `contents: read`; `security-events: write` solo donde se publica SARIF |
 | Gates | Build, pruebas xUnit, Gitleaks, CodeQL, Trivy, contenedor e IaC |
 | Contenedor | Multi-stage, usuario no-root, Trivy image |
+| SBOM | Inventario CycloneDX de lo que contiene la imagen, adjunto a la ejecución; el job que lo genera solo lee |
 | Concurrencia | Un run por rama, cancelando el anterior |
 | OIDC | Diseñado, no activo |
 
@@ -24,15 +25,17 @@ Una pipeline con permisos de escritura sobre todo el repositorio es una credenci
 | Permisos del workflow | Revisados y acotados por job |
 | Gates de seguridad | Todos los jobs en verde el 2026-10-19 |
 | Contenedor no-root | UID distinto de 0 dentro del contenedor |
+| SBOM CycloneDX | `.cdx.json` de 3 842 componentes adjunto a la ejecución del 2026-11-12, con el digest de la imagen y el del fichero |
 
 ## Lecciones
 
 - Un gate que no bloquea el merge es un aviso, no un control.
 - El permiso de escritura se concede al job que lo necesita, no al workflow entero.
-- Quedan fuera la firma de artefactos y el SBOM; sin ellos, la cadena de suministro está a medias.
+- Queda fuera la firma de artefactos: el SBOM dice qué contiene la imagen, no quién la construyó; sin firma, la cadena de suministro está a medias.
 
 ## Más detalle
 
 - [Módulo 07](../../README.md)
 - [Workflow de la API](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/devsecops-ci.yml)
+- [Workflow de publicación de la imagen](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/.github/workflows/container-publish.yml)
 - [Diseño OIDC](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/infra/README.md)
