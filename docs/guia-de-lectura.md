@@ -4,7 +4,7 @@
 >
 > **Qué vas a encontrar:** el orden recomendado, un glosario mínimo y un mapa de los doce módulos. La guía no sustituye a la documentación de cada módulo: la ordena.
 >
-> **Última revisión:** 2026-11-09. Ver [mantenimiento](#10-mantenimiento).
+> **Última revisión:** 2026-11-12. Ver [mantenimiento](#10-mantenimiento).
 
 ## 1. La idea en cinco líneas
 
@@ -130,7 +130,7 @@ Cada módulo sigue el mismo patrón, con las piezas que tenga: hay módulos sin 
 | 04 | [Defender for Cloud](../04-defender-for-cloud/README.md) | ¿Cómo se detectan y priorizan riesgos cloud? | Validado en laboratorio (documental) |
 | 05 | [Defender Suite](../05-defender-suite/README.md) | ¿Qué cubre cada producto de Defender y qué cuesta probarlo? | Diseño: mapa de los catorce productos; sin evidencia de ejecución |
 | 06 | [Acceso privilegiado bajo licencia](../06-identity-protection/README.md) | ¿Qué añaden Conditional Access y PIM cuando hay licencia P1/P2? | Diseño: tres controles descritos, sin ejecutar |
-| 07 | [DevSecOps](../07-devsecops/README.md) | ¿Cómo se integra seguridad en el pipeline? | Validado en CI; OIDC, despliegue y firma/SBOM pendientes |
+| 07 | [DevSecOps](../07-devsecops/README.md) | ¿Cómo se integra seguridad en el pipeline? | Validado en CI; OIDC, despliegue y firma pendientes |
 | 08 | [Seguridad de red](../08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Diseño + IaC validada estáticamente |
 | 09 | [Microsoft Sentinel](../09-microsoft-sentinel/README.md) | ¿Cómo se detecta con KQL y se automatiza? | Diseño: workspace y diagnósticos en IaC; Sentinel sin habilitar |
 | 10 | [ELK Stack Security](../10-elk-stack-security/README.md) | ¿Cómo se centralizan logs y se consultan? | Validado en local |
@@ -168,7 +168,7 @@ Si puedes responderlas sin mirar, ya tienes el hilo. Si no, vuelve a la Ruta 1.
 
 ## 10. Mantenimiento
 
-- **Última revisión:** 2026-11-09.
+- **Última revisión:** 2026-11-12.
 - **Actualizar cuando:** cambie el estado de un módulo, se añada o retire una evidencia, cambie la estructura de módulos o enlaces, o se añada una ruta de lectura.
 - **No actualizar por:** cambios internos que no afecten a lo que el lector necesita para orientarse.
 - **Fuente única:** esta guía es la referencia; la web y el perfil resumen y enlazan.

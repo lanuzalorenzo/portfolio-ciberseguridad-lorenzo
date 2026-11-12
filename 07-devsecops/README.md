@@ -1,6 +1,6 @@
 # 07 | DevSecOps y gobernanza del software
 
-> **Estado:** **Validado en CI**. La pipeline completa —build, formato, las pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root, Trivy image y Trivy config sobre Bicep— terminó en verde el 2026-10-19 y ha vuelto a pasar desde entonces; la última ejecución es del 2026-11-09. OIDC y despliegue siguen fuera de alcance.
+> **Estado:** **Validado en CI**. La pipeline completa —build, formato, las pruebas, Gitleaks, CodeQL, Trivy SCA, contenedor no-root, Trivy image y Trivy config sobre Bicep— terminó en verde el 2026-10-19 y ha vuelto a pasar desde entonces; la última ejecución es del 2026-11-12 y ya genera el SBOM (el inventario de lo que contiene la imagen). OIDC, despliegue y firma siguen fuera de alcance.
 
 La seguridad del desarrollo no se demuestra con una política escrita, sino con un cambio que no puede entrar si no pasa las pruebas. Este módulo aplica ese criterio sobre EcommerceApi: la rama protegida obliga a pasar por pull request y por los checks, el escaneo de secretos tumba la integración si aparece una credencial, los análisis bloquean el merge y el contenedor se ejecuta sin privilegios. La credencial que restaura los paquetes es de solo lectura y distinta de la identidad con la que se revisa y aprueba.
 
@@ -36,6 +36,8 @@ Nada de esto es un control validado: son criterios de revisión de pull request.
 
 ## Lo que no está
 
-La autenticación OIDC con Azure está diseñada pero no activa, no hay workflow de despliegue y la pipeline no firma artefactos ni genera SBOM. Son las tres deudas del módulo, escritas como tales. El propietario tampoco tiene atajo: el ruleset `main` no define actores de bypass, así que pasa por pull request y por los siete checks; la revisión humana no es obligatoria porque nadie puede aprobar su propio cambio.
+Cada push a `main` construye la imagen, la publica en GHCR (el registro de imágenes de GitHub) y escanea ese mismo digest (la huella que la identifica) con syft. El `.cdx.json` se genera y se adjunta a la ejecución —[la del 2026-11-12](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/43245455930), 3 842 componentes, imagen `sha256:593a1dde…` y fichero `sha256:abd50ba9…`— y el job que lo genera solo tiene permiso de lectura. Sin firma, el inventario dice qué hay, no que sea lo que se construyó.
+
+La autenticación OIDC con Azure está diseñada pero no activa, no hay workflow de despliegue y la pipeline no firma artefactos. Son las tres deudas del módulo, escritas como tales. El propietario tampoco tiene atajo: el ruleset `main` no define actores de bypass, así que pasa por pull request y por los siete checks; la revisión humana no es obligatoria porque nadie puede aprobar su propio cambio.
 
 No hay bitácora. El trabajo quedó en las páginas y en el workflow, y la entrada que había contaba una reorganización de carpetas que ya no existe.
