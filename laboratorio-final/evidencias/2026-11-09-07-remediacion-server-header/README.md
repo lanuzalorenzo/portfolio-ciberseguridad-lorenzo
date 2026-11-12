@@ -60,3 +60,16 @@ El run [42685834576](https://github.com/lanuzalorenzo/lab-api-local-azure/action
 - La comprobación cubre el contenedor que sirve Kestrel, no una capa delante de él. Un front end de App Service o un proxy podrían añadir su propia cabecera y este check no lo vería.
 - La suite de pruebas no reproduce la cabecera: `TestServer` no la escribe. Por eso la ausencia en HTTP se demuestra contra el contenedor, y la prueba de integración solo fija la opción.
 - Solo se comprobaron rutas anónimas; las autenticadas pasan por las mismas cabeceras, pero no se midieron una a una.
+
+## 8. Severidad CVSS 3.1
+
+| Campo | Valor |
+|---|---|
+| Fecha | 2026-11-12 |
+| Versión | CVSS 3.1 |
+| Vector | `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N` |
+| Puntuación | **5,3 (Media)** |
+| Justificación | Divulgación de información de reconocimiento desde la red: el producto (`Kestrel`) se anuncia en la respuesta, sin versión ni capacidad de ejecución. Confidencialidad baja; integridad y disponibilidad sin impacto. |
+| Referencia | [07 — DevSecOps, severidad del hallazgo `Server`](../../../07-devsecops/README.md#severidad-del-hallazgo-server) |
+
+La puntuación no convierte el hallazgo en un incidente: mide el valor de la huella para un atacante que prepara un ataque posterior. La remediación elimina esa señal, y el check de CI impide que vuelva.

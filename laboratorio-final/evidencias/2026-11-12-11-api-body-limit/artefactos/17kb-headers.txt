@@ -1,0 +1,14 @@
+HTTP/1.1 413 Payload Too Large
+Connection: close
+Content-Type: application/problem+json
+Date: Thu, 12 Nov 2026 15:56:09 GMT
+Cache-Control: no-cache,no-store
+Expires: -1
+Pragma: no-cache
+Transfer-Encoding: chunked
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'
+

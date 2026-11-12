@@ -18,7 +18,7 @@ Validar el control de consumo de recursos (OWASP API4) en su forma más básica:
 - Cambiar `X-Forwarded-For` no abra una cuota nueva: la clave es la IP de conexión.
 - Con clientes concurrentes, el número de aceptadas no cambie y el rechazo no añada espera.
 
-El límite de cuerpo de 16 KB y el límite por usuario **no** forman parte de esta sesión.
+El límite de cuerpo de 16 KB no formaba parte de la sesión del 2026-11-05; se validó aparte el 2026-11-12, con [evidencia](../../../laboratorio-final/evidencias/2026-11-12-11-api-body-limit/README.md). El límite por usuario sigue fuera de alcance.
 
 ## 2. Alcance
 
@@ -217,7 +217,7 @@ Repetir el paso 8 con `RATE=50`, `VUS=50` y `MAXVUS=100`, guardando en `carga-50
 | Estados inesperados | Recuento de no `200`/`429` | 0 | 0 de 3 523 |
 | Latencia con carga | p95 de `200` | Sin degradación apreciable | 1,58 ms a 10/s; 1,90 ms a 50/s |
 | Coste del rechazo | p95 de `429` | Inmediato, sin cola | 1,09 ms a 10/s; 1,07 ms a 50/s |
-| Límite de cuerpo 16 KB | `POST` con cuerpo grande | No ejecutado | Pendiente |
+| Límite de cuerpo 16 KB | `POST` con 16 384 y 17 408 bytes | `201` y `413` | Validado el 2026-11-12; [evidencia](../../../laboratorio-final/evidencias/2026-11-12-11-api-body-limit/README.md) |
 
 ## 8. Evidencia
 

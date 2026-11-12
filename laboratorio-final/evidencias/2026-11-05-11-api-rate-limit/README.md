@@ -98,7 +98,7 @@ Lo que la evidencia **no** demuestra: que 120/min sea un umbral adecuado, que el
 - Sin calibración: 120/min es una intención de laboratorio, no un valor derivado del coste de cada endpoint.
 - La ventana fija permite ráfagas en el borde (hasta 120 al final de un minuto y 120 al principio del siguiente); no se midió.
 - Detrás de NAT los clientes comparten cuota; con IP rotativa el límite se esquiva.
-- No se probó el `413` del límite de 16 KB ni ningún endpoint autenticado.
+- No se probó el `413` del límite de 16 KB ni ningún endpoint autenticado. El límite se validó después, el 2026-11-12: [evidencia](../2026-11-12-11-api-body-limit/README.md).
 - El resultado depende del commit `b9176b0` y de la imagen construida en la sesión; cambios posteriores exigen repetir el runbook.
 
 ## 9. Revisión de redacción

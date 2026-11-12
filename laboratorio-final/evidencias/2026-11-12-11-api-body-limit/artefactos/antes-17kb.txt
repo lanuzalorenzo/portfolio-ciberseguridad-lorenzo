@@ -1,0 +1,21 @@
+Fecha: 2026-11-12, antes del cambio, contra el árbol de origin/main (8fc5767).
+Petición: POST /api/products con 17 408 bytes y token de prueba local.
+
+HTTP/1.1 500 Internal Server Error
+Connection: close
+Content-Type: application/problem+json; charset=utf-8
+Date: Thu, 12 Nov 2026 16:41:14 GMT
+Cache-Control: no-cache,no-store
+Expires: -1
+Pragma: no-cache
+Transfer-Encoding: chunked
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: no-referrer
+Permissions-Policy: geolocation=(), microphone=(), camera=()
+Content-Security-Policy: default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'
+
+{"type":"https://tools.ietf.org/html/rfc9110#section-15.6.1","title":"An error occurred while processing your request.","status":500,"traceId":"00-f8dde4e62cd4ee06d401c4e400a015d6-e059949f04228c3d-00"}
+En el log del proceso, Kestrel había lanzado BadHttpRequestException con
+"Request body too large. The max request body size is 16384 bytes."; el
+ExceptionHandlerMiddleware la convertía en el 500 genérico.

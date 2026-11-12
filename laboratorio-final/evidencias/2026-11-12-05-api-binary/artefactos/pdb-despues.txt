@@ -1,0 +1,4 @@
+Fecha: 2026-11-12
+Publicación: dotnet publish -c Release -o /tmp/p05-after /p:UseAppHost=false
+
+PDB encontrados: 0

@@ -1,0 +1,18 @@
+Fecha: 2026-11-12
+Herramienta: ilspycmd 11.2.0.10050
+
+Antes del cambio (origin/main 8fc5767):
+- Archivos descompilados del host: 20.
+- Búsqueda de secretos: sin valores de credenciales; solo comparaciones con el
+  prefijo YOUR_ en AzureAdOptions.
+- PDB en el publish: 5 (ver pdb-antes.txt).
+
+Después del cambio:
+- Archivos descompilados del host: 20.
+- Búsqueda de secretos: sin valores de credenciales; solo comparaciones con el
+  prefijo YOUR_ en AzureAdOptions.
+- PDB en el publish: 0 (ver pdb-despues.txt).
+
+Salida de la búsqueda después:
+/tmp/p05-decompiled-after/EcommerceApi.Configuration/AzureAdOptions.cs:21:if (!string.IsNullOrWhiteSpace(TenantId) && !TenantId.StartsWith("YOUR_", (StringComparison)5) && !string.IsNullOrWhiteSpace(Audience))
+/tmp/p05-decompiled-after/EcommerceApi.Configuration/AzureAdOptions.cs:23:return !Audience.Contains("YOUR_", (StringComparison)5);

@@ -85,7 +85,7 @@ Lo que esto **no** demuestra: que 120/min sea el valor correcto. Eso exige un SL
 - Un solo cliente (una IP de origen). No se probaron varios clientes ni IPs distribuidas.
 - La ventana fija permite hasta 240 peticiones en el borde entre dos minutos; no se midió ese caso porque el arranque se alineó a propósito.
 - `GET /health` no representa el coste de un endpoint de escritura o con base de datos.
-- No se probó el `413` del límite de 16 KB.
+- No se probó el `413` del límite de 16 KB. Se validó después, el 2026-11-12: [evidencia](../2026-11-12-11-api-body-limit/README.md).
 - El resultado depende del código en `b9176b0` y de la imagen construida ese día.
 
 ## 9. Revisión de redacción

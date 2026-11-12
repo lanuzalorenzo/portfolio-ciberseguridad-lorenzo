@@ -10,7 +10,7 @@ El cliente no debería decidir el ID de un producto ni cuántas peticiones puede
 | DTO de pedido | `CreateOrderRequest` con `ProductIds` | Validado |
 | Validación | DataAnnotations y `[ApiController]` | Validado |
 | Rate limit | 120 req/min por IP | Validado ([runbook](runbook.md)) |
-| Límite de cuerpo | 16 KB en escrituras | Pendiente |
+| Límite de cuerpo | 16 KB en `POST /api/products` | Validado ([evidencia](../../../laboratorio-final/evidencias/2026-11-12-11-api-body-limit/README.md)); pedidos no medido |
 
 | Prueba | Resultado |
 |---|---|
@@ -19,9 +19,9 @@ El cliente no debería decidir el ID de un producto ni cuántas peticiones puede
 | 130 peticiones en una ventana | PASS: 120 × `200` y `429` desde la 121 |
 | 10 y 50 peticiones/s durante 50 s | PASS: 119 `200`, resto `429`, sin `5xx` |
 | `X-Forwarded-For` inventada | PASS: sigue `429` |
-| Cuerpo mayor de 16 KB | Pendiente |
+| Cuerpo mayor de 16 KB en `POST /api/products` | PASS: 201 a 16 KB exactos y 413 a 17 KB; `POST /api/orders` no se midió |
 
-Evidencias: [secuencial](../../../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md) y [carga](../../../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit-carga/README.md).
+Evidencias: [secuencial](../../../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md), [carga](../../../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit-carga/README.md) y [límite de cuerpo](../../../laboratorio-final/evidencias/2026-11-12-11-api-body-limit/README.md).
 
 Queda un hueco: `POST /api/products` exige autenticación pero no rol, así que cualquier usuario válido crea productos de hasta 1.000.000. No es mass assignment, es BFLA (H-03).
 
