@@ -1,0 +1,8 @@
+Fecha: 2026-11-12
+Publicación: dotnet publish -c Release -o /tmp/p05-before /p:UseAppHost=false
+
+EcommerceApi.Application.pdb 18524 bytes
+EcommerceApi.Contracts.pdb 12548 bytes
+EcommerceApi.Domain.pdb 14488 bytes
+EcommerceApi.Infrastructure.pdb 23780 bytes
+EcommerceApi.pdb 38732 bytes

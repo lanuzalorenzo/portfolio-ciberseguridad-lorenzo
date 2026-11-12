@@ -22,6 +22,10 @@ Los controles se aplican sobre [EcommerceApi (lab-api-local-azure)](https://gith
 
 La cabecera `Server: Kestrel` salía en todas las respuestas y ningún check la miraba. El [caso de remediación](../laboratorio-final/evidencias/2026-11-09-07-remediacion-server-header/README.md) recorre las cinco piezas que separan un hallazgo de un arreglo: la observación contra el contenedor, la causa en la opción por defecto de Kestrel, el cambio, que hoy vive en `LL.Security 0.3.0` y el consumidor hereda sin línea propia, una prueba de regresión que falla antes y pasa después, y un run de CI fechado que impide que la cabecera vuelva. Lo que no cubre está escrito allí: la capa que pueda ir delante de Kestrel.
 
+### Severidad del hallazgo `Server`
+
+El hallazgo se puntuó con CVSS 3.1 el 2026-11-12: `CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N` → **5,3 (Media)**. El vector describe una divulgación de información de reconocimiento explotable por red, sin autenticación ni interacción: la respuesta revela el producto (`Kestrel`), no su versión. No hay impacto en integridad ni disponibilidad. La justificación, el vector y la puntuación están en la [evidencia del caso](../laboratorio-final/evidencias/2026-11-09-07-remediacion-server-header/README.md#8-severidad-cvss-31).
+
 ## Lo que la pipeline no detecta
 
 Los gates cubren lo mecánico: secretos, vulnerabilidades, infraestructura, formato y pruebas. Un mal diseño no deja firma en ningún escaneo y pasa en verde igual. Estos criterios se revisan a mano en cada cambio:

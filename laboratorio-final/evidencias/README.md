@@ -1,6 +1,6 @@
 # Índice de evidencias
 
-> **Estado:** 14 evidencias registradas: 10 de ejecución y 4 documentales o verificables.
+> **Estado:** 17 evidencias registradas: 12 de ejecución y 5 documentales o verificables.
 
 Este directorio centraliza las evidencias del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook, un informe o un run de CI, y hasta un entorno concreto. No es un repositorio de capturas sueltas.
 
@@ -66,6 +66,8 @@ La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apa
 | 2026-11-08 | 11 — Hacking ético de APIs | DAST (análisis dinámico) sin autenticar — ZAP baseline | Parcial: 0 FAIL y 0 WARN; endpoints de negocio sin cubrir | [Ver evidencia](2026-11-08-11-api-dast/README.md) |
 | 2026-11-09 | Laboratorio final — Workload (caso local) | Caída intermitente del CLR por `libunwind` en una solución .NET distinta de EcommerceApi | Validado en local | [Ver evidencia](2026-11-09-dotnet-clr-libunwind/README.md) |
 | 2026-11-09 | 07 — DevSecOps | Remediación de la cabecera `Server` en EcommerceApi: hallazgo, causa, parche, prueba de regresión y run de CI | Validado en local y en CI | [Ver evidencia](2026-11-09-07-remediacion-server-header/README.md) |
+| 2026-11-12 | 11 — Hacking ético de APIs | Límite de cuerpo de 16 KB: 16 384 bytes aceptados y 17 408 rechazados con `413` | Validado en local | [Ver evidencia](2026-11-12-11-api-body-limit/README.md) |
+| 2026-11-12 | 07 — DevSecOps | Inventario del binario publicado: 5 PDB antes, 0 después; sin secretos en el host descompilado | Validado en local | [Ver evidencia](2026-11-12-05-api-binary/README.md) |
 
 ## Evidencias documentales y verificables
 
