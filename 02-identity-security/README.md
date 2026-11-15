@@ -35,3 +35,11 @@ flowchart TB
 Las siete prácticas se ejecutaron en un tenant de laboratorio y quedaron registradas con informe técnico, bitácora fechada y tabla de resultados. Seis están validadas; la de PIM se quedó en parcial, porque la elevación efectiva exige licencia Entra ID P2 y el laboratorio no la tenía. Son evidencias documentales: no se conservaron capturas originales. No hay recursos de producción en ningún caso.
 
 El detalle de configuración y las decisiones están en el informe técnico de cada práctica; el historial fechado, en la [bitácora](bitacora/).
+
+## Laboratorio complementario
+
+| # | Práctica | Qué mide | Estado |
+|---|---|---|---|
+| 08 | [Robo y reutilización de la cookie de sesión](practicas/08-sesion/README.md) | Si cerrar sesión invalida la cookie en el servidor y qué protege la copia guardada en disco | **Diseño** |
+
+Comprueba las dos mitades del problema que los siete controles de arriba atacan por el lado de la identidad: que la sesión se cierre de verdad y que la credencial guardada no se pueda reutilizar. Está en diseño porque solo se han comprobado los tres estados del servidor; faltan la extracción desde un perfil real y las defensas del disco.
