@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Lee la cookie `sid` del perfil de Chromium, la descifra y la prueba contra el app.
+"""Lee la cookie `sid` del perfil de un navegador del equipo, la descifra y la prueba contra el app.
 
-Pensado para ejecutarse dentro de la VM del laboratorio, contra el app local de
+Pensado para ejecutarse en el equipo de trabajo, contra el app local de
 `02-identity-security/lab/sesion-cookie`. No sirve para otro destino ni para
-perfiles ajenos: el destino se limita a la red del laboratorio y el perfil a las
-rutas de Chromium del propio equipo.
+perfiles ajenos: el destino se limita a loopback y el perfil a las rutas de
+Chromium, Google Chrome y Brave del propio equipo.
 
 No imprime el valor de la cookie: solo el estado HTTP, un sha256 recortado y el
 host consultado, que sirven de evidencia sin publicar el secreto.
 
 Uso:
-    python3 extraer_cookie.py --url http://10.0.2.2:8011
+    python3 extraer_cookie.py --url http://127.0.0.1:8011
     python3 extraer_cookie.py --solo-llave        # qué clave hay disponible
     python3 extraer_cookie.py --sin-cookie        # el 302 de referencia
     python3 extraer_cookie.py --logout            # y el 302 tras cerrar sesión
@@ -45,22 +45,25 @@ PREFIJOS_PERFIL = (
     "~/.config/chromium",
     "~/snap/chromium",
     "~/.config/google-chrome",
+    "~/.config/BraveSoftware/Brave-Browser",
 )
 RUTAS_PERFIL = (
     "~/.config/chromium/Default/Cookies",
     "~/.config/chromium/Profile 1/Cookies",
     "~/snap/chromium/common/chromium/Default/Cookies",
     "~/.config/google-chrome/Default/Cookies",
+    "~/.config/BraveSoftware/Brave-Browser/Default/Cookies",
 )
-DESTINOS = ("10.0.2.2", "127.0.0.1", "localhost")
+DESTINOS = ("127.0.0.1", "localhost")
 ESQUEMA_LLAVERO = "chrome_libsecret_os_crypt_password_v2"
-APLICACIONES_LLAVERO = ("chromium", "chrome")
+APLICACIONES_LLAVERO = ("chromium", "chrome", "brave")
 
 
-def clave_del_llavero() -> bytes | None:
-    """Devuelve el secreto del llavero, si `secret-tool` y el llavero lo dan."""
+def claves_del_llavero() -> list[tuple[str, bytes]]:
+    """Devuelve los secretos del llavero que respondan, uno por navegador."""
     if not shutil.which("secret-tool"):
-        return None
+        return []
+    claves: list[tuple[str, bytes]] = []
     for aplicacion in APLICACIONES_LLAVERO:
         orden = [
             "secret-tool", "lookup",
@@ -72,8 +75,8 @@ def clave_del_llavero() -> bytes | None:
         except (OSError, subprocess.TimeoutExpired):
             continue
         if salida.returncode == 0 and salida.stdout.strip():
-            return salida.stdout.strip().encode()
-    return None
+            claves.append((f"llavero:{aplicacion}", salida.stdout.strip().encode()))
+    return claves
 
 
 def derivar(secreto: bytes) -> bytes:
@@ -203,14 +206,21 @@ def destino_del_laboratorio(url: str) -> bool:
     return host in DESTINOS
 
 
+def etiqueta_host(host: str) -> str:
+    """Destino del laboratorio tal cual; el resto, sha256 recortado."""
+    if destino_del_laboratorio(f"http://{host}"):
+        return host
+    return hashlib.sha256(host.encode()).hexdigest()[:16]
+
+
 def perfil_del_equipo(ruta: Path) -> bool:
-    return any(ruta.is_relative_to(Path(p).expanduser()) for p in PREFIJOS_PERFIL)
+    return any(ruta.resolve().is_relative_to(Path(p).expanduser()) for p in PREFIJOS_PERFIL)
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--url", default="http://10.0.2.2:8011",
-                        help="base del app en el host (por defecto 10.0.2.2:8011)")
+    parser.add_argument("--url", default="http://127.0.0.1:8011",
+                        help="base del app en el equipo (por defecto 127.0.0.1:8011)")
     parser.add_argument("--db", help="ruta al fichero Cookies del perfil")
     parser.add_argument("--nombre", default="sid", help="nombre de la cookie")
     parser.add_argument("--solo-llave", action="store_true",
@@ -226,10 +236,8 @@ def main() -> int:
         print(f"solo se admite {', '.join(DESTINOS)}", file=sys.stderr)
         return 2
 
-    llavero = clave_del_llavero()
-    claves: list[tuple[str, bytes]] = []
-    if llavero:
-        claves.append(("llavero", llavero))
+    llavero = claves_del_llavero()
+    claves: list[tuple[str, bytes]] = list(llavero)
     claves.append(("peanuts", b"peanuts"))
 
     if args.solo_llave:
@@ -250,7 +258,7 @@ def main() -> int:
             None,
         )
         if db is None:
-            print("no encuentro el perfil de Chromium; pasa --db", file=sys.stderr)
+            print("no encuentro el perfil del navegador; pasa --db", file=sys.stderr)
             return 2
 
     if not perfil_del_equipo(db):
@@ -271,7 +279,7 @@ def main() -> int:
     descifradas = 0
     for fila in filas:
         host = fila["host_key"]
-        print(f"\nhost {host}")
+        print(f"\nhost {etiqueta_host(host)}")
         print("cifrada:", "v10/v11" if fila["encrypted_value"][:3] in (b"v10", b"v11") else "no")
         if caducada(fila["expires_utc"]):
             print("caducada: sí — no se prueba")

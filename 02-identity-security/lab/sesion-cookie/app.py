@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """App de laboratorio con sesión de servidor para la práctica de robo de cookie.
 
-Solo para la VM y el host locales: credenciales sintéticas, sesión en memoria y
+Solo para el equipo de trabajo: credenciales sintéticas, sesión en memoria y
 sin persistencia. No se despliega ni se expone fuera de la red del laboratorio.
 
 Uso:
@@ -100,7 +100,7 @@ class Manejador(BaseHTTPRequestHandler):
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--host", default="0.0.0.0")
+    parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--puerto", type=int, default=8000)
     parser.add_argument("--ttl", type=int, default=300,
                         help="segundos de vida de la sesión (por defecto 300)")
