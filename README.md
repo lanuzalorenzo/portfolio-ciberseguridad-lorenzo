@@ -29,7 +29,7 @@ Los controles transversales —CORS cerrado por defecto, validación JWT, cabece
 | # | Módulo | Estado |
 |---|---|---|
 | 01 | [OAuth 2.0, PKCE y JWT](01-seguridad-azure/README.md) | Parcial |
-| 02 | [Identity Security](02-identity-security/README.md) | Validado en laboratorio |
+| 02 | [Identity Security](02-identity-security/README.md) | Validado (documental); práctica 08 en local; PIM parcial |
 | 03 | [Cloud Audits](03-cloud-audits/README.md) | Validado (documental) |
 | 04 | [Defender for Cloud](04-defender-for-cloud/README.md) | Validado (documental) |
 | 05 | [Microsoft Defender Suite](05-defender-suite/README.md) | Diseño |

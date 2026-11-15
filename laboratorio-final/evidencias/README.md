@@ -68,7 +68,7 @@ La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apa
 | 2026-11-09 | 07 — DevSecOps | Remediación de la cabecera `Server` en EcommerceApi: hallazgo, causa, parche, prueba de regresión y run de CI | Validado en local y en CI | [Ver evidencia](2026-11-09-07-remediacion-server-header/README.md) |
 | 2026-11-12 | 11 — Hacking ético de APIs | Límite de cuerpo de 16 KB: 16 384 bytes aceptados y 17 408 rechazados con `413` | Validado en local | [Ver evidencia](2026-11-12-11-api-body-limit/README.md) |
 | 2026-11-12 | 07 — DevSecOps | Inventario del binario publicado: 5 PDB antes, 0 después; sin secretos en el host descompilado | Validado en local | [Ver evidencia](2026-11-12-05-api-binary/README.md) |
-| 2026-11-15 | 02 — Identity Security | 08 — Robo y reutilización de la cookie de sesión: extracción del perfil real, cierre en servidor y caducidad | Validado en local | [Ver evidencia](../../02-identity-security/practicas/08-sesion/evidencias/2026-11-15-cookie-sesion.md) |
+| 2026-11-15 | 02 — Identity Security | 08 — Robo y reutilización de la cookie de sesión: extracción del perfil real, cierre en servidor y caducidad | Validado en local | [Ver evidencia](2026-11-15-02-cookie-sesion/README.md) |
 
 ## Evidencias documentales y verificables
 

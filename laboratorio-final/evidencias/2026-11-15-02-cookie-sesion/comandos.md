@@ -1,11 +1,6 @@
-# 2026-11-15 — Robo y reutilización de la cookie de sesión
+# Comandos y salida — 2026-11-15 · 02 · cookie de sesión
 
-- **Runbook o práctica:** [08 | Robo y reutilización de la cookie de sesión](../README.md)
-- **Entorno:** equipo de trabajo, navegador Brave con el perfil de uso diario, app de laboratorio en `127.0.0.1:8011` con TTL de 30 s. Sin máquina virtual. El llavero del escritorio, desbloqueado.
-- **Resultado:** sesión aceptada con la cookie extraída del perfil (200), muerta tras cerrar sesión (302) y rechazada por el servidor a los 32 s (302). El valor de la cookie no se imprime.
-- **Limitación:** el bloqueo del disco cifrado no se probó con un arranque sin passphrase; se deduce del diseño de LUKS.
-
-## Salida
+Equipo de trabajo, app de laboratorio en `127.0.0.1:8011` con TTL de 30 s, llavero desbloqueado. El valor de la cookie no se imprime en ninguna salida.
 
 ```
 $ python3 app.py --puerto 8011 --ttl 30
@@ -28,7 +23,7 @@ $ python3 extraer_cookie.py --url http://127.0.0.1:8011   # 32 s después
 caducada: sí — no se prueba
 ```
 
-`caducada: sí` lo lee el script de la fecha de expiración guardada en el almacén; que el navegador deje de enviarla en ese plazo es la consecuencia esperada, no una medición aparte.
+`caducada: sí` lo lee el script de la fecha de expiración guardada en el almacén. La app fija esa fecha y el `Max-Age` al mismo TTL, así que coincidir es una consecuencia del código; lo medido es el rechazo del servidor.
 
 ## Control de la caducidad en el servidor
 
@@ -56,7 +51,3 @@ nvme0n1p3 crypto_LUKS
 ```
 
 El volumen raíz está sobre LUKS. No se arrancó sin la passphrase: que sin ella no se monte es cómo funciona LUKS, no algo medido aquí.
-
-## Notas
-
-La clave del llavero de Brave es distinta de la de Chromium: el script tomaba la primera disponible y el descifrado fallaba aunque el llavero estuviera abierto. Ahora prueba todas las claves del llavero y admite el perfil de Brave.

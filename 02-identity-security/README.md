@@ -40,6 +40,6 @@ El detalle de configuración y las decisiones están en el informe técnico de c
 
 | # | Práctica | Qué mide | Estado |
 |---|---|---|---|
-| 08 | [Robo y reutilización de la cookie de sesión](practicas/08-sesion/README.md) | Si cerrar sesión invalida la cookie en el servidor y qué protege la copia guardada en disco | **Validado** |
+| 08 | [Robo y reutilización de la cookie de sesión](practicas/08-sesion/README.md) | Si cerrar sesión invalida la cookie en el servidor y qué protege la copia guardada en disco | **Validado** en local |
 
 Comprueba las dos mitades del problema que los siete controles de arriba atacan por el lado de la identidad: que la sesión se cierre de verdad y que la credencial guardada no se pueda reutilizar. El 15/11 se cerró contra el perfil real de un navegador: sin cookie, 302; con la cookie, 200; tras el cierre, 302; y con TTL de 30 s, el servidor rechaza a los 32 s. Queda como deducción que el disco cifrado impida leer la cookie sin la passphrase de arranque: eso no se ha probado.
