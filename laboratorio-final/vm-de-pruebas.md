@@ -126,7 +126,7 @@ La comprobación es que `~/.mozilla` no crece al navegar y que el perfil aparece
 - No es una máquina productiva: no hay copia fuera del equipo, ni monitorización, ni actualizaciones gestionadas. El snapshot sirve para volver atrás en un ensayo, no para recuperar un servicio.
 - El disco del sistema no va cifrado; solo el volumen del perfil. Es una decisión, no un olvido.
 - El perfil del navegador todavía no se ha movido al volumen cifrado.
-- La prueba negativa del cierre y el comportamiento tras reiniciar están sin ejecutar.
+- La prueba negativa del cierre en esta máquina y el comportamiento tras reiniciar están sin ejecutar; el cierre en el equipo de trabajo, en la [práctica 08](../02-identity-security/practicas/08-sesion/README.md).
 - El fondo de escritorio y el icono de carpeta con la identidad visual quedan pendientes.
 
 ## Limpieza
