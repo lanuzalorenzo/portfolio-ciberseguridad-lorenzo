@@ -4,7 +4,7 @@
 - **Comandos y salida:** [comandos.md](comandos.md)
 - **Entorno:** equipo de trabajo, navegador Brave con el perfil de uso diario, app de laboratorio en `127.0.0.1:8011` con TTL de 30 s. Sin máquina virtual. Llavero del escritorio, desbloqueado.
 - **Resultado:** la cookie extraída del perfil abre la zona privada (200), muere tras cerrar sesión (302) y el servidor la rechaza a los 32 s (302). El valor de la cookie no se imprime.
-- **Limitación:** el bloqueo del disco cifrado no se probó con un arranque sin passphrase; se deduce del diseño de LUKS.
+- **Limitación:** el arranque sin passphrase no se probó. La pila observada el 16/11 (`crypto_LUKS` → LVM → ext4 en `/`) sitúa la raíz dentro del contenedor cifrado; el bloqueo no se ejerció.
 
 ## Qué se hizo
 

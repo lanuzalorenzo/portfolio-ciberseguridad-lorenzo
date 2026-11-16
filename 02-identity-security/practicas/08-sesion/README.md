@@ -1,6 +1,6 @@
 # 08 | Robo y reutilización de la cookie de sesión
 
-> **Estado:** **Validado** en el servidor y en el llavero el 15/11/2026: cookie del perfil real de Brave, 200 con ella, 302 tras el cierre y 302 del servidor a los 32 s. La defensa del disco queda por diseño: el volumen está sobre LUKS, pero no se arrancó sin la passphrase.
+> **Estado:** **Validado** en el servidor y en el llavero el 15/11/2026: cookie del perfil real de Brave, 200 con ella, 302 tras el cierre y 302 del servidor a los 32 s. La pila del disco se observó el 16/11: la raíz ext4 vive en un volumen LVM dentro de una partición `crypto_LUKS` según `lsblk`. El arranque sin la passphrase no se probó; que sin desbloquear el contenedor no se monte es la consecuencia esperada de esa pila.
 >
 > **Referencias:** OWASP ASVS V3 (verificación de seguridad de aplicaciones) · NIST SP 800-63B · OWASP Session Management Cheat Sheet.
 
@@ -20,7 +20,7 @@ Local y propio, sin máquina virtual: app en el equipo y navegador de uso diario
 | Acceso con cookie válida | Cuenta de demostración y cookie del perfil real | 200 | 200 |
 | Reutilización tras cerrar sesión | Cierre en el servidor y repetición | La cookie ya no sirve | 302 a `/login` |
 | Extracción desde un perfil real | Lectura del almacén de Brave y descifrado | Valor utilizable | `v10`/`v11` con la clave del llavero de Brave |
-| Defensa del disco | Estado del volumen raíz | Disco cifrado | LUKS según `lsblk`; el bloqueo sin passphrase se deduce, no se midió |
+| Defensa del disco | Pila del volumen raíz | Raíz dentro de un contenedor cifrado | `crypto_LUKS` → LVM → ext4 en `/` según `lsblk` del 16/11; el arranque sin passphrase no se probó, así que el bloqueo no se ejerció |
 | Defensa del llavero | Clave del llavero del escritorio | Sin la clave no se descifra | Con otra clave el descifrado falla |
 | Caducidad | App con TTL de 30 s | La cookie deja de valer | Expiración y `Max-Age` fijados por la app a 30 s; el servidor da 302 a los 32 s |
 
