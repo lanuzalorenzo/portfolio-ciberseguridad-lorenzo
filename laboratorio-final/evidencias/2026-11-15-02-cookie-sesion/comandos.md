@@ -41,6 +41,8 @@ privado_tras_32s=302
 
 ## Defensa del disco
 
+Comprobado el 16/11, con el equipo ya arrancado:
+
 ```
 $ lsblk -o NAME,FSTYPE,MOUNTPOINTS
 nvme0n1p1 vfat        /boot/efi
@@ -50,4 +52,4 @@ nvme0n1p3 crypto_LUKS
   └─ubuntu--vg-ubuntu--lv ext4 /
 ```
 
-El volumen raíz está sobre LUKS. No se arrancó sin la passphrase: que sin ella no se monte es cómo funciona LUKS, no algo medido aquí.
+El volumen raíz está sobre LUKS: la partición es `crypto_LUKS`, el volumen LVM vive dentro y la raíz ext4 cuelga de él. Que sin desbloquear el contenedor no se cree el volumen que la contiene es la consecuencia esperada de esa pila, no una prueba de arranque; el arranque sin la passphrase no se probó.
