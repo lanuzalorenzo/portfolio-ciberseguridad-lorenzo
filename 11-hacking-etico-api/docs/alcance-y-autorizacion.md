@@ -1,6 +1,6 @@
 # Alcance y autorización del laboratorio
 
-> **Estado:** documentado. Define las condiciones con las que se ejecutan las pruebas del módulo 11. No es una autorización para probar sistemas de terceros.
+> **Alcance:** documentado. Define las condiciones con las que se ejecutan las pruebas del módulo 11. No es una autorización para probar sistemas de terceros.
 >
 > **Última revisión:** 2026-10-20
 

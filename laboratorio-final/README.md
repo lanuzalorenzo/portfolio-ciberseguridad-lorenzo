@@ -1,6 +1,6 @@
 # Laboratorio final
 
-> **Estado:** Fase 0 cerrada. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md). No hay recursos Azure desplegados.
+> **Estado:** Parcial (2026-11-12). Fase 0 cerrada. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md). No hay recursos Azure desplegados.
 
 El laboratorio conecta los doce módulos sobre una carga de trabajo principal: [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure). No es una colección de prácticas aisladas, sino el recorrido que las pone en orden: cada capa se activa, se valida y se retira, y no se abre la siguiente hasta que la anterior tiene prueba.
 
