@@ -1,6 +1,6 @@
 # Plan de ejecución
 
-> **Estado:** Fase 0 cerrada el 2026-10-22. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md). Ninguna fase Azure se ha ejecutado.
+> **Estado:** Parcial (2026-10-22). Fase 0 cerrada el 2026-10-22. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md). Ninguna fase Azure se ha ejecutado.
 
 ## Principios
 
