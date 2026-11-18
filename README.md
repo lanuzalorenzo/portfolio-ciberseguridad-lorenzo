@@ -14,9 +14,9 @@ Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen fal
 
 ## Arquitectura de referencia
 
-La carga de trabajo es **EcommerceApi** (Web API .NET 10 con validación de tokens OAuth 2.0, DTOs, tests y pipeline DevSecOps), versionada en [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure).
+Hay dos cargas con papeles distintos. La primera es **EcommerceApi** (Web API .NET 10 con validación de tokens OAuth 2.0, DTOs, tests y pipeline DevSecOps), versionada en [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure): es el banco de pruebas, donde se estrena cada versión de los controles compartidos, el IaC y el diseño asíncrono, y donde se tomaron las evidencias de los módulos.
 
-La misma línea base se aplica a una segunda carga, **Comicteca** (Blazor WebAssembly y API .NET 10 sobre SQLite en local), versionada en [`comicteca`](https://github.com/lanuzalorenzo/comicteca). Comprueba que los controles compartidos se replican fuera del laboratorio —CORS cerrado por defecto, cabeceras y CSP, límite por IP, ProblemDetails, endpoint de salud, Docker sin root, CodeQL y Trivy sobre las imágenes—, salvo la validación de tokens, que allí sigue **Parcial**. Está en **Parcial**, no se presenta como producto ni como caso de estudio, y su despliegue sigue pendiente.
+La segunda es **Comicteca** (Blazor WebAssembly y API .NET 10 sobre SQLite en local), versionada en [`comicteca`](https://github.com/lanuzalorenzo/comicteca): es la aplicación principal: los controles compartidos llegan aquí después de estar en verde en el banco de pruebas, y lo que nace aquí sube a la plataforma cuando se generaliza. Comprueba que los controles compartidos se replican fuera del laboratorio —CORS cerrado por defecto, cabeceras y CSP, límite por IP, ProblemDetails, endpoint de salud, Docker sin root, CodeQL y Trivy sobre las imágenes—, salvo la validación de tokens, que allí sigue **Parcial**. Está en **Parcial**, no se presenta como producto, y su despliegue sigue pendiente: la infraestructura y el asíncrono aún viven solo en el banco de pruebas.
 
 Los controles transversales —CORS cerrado por defecto, validación JWT, cabeceras de seguridad, límite por IP, formato de error, HTTPS con HSTS y endpoint de salud— se extraen a paquetes NuGet en [`shared-dotnet`](https://github.com/lanuzalorenzo/shared-dotnet): los paquetes `0.1.0` están publicados en GitHub Packages y `EcommerceApi` y `Comicteca` los consumen desde el feed con permiso de solo lectura de paquetes.
 
@@ -78,8 +78,8 @@ Los controles transversales —CORS cerrado por defecto, validación JWT, cabece
 | Repositorio | Rol |
 |---|---|
 | **Portfolio** | Documentación, prácticas y narrativa (este repo) |
-| **API de referencia** | Código .NET, tests, CI y Bicep → [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure) |
-| **Segunda carga** | Los mismos controles en una aplicación propia —CORS, cabeceras y CSP, límite por IP, ProblemDetails, salud, Docker sin root, CodeQL y Trivy—, salvo la validación de tokens, todavía Parcial → [`comicteca`](https://github.com/lanuzalorenzo/comicteca) |
+| **Banco de pruebas** | Código .NET, tests, CI y Bicep donde se estrena lo que después se aplica → [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure) |
+| **Aplicación principal** | Una aplicación de uso propio que recibe los controles ya probados —CORS, cabeceras y CSP, límite por IP, ProblemDetails, salud, Docker sin root, CodeQL y Trivy—, salvo la validación de tokens, todavía Parcial → [`comicteca`](https://github.com/lanuzalorenzo/comicteca) |
 | **Aprendizaje en IA** | Guías de herramientas y agentes, experimentos medidos y criterios sobre qué datos salen de la red → [`lab-ia-aprendizaje`](https://github.com/lanuzalorenzo/lab-ia-aprendizaje) |
 | **Automatización de CI** | Acciones y workflows compartidos: enlaces, anclas y compilación .NET → [`core`](https://github.com/lanuzalorenzo/core) |
 | **Controles compartidos** | Paquetes NuGet con CORS, cabeceras, límite por IP, ProblemDetails y salud → [`shared-dotnet`](https://github.com/lanuzalorenzo/shared-dotnet) |

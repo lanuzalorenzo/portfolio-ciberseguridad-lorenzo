@@ -1,6 +1,6 @@
 # Guía del repositorio
 
-Portfolio público de documentación y laboratorios de ciberseguridad cloud (Azure, Entra ID, Defender, DevSecOps). Describe trabajo documentado, no producción. La arquitectura del lab final, los runbooks y el índice de evidencias viven aquí; el código y la IaC, en [lab-api-local-azure](https://github.com/lanuzalorenzo/lab-api-local-azure).
+Portfolio público de documentación y laboratorios de ciberseguridad cloud (Azure, Entra ID, Defender, DevSecOps). Describe trabajo documentado, no producción. La arquitectura del lab final, los runbooks y el índice de evidencias viven aquí; el código y la IaC, en [lab-api-local-azure](https://github.com/lanuzalorenzo/lab-api-local-azure), que es el banco de pruebas, y en [comicteca](https://github.com/lanuzalorenzo/comicteca), la aplicación principal donde se aplican los controles ya probados.
 
 Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trabajo y la referencia editorial de los repos públicos de la familia.
 

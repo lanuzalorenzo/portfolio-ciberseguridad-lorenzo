@@ -8,7 +8,7 @@
 
 ## 1. La idea en cinco líneas
 
-Este portfolio no es una colección de herramientas. Es un **modelo de defensa en profundidad** aplicado a una carga de trabajo principal, una API .NET llamada **EcommerceApi**, y comprobado en local sobre una segunda, la aplicación **Comicteca**: allí están validados los controles por defecto, mientras la identidad sigue en **Parcial**.
+Este portfolio no es una colección de herramientas. Es un **modelo de defensa en profundidad** aplicado a dos cargas con papeles distintos: la API **EcommerceApi**, donde se estrena y se mide cada control, y la aplicación **Comicteca**, que recibe los controles compartidos cuando ya están probados. En Comicteca están validados los controles por defecto, mientras la identidad sigue en **Parcial**.
 
 - La API EcommerceApi tiene identidad, código, red, entrega, detección y respuesta.
 - Cada módulo estudia una capa y declara qué está probado y qué no.
