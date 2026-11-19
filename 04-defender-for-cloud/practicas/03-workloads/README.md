@@ -1,6 +1,8 @@
 # 03 | Protección de cargas de trabajo
 
-> **Estado:** **Validado** en laboratorio (evidencia documental).
+> **Estado:** **Validado** en laboratorio (evidencia documental, 2026-10-06); el sensor y la cobertura se comprobaron en la VM de prueba, la alerta con malware simulado no se ejecutó por requerir un entorno aislado.
+>
+> **Evidencia:** [informe técnico](informe.md).
 >
 > **Referencias:** MCSB EP-1, EP-2, PV-1, PV-5, LT-2.
 

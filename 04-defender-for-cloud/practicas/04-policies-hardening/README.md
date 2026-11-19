@@ -1,6 +1,8 @@
 # 04 | Políticas y hardening
 
-> **Estado:** **Validado** en laboratorio (evidencia documental).
+> **Estado:** **Validado** en laboratorio (evidencia documental, 2026-10-06).
+>
+> **Resultados:** [validación en el tenant](README.md#validación).
 >
 > **Referencias:** MCSB GS-2, DP-3, DP-4, LT-1 · CIS Azure 3.7.
 
