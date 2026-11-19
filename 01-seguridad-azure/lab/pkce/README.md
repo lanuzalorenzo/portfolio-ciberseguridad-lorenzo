@@ -1,6 +1,6 @@
 # Laboratorio PKCE — API local
 
-> **Estado:** Parcial. Código y documentación consolidados desde `lab-azuread-oauth2-pkce-api`; la ejecución estandarizada queda pendiente de un tenant de laboratorio.
+> **Estado:** Parcial (2026-10-19, consolidación del laboratorio). Código y documentación consolidados desde `lab-azuread-oauth2-pkce-api`; la ejecución estandarizada queda pendiente de un tenant de laboratorio.
 >
 > **Práctica:** [01 — PKCE manual con cliente público](../../practicas/01-pkce-manual/README.md) · **Runbook:** [runbook.md](../../practicas/01-pkce-manual/runbook.md).
 
