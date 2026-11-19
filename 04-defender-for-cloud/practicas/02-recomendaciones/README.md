@@ -1,6 +1,8 @@
 # 02 | Recomendaciones y Secure Score
 
-> **Estado:** **Validado** en laboratorio (evidencia documental).
+> **Estado:** **Validado** en laboratorio (evidencia documental, 2026-10-06).
+>
+> **Resultados:** [tabla de priorización y lo que quedó pendiente](README.md#qué-se-priorizó-y-qué-se-hizo).
 >
 > **Referencias:** MCSB GS-1, GS-2, NS-1, DP-3 · CIS 6.2.
 

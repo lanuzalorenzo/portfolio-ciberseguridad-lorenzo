@@ -8,9 +8,9 @@
 
 ## 1. La idea en cinco líneas
 
-Este portfolio no es una colección de herramientas. Es un **modelo de defensa en profundidad** aplicado a una carga de trabajo principal, una API .NET llamada **EcommerceApi**, y comprobado en local sobre una segunda, la aplicación **Comicteca**: allí están validados los controles por defecto, mientras la identidad sigue en **Parcial**.
+Este portfolio no es una colección de herramientas. Es un **modelo de defensa en profundidad** aplicado a dos cargas con papeles distintos: la aplicación principal **Comicteca**, que recibe los controles compartidos cuando ya están probados, y el banco de pruebas **EcommerceApi**, donde se estrena y se mide cada control. En Comicteca están validados los controles por defecto; la validación de tokens está en verde en local y CI, y el alta con la cuenta real sigue **Pendiente**.
 
-- La API EcommerceApi tiene identidad, código, red, entrega, detección y respuesta.
+- El banco de pruebas EcommerceApi recorre identidad, código, red, entrega, detección y respuesta; la aplicación principal Comicteca aplica los controles ya probados.
 - Cada módulo estudia una capa y declara qué está probado y qué no.
 - El hilo conductor es siempre la misma pregunta: **¿qué control protege qué, y cómo lo demuestro?**
 - El estado de cada control importa tanto como el control: no es lo mismo un diseño que una evidencia.
@@ -88,7 +88,7 @@ Cada módulo sigue el mismo patrón, con las piezas que tenga: hay módulos sin 
 3. [Índice de evidencias](../laboratorio-final/evidencias/README.md).
 4. Tabla de estados del README.
 
-**Al terminar:** sabrás qué carga de trabajo se protege, qué capas existen y qué está demostrado.
+**Al terminar:** sabrás qué cargas se protegen, qué capas existen y qué está demostrado.
 
 ### Ruta 1 — 60–90 minutos: el hilo identidad + API
 
@@ -152,7 +152,7 @@ Si una afirmación no apunta a una evidencia, trátala como hipótesis o diseño
 
 ## 8. Preguntas para comprobar que lo has entendido
 
-1. ¿Cuál es la carga de trabajo del portfolio y por qué se usa una API?
+1. ¿Qué papeles tienen Comicteca y EcommerceApi, y por qué se prueba antes en una API?
 2. ¿Dónde se valida un JWT y qué se comprueba?
 3. ¿Por qué un acceso a un objeto ajeno devuelve `404` y no `403`?
 4. ¿Qué diferencia hay entre **validado**, **parcial** y **diseño**?

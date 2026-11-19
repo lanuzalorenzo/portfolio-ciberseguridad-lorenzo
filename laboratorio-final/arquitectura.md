@@ -29,7 +29,7 @@ La capa local (ELK) permite practicar ingesta, búsqueda y detección sin depend
 
 | Capa | Elementos | Límite de confianza | Estado |
 |---|---|---|---|
-| 1. Workload | API .NET, DTOs, autorización por propietario, tests | Internet/cliente → API | **Validado en CI** para el workload |
+| 1. Cargas | Comicteca (aplicación principal) y EcommerceApi (banco de pruebas): API .NET, DTOs, autorización por propietario, tests | Internet/cliente → API | **Validado en CI** en el banco de pruebas y **en local y CI** en la aplicación principal |
 | 2. Identidad | Entra ID, OAuth 2.0/PKCE, JWT/JWKS, RBAC, Managed Identities | Cliente/API → proveedor de identidad | Ver módulos 01, 02 y 06 |
 | 3. Red | VNet, subredes, NSG, Private Endpoints, DNS privado | Internet → red privada | **Diseño + IaC validada estáticamente** |
 | 4. Datos y secretos | Key Vault, Storage, acceso privado | Workload → servicios de datos | **Diseño** |
@@ -75,7 +75,7 @@ No se activa una capa superior si la inferior no tiene evidencia o una limitaci�
 
 ## Decisiones de diseño
 
-- **Una sola carga de trabajo:** evita laboratorios desconectados y permite reutilizar identidad, red, logs y pruebas.
+- **Una carga por papel:** un banco de pruebas donde se estrena y una aplicación principal donde se aplica; evita laboratorios desconectados y permite reutilizar identidad, red, logs y pruebas.
 - **Configuración de compilación centralizada:** la solución fija en dos archivos raíz la configuración común y una versión única por paquete; la decisión y sus límites están en el [ADR 0008](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/docs/adr/0008-configuracion-de-compilacion-y-paquetes-centralizada.md).
 - **Local primero:** reduce coste y permite practicar el ciclo completo de evidencia antes de Azure.
 - **IaC antes que despliegue:** el Bicep se autora y valida estáticamente; el despliegue es un acto separado y autorizado.

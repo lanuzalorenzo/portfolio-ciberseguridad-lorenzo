@@ -1,6 +1,6 @@
 # Índice de evidencias
 
-> **Estado:** 19 evidencias registradas: 13 de ejecución y 6 documentales o verificables.
+> **Evidencias registradas:** 19: 13 de ejecución y 6 documentales o verificables.
 
 Este directorio centraliza las evidencias del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook, un informe o un run de CI, y hasta un entorno concreto. No es un repositorio de capturas sueltas.
 

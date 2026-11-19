@@ -1,8 +1,8 @@
 # Laboratorio final
 
-> **Estado:** Fase 0 cerrada. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md). No hay recursos Azure desplegados.
+> **Estado:** Parcial (2026-11-12). Fase 0 cerrada. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md). No hay recursos Azure desplegados.
 
-El laboratorio conecta los doce módulos sobre una carga de trabajo principal: [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure). No es una colección de prácticas aisladas, sino el recorrido que las pone en orden: cada capa se activa, se valida y se retira, y no se abre la siguiente hasta que la anterior tiene prueba.
+El laboratorio tiene una aplicación principal, [**Comicteca**](https://github.com/lanuzalorenzo/comicteca), que recibe lo que ya está probado en un banco de pruebas, [**EcommerceApi**](https://github.com/lanuzalorenzo/lab-api-local-azure). Conecta los doce módulos sobre esas dos cargas. No es una colección de prácticas aisladas, sino el recorrido que las pone en orden: cada capa se activa, se valida y se retira, y no se abre la siguiente hasta que la anterior tiene prueba.
 
 Se practica cerradura a cerradura: primero en local y sin coste; después, Azure con autorización y presupuesto.
 
@@ -19,7 +19,7 @@ Se practica cerradura a cerradura: primero en local y sin coste; después, Azure
 
 | Capa | Qué incluye | Estado |
 |---|---|---|
-| Workload | API .NET, DTOs, autorización por propietario, tests | **Validado en CI**; caso de caída intermitente del CLR por `libunwind` en una solución .NET distinta de EcommerceApi, con resultado **Validado en local** ([evidencia](evidencias/2026-11-09-dotnet-clr-libunwind/README.md)); integración Azure no desplegada |
+| Cargas | Comicteca (aplicación principal) y EcommerceApi (banco de pruebas): API .NET, DTOs, autorización por propietario, tests | **Validado en CI** en el banco de pruebas y **en local y CI** en la aplicación principal; caso de caída intermitente del CLR por `libunwind` en una solución .NET distinta de EcommerceApi, con resultado **Validado en local** ([evidencia](evidencias/2026-11-09-dotnet-clr-libunwind/README.md)); integración Azure no desplegada |
 | Identidad | Entra ID, OAuth 2.0/PKCE, JWT/JWKS, RBAC, Managed Identities | Ver módulos [01](../01-seguridad-azure/README.md), [02](../02-identity-security/README.md) y [06](../06-identity-protection/README.md) |
 | Red | VNet, subredes, NSG, Private Endpoints, DNS privado | **Diseño + IaC validada estáticamente** en el [módulo 08](../08-seguridad-red-azure/README.md) |
 | Datos y secretos | Key Vault, Storage, acceso privado | **Diseño** |
@@ -34,7 +34,8 @@ Se practica cerradura a cerradura: primero en local y sin coste; después, Azure
 | Repositorio | Responsabilidad |
 |---|---|
 | `portfolio-ciberseguridad-lorenzo` | Arquitectura, runbooks, plantillas, evidencias y narrativa. |
-| `lab-api-local-azure` | Código, tests, Dockerfile, CI e IaC del workload. |
+| `comicteca` | Aplicación principal: código, tests, Docker y CI donde se aplican los controles probados. |
+| `lab-api-local-azure` | Banco de pruebas: código, tests, Dockerfile, CI e IaC donde se estrena cada control. |
 | `lab-ia-aprendizaje` | Laboratorio de IA independiente; no forma parte del laboratorio de seguridad. |
 
 ## Reglas

@@ -2,9 +2,9 @@
 
 # Lorenzo Lanuza | Portfolio de Ciberseguridad, DevSecOps y Arquitectura
 
-Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen falta puertas, rejas, alarma y alguien que sepa qué hacer si suena. Este portfolio aplica Security by Design, DevSecOps, Cloud Security y respuesta a incidentes sobre una misma carga de trabajo, una API .NET protegida con Microsoft Entra ID, y recorre la **Defensa en Profundidad** capa a capa, separando lo probado de lo solo diseñado. Cada módulo responde a la misma pregunta: *¿qué control protege qué y cómo se demuestra?*
+Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen falta puertas, rejas, alarma y alguien que sepa qué hacer si suena. Este portfolio aplica Security by Design, DevSecOps, Cloud Security y respuesta a incidentes sobre una misma familia de cargas —Comicteca, la aplicación principal, y EcommerceApi, su banco de pruebas— y recorre la **Defensa en Profundidad** capa a capa, separando lo probado de lo solo diseñado. Cada módulo responde a la misma pregunta: *¿qué control protege qué y cómo se demuestra?*
 
-**In English.** Protecting a system is like securing a house: a lock is not enough —you need doors, bars, an alarm and someone who knows what to do when it goes off. This portfolio applies Security by Design, DevSecOps, Cloud Security and incident response to a single workload, a .NET API protected with Microsoft Entra ID, and walks through Defense-in-Depth layer by layer, separating what has been proven from what is only designed. Every module answers the same question: what does this control protect, and how is it demonstrated?
+**In English.** Protecting a system is like securing a house: a lock is not enough —you need doors, bars, an alarm and someone who knows what to do when it goes off. This portfolio applies Security by Design, DevSecOps, Cloud Security and incident response to a single family of workloads —Comicteca, the main application, and EcommerceApi, its test bench— and walks through Defense-in-Depth layer by layer, separating what has been proven from what is only designed. Every module answers the same question: what does this control protect, and how is it demonstrated?
 
 > Este repositorio describe laboratorios, código y documentación técnica. No representa despliegues de producción ni certificaciones. Cada práctica indica su estado: **Validado**, **Parcial**, **Runbook preparado**, **Diseño** o **Pendiente**. No se incluyen secretos, identificadores reales ni datos personales.
 
@@ -14,9 +14,9 @@ Proteger un sistema es como asegurar una casa: no basta una cerradura, hacen fal
 
 ## Arquitectura de referencia
 
-La carga de trabajo es **EcommerceApi** (Web API .NET 10 con validación de tokens OAuth 2.0, DTOs, tests y pipeline DevSecOps), versionada en [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure).
+Hay dos cargas con papeles distintos. La principal es **Comicteca** (Blazor WebAssembly y API .NET 10 sobre SQLite en local), versionada en [`comicteca`](https://github.com/lanuzalorenzo/comicteca): es la aplicación principal; los controles compartidos llegan aquí después de estar en verde en el banco de pruebas, y lo que nace aquí sube a la plataforma cuando se generaliza. Comprueba que los controles compartidos se replican fuera del laboratorio —CORS cerrado por defecto, cabeceras y CSP, límite por IP, ProblemDetails, endpoint de salud, Docker sin root, CodeQL y Trivy sobre las imágenes— y que la validación de tokens está **Validada** en local y CI. El alta con la cuenta real sigue **Pendiente**. El conjunto está en **Parcial**, no se presenta como producto, y su despliegue sigue pendiente: la infraestructura y el asíncrono aún viven solo en el banco de pruebas.
 
-La misma línea base se aplica a una segunda carga, **Comicteca** (Blazor WebAssembly y API .NET 10 sobre SQLite en local), versionada en [`comicteca`](https://github.com/lanuzalorenzo/comicteca). Comprueba que los controles compartidos se replican fuera del laboratorio —CORS cerrado por defecto, cabeceras y CSP, límite por IP, ProblemDetails, endpoint de salud, Docker sin root, CodeQL y Trivy sobre las imágenes—, salvo la validación de tokens, que allí sigue **Parcial**. Está en **Parcial**, no se presenta como producto ni como caso de estudio, y su despliegue sigue pendiente.
+El banco de pruebas es **EcommerceApi** (Web API .NET 10 con validación de tokens OAuth 2.0, DTOs, tests y pipeline DevSecOps), versionado en [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure): ahí se estrena cada versión de los controles compartidos, el IaC y el diseño asíncrono, y de ahí salen las evidencias de los módulos.
 
 Los controles transversales —CORS cerrado por defecto, validación JWT, cabeceras de seguridad, límite por IP, formato de error, HTTPS con HSTS y endpoint de salud— se extraen a paquetes NuGet en [`shared-dotnet`](https://github.com/lanuzalorenzo/shared-dotnet): los paquetes `0.1.0` están publicados en GitHub Packages y `EcommerceApi` y `Comicteca` los consumen desde el feed con permiso de solo lectura de paquetes.
 
@@ -49,7 +49,7 @@ Los controles transversales —CORS cerrado por defecto, validación JWT, cabece
 
 - **15 min:** [Guía de lectura](docs/guia-de-lectura.md) → [Índice de evidencias](laboratorio-final/evidencias/README.md) → tabla de estados arriba.
 - **60–90 min (hilo identidad + API):** [Arquitectura](laboratorio-final/arquitectura.md) → [Módulo 01](01-seguridad-azure/README.md) → [Módulo 11](11-hacking-etico-api/README.md) + [evidencia BOLA](laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) → [Módulo 12](12-forense-cloud-respuesta/README.md) + [acta tabletop](laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md).
-- **Revisión técnica:** README → índice de evidencias → [módulo 11](11-hacking-etico-api/README.md) → [módulo 07](07-devsecops/README.md) → [API reference](https://github.com/lanuzalorenzo/lab-api-local-azure).
+- **Revisión técnica:** README → índice de evidencias → [módulo 11](11-hacking-etico-api/README.md) → [módulo 07](07-devsecops/README.md) → [Comicteca](https://github.com/lanuzalorenzo/comicteca) → [API reference](https://github.com/lanuzalorenzo/lab-api-local-azure).
 
 ---
 
@@ -78,8 +78,8 @@ Los controles transversales —CORS cerrado por defecto, validación JWT, cabece
 | Repositorio | Rol |
 |---|---|
 | **Portfolio** | Documentación, prácticas y narrativa (este repo) |
-| **API de referencia** | Código .NET, tests, CI y Bicep → [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure) |
-| **Segunda carga** | Los mismos controles en una aplicación propia —CORS, cabeceras y CSP, límite por IP, ProblemDetails, salud, Docker sin root, CodeQL y Trivy—, salvo la validación de tokens, todavía Parcial → [`comicteca`](https://github.com/lanuzalorenzo/comicteca) |
+| **Aplicación principal** | Una aplicación de uso propio que recibe los controles ya probados —CORS, cabeceras y CSP, límite por IP, ProblemDetails, salud, Docker sin root, CodeQL y Trivy—, con la validación de tokens en verde en local y CI; el alta con la cuenta real, pendiente → [`comicteca`](https://github.com/lanuzalorenzo/comicteca) |
+| **Banco de pruebas** | Código .NET, tests, CI y Bicep donde se estrena lo que después se aplica → [`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure) |
 | **Aprendizaje en IA** | Guías de herramientas y agentes, experimentos medidos y criterios sobre qué datos salen de la red → [`lab-ia-aprendizaje`](https://github.com/lanuzalorenzo/lab-ia-aprendizaje) |
 | **Automatización de CI** | Acciones y workflows compartidos: enlaces, anclas y compilación .NET → [`core`](https://github.com/lanuzalorenzo/core) |
 | **Controles compartidos** | Paquetes NuGet con CORS, cabeceras, límite por IP, ProblemDetails y salud → [`shared-dotnet`](https://github.com/lanuzalorenzo/shared-dotnet) |

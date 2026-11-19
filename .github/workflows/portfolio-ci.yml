@@ -25,7 +25,7 @@ jobs:
           fetch-depth: 0
 
       - name: Escanear secretos con Gitleaks
-        uses: lanuzalorenzo/core/actions/gitleaks@v1.4
+        uses: lanuzalorenzo/core/actions/gitleaks@v1.6
 
   links:
     name: Enlaces internos
@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Comprobar enlaces relativos
-        uses: lanuzalorenzo/core/actions/check-links@v1.4
+        uses: lanuzalorenzo/core/actions/check-links@v1.6
 
   pkce-lab:
     name: Laboratorio PKCE (Node)
