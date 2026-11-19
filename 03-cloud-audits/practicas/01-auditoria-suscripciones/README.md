@@ -1,6 +1,8 @@
 # 01 | Auditoría de la suscripción
 
-> **Estado:** **Validado** en laboratorio (evidencia documental).
+> **Estado:** **Validado** en laboratorio (evidencia documental, 2026-09-14).
+>
+> **Evidencia:** [informe técnico](informe.md) · [bitácora del 14/09](../../bitacora/2026-09-14-inicio-modulo-03.md).
 >
 > **Referencias:** MCSB GS-1, GS-2, PA-1, PA-3 · CIS Azure 2.0.
 
