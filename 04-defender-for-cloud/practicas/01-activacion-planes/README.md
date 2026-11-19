@@ -1,6 +1,8 @@
 # 01 | Activación de planes
 
-> **Estado:** **Validado** en laboratorio (evidencia documental).
+> **Estado:** **Validado** en laboratorio (evidencia documental, 2026-10-06).
+>
+> **Evidencia:** [informe técnico](informe.md).
 >
 > **Referencias:** MCSB GS-1, EP-1, EP-2, IR-2.
 
