@@ -1,6 +1,6 @@
 # 06 | Acceso privilegiado bajo licencia
 
-> **Estado:** **Diseño**. Ninguno de los tres controles se ha ejecutado de punta a punta: el tenant de laboratorio no tiene licencia P1 ni P2. No hay evidencia, y la página no los presenta como si la hubiera.
+> **Estado:** **Diseño** (2026-11-03). Ninguno de los tres controles se ha ejecutado de punta a punta: el tenant de laboratorio no tiene licencia P1 ni P2. No hay evidencia, y la página no los presenta como si la hubiera.
 
 El módulo 02 hace lo que un tenant gratuito permite: segundo factor con Security Defaults, contraseña fuera de la ecuación, recuperación autónoma, roles elegibles y un modelo de mínimo privilegio. Seis de esos siete controles están ejecutados y validados; el séptimo, la elegibilidad en PIM, quedó en **Parcial** porque la elevación efectiva exige licencia P2. Lo que queda detrás del muro de pago es otra cosa: políticas que deciden según el contexto, elevación con aprobación y caducidad, y riesgo de identidad calculado por Microsoft. Sin licencia P1 ni P2 no hay política que aplicar: en PIM se pudo dejar el rol elegible y las políticas de activación, como quedó en el módulo 02, pero la elevación efectiva no llegó a completarse.
 

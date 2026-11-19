@@ -1,6 +1,8 @@
 # 08 | Robo y reutilización de la cookie de sesión
 
-> **Estado:** **Validado** en el servidor y en el llavero el 15/11/2026: cookie del perfil real de Brave, 200 con ella, 302 tras el cierre y 302 del servidor a los 32 s. La pila del disco se observó el 16/11: la raíz ext4 vive en un volumen LVM dentro de una partición `crypto_LUKS` según `lsblk`. El arranque sin la passphrase no se probó; que sin desbloquear el contenedor no se monte es la consecuencia esperada de esa pila.
+> **Estado:** **Validado** (2026-11-15) en el servidor y en el llavero: cookie del perfil real de Brave, 200 con ella, 302 tras el cierre y 302 del servidor a los 32 s. La pila del disco se observó el 16/11: la raíz ext4 vive en un volumen LVM dentro de una partición `crypto_LUKS` según `lsblk`. El arranque sin la passphrase no se probó; que sin desbloquear el contenedor no se monte es la consecuencia esperada de esa pila.
+>
+> **Evidencia:** [registro del 15/11](../../../laboratorio-final/evidencias/2026-11-15-02-cookie-sesion/README.md).
 >
 > **Referencias:** OWASP ASVS V3 (verificación de seguridad de aplicaciones) · NIST SP 800-63B · OWASP Session Management Cheat Sheet.
 
