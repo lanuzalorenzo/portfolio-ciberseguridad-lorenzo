@@ -2,6 +2,8 @@
 
 > **Estado:** Validado en local. Ejecutado el 2026-10-19 con 15 eventos sintéticos.
 >
+> **Evidencia:** [registro de la ingesta del 2026-10-19](../../../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md) · [15 eventos sintéticos](../../lab/sample-logs/security.log).
+>
 > **Última revisión:** 2026-10-19.
 >
 > **Objetivo de la sesión:** levantar la pila ELK local, ingerir 15 eventos sintéticos y verificar que Logstash normaliza los campos de seguridad.

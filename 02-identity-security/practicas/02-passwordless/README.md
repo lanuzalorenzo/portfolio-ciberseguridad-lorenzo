@@ -1,6 +1,8 @@
 # 02 | Autenticación Passwordless en Microsoft Entra ID
 
-> **Estado:** **Validado** en laboratorio (evidencia documental). Tenant de prueba, sin datos reales.
+> **Estado:** **Validado** en laboratorio (evidencia documental, 2026-09-08; ejecución sin fecha registrada). Tenant de prueba, sin datos reales.
+>
+> **Evidencia:** [informe técnico](informe.md) · [bitácora del módulo](../../bitacora/2026-09-08-identity-security.md).
 >
 > **Referencias:** MCSB IA-1, IA-2 · NIST SP 800-63B · FIDO Alliance.
 
