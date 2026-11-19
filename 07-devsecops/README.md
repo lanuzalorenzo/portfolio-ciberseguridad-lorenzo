@@ -8,7 +8,7 @@ La seguridad del desarrollo no se demuestra con una política escrita, sino con 
 
 Los controles se aplican sobre [EcommerceApi (lab-api-local-azure)](https://github.com/lanuzalorenzo/lab-api-local-azure), el mismo workload del resto del portfolio. El código, el workflow y las plantillas Bicep viven allí; aquí se documenta qué se aplicó y qué se observó.
 
-## Las cinco prácticas
+## Las seis prácticas
 
 | # | Práctica | Qué controla | Estado |
 |---|---|---|---|
@@ -17,6 +17,7 @@ Los controles se aplican sobre [EcommerceApi (lab-api-local-azure)](https://gith
 | 03 | [SAST, SCA e IaC](practicas/03-sast-sca-iac/README.md) | Que código, dependencias e infraestructura pasen el análisis | **Validado** |
 | 04 | [Pipeline segura](practicas/04-pipeline-security/README.md) | Que cada job tenga el permiso mínimo y los gates bloqueen | **Parcial** |
 | 05 | [Credenciales de mínimo privilegio](practicas/05-credenciales-minimo-privilegio/README.md) | Que el build use una credencial que solo lea paquetes, separada de la identidad interactiva | **Validado** |
+| 06 | [Gobierno de dependencias](practicas/06-gobierno-dependencias/README.md) | Que la plataforma y sus paquetes no se mezclen y que un mayor no entre solo | **Validado** · **Diseño** en la migración |
 
 ## Un caso de remediación, de principio a fin
 
