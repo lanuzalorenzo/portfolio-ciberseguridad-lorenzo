@@ -29,6 +29,7 @@ Entrada pública: `docs/guia-de-lectura.md`. Este archivo es el contrato de trab
 
 - **Puerta del módulo** (`README.md`): 250–500 palabras; problema en prosa, piezas con estado, ejecutado frente a recomendado.
 - **Práctica** (`practicas/<caso>/`): 240–310 palabras; problema, referencias (MCSB/CIS/NIST), tabla de hallazgos, 2–3 lecciones y enlaces. Sigue `plantillas/README-practica-template.md`.
+- **Caso de estudio** (`casos/<caso>/`): 1.200–1.800 palabras; situación concreta, invariantes, mecanismos, modos de fallo, verificación con estado propio y lecciones. Enlaza la evidencia en el repositorio que la posee y no hereda el estado de un módulo.
 - **Informe** (`informe.md`, junto a la práctica): solo catálogo, configuración, matriz o verificación; no repite la página.
 - **Runbook** (`runbook.md` + `evidencias/`): solo prácticas reejecutables, con el contrato de abajo.
 - **Bitácora** (`bitacora/`): solo hechos que no estén en página ni informe (decisión tomada y su resultado, fallo, fecha, limitación). Primera persona, fechas, paneles y mensajes de error tal cual. No es un registro paralelo de decisiones. Puede no existir; si extraña, la puerta lo explica en una frase. Sin epígrafes vacíos ni índices de tareas.
