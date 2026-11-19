@@ -1,6 +1,8 @@
 # 02 | Auditoría de recursos críticos
 
-> **Estado:** **Validado** en laboratorio (evidencia documental).
+> **Estado:** **Validado** en laboratorio (evidencia documental, 2026-09-15).
+>
+> **Evidencia:** [informe técnico](informe.md) · [bitácora del 15/09](../../bitacora/2026-09-15-cierre-modulo-03.md).
 >
 > **Referencias:** MCSB DP-2, DP-3, DP-4, NS-1 · CIS Azure 3.7 · NIST SP 800-52.
 

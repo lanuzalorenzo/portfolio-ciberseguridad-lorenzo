@@ -1,6 +1,8 @@
 # 03 | Auditoría de identidades y accesos
 
-> **Estado:** **Validado** en laboratorio (evidencia documental).
+> **Estado:** **Validado** en laboratorio (evidencia documental, 2026-09-15).
+>
+> **Evidencia:** [informe técnico](informe.md) · [bitácora del 15/09](../../bitacora/2026-09-15-cierre-modulo-03.md).
 >
 > **Referencias:** MCSB IA-1, PA-1, PA-6 · CIS Microsoft 365 1.2, 1.14 · NIST AC-2.
 
