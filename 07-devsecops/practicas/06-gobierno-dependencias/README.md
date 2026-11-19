@@ -1,6 +1,6 @@
 # 06 | Gobierno de dependencias y versiones de plataforma
 
-> **Estado:** **Validado** (2026-11-19) para la comprobación y el bloqueo: `check-platform` corre en el job obligatorio de cuatro repositorios. **Diseño** para la migración a .NET 12, escrita y sin ejecutar.
+> **Estado:** Validado (2026-11-19). La comprobación y el bloqueo están probados: `check-platform` corre dentro del job que exige el ruleset de cuatro repositorios y los cuatro están en verde el mismo día: [lab-api](https://github.com/lanuzalorenzo/lab-api-local-azure/actions/runs/44550540902), [shared-dotnet](https://github.com/lanuzalorenzo/shared-dotnet/actions/runs/44549614615), [plantillas](https://github.com/lanuzalorenzo/plantillas-dotnet/actions/runs/44550651106) y [comicteca](https://github.com/lanuzalorenzo/comicteca/actions/runs/44549263514). La migración a .NET 12 queda en **Diseño**: escrita y sin ejecutar.
 >
 > **Referencias:** NIST SSDF PW.4 · CIS 16.
 
@@ -22,7 +22,7 @@ Un escáner dice si un paquete arrastra un CVE (la ficha pública de una vulnera
 | Prueba | Resultado observado |
 |---|---|
 | Plataforma mezclada | Código 1 con paquete, imagen, `global.json` y `dotnet-version` señalados |
-| Cuatro consumidores | Job obligatorio en verde; en `shared-dotnet`, check propio exigido por el ruleset (la protección de la rama) |
+| Cuatro consumidores | Job exigido por el ruleset y en verde el 19/11; en `shared-dotnet` el check es un job propio, en los otros tres un paso del job requerido |
 | Mayores que no entran | Cuatro PRs de .NET 11 sobre `net10.0` y una de Swashbuckle 11, cerradas con motivo; Swashbuckle rompe el restore con `NU1107` |
 
 ## Lecciones
