@@ -1,6 +1,6 @@
 # 04 | Pipeline segura y validación de entregas
 
-> **Estado:** **Parcial**. Permisos mínimos y gates validados en CI; OIDC con Azure y despliegue no están activos.
+> **Estado:** **Parcial** (2026-11-12). Permisos mínimos y gates validados en CI; falta OIDC con Azure y el despliegue, que no están activos.
 >
 > **Referencias:** MCSB DS-1, DS-2, GS-2, IM-1.
 

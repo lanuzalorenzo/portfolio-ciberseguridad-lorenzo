@@ -1,6 +1,6 @@
 # 01 | Protección de ramas y revisión de cambios
 
-> **Estado:** **Validado** sobre `lab-api-local-azure`: push directo y forzado rechazados. El merge con checks en rojo no se reprobó.
+> **Estado:** **Validado** (2026-11-04) sobre `lab-api-local-azure`: push directo y forzado rechazados ([PR #34](https://github.com/lanuzalorenzo/lab-api-local-azure/pull/34)); el merge con checks en rojo queda en **Parcial**, sin reprobar desde el ruleset actual.
 >
 > **Referencias:** MCSB DS-1, GS-2, IR-1, DS-2.
 
