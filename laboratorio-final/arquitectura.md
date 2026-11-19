@@ -29,7 +29,7 @@ La capa local (ELK) permite practicar ingesta, búsqueda y detección sin depend
 
 | Capa | Elementos | Límite de confianza | Estado |
 |---|---|---|---|
-| 1. Workload | API .NET, DTOs, autorización por propietario, tests | Internet/cliente → API | **Validado en CI** para el workload |
+| 1. Cargas | Comicteca (aplicación principal) y EcommerceApi (banco de pruebas): API .NET, DTOs, autorización por propietario, tests | Internet/cliente → API | **Validado en CI** en el banco de pruebas y **en local y CI** en la aplicación principal |
 | 2. Identidad | Entra ID, OAuth 2.0/PKCE, JWT/JWKS, RBAC, Managed Identities | Cliente/API → proveedor de identidad | Ver módulos 01, 02 y 06 |
 | 3. Red | VNet, subredes, NSG, Private Endpoints, DNS privado | Internet → red privada | **Diseño + IaC validada estáticamente** |
 | 4. Datos y secretos | Key Vault, Storage, acceso privado | Workload → servicios de datos | **Diseño** |
