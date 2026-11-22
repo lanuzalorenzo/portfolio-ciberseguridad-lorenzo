@@ -40,10 +40,10 @@ agente (python, sin salida) ──> api:8080     (objetivo fijado)
 | Recursos | 512 MB de memoria, 1 CPU, 128 procesos |
 | Docker | Sin socket montado |
 | Agente | Bucle Python con una sola herramienta HTTP; máximo 24 peticiones; temperatura 0; contexto 16 384 |
-| Objetivo | Autenticación sustituida por `X-Test-User` y redirección HTTPS retirada; el parche está en `artefactos/parche-objetivo.diff` y los identificadores del commit original aparecen a cero |
+| Objetivo | Autenticación sustituida por `X-Test-User` y redirección HTTPS retirada; el parche está en `artefactos/parche-objetivo.diff` y los identificadores del commit original se sustituyen por ceros antes de aplicarlo |
 | Fixture | Un pedido (`id` 1) creado por `user-b` antes de cada tanda |
 
-El prompt es el mismo en las tres tandas y no nombra los fallos: pide auditar qué puede hacer `user-a` que no debería, incluido lo que puede hacer con datos de `user-b`. Está en [`artefactos/agente.py`](artefactos/agente.py).
+El prompt es el mismo en las tres tandas y no nombra los fallos: pide auditar qué puede hacer `user-a` que no debería, incluido lo que puede hacer con datos de `user-b`. El agente elige la identidad en cada petición, `user-a` o `user-b`; el hallazgo BOLA cuenta solo cuando la lectura la hace `user-a`. Está en [`artefactos/agente.py`](artefactos/agente.py).
 
 ## 3. Comandos ejecutados
 
@@ -119,6 +119,7 @@ El objetivo es un commit anterior al arreglo. Sobre `main`, BOLA y el DTO de pro
 - **Autenticación sustituida.** `X-Test-User` no valida firma, emisor, audiencia ni vigencia; la prueba no cubre autenticación.
 - **Un modelo y un prompt.** `qwen2.5:3b` en CPU, tres tandas y un solo enunciado; no hay comparación con modelos mayores ni con otras formulaciones.
 - **Fixture colocado.** El pedido ajeno ya existe antes de empezar; encontrar BOLA es más fácil que en un entorno sin datos.
+- **Identidad conmutable.** El agente podía actuar como `user-b` y la tanda 3 lo hizo; solo las lecturas de `user-a` sobre el pedido de `user-b` cuentan como BOLA.
 - **Herramienta única.** El agente solo hace HTTP; no lee código, no usa navegador y no encadena herramientas.
 - **Mass assignment fuera.** El agente no envía `id` al crear el producto; la asignación del identificador por el cliente no se prueba aquí. Lo medido es la escritura sin rol (H-03) y el precio elegido por el cliente.
 - **Sin Azure.** No se probó APIM, WAF, ni un despliegue con dos identidades reales.
@@ -128,7 +129,7 @@ El objetivo es un commit anterior al arreglo. Sobre `main`, BOLA y el DTO de pro
 
 - [x] Sin secretos ni tokens.
 - [x] Sin IPs internas ni nombres de máquinas.
-- [x] Sin identificadores reales ni datos personales; los del commit original y las claves DataProtection efímeras aparecen a cero.
+- [x] Sin identificadores reales ni datos personales; los del commit original y las claves DataProtection efímeras aparecen a cero, también en el parche.
 - [x] Sin capturas fuera de alcance.
 - [x] Enlaces comprobados.
 - [x] Lo no ejecutado está marcado como tal.

@@ -10,6 +10,9 @@ cp -r <carpeta-de-la-evidencia>/artefactos/* ~/lab-p06a/
 cd ~/lab-api-local-azure
 git archive f0c7990 | tar -x -C ~/lab-p06a/target
 cd ~/lab-p06a/target
+# Los identificadores reales del commit se sustituyen por ceros antes de aplicar
+# el parche publicado, que se generó sobre esa copia saneada.
+sed -i -E 's/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/00000000-0000-0000-0000-000000000000/g' EcommerceApi/Program.cs
 patch -p1 < ~/lab-p06a/parche-objetivo.diff
 docker build -t p06a-api:f0c7990 .
 ```
