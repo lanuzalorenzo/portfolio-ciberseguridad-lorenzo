@@ -4,7 +4,7 @@
 >
 > **Qué vas a encontrar:** el orden recomendado, un glosario mínimo y un mapa de los doce módulos. La guía no sustituye a la documentación de cada módulo: la ordena.
 >
-> **Última revisión:** 2026-11-19. Ver [mantenimiento](#10-mantenimiento).
+> **Última revisión:** 2026-11-22. Ver [mantenimiento](#10-mantenimiento).
 
 ## 1. La idea en cinco líneas
 
@@ -94,12 +94,10 @@ Cada módulo sigue el mismo patrón, con las piezas que tenga: hay módulos sin 
 
 1. [Arquitectura de referencia](../laboratorio-final/arquitectura.md).
 2. [Módulo 01 — OAuth 2.0, PKCE y JWT](../01-seguridad-azure/README.md): documentos 01, 02 y 03.
-3. [Módulo 11 — Hacking ético de APIs](../11-hacking-etico-api/README.md): práctica 01 y su [evidencia](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md), práctica 03 con sus evidencias [secuencial](../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md), [de carga](../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit-carga/README.md) y [límite de cuerpo](../laboratorio-final/evidencias/2026-11-12-11-api-body-limit/README.md), el [baseline DAST](../laboratorio-final/evidencias/2026-11-08-11-api-dast/README.md) y el [laboratorio de inclusión de ficheros](../11-hacking-etico-api/lab/upload-progress-include/README.md).
+3. [Módulo 11 — Hacking ético de APIs](../11-hacking-etico-api/README.md): práctica 01 y su [evidencia](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md), práctica 03 con sus evidencias [secuencial](../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md), [de carga](../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit-carga/README.md) y [límite de cuerpo](../laboratorio-final/evidencias/2026-11-12-11-api-body-limit/README.md), el [baseline DAST](../laboratorio-final/evidencias/2026-11-08-11-api-dast/README.md), el [laboratorio de inclusión de ficheros](../11-hacking-etico-api/lab/upload-progress-include/README.md) y el [agente autónomo contra la API](../laboratorio-final/evidencias/2026-11-22-11-api-agente/README.md).
 4. [Módulo 12 — Forense y respuesta](../12-forense-cloud-respuesta/README.md): el playbook, el runbook y su [acta de tabletop](../laboratorio-final/evidencias/2026-10-22-12-tabletop/README.md).
 
 **Al terminar:** entenderás cómo se autentica una petición, cómo se autoriza por propietario y qué se puede demostrar con una prueba local.
-
-**Ampliación del 22/11:** el [agente autónomo contra la API](../laboratorio-final/evidencias/2026-11-22-11-api-agente/README.md) mide cuánto tarda un modelo local en encontrar BOLA y escritura sin rol sobre la versión vulnerable, sin salida a Internet.
 
 ### Ruta 2 — 3–4 horas: recorrido por capas
 
