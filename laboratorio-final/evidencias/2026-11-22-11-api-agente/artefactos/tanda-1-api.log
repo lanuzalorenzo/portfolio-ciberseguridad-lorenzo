@@ -1,0 +1,276 @@
+2026-11-22T10:52:01.535219641Z warn: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository[60]
+2026-11-22T10:52:01.535251317Z       Storing keys in a directory '/home/app/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+2026-11-22T10:52:01.535631429Z info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[62]
+2026-11-22T10:52:01.535636792Z       User profile is available. Using '/home/app/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2026-11-22T10:52:01.541846281Z info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[58]
+2026-11-22T10:52:01.541862649Z       Creating key {00000000-0000-0000-0000-000000000000} with creation date 2026-11-22 10:52:01Z, activation date 2026-11-22 10:52:01Z, and expiration date 2027-02-20 10:52:01Z.
+2026-11-22T10:52:01.548843369Z warn: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[35]
+2026-11-22T10:52:01.548865337Z       No XML encryptor configured. Key {00000000-0000-0000-0000-000000000000} may be persisted to storage in unencrypted form.
+2026-11-22T10:52:01.551354414Z info: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository[39]
+2026-11-22T10:52:01.551369540Z       Writing data to file '/home/app/.aspnet/DataProtection-Keys/key-00000000-0000-0000-0000-000000000000.xml'.
+2026-11-22T10:52:01.557856067Z warn: Microsoft.AspNetCore.Hosting.Diagnostics[15]
+2026-11-22T10:52:01.557875452Z       Overriding HTTP_PORTS '8080' and HTTPS_PORTS ''. Binding to values defined by URLS instead 'http://+:8080'.
+2026-11-22T10:52:01.586328659Z info: Microsoft.Hosting.Lifetime[14]
+2026-11-22T10:52:01.586351798Z       Now listening on: http://[::]:8080
+2026-11-22T10:52:01.586355297Z info: Microsoft.Hosting.Lifetime[0]
+2026-11-22T10:52:01.586357463Z       Application started. Press Ctrl+C to shut down.
+2026-11-22T10:52:01.586359474Z info: Microsoft.Hosting.Lifetime[0]
+2026-11-22T10:52:01.586361345Z       Hosting environment: Production
+2026-11-22T10:52:01.586363572Z info: Microsoft.Hosting.Lifetime[0]
+2026-11-22T10:52:01.586365631Z       Content root path: /app
+2026-11-22T10:52:01.895812605Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:01.895832414Z       Request starting HTTP/1.1 GET http://api:8080/api/products - - -
+2026-11-22T10:52:01.928499161Z info: Microsoft.AspNetCore.Authorization.DefaultAuthorizationService[2]
+2026-11-22T10:52:01.928521523Z       Authorization failed. These requirements were not met:
+2026-11-22T10:52:01.928525049Z       DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-11-22T10:52:01.929126951Z info: EcommerceApi.TestAuthHandler[12]
+2026-11-22T10:52:01.929140929Z       AuthenticationScheme: Test was challenged.
+2026-11-22T10:52:01.930538712Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:01.930569572Z       Request finished HTTP/1.1 GET http://api:8080/api/products - 401 0 - 35.0114ms
+2026-11-22T10:52:02.596974192Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:02.596994406Z       Request starting HTTP/1.1 POST http://api:8080/api/orders - application/json 19
+2026-11-22T10:52:02.600428721Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:02.600447399Z       Executing endpoint 'EcommerceApi.Controllers.OrdersController.CreateOrder (EcommerceApi)'
+2026-11-22T10:52:02.611574596Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:02.611592763Z       Route matched with {action = "CreateOrder", controller = "Orders"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Order] CreateOrder(EcommerceApi.Controllers.CreateOrderRequest) on controller EcommerceApi.Controllers.OrdersController (EcommerceApi).
+2026-11-22T10:52:02.634704129Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:02.634724640Z       Executing CreatedAtActionResult, writing value of type 'EcommerceApi.Models.Order'.
+2026-11-22T10:52:02.650860557Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:02.650874815Z       Executed action EcommerceApi.Controllers.OrdersController.CreateOrder (EcommerceApi) in 35.9294ms
+2026-11-22T10:52:02.651459095Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:02.651478088Z       Executed endpoint 'EcommerceApi.Controllers.OrdersController.CreateOrder (EcommerceApi)'
+2026-11-22T10:52:02.651552530Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:02.651560765Z       Request finished HTTP/1.1 POST http://api:8080/api/orders - 201 - application/json;+charset=utf-8 54.5727ms
+2026-11-22T10:52:08.316590068Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:08.316608999Z       Request starting HTTP/1.1 GET http://api:8080/api/products - - -
+2026-11-22T10:52:08.318729280Z info: Microsoft.AspNetCore.Authorization.DefaultAuthorizationService[2]
+2026-11-22T10:52:08.318741142Z       Authorization failed. These requirements were not met:
+2026-11-22T10:52:08.318745148Z       DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-11-22T10:52:08.318861485Z info: EcommerceApi.TestAuthHandler[12]
+2026-11-22T10:52:08.318871469Z       AuthenticationScheme: Test was challenged.
+2026-11-22T10:52:08.318875306Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:08.318878155Z       Request finished HTTP/1.1 GET http://api:8080/api/products - 401 0 - 2.4362ms
+2026-11-22T10:52:08.319933325Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:08.319944871Z       Request starting HTTP/1.1 GET http://api:8080/api/products - - -
+2026-11-22T10:52:08.319979601Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:08.319985114Z       Executing endpoint 'EcommerceApi.Controllers.ProductsController.GetAllProducts (EcommerceApi)'
+2026-11-22T10:52:08.321784131Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:08.321794518Z       Route matched with {action = "GetAllProducts", controller = "Products"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[EcommerceApi.Models.Product]] GetAllProducts() on controller EcommerceApi.Controllers.ProductsController (EcommerceApi).
+2026-11-22T10:52:08.322118645Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:08.322125819Z       Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EcommerceApi.Models.Product, EcommerceApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-11-22T10:52:08.324307613Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:08.324320641Z       Executed action EcommerceApi.Controllers.ProductsController.GetAllProducts (EcommerceApi) in 2.5056ms
+2026-11-22T10:52:08.324323260Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:08.324325318Z       Executed endpoint 'EcommerceApi.Controllers.ProductsController.GetAllProducts (EcommerceApi)'
+2026-11-22T10:52:08.324326944Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:08.324328436Z       Request finished HTTP/1.1 GET http://api:8080/api/products - 200 - application/json;+charset=utf-8 4.3807ms
+2026-11-22T10:52:18.058052369Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:18.058070610Z       Request starting HTTP/1.1 GET http://api:8080/api/products - application/json -
+2026-11-22T10:52:18.058278590Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:18.058289620Z       Executing endpoint 'EcommerceApi.Controllers.ProductsController.GetAllProducts (EcommerceApi)'
+2026-11-22T10:52:18.058335638Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:18.058346530Z       Route matched with {action = "GetAllProducts", controller = "Products"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[EcommerceApi.Models.Product]] GetAllProducts() on controller EcommerceApi.Controllers.ProductsController (EcommerceApi).
+2026-11-22T10:52:18.058351943Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:18.058354784Z       Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EcommerceApi.Models.Product, EcommerceApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-11-22T10:52:18.058567733Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:18.058577190Z       Executed action EcommerceApi.Controllers.ProductsController.GetAllProducts (EcommerceApi) in 0.15ms
+2026-11-22T10:52:18.058581038Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:18.058583836Z       Executed endpoint 'EcommerceApi.Controllers.ProductsController.GetAllProducts (EcommerceApi)'
+2026-11-22T10:52:18.058598003Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:18.058600486Z       Request finished HTTP/1.1 GET http://api:8080/api/products - 200 - application/json;+charset=utf-8 0.6618ms
+2026-11-22T10:52:22.468517026Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:22.468538990Z       Request starting HTTP/1.1 GET http://api:8080/api/orders - application/json -
+2026-11-22T10:52:22.468551729Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:22.468556273Z       Executing endpoint 'EcommerceApi.Controllers.OrdersController.GetAllOrders (EcommerceApi)'
+2026-11-22T10:52:22.470151323Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:22.470167542Z       Route matched with {action = "GetAllOrders", controller = "Orders"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[EcommerceApi.Models.Order]] GetAllOrders() on controller EcommerceApi.Controllers.OrdersController (EcommerceApi).
+2026-11-22T10:52:22.470173413Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:22.470176637Z       Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[EcommerceApi.Models.Order, EcommerceApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-11-22T10:52:22.470800194Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:22.470816035Z       Executed action EcommerceApi.Controllers.OrdersController.GetAllOrders (EcommerceApi) in 0.6266ms
+2026-11-22T10:52:22.470820099Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:22.470823038Z       Executed endpoint 'EcommerceApi.Controllers.OrdersController.GetAllOrders (EcommerceApi)'
+2026-11-22T10:52:22.470865575Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:22.470870565Z       Request finished HTTP/1.1 GET http://api:8080/api/orders - 200 - application/json;+charset=utf-8 2.5081ms
+2026-11-22T10:52:25.776015921Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:25.776038464Z       Request starting HTTP/1.1 GET http://api:8080/api/products/1 - application/json -
+2026-11-22T10:52:25.776155359Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:25.776165779Z       Executing endpoint 'EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi)'
+2026-11-22T10:52:25.777760754Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:25.777785313Z       Route matched with {action = "GetProductById", controller = "Products"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Product] GetProductById(Int32) on controller EcommerceApi.Controllers.ProductsController (EcommerceApi).
+2026-11-22T10:52:25.778371872Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:25.778385555Z       Executing OkObjectResult, writing value of type 'EcommerceApi.Models.Product'.
+2026-11-22T10:52:25.778411225Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:25.778414672Z       Executed action EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi) in 0.8702ms
+2026-11-22T10:52:25.778416985Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:25.778419207Z       Executed endpoint 'EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi)'
+2026-11-22T10:52:25.778421488Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:25.778423498Z       Request finished HTTP/1.1 GET http://api:8080/api/products/1 - 200 - application/json;+charset=utf-8 2.6243ms
+2026-11-22T10:52:28.307201315Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:28.307222943Z       Request starting HTTP/1.1 GET http://api:8080/api/products/5 - application/json -
+2026-11-22T10:52:28.307441647Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:28.307454683Z       Executing endpoint 'EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi)'
+2026-11-22T10:52:28.307459159Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:28.307465017Z       Route matched with {action = "GetProductById", controller = "Products"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Product] GetProductById(Int32) on controller EcommerceApi.Controllers.ProductsController (EcommerceApi).
+2026-11-22T10:52:28.307965136Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:28.307981056Z       Executing OkObjectResult, writing value of type 'EcommerceApi.Models.Product'.
+2026-11-22T10:52:28.308198230Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:28.308211023Z       Executed action EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi) in 0.6451ms
+2026-11-22T10:52:28.308213579Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:28.308215551Z       Executed endpoint 'EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi)'
+2026-11-22T10:52:28.308217571Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:28.308219506Z       Request finished HTTP/1.1 GET http://api:8080/api/products/5 - 200 - application/json;+charset=utf-8 1.0356ms
+2026-11-22T10:52:30.970033027Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:30.970056809Z       Request starting HTTP/1.1 GET http://api:8080/api/orders/1 - application/json -
+2026-11-22T10:52:30.970380109Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:30.970395761Z       Executing endpoint 'EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi)'
+2026-11-22T10:52:30.971897130Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:30.971906916Z       Route matched with {action = "GetOrderById", controller = "Orders"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Order] GetOrderById(Int32) on controller EcommerceApi.Controllers.OrdersController (EcommerceApi).
+2026-11-22T10:52:30.972605929Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:30.972609122Z       Executing OkObjectResult, writing value of type 'EcommerceApi.Models.Order'.
+2026-11-22T10:52:30.972611593Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:30.972614047Z       Executed action EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi) in 0.7978ms
+2026-11-22T10:52:30.972617502Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:30.972620208Z       Executed endpoint 'EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi)'
+2026-11-22T10:52:30.972817255Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:30.972831690Z       Request finished HTTP/1.1 GET http://api:8080/api/orders/1 - 200 - application/json;+charset=utf-8 2.8374ms
+2026-11-22T10:52:34.370240552Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:34.370257023Z       Request starting HTTP/1.1 GET http://api:8080/api/products/4 - application/json -
+2026-11-22T10:52:34.370259738Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:34.370261899Z       Executing endpoint 'EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi)'
+2026-11-22T10:52:34.370342563Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:34.370355241Z       Route matched with {action = "GetProductById", controller = "Products"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Product] GetProductById(Int32) on controller EcommerceApi.Controllers.ProductsController (EcommerceApi).
+2026-11-22T10:52:34.370492322Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:34.370495020Z       Executing OkObjectResult, writing value of type 'EcommerceApi.Models.Product'.
+2026-11-22T10:52:34.370726437Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:34.370730300Z       Executed action EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi) in 0.2987ms
+2026-11-22T10:52:34.370732377Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:34.370734376Z       Executed endpoint 'EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi)'
+2026-11-22T10:52:34.370736394Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:34.370738196Z       Request finished HTTP/1.1 GET http://api:8080/api/products/4 - 200 - application/json;+charset=utf-8 0.6149ms
+2026-11-22T10:52:37.024537130Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:37.024554626Z       Request starting HTTP/1.1 GET http://api:8080/api/orders/2 - application/json -
+2026-11-22T10:52:37.024557473Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:37.024569790Z       Executing endpoint 'EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi)'
+2026-11-22T10:52:37.024571569Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:37.024573630Z       Route matched with {action = "GetOrderById", controller = "Orders"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Order] GetOrderById(Int32) on controller EcommerceApi.Controllers.OrdersController (EcommerceApi).
+2026-11-22T10:52:37.024989225Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:37.025004190Z       Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-11-22T10:52:37.028087285Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:37.028102740Z       Executed action EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi) in 3.4634ms
+2026-11-22T10:52:37.028105925Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:37.028109187Z       Executed endpoint 'EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi)'
+2026-11-22T10:52:37.028110850Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:37.028112345Z       Request finished HTTP/1.1 GET http://api:8080/api/orders/2 - 404 - application/json;+charset=utf-8 3.7570ms
+2026-11-22T10:52:40.120962705Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:40.120994330Z       Request starting HTTP/1.1 POST http://api:8080/api/products - application/json 51
+2026-11-22T10:52:40.121001744Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:40.121004151Z       Executing endpoint 'EcommerceApi.Controllers.ProductsController.CreateProduct (EcommerceApi)'
+2026-11-22T10:52:40.122814111Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:40.122825822Z       Route matched with {action = "CreateProduct", controller = "Products"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Product] CreateProduct(EcommerceApi.Models.Product) on controller EcommerceApi.Controllers.ProductsController (EcommerceApi).
+2026-11-22T10:52:40.128804844Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:40.128815964Z       Executing CreatedAtActionResult, writing value of type 'EcommerceApi.Models.Product'.
+2026-11-22T10:52:40.129684727Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:40.129694751Z       Executed action EcommerceApi.Controllers.ProductsController.CreateProduct (EcommerceApi) in 6.7495ms
+2026-11-22T10:52:40.129697101Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:40.129699090Z       Executed endpoint 'EcommerceApi.Controllers.ProductsController.CreateProduct (EcommerceApi)'
+2026-11-22T10:52:40.129700951Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:40.129710787Z       Request finished HTTP/1.1 POST http://api:8080/api/products - 201 - application/json;+charset=utf-8 8.6802ms
+2026-11-22T10:52:42.776589507Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:42.776606255Z       Request starting HTTP/1.1 GET http://api:8080/api/products/6 - application/json -
+2026-11-22T10:52:42.776609002Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:42.776611029Z       Executing endpoint 'EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi)'
+2026-11-22T10:52:42.776612974Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:42.776615309Z       Route matched with {action = "GetProductById", controller = "Products"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Product] GetProductById(Int32) on controller EcommerceApi.Controllers.ProductsController (EcommerceApi).
+2026-11-22T10:52:42.776903244Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:42.776914558Z       Executing OkObjectResult, writing value of type 'EcommerceApi.Models.Product'.
+2026-11-22T10:52:42.776945603Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:42.776947719Z       Executed action EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi) in 0.3652ms
+2026-11-22T10:52:42.776977486Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:42.776991180Z       Executed endpoint 'EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi)'
+2026-11-22T10:52:42.777024991Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:42.777027836Z       Request finished HTTP/1.1 GET http://api:8080/api/products/6 - 200 - application/json;+charset=utf-8 0.6799ms
+2026-11-22T10:52:45.489259005Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:45.489277178Z       Request starting HTTP/1.1 GET http://api:8080/api/orders/3 - application/json -
+2026-11-22T10:52:45.489279972Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:45.489282171Z       Executing endpoint 'EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi)'
+2026-11-22T10:52:45.489443468Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:45.489455734Z       Route matched with {action = "GetOrderById", controller = "Orders"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Order] GetOrderById(Int32) on controller EcommerceApi.Controllers.OrdersController (EcommerceApi).
+2026-11-22T10:52:45.489459832Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:45.489462001Z       Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-11-22T10:52:45.489589841Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:45.489612453Z       Executed action EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi) in 0.2721ms
+2026-11-22T10:52:45.489614756Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:45.489616386Z       Executed endpoint 'EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi)'
+2026-11-22T10:52:45.489618141Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:45.489619725Z       Request finished HTTP/1.1 GET http://api:8080/api/orders/3 - 404 - application/json;+charset=utf-8 0.6042ms
+2026-11-22T10:52:48.321559601Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:48.321566259Z       Request starting HTTP/1.1 POST http://api:8080/api/orders - application/json 35
+2026-11-22T10:52:48.321568060Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:48.321569633Z       Executing endpoint 'EcommerceApi.Controllers.OrdersController.CreateOrder (EcommerceApi)'
+2026-11-22T10:52:48.321571141Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:48.321573186Z       Route matched with {action = "CreateOrder", controller = "Orders"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Order] CreateOrder(EcommerceApi.Controllers.CreateOrderRequest) on controller EcommerceApi.Controllers.OrdersController (EcommerceApi).
+2026-11-22T10:52:48.323894904Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:48.323897766Z       Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-11-22T10:52:48.323999050Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:48.324000760Z       Executed action EcommerceApi.Controllers.OrdersController.CreateOrder (EcommerceApi) in 2.3612ms
+2026-11-22T10:52:48.324002253Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:48.324003815Z       Executed endpoint 'EcommerceApi.Controllers.OrdersController.CreateOrder (EcommerceApi)'
+2026-11-22T10:52:48.324005385Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:48.324006905Z       Request finished HTTP/1.1 POST http://api:8080/api/orders - 400 - application/json;+charset=utf-8 2.6443ms
+2026-11-22T10:52:51.171596980Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:51.171616715Z       Request starting HTTP/1.1 POST http://api:8080/api/orders - application/json 34
+2026-11-22T10:52:51.171768323Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:51.171778710Z       Executing endpoint 'EcommerceApi.Controllers.OrdersController.CreateOrder (EcommerceApi)'
+2026-11-22T10:52:51.171900657Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:51.171911929Z       Route matched with {action = "CreateOrder", controller = "Orders"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Order] CreateOrder(EcommerceApi.Controllers.CreateOrderRequest) on controller EcommerceApi.Controllers.OrdersController (EcommerceApi).
+2026-11-22T10:52:51.172637063Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:51.172645505Z       Executing CreatedAtActionResult, writing value of type 'EcommerceApi.Models.Order'.
+2026-11-22T10:52:51.172765365Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:51.172771214Z       Executed action EcommerceApi.Controllers.OrdersController.CreateOrder (EcommerceApi) in 0.8734ms
+2026-11-22T10:52:51.172773391Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:51.172775554Z       Executed endpoint 'EcommerceApi.Controllers.OrdersController.CreateOrder (EcommerceApi)'
+2026-11-22T10:52:51.172777342Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:51.172779237Z       Request finished HTTP/1.1 POST http://api:8080/api/orders - 201 - application/json;+charset=utf-8 1.1996ms
+2026-11-22T10:52:54.771392827Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:52:54.771416420Z       Request starting HTTP/1.1 GET http://api:8080/api/orders/2 - application/json -
+2026-11-22T10:52:54.771419367Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:52:54.771421696Z       Executing endpoint 'EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi)'
+2026-11-22T10:52:54.771423860Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:52:54.771426327Z       Route matched with {action = "GetOrderById", controller = "Orders"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Order] GetOrderById(Int32) on controller EcommerceApi.Controllers.OrdersController (EcommerceApi).
+2026-11-22T10:52:54.771435227Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:52:54.771437855Z       Executing OkObjectResult, writing value of type 'EcommerceApi.Models.Order'.
+2026-11-22T10:52:54.771541802Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:52:54.771544500Z       Executed action EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi) in 0.2949ms
+2026-11-22T10:52:54.771549368Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:52:54.771551473Z       Executed endpoint 'EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi)'
+2026-11-22T10:52:54.771584863Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:52:54.771587159Z       Request finished HTTP/1.1 GET http://api:8080/api/orders/2 - 200 - application/json;+charset=utf-8 0.6410ms
+2026-11-22T10:53:17.395915616Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:53:17.395938345Z       Request starting HTTP/1.1 GET http://api:8080/api/products/5 - application/json -
+2026-11-22T10:53:17.396030340Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:53:17.396055917Z       Executing endpoint 'EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi)'
+2026-11-22T10:53:17.396077511Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:53:17.396080386Z       Route matched with {action = "GetProductById", controller = "Products"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Product] GetProductById(Int32) on controller EcommerceApi.Controllers.ProductsController (EcommerceApi).
+2026-11-22T10:53:17.396251070Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:53:17.396252735Z       Executing OkObjectResult, writing value of type 'EcommerceApi.Models.Product'.
+2026-11-22T10:53:17.396476605Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:53:17.396484627Z       Executed action EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi) in 0.2914ms
+2026-11-22T10:53:17.396486831Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:53:17.396488383Z       Executed endpoint 'EcommerceApi.Controllers.ProductsController.GetProductById (EcommerceApi)'
+2026-11-22T10:53:17.396489883Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:53:17.396491335Z       Request finished HTTP/1.1 GET http://api:8080/api/products/5 - 200 - application/json;+charset=utf-8 0.7462ms
+2026-11-22T10:53:20.530316864Z info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2026-11-22T10:53:20.530341225Z       Request starting HTTP/1.1 GET http://api:8080/api/orders/3 - application/json -
+2026-11-22T10:53:20.530346289Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2026-11-22T10:53:20.530350022Z       Executing endpoint 'EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi)'
+2026-11-22T10:53:20.530353389Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+2026-11-22T10:53:20.530357072Z       Route matched with {action = "GetOrderById", controller = "Orders"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[EcommerceApi.Models.Order] GetOrderById(Int32) on controller EcommerceApi.Controllers.OrdersController (EcommerceApi).
+2026-11-22T10:53:20.530525685Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2026-11-22T10:53:20.530541103Z       Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-11-22T10:53:20.530676352Z info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+2026-11-22T10:53:20.530694306Z       Executed action EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi) in 0.2866ms
+2026-11-22T10:53:20.530697276Z info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2026-11-22T10:53:20.530699459Z       Executed endpoint 'EcommerceApi.Controllers.OrdersController.GetOrderById (EcommerceApi)'
+2026-11-22T10:53:20.530701662Z info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2026-11-22T10:53:20.530713576Z       Request finished HTTP/1.1 GET http://api:8080/api/orders/3 - 404 - application/json;+charset=utf-8 0.6071ms

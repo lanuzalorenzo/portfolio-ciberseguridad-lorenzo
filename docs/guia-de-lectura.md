@@ -99,6 +99,8 @@ Cada módulo sigue el mismo patrón, con las piezas que tenga: hay módulos sin 
 
 **Al terminar:** entenderás cómo se autentica una petición, cómo se autoriza por propietario y qué se puede demostrar con una prueba local.
 
+**Ampliación del 22/11:** el [agente autónomo contra la API](../laboratorio-final/evidencias/2026-11-22-11-api-agente/README.md) mide cuánto tarda un modelo local en encontrar BOLA y escritura sin rol sobre la versión vulnerable, sin salida a Internet.
+
 ### Ruta 2 — 3–4 horas: recorrido por capas
 
 1. **AppSec e identidad:** módulos [01](../01-seguridad-azure/README.md) y [11](../11-hacking-etico-api/README.md).
@@ -170,7 +172,7 @@ Si puedes responderlas sin mirar, ya tienes el hilo. Si no, vuelve a la Ruta 1.
 
 ## 10. Mantenimiento
 
-- **Última revisión:** 2026-11-19.
+- **Última revisión:** 2026-11-22.
 - **Actualizar cuando:** cambie el estado de un módulo, se añada o retire una evidencia o un caso de estudio, cambie la estructura de módulos o enlaces, o se añada una ruta de lectura.
 - **No actualizar por:** cambios internos que no afecten a lo que el lector necesita para orientarse.
 - **Fuente única:** esta guía es la referencia; la web y el perfil resumen y enlazan.

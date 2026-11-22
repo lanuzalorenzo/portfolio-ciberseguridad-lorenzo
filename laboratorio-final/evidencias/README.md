@@ -1,6 +1,6 @@
 # Índice de evidencias
 
-> **Evidencias registradas:** 19: 13 de ejecución y 6 documentales o verificables.
+> **Evidencias registradas:** 20: 14 de ejecución y 6 documentales o verificables.
 
 Este directorio centraliza las evidencias del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook, un informe o un run de CI, y hasta un entorno concreto. No es un repositorio de capturas sueltas.
 
@@ -69,6 +69,7 @@ La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apa
 | 2026-11-12 | 11 — Hacking ético de APIs | Límite de cuerpo de 16 KB: 16 384 bytes aceptados y 17 408 rechazados con `413` | Validado en local | [Ver evidencia](2026-11-12-11-api-body-limit/README.md) |
 | 2026-11-12 | 07 — DevSecOps | Inventario del binario publicado: 5 PDB antes, 0 después; sin secretos en el host descompilado | Validado en local | [Ver evidencia](2026-11-12-05-api-binary/README.md) |
 | 2026-11-15 | 02 — Identity Security | 08 — Robo y reutilización de la cookie de sesión: extracción del perfil real, cierre en servidor y caducidad | Validado en local | [Ver evidencia](2026-11-15-02-cookie-sesion/README.md) |
+| 2026-11-22 | 11 — Hacking ético de APIs | Agente autónomo contra la API: BOLA en 5–14 s en las tres tandas y escritura sin rol en una, sin salida a Internet | Validado en local | [Ver evidencia](2026-11-22-11-api-agente/README.md) |
 
 ## Evidencias documentales y verificables
 

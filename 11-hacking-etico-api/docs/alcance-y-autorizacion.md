@@ -2,7 +2,7 @@
 
 > **Alcance:** documentado. Define las condiciones con las que se ejecutan las pruebas del módulo 11. No es una autorización para probar sistemas de terceros.
 >
-> **Última revisión:** 2026-10-20
+> **Última revisión:** 2026-11-22, para cubrir la ejecución del agente en contenedor.
 
 ## Para qué existe este documento
 
@@ -17,6 +17,7 @@ En el laboratorio no hay cliente ni contrato: el titular de los sistemas es el p
 | `EcommerceApi` en ejecución local | Endpoints de pedidos y productos, validación de entrada, límites | `lab-api-local-azure` |
 | Pruebas de integración | Identidades de test A y B, recursos cruzados y regresión | `tests/EcommerceApi.Tests/` |
 | Configuración JWT | Validación de emisor, audiencia, firma y claims | Configuración de la API |
+| Agente en contenedor | Peticiones HTTP a la API desde un contenedor sin salida, con identidades de test | Red Docker interna; evidencia `2026-11-22-11-api-agente` |
 
 ## Fuera de alcance
 
@@ -27,7 +28,7 @@ En el laboratorio no hay cliente ni contrato: el titular de los sistemas es el p
 - Denegación de servicio, persistencia, movimiento lateral y pruebas sobre personas.
 - Un despliegue de Azure/APIM sin autorización explícita, presupuesto, grupo de recursos temporal y plan de limpieza.
 
-El entorno se limita a la API levantada en local para las pruebas de integración (`WebApplicationFactory`). El módulo no prueba el contenedor, un despliegue en Azure ni una instancia compartida. Si una prueba necesitara Azure, se describe como pendiente hasta que exista un entorno autorizado.
+El entorno se limita a la API levantada en local, con pruebas de integración (`WebApplicationFactory`) o en un contenedor conectado solo a una red interna sin salida. El módulo no prueba Azure, APIM, WAF ni una instancia compartida. Si una prueba necesitara Azure, se describe como pendiente hasta que exista un entorno autorizado.
 
 ## Condiciones de ejecución
 
@@ -40,6 +41,7 @@ El entorno se limita a la API levantada en local para las pruebas de integració
 | Ritmo | El de la suite de pruebas; sin escaneo masivo ni fuzzing sostenido |
 | Ventana | La de la sesión de trabajo, sin necesidad de franja horaria |
 | Registro | Cada prueba documentada deja hipótesis, resultado observado y estado |
+| Contenedor | Red interna sin puerta de enlace, sin credenciales y sin socket de Docker; el objetivo se sirve en local |
 
 Cualquier ampliación, como ejecutar contra Azure o añadir una técnica nueva, exige actualizar este documento y su fecha de revisión antes de actuar.
 

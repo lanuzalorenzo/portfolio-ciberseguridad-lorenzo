@@ -1,0 +1,111 @@
+diff -ruN a/EcommerceApi/Program.cs b/EcommerceApi/Program.cs
+--- a/EcommerceApi/Program.cs	2026-11-22 12:02:09.980188548 +0100
++++ b/EcommerceApi/Program.cs	2026-11-22 12:02:04.680942972 +0100
+@@ -1,3 +1,4 @@
++using EcommerceApi;
+ using Microsoft.AspNetCore.Authentication.JwtBearer;
+ using Microsoft.IdentityModel.Tokens;
+ 
+@@ -19,20 +20,30 @@
+     });
+ });
+ 
+-// Add JWT Bearer Authentication
+-builder.Services.AddAuthentication("Bearer")
+-    .AddJwtBearer("Bearer", options =>
+-    {
+-        options.Authority = "https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0";
+-        options.TokenValidationParameters = new TokenValidationParameters
++// Lab target: the historical build hard-coded a tenant. For the agent
++// experiment the caller is selected with X-Test-User, as in the module 11 tests.
++if (Environment.GetEnvironmentVariable("P06A_TEST_AUTH") == "1")
++{
++    builder.Services.AddAuthentication(TestAuthHandler.SchemeName)
++        .AddScheme<Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions, TestAuthHandler>(
++            TestAuthHandler.SchemeName, _ => { });
++}
++else
++{
++    builder.Services.AddAuthentication("Bearer")
++        .AddJwtBearer("Bearer", options =>
+         {
+-            ValidateIssuer = true,
+-            ValidIssuer = "https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0",
+-            ValidateAudience = true,
+-            ValidAudience = "api://00000000-0000-0000-0000-000000000000",
+-            ValidateLifetime = true
+-        };
+-    });
++            options.Authority = "https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0";
++            options.TokenValidationParameters = new TokenValidationParameters
++            {
++                ValidateIssuer = true,
++                ValidIssuer = "https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0",
++                ValidateAudience = true,
++                ValidAudience = "api://00000000-0000-0000-0000-000000000000",
++                ValidateLifetime = true
++            };
++        });
++}
+ 
+ // Add Authorization
+ builder.Services.AddAuthorization();
+@@ -46,7 +57,6 @@
+     app.UseSwaggerUI();
+ }
+ 
+-app.UseHttpsRedirection();
+ app.UseCors("AllowAll");
+ app.UseAuthentication();
+ app.UseAuthorization();
+diff -ruN a/EcommerceApi/TestAuthHandler.cs b/EcommerceApi/TestAuthHandler.cs
+--- a/EcommerceApi/TestAuthHandler.cs	1970-01-01 01:00:00.000000000 +0100
++++ b/EcommerceApi/TestAuthHandler.cs	2026-11-22 12:01:58.580138598 +0100
+@@ -0,0 +1,47 @@
++using System.Security.Claims;
++using System.Text.Encodings.Web;
++using Microsoft.AspNetCore.Authentication;
++using Microsoft.Extensions.Options;
++
++namespace EcommerceApi;
++
++/// <summary>
++/// Lab-only scheme for the agent experiment: the caller is chosen with
++/// X-Test-User instead of a real Entra ID token. Not part of the published API.
++/// </summary>
++public sealed class TestAuthHandler : AuthenticationHandler<AuthenticationSchemeOptions>
++{
++    public const string SchemeName = "Test";
++    public const string UserHeader = "X-Test-User";
++
++    public TestAuthHandler(
++        IOptionsMonitor<AuthenticationSchemeOptions> options,
++        ILoggerFactory logger,
++        UrlEncoder encoder)
++        : base(options, logger, encoder)
++    {
++    }
++
++    protected override Task<AuthenticateResult> HandleAuthenticateAsync()
++    {
++        if (!Request.Headers.TryGetValue(UserHeader, out var userHeader) ||
++            string.IsNullOrWhiteSpace(userHeader))
++        {
++            return Task.FromResult(AuthenticateResult.NoResult());
++        }
++
++        var userId = userHeader.ToString();
++        var claims = new[]
++        {
++            new Claim(ClaimTypes.NameIdentifier, userId),
++            new Claim("sub", userId),
++            new Claim(ClaimTypes.Name, userId)
++        };
++
++        var identity = new ClaimsIdentity(claims, SchemeName);
++        var principal = new ClaimsPrincipal(identity);
++        var ticket = new AuthenticationTicket(principal, SchemeName);
++
++        return Task.FromResult(AuthenticateResult.Success(ticket));
++    }
++}
