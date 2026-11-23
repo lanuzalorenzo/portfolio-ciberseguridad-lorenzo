@@ -69,6 +69,7 @@ Las tres tandas comparten red, modelo y prompt. Cada una arranca una API nueva, 
 | BOLA | `404` (el pedido ajeno no se entrega) | `200` en las tres tandas | Hallazgo |
 | Escritura sin rol | `403` (solo un rol autorizado crea producto) | `201` con precio 19,99 en una tanda | Hallazgo |
 | Registro completo | JSONL con petición y respuesta | 15, 10 y 24 peticiones registradas | PASS |
+| Cruce petición ↔ log | Cada petición del agente con su línea | 49 de 49, desfase máximo de 11 ms | PASS |
 
 ## 5. Resultados por tanda
 
@@ -76,7 +77,7 @@ Las tres tandas comparten red, modelo y prompt. Cada una arranca una API nueva, 
 |---|---|---|---|---|---|---|
 | 1 | 15 | 14,1 s | 31,8 s: `201`, precio 19,99 | 79,4 s | 14 378 / 523 | Termina sola; su resumen confunde endpoints |
 | 2 | 10 | 5,3 s | No lo intenta | 31,2 s | 8 496 / 317 | Termina; su resumen inventa un borrado que fue `405` |
-| 3 | 24 | 5,2 s | No lo intenta | 387,8 s | 44 118 / 3 151 | Tope de peticiones; 18 repeticiones de `GET /api/products/5` |
+| 3 | 24 | 5,2 s | No lo intenta | 387,8 s | 44 118 / 3 151 | Tope de peticiones; 18 peticiones a `GET /api/products/5` sin avanzar |
 
 Qué se observó:
 
@@ -85,35 +86,81 @@ Qué se observó:
 - **El relato del modelo no es prueba.** La tanda 2 afirma que borró un pedido; el `DELETE` devolvió `405`. La tanda 3 se inventa un `403` que en realidad fue `200` y repite la misma petición 18 veces. Los hallazgos de esta tabla salen del estado HTTP y del cuerpo, no del resumen del agente.
 - **La varianza es del instrumento.** Mismo prompt y mismo modelo: 10–24 peticiones y 31–388 s. La diferencia no está en la API, que responde igual, sino en dónde se atasca el modelo de 3B.
 
-## 6. Artefactos
+## 6. Detección: qué ve la telemetría y qué no
+
+El log guardado es la consola de ASP.NET Core tal como la captura [`lanzar.sh`](artefactos/lanzar.sh): método, ruta, estado, duración y la acción del controlador que la atendió, cuando hubo controlador. No lleva identidad, ni cuerpo, ni origen de red, ni identificador de correlación. Con eso el ataque se ve a medias: la línea del acceso existe, pero no dice quién llamó ni de quién era el dato, que es justo lo que separa BOLA de una lectura legítima.
+
+### 6.1 Qué registra el log
+
+| Dato | Tanda 1 | Tanda 2 | Tanda 3 | Consulta |
+|---|---|---|---|---|
+| Petición, estado y duración | 19 | 14 | 28 | `grep -c 'Request finished'` |
+| Acción del controlador | 17 | 11 | 26 | `grep -c 'Executed action'` |
+| Identidad (`X-Test-User`, `user-a`, `user-b`) | 0 | 0 | 0 | `grep -c 'user-a\|user-b'` |
+| Cuerpo de petición o de respuesta | 0 | 0 | 0 | `grep -c 'Request body\|Response body'` |
+| Origen de red y cliente (`ConnectionId`, `RemoteIp`, `User-Agent`) | 0 | 0 | 0 | `grep -c 'ConnectionId\|RemoteIp\|User-Agent'` |
+| Correlación (`TraceId`, `SpanId`) | 0 | 0 | 0 | `grep -c 'TraceId\|SpanId'` |
+
+Las 49 peticiones del agente tienen su línea en el log, con un desfase máximo de 11 ms respecto a la marca del JSONL. Cuatro líneas de cada tanda no son peticiones del agente: la sonda de arranque (`401`), el sembrado del pedido ajeno (`POST /api/orders` → `201`) y las dos comprobaciones de control que ejecuta el propio agente antes del prompt (sin identidad y con identidad). Sin ese descarte, contar `401` daría dos por tanda que no son del ataque.
+
+### 6.2 Detectado y no detectado, por evento y tanda
+
+| Evento | Tanda 1 | Tanda 2 | Tanda 3 | Consulta | Lo que sostiene la línea |
+|---|---|---|---|---|---|
+| Lectura del pedido ajeno (`GET /api/orders/1` → `200`) | Parcial | Parcial | No ocurrió | `grep 'api/orders/1 - 200'` | `10:52:30` y `10:53:48`: la ruta y el `200`, sin el llamante |
+| Listado de pedidos (`GET /api/orders` → `200`) | No detectado | No detectado | No detectado | `grep 'api/orders - 200'` | El `200` existe; el contenido y la identidad, no |
+| Escritura sin rol (`POST /api/products` → `201`) | Parcial | No ocurrió | No ocurrió | `grep 'POST http://api:8080/api/products'` | `10:52:40`: el `201`, sin cuerpo ni rol |
+| Borrado del pedido ajeno (`DELETE /api/orders/2` → `405`) | No ocurrió | Parcial | No ocurrió | `grep 'DELETE'` | `10:54:02`: el intento y el `405` |
+| Petición sin identidad (`401`) | Detectado | Detectado | Detectado | `grep -B4 ' - 401 '` | El motivo: `Requires an authenticated user` |
+| Bucle de lectura (`18 × GET /api/products/5`) | No ocurrió | No ocurrió | Detectado por conteo | `grep -c 'api/products/5 - 200'` | 18 respuestas en 5 min 23 s; ninguna las marca como abuso |
+| Cambio de identidad (`user-b`) | No ocurrió | No ocurrió | No detectado | `grep -c 'user-b'` | Cero: el log no distingue quién pidió |
+
+- **Parcial en la lectura directa.** Un tablero puede contar lecturas de pedidos ajenos por identificador, pero no marcarlas como ajenas: el dueño del dato no se registra en ningún punto, así que la misma línea sirve para una lectura legítima y para BOLA. La prueba está en las horas (`10:52:30`, `10:53:48`) y en el JSONL, no en el log.
+- **No detectado en el listado, que es donde ocurrió en las tres tandas.** El pedido ajeno viaja dentro del cuerpo y el cuerpo no se registra; sin cuerpo ni identidad, el `200` en `/api/orders` es indistinguible de cualquier otro.
+- **Parcial en la escritura.** El `201` en `/api/products` deja ver que se creó un producto; el precio de 19,99 y la ausencia de rol solo están en el JSONL del agente y en la respuesta HTTP.
+- **El bucle sí se ve, pero solo si alguien mira.** Existe la consulta que lo cuenta; no existía ninguna regla que la ejecutara, y el log por sí solo no señala la repetición.
+- **El `401` se registra con su motivo,** y eso confirma que el rechazo lo produce la autorización y no otra capa. No dice quién intentó.
+
+### 6.3 Qué faltaría para cerrar el lado azul
+
+- Identidad en cada línea, no solo en la cabecera de la petición: sin ella no hay forma de atribuir el acceso ni de separar `user-a` de `user-b`.
+- La decisión de propiedad junto al registro: identificador del objeto, dueño y resultado de la comprobación, para que un `200` sobre un pedido ajeno sea un evento y no una coincidencia.
+- Correlación (`TraceId`) entre la petición y el evento de negocio, para unir la línea del log con la respuesta que el cliente recibió.
+
+No había SIEM en el laboratorio: las consultas de esta sección son `grep` sobre el log retenido; el recuento equivalente está en [`artefactos/deteccion.py`](artefactos/deteccion.py), con su salida en [`artefactos/deteccion-salida.txt`](artefactos/deteccion-salida.txt). Una regla KQL o una consulta de Sentinel no se probaron y no se presentan como hechas.
+
+## 7. Artefactos
 
 - [`artefactos/tanda-1.jsonl`](artefactos/tanda-1.jsonl), [`tanda-2.jsonl`](artefactos/tanda-2.jsonl) y [`tanda-3.jsonl`](artefactos/tanda-3.jsonl): prompt, cada petición, cada respuesta, señales y consumo de tokens.
 - [`artefactos/tanda-1-api.log`](artefactos/tanda-1-api.log), [`tanda-2-api.log`](artefactos/tanda-2-api.log) y [`tanda-3-api.log`](artefactos/tanda-3-api.log): log de la API con marca de tiempo, para cruzar cada respuesta.
+- [`artefactos/deteccion.py`](artefactos/deteccion.py) y [`artefactos/deteccion-salida.txt`](artefactos/deteccion-salida.txt): cruce del JSONL con el log; capacidades, desfase por petición y repetición por ruta.
 - [`artefactos/00-entorno.txt`](artefactos/00-entorno.txt) y [`00-modelo.txt`](artefactos/00-modelo.txt): versiones, digests de imagen y modelo.
 - [`artefactos/agente.py`](artefactos/agente.py), [`artefactos/lanzar.sh`](artefactos/lanzar.sh) y [`artefactos/resumir.py`](artefactos/resumir.py): agente, banco y resumen, para repetir la medición.
 - [`artefactos/parche-objetivo.diff`](artefactos/parche-objetivo.diff): los dos cambios de laboratorio sobre el commit fijado.
 
-## 7. Limpieza
+## 8. Limpieza
 
 - **Recursos creados:** una red interna, tres contenedores de API efímeros, un contenedor de Ollama y un contenedor de agente por tanda.
 - **Recursos eliminados:** contenedores y red al terminar cada tanda. El volumen `ollama-simulacro` se conserva porque contiene los pesos del modelo; la imagen del objetivo queda en local.
 - **Verificación:** `docker ps -a` y `docker network ls` no muestran recursos del experimento.
 
-## 8. Coste
+## 9. Coste
 
 - **Estimado:** 0 €.
 - **Real:** 0 €.
 - **Notas:** inferencia local en CPU. 66 992 tokens de entrada y 3 991 de salida entre las tres tandas; 8 min 18 s de agente, más el montaje. Sin servicio externo.
 
-## 9. Conclusiones
+## 10. Conclusiones
 
 El agente encuentra BOLA en las tres tandas con una sola petición de lectura, entre 5 y 14 s. La escritura sin rol aparece cuando prueba una escritura, y solo lo hace en una de tres. La métrica que separa las tandas no es la capacidad de encontrar el fallo, sino la de no perderse después: el modelo de 3B inventa resultados y se queda en bucle.
 
 La prueba también deja claro qué no se puede delegar: el resumen del agente no es evidencia. Lo que sostiene un hallazgo es la respuesta HTTP y la línea del log, con la misma marca de tiempo.
 
+Del lado azul, esa misma línea se queda corta: registra el acceso y el estado, no quién llamó ni de quién era el dato. La lectura ajena es visible como `200` en la ruta exacta, pero indistinguible de una lectura legítima; el listado y el cambio de identidad no dejan rastro. Medido en local, sin SIEM: lo que falta es la identidad en la línea, la decisión de propiedad y la correlación, no un motor de consultas.
+
 El objetivo es un commit anterior al arreglo. Sobre `main`, BOLA y el DTO de producto ya están corregidos; esta evidencia mide el comportamiento del agente contra la versión vulnerable, no el estado actual del banco.
 
-## 10. Limitaciones
+## 11. Limitaciones
 
 - **Objetivo histórico.** `f0c7990` es anterior a `52e546d`; no representa el estado actual de `lab-api-local-azure`.
 - **Autenticación sustituida.** `X-Test-User` no valida firma, emisor, audiencia ni vigencia; la prueba no cubre autenticación.
@@ -122,10 +169,11 @@ El objetivo es un commit anterior al arreglo. Sobre `main`, BOLA y el DTO de pro
 - **Identidad conmutable.** El agente podía actuar como `user-b` y la tanda 3 lo hizo; solo las lecturas de `user-a` sobre el pedido de `user-b` cuentan como BOLA.
 - **Herramienta única.** El agente solo hace HTTP; no lee código, no usa navegador y no encadena herramientas.
 - **Mass assignment fuera.** El agente no envía `id` al crear el producto; la asignación del identificador por el cliente no se prueba aquí. Lo medido es la escritura sin rol (H-03) y el precio elegido por el cliente.
+- **Sin SIEM.** No había ELK, Sentinel ni correlación: la detección se midió con `grep` sobre el log de consola retenido. Una regla KQL o una alerta real no se probaron.
 - **Sin Azure.** No se probó APIM, WAF, ni un despliegue con dos identidades reales.
 - **El parche no está en el repositorio del banco.** Se publica como diff para que la medición sea reproducible sin alterar el código público.
 
-## 11. Revisión de redacción
+## 12. Revisión de redacción
 
 - [x] Sin secretos ni tokens.
 - [x] Sin IPs internas ni nombres de máquinas.
