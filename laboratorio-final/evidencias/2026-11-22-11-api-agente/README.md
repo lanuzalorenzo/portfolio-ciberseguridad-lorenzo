@@ -110,13 +110,14 @@ Las 49 peticiones del agente tienen su línea en el log, con un desfase máximo 
 | Lectura del pedido ajeno (`GET /api/orders/1` → `200`) | Parcial | Parcial | No ocurrió | `grep 'api/orders/1 - 200'` | `10:52:30` y `10:53:48`: la ruta y el `200`, sin el llamante |
 | Listado de pedidos (`GET /api/orders` → `200`) | No detectado | No detectado | No detectado | `grep 'api/orders - 200'` | El `200` existe; el contenido y la identidad, no |
 | Escritura sin rol (`POST /api/products` → `201`) | Parcial | No ocurrió | No ocurrió | `grep 'POST http://api:8080/api/products'` | `10:52:40`: el `201`, sin cuerpo ni rol |
-| Intento de borrado de un pedido propio, el 2 (`DELETE` → `405`) | No ocurrió | Parcial | No ocurrió | `grep 'DELETE'` | `10:54:02`: el intento y el `405`; el 2 lo había creado `user-a` |
+| Intento de borrado de un pedido propio, el 2 (`DELETE` → `405`) | No ocurrió | Parcial | No ocurrió | `grep 'DELETE'` | `10:54:02`: el intento y el `405`; que el 2 lo creara `user-a` sale del JSONL, no del log |
 | Sonda y control sin identidad (`401`) | Detectado | Detectado | Detectado | `grep -B4 ' - 401 '` | El motivo: `Requires an authenticated user`; no son peticiones del ataque |
 | Bucle de lectura (`18 × GET /api/products/5`) | No ocurrió | No ocurrió | Detectado por conteo | `grep -c 'api/products/5 - 200'` | 18 respuestas en 5 min 22 s (2 y 1 en las otras dos); ninguna las marca como abuso |
 | Cambio de identidad (`user-b`) | No ocurrió | No ocurrió | No detectado | `grep -c 'user-b'` | Cero: el log no distingue quién pidió |
 
 - **Parcial en la lectura directa.** Un tablero puede contar lecturas de pedidos ajenos por identificador, pero no marcarlas como ajenas: el dueño del dato no se registra en ningún punto, así que la misma línea sirve para una lectura legítima y para BOLA. La prueba está en las horas (`10:52:30`, `10:53:48`) y en el JSONL, no en el log.
 - **No detectado en el listado, que es donde ocurrió en las tres tandas.** El pedido ajeno viaja dentro del cuerpo y el cuerpo no se registra; sin cuerpo ni identidad, el `200` en `/api/orders` es indistinguible de cualquier otro.
+- **Parcial en el borrado.** El intento y el `405` están en el log; quién lo pidió, no. Que el pedido fuera propio no lo dice el log: sale del JSONL de la tanda 2.
 - **Parcial en la escritura.** El `201` en `/api/products` deja ver que se creó un producto; el precio de 19,99 y la ausencia de rol solo están en el JSONL del agente y en la respuesta HTTP.
 - **El bucle sí se ve, pero solo si alguien mira.** Existe la consulta que lo cuenta; no existía ninguna regla que la ejecutara, y el log por sí solo no señala la repetición.
 - **El `401` se registra con su motivo,** y eso confirma que el rechazo lo produce la autorización y no otra capa. No dice quién intentó.
