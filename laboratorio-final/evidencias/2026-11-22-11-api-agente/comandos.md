@@ -5,7 +5,7 @@
 ## 1. Preparar el objetivo
 
 ```bash
-mkdir -p ~/lab-p06a
+mkdir -p ~/lab-p06a/target
 cp -r <carpeta-de-la-evidencia>/artefactos/* ~/lab-p06a/
 cd ~/lab-api-local-azure
 git archive f0c7990 | tar -x -C ~/lab-p06a/target
@@ -85,7 +85,7 @@ Salida por tanda: número de peticiones, primeras señales, tokens y tabla de m�
 
 ```bash
 cd <carpeta-de-la-evidencia>
-python3 artefactos/deteccion.py artefactos
+python3 artefactos/deteccion.py artefactos > artefactos/deteccion-salida.txt
 ```
 
 Cruce cada petición del JSONL con su línea del log por marca de tiempo y cuenta lo que el log registra y lo que no: identidad, cuerpo, origen y correlación. La salida esperada está en [`artefactos/deteccion-salida.txt`](artefactos/deteccion-salida.txt): 49 de 49 peticiones con línea, desfase máximo de 11 ms y cero coincidencias para `user-a` y `user-b` en los logs.

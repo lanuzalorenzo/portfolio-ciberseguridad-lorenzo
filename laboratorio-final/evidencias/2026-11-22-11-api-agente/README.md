@@ -4,7 +4,7 @@
 >
 > **Tipo:** ejecución (ruta A)
 >
-> **Resultado:** Validado en local
+> **Resultado:** Validado en local (ataque); Parcial (detección: `grep` sobre el log retenido, sin SIEM)
 >
 > **Runbook:** no aplica; la repetición está en [`comandos.md`](comandos.md) y [`artefactos/lanzar.sh`](artefactos/lanzar.sh).
 >
@@ -96,7 +96,7 @@ El log guardado es la consola de ASP.NET Core tal como la captura [`lanzar.sh`](
 |---|---|---|---|---|
 | Petición, estado y duración | 19 | 14 | 28 | `grep -c 'Request finished'` |
 | Acción del controlador | 17 | 11 | 26 | `grep -c 'Executed action'` |
-| Identidad (`X-Test-User`, `user-a`, `user-b`) | 0 | 0 | 0 | `grep -c 'user-a\|user-b'` |
+| Identidad (`X-Test-User`, `user-a`, `user-b`) | 0 | 0 | 0 | `grep -c 'X-Test-User\|user-a\|user-b'` |
 | Cuerpo de petición o de respuesta | 0 | 0 | 0 | `grep -c 'Request body\|Response body'` |
 | Origen de red y cliente (`ConnectionId`, `RemoteIp`, `User-Agent`) | 0 | 0 | 0 | `grep -c 'ConnectionId\|RemoteIp\|User-Agent'` |
 | Correlación (`TraceId`, `SpanId`) | 0 | 0 | 0 | `grep -c 'TraceId\|SpanId'` |
@@ -110,9 +110,9 @@ Las 49 peticiones del agente tienen su línea en el log, con un desfase máximo 
 | Lectura del pedido ajeno (`GET /api/orders/1` → `200`) | Parcial | Parcial | No ocurrió | `grep 'api/orders/1 - 200'` | `10:52:30` y `10:53:48`: la ruta y el `200`, sin el llamante |
 | Listado de pedidos (`GET /api/orders` → `200`) | No detectado | No detectado | No detectado | `grep 'api/orders - 200'` | El `200` existe; el contenido y la identidad, no |
 | Escritura sin rol (`POST /api/products` → `201`) | Parcial | No ocurrió | No ocurrió | `grep 'POST http://api:8080/api/products'` | `10:52:40`: el `201`, sin cuerpo ni rol |
-| Borrado del pedido ajeno (`DELETE /api/orders/2` → `405`) | No ocurrió | Parcial | No ocurrió | `grep 'DELETE'` | `10:54:02`: el intento y el `405` |
-| Petición sin identidad (`401`) | Detectado | Detectado | Detectado | `grep -B4 ' - 401 '` | El motivo: `Requires an authenticated user` |
-| Bucle de lectura (`18 × GET /api/products/5`) | No ocurrió | No ocurrió | Detectado por conteo | `grep -c 'api/products/5 - 200'` | 18 respuestas en 5 min 23 s; ninguna las marca como abuso |
+| Intento de borrado de un pedido propio, el 2 (`DELETE` → `405`) | No ocurrió | Parcial | No ocurrió | `grep 'DELETE'` | `10:54:02`: el intento y el `405`; el 2 lo había creado `user-a` |
+| Sonda y control sin identidad (`401`) | Detectado | Detectado | Detectado | `grep -B4 ' - 401 '` | El motivo: `Requires an authenticated user`; no son peticiones del ataque |
+| Bucle de lectura (`18 × GET /api/products/5`) | No ocurrió | No ocurrió | Detectado por conteo | `grep -c 'api/products/5 - 200'` | 18 respuestas en 5 min 22 s (2 y 1 en las otras dos); ninguna las marca como abuso |
 | Cambio de identidad (`user-b`) | No ocurrió | No ocurrió | No detectado | `grep -c 'user-b'` | Cero: el log no distingue quién pidió |
 
 - **Parcial en la lectura directa.** Un tablero puede contar lecturas de pedidos ajenos por identificador, pero no marcarlas como ajenas: el dueño del dato no se registra en ningún punto, así que la misma línea sirve para una lectura legítima y para BOLA. La prueba está en las horas (`10:52:30`, `10:53:48`) y en el JSONL, no en el log.

@@ -69,7 +69,7 @@ La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apa
 | 2026-11-12 | 11 — Hacking ético de APIs | Límite de cuerpo de 16 KB: 16 384 bytes aceptados y 17 408 rechazados con `413` | Validado en local | [Ver evidencia](2026-11-12-11-api-body-limit/README.md) |
 | 2026-11-12 | 07 — DevSecOps | Inventario del binario publicado: 5 PDB antes, 0 después; sin secretos en el host descompilado | Validado en local | [Ver evidencia](2026-11-12-05-api-binary/README.md) |
 | 2026-11-15 | 02 — Identity Security | 08 — Robo y reutilización de la cookie de sesión: extracción del perfil real, cierre en servidor y caducidad | Validado en local | [Ver evidencia](2026-11-15-02-cookie-sesion/README.md) |
-| 2026-11-22 | 11 — Hacking ético de APIs | Agente autónomo contra la API: BOLA en 5–14 s en las tres tandas y escritura sin rol en una, sin salida a Internet | Validado en local | [Ver evidencia](2026-11-22-11-api-agente/README.md) |
+| 2026-11-22 | 11 — Hacking ético de APIs | Agente autónomo contra la API: BOLA en 5–14 s en las tres tandas y escritura sin rol en una, sin salida a Internet; del lado azul, el log da ruta y código pero no identidad | Validado en local (ataque); Parcial (detección, sin SIEM) | [Ver evidencia](2026-11-22-11-api-agente/README.md) |
 
 ## Evidencias documentales y verificables
 
@@ -89,6 +89,7 @@ La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apa
 - Módulo 01: reejecutar PKCE manual con tenant de laboratorio y generar evidencia de ejecución.
 - Módulo 06: ejecutar los controles con licencia P1/P2; hoy son diseño y no hay resultados que tabular.
 - Módulo 11: ejecutar DAST activo y autenticado cuando exista tenant.
+- Módulo 11: probar una regla de detección con identidad y propiedad del dato (KQL/SIEM) sobre los logs del agente; hoy la detección es `grep` y queda en parcial.
 - Módulo 12: ejecutar la variante de laboratorio del tabletop y la recolección técnica con datos sintéticos.
 - Workload: confirmar el arreglo de `libunwind` en Ubuntu con una versión que incluya la corrección de `libunwind/libunwind#993`.
 
