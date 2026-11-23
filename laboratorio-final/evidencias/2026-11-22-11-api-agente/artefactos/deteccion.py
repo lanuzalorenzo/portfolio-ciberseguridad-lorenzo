@@ -173,7 +173,11 @@ def main():
         lambda l, r: l["metodo"] == "POST" and l["ruta"] == "/api/products",
     )
     fila(
-        "Petición sin identidad (`401`)",
+        "Intento de borrado (`DELETE`)",
+        lambda l, r: l["metodo"] == "DELETE",
+    )
+    fila(
+        "Sonda y control sin identidad (`401`)",
         lambda l, r: l["estado"] == 401,
     )
     print()
@@ -187,6 +191,21 @@ def main():
             cuenta[clave] = cuenta.get(clave, 0) + 1
         (metodo, ruta), veces = max(cuenta.items(), key=lambda kv: kv[1])
         print(f"- Tanda {n}: {veces} × `{metodo} {ruta}`")
+    print()
+    print("Peticiones a `GET /api/products/5`, por tanda, con la primera y la última:")
+    print()
+    for n in TANDAS:
+        suyas = [
+            l for l in logs[n] if l["metodo"] == "GET" and l["ruta"] == "/api/products/5"
+        ]
+        if not suyas:
+            print(f"- Tanda {n}: 0")
+            continue
+        segundos = suyas[-1]["t"] - suyas[0]["t"]
+        print(
+            f"- Tanda {n}: {len(suyas)} entre {suyas[0]['ts'][:8]} y "
+            f"{suyas[-1]['ts'][:8]} ({int(segundos // 60)} min {int(segundos % 60)} s)"
+        )
     print()
 
     print("## 6. Identidad por petición (solo en el JSONL)")

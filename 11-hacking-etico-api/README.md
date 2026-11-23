@@ -10,13 +10,13 @@ Todas las pruebas se ejecutan contra `lab-api-local-azure`, un laboratorio propi
 
 | Frente | Estado | Práctica |
 |---|---|---|
-| BOLA/BFLA en pedidos | Validado localmente; `POST /api/products` sin rol (H-03) | [01](practicas/01-bola-bfla/README.md) |
+| BOLA/BFLA en pedidos | BOLA validado localmente; BFLA parcial (H-03: `POST /api/products` sin rol) | [01](practicas/01-bola-bfla/README.md) |
 | JWT y claims | Configuración revisada; token real pendiente | [02](practicas/02-jwt-claims/README.md) |
 | Mass assignment y entrada | Validado localmente | [03](practicas/03-rate-limiting-mass-assignment/README.md) |
 | Consumo | Rate limit validado (secuencial y concurrente); límite de 16 KB validado (201 a 16 KB exactos, 413 a 17 KB) | [03](practicas/03-rate-limiting-mass-assignment/README.md) |
 | DAST (análisis dinámico) sin autenticar | Parcial: 0 FAIL y 0 WARN, 62 PASS; endpoints tras JWT sin cubrir | [Evidencia](../laboratorio-final/evidencias/2026-11-08-11-api-dast/README.md) |
 | Inclusión de ficheros en PHP | Validado localmente en un laboratorio aparte | [Lab](lab/upload-progress-include/README.md) |
-| Agente autónomo contra la API | Validado localmente: BOLA en 5–14 s en las tres tandas; escritura sin rol en una | [Evidencia](../laboratorio-final/evidencias/2026-11-22-11-api-agente/README.md) |
+| Agente autónomo contra la API | Validado localmente: BOLA en 5–14 s en las tres tandas; escritura sin rol en una. Detección parcial: el log no lleva identidad | [Evidencia](../laboratorio-final/evidencias/2026-11-22-11-api-agente/README.md) |
 | Informe | Documentado | [04](practicas/04-informe-final/README.md) |
 
 La carga de trabajo es [EcommerceApi](https://github.com/lanuzalorenzo/lab-api-local-azure): API .NET 10 con Entra ID, DTOs, aislamiento de pedidos y pruebas de integración. El [runbook](practicas/01-bola-bfla/runbook.md) y la [evidencia de ejecución](../laboratorio-final/evidencias/2026-10-21-11-api-bola/README.md) acompañan a la práctica 01; la práctica 03 tiene su propio [runbook](practicas/03-rate-limiting-mass-assignment/runbook.md) y sus evidencias [secuencial](../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit/README.md), [de carga](../laboratorio-final/evidencias/2026-11-05-11-api-rate-limit-carga/README.md) y [límite de cuerpo](../laboratorio-final/evidencias/2026-11-12-11-api-body-limit/README.md).

@@ -135,7 +135,7 @@ Cada módulo sigue el mismo patrón, con las piezas que tenga: hay módulos sin 
 | 08 | [Seguridad de red](../08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Diseño + IaC validada estáticamente |
 | 09 | [Microsoft Sentinel](../09-microsoft-sentinel/README.md) | ¿Cómo se detecta con KQL y se automatiza? | Diseño: workspace y diagnósticos en IaC; Sentinel sin habilitar |
 | 10 | [ELK Stack Security](../10-elk-stack-security/README.md) | ¿Cómo se centralizan logs y se consultan? | Validado en local |
-| 11 | [Hacking ético de APIs](../11-hacking-etico-api/README.md) | ¿Cómo se prueban BOLA, BFLA y mass assignment? | Validado en local; BFLA parcial, rate limit pendiente de SLO y DAST anónimo parcial; límite de 16 KB validado |
+| 11 | [Hacking ético de APIs](../11-hacking-etico-api/README.md) | ¿Cómo se prueban BOLA, BFLA y mass assignment? | Validado en local; BFLA parcial, rate limit pendiente de SLO y DAST anónimo parcial; límite de 16 KB validado; detección del agente parcial |
 | 12 | [Forense cloud y respuesta](../12-forense-cloud-respuesta/README.md) | ¿Cómo se preserva evidencia y se responde? | Parcial: tabletop ejecutado; recolección técnica pendiente |
 
 ## 7. Cómo verificar sin confiar en la narrativa
