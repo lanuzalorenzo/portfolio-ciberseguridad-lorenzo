@@ -81,7 +81,16 @@ python3 ~/lab-p06a/resumir.py ~/lab-p06a/resultados
 
 Salida por tanda: número de peticiones, primeras señales, tokens y tabla de método, ruta y estado.
 
-## 5. Redacción
+## 5. Detección
+
+```bash
+cd <carpeta-de-la-evidencia>
+python3 artefactos/deteccion.py artefactos
+```
+
+Cruce cada petición del JSONL con su línea del log por marca de tiempo y cuenta lo que el log registra y lo que no: identidad, cuerpo, origen y correlación. La salida esperada está en [`artefactos/deteccion-salida.txt`](artefactos/deteccion-salida.txt): 49 de 49 peticiones con línea, desfase máximo de 11 ms y cero coincidencias para `user-a` y `user-b` en los logs.
+
+## 6. Redacción
 
 - Sin tokens, cabeceras de autorización ni identificadores reales.
 - Los logs conservan la URL interna `http://api:8080`, que es un alias de red, no una IP.
