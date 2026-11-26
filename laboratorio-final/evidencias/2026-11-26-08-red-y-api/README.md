@@ -1,6 +1,6 @@
 # Fase 1 — red desplegada y API en la capa gratuita
 
-> **Estado:** Validado (2026-11-26) para la red y para la ejecución de la API; Diseño para la capa de pago, que no se despliega.
+> **Estado:** Validado (2026-11-26) para la red y para la ejecución de la API; Diseño para la capa de pago, que no se despliega. Evidencia: [comandos ejecutados](comandos.md).
 
 La red del laboratorio y la API están ejecutándose en la capa gratuita: una VNet con dos subredes y la imagen de la API en Container Apps con escala a cero. `/health` responde 200 y `/api/products` responde 401; la capa de pago sigue en Diseño.
 
