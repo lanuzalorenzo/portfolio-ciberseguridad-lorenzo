@@ -4,6 +4,8 @@ Las catorce piezas de este módulo están en **Diseño**: describen qué se conf
 
 Los precios no aparecen porque dependen del contrato y cambian. Lo que no cambia es la licencia y el recurso.
 
+Una ficha de diseño no es evidencia: describe qué se configuraría y qué se observaría, pero no conserva una ejecución. El estado solo cambia con una ejecución fechada, su artefacto enlazado y el resultado observado; mientras falte la licencia o el recurso, la pieza se queda en **Diseño** y esta matriz dice qué la cerraría.
+
 | # | Producto | Qué ve | Licencia mínima | Recurso que hay que montar | Prueba que lo valida | ¿Hoy? |
 |---|---|---|---|---|---|---|
 | 01 | Defender for Identity | Autenticación en Active Directory | Defender for Identity, incluido en Microsoft 365 E5 o contratado aparte | Un controlador de dominio de laboratorio con el sensor y una cuenta de servicio | Sensor en estado Healthy y una técnica conocida en el timeline | No: sin dominio |
