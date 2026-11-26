@@ -53,3 +53,9 @@ Este módulo cubre la investigación de incidentes en Azure desde la recolecció
 ## Aviso
 
 Todo el contenido es defensivo y se limita a un laboratorio propio. No incluye datos personales, secretos ni procedimientos para atacar sistemas de terceros.
+
+---
+
+[← 11 · Hacking ético de APIs](../11-hacking-etico-api/README.md) · [Mapa de módulos](../README.md#módulos-y-estado)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)

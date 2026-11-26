@@ -30,3 +30,9 @@ Tampoco se hicieron todas las pruebas. No se generaron alertas reales de malware
 La evidencia es documental: la tabla de resultados de cada práctica y el informe de las que lo necesitan. No hay capturas originales.
 
 Este módulo no tiene bitácora. Las sesiones quedaron documentadas en las propias prácticas, y las entradas que había eran una plantilla rellenada sin ningún dato del entorno, así que se retiraron en octubre de 2026.
+
+---
+
+[← 03 · Cloud Audits](../03-cloud-audits/README.md) · [Mapa de módulos](../README.md#módulos-y-estado) · [05 · Microsoft Defender Suite →](../05-defender-suite/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)

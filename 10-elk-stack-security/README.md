@@ -20,3 +20,9 @@ Los eventos son sintéticos, fechados el 2026-10-20 y con usuarios e IPs de los 
 ## Límites
 
 El clúster es single-node, Elasticsearch va sin TLS ni autenticación y no se han creado reglas ni alertas: el módulo demuestra ingesta, consulta y visualización, no la operación de un SIEM. Tampoco se ha probado el acceso desde otra máquina ni con datos reales. La evidencia completa está en [2026-10-19-10-elk-ingesta](../laboratorio-final/evidencias/2026-10-19-10-elk-ingesta/README.md).
+
+---
+
+[← 09 · Microsoft Sentinel](../09-microsoft-sentinel/README.md) · [Mapa de módulos](../README.md#módulos-y-estado) · [11 · Hacking ético de APIs →](../11-hacking-etico-api/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)

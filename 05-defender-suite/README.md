@@ -47,3 +47,9 @@ La numeración 01–14 de la [matriz](docs/requisitos.md) identifica piezas de e
 ## Lo que una simulación demuestra
 
 La prueba final no valida una herramienta: valida la organización. Si cada producto abre su propio caso, no hay correlación por muchos paneles que se enciendan. El orden para llegar hasta ahí está en la [matriz](docs/requisitos.md), de lo barato a lo caro.
+
+---
+
+[← 04 · Defender for Cloud](../04-defender-for-cloud/README.md) · [Mapa de módulos](../README.md#módulos-y-estado) · [06 · Acceso privilegiado →](../06-identity-protection/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)

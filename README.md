@@ -26,21 +26,22 @@ Los controles transversales —CORS cerrado por defecto, validación JWT, cabece
 
 ## Módulos y estado
 
-| # | Módulo | Estado |
-|---|---|---|
-| 01 | [OAuth 2.0, PKCE y JWT](01-seguridad-azure/README.md) | Parcial |
-| 02 | [Identity Security](02-identity-security/README.md) | Validado (documental); práctica 08 en local; PIM parcial |
-| 03 | [Cloud Audits](03-cloud-audits/README.md) | Validado (documental) |
-| 04 | [Defender for Cloud](04-defender-for-cloud/README.md) | Validado (documental) |
-| 05 | [Microsoft Defender Suite](05-defender-suite/README.md) | Diseño |
-| 06 | [Acceso privilegiado](06-identity-protection/README.md) | Diseño |
-| 07 | [DevSecOps y gobernanza](07-devsecops/README.md) | Validado en CI |
-| 08 | [Seguridad de red en Azure](08-seguridad-red-azure/README.md) | Parcial: red desplegada y validada en la capa gratuita; Private Endpoints y DNS en Diseño |
-| 09 | [Microsoft Sentinel](09-microsoft-sentinel/README.md) | Diseño |
-| 10 | [ELK Stack Security](10-elk-stack-security/README.md) | Validado en local |
-| 11 | [Hacking ético de APIs](11-hacking-etico-api/README.md) | Validado en local |
-| 12 | [Forense cloud y respuesta](12-forense-cloud-respuesta/README.md) | Parcial |
+| # | Módulo | Pregunta que responde | Estado |
+|---|---|---|---|
+| 01 | [OAuth 2.0, PKCE y JWT](01-seguridad-azure/README.md) | ¿Cómo se autentica una API y se valida un token? | Parcial: JWT .NET fuera de CI; PKCE manual validado (2026-11-26) |
+| 02 | [Identity Security](02-identity-security/README.md) | ¿Cómo se protege la identidad y el acceso privilegiado? | Validado (documental); práctica 08 en local; PIM parcial |
+| 03 | [Cloud Audits](03-cloud-audits/README.md) | ¿Cómo se audita la postura cloud? | Validado en laboratorio (documental) |
+| 04 | [Defender for Cloud](04-defender-for-cloud/README.md) | ¿Cómo se detectan y priorizan riesgos cloud? | Validado en laboratorio (documental) |
+| 05 | [Microsoft Defender Suite](05-defender-suite/README.md) | ¿Qué cubre cada producto de Defender y qué cuesta probarlo? | Diseño: mapa de los catorce productos; sin evidencia de ejecución |
+| 06 | [Acceso privilegiado](06-identity-protection/README.md) | ¿Qué añaden Conditional Access y PIM cuando hay licencia P1/P2? | Diseño: tres controles descritos, sin ejecutar |
+| 07 | [DevSecOps y gobernanza](07-devsecops/README.md) | ¿Cómo se integra seguridad en el pipeline? | Validado en CI; práctica 04 (permisos por job) parcial; OIDC con Azure y despliegue pendientes |
+| 08 | [Seguridad de red en Azure](08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Parcial: red desplegada y validada en la capa gratuita; Private Endpoints y DNS en Diseño |
+| 09 | [Microsoft Sentinel](09-microsoft-sentinel/README.md) | ¿Cómo se detecta con KQL y se automatiza? | Diseño: workspace y diagnósticos en IaC; Sentinel sin habilitar |
+| 10 | [ELK Stack Security](10-elk-stack-security/README.md) | ¿Cómo se centralizan logs y se consultan? | Validado en local |
+| 11 | [Hacking ético de APIs](11-hacking-etico-api/README.md) | ¿Cómo se prueban BOLA, BFLA y mass assignment? | Validado en local; BFLA parcial, token JWT real pendiente, rate limit pendiente de SLO y DAST anónimo parcial; límite de 16 KB validado; detección del agente parcial |
+| 12 | [Forense cloud y respuesta](12-forense-cloud-respuesta/README.md) | ¿Cómo se preserva evidencia y se responde? | Parcial: tabletop ejecutado; recolección técnica pendiente |
 
+El orden de lectura, el glosario y los criterios de verificación están en la [guía de lectura](docs/guia-de-lectura.md).
 **Criterio:** [Estados de validación](#estado-de-validación) — no se presenta un diseño como una validación.
 
 ---

@@ -25,3 +25,9 @@ El tenant de laboratorio no tiene licencia P1 ni P2. Probar Conditional Access e
 El segundo factor, la elegibilidad en PIM y el modelo de roles se ejecutaron en el módulo 02, con sus tablas de resultados y sus límites escritos: [MFA](../02-identity-security/practicas/01-mfa/README.md), [PIM](../02-identity-security/practicas/04-pim/README.md) y [RBAC](../02-identity-security/practicas/05-rbac/README.md). Aquí no se repiten.
 
 El módulo no tiene prácticas, runbook ni bitácora: esta página y lo que el módulo 02 ya demostró son todo su contenido.
+
+---
+
+[← 05 · Microsoft Defender Suite](../05-defender-suite/README.md) · [Mapa de módulos](../README.md#módulos-y-estado) · [07 · DevSecOps y gobernanza →](../07-devsecops/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)

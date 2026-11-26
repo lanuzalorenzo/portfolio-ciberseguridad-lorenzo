@@ -43,3 +43,9 @@ El detalle de configuración y las decisiones están en el informe técnico de c
 | 08 | [Robo y reutilización de la cookie de sesión](practicas/08-sesion/README.md) | Si cerrar sesión invalida la cookie en el servidor y qué protege la copia guardada en disco | **Validado** en local |
 
 Comprueba dos cosas: que la sesión se cierre de verdad y hasta dónde llega la copia guardada en disco. El 15/11 se cerró contra el perfil real de un navegador: sin cookie, 302; con la cookie, 200; tras el cierre, 302; y con TTL de 30 s, el servidor rechaza a los 32 s. El arranque sin la passphrase no se probó; la pila observada el 16/11 (`crypto_LUKS` → LVM → ext4 en `/`) sitúa la raíz dentro del contenedor cifrado.
+
+---
+
+[← 01 · OAuth 2.0, PKCE y JWT](../01-seguridad-azure/README.md) · [Mapa de módulos](../README.md#módulos-y-estado) · [03 · Cloud Audits →](../03-cloud-audits/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)
