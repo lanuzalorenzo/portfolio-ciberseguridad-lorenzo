@@ -12,7 +12,7 @@
 
 Un agente con un modelo local puede encontrar en segundos lo que a una persona le lleva media hora de lectura: que la API entrega el pedido de otro usuario. La prueba no mide la novedad del hallazgo, porque los fallos ya estaban documentados; mide el tiempo, la consistencia entre tandas y qué hace el modelo cuando se equivoca. El resultado útil no es que encuentre el fallo, sino que su relato no sirve como prueba: la respuesta HTTP sí.
 
-**In English.** An agent running a local model can find in seconds what takes a person half an hour of reading: the API returns another user's order. The test does not measure how novel the finding is, because the three flaws were already documented; it measures time, consistency across runs and what the model does when it is wrong. The useful result is not that it finds the flaw, but that its narrative is not evidence: the HTTP response is.
+**In English.** An agent running a local model can find in seconds what takes a person half an hour of reading: the API returns another user's order. The test does not measure how novel the finding is, because the flaws were already documented; it measures time, consistency across runs and what the model does when it is wrong. The useful result is not that it finds the flaw, but that its narrative is not evidence: the HTTP response is.
 
 ## 1. Contexto
 
@@ -112,7 +112,7 @@ Las 49 peticiones del agente tienen su línea en el log, con un desfase máximo 
 | Escritura sin rol (`POST /api/products` → `201`) | Parcial | No ocurrió | No ocurrió | `grep 'POST http://api:8080/api/products'` | `10:52:40`: el `201`, sin cuerpo ni rol |
 | Intento de borrado de un pedido propio, el 2 (`DELETE` → `405`) | No ocurrió | Parcial | No ocurrió | `grep 'DELETE'` | `10:54:02`: el intento y el `405`; que el 2 lo creara `user-a` sale del JSONL, no del log |
 | Sonda y control sin identidad (`401`) | Detectado | Detectado | Detectado | `grep -B4 ' - 401 '` | El motivo: `Requires an authenticated user`; no son peticiones del ataque |
-| Bucle de lectura (`18 × GET /api/products/5`) | No ocurrió | No ocurrió | Detectado por conteo | `grep -c 'api/products/5 - 200'` | 18 respuestas en 5 min 22 s (2 y 1 en las otras dos); ninguna las marca como abuso |
+| Bucle de lectura (`18 × GET /api/products/5`) | No ocurrió | No ocurrió | Detectado por conteo | `grep -c 'api/products/5 - 200'` | 18 respuestas en 5 min 22 s (2 y 1 en las otras dos); ninguna línea del log las marca como abuso |
 | Cambio de identidad (`user-b`) | No ocurrió | No ocurrió | No detectado | `grep -c 'user-b'` | Cero: el log no distingue quién pidió |
 
 - **Parcial en la lectura directa.** Un tablero puede contar lecturas de pedidos ajenos por identificador, pero no marcarlas como ajenas: el dueño del dato no se registra en ningún punto, así que la misma línea sirve para una lectura legítima y para BOLA. La prueba está en las horas (`10:52:30`, `10:53:48`) y en el JSONL, no en el log.

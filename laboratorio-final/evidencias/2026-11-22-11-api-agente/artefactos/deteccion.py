@@ -254,7 +254,7 @@ def main():
         "(sonda, sembrado y comprobaciones)."
     )
     print()
-    print("| Conjunto | Máximo | Petición | Primera–última | Duración | Alerta |")
+    print("| Conjunto | Máximo | Petición | Primera–última | Duración | ¿Supera el umbral? |")
     print("|---|---:|---|---|---:|---|")
     mayor = 0.0
     conjuntos = [(f"Tanda {n}", logs[n]) for n in TANDAS]
@@ -276,6 +276,11 @@ def main():
             f"largo dura {mayor:.0f} s; lo probado es el umbral."
         )
         print()
+    print(
+        "La columna final es un contador calculado, no una alerta emitida por "
+        "una regla: no había SIEM."
+    )
+    print()
 
 
 if __name__ == "__main__":

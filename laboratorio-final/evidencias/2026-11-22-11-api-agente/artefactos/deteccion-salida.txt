@@ -63,7 +63,7 @@ El log no contiene esa columna: `grep -c 'user-a\|user-b'` da 0 en las tres.
 
 Umbral: 5 repeticiones de la misma petición en 10 min. Sin umbral, cualquier lectura repetida sería abuso. El control son las líneas del log que no son del agente (sonda, sembrado y comprobaciones).
 
-| Conjunto | Máximo | Petición | Primera–última | Duración | Alerta |
+| Conjunto | Máximo | Petición | Primera–última | Duración | ¿Supera el umbral? |
 |---|---:|---|---|---:|---|
 | Tanda 1 | 4 | `GET /api/products` | 10:52:01.930–10:52:18.058 | 16 s | no |
 | Tanda 2 | 4 | `GET /api/products` | 10:53:28.969–10:53:36.631 | 8 s | no |
@@ -73,4 +73,6 @@ Umbral: 5 repeticiones de la misma petición en 10 min. Sin umbral, cualquier le
 | Control 3 | 3 | `GET /api/products` | 10:54:07.741–10:54:14.122 | 6 s | no |
 
 La ventana de 10 min no se ejercita: el conjunto más largo dura 323 s; lo probado es el umbral.
+
+La columna final es un contador calculado, no una alerta emitida por una regla: no había SIEM.
 
