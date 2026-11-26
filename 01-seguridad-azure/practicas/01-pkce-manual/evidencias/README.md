@@ -1,14 +1,14 @@
 # Evidencias — 01 PKCE manual
 
-> **Estado:** Pendiente. Hay una [ejecución histórica](../../../bitacora/2026-09-02-lab-azuread-oauth2-pkce-api.md) narrada en la bitácora, pero no se conservó con el formato de evidencia actual.
+> **Estado:** Validado (2026-11-26). La evidencia está en [2026-11-26-01-pkce-manual](2026-11-26-01-pkce-manual/README.md); la ejecución histórica sigue en la [bitácora](../../../bitacora/2026-09-02-lab-azuread-oauth2-pkce-api.md).
 >
 > **Runbook:** [../runbook.md](../runbook.md).
 
-## Por qué falta
+## La evidencia
 
-La evidencia estandarizada necesita un tenant de Microsoft Entra ID con dos registros de aplicación. No hay tenant de laboratorio disponible desde que se consolidó la práctica, así que el estado es **Parcial**: existe el procedimiento y existe la ejecución histórica; falta la prueba redactada con fecha y entorno.
+La carpeta de la reejecución guarda la fecha, el entorno, el resultado y los comandos con las salidas redactadas. El registro de aplicación del cliente público queda en el tenant para futuras ejecuciones, sin secreto y con permiso delegado de solo lectura al scope.
 
-## Qué se capturará al reejecutar
+## Qué contiene la evidencia
 
 ```text
 evidencias/YYYY-MM-DD-01-pkce-manual/

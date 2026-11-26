@@ -1,0 +1,5 @@
+{
+  "token_type": "Bearer",
+  "scope": "api://<api-id>/<scope>",
+  "expires_in": 5211
+}

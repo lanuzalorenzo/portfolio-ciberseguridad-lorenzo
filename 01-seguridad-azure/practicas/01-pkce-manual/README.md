@@ -1,30 +1,29 @@
 # 01 | PKCE manual con cliente público
 
-Pedimos un pase a Entra ID a mano, con `curl`, sin librerías que escondan los pasos, y comprobamos que la API solo abre la puerta con un pase legítimo.
-
-> **Estado:** Parcial. La ejecución histórica está en la [bitácora](../../bitacora/2026-09-02-lab-azuread-oauth2-pkce-api.md); la evidencia estandarizada queda pendiente de reejecución con un tenant de laboratorio.
+> **Estado:** Validado (2026-11-26). Ejecutada contra el tenant del laboratorio y la API local; [evidencia](evidencias/2026-11-26-01-pkce-manual/README.md).
 >
-> Esta práctica cubre solo el laboratorio Node.js. La validación JWT de la API .NET está implementada, pero fuera de CI y pendiente de un tenant real: [estado real](../../README.md#estado).
+> **Referencias:** MCSB IM-1, IM-6 · CIS 6.3, 6.5 · NIST IA-2, IA-5.
 
-**Enlaces:** [runbook](runbook.md) · [código](../../lab/pkce/) · [evidencias](evidencias/) · [nota de trazabilidad](docs/laboratorio-pkce-azure.md).
+**In English.** A public application —CLI, SPA or mobile— cannot keep a client secret. It obtains a token with Authorization Code and PKCE, and the API validates it against the tenant's JWKS; without PKCE, whoever intercepts the code can redeem it.
 
-Una aplicación pública —CLI, SPA o móvil— no puede custodiar un secreto de cliente. Para obtener un token debe usar Authorization Code con PKCE: genera un `code_verifier`, deriva un `code_challenge`, autoriza contra Entra ID, canjea el código y presenta el token a una API que lo valida contra el JWKS del tenant. Sin PKCE, quien intercepte el código puede canjearlo.
+Una aplicación pública —CLI, SPA o móvil— no puede custodiar un secreto. Usa Authorization Code con PKCE: genera un `code_verifier`, deriva un `code_challenge`, autoriza contra Entra ID, canjea el código y presenta el token a una API que lo valida contra el JWKS del tenant. Sin PKCE, quien intercepte el código puede canjearlo.
 
 ## Qué se comprobó
 
-| Prueba | Resultado histórico |
-|---|---|
-| Generación y autorización | `code_verifier` de 43–128 caracteres, `code_challenge` S256 y redirección con código |
-| Canje y validación JWKS | JWT con `exp`, `aud` e `iss`; `GET /api/products` responde 200 |
-| Pruebas negativas | Sin token y con la firma manipulada, la API responde 401 |
+Solo el laboratorio Node.js; la validación JWT de la API .NET sigue fuera de CI.
 
-Las tres pruebas están documentadas en la bitácora, pero sin el formato actual: falta repetirlas con fecha, entorno y salidas redactadas.
+| Prueba | Método | Resultado esperado | Resultado observado |
+|---|---|---|---|
+| Generación y autorización | `generate-pkce.sh` y navegador | Challenge S256 y redirección con código | Verifier de 128 caracteres y código recibido |
+| Canje y validación JWKS | `exchange-token.sh` y API local | `Bearer` con `exp`, `aud` e `iss`; `200` | `Bearer`, scope de la API y cuatro productos |
+| Pruebas negativas | `curl` sin token y con firma manipulada | `401` en los dos casos | `401` en los dos casos |
 
-## Limitaciones
+## Lecciones
 
-- No hay tenant de laboratorio disponible: de ahí el estado **Parcial**.
-- El laboratorio es local y HTTP, sin tests ni CI.
-- Los identificadores de tenant, aplicación y usuario se redactan.
-- Los ejemplos antiguos con `Bearer $TOKEN` son marcadores cubiertos por la allowlist de `.gitleaks.toml`; el historial no se reescribió. Si alguna vez se usó un token real, hay que rotarlo.
+- El generador partía el `code_verifier` en dos líneas: el canje falla con `AADSTS501481` si el salto viaja dentro del valor.
+- Un cliente SPA no canjea desde `curl` (`AADSTS9002327`) y un registro en «Web» pide secreto (`AADSTS7000218`): el cliente público va en su plataforma.
+- La API valida firma, emisor y audiencia; el scope no se comprueba.
 
-**Coste:** 0; todo ocurre en local y en el tenant de laboratorio.
+## Más detalle
+
+- [Runbook](runbook.md) · [Evidencia](evidencias/2026-11-26-01-pkce-manual/README.md) · [Código](../../lab/pkce/) · [Bitácora histórica](../../bitacora/2026-09-02-lab-azuread-oauth2-pkce-api.md)

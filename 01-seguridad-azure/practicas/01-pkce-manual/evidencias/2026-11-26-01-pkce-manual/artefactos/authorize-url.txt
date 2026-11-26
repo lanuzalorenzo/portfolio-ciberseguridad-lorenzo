@@ -1,0 +1,4 @@
+https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/authorize?client_id=<client-id>&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fcallback&response_mode=query&scope=api%3A%2F%2F<api-id>%2F<scope>&state=<state>&code_challenge=<code_challenge>&code_challenge_method=S256
+
+Redirección observada:
+http://localhost/callback?code=<redactado>&state=<state>&session_state=<redactado>

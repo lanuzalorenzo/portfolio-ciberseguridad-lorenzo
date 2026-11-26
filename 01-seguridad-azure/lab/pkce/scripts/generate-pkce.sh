@@ -9,7 +9,7 @@ if ! command -v openssl >/dev/null 2>&1; then
   exit 1
 fi
 
-code_verifier=$(openssl rand -base64 96 | tr '+/' '-_' | tr -d '=')
+code_verifier=$(openssl rand -base64 96 | tr -d '\r\n' | tr '+/' '-_' | tr -d '=')
 code_challenge=$(printf '%s' "$code_verifier" | openssl dgst -sha256 -binary | openssl base64 -A | tr '+/' '-_' | tr -d '=')
 
 printf 'code_verifier=%s\n' "$code_verifier"

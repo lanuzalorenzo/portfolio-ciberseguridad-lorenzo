@@ -1,0 +1,5 @@
+$ curl -i -H "Authorization: Bearer <access_token>" http://localhost:4010/api/products
+HTTP/1.1 200 OK
+content-type: application/json; charset=utf-8
+
+{"ok":true,"products":4}
