@@ -46,3 +46,9 @@ Cada push a `main` construye la imagen, la publica en GHCR (el registro de imág
 La autenticación OIDC con Azure está diseñada pero no activa y no hay workflow de despliegue. Son las dos deudas del módulo, escritas como tales. El propietario tampoco tiene atajo: el ruleset `main` no define actores de bypass, así que pasa por pull request y por los siete checks; la revisión humana no es obligatoria porque nadie puede aprobar su propio cambio.
 
 No hay bitácora. El trabajo quedó en las páginas y en el workflow, y la entrada que había contaba una reorganización de carpetas que ya no existe.
+
+---
+
+[← 06 · Acceso privilegiado](../06-identity-protection/README.md) · [Mapa de módulos](../README.md#módulos-y-estado) · [08 · Seguridad de red en Azure →](../08-seguridad-red-azure/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)

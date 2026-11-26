@@ -2,9 +2,9 @@
 
 > **Para quién es:** para quien abre el repositorio por primera vez y no sabe por dónde empezar. No hace falta ser experto en ciberseguridad, pero ayuda entender qué es una API y qué es un token.
 >
-> **Qué vas a encontrar:** el orden recomendado, un glosario mínimo y un mapa de los doce módulos. La guía no sustituye a la documentación de cada módulo: la ordena.
+> **Qué vas a encontrar:** el orden recomendado, un glosario mínimo y el enlace al mapa de los doce módulos. La guía no sustituye a la documentación de cada módulo: la ordena.
 >
-> **Última revisión:** 2026-11-23. Ver [mantenimiento](#10-mantenimiento).
+> **Última revisión:** 2026-11-26. Ver [mantenimiento](#10-mantenimiento).
 
 ## 1. La idea en cinco líneas
 
@@ -23,7 +23,7 @@ Si solo lees una frase, que sea esta: **cada módulo es una capa de la misma API
 - **No es un curso.** No enseña ciberseguridad desde cero; documenta trabajo técnico y su evidencia.
 - **No es producción.** Los laboratorios son locales o de diseño; no hay recursos Azure desplegados.
 - **No es un pentest de terceros.** Todo se limita a un laboratorio propio y a datos sintéticos.
-- **No está todo validado.** Hay módulos validados, parciales, en diseño y pendientes. La tabla de estado lo dice.
+- **No está todo validado.** Hay módulos validados, parciales, en diseño y pendientes. La [tabla de estado](../README.md#módulos-y-estado) lo dice.
 - **No contiene secretos ni datos reales.** Los identificadores y credenciales están redactados.
 - **No es una declaración de cumplimiento.** El trabajo se puede leer contra los marcos habituales de seguridad cloud —Microsoft Cloud Security Benchmark, NIS2, Esquema Nacional de Seguridad, controles CIS e ISO 27001, además del OWASP API Top 10—, pero no se publica un mapeo fino ni se reclama certificación. Si necesitas ese mapeo para un puesto o un encargo concreto, se prepara para ese marco.
 
@@ -123,20 +123,7 @@ Cada módulo sigue el mismo patrón, con las piezas que tenga: hay módulos sin 
 
 ## 6. Mapa de módulos
 
-| # | Módulo | Pregunta que responde | Estado |
-|---|---|---|---|
-| 01 | [OAuth 2.0, PKCE y JWT](../01-seguridad-azure/README.md) | ¿Cómo se autentica una API y se valida un token? | Parcial: JWT .NET fuera de CI; PKCE manual validado (2026-11-26) |
-| 02 | [Identity Security](../02-identity-security/README.md) | ¿Cómo se protege la identidad y el acceso privilegiado? | Validado (documental); práctica 08 en local; PIM parcial |
-| 03 | [Cloud Audits](../03-cloud-audits/README.md) | ¿Cómo se audita la postura cloud? | Validado en laboratorio (documental) |
-| 04 | [Defender for Cloud](../04-defender-for-cloud/README.md) | ¿Cómo se detectan y priorizan riesgos cloud? | Validado en laboratorio (documental) |
-| 05 | [Defender Suite](../05-defender-suite/README.md) | ¿Qué cubre cada producto de Defender y qué cuesta probarlo? | Diseño: mapa de los catorce productos; sin evidencia de ejecución |
-| 06 | [Acceso privilegiado bajo licencia](../06-identity-protection/README.md) | ¿Qué añaden Conditional Access y PIM cuando hay licencia P1/P2? | Diseño: tres controles descritos, sin ejecutar |
-| 07 | [DevSecOps](../07-devsecops/README.md) | ¿Cómo se integra seguridad en el pipeline? | Validado en CI; OIDC con Azure y despliegue pendientes |
-| 08 | [Seguridad de red](../08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Parcial: red desplegada y validada en la capa gratuita; Private Endpoints y DNS en Diseño |
-| 09 | [Microsoft Sentinel](../09-microsoft-sentinel/README.md) | ¿Cómo se detecta con KQL y se automatiza? | Diseño: workspace y diagnósticos en IaC; Sentinel sin habilitar |
-| 10 | [ELK Stack Security](../10-elk-stack-security/README.md) | ¿Cómo se centralizan logs y se consultan? | Validado en local |
-| 11 | [Hacking ético de APIs](../11-hacking-etico-api/README.md) | ¿Cómo se prueban BOLA, BFLA y mass assignment? | Validado en local; BFLA parcial, rate limit pendiente de SLO y DAST anónimo parcial; límite de 16 KB validado; detección del agente parcial |
-| 12 | [Forense cloud y respuesta](../12-forense-cloud-respuesta/README.md) | ¿Cómo se preserva evidencia y se responde? | Parcial: tabletop ejecutado; recolección técnica pendiente |
+La tabla de los doce módulos —la pregunta que responde cada uno y su estado— vive en el [README del portfolio](../README.md#módulos-y-estado), no aquí. Una sola tabla, para que no haya dos versiones del mismo estado. Los enlaces de cada fila llevan al módulo.
 
 ## 7. Cómo verificar sin confiar en la narrativa
 
@@ -170,11 +157,11 @@ Si puedes responderlas sin mirar, ya tienes el hilo. Si no, vuelve a la Ruta 1.
 
 ## 10. Mantenimiento
 
-- **Última revisión:** 2026-11-23.
+- **Última revisión:** 2026-11-26.
 - **Actualizar cuando:** cambie el estado de un módulo, se añada o retire una evidencia o un caso de estudio, cambie la estructura de módulos o enlaces, o se añada una ruta de lectura.
 - **No actualizar por:** cambios internos que no afecten a lo que el lector necesita para orientarse.
-- **Fuente única:** esta guía es la referencia; la web y el perfil resumen y enlazan.
-- **Checklist rápida:** enlaces locales, estados del mapa, fecha y rutas.
+- **Fuente única:** el mapa y los estados están en el README; esta guía es la referencia para leerlos, y la web y el perfil resumen y enlazan.
+- **Checklist rápida:** enlaces locales, estados del README, fecha y rutas.
 
 ---
 

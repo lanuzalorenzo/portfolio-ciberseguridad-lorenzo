@@ -26,3 +26,9 @@ El [laboratorio de inclusión de ficheros](lab/upload-progress-include/README.md
 ## Límites
 
 Las pruebas usan un esquema de autenticación de test, no tokens de Entra ID; no hay despliegue con APIM ni WAF; y el rate limit se probó con ráfagas secuenciales y concurrentes, sin calibrar contra un SLO. El módulo demuestra el ciclo hallazgo-remediación-regresión en local, no un pentest de producción.
+
+---
+
+[← 10 · ELK Stack Security](../10-elk-stack-security/README.md) · [Mapa de módulos](../README.md#módulos-y-estado) · [12 · Forense cloud y respuesta →](../12-forense-cloud-respuesta/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)

@@ -18,3 +18,9 @@ Un caso concreto: varios inicios de sesión fallidos seguidos de uno correcto de
 ## Límites
 
 Sin workspace desplegado no hay consulta que devuelva nada; sin conector de Entra ID no hay `SigninLogs`; y una regla que no se ha visto saltar no está validada. El módulo 10 sí ejecutó una pila ELK local con eventos sintéticos: sirve para demostrar el patrón de consulta, no para afirmar que Sentinel funciona.
+
+---
+
+[← 08 · Seguridad de red en Azure](../08-seguridad-red-azure/README.md) · [Mapa de módulos](../README.md#módulos-y-estado) · [10 · ELK Stack Security →](../10-elk-stack-security/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)

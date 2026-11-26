@@ -25,3 +25,9 @@ La revisión va de la capa más ancha a la más sensible: primero qué reglas y 
 Dos hallazgos se corrigieron en el laboratorio y se verificaron: el acceso anónimo a blobs, que ahora responde `409`, y la versión mínima de TLS, que quedó en 1.2 y rechaza los clientes antiguos. El resto son recomendaciones argumentadas, no cambios aplicados: migrar los roles a PIM, cerrar la regla de firewall de Azure SQL, activar *Purge Protection*, rotar el secreto permanente y reducir los administradores globales.
 
 La evidencia es documental: informe técnico con matriz de hallazgos y bitácora fechada. No se conservaron capturas originales.
+
+---
+
+[← 02 · Identity Security](../02-identity-security/README.md) · [Mapa de módulos](../README.md#módulos-y-estado) · [04 · Defender for Cloud →](../04-defender-for-cloud/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)

@@ -21,3 +21,9 @@ La red parte de una VNet `10.20.0.0/16` con dos subredes. `snet-app` aloja la in
 ## Límites
 
 El NSG filtra solo la entrada: la salida sigue con las reglas predeterminadas de Azure hasta que exista un control de egreso, que es lo que plantea la práctica 02. El firewall no está en la plantilla porque su coste y su disponibilidad regional no se han confirmado. La red está desplegada, pero las pruebas que importan —conectividad permitida, conectividad denegada, nombre que resuelve a una IP privada— siguen sin ejecutarse: necesitan los Private Endpoints y el DNS privado, que son de pago y están en Diseño.
+
+---
+
+[← 07 · DevSecOps y gobernanza](../07-devsecops/README.md) · [Mapa de módulos](../README.md#módulos-y-estado) · [09 · Microsoft Sentinel →](../09-microsoft-sentinel/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)

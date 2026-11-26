@@ -49,7 +49,7 @@ Reglas: un comando no ejecutado se marca como tal; cada evidencia lleva fecha, r
 
 ## Guía de lectura
 
-`docs/guia-de-lectura.md` es la puerta pública: rutas, glosario, mapa de módulos y criterios de verificación. Mantenla alineada al cambiar estados, evidencias, orden o enlaces. No dupliques su contenido en la web ni en el perfil.
+`docs/guia-de-lectura.md` es la puerta pública: rutas, glosario y criterios de verificación. El mapa de los doce módulos, con su estado, vive solo en la tabla del [README](README.md#módulos-y-estado); la guía la enlaza y no la repite. Mantenla alineada al cambiar estados, evidencias, orden o enlaces. No dupliques su contenido en la web ni en el perfil.
 
 ## Commits
 

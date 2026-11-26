@@ -41,3 +41,9 @@ El código ejecutable está en [`lab/pkce`](lab/pkce/README.md) y las decisiones
 
 - La práctica de PKCE manual se reejecutó el 2026-11-26 con el tenant del laboratorio; la validación JWT de la API .NET sigue fuera de CI y pendiente de ejecutar con ese tenant.
 - El laboratorio Node.js es local y HTTP, sin TLS ni pruebas de comportamiento; el job del laboratorio en el CI solo comprueba la carga y las dependencias. Los controles de la API .NET que cubre la suite se validan en CI; la validación JWT no.
+
+---
+
+[Mapa de módulos](../README.md#módulos-y-estado) · [02 · Identity Security →](../02-identity-security/README.md)
+
+[Glosario de términos](../docs/guia-de-lectura.md#4-glosario-mínimo)
