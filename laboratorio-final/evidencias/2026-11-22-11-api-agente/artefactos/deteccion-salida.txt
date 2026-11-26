@@ -58,3 +58,21 @@ Peticiones a `GET /api/products/5`, por tanda, con la primera y la última:
 - Tanda 3: user-a=22, user-b=2
 
 El log no contiene esa columna: `grep -c 'user-a\|user-b'` da 0 en las tres.
+
+## 7. Prueba negativa del contador
+
+Umbral: 5 repeticiones de la misma petición en 10 min. Sin umbral, cualquier lectura repetida sería abuso. El control son las líneas del log que no son del agente (sonda, sembrado y comprobaciones).
+
+| Conjunto | Máximo | Petición | Primera–última | Duración | ¿Supera el umbral? |
+|---|---:|---|---|---:|---|
+| Tanda 1 | 4 | `GET /api/products` | 10:52:01.930–10:52:18.058 | 16 s | no |
+| Tanda 2 | 4 | `GET /api/products` | 10:53:28.969–10:53:36.631 | 8 s | no |
+| Tanda 3 | 18 | `GET /api/products/5` | 10:55:19.177–11:00:41.948 | 323 s | sí |
+| Control 1 | 3 | `GET /api/products` | 10:52:01.930–10:52:08.324 | 6 s | no |
+| Control 2 | 3 | `GET /api/products` | 10:53:28.969–10:53:35.381 | 6 s | no |
+| Control 3 | 3 | `GET /api/products` | 10:54:07.741–10:54:14.122 | 6 s | no |
+
+La ventana de 10 min no se ejercita: el conjunto más largo dura 323 s; lo probado es el umbral.
+
+La columna final es un contador calculado, no una alerta emitida por una regla: no había SIEM.
+
