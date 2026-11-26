@@ -7,7 +7,7 @@ Solo lee los artefactos de la evidencia y cuenta lo que hay. No interpreta el
 relato del agente: cada cifra sale de una línea del log o del JSONL.
 
 Salida: capacidades del log, cruce por marca de tiempo, eventos por tanda,
-repetición por ruta e identidad por petición.
+repetición por ruta, identidad por petición y prueba negativa del contador.
 """
 
 import json
@@ -20,6 +20,10 @@ TANDAS = (1, 2, 3)
 # Dos peticiones iguales seguidas se separan por segundos; el cruce exige
 # método, ruta y una diferencia menor que este umbral.
 DELTA_MAX = 1.0
+# Control negativo: cinco repeticiones de la misma petición en diez minutos.
+# El umbral se aplica igual al log entero y a las líneas que no son del agente.
+VENTANA = 600
+UMBRAL = 5
 FINISHED = re.compile(
     r"^(?P<ts>\S+Z)\s+Request finished HTTP/[\d.]+ (?P<metodo>[A-Z]+) (?P<url>\S+)"
     r" - (?P<estado>\d{3}) .*? (?P<ms>[\d.]+)ms$"
@@ -97,6 +101,27 @@ def cruzar(log, reqs):
         deltas.append(delta * 1000)
     sobran = [l for i, l in enumerate(log) if i not in usadas]
     return parejas, deltas, sin, sobran
+
+
+def racha(lineas, ventana=VENTANA):
+    """Petición que más se repite dentro de una ventana. Devuelve su cuenta."""
+    mejor = ((None, None), 0, "—", "—", 0.0)
+    for i, l in enumerate(lineas):
+        clave = (l["metodo"], l["ruta"])
+        dentro = [
+            o
+            for o in lineas[i:]
+            if o["t"] - l["t"] <= ventana and (o["metodo"], o["ruta"]) == clave
+        ]
+        if len(dentro) > mejor[1]:
+            mejor = (
+                clave,
+                len(dentro),
+                dentro[0]["ts"],
+                dentro[-1]["ts"],
+                dentro[-1]["t"] - dentro[0]["t"],
+            )
+    return mejor
 
 
 def main():
@@ -218,6 +243,39 @@ def main():
         print(f"- Tanda {n}: {detalle}")
     print()
     print("El log no contiene esa columna: `grep -c 'user-a\\|user-b'` da 0 en las tres.")
+    print()
+
+    print("## 7. Prueba negativa del contador")
+    print()
+    print(
+        f"Umbral: {UMBRAL} repeticiones de la misma petición en "
+        f"{VENTANA // 60} min. Sin umbral, cualquier lectura repetida sería "
+        "abuso. El control son las líneas del log que no son del agente "
+        "(sonda, sembrado y comprobaciones)."
+    )
+    print()
+    print("| Conjunto | Máximo | Petición | Primera–última | Duración | Alerta |")
+    print("|---|---:|---|---|---:|---|")
+    mayor = 0.0
+    conjuntos = [(f"Tanda {n}", logs[n]) for n in TANDAS]
+    conjuntos += [(f"Control {n}", cruces[n][3]) for n in TANDAS]
+    for nombre, conjunto in conjuntos:
+        clave, veces, ini, fin, duracion = racha(conjunto)
+        if veces == 0:
+            print(f"| {nombre} | 0 | — | — | — | no |")
+            continue
+        mayor = max(mayor, duracion)
+        print(
+            f"| {nombre} | {veces} | `{clave[0]} {clave[1]}` | "
+            f"{ini}–{fin} | {duracion:.0f} s | {'sí' if veces >= UMBRAL else 'no'} |"
+        )
+    print()
+    if mayor < VENTANA:
+        print(
+            f"La ventana de {VENTANA // 60} min no se ejercita: el conjunto más "
+            f"largo dura {mayor:.0f} s; lo probado es el umbral."
+        )
+        print()
 
 
 if __name__ == "__main__":

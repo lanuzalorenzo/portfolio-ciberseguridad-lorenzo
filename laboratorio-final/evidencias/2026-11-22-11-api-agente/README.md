@@ -121,6 +121,7 @@ Las 49 peticiones del agente tienen su línea en el log, con un desfase máximo 
 - **Parcial en la escritura.** El `201` en `/api/products` deja ver que se creó un producto; el precio de 19,99 y la ausencia de rol solo están en el JSONL del agente y en la respuesta HTTP.
 - **El bucle sí se ve, pero solo si alguien mira.** Existe la consulta que lo cuenta; no existía ninguna regla que la ejecutara, y el log por sí solo no señala la repetición.
 - **El `401` se registra con su motivo,** y eso confirma que el rechazo lo produce la autorización y no otra capa. No dice quién intentó.
+- **Control negativo del contador.** Con el umbral de 5 repeticiones de la misma petición en 10 minutos, el log completo de las tandas 1 y 2 no pasa de 4 repeticiones y las líneas que no son del agente —sonda, sembrado y comprobaciones, un subconjunto del mismo log— no pasan de 3; solo la tanda 3 lo supera, con 18. El umbral se aplica también a ese subconjunto para que el cero no sea una casualidad. La ventana no se ejercita —el conjunto más largo dura 323 s—; lo probado es el umbral. La salida está en la sección 7 de [`deteccion-salida.txt`](artefactos/deteccion-salida.txt).
 
 ### 6.3 Qué faltaría para cerrar el lado azul
 
@@ -134,7 +135,7 @@ No había SIEM en el laboratorio: las consultas de esta sección son `grep` sobr
 
 - [`artefactos/tanda-1.jsonl`](artefactos/tanda-1.jsonl), [`tanda-2.jsonl`](artefactos/tanda-2.jsonl) y [`tanda-3.jsonl`](artefactos/tanda-3.jsonl): prompt, cada petición, cada respuesta, señales y consumo de tokens.
 - [`artefactos/tanda-1-api.log`](artefactos/tanda-1-api.log), [`tanda-2-api.log`](artefactos/tanda-2-api.log) y [`tanda-3-api.log`](artefactos/tanda-3-api.log): log de la API con marca de tiempo, para cruzar cada respuesta.
-- [`artefactos/deteccion.py`](artefactos/deteccion.py) y [`artefactos/deteccion-salida.txt`](artefactos/deteccion-salida.txt): cruce del JSONL con el log; capacidades, desfase por petición y repetición por ruta.
+- [`artefactos/deteccion.py`](artefactos/deteccion.py) y [`artefactos/deteccion-salida.txt`](artefactos/deteccion-salida.txt): cruce del JSONL con el log; capacidades, desfase por petición, repetición por ruta y prueba negativa del contador.
 - [`artefactos/00-entorno.txt`](artefactos/00-entorno.txt) y [`00-modelo.txt`](artefactos/00-modelo.txt): versiones, digests de imagen y modelo.
 - [`artefactos/agente.py`](artefactos/agente.py), [`artefactos/lanzar.sh`](artefactos/lanzar.sh) y [`artefactos/resumir.py`](artefactos/resumir.py): agente, banco y resumen, para repetir la medición.
 - [`artefactos/parche-objetivo.diff`](artefactos/parche-objetivo.diff): los dos cambios de laboratorio sobre el commit fijado.
