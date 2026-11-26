@@ -38,13 +38,13 @@
 
 | Entregable | Estado |
 |---|---|
-| Parámetros y comandos de despliegue del Bicep del módulo 08 | Pendiente |
-| Presupuesto y resource group temporal | Pendiente |
-| Despliegue de VNet, NSG, Private Endpoint, DNS privado y Key Vault | Pendiente |
-| Validación positiva y negativa de conectividad | Pendiente |
-| Evidencia redactada | Pendiente |
-| Destrucción del resource group | Pendiente |
-| Evaluación de Defender for Storage | Pendiente |
+| Parámetros y comandos de despliegue del Bicep del módulo 08 | Validado (2026-11-26) |
+| Presupuesto y resource group temporal | Validado: `rg-ecomlab-f1` con etiquetas y `expires` |
+| Despliegue de VNet, NSG, Private Endpoint, DNS privado y Key Vault | Parcial: red desplegada; Private Endpoint, DNS y Key Vault en Diseño |
+| Validación positiva y negativa de conectividad | Parcial: API pública 200/401; conectividad privada pendiente |
+| Evidencia redactada | Validado (2026-11-26) |
+| Destrucción del resource group | Pendiente: 2026-12-03 |
+| Evaluación de Defender for Storage | Pendiente: de pago |
 
 **Requisitos:**
 
@@ -127,9 +127,9 @@ Reglas:
 | Fase | Estado | Nota |
 |---|---|---|
 | Fase 0 | Cerrada el 2026-10-22 | API validada en CI y en local (evidencia 11); ELK validado en local con evidencia; tabletop forense con acta |
-| Fase 1 | Pendiente | Requiere suscripción, presupuesto y autorización |
+| Fase 1 | Parcial | Capa gratuita desplegada y validada el 2026-11-26; capa de pago en Diseño y RG pendiente de destruir el 2026-12-03 |
 | Fase 2 | Pendiente | No se inicia sin cerrar la Fase 1 |
 
 ## Próximo paso
 
-La Fase 1 no se inicia sin autorización, suscripción y presupuesto. En local quedan la recolección técnica del módulo 12 y confirmar el arreglo de `libunwind` en Ubuntu.
+La capa gratuita de la Fase 1 se ejecutó el 2026-11-26; falta destruir el RG el 2026-12-03 y decidir si se enciende la capa de pago. En local quedan la recolección técnica del módulo 12 y confirmar el arreglo de `libunwind` en Ubuntu.

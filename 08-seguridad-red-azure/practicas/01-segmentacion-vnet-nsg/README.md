@@ -1,16 +1,16 @@
 # 01 | Segmentación con VNet y Network Security Groups
 
-La red del laboratorio separa la API de sus dependencias para que un fallo en una capa no abra las demás. El diseño está en [`infra/main.bicep`](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/infra/main.bicep) y no se ha desplegado: lo comprobado es que la plantilla compila y que las reglas declaradas son las que se quieren probar.
+La red del laboratorio separa la API de sus dependencias para que un fallo en una capa no abra las demás. El diseño está en [`infra/main.bicep`](https://github.com/lanuzalorenzo/lab-api-local-azure/blob/main/infra/main.bicep). La red se desplegó y validó el 2026-11-26; la conectividad privada sigue pendiente.
 
 **Referencias:** MCSB NS-1 · CIS Azure 6.x
 
 | Qué se definió | Valor | Estado |
 |---|---|---|
-| VNet | `10.20.0.0/16` | En IaC |
-| Subred de aplicación | `snet-app`, `10.20.1.0/24`, delegada a `Microsoft.Web/serverFarms` | En IaC |
-| Subred de endpoints | `snet-pe`, `10.20.2.0/24`, con políticas de Private Endpoint desactivadas | En IaC |
-| NSG | 443/TCP desde `VirtualNetwork` (prioridad 100), `AzureLoadBalancer` (110) y denegación total de entrada (4096) | En IaC |
-| Flujo permitido y flujo denegado | Conectividad real entre subredes | Pendiente: sin desplegar |
+| VNet | `10.20.0.0/16` | Desplegado (2026-11-26) |
+| Subred de aplicación | `snet-app`, `10.20.1.0/24`, delegada a `Microsoft.Web/serverFarms` | Desplegado (2026-11-26) |
+| Subred de endpoints | `snet-pe`, `10.20.2.0/24`, con políticas de Private Endpoint desactivadas | Desplegado (2026-11-26) |
+| NSG | 443/TCP desde `VirtualNetwork` (prioridad 100), `AzureLoadBalancer` (110) y denegación total de entrada (4096) | Desplegado (2026-11-26) |
+| Flujo permitido y flujo denegado | Conectividad real entre subredes | Pendiente: la conectividad privada |
 
 La validación es estática: el job de Bicep del CI compila la plantilla y Trivy revisa la configuración con cuatro supresiones justificadas en `.trivyignore`. No hay prueba de conectividad.
 

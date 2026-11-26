@@ -1,6 +1,6 @@
 # Índice de evidencias
 
-> **Evidencias registradas:** 21: 15 de ejecución y 6 documentales o verificables.
+> **Evidencias registradas:** 22: 16 de ejecución y 6 documentales o verificables.
 
 Este directorio centraliza las evidencias del laboratorio final. Cada entrada debe poder rastrearse hasta un runbook, un informe o un run de CI, y hasta un entorno concreto. No es un repositorio de capturas sueltas.
 
@@ -70,6 +70,7 @@ La [plantilla de evidencia](../../plantillas/evidencia-template.md) fija los apa
 | 2026-11-12 | 07 — DevSecOps | Inventario del binario publicado: 5 PDB antes, 0 después; sin secretos en el host descompilado | Validado en local | [Ver evidencia](2026-11-12-05-api-binary/README.md) |
 | 2026-11-15 | 02 — Identity Security | 08 — Robo y reutilización de la cookie de sesión: extracción del perfil real, cierre en servidor y caducidad | Validado en local | [Ver evidencia](2026-11-15-02-cookie-sesion/README.md) |
 | 2026-11-22 | 11 — Hacking ético de APIs | Agente autónomo contra la API: BOLA en 5–14 s en las tres tandas y escritura sin rol en una, sin salida a Internet; del lado azul, el log da ruta y código pero no identidad | Validado en local (ataque); Parcial (detección, sin SIEM) | [Ver evidencia](2026-11-22-11-api-agente/README.md) |
+| 2026-11-26 | 08 — Seguridad de red en Azure | Red desplegada y API en Container Apps: VNet, NSG y subredes; `/health` 200 y 401 sin token | Validado en la capa gratuita; capa de pago en Diseño | [Ver evidencia](2026-11-26-08-red-y-api/README.md) |
 | 2026-11-26 | 01 — OAuth 2.0, PKCE y JWT | 01 — PKCE manual con cliente público: autorización, canje, validación JWKS y dos pruebas negativas | Validado en local | [Ver evidencia](../../01-seguridad-azure/practicas/01-pkce-manual/evidencias/2026-11-26-01-pkce-manual/README.md) |
 
 ## Evidencias documentales y verificables

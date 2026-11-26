@@ -1,8 +1,8 @@
 # Arquitectura de referencia
 
-> **Estado:** **Diseño cloud; validación local parcial** (2026-10-23). La topología no se ha desplegado. El módulo 08 tiene IaC validada estáticamente; el workload y ELK tienen validación local en CI o laboratorio, y el tabletop forense tiene acta.
+> **Estado:** **Parcial** (2026-11-26). La red de la topología se desplegó el 2026-11-26; la parte privada —Private Endpoints, DNS y Key Vault— sigue en Diseño. El workload y ELK tienen validación local en CI o laboratorio, y el tabletop forense tiene acta.
 >
-> **Última revisión:** 2026-11-19.
+> **Última revisión:** 2026-11-26.
 
 Este documento es el plano de la casa: qué piezas hay, qué confianza merece cada una y en qué orden se encienden. La capa local ya está probada; las de Azure están diseñadas y se validarán una a una, con evidencia y coste declarados.
 

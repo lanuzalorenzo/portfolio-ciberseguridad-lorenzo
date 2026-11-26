@@ -35,7 +35,7 @@ Los controles transversales —CORS cerrado por defecto, validación JWT, cabece
 | 05 | [Microsoft Defender Suite](05-defender-suite/README.md) | Diseño |
 | 06 | [Acceso privilegiado](06-identity-protection/README.md) | Diseño |
 | 07 | [DevSecOps y gobernanza](07-devsecops/README.md) | Validado en CI |
-| 08 | [Seguridad de red en Azure](08-seguridad-red-azure/README.md) | Diseño + IaC estática |
+| 08 | [Seguridad de red en Azure](08-seguridad-red-azure/README.md) | Parcial: red desplegada y validada en la capa gratuita; Private Endpoints y DNS en Diseño |
 | 09 | [Microsoft Sentinel](09-microsoft-sentinel/README.md) | Diseño |
 | 10 | [ELK Stack Security](10-elk-stack-security/README.md) | Validado en local |
 | 11 | [Hacking ético de APIs](11-hacking-etico-api/README.md) | Validado en local |
