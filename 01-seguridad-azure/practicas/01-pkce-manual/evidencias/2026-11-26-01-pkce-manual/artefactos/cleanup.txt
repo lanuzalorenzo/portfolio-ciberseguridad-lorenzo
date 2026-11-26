@@ -1,0 +1,14 @@
+$ kill "$(lsof -ti tcp:4010)"
+$ rm .env
+$ rm /tmp/azure-pkce-token-response.json /tmp/pkce.txt /tmp/redirect-url.txt
+$ az account clear
+$ docker rm -f pn-az-login
+$ docker volume rm pn-az-cli
+
+Comprobación:
+- puerto 4010: sin proceso
+- .env: no existe
+- token en /tmp: no existe
+- volumen pn-az-cli: no existe
+
+El cliente público del laboratorio no se borra: queda para futuras ejecuciones del laboratorio, sin secreto y con permiso delegado de solo lectura al scope `acceso`.

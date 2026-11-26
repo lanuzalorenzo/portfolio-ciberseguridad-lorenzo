@@ -1,0 +1,8 @@
+$ ./scripts/generate-pkce.sh
+code_verifier=<redactado; 128 caracteres>
+code_challenge=<redactado; 43 caracteres>
+
+Comprobación: BASE64URL(SHA256(code_verifier)) == code_challenge
+resultado: coincide
+
+Nota: el script original partía la salida de `openssl rand -base64` en dos líneas y dejaba un salto dentro del verifier; corregido en esta ejecución.

@@ -1,8 +1,8 @@
 # Runbook — PKCE manual con cliente público
 
-> **Estado:** Runbook preparado. Ejecución estandarizada pendiente; existe una ejecución histórica documentada en la [bitácora del módulo](../../bitacora/2026-09-02-lab-azuread-oauth2-pkce-api.md).
+> **Estado:** Validado (2026-11-26). Se ejecutó completo con el tenant de laboratorio y la evidencia está en [evidencias/2026-11-26-01-pkce-manual/](evidencias/2026-11-26-01-pkce-manual/README.md); la ejecución histórica sigue en la [bitácora del módulo](../../bitacora/2026-09-02-lab-azuread-oauth2-pkce-api.md).
 >
-> **Última revisión:** 2026-10-19.
+> **Última revisión:** 2026-11-26.
 >
 > **Objetivo:** ejecutar a mano el flujo OAuth2 Authorization Code + PKCE contra Microsoft Entra ID, canjear el código por un token y validar el JWT en una API local mediante JWKS.
 
@@ -14,8 +14,8 @@
 - `curl`, `openssl`, `bash` y, opcionalmente, `jq`.
 - Un tenant de Microsoft Entra ID con permisos para registrar aplicaciones.
 - Dos registros de aplicación:
-  - **Cliente público:** permite flujo Authorization Code + PKCE, sin secreto, con redirect URI `http://localhost/callback`.
-  - **API protegida:** expone el scope `access_as_user` y tiene el cliente público autorizado con consentimiento delegado.
+  - **Cliente público:** permite flujo Authorization Code + PKCE, sin secreto, con redirect URI `http://localhost/callback`. Se registra en la plataforma de cliente público, no en «Web» ni en «SPA»: con «Web» el canje pide un secreto y con «SPA» Entra solo acepta el canje desde un navegador.
+  - **API protegida:** expone el scope `acceso` y tiene el cliente público autorizado con consentimiento delegado.
 - No se despliegan recursos de Azure. Los registros de aplicación viven en el tenant.
 
 > Si no tienes tenant, este runbook queda en estado **Runbook preparado**. No lo marques como validado sin ejecutarlo.
@@ -28,9 +28,9 @@ Sustituye los placeholders por los valores de tu laboratorio:
 |---|---|---|
 | `AZURE_TENANT_ID` | `<tenant-id>` | Autoridad y JWKS |
 | `AZURE_CLIENT_ID` | `<client-id>` | Cliente público que solicita el token |
-| `AZURE_API_CLIENT_ID` | `<api-client-id>` | API que expone `access_as_user` |
+| `AZURE_API_CLIENT_ID` | `<api-client-id>` | API que expone `acceso` |
 | `REDIRECT_URI` | `http://localhost/callback` | Redirección del cliente público |
-| `REQUESTED_SCOPE` | `api://<api-client-id>/access_as_user` | Scope solicitado |
+| `REQUESTED_SCOPE` | `api://<api-client-id>/acceso` | Scope solicitado |
 
 No publiques estos identificadores en capturas, logs ni evidencia. Redáctalos siempre.
 
@@ -73,7 +73,7 @@ https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/authorize
   &response_type=code
   &redirect_uri=http%3A%2F%2Flocalhost%2Fcallback
   &response_mode=query
-  &scope=api%3A%2F%2F<api-client-id>%2Faccess_as_user
+  &scope=api%3A%2F%2F<api-client-id>%2Facceso
   &state=123456
   &code_challenge=<code_challenge>
   &code_challenge_method=S256
@@ -91,7 +91,7 @@ export AZURE_CLIENT_ID='<client-id>'
 export REDIRECT_URI='http://localhost/callback'
 export CODE_VERIFIER='<code_verifier>'
 export AUTHORIZATION_CODE='<authorization_code>'
-export REQUESTED_SCOPE='api://<api-client-id>/access_as_user'
+export REQUESTED_SCOPE='api://<api-client-id>/acceso'
 
 ./scripts/exchange-token.sh | tee /tmp/azure-pkce-token-response.json
 ```
@@ -135,7 +135,7 @@ curl -i -H "Authorization: Bearer ${TAMPERED_TOKEN}" \
 - El flujo PKCE devuelve un `access_token` JWT.
 - La API valida el token con JWKS y responde `200` con los productos.
 - Sin token o con token manipulado responde `401`.
-- Los errores `AADSTS501481` y `AADSTS90013` quedan documentados como referencia.
+- Los errores `AADSTS501481`, `AADSTS9002327` y `AADSTS7000218` están documentados en la [evidencia](evidencias/2026-11-26-01-pkce-manual/README.md); `AADSTS90013` sigue en la nota de troubleshooting.
 
 ## 5. Evidencia que se debe capturar
 
@@ -184,8 +184,8 @@ rm -f /tmp/azure-pkce-token-response.json /tmp/pkce.txt /tmp/call-api-*.txt
 
 ## 9. Limitaciones y lo que no se ha ejecutado
 
-- La ejecución histórica del 2026-09-02 está documentada en la bitácora, pero no se conservó como evidencia estandarizada.
-- No hay tenant disponible en el momento de consolidar esta práctica; la ejecución queda pendiente.
-- No hay tests automatizados ni CI para este laboratorio.
+- La ejecución del 2026-11-26 está en [la evidencia](evidencias/2026-11-26-01-pkce-manual/README.md); la histórica del 2026-09-02 sigue en la bitácora.
+- La validación JWT de la API .NET queda fuera de CI y pendiente de ejecutar con este tenant.
+- El laboratorio no tiene pruebas de comportamiento; el CI comprueba la carga del módulo y audita las dependencias.
 - La API es local y HTTP; no incluye TLS ni configuración de producción.
 - La validación de scopes y roles granulares no forma parte de este laboratorio.

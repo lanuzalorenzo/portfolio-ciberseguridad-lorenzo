@@ -132,4 +132,4 @@ Reglas:
 
 ## Próximo paso
 
-La Fase 1 no se inicia sin autorización, suscripción y presupuesto. En local quedan la reejecución de PKCE con tenant y la recolección técnica del módulo 12.
+La Fase 1 no se inicia sin autorización, suscripción y presupuesto. En local quedan la recolección técnica del módulo 12 y confirmar el arreglo de `libunwind` en Ubuntu.

@@ -24,10 +24,9 @@ El módulo cubre dos piezas con madurez distinta y conviene no leerlas como una 
 | Pieza | Qué es | Estado |
 |---|---|---|
 | Validación JWT en la API .NET ([`lab-api-local-azure`](https://github.com/lanuzalorenzo/lab-api-local-azure)) | Comprueba firma y claims en cada petición | **Parcial**: implementado, fuera de CI y pendiente de ejecutar contra un tenant real |
-| [Práctica manual PKCE](practicas/01-pkce-manual/README.md), API Node local | Pide el pase a mano, paso a paso | **Parcial**: runbook completo, evidencia pendiente |
-| Reejecución con tenant de laboratorio | Cierra la evidencia con fecha y entorno | **Pendiente** |
+| [Práctica manual PKCE](practicas/01-pkce-manual/README.md), API Node local | Pide el pase a mano, paso a paso, con el tenant del laboratorio | **Validado** (2026-11-26): [evidencia](practicas/01-pkce-manual/evidencias/2026-11-26-01-pkce-manual/README.md) |
 
-El código está y el procedimiento es reproducible. Falta volver a ejecutarlo y guardar la prueba con el formato de evidencia del portfolio.
+El código está y el procedimiento es reproducible. La reejecución con el tenant deja la prueba fechada; el registro del cliente público vive en el tenant del laboratorio y no se publica.
 
 ## Por dónde empezar
 
@@ -40,5 +39,5 @@ El código ejecutable está en [`lab/pkce`](lab/pkce/README.md) y las decisiones
 
 ## Lo que no se ha podido probar
 
-- La práctica de PKCE manual no se ha reejecutado: no hay tenant de laboratorio y la evidencia histórica no se guardó con el formato actual.
-- El laboratorio Node.js es local y HTTP, sin TLS, tests ni CI. Los controles de la API .NET que cubre la suite se validan en CI; la validación JWT no.
+- La práctica de PKCE manual se reejecutó el 2026-11-26 con el tenant del laboratorio; la validación JWT de la API .NET sigue fuera de CI y pendiente de ejecutar con ese tenant.
+- El laboratorio Node.js es local y HTTP, sin TLS ni pruebas de comportamiento; el job del laboratorio en el CI solo comprueba la carga y las dependencias. Los controles de la API .NET que cubre la suite se validan en CI; la validación JWT no.

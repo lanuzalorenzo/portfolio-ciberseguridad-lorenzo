@@ -1,0 +1,5 @@
+$ curl -i -H "Authorization: Bearer <access_token_modificado>" http://localhost:4010/api/products
+HTTP/1.1 401 Unauthorized
+content-type: application/json; charset=utf-8
+
+{"ok":false,"message":"Token no válido o caducado.","error":"La firma o los claims del JWT no son válidos: invalid signature"}

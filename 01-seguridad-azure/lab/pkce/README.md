@@ -1,6 +1,6 @@
 # Laboratorio PKCE — API local
 
-> **Estado:** Parcial (2026-10-19, consolidación del laboratorio). Código y documentación consolidados desde `lab-azuread-oauth2-pkce-api`; la ejecución estandarizada queda pendiente de un tenant de laboratorio.
+> **Estado:** Validado (2026-11-26). Ejecutado contra el tenant del laboratorio; la evidencia está en [`practicas/01-pkce-manual/evidencias/2026-11-26-01-pkce-manual/`](../../practicas/01-pkce-manual/evidencias/2026-11-26-01-pkce-manual/README.md).
 >
 > **Práctica:** [01 — PKCE manual con cliente público](../../practicas/01-pkce-manual/README.md) · **Runbook:** [runbook.md](../../practicas/01-pkce-manual/runbook.md).
 
@@ -29,7 +29,7 @@ lab/pkce/
 - `curl` y `openssl`.
 - Un tenant de Microsoft Entra ID con dos registros de aplicación:
   - cliente público con redirect URI `http://localhost/callback`;
-  - API que exponga el scope `access_as_user`.
+  - API que exponga el scope `acceso`.
 
 ## Puesta en marcha
 
@@ -59,6 +59,6 @@ La prueba negativa es llamar a `/api/products` sin token (`401`) o con un token 
 
 ## Limitaciones
 
-- Requiere un tenant real para ejecutar el flujo completo; no se ha reejecutado con el estándar de evidencia actual.
-- No hay tests automatizados ni CI en este laboratorio.
+- Requiere un tenant real; la ejecución del 2026-11-26 está en la evidencia de la práctica.
+- El CI del repositorio comprueba la carga del módulo y audita las dependencias; no prueba el flujo.
 - La seguridad de la API es de laboratorio: HTTP local, sin TLS.
