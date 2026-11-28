@@ -34,7 +34,7 @@ Se practica cerradura a cerradura: primero en local y sin coste; después, Azure
 | Repositorio | Responsabilidad |
 |---|---|
 | `portfolio-ciberseguridad-lorenzo` | Arquitectura, runbooks, plantillas, evidencias y narrativa. |
-| `comicteca` | Aplicación principal: código, tests, Docker y CI donde se aplican los controles probados. |
+| `comicteca` | Aplicación principal: web, API y cliente Android en .NET MAUI, este último en **Diseño** y sin APK probado en un móvil; código, tests, Docker y CI donde se aplican los controles probados. |
 | `lab-api-local-azure` | Banco de pruebas: código, tests, Dockerfile, CI e IaC donde se estrena cada control. |
 | `lab-ia-aprendizaje` | Laboratorio de IA independiente; no forma parte del laboratorio de seguridad. |
 
