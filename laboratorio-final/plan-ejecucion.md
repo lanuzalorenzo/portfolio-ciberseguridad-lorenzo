@@ -1,6 +1,6 @@
 # Plan de ejecución
 
-> **Estado:** Parcial (2026-10-22). Fase 0 cerrada el 2026-10-22. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md). Ninguna fase Azure se ha ejecutado.
+> **Estado:** Parcial (2026-11-28). Fase 0 cerrada el 2026-10-22. Fase 1 ejecutada en la capa gratuita el 2026-11-26 y retirada al eliminar el grupo de recursos el 2026-11-28; la capa de pago sigue en Diseño. Evidencias de ejecución y documentales, con fecha y resultado, en el [índice](evidencias/README.md).
 
 ## Principios
 
@@ -40,10 +40,10 @@
 |---|---|
 | Parámetros y comandos de despliegue del Bicep del módulo 08 | Validado (2026-11-26) |
 | Presupuesto y resource group temporal | Validado: `rg-ecomlab-f1` con etiquetas y `expires` |
-| Despliegue de VNet, NSG, Private Endpoint, DNS privado y Key Vault | Parcial: red desplegada; Private Endpoint, DNS y Key Vault en Diseño |
+| Despliegue de VNet, NSG, Private Endpoint, DNS privado y Key Vault | Parcial: red desplegada el 2026-11-26 y retirada el 2026-11-28; Private Endpoint, DNS y Key Vault en Diseño |
 | Validación positiva y negativa de conectividad | Parcial: API pública 200/401; conectividad privada pendiente |
 | Evidencia redactada | Validado (2026-11-26) |
-| Destrucción del resource group | Pendiente: 2026-12-03 |
+| Destrucción del resource group | Validado: `rg-ecomlab-f1` eliminado el 2026-11-28; `az group exists` devuelve `false` |
 | Evaluación de Defender for Storage | Pendiente: de pago |
 
 **Requisitos:**
@@ -127,9 +127,9 @@ Reglas:
 | Fase | Estado | Nota |
 |---|---|---|
 | Fase 0 | Cerrada el 2026-10-22 | API validada en CI y en local (evidencia 11); ELK validado en local con evidencia; tabletop forense con acta |
-| Fase 1 | Parcial | Capa gratuita desplegada y validada el 2026-11-26; capa de pago en Diseño y RG pendiente de destruir el 2026-12-03 |
+| Fase 1 | Parcial | Capa gratuita desplegada y validada el 2026-11-26; capa de pago en Diseño; grupo eliminado el 2026-11-28 |
 | Fase 2 | Pendiente | No se inicia sin cerrar la Fase 1 |
 
 ## Próximo paso
 
-La capa gratuita de la Fase 1 se ejecutó el 2026-11-26; falta destruir el RG el 2026-12-03 y decidir si se enciende la capa de pago. En local quedan la recolección técnica del módulo 12 y confirmar el arreglo de `libunwind` en Ubuntu.
+La capa gratuita de la Fase 1 se ejecutó el 2026-11-26 y su grupo se eliminó el 2026-11-28; falta decidir si se enciende la capa de pago. En local quedan la recolección técnica del módulo 12 y confirmar el arreglo de `libunwind` en Ubuntu.

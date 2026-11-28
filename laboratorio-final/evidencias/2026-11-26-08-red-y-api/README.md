@@ -1,10 +1,10 @@
-# Fase 1 — red desplegada y API en la capa gratuita
+# Fase 1 — red y API en la capa gratuita
 
-> **Estado:** Validado (2026-11-26) para la red y para la ejecución de la API; Diseño para la capa de pago, que no se despliega. Evidencia: [comandos ejecutados](comandos.md).
+> **Estado:** Validado (2026-11-26) para la red y para la ejecución de la API; Diseño para la capa de pago, que no se despliega. El grupo de recursos se eliminó el 2026-11-28 (§Limpieza). Evidencia: [comandos ejecutados](comandos.md).
 
-La red del laboratorio y la API están ejecutándose en la capa gratuita: una VNet con dos subredes y la imagen de la API en Container Apps con escala a cero. `/health` responde 200 y `/api/products` responde 401; la capa de pago sigue en Diseño.
+La red del laboratorio y la API corrieron en la capa gratuita: una VNet con dos subredes y la imagen de la API en Container Apps con escala a cero. `/health` respondió 200 y `/api/products` 401; la capa de pago sigue en Diseño. El grupo se eliminó el 2026-11-28, así que nada de esto está en marcha.
 
-**In English.** The lab network and the API are running on the free tier: a VNet with two subnets and the API image on Container Apps with scale to zero. `/health` returns 200 and `/api/products` returns 401; the paid layer stays in Design.
+**In English.** The lab network and the API ran on the free tier: a VNet with two subnets and the API image on Container Apps with scale to zero. `/health` returned 200 and `/api/products` returned 401; the paid layer stays in Design. The resource group was deleted on 2026-11-28, so none of it is running.
 
 Runbook utilizado: `docs/despliegue-y-rollback.md` del repositorio `lab-api-local-azure`.
 
@@ -45,19 +45,19 @@ La aplicación estaba en modo de revisión única. Se pasó a múltiples, se fij
 | `t5` al 100 %, por el FQDN de la aplicación | `health` 200, `products` 401 | PASS |
 | Vuelta a `v1thzxk` al 100 % | `health` 200, `products` 401; tráfico `v1thzxk=100`, `t5=0` | PASS |
 
-El modo de revisión múltiple y las dos revisiones se conservan hasta la limpieza. El comando de vuelta atrás es un cambio de pesos, no un redespliegue.
+El modo de revisión múltiple y las dos revisiones se conservaron hasta la limpieza. El comando de vuelta atrás es un cambio de pesos, no un redespliegue.
 
 ## Límites
 
-- La API corre en Container Apps, no en App Service: el diseño P1v3 con integración VNet y slots sigue en **Diseño**.
+- La API corrió en Container Apps, no en App Service: el diseño P1v3 con integración VNet y slots sigue en **Diseño**.
 - La base es SQLite en el sistema de ficheros efímero del contenedor; no hay persistencia ni copia.
 - No hay Log Analytics ni Application Insights: no se recogen trazas ni logs del servicio.
 - No se prueban Private Endpoint, DNS privado, Key Vault ni firewall. La conectividad privada no está validada.
-- El endpoint público no tiene SLA y escala a cero; la primera petición puede tardar.
+- El endpoint público no tenía SLA y escalaba a cero; la primera petición podía tardar.
 
 ## Limpieza
 
-El grupo `rg-ecomlab-f1` lleva `expires=2026-12-03`. Ese día se elimina con `az group delete --name rg-ecomlab-f1 --yes` y se comprueba con `az group exists --name rg-ecomlab-f1` en `false`. La evidencia de la limpieza se añade a esta carpeta cuando se ejecute.
+El grupo `rg-ecomlab-f1` llevaba `expires=2026-12-03` y se eliminó el 2026-11-28, cinco días antes, con `az group delete --name rg-ecomlab-f1 --yes`. `az group exists --name rg-ecomlab-f1` devuelve `false` y no queda ningún grupo con el prefijo `rg-ecomlab-`. Los comandos y su salida están en [comandos ejecutados](comandos.md#7-limpieza-2026-11-28).
 
 ## Redacción
 

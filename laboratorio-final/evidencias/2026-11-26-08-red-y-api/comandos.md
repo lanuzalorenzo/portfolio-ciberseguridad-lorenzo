@@ -138,11 +138,24 @@ az group show --name rg-ecomlab-f1 --query 'tags'
 { "expires": "2026-12-03", "lab": "ecomlab", "owner": "<owner>" }
 ```
 
-## 7. Limpieza (pendiente el 2026-12-03)
+## 7. Limpieza (2026-11-28)
 
 ```bash
 az group delete --name rg-ecomlab-f1 --yes
+```
+
+El comando no imprime nada y termina con código 0.
+
+```bash
 az group exists --name rg-ecomlab-f1
 ```
 
-El segundo comando debe devolver `false`. La salida se añade aquí cuando se ejecute.
+```text
+false
+```
+
+```bash
+az group list --query "[?starts_with(name, 'rg-ecomlab-')].name" -o tsv
+```
+
+Sin salida: la suscripción no conserva ningún grupo con ese prefijo. El grupo llevaba `expires=2026-12-03`; se eliminó cinco días antes.
