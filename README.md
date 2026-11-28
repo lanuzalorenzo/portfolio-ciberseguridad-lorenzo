@@ -35,7 +35,7 @@ Los controles transversales —CORS cerrado por defecto, validación JWT, cabece
 | 05 | [Microsoft Defender Suite](05-defender-suite/README.md) | ¿Qué cubre cada producto de Defender y qué cuesta probarlo? | Diseño: mapa de los catorce productos; sin evidencia de ejecución |
 | 06 | [Acceso privilegiado](06-identity-protection/README.md) | ¿Qué añaden Conditional Access y PIM cuando hay licencia P1/P2? | Diseño: tres controles descritos, sin ejecutar |
 | 07 | [DevSecOps y gobernanza](07-devsecops/README.md) | ¿Cómo se integra seguridad en el pipeline? | Validado en CI; práctica 04 (permisos por job) parcial; OIDC con Azure y despliegue pendientes |
-| 08 | [Seguridad de red en Azure](08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Parcial: red desplegada y validada en la capa gratuita; Private Endpoints y DNS en Diseño |
+| 08 | [Seguridad de red en Azure](08-seguridad-red-azure/README.md) | ¿Cómo se segmenta y se aísla la carga? | Parcial: red desplegada y validada el 2026-11-26 y retirada el 2026-11-28; Private Endpoints y DNS en Diseño |
 | 09 | [Microsoft Sentinel](09-microsoft-sentinel/README.md) | ¿Cómo se detecta con KQL y se automatiza? | Diseño: workspace y diagnósticos en IaC; Sentinel sin habilitar |
 | 10 | [ELK Stack Security](10-elk-stack-security/README.md) | ¿Cómo se centralizan logs y se consultan? | Validado en local |
 | 11 | [Hacking ético de APIs](11-hacking-etico-api/README.md) | ¿Cómo se prueban BOLA, BFLA y mass assignment? | Validado en local; BFLA parcial, token JWT real pendiente, rate limit pendiente de SLO y DAST anónimo parcial; límite de 16 KB validado; detección del agente parcial |
